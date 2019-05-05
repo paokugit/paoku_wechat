@@ -1,8 +1,14 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/message/auth/index",
+        "pages/helphand/friendhelp/friendhelp",
+       
         "pages/helphand/helpshare/helpshare",
+       
+       
+       
+        "pages/message/auth/index",
+       
         "pages/helphand/powerlist/powerlist",
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
@@ -12,7 +18,7 @@
         "pages/sportdiary/sportdiary/sportdiary",
         "pages/goods/detail/index",
         "pages/member/balance/balance",
-        "pages/helphand/friendhelp/friendhelp",
+       
         "pages/commission/transmit/transmit",
         "pages/helphand/mypowerlist/mypowerlist",
         "pages/member/log/bushu",

@@ -71,10 +71,7 @@ Page({
     // 被助力人的昵称
     bnickname=t.nickname
     // 被助力人的mid
-    
     //   被助力人的openid
-      
-
       var ttt = this;
       s.get("member/info/getMemberInfo", {
           passive_openid: hlpid
@@ -112,9 +109,35 @@ Page({
       success(res) {
         console.log(res)
         console.log("getSetting: success");
-        tt.setData({
-          dis: "block"
-        })
+        // tt.setData({
+        //   dis: "block"
+        // })
+          var aaa = this
+          s.get("help/index/addhelp", {
+              step: '1500',
+              openid: userinfo.openid,
+              mids: cs
+          }, function (ee) {
+              console.log(ee)
+              error = ee.error
+              message = ee.message
+              // console.log(error)
+              if (error != 0) {
+                  wx.showModal({
+                      title: '提示',
+                      content: message,
+                      success(res) {
+                          if (res.confirm) {
+                          } else if (res.cancel) {
+                          }
+                      }
+                  })
+              }
+              wx.navigateTo({
+                  // url: '../powerlist/powerlist?openid=' + hlpid + '&mid=' + cs + '&nickname=' + bnickname,
+                  url: '../powerlist/powerlist?openid=' + shareopenid + '&mid=' + sharemid + '&nickname=' + bnickname,
+              })
+          })
         if (!res.authSetting['scope.werun']) {
           console.log("1-没有授权获取运动步数权限");
 
@@ -125,6 +148,7 @@ Page({
               // 用户已经同意小程序获取运动步数，后续调用 wx.getWeRunData 接口不会弹窗询问
               wx.getWeRunData({
                 success(res) {
+                    
                   s.post('wxapp/urundata', { res }, function (e) {
 
                   })
@@ -199,67 +223,16 @@ Page({
   },
   
   // 获取用户输入的用户名
-  stepInput: function (e) {
-    this.setData({
-      step: e.detail.value
-    })
-  },
-  msgInput: function (e) {
-    this.setData({
-      messgae: e.detail.value
-    })
-  },
-  tap: function () {
-    if (this.data.step == '') {
-      wx.showToast({
-        title: '步数不能为空',
-        icon: 'success',
-        duration: 2000
-      })
-
-    } 
-    var aaa = this
-    s.get("help/index/addhelp", {
-      remark: this.data.message,
-      step: this.data.step,
-      openid: userinfo.openid,
-      mids: cs
-    }, function (ee) {
-      console.log(ee)
-      error = ee.error
-      message = ee.message
-      // console.log(error)
-      if (error != 0) {
-        wx.showModal({
-          title: '提示',
-          content: message,
-          success(res) {
-            if (res.confirm) {
-            } else if (res.cancel) {
-            }
-          }
-        })
-      }
-      // if (aaa.data.step > steptoday) {
-      //   wx.showModal({
-      //     title: '提示',
-      //     content: '步数不足哦',
-      //     success(res) {
-      //       if (res.confirm) {
-      //       } else if (res.cancel) {
-      //       }
-      //     }
-      //   })
-      // }
-      if (1<aaa.data.step<2000 && error< 1) {
-        wx.navigateTo({
-          // url: '../powerlist/powerlist?openid=' + hlpid + '&mid=' + cs + '&nickname=' + bnickname,
-          url: '../powerlist/powerlist?openid=' + shareopenid + '&mid=' + sharemid + '&nickname=' + bnickname,
-        })
-      }
-    })
-
-  },
+//   stepInput: function (e) {
+//     this.setData({
+//       step: e.detail.value
+//     })
+//   },
+//   msgInput: function (e) {
+//     this.setData({
+//       messgae: e.detail.value
+//     })
+//   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -958,7 +958,7 @@ image {
     color: #666;
     font-size: 20rpx;
     /* margin-left: 50rpx; */
-    text-decoration: line-through
+    /* text-decoration: line-through */
 }
 
 .calorie-img {

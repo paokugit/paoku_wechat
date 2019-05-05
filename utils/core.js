@@ -37,7 +37,7 @@ module.exports = {
         Cookie: "PHPSESSID=" + c
       }
     };
-    console.log(l.url)
+    // console.log(l.url)
     s || delete l.header.Cookie, a && (l.data = e.param(n)), o && (l.success = function (t) {
       if (i && d.hideLoading(), "request:ok" == t.errMsg && "function" == typeof o) {
         if (r.setCache("authkey", t.data.authkey || ""), void 0 !== t.data.sysset) {
