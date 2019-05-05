@@ -1,0 +1,165 @@
+<view class='centerBox'>
+<!-- banner-开始 -->
+<view class='mcbanner-box'>
+   <image src='{{globalimg}}/huiyuan.png'></image>
+   <!-- 会员介绍 -开始-->
+   <view class='member-intro'>
+        <view class='member-con'>
+        <view class='avatarbox member_center'>
+            <image class='avatar' src='{{avatar}}'></image>
+        </view>
+            <view class='member-con-top'>
+            <!-- top-开始 -->
+                <!-- 会员名称 -->
+                <view class='hy-name'>{{nickname}}</view>
+                <!-- 体验会员 -->
+                <view class='tiyan-box'>
+                    <view class='tiyan'>{{levelname}}</view>
+                    <!--<view class='time-limit member_center' wx:if="{{levelid==5}}">有效期至：{{endtime}}</view>-->
+                    <view class='time-limit member_center'>长期</view>
+                </view>
+                <!-- 体验会员-结束 -->
+            </view>
+            <!-- top-结束 -->
+            <!-- bottom（加速期）-开始 -->
+            <view class='member-con-bottom' style='display:{{speeding}}'>
+                <!-- 加速-开始 -->
+            <view class='speed-box'>
+            <view class='progressbar'>
+<progress percent="{{addspead}}" color="#ebcdaf" backgroundColor="#000" active-mode="forwards" stroke-width="8" active border-radius="20rpx"/>
+</view>
+</view>
+            <!-- 加速-结束 -->
+            <!-- 加速内容-开始 -->
+            <view class='speedup-con'>
+                <text class='speed-hour'>已加速{{accelerate_day}}天，{{surplus_day}}天后加速结束</text>
+                <text class='speed-give'>赠送{{give_day}}天加速</text>
+            </view>
+            <!-- 加速内容-结束 -->
+            </view>
+            <!-- bottom（加速期）-结束 -->
+            <!-- bottom（加速完成）-开始 -->
+            <view class='speed-done' style='display:{{speeddone}}'>
+                加速已结束，获得{{credit}}卡路里
+            </view>
+            <!-- bottom（加速完成）-结束 -->
+        </view>
+   </view>
+   <!-- 会员介绍-结束 -->
+   
+</view>
+<!-- banner-结束 -->
+<!-- banner之后的内容-开始 -->
+<view class='other-box'>
+    <!-- 您正在享受的专属权益-开始 -->
+    <view class='your-rights'>
+        <text class='rights-tit member_center'>您正在享受的专属权益</text>
+        <view class='rights-box' wx:if="{{levelid==5}}">
+            <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
+            <!-- 图片 -->
+                <view class='rights-img'><image src= '{{globalimg}}{{item.img}}'></image></view>
+            <!-- 文字 -->
+            <view class='rights-text'>{{item.info}}</view>
+            </view>
+        </view>
+        <!-- else -->
+        <view class='rights-box' wx:else>
+            <view  class='rights' style='width:220rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
+            <!-- 图片 -->
+                <view class='rights-img'><image src= '{{globalimg}}{{item.img}}'></image></view>
+            <!-- 文字 -->
+            <view class='rights-text'>{{item.info}}</view>
+            </view>
+        </view>
+        
+    </view>
+    <!-- 您正在享受的专属权益-结束 -->
+    <!-- 升级会员-开始 -->
+    <view class='upgrade' bindtap='shengji'>
+        <image src='{{globalimg}}/hybanner.png'></image>
+    </view>
+    <!-- 升级会员-结束 -->
+    <!-- 完成以下任务部分-开始 -->
+    <view class='task-box'>
+        <text class='task-text member_center'>完成以下任务，可以领取更多卡路里哦</text>
+        <!-- bottom-开始 -->
+        <view class='task-bottom'>
+        <!-- 图片-开始 -->
+            <view class='task-con' wx:for="{{arr01}}">
+            <image src='{{item.img}}'></image>
+            </view>
+            <!-- 图片-结束 -->
+        </view>
+        <!-- bottom-结束 -->
+        <view class='bottomCon'>
+        <!-- 签到 -->
+            <view class='taskBox'>
+                <view class='task-tit'>每日签到</view>
+                <view class='task-award'>可赚取1个卡路里</view>
+                <view class='taskbtn qdbtn member_center'>今日已签</view>
+            </view>
+            <!-- 注册 -->
+            <view class='taskBox'>
+            <view class='task-tit'>邀请好友注册</view>
+                <view class='task-award'>可赚取10个卡路里</view>
+                <view class='taskbtn zcbtn member_center' catchtap='invite'>去邀请</view>
+            </view>
+            <!-- 资料 -->
+            <view class='taskBox'>
+                <view class='task-tit'>完善资料</view>
+                <view class='task-award'>可赚取2个卡路里</view>
+                <view class='taskbtn zlbtn member_center' bindtap='zlBtn'>去完善</view>
+            </view>
+            <!-- 分享海报 -->
+            <view class='taskBox'>
+                <view class='task-tit'>分享海报</view>
+                <view class='task-award'>可赚取1-10个卡路里</view>
+                <view class='taskbtn hbbtn member_center' bindtap='hbshare'>去分享</view>
+            </view>
+        </view>
+
+    </view>
+    <!-- 完成以下任务部分-结束 -->
+   
+</view>
+<!-- banner之后的内容-结束 -->
+<!-- 底部 -->
+ <view class='bottombar'>
+  <!-- <view class='bar' wx:for="{{imglist}}" wx:key='img' bindtap='sportBtn' data-index='{{index}}'>
+    <view class='barImg' >
+        <image src='{{imgHoverIndex == index ?item.hoverurl:item.imgurl}}'></image>
+    </view>
+ </view> -->
+    <view class='bar' bindtap='sportBtn'>
+        <view class='barImg'>
+            <image src='../../../icon1/sport-n.png'></image>
+        </view>
+        <view class='barCon'>运动</view>
+    </view>
+    <view class='bar' bindtap='shopBtn' style="color:{{color}};">
+        <view class='barImg'>
+            <image src='../../../icon1/home-n.png'></image>
+        </view>
+        <view class='barCon'>商城</view>
+    </view>
+    <view class='bar' bindtap='carBtn'>
+        <view class='barImg'>
+            <image src='../../../icon1/shop-n.png'></image>
+        </view>
+        <view class='barCon'>购物车</view>
+    </view>
+    <view class='bar' bindtap='huiyuanBtn'>
+     <view class='barImg'>
+        <image src='../../../icon1/huiyuan-s.png'></image>
+        </view>
+        <view class='barCon' style='color:#00d8a0'>达人</view>
+    </view>
+    <view class='bar' bindtap='userBtn'>
+        <view class='barImg'>
+            <image src='../../../icon1/user-n.png'></image>
+        </view>
+        <view class='barCon'>我的</view>
+    </view>
+ 
+ </view>
+</view>

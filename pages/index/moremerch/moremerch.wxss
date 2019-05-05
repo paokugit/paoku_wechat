@@ -1,0 +1,116 @@
+.nearbyshops-box{
+    width: 100%;
+    height: auto;
+    padding-top: 10rpx;
+    background: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.nearbyshop-box{
+    width: 726rpx;
+    height: 220rpx;
+    background: #fff;
+    margin-bottom: 24rpx;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.nearbyshop-distance{
+    width: auto;
+    height: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 110rpx;
+    right: 25rpx;
+    color: #666;
+    font-size: 24rpx
+}
+.nearbyshop-map-box{
+    width: 140rpx;
+    height: 30rpx;
+    position: absolute;
+    bottom: 15rpx;
+    right: 25rpx;
+    color: #666;
+    font-size: 24rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+.store-img{
+    width: 168rpx;
+    height: 126rpx;
+    border: 1px solid #ccc;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.map-img{
+    width: 24rpx;
+    height: 24rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.store-details-box {
+    width: 500rpx;
+    height: auto;
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.storename {
+    height: 40rpx;
+    line-height: 40rpx;
+    /* background: #f00; */
+    color: #333;
+    font-size: 34rpx;
+}
+.reward_box{
+    width: 200rpx;
+    color: #e01212;
+    font-size: 22rpx;
+    /* background: #f66 */
+}
+.reward_text{
+    
+    width: 100rpx;
+    background: #fdeddd
+}
+.reward_money{
+    margin-left: 20rpx
+}
+
+.office-hour {
+     height: 40rpx;
+    line-height: 40rpx;
+    /* background: #ff0; */
+    color: #666;
+    font-size: 22rpx;
+}
+
+.store-address {
+    width: 60%;
+    height: 40rpx;
+    /* background: #00f; */
+    color: #666;
+    font-size: 22rpx;
+    line-height:40rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}

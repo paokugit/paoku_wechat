@@ -1,0 +1,30 @@
+<view class='huiyuan-con'>
+<!-- banner-开始 -->
+<view class='bannerBox'>
+<image src='{{globalimg}}/huiyuan-top.png'></image>
+</view>
+<!-- 会员-开始 -->
+<view class='huiyuanBox' >
+<view class='huiyuanCon' wx:for="{{list}}">
+    <button class='explainBtn' bindtap='explainhy'></button>
+    <button class='openBtn' bindtap='openhy' data-id='{{item.id}}' data-productprice='{{item.productprice}}' data-minprice='{{item.minprice}}' data-title='{{item.title}}'></button>
+    <image  src='{{item.thumb}}'></image>
+</view>
+</view>
+<!-- 会员-结束 -->
+</view>
+<!-- 遮罩-开始  -->
+<view class='huiyuan-mask' style='display:{{hydisp}}'>
+    <view class='hymask-box'>
+    <view class='hy-guanbi' catchtap='hyClose'><image src='{{globalimg}}/guanbi.png'></image></view>
+        <view class='hymask-con'>
+            <view class='kaitong hyflex'>开通会员</view>
+            <view class='tiyan hyflex'>{{title}}</view>
+             <view  class='hy-dz hyflex'  wx:if="{{id==7}}">原价：{{productprice}}元</view>
+            <view  class='hy-price hyflex' >{{minprice}}元</view>
+            <button bindtap="pay" class='pay-btn hyflex' data-type='credit'>立即支付</button>
+        
+        </view>
+    </view>
+</view>
+<!-- 遮罩-结束

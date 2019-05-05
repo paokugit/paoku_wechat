@@ -1,0 +1,115 @@
+<block>
+    <block wx:if="{{fadein=='in'}}">
+        <view bindtap="actOutPicker" class="act-mask {{fadein}}"></view>
+    </block>
+</block>
+<view class="inner {{fadein}} {{iphonexnavbar}}">
+    <view bindtap="actOutPicker" class="fui-cell-title" style="border-bottom:1px solid #efefef;padding:30rpx 28rpx;">促销活动 <text class="icox icox-close pull-right"></text>
+    </view>
+    <view class="fui-cell-group fui-sale-group noborder" style="margin-top:0; overflow-y: auto;padding-bottom:130rpx;max-height:700rpx">
+        <block>
+            <block wx:if="{{activity.enough||activity.merch_enough}}">
+                <view class="act-cell">
+                    <view class="act-cell-title">
+                        <text class="act-tips"></text> 满减活动</view>
+                    <view class="act-cell-inner">
+                        <block wx:for="{{activity.enough}}">
+                            <text class="">全场满{{item.enough}}立减{{item.money}};</text>
+                        </block>
+                        <block wx:for="{{activity.merch_enough}}">
+                            <text class="">本店满{{item.enough}}立减{{item.give}};</text>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{activity.fullback}}">
+                <view class="act-cell">
+                    <view class="act-cell-title">
+                        <text class="act-tips"></text> {{goods.fullbacktext}}活动</view>
+                    <view class="act-cell-inner">
+          {{goods.fullbacktext}}总额：{{activity.fullback.all_enjoy}}
+          每天返：{{activity.fullback.enjoy}}
+          时间：{{activity.fullback.day}}
+        </view>
+                </view>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{activity.postfree}}">
+                <view class="act-cell">
+                    <view class="act-cell-title">
+                        <text class="act-tips"></text> 包邮</view>
+                    <view class="act-cell-inner">
+                        <block>
+                            <block wx:if="{{activity.postfree.goods}}">
+                                <text>本商品包邮;</text>
+                            </block>
+                        </block>
+                        <block>
+                            <block wx:if="{{activity.postfree.scope}}">
+                                <text>
+                                    <text>{{activity.postfree.scope}}</text>
+                                    <block>
+                                        <block wx:if="{{activity.postfree.enoughfree>0}}">
+                                            <text>满￥{{activity.postfree.enoughfree}}</text>
+                                        </block>
+                                    </block>
+                                    <text>包邮</text>
+                                </text>
+                            </block>
+                        </block>
+                        <block>
+                            <block wx:if="{{activity.postfree.num}}">
+                                <text>单品买{{activity.postfree.num}}件包邮；</text>
+                            </block>
+                        </block>
+                        <block>
+                            <block wx:if="{{activity.postfree.price}}">
+                                <text>单品买￥{{activity.postfree.price}}包邮</text>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{activity.buyagain}}">
+                <view class="act-cell">
+                    <view class="act-cell-title">
+                        <text class="act-tips"></text> 复购</view>
+                    <view class="act-cell-inner">
+        此商品重复购买可享受{{activity.buyagain.discount}}折优惠;
+        <block>
+                            <block wx:if="{{activity.buyagain.buyagain_sale==0}}">
+                                <span>重复购买 不与其他优惠共享</span>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{activity.credit}}">
+                <view class="act-cell">
+                    <view class="act-cell-title">
+                        <text class="act-tips"></text>卡路里</view>
+                    <view class="act-cell-inner">
+                        <block>
+                            <block wx:if="{{activity.credit.deduct}}">
+                                <text>最高抵扣￥{{activity.credit.deduct}}；</text>
+                            </block>
+                        </block>
+                        <block>
+                            <block wx:if="{{activity.credit.give}}">
+                                <text>购买赠送{{activity.credit.give}}卡路里</text>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view bindtap="actOutPicker" class="btn act-btn btn-danger">确定</view>
+</view>

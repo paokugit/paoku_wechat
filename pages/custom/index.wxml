@@ -1,0 +1,203 @@
+<view class="custom" style="{{istopmenu==false?'':'padding-top:'+topmenuheight+'rpx;'}}min-height:100%;background:{{diypages.page.background}}">
+    <block wx:for="{{diypages.items}}" wx:for-index="diyitemid" wx:for-item="diyitem">
+        <block>
+            <block wx:if="{{diyitem.id=='fixedsearch'}}">
+                <include src="/pages/diy/template/tpl_fixedsearch.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='banner'}}">
+                <include src="/pages/diy/template/tpl_banner.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='search'}}">
+                <include src="/pages/diy/template/tpl_search.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='notice'}}">
+                <include src="/pages/diy/template/tpl_notice.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='line'}}">
+                <include src="/pages/diy/template/tpl_line.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='blank'}}">
+                <include src="/pages/diy/template/tpl_blank.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='title'}}">
+                <include src="/pages/diy/template/tpl_title.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='menu'}}">
+                <include src="/pages/diy/template/tpl_menu.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='menu2'}}">
+                <include src="/pages/diy/template/tpl_menu2.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='listmenu'}}">
+                <include src="/pages/diy/template/tpl_listmenu.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='picture'}}">
+                <include src="/pages/diy/template/tpl_picture.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='picturew'}}">
+                <include src="/pages/diy/template/tpl_picturew.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='coupon'}}">
+                <include src="/pages/diy/template/tpl_coupon.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='goods'}}">
+                <include src="/pages/diy/template/tpl_goods.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='richtext'}}">
+                <include src="/pages/diy/template/tpl_richtext.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='video'}}">
+                <include src="/pages/diy/template/tpl_video.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='copyright'}}">
+                <include src="/pages/diy/template/tpl_copyright.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='pictures'}}">
+                <include src="/pages/diy/template/tpl_pictures.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='icongroup'}}">
+                <include src="/pages/diy/template/tpl_icongroup.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='audio'}}">
+                <include src="/pages/diy/template/tpl_audio.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='topmenu'}}">
+                <include src="/pages/diy/template/tpl_topmenu.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='tabbar'}}">
+                <include src="/pages/diy/template/tpl_tabbar.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='seckill_times'}}">
+                <include src="/pages/diy/template/tpl_seckill_times.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='seckill_rooms'}}">
+                <include src="/pages/diy/template/tpl_seckill_rooms.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='seckill_advs'}}">
+                <include src="/pages/diy/template/tpl_seckill_advs.wxml"></include>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{diyitem.id=='seckill_list'}}">
+                <include src="/pages/diy/template/tpl_seckill_list.wxml"></include>
+            </block>
+        </block>
+    </block>
+    <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+        <view class="text">{{FoxUIToast.text}}</view>
+    </view>
+    <view bindtap="emptyActive" class="nav-mask" style="{{active?'display:block':''}}"></view>
+    <block>
+        <block wx:if="{{customer==1}}">
+            <button class="suspended-service" openType="contact" sessionFrom="weapp" showMessageCard="true" style="background-color:{{customercolor}}">
+                <text class="icox icox-customerservice"></text>
+            </button>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{phone==1}}">
+            <view bindtap="phone" class="phone" style="background-color:{{phonecolor}}">
+                <text class="icox icox-dianhua"></text>
+            </view>
+        </block>
+    </block>
+    <include src="/pages/common/goods-picker.wxml"></include>
+    <include src="/pages/common/city-picker.wxml"></include>
+</view>
+<block>
+    <block wx:if="{{modelShow}}">
+        <view class="model">
+            <view class="inner">
+                <view class="title">用户未授权</view>
+                <view class="image">
+                    <image src="/static/images/shouquan.png"></image>
+                </view>
+                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
+                <view class="model-btns">
+                    <view bindtap="cancelclick" class="cancel">取消</view>
+                    <view bindtap="confirmclick" class="confirm">去设置</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{showcoupon}}">
+        <view class="shoucoupon">
+            <image src="{{ globalimg}}/bg1.png" style="position: absolute; width: 620rpx;height: 820rpx;top: 130rpx;left: 50%;margin-left: -310rpx;"></image>
+            <view class="inner">
+                <view class="title">新人礼包</view>
+                <view class="subtitle">数量有限，先到先得哦</view>
+                <scroll-view class="coupon-list" scrollY="true">
+                    <block wx:for="{{cpinfos}}">
+                        <view class="item">
+                            <view class="item-cell">
+                                <view class="item-inner">
+                                    <view class="t">{{item.couponname}}</view>
+                                    <view class="b">
+                      {{item.enoughtext}}
+                      </view>
+                                </view>
+                                <view class="item-remark">{{item.t2}}<span style="font-size:30rpx;">{{item.t1}}</span>
+                                </view>
+                            </view>
+                            <view class="indate">{{item.timelimittext}}</view>
+                        </view>
+                    </block>
+                </scroll-view>
+                <view bindtap="closecoupon" class="know">知道了</view>
+            </view>
+            <view class="closecoupon">
+                <i bindtap="closecoupon" class="icox icox-guanbi-copy"></i>
+            </view>
+        </view>
+    </block>
+</block>

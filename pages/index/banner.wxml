@@ -1,0 +1,24 @@
+<block>
+    <block wx:if="{{item.bannerswipe==1&&item.data.length>0}}">
+        <view class="index-banner">
+            <swiper autoplay="{{autoplay}}" circular="{{circular}}" class="index-adcs-sqiper index-banner-sqiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="{{bannerheight?'height:'+bannerheight+'px':'height:'+swiperheight+'px'}}">
+                <block wx:for="{{item.data}}" wx:for-index="idx">
+                    <swiper-item>
+                        <navigator class="index-advs-navigator" openType="navigate" url="{{item.link}}">
+                            <image bindload="imagesHeight" class="advimg" data-type="bannerheight" mode="widthFix" src="{{item.thumb}}"></image>
+                        </navigator>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </block>
+    <block wx:else>
+        <block wx:for="{{item.data}}" wx:for-index="idx">
+            <view class="index-adcs-sqiper index-banner-sqiper">
+                <navigator class="index-advs-navigator" openType="navigate" url="{{item.link}}">
+                    <image class="advimg" mode="widthFix" src="{{item.thumb}}"></image>
+                </navigator>
+            </view>
+        </block>
+    </block>
+</block>

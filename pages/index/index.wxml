@@ -1,0 +1,405 @@
+<view class='indexBox'>
+<view class="index-banner-box">
+    <!-- banner背景图 -->
+    <image src='{{ globalimg}}/indexbanner.png'></image>
+    <!-- 卡路里余额 -开始-->
+    <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
+        <button form-type='submit' style="background:rgba(0,0,0,0)">
+            <view  class='kll'>
+                <view class='balance-left flex_center'>
+                    <image src='{{ globalimg}}/kaluli.png'></image>
+                </view>
+                <view class='balance-right'>{{credit1}}</view>
+            </view>
+        </button>
+    </form>
+    <!-- 卡路里余额-结束 -->
+    <!-- 点击签到之后的气泡 -->
+    <view class="heard-tag absolute">
+        <form bindsubmit="receive" class="heard-tag-list absolute" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
+            <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
+                <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
+                <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
+                <text class='ex-text' wx:if="{{item.type==1}}">好友捐赠</text>
+                <text class='ex-text' wx:if="{{item.type ==2}}">签到奖励</text>
+            </button>
+        </form>
+    </view>
+    <!-- 气泡部分 -->
+    <!-- 跳转的气泡-开始 -->
+    <form bindsubmit='form_submit' report-submit='true' class='circle stepExchange floating' catchtap='inviteBtn'>
+        <button form-type='submit' style="background:rgba(0,0,0,0)" >
+            <view   style='display:{{circleDis}}'>
+                <view class='paopao-box'>
+                    <image src='{{ globalimg}}/paopao.png'></image>
+                </view>
+                <view class='circle-explain'>邀请好友</view>
+            </view>
+         </button>
+    </form>
+    <form bindsubmit='form_submit' report-submit='true' class='circle attendance floating'  catchtap='openhyBtn'>
+        <button form-type='submit' style="background:rgba(0,0,0,0)" >
+    <view  style='display:{{circleDis}}'>
+        <view class='paopao-box'>
+                <image src='{{ globalimg}}/speed.png'></image>
+        </view>
+            <view class='circle-explain '> 成为达人</view>
+    </view>
+</button>
+    </form>
+    <!-- 跳转的气泡-结束 -->
+    <view class='today-step'>今日步数</view>
+    <view class='today-step-con'>{{todaystep}}</view>
+    <view class='step'>步</view>
+    <view class='friend-help'>好友捐赠{{helpstep}}步</view>
+</view>
+<!-- 9.9体验会员加速, 好友捐赠等部分-开始 -->
+<view class='member-speedup-box'>
+<view class='member-relative'>
+        <view class='member-speedup-box-top' bindtap='hybtn' >
+        <view class='indexbannerImg'>
+            <view class='number_people'>
+                <view class='peopleNum'>{{message}}</view>
+                <view class='peopleExplain'>平台活跃人数</view>
+            </view>
+            <image class='shadow-img' src='{{ globalimg}}/indexbanner02.png'></image>
+        </view>
+    </view>
+       
+    <!-- 好友捐赠，幸运抽奖，运动日记，玩法说明-开始 -->
+    <view class='activity-nav'>
+        <view class='activity activity-nav-friend'>
+            <view class='activity-img'>
+                <!-- 加速收益 -->
+                <view class='earnings-speed'>
+                    <image src='{{ globalimg}}/jiasu.png'></image>
+                </view>
+                <image src='{{ globalimg}}/01.png'></image>
+            </view>
+            <view class='activity-con'>好友捐赠</view>
+        </view>
+        <view class='activity activity-nav-draw'>
+            <view  class='activity-img'>
+                <image src='{{ globalimg}}/02.png'></image>
+                <!-- 千元大奖 -->
+                <view class='earnings-speed'>
+                    <image src='{{ globalimg}}/qianyuan.png'></image>
+                </view>
+            </view>
+            <view class='activity-con'>幸运抽奖</view>
+        </view>
+        <view class='activity activity-navfriend-diary'>
+            <view  class='activity-img'>
+                <image src='{{ globalimg}}/03.png'></image>
+            </view>
+            <view class='activity-con'>运动日记</view>
+        </view>
+        <view class='activity activity-navfriend-play-method'>
+            <view  class='activity-img'>
+                <image src='{{ globalimg}}/04.png'></image>
+            </view>
+            <view class='activity-con'>玩法说明</view>
+        </view>
+    </view>
+    <!-- form -->
+    <view class='formNav'>
+<form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
+    <button form-type="submit" class='navBtn'></button>
+</form>
+<form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
+    <button form-type="submit" class='navBtn'></button>
+</form>
+<form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='sportbtn'>
+    <button form-type="submit" class='navBtn'></button>
+</form>
+<form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='playbtn'>
+    <button form-type="submit" class='navBtn'></button>
+</form>
+    
+    </view>
+    <!-- form -->
+    </view>
+
+</view>
+<view class='store-service'>
+    <view class='store-service-title flex_center'>
+        <view class='storeimg'>
+            <image src='{{ globalimg}}/mendianfuwu.png'></image>
+        </view>
+    </view>
+    <view class='store-service-box'>
+        <view class='store-service-box-top flex_center'>
+            <view class='tuijian'>
+                <image src='{{ globalimg}}/tuijian.png'></image>
+            </view>
+            <view class='jdyl-box'>
+                <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='jdyl'>进店有礼</navigator>
+                <view class='jdyl-img flex_center'>
+                    <image src='{{ globalimg}}/open.png'></image>
+                </view>
+            </view>
+
+            <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img flex_center'>
+                <image src='{{merchInfo.logo}}'></image>
+            </navigator>
+            <view class='store-details-box'>
+                <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}'  class='storename'>{{merchInfo.merchname}}</navigator>
+                <view class='office-hour'>主营：{{merchInfo.salecate}}</view>
+                <view class=' store-address'>{{merchInfo.address}}</view>
+            </view>
+        </view>
+        
+        <view class='store-service-box-bottom'>
+            <view class='club-card-box' wx:for="{{goodlist}}" wx:key="{{index}}">
+                <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-img-box'>
+                    <image class='club-card-img' src='{{item.thumb}}'></image>
+                </navigator>
+                <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con flex_center'>{{item.title}}</navigator>
+                <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free flex_center'>
+<!-- 显示卡路里加价格 -->
+                    <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
+                        <view class='calorieimgBox'>
+                                <view class='calorie-img flex_center'>
+                                <image src='{{ globalimg}}/kaluli02.png'></image>
+                            </view>
+                            <view class='calorie-num02'>
+                            {{item.deduct}}+￥{{item.showprice}}
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 显示免费兑 -->
+                    <view  wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
+                        <view class='calorie-num '>
+                           免费兑
+                        </view>
+                    </view>
+                    <!-- 只显示价格 -->
+                    <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
+                        <view class='calorie-num flex_center'>
+                           ￥{{item.minprice}}
+                        </view>
+                    </view>
+</navigator>
+<!-- 显示 -->
+
+            </view>
+        </view>
+        <!-- <view class='formBox'>
+                <form bindsubmit="form_submit" report-submit='true' class='freeForm' bindtap='godetail'>
+                <button form-type="submit" class='freeBtn'></button>
+                </form>
+                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
+                <button form-type="submit" class='freeBtn'></button>
+                </form>
+                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
+                <button form-type="submit" class='freeBtn'></button>
+                </form>
+        </view> -->
+    </view>
+</view>
+<view class='conbox'>
+    <!-- 附近商家-开始 -->
+    <view class='nearby-shops-titlebox'>
+        <view class='nearbyshops-title flex_center'>附近商家</view>
+        <!-- 位置 -->
+        <view class='nearbyshops-location'>
+            <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
+                <image src='{{ globalimg}}/weizhi.png'></image>
+            </view>
+            <view bindtap='position'>{{city}}{{district}}</view>
+        </view>
+
+    </view>
+    <view class='nearbyshops-box'>
+        <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
+            <view class='nearbyshop-distance flex_center'>{{item.disname}}</view>
+            <navigator class='nearbyshop-map-box' url="/pages/changce/merch/intro?id={{item.id}}">
+                <view>地图/导航</view>
+                <view class='map-img flex_center'>
+                    <image src='{{ globalimg}}/chakangengduo.png'></image>
+                </view>
+            </navigator>
+            <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
+                <image src='{{item.logo}}'></image>
+            </navigator>
+            <view class='store-details-box'>
+                <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
+                 <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
+                    <text class='reward_text'>赏金任务</text>
+                    <text class='reward_money'>赚￥{{item.reward_money}}</text>
+                </view>
+                 <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
+                    <text class='reward_text'>赏金任务</text>
+                    <text class='reward_money'>赚￥{{item.reward_money}}</text>
+                </view>
+                <view class='office-hour'>主营：{{item.salecate}}</view>
+                <view class=' store-address'>{{item.address}}</view>
+            </view>
+        </view>
+
+    </view>
+    <!-- 查看更多商家-开始 -->
+    <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
+        <button form-type="submit" class='moreBtn'>
+        <view class='readmore-shops-box flex_center' >
+            <view class='readmore-shops-con'>查看更多</view>
+            <view class='readmore-shops-img flex_center'>
+                <image src='{{ globalimg}}/chakangengduo.png'></image>
+            </view>
+        </view>
+        </button>
+    </form>
+    <!-- 查看更多商家-结束 -->
+    <view class='advertise-space'>
+        <image src='{{ globalimg}}/advertise.png'></image>
+    </view>
+</view>
+<!-- 超值兑换部分-开始 -->
+<view class='pro-exchange-box flex_center'>
+    <view class='pro-exchange-box-con'>
+        <!-- title-开始 -->
+        <view class='pro-exchange-tit-box'>
+            <view class='pro-exchange-tit'>超值兑换</view>
+                <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
+        </view>
+        <view class='exchange-products-box'>
+            <view class='exchange-product' wx:for="{{list}}" wx:key="{{index}}">
+                <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+                    <image class='ex-proimg' src='{{item.thumb}}'></image>
+                </navigator>
+                <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
+                <view class='ex-procalorie-box'>
+                    <!-- 显示卡路里加价格 -->
+                    <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
+                        <view class='calorieimgBox'>
+                                <view class='calorie-img flex_center'>
+                                <image src='{{ globalimg}}/kaluli02.png'></image>
+                            </view>
+                            <view class='calorie-num02 flex_center'>
+                            {{item.deduct}}+￥{{item.showprice}}
+                            </view>
+                        </view>
+                         <view class='calorie-price '>{{item.productprice}}元</view>
+                    </view>
+                    <!-- 显示免费兑 -->
+                    <view  wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
+                        <view class='calorie-num '>
+                           免费兑
+                        </view>
+                         <view class='calorie-person '>{{item.sales}}人已0元拿</view>
+                    </view>
+                    <!-- 只显示价格 -->
+                    <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
+                        <view class='calorie-num flex_center'>
+                           ￥{{item.minprice}}
+                        </view>
+                        <view class='calorie-price '>{{item.productprice}}元</view>
+                    </view>
+                    <!-- <view class='calorie-free flex_center'>免费拿</view> -->
+                </view>
+            </view>
+        </view>
+        <!-- 查看更多-商品-开始 -->
+        <view class='readmore-pro-box flex_center'>
+            <view class='readmore-pro-con' bindtap='products'>查看更多</view>
+            <view class='readmore-pro-img flex_center'>
+                <image src='{{ globalimg}}/chakangengduo.png'></image>
+            </view>
+        </view>
+        <!-- 查看更多商品-结束 -->
+    </view>
+</view>
+</view>
+<!-- 超值兑换部分-结束 -->
+<!-- 首次进入弹窗 -->
+<!-- mask-开始 -->
+<view class='mask' style='display:{{indexdisp}}'>
+    <view class='first-entry-box position_absolute'>
+        <view bindtap='maskRemove' class='first-entry-img'>
+            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
+        </view>
+        <view class='first-entry position_absolute'>
+            <image src='{{ globalimg}}/hongbaotanchuang.png'></image>
+        </view>
+        <view class='close_pull position_absolute' bindtap='closepull'></view>
+        <view class='pullBtn position_absolute' bindtap='pull'></view>
+    </view>
+</view>
+
+<!-- 首次进入弹窗mask-结束 -->
+<!-- 拆红包(登录账户查看)弹窗 -开始-->
+<view class='packetmask' style='display:{{packetdisp}}'>
+    <view class='first-entry-box'>
+        <view bindtap='packetBtn' class='packetbtn position_absolute'>
+            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
+        </view>
+        <view class='packetbg position_absolute'>
+            <image src='{{ globalimg}}/dakaihongbao.png'></image>
+        </view>
+        <view class='login_account position_absolute' bindtap='accountlogin' ></view>
+    </view>
+</view>
+<!-- 拆红包(登录账户查看)弹窗 -结束-->
+<!-- 登录自动签到弹窗 -->
+<!-- mask-开始 -->
+<view class='signmask' style='display:{{signDis}}'>
+    <view class='signbg'>
+        <image src='{{globalimg}}/sign.png'></image>
+         <view class='sign-text position_absolute'>{{message}}</view>
+         <view class='signClose position_absolute' bindtap='closeSign'>
+            <image src='{{globalimg}}/guanbi.png'></image>
+        </view>
+        <button class='sign-close-btn' bindtap='closeSign'></button>
+    </view>
+</view>
+
+<!-- 登录自动签到mask-结束 -->
+ <block>
+        <block wx:if="{{loading}}">
+            <view class="fui-loading">
+                <view class="icon"></view>
+                <view class="text">正在加载</view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{list.length==total&&total>0}}">
+            <view class="fui-loading empty">
+                <view class="text">没有更多了</view>
+            </view>
+        </block>
+    </block>
+<block>
+    <block wx:if="{{modelShow}}">
+        <view class="model">
+            <view class="inner">
+                <view class="title">用户未授权</view>
+                <view class="image">
+                    <image src="/static/images/shouquan.png"></image>
+                </view>
+                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
+                <view class="model-btns">
+                    <view bindtap="cancelclick" class="cancel">取消</view>
+                    <view bindtap="confirmclick" class="confirm">去设置</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{modelShow2}}">
+        <view class="model">
+            <view class="inner">
+                <view class="title">用户未授权</view>
+                <view class="image">
+                    <image src="/static/images/shouquan.png"></image>
+                </view>
+                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
+                <view class="model-btns">
+                    <view bindtap="cancelclick" class="cancel">取消</view>
+                    <view bindtap="confirmclick" class="confirm">去设置</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>

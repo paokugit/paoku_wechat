@@ -1,0 +1,379 @@
+page{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #ebddf8;
+    position: relative;
+}
+.outerBox{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.bannerbox{
+    width: 100%;
+    height: 580rpx;
+    position: relative
+}
+image{
+     width: 100%;
+    height: 100%;
+}
+/* 助力榜 */
+.help_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.helplist{
+    width: 130rpx;
+    height: 50rpx;
+    background: #ffa421;
+    border-radius: 25rpx 0 0 25rpx;
+    color: #fff;
+    font-size: 30rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 0rpx;
+    z-index: 2
+}
+.listform{
+    width: 130rpx;
+    height: 50rpx;
+    background: #fff;
+    border-radius: 25rpx 0 0 25rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 0rpx;
+    z-index: 3;
+    opacity: 0
+}
+.listbtn{
+    width: 130rpx;
+    height: 50rpx;
+    border-radius: 25rpx 0 0 25rpx;
+    opacity: 0
+}
+/* 助力记录(暂无数据)-开始 */
+.help-record-box{
+    width: 100%;
+    height: 1000rpx;
+    position: absolute;
+    top: 490rpx;
+}
+.help-record-con{
+   width: 100%;
+   height: 800rpx;
+   display: flex;
+   justify-content: center
+}
+.help-record{
+    width: 680rpx;
+    height: 800rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.recordCon{
+    width: 430rpx;
+    height: 70rpx;
+    margin-top: -30rpx
+}
+/* 今日目标未完成 */
+.goal-today-box{
+    width: 100%;
+    height: auto;
+}
+.goal-today-con{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+/* 今日目标已完成 */
+.finish-today-box{
+    width: 100%;
+    height: auto
+}
+.finish-today-con{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.finish-today-text{
+    width: auto;
+    height: 60rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.today-award{
+    width: auto;
+    height: 60rpx;
+    font-size: 30rpx;
+    color: #de4265;
+}
+.award-num{
+    font-size: 50rpx
+}
+.finish-img{
+    width: 144rpx;
+    height: 184rpx;
+    margin-top: 20rpx
+}
+.distance-goal{
+    width: 450rpx;
+    height: 60rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.distance-goal-num{
+    color: #de4265
+}
+.nodata-box{
+    width: 430rpx;
+    height: 250rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.nodata-img{
+    width: 150rpx;
+    height: 150rpx
+}
+.nodata-con{
+    width: 430rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    color: #7c7c7c;
+}
+.example-box{
+    width: 634rpx;
+    height: 194rpx;
+    margin-top: 10rpx;
+    position: relative
+}
+.doubt{
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: -20rpx;
+    right: 5rpx
+}
+.invite-total-box{
+    width: 100%;
+    height: 50rpx;
+    font-size: 26rpx;
+    color: #000;
+}
+.invite-num{
+    color: #de4265
+}
+.value-kaluli{
+    color: #de4265
+}
+.symbol-box{
+    width: 100%;
+    height: 50rpx;
+    font-size: 26rpx;
+    color: #000;
+}
+.help-record-listBox{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 490rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.help-record-listCon{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center
+}
+.help-record-list{
+    width: 680rpx;
+    height: auto;
+    background: #fff;
+    border-radius: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.helpList{
+    width: 620rpx;
+    height: auto;
+    margin-top: 20rpx;
+}
+.listCon{
+    width: 620rpx;
+    height: 128rpx;
+    border-bottom: 2rpx solid #f1f1f1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+.friend-icon{
+    width: 90rpx;
+    height: 90rpx;
+}
+.friend-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%
+}
+/* 助力信息 */
+.help-info{
+    width: 300rpx;
+    height: 90rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.friend-name{
+    height:70rpx;
+    line-height:35rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    font-size: 30rpx;
+    color: #333
+}
+.friend-time{
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 5rpx
+}
+.helpNum{
+    width: 150rpx;
+    height: 90rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.inviteform{
+    width: 100%;
+    height: 160rpx;
+}
+button::after {
+    border: none;
+}
+.invitebtn{
+    width: 100%;
+    height: 160rpx;
+}
+.invite-friend-box{
+    width: 100%;
+    height: 160rpx;
+    margin-top: 20rpx;
+}
+.inviteFriend{
+    width: 650rpx;
+    height: 110rpx;
+}
+
+/* 遮罩-开始 */
+.share-mask-box{
+   width: 100%;
+    height: 100%;
+    position: fixed;
+    background:rgba(0,0,0,0.4);
+}
+.share-con-box{
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+.share-con{
+    width: 100%;
+    height: 280rpx;
+    background: #fff;
+    position: absolute;
+    bottom: 0rpx
+}
+.share-con-top{
+    width: 100%;
+    height: 200rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+.weixinBox{
+    width: 160rpx;
+    height: 150rpx;
+}
+.wxbtn{
+    width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: none
+
+}
+button::after {
+  border: none
+}
+.haibaoBox{
+    width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.hbbtn{
+   width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none
+}
+.share-weixin{
+    width: 100rpx;
+    height: 100rpx;
+}
+.tofriend{
+    color: #333;
+    font-size: 24rpx;
+    width: 160rpx;
+}
+.tohb{
+      color: #333;
+    font-size: 24rpx;
+     width: 160rpx;
+     text-align: center;
+}
+.haibao{
+    width: 100rpx;
+    height: 100rpx;
+}
+.share-con-bottom{
+    width: 100%;
+    height: 80rpx;
+    font-size: 24rpx;
+    color: #333;
+    background: #f7f3ff;
+}
+/* 遮罩-结束 */

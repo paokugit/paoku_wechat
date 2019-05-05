@@ -1,0 +1,96 @@
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<block>
+    <block wx:if="{{show}}">
+        <view class="page footer">
+            <block>
+                <block wx:if="{{total>0}}">
+                    <view class="fui-list-group">
+                        <block wx:for="{{list}}">
+                            <label bindtap="itemClick" class="fui-list" data-goodsid="{{item.goodsid}}" data-id="{{item.id}}">
+                                <block>
+                                    <block wx:if="{{isedit}}">
+                                        <view class="fui-list-media">
+                                            <radio checked="{{checkObj[item.id]?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
+                                        </view>
+                                    </block>
+                                </block>
+                                <view class="fui-list-media">
+                                    <image src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="fui-list-inner">
+                                    <view class="subtitle">{{item.title}}</view>
+                                    <view class="title" style="    font-size: 30rpx">
+                                        <text class="text-danger">¥{{item.marketprice}}</text>
+                                    </view>
+                                </view>
+                            </label>
+                        </block>
+                    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{loading}}">
+                    <view class="fui-loading">
+                        <view class="icon"></view>
+                        <view class="text">正在加载</view>
+                    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{loaded&&list.length>0}}">
+                    <view class="fui-loading empty">
+                        <view class="text">没有更多了</view>
+                    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{total<=0&&!loading}}">
+                    <view class="fui-loading empty">
+                        <view class="text">没有数据</view>
+                    </view>
+                </block>
+            </block>
+            <block>
+                <block wx:if="{{list.length>0}}">
+                    <view class="fui-footer">
+                        <view class="tool">
+                            <block>
+                                <block wx:if="{{isedit}}">
+                                    <view class="check">
+                                        <label bindtap="checkAllClick">
+                                            <radio checked="{{isCheckAll?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
+                                            <text>全选</text>
+                                        </label>
+                                    </view>
+                                </block>
+                            </block>
+                            <view class="text"></view>
+                            <view class="btns">
+                                <block>
+                                    <block wx:if="{{!isedit}}">
+                                        <view bindtap="btnClick" class="btn btn-danger" data-action="edit">编辑</view>
+                                    </block>
+                                </block>
+                                <block>
+                                    <block wx:if="{{isedit}}">
+                                        <view bindtap="btnClick" class="btn btn-warning {{checkNum>0?'':'disabled'}}" data-action="delete">删除</view>
+                                    </block>
+                                </block>
+                                <block>
+                                    <block wx:if="{{isedit}}">
+                                        <view bindtap="btnClick" class="btn btn-danger" data-action="finish">完成</view>
+                                    </block>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <include src="/pages/common/menu.wxml"></include>
+        </view>
+    </block>
+</block>

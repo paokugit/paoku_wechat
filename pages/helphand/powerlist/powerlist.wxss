@@ -1,0 +1,172 @@
+page{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+.conBox{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #0eaaf5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center
+}
+.helpTitle{
+    width: 100%;
+    height: 100rpx;
+    color: #fff;
+    font-size: 32rpx;
+    position: absolute;
+    top: 165rpx;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.friend-box{
+    width: 690rpx;
+    height: 120rpx;
+    position: relative
+}
+.power-finish{
+    width: 500rpx;
+    height: 80rpx;
+    color: #fff;
+    font-size: 50rpx;
+    display: flex;
+    align-items: center
+}
+.friend-goword{
+    width: 500rpx;
+    height: 40rpx;
+    color: #fff;
+    font-size: 26rpx;
+    display: flex;
+    align-items: center
+}
+.medal{
+    width: 120rpx;
+    height: 150rpx;
+    position: absolute;
+    top: 10rpx;
+    right: 20rpx
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.banner-box{
+    width: 690rpx;
+    height: 866rpx;
+    position: absolute;
+    top: 170rpx
+}
+.banner-box-con{
+    width: 690rpx;
+    height: 866rpx;
+    position: absolute;
+    top: 160rpx;
+}
+.bannerCon{
+    width: 540rpx;
+    height: 760rpx;
+    margin-top: 100rpx;
+    margin-left: 110rpx;
+}
+.flexbox{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.con-person{
+    width: 100%;
+    height: 152rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+/* 好友头像 */
+.person-pic{
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%
+}
+.pic{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%
+}
+.person-nickname-box{
+    width: 280rpx;
+    height: 96rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.per-nickname{
+    color: #0084ff;
+    font-size: 34rpx;
+    font-weight: 600;
+    height:50rpx;
+    line-height:50rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.per-signature{
+    color: #b7b7b7;
+    font-size: 26rpx;
+    margin-top: 10rpx
+}
+.person-step{
+    width:150rpx;
+    height: 96rpx;
+    font-weight: 600;
+    color: #ffbb17;
+    font-size: 36rpx
+}
+.bottom-box{
+    width: 100%;
+    height: 80rpx;
+    position: absolute;
+    bottom: 0rpx;
+    left: 0rpx
+}
+.invite-friend-box{
+    width: 400rpx;
+    height: 90rpx;
+    background: #ffbb17;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rpx;
+    color: #ff4e25;
+    font-size: 36rpx;
+    border-radius: 60rpx;
+    position: absolute;
+    top: 1036rpx
+}
+.go-index{
+    width: 400rpx;
+    height: 90rpx;
+    background: #ecf5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rpx;
+    color: #ff4e25;
+    font-size: 36rpx;
+    border-radius: 60rpx;
+    position: absolute;
+    top: 1140rpx;
+}

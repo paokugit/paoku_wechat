@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="inner">
+        <view class="image">
+            <image src="{{globalimg}}/impower.png"></image>
+        </view>
+        <block>
+            <block wx:if="{{!close}}">
+                <button bindtap="bind" class="btn" openType="getUserInfo"></button>
+            </block>
+        </block>
+        <block>
+            <block wx:if="{{close}}">
+                <view class="text">{{text}}</view>
+            </block>
+        </block>
+    </view>
+</view>

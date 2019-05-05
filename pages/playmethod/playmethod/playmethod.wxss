@@ -1,0 +1,84 @@
+page{
+    width: 100%;
+    height: 100%
+}
+.play-box{
+    width: 100%;
+    height: 100%
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.play-banner{
+    width: 100%;
+    height: 260rpx
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.pm-con{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center
+}
+.intro-kll{
+    width: 94%;
+    height: 70rpx;
+    line-height: 70rpx;
+    color: #1bc071;
+    font-size: 32rpx
+}
+.kll-question{
+    width: 94%;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    color: #333
+}
+.kll-answer{
+    width: 94%;
+    height: auto;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+.pm-service{
+    width: 100%;
+    height: 260rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.service-img{
+    width: 100rpx;
+    height: 100rpx
+}
+.service-text{
+    width: 100rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #333;
+    font-size: 24rpx
+}
+.phone-box{
+    width: 100%;
+    height: 60rpx;
+    font-size: 24rpx;
+    color: #666;
+    display: flex;
+    justify-content: center
+}
+.phonenum{
+    color: #2bbe78;
+    font-size: 24rpx
+}
+button::after {
+  border: none
+}

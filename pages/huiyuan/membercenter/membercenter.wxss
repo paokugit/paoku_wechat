@@ -1,0 +1,299 @@
+page{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+.centerBox{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    position: relative
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.mcbanner-box{
+    width: 100%;
+    height: 424rpx;
+    position: relative;
+    display: flex;
+    justify-content: center
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.member-intro{
+    width: 680rpx;
+    height: 310rpx;
+    position: absolute;
+    bottom: 0
+}
+.member-con{
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+.member_center{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.avatarbox{
+    width: 114rpx;
+    height: 114rpx;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 25rpx;
+    left: 20rpx;
+}
+.avatar{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%
+}
+.member-con-top{
+    width: 75%;
+    height: 50%;
+    margin-left:162rpx; 
+    position: relative
+}
+.hy-name{
+    width: 150rpx;
+    height: 50rpx;
+    color: #fff;
+    font-size: 34rpx;
+    position: absolute;
+    top: 40rpx;
+    left: 0rpx
+}
+.tiyan-box{
+    width: 300rpx;
+    height: 90rpx;
+    position: absolute;
+    top: 45rpx;
+    right: 10rpx;
+}
+.tiyan{
+    width: 100%;
+    height: 40rpx;
+    font-size: 30rpx;
+    color: #ebcd1f;
+    text-align: right
+}
+.time-limit{
+    width: auto;
+    height: 40rpx;
+    padding: 0 8rpx 0 8rpx;
+    float: right;
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #ebcd1f;
+}
+.member-con-bottom{
+    width: 95%;
+    height: 30%;
+    position: absolute;
+    bottom: 30rpx;
+    left: 26rpx;
+}
+/* 加速完成 */
+.speed-done{
+    width: 95%;
+    height: 20%;
+    text-align: center;
+    position: absolute;
+    bottom: 40rpx;
+    left: 26rpx;
+    color: #ebcd1f;
+    font-size: 24rpx
+}
+.speed-box{
+    width: 95%;
+    height: 10%;  
+}
+.progressbar{
+    width: 95%;
+    height: 16rpx
+}
+.speedup-con{
+    width: 94%;
+    height: 15%;
+    margin-top: 15rpx;
+    margin-right: 10rpx;
+    display: flex;
+    justify-content: space-between
+}
+.speed-hour{
+    font-size: 24rpx;
+    color: #ebcd1f;
+}
+.speed-give{
+    font-size: 24rpx;
+    color: #ebcd1f;
+}
+.other-box{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30rpx
+}
+.your-rights{
+    width: 680rpx;
+    height: auto;
+}
+.rights-tit{
+    width: 100%;
+    height: 80rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+.rights-box{
+    width: 100%;
+    height: auto;
+   display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.rights{
+    width: 220rpx;
+    height: 180rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center
+}
+.rights-img{
+    width: 96rpx;
+    height: 96rpx;
+}
+.rights-text{
+    width: 220rpx;
+    height: 70rpx;
+    font-size: 24rpx;
+    color: #666;
+    line-height:35rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;  
+    overflow: hidden;
+    text-overflow:ellipsis;
+    text-align: center
+}
+.upgrade{
+    width: 680rpx;
+    height: 160rpx;
+    margin-top: 50rpx;
+    margin-bottom: 20rpx
+}
+.task-box{
+    width: 680rpx;
+    height: 600rpx;
+    position: relative
+}
+.task-text{
+    width: 100%;
+    height: 60rpx;
+    font-size: 30rpx;
+    color: #999;
+}
+.task-bottom{
+    width: 100%;
+    height: 440rpx;
+    position: absolute;
+    top: 75rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center
+}
+.task-con{
+    width: 300rpx;
+    height: 196rpx
+}
+.bottomCon{
+    width: 100%;
+    height: 440rpx;
+    position: absolute;
+    top: 75rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center
+}
+.taskBox{
+    width: 300rpx;
+    height: 196rpx;
+    border-radius: 10rpx
+}
+.task-tit{
+    width: auto;
+    height: auto;
+    margin-left: 20rpx;
+    margin-top: 28rpx;
+    font-size: 38rpx;
+    color: #fff
+}
+.task-award{
+    width: auto;
+    height: auto;
+    margin-left: 20rpx;
+    margin-top: 5rpx;
+    font-size: 18rpx;
+    color: #fff;
+}
+.taskbtn{
+    width: 140rpx;
+    height: 50rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    margin-top: 15rpx;
+    margin-left: 20rpx;
+}
+.qdbtn{
+    color: #66b6eb;
+}
+.zcbtn{
+  color: #fc7765
+}
+.zlbtn{
+    color: #e18ee1
+}
+.hbbtn{
+     color: #fdcb71
+}
+.bottombar{
+    width: 100%;
+    height: 100rpx;
+    background: #f8f8f8;
+    position: fixed;
+    bottom: 0rpx;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.bar{
+    width: 18%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.barImg{
+    width: 48rpx;
+    height: 48rpx
+}
+.barCon{
+    color: #999;
+    font-size: 24rpx
+}

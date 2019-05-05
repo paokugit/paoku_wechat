@@ -1,0 +1,106 @@
+/* @import "../../../__wuBaseWxss__/4.wxss"; */
+page{
+    width: 100%;
+    height: 100%
+}
+.bg_box{
+    width: 100%;
+    height: 240rpx;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative
+}
+.bg_text_box{
+    width: 722rpx;
+    height: 232rpx;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bg_text{
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold
+}
+.bg_num{
+    color: #fff;
+    font-size: 60rpx;
+    font-weight: bold;
+    margin-top: 20rpx
+}
+.greenbg{
+    width: 722rpx;
+    height: 232rpx;
+    position: absolute;
+    top: 0
+}
+.row-text{
+    width: 80rpx;
+    height: 40rpx;
+    display: flex;
+    align-items: center
+}
+.img_box{
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 20rpx
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.com-down .subtitle {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.com-down .image-32 {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+image {
+    vertical-align: top;
+}
+
+.com-down .fui-list-media image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+.fui-list{
+    width: 98%;
+    height: 150rpx;
+    padding-right: 30rpx
+}
+.com-down .fui-list-inner .row {
+    font-size: 28rpx;
+}
+ .fui-list-inner{
+     width: 400rpx;
+     height: 80rpx;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between
+ }
+
+.com-down .row-remark {
+    text-align: right;
+    position: relative;
+    flex-shrink: 0;
+    padding-left: 25rpx;
+    min-width: 150rpx;
+    color: #000;
+    font-size: 24rpx;
+}
+button::after {
+  border: none;
+}
+button {
+  background-color: #01d7a1;
+}

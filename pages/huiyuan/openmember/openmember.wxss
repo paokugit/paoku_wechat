@@ -1,0 +1,124 @@
+page{
+    width: 100%;
+    height: 100%; 
+    overflow-x: hidden;
+    background: #f8f8f8
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.huiyuan-con{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.bannerBox{
+    width: 100%;
+    height: 382rpx;
+}
+.huiyuanBox{
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center
+}
+.huiyuanCon{
+    width: 714rpx;
+    height: 184rpx;
+    position: relative
+}
+.explainBtn{
+    width: 30%;
+    height: 85%;
+    background: #f00;
+    opacity: 0;
+    position: absolute;
+    left: 0rpx;
+}
+.openBtn{
+    width: 30%;
+    height: 50%;
+    background: #f00;
+    opacity: 0;
+    position: absolute;
+    top: 35rpx;
+    right: 20rpx
+}
+.huiyuan-mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background:rgba(0,0,0,0.4);
+}
+.hymask-box{
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+.hy-guanbi{
+    width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+   bottom: 15%;
+   right: 45%
+}
+.hymask-con{
+    width: 600rpx;
+    height: 500rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+}
+.kaitong{
+    width: 100%;
+    height: 100rpx;
+    font-size: 40rpx;
+    color: #333;
+}
+.tiyan{
+    width: 100%;
+    height: 120rpx;
+    font-size: 50rpx;
+    color: #333;
+}
+.hy-price{
+    width: 100%;
+    height:110rpx;
+    font-size: 50rpx;
+    color: #333;
+}
+.hy-dz{
+    width: 100%;
+    height: 60rpx;
+    font-size: 36rpx;
+    color: #333;
+}
+.hyflex{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.pay-btn{
+    width: 300rpx;
+    height: 80rpx;
+    font-size: 34rpx;
+    background: #08c261;
+    border-radius: 15rpx;
+    color: #fff
+}

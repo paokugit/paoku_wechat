@@ -1,0 +1,26 @@
+<import src="../../../../utils/wxParse/wxParse.wxml"></import>
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<block>
+    <block wx:if="{{show}}">
+        <view class="fui-page page-shop-notice-detail">
+            <view class="fui-content">
+                <view class="fui-article">
+                    <view class="title">{{title}}</view>
+                    <view class="subtitle">
+                 发布时间 : {{createtime}}
+             </view>
+                    <view class="hr"></view>
+                    <view class="content content-block" name="detail">
+                        <view class="wxParse">
+                            <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>

@@ -1,0 +1,58 @@
+<view class='conBox'>
+<view class='friend-box'>
+    <!-- 好友捐赠已完成 -开始-->
+    <view class='power-finish' wx:if="{{step==0}}">好友捐赠已完成</view>
+    <view class='power-finish' wx:if="{{step!=0}}">目标任务未完成</view>
+    <!-- 朋友多，走天下-开始 -->
+    <view class='friend-goword' wx:if="{{step==0}}">哇，朋友多，走天下</view>
+     <view class='friend-goword' wx:if="{{step!=0}}">快去邀请好友助力吧！</view>
+    <!-- 勋章-开始 -->
+    <view class='medal'><image src='{{globalimg}}/xunzhang.png'></image></view>
+    <!-- 勋章-结束 -->
+</view>
+<!-- 朋友多，走天下-结束 -->
+<!-- title -->
+<view class='helpTitle'>今日好友助力榜</view>
+<!-- 好友捐赠已完成-结束 -->
+<!-- banner(今日好友捐赠榜)-开始 -->
+<view class='banner-box'>
+    <image src='{{globalimg}}/body.png'></image>
+</view>
+<!-- 好友捐赠榜内容-开始 -->
+<view class='banner-box-con'>
+    <view class='bannerCon'>
+    <!-- tit -->
+    <!-- <view class='banner-tit'>今日好友助力榜</view> -->
+    <!-- 捐赠排行榜第一名-开始 -->
+        <view class='con-person' wx:for='{{helplist}}' wx:key='{{index}}'>
+        <!-- 好友头像 -->
+            <view class='flexbox person-pic'><image class ='pic' src='{{item.avatar}}'></image></view>
+            <!-- 好友昵称 -->
+            <view class='person-nickname-box'>
+                <!-- 昵称 -->
+                <view class='per-nickname'>{{item.nickname}}</view>
+            <!-- 个性签名 -->
+            <view class='per-signature'>
+            {{item.remark}}</view>
+            </view>
+            <!-- 好友捐赠步数 -->
+            <view class='flexbox person-step'>{{item.step}}步</view>
+        </view>
+    <!-- 捐赠排行榜第一名-结束 -->
+    </view>
+
+</view>
+<!-- 好友捐赠榜内容-结束 -->
+<!-- banner（今日好友捐赠榜）-结束 -->
+<!-- bottom-开始 -->
+<view class='bottom-box' >
+    <image src='{{globalimg}}/footpic.png'></image>
+</view>
+<!-- bottom-结束 -->
+<!-- 邀请好友一起玩-开始 -->
+<button open-type='share' class='invite-friend-box'>邀请好友一起玩</button>
+<!-- 邀请好友一起玩-结束 -->
+<!-- 回到首页-开始 -->
+<view class='go-index' bindtap='goIndex'>回到首页</view>
+<!-- 回到首页-结束 -->
+</view>

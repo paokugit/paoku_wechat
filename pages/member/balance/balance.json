@@ -1,0 +1,8 @@
+{
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "余额账户",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}

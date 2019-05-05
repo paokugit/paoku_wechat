@@ -1,0 +1,109 @@
+
+  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+  <!-- 体验会员 -->
+    <view id="tiyan" class="scroll-view-item_H">
+    <view class='bc-huiyuan'>
+        <!-- bg-图片 -->
+        <view class='baijin-banner'>
+            <image src='{{globalimg}}/bg-tiyan.png'></image>
+        </view>
+    <!-- bg-图片 -->
+    <!-- bg-内容 -->
+    <view class='bg-content'>
+        <view class='content-box'>
+            <view class='con-title'>{{list[0].title}}</view>
+            <view class='con-explain'>{{list[0].salesreal}}人已开通</view>
+            <view class='limit-time'>长期有效</view>
+        </view>
+    </view>
+    <!-- bg-内容 -->
+    <!-- 会员特权-开始 -->
+    <view class='hy-rights'>
+        <view class='rights-top'>
+            <view class='rights-img'>
+                <image src='{{globalimg}}/tiyan.png'></image>
+            </view>
+            <view class='rights-title'>达人特权</view>
+        </view>
+            <view class='rightsCon'>{{list[0].levelcontent}}</view>
+    </view>
+    <!-- 会员特权-结束 -->
+    <!-- 立即开通图片-开始 -->
+    <view class='open-box'><image src='{{globalimg}}/tiyanbuttun.png'></image></view>
+    <!-- 立即开通图片-结束 -->
+    <view class='open-con' bindtap='hyopen' data-id='{{list[0].id}}'>立即开通</view>
+    </view>
+    </view>
+    <!-- 白金会员 -->
+    <view id="baijin" class="scroll-view-item_H">
+    <view class='bc-huiyuan'>
+        <!-- bg-图片 -->
+        <view class='baijin-banner'>
+            <image src='{{globalimg}}/bg-baijin.png'></image>
+        </view>
+    <!-- bg-图片 -->
+    <!-- bg-内容 -->
+    <view class='bg-content'>
+        <view class='content-box'>
+            <view class='con-title'>{{list[1].title}}</view>
+            <view class='con-explain'>{{list[1].salesreal}}人已开通</view>
+            <view class='limit-time'>长期有效</view>
+        </view>
+    </view>
+    <!-- bg-内容 -->
+    <!-- 会员特权-开始 -->
+    <view class='hy-rights'>
+        <view class='rights-top'>
+            <view class='rights-img'>
+                <image src='{{globalimg}}/baijin.png'></image>
+            </view>
+            <view class='rights-title'>达人特权</view>
+        </view>
+            <view class='rightsCon'>{{list[1].levelcontent}}</view>
+    </view>
+    <!-- 会员特权-结束 -->
+    <!-- 立即开通图片-开始 -->
+    <view class='open-box'><image src='{{globalimg}}/baijinbuttun.png'></image></view>
+    <!-- 立即开通图片-结束 -->
+    <view class='open-con' bindtap='hyopen' data-id='{{list[1].id}}'>立即开通</view>
+    </view>
+    </view>
+     <!-- 钻石会员(已删) -->
+    <!-- 店主 -->
+    <view id="dianzhu" class="scroll-view-item_H">
+        <view class='bc-huiyuan'>
+        <!-- bg-图片 -->
+        <view class='baijin-banner'>
+            <image src='{{globalimg}}/bg-dianzhu.png'></image>
+        </view>
+    <!-- bg-图片 -->
+    <!-- bg-内容 -->
+    <view class='bg-content'>
+        <view class='content-box'>
+            <view class='con-title'>{{list[2].title}}</view>
+            <view class='con-explain'>{{list[2].salesreal}}人已开通</view>
+            <!--<view class='limit-time'>{{list[2].available/365}}年有效期</view>-->
+            <view class='limit-time'>长期有效</view>
+        </view>
+    </view>
+    <!-- bg-内容 -->
+    <!-- 会员特权-开始 -->
+    <view class='hy-rights'>
+        <view class='rights-top'>
+            <view class='rights-img'>
+                <image src='{{globalimg}}/dianzhu.png'></image>
+            </view>
+            <view class='rights-title'>达人特权</view>
+        </view>
+            <view class='rightsCon'>{{list[2].levelcontent}}</view>
+    </view>
+    <!-- 会员特权-结束 -->
+    <!-- 立即开通图片-开始 -->
+    <view class='open-box'><image src='{{globalimg}}/dianzhubuttun.png'></image></view>
+    <!-- 立即开通图片-结束 -->
+    <view class='open-con' bindtap='hyopen' data-id='{{list[2].id}}'>立即开通</view>
+    </view>
+       </view>
+  <!-- 区县，省级，城市、代理已删 -->
+      
+  </scroll-view>

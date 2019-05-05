@@ -1,0 +1,29 @@
+<view class='lottaryBox'>
+    <view class='lottary-box'>
+        <view class='zhongjiang'><image src='{{globalimg}}/zhongjiang.png'></image></view>
+        <view class='lottary-name'>xxx抽中了xxx卡路里</view>
+        <view class='lottary_bg'>
+            <view class='tiaodong'><image src='{{globalimg}}/tiaodong.png'></image></view>
+            <view class='lottary_btn'></view>
+            <image src='{{globalimg}}/lottary-bg.png'></image>
+        </view>
+        <!-- btn -->
+        <view class='lottary_btn01'><image src='{{globalimg}}/lottary-btn01.png'></image></view>
+        <button class='inviteBtn' open-type='share'></button>
+        <!-- 免费抽 -->
+        <view class='lottary-free'>免费抽<text class='free-text'>0</text>次</view>
+        <view class='lottary_bg02'><image src='{{globalimg}}/lottary-bg02.png'></image></view>
+        <view class='lottary_rule'><image src='{{globalimg}}/lottary-rule.png'></image></view>
+    </view>
+</view>
+<!-- mask -->
+<view class='lottary-mask'>
+    <view class='mask-relative'>
+        <view class='mask-con'><image src='{{globalimg}}/lottary-mask.png'></image></view>
+        <view class='mask-text'>
+            <view class='text-top'>+8<text class='lottary-kll'>卡路里</text></view>
+            <view class='text-bottom'><image src='{{globalimg}}/lottary-btn02.png'></image></view>
+        </view>
+        <view class='lottary-close'><image src='{{globalimg}}/guanbi.png'></image></view>
+    </view>
+</view>

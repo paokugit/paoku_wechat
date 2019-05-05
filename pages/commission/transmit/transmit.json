@@ -1,0 +1,8 @@
+{
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "转发好友",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}

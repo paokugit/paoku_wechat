@@ -1,0 +1,39 @@
+page{
+    background: #f8f8f8
+}
+.fui-list-angle {
+    text-align: right;
+    font-size: 34rpx;
+    color: #333;
+    margin-right: 4rpx;
+    line-height: 1.5;
+}
+
+.fui-list.goods-item {
+    height: 120rpx;
+    padding: 16rpx 24rpx;
+}
+
+.fui-list-group {
+    margin-top: 0;
+}
+
+.fui-list-group:first-of-type {
+    margin-top: 20rpx;
+}
+
+.fui-list-group::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 20rpx;
+    height: 0;
+    border-top: 2rpx solid #f1f1f1;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+    left: 20rpx;
+}
+
+.fui-list-group:first-of-type:before {
+    display: none;
+}

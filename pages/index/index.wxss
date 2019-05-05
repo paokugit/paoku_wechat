@@ -1,0 +1,1008 @@
+@import "../../__wuBaseWxss__/7.wxss";
+@import "../common/city-picker.wxss";
+@import "../common/r-index.wxss";
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #f8f8f8
+}
+
+.indexBox {
+    width: 100%;
+    height: auto;
+    overflow: auto
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+button::after {
+    border: none;
+}
+
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: block;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3000;
+}
+/* 居中显示 */
+.position_absolute{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.first-entry-box{
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top:0;
+}
+.pullBtn{
+    width: 400rpx;
+    height: 300rpx;
+    top:60%;
+}
+.close_pull{
+    width: 100%;
+    height: 150rpx;
+    top:15%;
+}
+.packetbtn{
+    width: 60rpx;
+    height: 60rpx;
+    top:85%;
+    border-radius: 50%;
+}
+.login_account{
+    width: 100%;
+    height: 50%;
+    top:28%;
+}
+.first-entry-img{
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 225rpx;
+    right: 120rpx;
+    border-radius: 50%;
+}
+.symbol{
+    display: block;
+    width: 60rpx;
+    height: 60rpx;
+}
+.first-entry{
+    width: 610rpx;
+    height: 840rpx;
+    bottom: 0;
+    top:0;
+
+}
+/* 拆红包弹窗 */
+.packetmask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4000;
+    background: rgba(0, 0, 0, 0.6);
+}
+.packetbg{
+    width: 690rpx;
+    height: 760rpx;
+    bottom: 0;
+    top:0;
+}
+/* 登录自动签到弹窗 */
+
+.signmask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4000;
+    background: rgba(0, 0, 0, 0.6);
+}
+.signbg{
+    width: 100%;
+    height: 970rpx;
+    position: relative;
+}
+.sign-close-btn{
+    width: 100%;
+    height: 90px;
+    opacity: 0;
+    position: absolute;
+    top: 70%
+}
+.signClose {
+    width: 50rpx;
+    height: 50rpx;
+    top: 90%;
+}
+
+.sign-text {
+    width: 400rpx;
+    height: 100rpx;
+    top: 55%;
+    font-size: 28rpx;
+    color: #fff;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.index-banner-box {
+    width: 100%;
+    height: 478rpx;
+    position: relative;
+}
+
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.balance {
+    width: auto;
+    height: 50rpx;
+    background: #1daf69;
+    position: absolute;
+    top: 5rpx;
+    left: 0rpx;
+    border-radius: 0 20rpx 20rpx 0;
+}
+
+.button {
+    width: auto;
+    height: 50rpx;
+}
+
+.kll {
+    width: auto;
+    height: 50rpx;
+    display: flex;
+    align-items: center;
+}
+.flex_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.balance-left {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 5rpx;
+}
+
+.balance-right {
+    width: auto;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #fff;
+}
+
+.floating {
+    -webkit-animation-name: upAnimation;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+    background: rgba(0, 0, 0, 0);
+    font-size: 22rpx;
+}
+
+@keyframes upAnimation {
+    0% {
+        transform: translateY(-2%);
+    }
+
+    25% {
+        transform: translateY(2%);
+    }
+
+    50% {
+        transform: translateY(-2%);
+    }
+
+    75% {
+        transform: translateY(2%);
+    }
+
+    100% {
+        transform: translateY(-2%);
+    }
+}
+
+.stepExchange {
+    position: absolute;
+    left: 40rpx;
+    top: 165rpx;
+}
+
+.circle {
+    width: 110rpx;
+    height: 130rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circle-con {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ball {
+    position: absolute;
+    top: 5rpx;
+    left: 10rpx;
+}
+
+.ballCon {
+    position: absolute;
+    bottom: 5rpx;
+    left: 5rpx;
+}
+
+.attendance {
+    position: absolute;
+    top: 50rpx;
+    right: 50rpx;
+}
+
+.lottery {
+    position: absolute;
+    top: 190rpx;
+    right: 73rpx;
+}
+
+.paopao-box {
+    width: 88rpx;
+    height: 88rpx;
+    margin-bottom: 8rpx;
+}
+
+.circle-explain {
+    width: 96rpx;
+    height: 30rpx;
+    color: #fff;
+    font-size: 18rpx;
+    background: #27b974;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 30rpx;
+}
+
+.ball {
+    width: 88rpx;
+    height: 88rpx;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.kllnum {
+    height: 50rpx;
+    color: #db3b00;
+    font-size: 50rpx;
+    font-weight: 600;
+}
+
+.kllcon {
+    height: 30rpx;
+    color: #db3b00;
+    font-size: 18rpx;
+    margin-top: 5rpx;
+}
+
+.today-step {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 90rpx;
+    left: 320rpx;
+    color: #fff;
+    font-size: 24rpx;
+    text-shadow: #32c17d 1rpx 5rpx;
+}
+
+.today-step-con {
+    width: 200rpx;
+    height: 104rpx;
+    line-height: 104rpx;
+    text-align: center;
+    position: absolute;
+    top: 140rpx;
+    left: 250rpx;
+    color: #fff;
+    font-size: 70rpx;
+    text-shadow: #32c17d 1rpx 5rpx;
+}
+
+.step {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx;
+    position: absolute;
+    top: 180rpx;
+    left: 460rpx;
+}
+
+.friend-help {
+    width: 195rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    position: absolute;
+    top: 250rpx;
+    left: 280rpx;
+    color: #fff;
+    font-size: 24rpx;
+}
+
+.member-speedup-box {
+    width: 100%;
+    height: 300rpx;
+    background: #fff;
+    border-radius: 30rpx 30rpx 0 0;
+}
+
+.member-relative {
+    width: 100%;
+    height: 300rpx;
+    background: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.member-speedup-box-top {
+    width: 670rpx;
+    height: 110rpx;
+    position: absolute;
+    top: -50rpx;
+    border-radius: 70rpx;
+    box-shadow: 0px 10rpx 5rpx #eee;
+}
+.indexbannerImg{
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+.number_people{
+    width: 200rpx;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 20rpx;
+}
+.peopleNum{
+    width: auto;
+    height: 60%;
+    color: #333;
+    font-size: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.peopleExplain{
+    width: auto;
+    height: 40%;
+    font-size: 20rpx;
+    color: #0bc99d;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.shadow-img {
+    width: 100%;
+    height: 100%;
+}
+
+.formNav {
+    width: 100%;
+    height: 200rpx;
+    background: #fff;
+    opacity: 0;
+    position: absolute;
+    top: 90rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navForm {
+    width: 120rpx;
+    height: 140rpx;
+}
+
+.navBtn {
+    width: 120rpx;
+    height: 140rpx;
+}
+
+.activity-nav {
+    width: 100%;
+    height: 200rpx;
+    position: absolute;
+    top: 90rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.activity {
+    width: 120rpx;
+    height: 140rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.earnings-speed {
+    width: 88rpx;
+    height: 30rpx;
+    position: absolute;
+    top: -10rpx;
+    left: 55rpx;
+}
+
+.activity-img {
+    width: 110rpx;
+    height: 110rpx;
+    position: relative;
+}
+
+.activity-con {
+    /* width: 110rpx;
+    height: 28rpx; */
+    color: #333;
+    font-size: 28rpx;
+}
+
+/* 门店服务-开始 */
+
+.store-service {
+    width: 100%;
+    height: 630rpx;
+    background: #12bfa3;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30rpx;
+}
+
+.store-service-title {
+    width: 100%;
+    height: 80rpx;
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.storeimg {
+    width: 196rpx;
+    height: 32rpx;
+}
+
+.store-service-box {
+    width: 726rpx;
+    height: 530rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    position: relative;
+}
+
+.store-service-box-top {
+    width: 100%;
+    height: 220rpx;
+    position: relative;
+}
+
+.tuijian {
+    width: 90rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 100rpx;
+    right: 20rpx;
+}
+
+.jdForm {
+    width: 125rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 145rpx;
+    right: 20rpx;
+}
+
+.formid {
+    width: 125rpx;
+    height: 30rpx;
+    opacity: 0;
+}
+
+/* 进店有礼 */
+
+.jdyl-box {
+    width: 125rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 145rpx;
+    right: 20rpx;
+    color: #666;
+    font-size: 22rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.jdyl-img {
+    width: 10rpx;
+    height: 18rpx;
+}
+
+.store-img {
+    width: 168rpx;
+    height: 126rpx;
+    border: 1px solid #ccc;
+}
+
+.storelogo {
+    width: 100%;
+    height: 100%;
+}
+
+.store-details-box {
+    width: 500rpx;
+    height: auto;
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.storename {
+    height: 40rpx;
+    line-height: 40rpx;
+    /* background: #f00; */
+    color: #333;
+    font-size: 34rpx;
+}
+.reward_box{
+    width: 200rpx;
+    color: #e01212;
+    font-size: 22rpx;
+    /* background: #f66 */
+}
+.reward_text{
+    
+    width: 100rpx;
+    background: #fdeddd
+}
+.reward_money{
+    margin-left: 20rpx
+}
+
+.office-hour {
+     height: 40rpx;
+    line-height: 40rpx;
+    /* background: #ff0; */
+    color: #666;
+    font-size: 22rpx;
+}
+
+.store-address {
+    width: 60%;
+    height: 40rpx;
+    /* background: #00f; */
+    color: #666;
+    font-size: 22rpx;
+    line-height:40rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+.store-service-box-bottom {
+    width: 100%;
+    height: 300rpx;
+    position: absolute;
+    top: 220rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formBox {
+    width: 100%;
+    height: 110rpx;
+    position: absolute;
+    top: 410rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.freeForm {
+    width: 220rpx;
+    height: 110rpx;
+    position: relative;
+}
+
+.freeBtn {
+    width: 220rpx;
+    height: 110rpx;
+    position: absolute;
+    opacity: 0;
+    left: 0rpx;
+    bottom: 0rpx;
+}
+
+.club-card-box {
+    width: 220rpx;
+    height: 300rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.club-card-img-box {
+    width: 200rpx;
+    height: 180rpx;
+}
+
+.club-card-img {
+    width: 100%;
+    height: 100%;
+    /* box-shadow: 0px 10rpx 5rpx #eee; */
+}
+
+.club-card-con {
+    width: 220rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    color: #333;
+    font-size: 24rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+
+}
+
+.club-card-free {
+    width: 200rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+/* 门店服务-结束 */
+
+.conbox {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nearby-shops-titlebox {
+    width: 100%;
+    height: 80rpx;
+    background: #fff;
+    margin-bottom: 15rpx;
+    /* border-bottom: 2rpx solid #eee; */
+}
+
+.nearbyshops-title {
+    width: 200rpx;
+    height: 80rpx;
+    color: #333;
+    font-weight: 600;
+    font-size: 34rpx;
+    float: left;
+}
+
+.nearbyshops-location {
+    width: auto;
+    height: 80rpx;
+    float: right;
+    margin-right: 20rpx;
+    color: #666;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nearbyshops-weizhi {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+.nearbyshops-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nearbyshop-box {
+    width: 726rpx;
+    height: 220rpx;
+    background: #fff;
+    margin-bottom: 24rpx;
+    border-radius: 20rpx;
+    position: relative;
+}
+
+.nearbyshop-distance {
+    width: auto;
+    height: 30rpx;
+    position: absolute;
+    top: 110rpx;
+    right: 25rpx;
+    color: #666;
+    font-size: 24rpx;
+}
+
+.nearbyshop-map-box {
+    width: 140rpx;
+    height: 30rpx;
+    position: absolute;
+    bottom: 15rpx;
+    right: 25rpx;
+    color: #666;
+    font-size: 24rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.map-img {
+    width: 24rpx;
+    height: 24rpx;
+}
+
+/* 附件商家-结束 */
+
+.moreForm {
+    width: 100%;
+    height: 80rpx;
+    background: #fff;
+}
+
+.moreBtn {
+     width: 100%;
+    height: 80rpx;
+        background: #fff;
+}
+
+.readmore-shops-box {
+    width: 100%;
+    height: 80rpx;
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+}
+
+.readmore-shops-img {
+    width: 36rpx;
+    height: 36rpx;
+    color: #666;
+    font-weight: 600;
+}
+.advertise-space {
+    width: 726rpx;
+    height: 188rpx;
+    margin-top: 20rpx;
+}
+/* 超值兑换部分-开始 */
+.pro-exchange-box {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+}
+.pro-exchange-box-con {
+    width: 100%;
+    height: auto;
+}
+.pro-exchange-tit-box {
+    width: 100%;
+    height: 80rpx;
+    background: #fff;
+    position: relative;
+}
+
+.pro-exchange-tit {
+    width: 200rpx;
+    height: 80rpx;
+    color: #333;
+    position: absolute;
+    top: 0rpx;
+    left: 20rpx;
+    font-weight: 600;
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+}
+.pro-exchange-entry {
+    width: 120rpx;
+    height: 80rpx;
+    position: absolute;
+    top: 0rpx;
+    right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 24rpx;
+}
+
+.exchange-products-box {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.exchange-product {
+    width: 360rpx;
+    height: 480rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+}
+
+.exchange-product-img {
+    width: 350rpx;
+    height: 350rpx;
+    border-radius: 20rpx 20rpx 0rpx 0rpx;
+}
+
+.ex-proimg {
+    width: 100%;
+    height: 100%;
+}
+
+.ex-proname {
+    width: 320rpx;
+    height: 40rpx;
+    margin-top: 5rpx;
+    color: #333;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+.ex-procalorie-box {
+    width: 93%;
+    height: 50rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calorie-box {
+    width: 93%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calorieimgBox{
+     width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.calorie_person_box{
+ width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calorie-person{
+    width: auto;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    color: #666;
+    font-size: 20rpx
+}
+.calorie-price{
+    width: auto;
+    height: 100%;
+    float: right;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    color: #666;
+    font-size: 20rpx;
+    /* margin-left: 50rpx; */
+    text-decoration: line-through
+}
+
+.calorie-img {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.calorie-num {
+    width: 120rpx;
+    height: 40rpx;
+    color: #e01212;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+.calorie-num02{
+    width: auto;
+    height: 40rpx;
+    color: #e01212;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+
+.calorie-free {
+    width: 120rpx;
+    height: 40rpx;
+    background: #a4f5d8;
+    border-radius: 60rpx;
+    color: #2bbe78;
+    font-size: 24rpx;
+}
+
+.readmore-pro-box {
+    width: 100%;
+    height: 100rpx;
+    background: #fff;
+    font-size: 36rpx;
+    color: #333;
+    font-weight: 600;
+}
+
+.readmore-pro-img {
+    width: 36rpx;
+    height: 36rpx;
+    font-weight: 600;
+}
+
+/* 查看更多-商品-结束 */

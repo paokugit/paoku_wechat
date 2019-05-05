@@ -1,0 +1,22 @@
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<view class="page">
+    <view bindtap="previewImage" class="fui-picture">
+        <block>
+            <block wx:if="{{Image.length>0}}">
+                <image bindload="loadImg" src="{{Image}}"></image>
+            </block>
+        </block>
+    </view>
+    <view bindtap="savePicture" class="save-btn">保存图片</view>
+    <view class="explain-navbar">
+        <i class="icox icox-zhuyi"></i>
+        <view class="expl">保存至相册可以分享至朋友圈</view>
+    </view>
+    <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+        <view class="text">{{FoxUIToast.text}}</view>
+    </view>
+</view>

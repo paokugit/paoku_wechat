@@ -1,0 +1,190 @@
+<view class="page2" wx:if="{{store.template_id==1}}">
+    <view class="changce_top" style="background:#333">
+        <image class="changce_top_bg changce_top_bg1" src="{{store.thumb}}" wx:if="{{store.thumb}}"></image>
+        <view class="changce_top_content">
+            <image class="changce_logo" src="{{store.logo}}"></image>
+            <view class="changce_top_right">
+                <navigator hoverClass="none" url="/pages/order/store/map?id={{store.id}}">
+                    <view class="changce_top_title">
+                        <text>{{store.storename}}</text>
+                        <image class="changce_right_img" src="../images/list_right.png"></image>
+                    </view>
+                </navigator>
+                <view class="changce_ico">
+                    <view class="changce_ico_left">
+                        <image src="../images/list1.png"></image>
+                        <text>{{store.ordernum}}单</text>
+                    </view>
+                    <view class="changce_ico_left">
+                        <image src="../images/list2.png"></image>
+                        <text>{{store.goodsnum}}件商品</text>
+                    </view>
+                </view>
+                <view bindtap="phone" class="changce_right_tell" data-phone="{{store.tel}}">联系店家</view>
+            </view>
+        </view>
+    </view>
+    <view class="changce_class changce_class1" style="{{catethumb?'':'margin-bottom:0rpx'}}">
+        <scroll-view class="scroll-view_H" scrollX="true" style="width:100%;height:50px;display:flex;overflow:scroll;white-space:nowrap;">
+            <view class="changce_class_list">
+                <text bindtap="selecttype" class="{{pcate==0&&ccate==0?'changce_active':''}}" data-ccate="0" data-index="0" data-pcate="0">推荐</text>
+            </view>
+            <view bindtap="selecttype" class="changce_class_list" wx:for="{{cates}}">
+                <text class="{{pcate==item.pcate&&ccate==item.ccate?'changce_active':''}}" data-ccate="{{item.ccate}}" data-index="{{index}}" data-pcate="{{item.pcate}}">{{item.title}}</text>
+            </view>
+        </scroll-view>
+        <view class="changce_ad" wx:if="{{catethumb}}">
+            <image src="{{catethumb}}"></image>
+        </view>
+    </view>
+    <view class="changce_list_img" style="{{catethumb?'':'margin-top:60rpx'}}">
+        <view class="changce_img" wx:for="{{list}}">
+            <navigator url="/pages/goods/detail/index?id={{item.id}}&storeid={{store.id}}">
+                <image src="{{item.thumb}}"></image>
+            </navigator>
+            <text class="text_changce_name">{{item.title}}</text>
+            <view bindtap="selectPicker" class="changce_ccc" data-buytype="buy" data-id="{{item.id}}">
+                <text class="text_changce_price">￥{{item.minprice}}</text>
+                <image src="../images/list5.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="changce_bottom">
+        <view bindtap="showcover" class="changce_bototm_left">
+            <text class="changce_car">购物车</text>
+            <text class="center"></text>
+            <text class="changce_bum">{{cartcount}}</text>
+        </view>
+        <view bindtap="tocashier" class="changce_bototm_right">
+            <text>线下买单</text>
+            <image src="../images/list6.png"></image>
+        </view>
+    </view>
+</view>
+<view class="container" wx:else>
+    <view class="store_banner">
+        <image mode="widthFix" src="{{store.thumb}}"></image>
+    </view>
+    <view class="store_logo">
+        <image src="{{store.logo}}"></image>
+    </view>
+    <view class="store_detail_top">
+        <text class="store_h1">{{store.storename}}</text>
+        <view class="store_ico1" style="{{store.cashierid&&store.cashierid>0?'':'width:55%'}}">
+            <view class="store_left" style="{{store.cashierid&&store.cashierid>0?'':'width:45%'}}">
+                <image src="../images/ico5.png"></image>
+                <text>{{store.ordernum}}单</text>
+            </view>
+            <view class="store_left left1" style="{{store.cashierid&&store.cashierid>0?'':'width:45%'}}">
+                <image src="../images/ico6.png"></image>
+                <text>{{store.goodsnum}}件商品</text>
+            </view>
+            <navigator openType="reLaunch" url="/pages/changce/cashier/pay?cashierid={{store.cashierid}}" wx:if="{{store.cashierid&&store.cashierid>0}}">
+                <view class="store_left store_right1">
+                    <text class="icox icox-qian ico_pay"></text>
+                    <text>在线买单</text>
+                </view>
+            </navigator>
+        </view>
+        <text class="store_h2">营业时间：{{store.saletime}}</text>
+    </view>
+    <view class="store_detail">
+        <view class="store_tab">
+            <view bindtap="viewgoods" class="store_tab1">
+                <text class="{{intro==1?'':'active'}}">商品</text>
+            </view>
+            <view bindtap="viewintro" class="store_tab1">
+                <text class="{{intro==1?'active':''}}">店铺简介</text>
+            </view>
+        </view>
+    </view>
+    <view class="store_class" wx:if="{{intro!=1}}">
+        <view class="class_left">
+            <view class="class_ico">
+                <image src="../images/list_13.png"></image>
+                <text bindtap="selecttype" class="nav_left_items {{pcate==0&&ccate==0?'active':''}}" data-ccate="0" data-index="0" data-pcate="0">热销</text>
+            </view>
+            <text bindtap="selecttype" class="nav_left_items {{pcate==item.pcate&&ccate==item.ccate?'active':''}}" data-ccate="{{item.ccate}}" data-index="{{index}}" data-pcate="{{item.pcate}}" wx:for="{{cates}}">{{item.title}}</text>
+        </view>
+        <view class="class_right">
+            <image class="class_banner" mode="widthFix" src="{{catethumb}}" wx:if="{{catethumb}}"></image>
+            <view class="class_h1" wx:if="{{pcate==0&&ccate==0}}">
+                <text class="class_hot">热销</text>
+                <text class="class_title">大家喜欢才是真的喜欢</text>
+            </view>
+            <view class="class_list" wx:for="{{list}}">
+                <navigator url="/pages/goods/detail/index?id={{item.id}}&storeid={{store.id}}">
+                    <image class="img_left" src="{{item.thumb}}"></image>
+                </navigator>
+                <view class="class_imgbox">
+                    <navigator url="/pages/goods/detail/index?id={{item.id}}&storeid={{store.id}}">
+                        <text class="title">{{item.title}}</text>
+                        <text class="intrduce">{{item.subtitle}}</text>
+                        <text class="sell">月售 {{item.monthsales}}</text>
+                    </navigator>
+                    <view bindtap="selectPicker" class="class_bottom" data-buytype="buy" data-id="{{item.id}}">
+                        <text class="cprice">￥{{item.minprice}}</text>
+                        <image class="add" src="../images/ico7.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="class_car" wx:if="{{intro!=1}}">
+        <view bindtap="showcover" class="car_left">
+            <image class="car_ico" src="../images/car.png"></image>
+            <text class="car_num">{{cartcount}}</text>
+            <text class="car_price">￥{{totalprice}}</text>
+        </view>
+        <text bindtap="pay" class="jiesuan">结算</text>
+    </view>
+    <view class="store_detail_box" wx:if="{{intro==1}}">
+        <view class="detail_img" wx:if="{{store.imgs&&store.imgs.length>0}}"></view>
+        <text class="detail_intr" wx:if="{{store.desc}}">{{store.desc}}</text>
+        <image mode="widthFix" src="{{store.qrcode}}" style="width:100%" wx:if="{{store.qrcode}}"></image>
+        <view class="address_box">
+            <view bindtap="phone" class="detail_address" data-phone="{{store.tel}}">
+                <image class="tell" src="../images/ico2.png"></image>
+                <text class="number">{{store.tel}}</text>
+            </view>
+            <view class="detail_address">
+                <navigator hoverClass="none" url="/pages/order/store/map?id={{store.id}}">
+                    <image class="tell" src="../images/ico3.png"></image>
+                    <text class="number">{{store.address}}</text>
+                    <image class="right" src="../images/ico4.png"></image>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="corver" wx:if="{{showcover}}">
+    <view class="goodlist">
+        <view class="car_sp_list">
+            <block wx:for="{{merch_list}}">
+                <view class="car_list" wx:for="{{item.list}}" wx:for-item="goods">
+                    <image class="list_left" src="{{goods.thumb}}"></image>
+                    <view class="list_right">
+                        <view class="list_bottom">
+                            <text class="list_title">{{goods.title}}</text>
+                            <text class="list_num">x{{goods.total}}</text>
+                        </view>
+                        <view class="list_bottom">
+                            <text class="list_price">￥{{goods.productprice}}</text>
+                            <image bindtap="cartdel" class="delete" data-id="{{goods.id}}" src="../images/delete.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view style="text-align:center">
+                <a bindtap="pay" class="nav-item btn buybtn" style="background:#f90;width:290rpx;font-size:29rpx;color:#fff;font-size:29rpx;border-radius:10rpx;height:84rpx">立即结算</a>
+            </view>
+        </view>
+    </view>
+    <view bindtap="hidecorver" class="icox icox-guanbi-copy" style="color:#fff;text-align:center;font-size:60rpx;margin-top:30rpx"></view>
+</view>
+<include src="../../common/goods-picker.wxml"></include>
+<view class="fui-toast  {{FoxUIToast.show?'in':'out'}}">
+    <view class="text">{{FoxUIToast.text}}</view>
+</view>
+<include src="/pages/common/city-picker.wxml"></include>
+<view bindtap="emptyActive" class="nav-mask" style="{{active?'display:block':''}}"></view>

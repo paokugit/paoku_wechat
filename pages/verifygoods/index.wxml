@@ -1,0 +1,73 @@
+<block>
+    <block wx:if="{{!show}}">
+        <loading>加载中...</loading>
+    </block>
+</block>
+<block>
+    <block wx:if="{{show}}">
+        <view class="page">
+            <view class="fui-tab fixed fui-tab-danger">
+                <view bindtap="selected" class="item {{cate==''?'active':''}}" data-cate="">未完成</view>
+                <view bindtap="selected" class="item {{cate=='used'?'active':''}}" data-cate="used">已完成</view>
+                <view bindtap="selected" class="item {{cate=='past'?'active':''}}" data-cate="past">已过期</view>
+            </view>
+            <view class="coupon-list-group">
+                <block wx:for="{{list}}">
+                    <navigator class="coupon-list {{item.classstr}}" url="/pages/verifygoods/detail/index?id={{item.id}}">
+                        <view class="coupon-left">
+                            <view class="coupon-title">
+                                <view class="coupon-list-media">
+                                    <image src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="coupon-inner">
+                                    <view>
+                  {{item.title}}
+                </view>
+                                </view>
+                            </view>
+                            <view class="coupon-time">
+              有效日期：{{item.termofvalidity}}
+            </view>
+                        </view>
+                        <view class="coupon-right">
+                            <block>
+                                <block wx:if="{{item.numlimit>0}}">
+                                    <view class="text">可用次数</view>
+                                </block>
+                                <block wx:else>
+                                    <view class="text">剩余天数</view>
+                                </block>
+                            </block>
+                            <view class="num">
+                                <span style="font-size:40rpx;font-weight:bold;">{{item.surplusnum}}</span>
+                            </view>
+                        </view>
+                    </navigator>
+                </block>
+                <block>
+                    <block wx:if="{{loading}}">
+                        <view class="fui-loading">
+                            <view class="icon"></view>
+                            <view class="text">正在加载</view>
+                        </view>
+                    </block>
+                </block>
+                <block>
+                    <block wx:if="{{loaded&&list.length>0}}">
+                        <view class="fui-loading empty">
+                            <view class="text">没有更多了</view>
+                        </view>
+                    </block>
+                </block>
+                <block>
+                    <block wx:if="{{total<=0&&!loading}}">
+                        <view class="fui-loading empty">
+                            <view class="text">没有数据</view>
+                        </view>
+                    </block>
+                </block>
+            </view>
+            <include src="/pages/common/menu.wxml"></include>
+        </view>
+    </block>
+</block>
