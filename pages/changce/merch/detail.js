@@ -17,7 +17,7 @@ Page({
   onLoad: function (t) {
       var b = decodeURIComponent(t.scene);
       if (!t.id && b) {
-          var i = s.str2Obj(b);
+          var i = a.str2Obj(b);
           t.id = i.id;
         //绑定会员来源
         a.get("help/index/bang_agent", { merchid: t.id }, function (c) {

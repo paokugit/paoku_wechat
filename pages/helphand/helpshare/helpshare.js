@@ -61,7 +61,11 @@ Page({
     console.log(userinfo);
     reurl = '/pages/helphand/helpshare/helpshare?hlpid=' + hlpid + '&mid=' + hlpid;
     f.setCache("reurl", reurl, 72000)
-
+    if (!userinfo || userinfo == undefined || userinfo == 'undefined') {
+          wx.redirectTo({
+          url: "/pages/message/auth/index?refrom=helpshare&hlpid=" + hlpid + "&mid=" + hlpid + "&reurl=" + reurl
+          })
+      }
       if (userinfo.openid ==t.hlpid && userinfo.openid) {
           wx.redirectTo({
               url: '../friendhelp/friendhelp',
@@ -76,6 +80,7 @@ Page({
       s.get("member/info/getMemberInfo", {
           passive_openid: hlpid
     }, function (m){
+      console.log(m)
         shareopenid = m.openid;
         sharemid = m.id;
         bnickname = m.nickname;
@@ -270,18 +275,22 @@ Page({
   onShow: function () {
     this.getInfo();
     var e = this;
-    wx.getSetting({
-      success: function (a) {
-        console.log(a)
-        var t = a.authSetting["scope.userInfo"];
-        console.log(t)
-        e.setData({
-          limits: t
-        }), t || wx.redirectTo({
-          url: "/pages/message/auth/index?refrom=helpshare&hlpid=" + hlpid + "&mid=" + hlpid+"&reurl=" + reurl
-        });
-      }
-    });
+    // wx.getSetting({
+    //   success: function (a) {
+    //     console.log(a)
+    //     var t = a.authSetting["scope.userInfo"];
+    //     console.log(t)
+    //     e.setData({
+    //       limits: t
+    //     }), t || wx.redirectTo({
+    //       url: "/pages/message/auth/index?refrom=helpshare&hlpid=" + hlpid + "&mid=" + hlpid+"&reurl=" + reurl
+    //     });
+    //   }
+    // });
+    // console.log('lihanwen')
+    // console.log(userinfo)
+   
+
   },
 
   /**

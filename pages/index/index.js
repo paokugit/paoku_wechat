@@ -136,7 +136,8 @@ Page((e = {
         helpstep:'',
         jindu: 100,
         district:'',
-        city:''
+        city:'',
+        avamessage:''
     }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
         t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1),
@@ -410,7 +411,7 @@ Page((e = {
         }, function (e) {
                console.log(e)
                a.setData({
-                   message:e.result.message
+                   avamessage:e.result.message
                })
             
 

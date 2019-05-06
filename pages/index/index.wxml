@@ -59,7 +59,7 @@
         <view class='member-speedup-box-top' bindtap='hybtn' >
         <view class='indexbannerImg'>
             <view class='number_people'>
-                <view class='peopleNum'>{{message}}</view>
+                <view class='peopleNum'>{{avamessage}}</view>
                 <view class='peopleExplain'>平台活跃人数</view>
             </view>
             <image class='shadow-img' src='{{ globalimg}}/indexbanner02.png'></image>
