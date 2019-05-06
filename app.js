@@ -6,7 +6,10 @@ App({
   onShow: function () {
     this.onLaunch();
   },
+
+
   onLaunch: function () {
+      console.log('jdjdjdj')
     var e = this;
     wx.getSystemInfo({
       success: function (t) {
