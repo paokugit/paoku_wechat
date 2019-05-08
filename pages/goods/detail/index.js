@@ -15,6 +15,7 @@ var clickprice=''
 var commission=''
 var reward=''
 var openid=''
+var phonetype=""
 // 当前登录人的openid
 var f = getApp();
 var userinfo =f.getCache('userinfo');
@@ -187,11 +188,14 @@ Page((a = {
             urls: t.currentTarget.dataset.urls
         });
     },
-    // openhy:function(){
-    //     wx.switchTab({
-    //         url: '/pages/huiyuan/openmember/openmember',
-    //     })
-    // },
+    
+    getPhoneNumber: function (e) {
+        console.log(e.detail.errMsg)
+        console.log(e.detail.iv)
+        console.log(e.detail.encryptedData)
+        
+    },
+
     // 进店逛逛
     goStore:function(){
         console.log(merchid)
@@ -500,6 +504,13 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
+            s.get("member/index/get_mobile", {
+            openid: openid,
+        }, function (t) {
+        console.log(t)
+            phonetype=t.error
+            console.log(phonetype)
+        } )
         console.log(t)
         console.log('lalala')
         // 商品id
@@ -724,6 +735,7 @@ Page((a = {
         });
     },
     showshade: function () {
+        console.log('1')
         this.setData({
             closeBtn: !0
         });

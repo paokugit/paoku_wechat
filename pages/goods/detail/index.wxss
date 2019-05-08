@@ -10,6 +10,33 @@
     height: auto;
 }
 
+.phonebtn{
+    width: 140rpx;
+    height: 60rpx;
+    background-color: #fe9402;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.phonebtn button{
+    border: none;
+    padding: 0
+}
+.shareicon{
+    width: 60rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.sharetext{
+    width: 80rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx
+}
 .goods-detail-info {
     width: 100%;
     display: none;
