@@ -96,19 +96,19 @@
                     </view>
                     <!-- wx:if="{{goods.showshare}}" -->
                     <!-- 分享 -->
-                    <button  class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
+                    <button wx:if="{{phonetype==1}}"  class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
                     <view  bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
                         <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
                         <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
                     </view>
                     </button>
                     <!-- 分享 -->
-                    <!-- <button wx:if="{{phonetype==0}}" class='phonebtn'> 
+                    <button wx:else class='phone_btn'>
                     <view  bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
                         <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
                         <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
                     </view>
-                    </button> -->
+                    </button>
                     <!-- 分享 -->
                 </view>
                 <view class="fui-cell goods-subtitle" wx:if="{{goods.subtitle}}">
