@@ -326,7 +326,7 @@ Page((e = {
             })
         }
        console.log(scene)
-       
+      console.log(i.getCache("userinfo"))
         var l=this
         // 实例化API核心类
         var demo = new QQMapWX({

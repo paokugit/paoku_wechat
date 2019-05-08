@@ -119,7 +119,7 @@ Page({
         // })
           var aaa = this
           s.get("help/index/addhelp", {
-              step: '1500',
+              step: '2000',
               openid: userinfo.openid,
               mids: cs
           }, function (ee) {
