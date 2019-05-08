@@ -15,7 +15,10 @@ var clickprice=''
 var commission=''
 var reward=''
 var openid=''
-var phonetype=""
+var sessionKey=""
+var iv=""
+var encryptedData=""
+// var phonetype=""
 // 当前登录人的openid
 var f = getApp();
 var userinfo =f.getCache('userinfo');
@@ -69,6 +72,7 @@ Page((a = {
         },
         buyType: "",
         rewardDis:'none',
+        taskreward:"",
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -97,6 +101,7 @@ Page((a = {
         nav: 0,
         giftid: "",
         limits: !0,
+        phonetype:'',
         modelShow: !1,
         showgoods: !0
     }, t(e, "timer", 0), t(e, "lasttime", 0), t(e, "hour", "-"), t(e, "min", "-"), t(e, "sec", "-"),
@@ -193,7 +198,16 @@ Page((a = {
         console.log(e.detail.errMsg)
         console.log(e.detail.iv)
         console.log(e.detail.encryptedData)
-        
+        iv = e.detail.iv
+        encryptedData = e.detail.encryptedData
+        console.log(sessionKey)
+        s.get("member/index/add_mobile", {
+            iv : iv,
+            encryptedData : encryptedData,
+            sessionKey: sessionKey
+        }, function (t) {
+        console.log(t)
+        })
     },
 
     // 进店逛逛
@@ -229,6 +243,7 @@ Page((a = {
                     shareprice : t.goods.share_price,
                     clickprice:  t.goods.click_price,
                     commission:  t.goods.commission,
+                    taskreward: t.goods.reward
                 })
             }else{
                 e.setData({
@@ -247,6 +262,7 @@ Page((a = {
             var o = t.goods.coupons, n = t.goods.thumbMaxHeight, r = t.goods.thumbMaxWidth / n;
             if (wx.getSystemInfo({
                 success: function (t) {
+                    console.log(t)
                     var a = t.windowWidth / r;
                     e.setData({
                         advWidth: t.windowWidth,
@@ -504,19 +520,34 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
+        wx.login({
+            success: function (a) {
+                a.code ? s.post("wxapp.login", {
+                    code: a.code
+                }, function (a) {
+                    console.log(a)
+                    sessionKey = a.session_key
+                }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+            }
+        })
+        var e = this;
             s.get("member/index/get_mobile", {
             openid: openid,
         }, function (t) {
         console.log(t)
-            phonetype=t.error
-            console.log(phonetype)
+            // phonetype=t.error
+            // console.log(phonetype)
+        e.setData({
+            phonetype:t.error
+        })
         } )
         console.log(t)
         console.log('lalala')
         // 商品id
        productid = t.id
         console.log(productid)
-        var e = this;
+        
         s.get("black", {}, function (t) {
             t.isblack && wx.showModal({
                 title: "无法访问",

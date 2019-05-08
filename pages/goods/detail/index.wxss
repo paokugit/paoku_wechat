@@ -10,7 +10,7 @@
     height: auto;
 }
 
-.phonebtn{
+.phonebtn, .phone_btn{
     width: 140rpx;
     height: 60rpx;
     background-color: #fe9402;
@@ -19,6 +19,10 @@
     justify-content: center
 }
 .phonebtn button{
+    border: none;
+    padding: 0
+}
+.phone_btn button{
     border: none;
     padding: 0
 }
