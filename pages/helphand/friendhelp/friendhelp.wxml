@@ -123,18 +123,6 @@
             <!-- 举个例子-结束 -->
         </view>
     </view>
-    <!-- 邀请好友赚钱花-开始 -->
-    
-    <form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
-        <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
-            <view class='invite-friend-box help_center'>
-                <view  class='inviteFriend'>
-                    <image src='{{globalimg}}/buttun-yaoqing.png'></image>
-                </view>
-            </view>
-        </button>
-    </form>
-    <!-- 邀请好友赚钱花-结束 -->
     </view>
     <!-- 好友捐赠记录（显示好友捐赠列表）-结束 -->
     

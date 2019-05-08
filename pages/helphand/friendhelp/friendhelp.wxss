@@ -196,7 +196,7 @@ image{
     width: 100%;
     height: auto;
     position: absolute;
-    top: 490rpx;
+    top: 800rpx;
     display: flex;
     flex-direction: column;
     justify-content: center;

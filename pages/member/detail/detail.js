@@ -6,13 +6,14 @@ console.log(userinfo)
 Page({
     data: {
         icons: t.requirejs("icons"),
-        type: 0,
+        type: 1,
         isopen: !1,
         page: 1,
         loaded: !1,
         loading: !0,
         list: []
     },
+    // 上拉加载
     onLoad: function (a) {
         a.type > 0 && this.setData({
             type: 1
@@ -31,7 +32,8 @@ Page({
         }), a.get("member/log/money_log", {
             openid:userinfo.openid,
             type: t.data.type,
-            page: t.data.page
+            page: t.data.page,
+            type:t.data.type
         }, function (a) {
             console.log(a)
             var e = {

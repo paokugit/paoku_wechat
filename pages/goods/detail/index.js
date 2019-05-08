@@ -668,18 +668,7 @@ Page((a = {
     onShareAppMessage: function () {
         return this.setData({
             closeBtn: !1
-        }), 
-        console.log(this.data.options.id)
-        s.get("myown/goodshare/share", {
-            goodid: goodid,
-            openid: openid
-        }, function (a) {
-            console.log(a)
-            console.log("aaaaaaaaaaaaaaa")
-        })
-        console.log('testtest')
-      console.log(sharemid)
-        s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
+        }), s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
     },
     showpic: function () {
         this.setData({

@@ -47,7 +47,7 @@ button::after {
     top:0;
 }
 .pullBtn{
-    width: 400rpx;
+   width: 100%;
     height: 300rpx;
     top:60%;
 }
@@ -71,8 +71,8 @@ button::after {
     width: 60rpx;
     height: 60rpx;
     position: absolute;
-    top: 225rpx;
-    right: 120rpx;
+    top: 5%;
+    right: 60rpx;
     border-radius: 50%;
 }
 .symbol{
@@ -87,61 +87,6 @@ button::after {
     top:0;
 
 }
-/* 拆红包弹窗 */
-.packetmask{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4000;
-    background: rgba(0, 0, 0, 0.6);
-}
-.packetbg{
-    width: 690rpx;
-    height: 760rpx;
-    bottom: 0;
-    top:0;
-}
-/* 登录自动签到弹窗 */
-
-.signmask {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4000;
-    background: rgba(0, 0, 0, 0.6);
-}
-.signbg{
-    width: 100%;
-    height: 970rpx;
-    position: relative;
-}
-.sign-close-btn{
-    width: 100%;
-    height: 90px;
-    opacity: 0;
-    position: absolute;
-    top: 70%
-}
-.signClose {
-    width: 50rpx;
-    height: 50rpx;
-    top: 90%;
-}
-
-.sign-text {
-    width: 400rpx;
-    height: 100rpx;
-    top: 55%;
-    font-size: 28rpx;
-    color: #fff;
-    line-height: 100rpx;
-    text-align: center;
-}
-
 .index-banner-box {
     width: 100%;
     height: 478rpx;
@@ -589,7 +534,7 @@ image {
     font-size: 34rpx;
 }
 .reward_box{
-    width: 200rpx;
+    width: 260rpx;
     color: #e01212;
     font-size: 22rpx;
     /* background: #f66 */

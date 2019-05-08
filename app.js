@@ -178,6 +178,7 @@ App({
         appimg: "https://paokucoin.com/img/backgroup",
         userInfo: null,
         applogin:"",
-        applog:""
+        applog:"",
+       bindscene: ""
     }
 });
