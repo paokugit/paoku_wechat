@@ -1,10 +1,11 @@
 {
     "pages": [
+        
         "pages/index/index",
         "pages/helphand/friendhelp/friendhelp",
        
         "pages/helphand/helpshare/helpshare",
-       
+       "pages/commission/down/index",
        
        
         "pages/message/auth/index",
@@ -12,7 +13,7 @@
         "pages/helphand/powerlist/powerlist",
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
-        "pages/commission/down/index",
+       
         "pages/huiyuan/hygrade/hygrade",
         "pages/lottery/lottery/lottery",
         "pages/sportdiary/sportdiary/sportdiary",

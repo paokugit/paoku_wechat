@@ -315,45 +315,17 @@
 <!-- mask-开始 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
-        <view bindtap='maskRemove' class='first-entry-img'>
+        <view bindtap='pull' class='first-entry-img'>
             <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
         </view>
         <view class='first-entry position_absolute'>
-            <image src='{{ globalimg}}/hongbaotanchuang.png'></image>
+            <image src='{{ globalimg}}/firstentry.png'></image>
         </view>
-        <view class='close_pull position_absolute' bindtap='closepull'></view>
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>
 </view>
 
 <!-- 首次进入弹窗mask-结束 -->
-<!-- 拆红包(登录账户查看)弹窗 -开始-->
-<view class='packetmask' style='display:{{packetdisp}}'>
-    <view class='first-entry-box'>
-        <view bindtap='packetBtn' class='packetbtn position_absolute'>
-            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
-        </view>
-        <view class='packetbg position_absolute'>
-            <image src='{{ globalimg}}/dakaihongbao.png'></image>
-        </view>
-        <view class='login_account position_absolute' bindtap='accountlogin' ></view>
-    </view>
-</view>
-<!-- 拆红包(登录账户查看)弹窗 -结束-->
-<!-- 登录自动签到弹窗 -->
-<!-- mask-开始 -->
-<view class='signmask' style='display:{{signDis}}'>
-    <view class='signbg'>
-        <image src='{{globalimg}}/sign.png'></image>
-         <view class='sign-text position_absolute'>{{message}}</view>
-         <view class='signClose position_absolute' bindtap='closeSign'>
-            <image src='{{globalimg}}/guanbi.png'></image>
-        </view>
-        <button class='sign-close-btn' bindtap='closeSign'></button>
-    </view>
-</view>
-
-<!-- 登录自动签到mask-结束 -->
  <block>
         <block wx:if="{{loading}}">
             <view class="fui-loading">

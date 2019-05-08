@@ -6,7 +6,10 @@ App({
   onShow: function () {
     this.onLaunch();
   },
+
+
   onLaunch: function () {
+      
     var e = this;
     wx.getSystemInfo({
       success: function (t) {
@@ -175,6 +178,7 @@ App({
         appimg: "https://paokucoin.com/img/backgroup",
         userInfo: null,
         applogin:"",
-        applog:""
+        applog:"",
+       bindscene: ""
     }
 });

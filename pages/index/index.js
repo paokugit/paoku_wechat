@@ -129,8 +129,6 @@ Page((e = {
         credit1: 0,
         mp3_url: '',
         indexdisp:'none',
-        packetdisp:'none',
-        signDis:'none',
         circleDis:'none',
         // rewarddisp:'none',
         helpstep:'',
@@ -152,19 +150,6 @@ Page((e = {
             });
         });
     },
-    // 拆红包
-    pull:function(){
-        this.setData({
-            indexdisp: 'none',
-            packetdisp: 'block',
-        })
-    },
-    // 关闭拆红包弹窗
-    packetBtn:function(){
-        this.setData({
-            packetdisp: 'none',
-        })
-    },
     // 进入商城
     entrystore:function(){
         wx.switchTab({
@@ -176,12 +161,6 @@ Page((e = {
         wx.switchTab({
         url: '../huiyuan/openmember/openmember',
 })
-    },
-    // 登录账户查看
-    accountlogin:function(){
-        wx.switchTab({
-            url: '/pages/member/index/index',
-        })
     },
     merch: function () {
         wx.navigateTo({
@@ -226,22 +205,22 @@ Page((e = {
         })
     },
     // 关闭红包弹窗
-    maskRemove: function () {
-        this.setData({
-            indexdisp: 'none'
-        })
-    },
+    // maskRemove: function () {
+    //     this.setData({
+    //         indexdisp: 'none'
+    //     })
+    // },
     closepull:function() {
         this.setData({
             indexdisp: 'none'
         })
     },
-    // 关闭签到弹窗
-    closeSign: function () {
+    pull: function () {
         this.setData({
-            signDis:'none'
+            indexdisp: 'none'
         })
     },
+
     // 点击气泡跳转到好友助力页面
     inviteBtn:function(){
         wx.navigateTo({
@@ -315,9 +294,9 @@ Page((e = {
     },
     onLoad: function (t) {
         this.get_list();
-        // if()
         if (t.scene) {
              scene = decodeURIComponent(t.scene)
+            i.globalData.bindscene = scene
             s.get("myown/index/scene", {
                 openid: userinfo.openid,
                 scene: scene
@@ -326,7 +305,7 @@ Page((e = {
             })
         }
        console.log(scene)
-      console.log(i.getCache("userinfo"))
+
         var l=this
         // 实例化API核心类
         var demo = new QQMapWX({
@@ -660,11 +639,11 @@ Page((e = {
                     }
                     // console.log(i.globalData.applogin)
                     // console.log(openid)
-                    if(scene!=""){
+                    if (i.globalData.bindscene != ""){
                         s.get("myown/sport/binding", {
                             openid: openid,
                             login: i.globalData.applogin,
-                            parent_id: scene
+                            parent_id: i.globalData.bindscene
                         }, function (u) {
                             console.log(u)
                             i.globalData.applogin=1
