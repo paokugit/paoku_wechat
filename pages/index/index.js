@@ -293,6 +293,22 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function (t) {
+        var a = this;
+        wx.getSetting({
+          success: function (e) {
+            var a2 = e.authSetting["scope.userInfo"];
+            if (a2 != undefined && a2 && a2 != '') {
+              a.setData({
+                userInfo: a2
+              });
+            } else {
+              var reurl = '/pages/index/index';
+              wx.redirectTo({
+                url: "/pages/message/auth/index?refrom=index&reurl=" + reurl
+              })
+            }
+          }
+        });
         this.get_list();
         if (t.scene) {
              scene = decodeURIComponent(t.scene)
@@ -343,16 +359,6 @@ Page((e = {
         })
 
         t = t || {};
-        var a = this;
-        wx.getSetting({
-            success: function (n) {
-                console.log(n);
-                var a2 = n.authSetting["scope.userInfo"];
-                a2 && a.setData({
-                    userInfo: a2
-                });
-            }
-        });
 
 
         // "" == i.getCache("userinfo") && wx.redirectTo({
