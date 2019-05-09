@@ -9,14 +9,34 @@
 .picker-modal {
     height: auto;
 }
-
-.phonebtn, .phone_btn{
+.shareBox{
+   width: 140rpx;
+    height: 60rpx;
+    position: relative
+}
+.notadd_flex, .add_flex{
+      width: 140rpx;
+    height: 60rpx;
+     position: absolute;
+    top: 0;
+    left: 0
+}
+.phonebtn{
     width: 140rpx;
     height: 60rpx;
     background-color: #fe9402;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+   
+}
+.phone_btn{
+    width: 140rpx;
+    height: 60rpx;
+    background-color: #fe9402;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .phonebtn button{
     border: none;

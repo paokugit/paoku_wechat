@@ -72,7 +72,8 @@ Page((a = {
         },
         buyType: "",
         rewardDis:'none',
-        taskreward:"",
+        notaddDis:'block',
+        addDis:'none',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -195,19 +196,33 @@ Page((a = {
     },
     
     getPhoneNumber: function (e) {
+        var p=this
         console.log(e.detail.errMsg)
         console.log(e.detail.iv)
         console.log(e.detail.encryptedData)
         iv = e.detail.iv
         encryptedData = e.detail.encryptedData
         console.log(sessionKey)
-        s.get("member/index/add_mobile", {
-            iv : iv,
-            encryptedData : encryptedData,
-            sessionKey: sessionKey
-        }, function (t) {
-        console.log(t)
-        })
+        if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+            console.log('用户点击拒绝')
+            p.setData({
+                closeBtn: !0
+            })
+        } else {
+            //同意授权
+            console.log('用户同意授权')
+             p.setData({
+                closeBtn: !0
+            })
+            s.get("member/index/add_mobile", {
+                iv: iv,
+                encryptedData: encryptedData,
+                sessionKey: sessionKey
+            }, function (t) {
+                console.log(t)
+            })
+        }
+       
     },
 
     // 进店逛逛
@@ -237,13 +252,13 @@ Page((a = {
             // clickprice = t.goods.click_price
             // commission = t.goods.commission
             reward=t.goods.reward
+            console.log(reward)
             if(reward==0){
                 e.setData({
                     rewardDis:'none',
                     shareprice : t.goods.share_price,
                     clickprice:  t.goods.click_price,
                     commission:  t.goods.commission,
-                    taskreward: t.goods.reward
                 })
             }else{
                 e.setData({
@@ -520,6 +535,7 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
+        // console.log(reward)
         wx.login({
             success: function (a) {
                 a.code ? s.post("wxapp.login", {
@@ -536,14 +552,40 @@ Page((a = {
             openid: openid,
         }, function (t) {
         console.log(t)
-            // phonetype=t.error
-            // console.log(phonetype)
-        e.setData({
-            phonetype:t.error
-        })
+        if(t.error==1){
+            console.log("未添加手机号")
+            console.log(reward)
+            // 有赏金
+            if(reward==1){
+            e.setData({
+                notaddDis:"block",
+                addDis:'none'
+            })
+            }else{
+                // 无赏金
+                e.setData({
+                    notaddDis: "none",
+                    addDis: 'block'
+                })
+            }
+        }else{
+            console.log("已添加手机号")
+            // 有赏金
+            if (reward == 1) {
+                e.setData({
+                    notaddDis: "none",
+                    addDis: 'block'
+                })
+            }else{
+                // 无赏金
+                e.setData({
+                    notaddDis: "none",
+                    addDis: 'block'
+                })
+            }
+        }
         } )
         console.log(t)
-        console.log('lalala')
         // 商品id
        productid = t.id
         console.log(productid)
@@ -591,7 +633,6 @@ Page((a = {
             share_id: sharemid
         }, function (e) {
             console.log(e)
-            console.log("eeeeee")
         })
         o.setCache("sharemid", sharemid, 7200 * 24);
         this.setData({
@@ -712,6 +753,27 @@ Page((a = {
             closeBtn: !1
         }), s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
     },
+
+    // onShareAppMessage: function (res) {
+    //     var that = this;
+    //     that.setData({
+    //         closeBtn: !1
+    //     })
+    //     return {
+    //         title: that.data.goods.title,
+    //         path: "/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid,
+    //         imageUrl:"http://paokucoin.com/img/backgroup/shareurl.png",
+    //         success: function (res) {
+    //             // 转发成功
+
+    //             that.shareClick();
+    //         },
+    //         fail: function (res) {
+    //             // 转发失败
+    //         }
+    //     }
+    // },
+
     showpic: function () {
         this.setData({
             showpic: !0,
@@ -765,7 +827,8 @@ Page((a = {
             closeBtn: !1
         });
     },
-    showshade: function () {
+
+    addshow: function () {
         console.log('1')
         this.setData({
             closeBtn: !0
