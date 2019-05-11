@@ -149,8 +149,14 @@ Page({
             url: '../haibao/haibao',
         })
     },
+    // onShareAppMessage: function (res) {
+    //     return s.onShareAppMessage();
+    // },
+
     onShareAppMessage: function (res) {
-        return s.onShareAppMessage();
+        return this.setData({
+            maskDis:'none'
+        }), s.onShareAppMessage();
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

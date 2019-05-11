@@ -18,6 +18,8 @@ var openid=''
 var sessionKey=""
 var iv=""
 var encryptedData=""
+var phoneerror=""
+var goodImg=""
 // var phonetype=""
 // 当前登录人的openid
 var f = getApp();
@@ -72,7 +74,7 @@ Page((a = {
         },
         buyType: "",
         rewardDis:'none',
-        notaddDis:'block',
+        notaddDis:'none',
         addDis:'none',
         pickerOption: {},
         specsData: [],
@@ -240,6 +242,7 @@ Page((a = {
        
     },
     getDetail: function (t) {
+        console.log(phoneerror)
         var e = this, a = parseInt(Date.now() / 1e3);
         e.setData({
             loading: !0
@@ -248,18 +251,26 @@ Page((a = {
         }, function (t) {
             console.log(t)
             merchid=t.goods.merchid
-            // shareprice = t.goods.share_price
-            // clickprice = t.goods.click_price
-            // commission = t.goods.commission
             reward=t.goods.reward
             console.log(reward)
             if(reward==0){
                 e.setData({
                     rewardDis:'none',
-                    shareprice : t.goods.share_price,
-                    clickprice:  t.goods.click_price,
-                    commission:  t.goods.commission,
                 })
+                // 未添加手机号
+                if (phoneerror==1){
+                e.setData({
+                    notaddDis: 'block',
+                    addDis: 'none',
+                })
+                }else{
+                    // 已添加手机号
+                    e.setData({
+                        notaddDis: 'none',
+                        addDis: 'block',
+                    })
+                }
+                
             }else{
                 e.setData({
                     rewardDis: 'block',
@@ -535,6 +546,12 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
+        s.get("goods/poster/sharegoodsimg", {
+           id: t.id,
+        }, function (a) {
+            console.log(a)
+            goodImg=a.url
+            })
         // console.log(reward)
         wx.login({
             success: function (a) {
@@ -552,37 +569,32 @@ Page((a = {
             openid: openid,
         }, function (t) {
         console.log(t)
+        phoneerror=t.error
         if(t.error==1){
             console.log("未添加手机号")
-            console.log(reward)
-            // 有赏金
-            if(reward==1){
-            e.setData({
-                notaddDis:"block",
-                addDis:'none'
-            })
-            }else{
-                // 无赏金
-                e.setData({
-                    notaddDis: "none",
-                    addDis: 'block'
-                })
-            }
+            // e.setData({
+            //     notaddDis: "block",
+            //     addDis: 'none'
+            // })
+            // // 有赏金
+            // if(reward==1){
+            // e.setData({
+            //     notaddDis:"block",
+            //     addDis:'none'
+            // })
+            // }else{
+            //     // 无赏金
+            //     e.setData({
+            //         notaddDis: "none",
+            //         addDis: 'block'
+            //     })
+            // }
         }else{
             console.log("已添加手机号")
-            // 有赏金
-            if (reward == 1) {
-                e.setData({
+                  e.setData({
                     notaddDis: "none",
                     addDis: 'block'
                 })
-            }else{
-                // 无赏金
-                e.setData({
-                    notaddDis: "none",
-                    addDis: 'block'
-                })
-            }
         }
         } )
         console.log(t)
@@ -617,23 +629,36 @@ Page((a = {
         console.log(t.mid)
 
         if (t.mid == undefined || !t.mid) {
+            console.log('没有mid')
             console.log(o.getCache('userinfo'))
             var userinfo = o.getCache('userinfo');
             t.mid = sharemid = userinfo.id;
         } else {
+            console.log('有mid')
             sharemid = t.mid;
+            console.log(sharemid)
+            console.log(sharemid)
+            goodsid = t.id;
+            s.get("myown/goodshare/click", {
+                goodid: goodsid,
+                openid: openid,
+                share_id: sharemid
+            }, function (e) {
+                console.log(e)
+                console.log('用户点击详情页')
+            })
         }
-        console.log(sharemid)
-      console.log(sharemid)
-
-      goodsid = t.id;
-        s.get("myown/goodshare/click", {
-            goodid: goodsid,
-            openid: openid,
-            share_id: sharemid
-        }, function (e) {
-            console.log(e)
-        })
+        // console.log(sharemid)
+        // console.log(sharemid)
+        // goodsid = t.id;
+        // s.get("myown/goodshare/click", {
+        //     goodid: goodsid,
+        //     openid: openid,
+        //     share_id: sharemid
+        // }, function (e) {
+        //     console.log(e)
+        //     console.log('用户点击详情页')
+        // })
         o.setCache("sharemid", sharemid, 7200 * 24);
         this.setData({
             id: t.id
@@ -748,31 +773,31 @@ Page((a = {
     getIndex: function (t, e) {
         return r.getIndex(t, e);
     },
-    onShareAppMessage: function () {
-        return this.setData({
-            closeBtn: !1
-        }), s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
-    },
-
-    // onShareAppMessage: function (res) {
-    //     var that = this;
-    //     that.setData({
+    // onShareAppMessage: function () {
+    //     return this.setData({
     //         closeBtn: !1
-    //     })
-    //     return {
-    //         title: that.data.goods.title,
-    //         path: "/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid,
-    //         imageUrl:"http://paokucoin.com/img/backgroup/shareurl.png",
-    //         success: function (res) {
-    //             // 转发成功
-
-    //             that.shareClick();
-    //         },
-    //         fail: function (res) {
-    //             // 转发失败
-    //         }
-    //     }
+    //     }), s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
     // },
+
+    onShareAppMessage: function (res) {
+        var that = this;
+        that.setData({
+            closeBtn: !1
+        })
+        return {
+            title: that.data.goods.title,
+            path: "/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid,
+            imageUrl: goodImg,
+            success: function (res) {
+                // 转发成功
+
+                that.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 
     showpic: function () {
         this.setData({
