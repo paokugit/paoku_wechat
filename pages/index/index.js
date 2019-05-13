@@ -652,7 +652,10 @@ Page((e = {
                             parent_id: i.globalData.bindscene
                         }, function (u) {
                             console.log(u)
-                            i.globalData.applogin=1
+                            if(u.status==0){
+                                i.globalData.applogin = 1
+                            }
+                            
                         })
                     }
                     wx.getWeRunData({
