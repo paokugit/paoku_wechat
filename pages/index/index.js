@@ -23,6 +23,7 @@ var formid=''
 var scene=''
 var login=''
 var openid=''
+var version=1
 Page((e = {
     onPullDownRefresh: function () {
         var t = this;
@@ -293,6 +294,24 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function (t) {
+      s.get("version/appversion", {
+        openid: userinfo.openid,
+      }, function (eve) {
+        console.log(eve)
+        if (eve.app_version == "devtools"){//开发者工具
+          version = 1;
+        }
+        if (eve.app_version == 0 ){//体验版，开发版，审核版
+          version = 0;
+        }
+        if (eve.app_version >0) {//正式版
+          version = 1;
+        }
+      })
+
+
+
+
         var a = this;
         wx.getSetting({
           success: function (e) {
