@@ -23,16 +23,19 @@ Page({
       
        var a, t = this.data.detail;
        var s = '/pages/index/index';
+      console.log(t.couponid)
+      console.log(t.reurl)
        if (t.couponid == 2){
           wx.redirectTo({
             url: t.reurl
           })
-        }
-        0 != t.coupontype ? (1 == t.coupontype ? a = "/pages/member/recharge/index" : 2 == t.coupontype && (a = "/pages/sale/coupon/my/index"),
-        wx.redirectTo({
-            url: a
-        })) : wx.switchTab({
-            url: '/pages/index/index'
-        });
+        }else{
+          0 != t.coupontype ? (1 == t.coupontype ? a = "/pages/member/recharge/index" : 2 == t.coupontype && (a = "/pages/sale/coupon/my/index"),
+            wx.redirectTo({
+              url: a
+            })) : wx.switchTab({
+              url: '/pages/index/index'
+            });
+        }   
     }
 });

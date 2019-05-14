@@ -550,23 +550,19 @@ Page((a = {
     onLoad: function (t) {
         var k=this
         s.get("version/appversion", {
-            openid: openid,
         }, function (eve) {
-            console.log(eve)
-            if (eve.app_version == "devtools") {//开发者工具
-                version = 1;
-            }
-            if (eve.app_version == 0) {//体验版，开发版，审核版
-                version = 0;
-                k.setData({
-                    shareDis: 'none'
-                })
-            }
-            if (eve.app_version > 0) {//正式版
-                version = 1;
-            }
+          console.log(eve)
+          if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+            version = 1;
+          }
+          var reg = /test/;
+          if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版
+            version = 0;
+            k.setData({
+              shareDis: 'none'
+            })
+          }
         })
-
 
         s.get("goods/poster/sharegoodsimg", {
            id: t.id,

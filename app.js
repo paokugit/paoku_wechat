@@ -9,7 +9,6 @@ App({
 
 
   onLaunch: function () {
-      
     var e = this;
     wx.getSystemInfo({
       success: function (t) {
@@ -162,7 +161,7 @@ App({
         });
       }
     });
-  },
+  }, 
 //   globalData: {
 //     appid: "wx4b602a36aa1c67d1",
 //       api: "https://paoku.xingrunshidai.com/app/ewei_shopv2_api.php?i=1",
