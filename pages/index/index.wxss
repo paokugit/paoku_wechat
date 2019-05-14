@@ -533,6 +533,9 @@ image {
     color: #333;
     font-size: 34rpx;
 }
+.merch-reward{
+    width: 260rpx;
+    }
 .reward_box{
     width: 260rpx;
     color: #e01212;
@@ -952,14 +955,18 @@ image {
 }
 
 /* 查看更多-商品-结束 */
+.store-reward{
+    width: 120rpx;
+    height: 40rpx;
+     position: absolute;
+    top: 5rpx;
+    left: 10rpx;
+}
 .rewardBox{
     width: 120rpx;
     height: 40rpx;
     background: #e01212;
     border-radius: 20rpx;
-    position: absolute;
-    top: 5rpx;
-    left: 10rpx;
     color: #fff;
     font-size: 24rpx;
     line-height: 40rpx;

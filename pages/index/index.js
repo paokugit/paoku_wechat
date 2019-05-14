@@ -132,6 +132,8 @@ Page((e = {
         indexdisp:'none',
         circleDis:'none',
         condisp:'block',
+        merchdisp: 'block',
+        storedisp:'block',
         // rewarddisp:'none',
         helpstep:'',
         jindu: 100,
@@ -306,7 +308,9 @@ Page((e = {
         if (eve.app_version == 0 ){//体验版，开发版，审核版
           version = 0;
           k.setData({
-              condisp:'none'
+              condisp:'none',
+              storedisp:'none',
+              merchdisp:'none'
           })
         }
         if (eve.app_version >0) {//正式版

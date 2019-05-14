@@ -151,8 +151,10 @@
         
         <view class='store-service-box-bottom'>
             <view class='club-card-box' wx:for="{{goodlist}}" wx:key="{{index}}">
-            <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
-                <view class='rewardBox' wx:if="{{item.isreward==1}}" style='display:block'>赏金任务</view>
+               <view class='store-reward' style='display:{{storedisp}}'>
+                        <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
+                        <view class='rewardBox' wx:if="{{item.isreward==1}}" style='display:block'>赏金任务</view>
+               </view>
                 <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-img-box'>
                 
                     <image class='club-card-img' src='{{item.thumb}}'></image>
@@ -227,13 +229,15 @@
             </navigator>
             <navigator class='store-details-box'   url='/pages/changce/merch/detail?id={{item.id}}'>
                 <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
-                 <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
-                    <text class='reward_text'>赏金任务</text>
-                    <text class='reward_money'>赚￥{{item.reward_money}}</text>
-                </view>
-                 <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
-                    <text class='reward_text'>赏金任务</text>
-                    <text class='reward_money'>赚￥{{item.reward_money}}</text>
+                 <view class='merch-reward' style='display:{{merchdisp}}'>
+                        <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
+                            <text class='reward_text'>赏金任务</text>
+                            <text class='reward_money'>赚￥{{item.reward_money}}</text>
+                        </view>
+                        <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
+                            <text class='reward_text'>赏金任务</text>
+                            <text class='reward_money'>赚￥{{item.reward_money}}</text>
+                        </view>
                 </view>
                 <view class='office-hour'>主营：{{item.salecate}}</view>
                 <view class=' store-address'>{{item.address}}</view>
