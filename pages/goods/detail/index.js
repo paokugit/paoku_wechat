@@ -78,6 +78,7 @@ Page((a = {
         notaddDis:'none',
         addDis:'none',
         shareDis:'block',
+        listDis:'block',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -244,6 +245,7 @@ Page((a = {
        
     },
     getDetail: function (t) {
+       
         console.log(phoneerror)
         var e = this, a = parseInt(Date.now() / 1e3);
         e.setData({
@@ -252,6 +254,7 @@ Page((a = {
             id: t.id
         }, function (t) {
             console.log(t)
+            
             merchid=t.goods.merchid
             reward=t.goods.reward
             console.log(reward)
@@ -279,6 +282,12 @@ Page((a = {
                     shareprice:  t.goods.share_price,
                     clickprice:  t.goods.click_price,
                     commission:  t.goods.commission,
+                })
+            }
+            console.log(version)
+            if(version==0){
+                e.setData({
+                    rewardDis: 'none',
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -559,7 +568,9 @@ Page((a = {
           if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版
             version = 0;
             k.setData({
-              shareDis: 'none'
+              shareDis: 'none',
+            //   rewardDis:'none',
+              listDis:'none'
             })
           }
         })

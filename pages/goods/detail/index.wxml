@@ -417,7 +417,8 @@
                 </view>
             </view>
             <view class="fui-cell-group fui-shop-group">
-                <view class="fui-list">
+            <!-- 隐藏 -->
+                <view class="fui-list" style='display:{{listDis}}'>
                     <view class="fui-list-media">
                         <image src="{{goods.shopdetail.logo}}"></image>
                     </view>
@@ -428,6 +429,7 @@
                         <view class="subtitle" wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
                     </view>
                 </view>
+                 <!-- 隐藏 -->
             </view>
             <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">
                 <view class="fui-cell" style="display: block;">
