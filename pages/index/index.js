@@ -132,6 +132,8 @@ Page((e = {
         indexdisp:'none',
         circleDis:'none',
         condisp:'block',
+        merchdisp: 'block',
+        storedisp:'block',
         // rewarddisp:'none',
         helpstep:'',
         jindu: 100,
