@@ -611,6 +611,7 @@ image {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative
 }
 
 .club-card-img-box {
@@ -951,3 +952,16 @@ image {
 }
 
 /* 查看更多-商品-结束 */
+.rewardBox{
+    width: 120rpx;
+    height: 40rpx;
+    background: #e01212;
+    border-radius: 20rpx;
+    position: absolute;
+    top: 5rpx;
+    left: 10rpx;
+    color: #fff;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    text-align: center
+}

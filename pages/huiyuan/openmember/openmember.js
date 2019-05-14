@@ -2,6 +2,10 @@
 var a, e, i = getApp(), s = i.requirejs("core"), n = i.requirejs("wxParse/wxParse"), 
     r = i.requirejs("biz/diyform"), d = i.requirejs("biz/goodspicker"), c = (i.requirejs("foxui"),
         i.requirejs("jquery"));
+//   当前登录人的openid
+var f = getApp();
+var userinfo = f.getCache('userinfo');
+console.log(userinfo)
 Page({
  
     /**
@@ -34,15 +38,15 @@ Page({
     },
     pay: function () {
         var a = this;
-        let open = wx.getStorageSync('openid')
+        // let open = wx.getStorageSync('openid')
         let hy = wx.getStorageSync('hyid')
-        console.log(open)
+        console.log(userinfo.openid)
         console.log(hy)
         s.get("order/create/submit", {
             id: hy,
             'goods[0][id]': hy,
             'goods[0][goodsid]': hy,
-            openid: open
+            openid: userinfo.openid
         }, function (f) {
             console.log(22222)
             
@@ -72,25 +76,10 @@ Page({
      */
     onLoad: function (options) {
         var a=this;
-        let open = wx.getStorageSync('openid')
-        s.get("member", {
-            openid: open
-        }, function (u) {
-            if (u.levelid !=0){
-                wx.reLaunch({
-                    url: "/pages/huiyuan/membercenter/membercenter"
-                })
-            }
-            
-            // a.setData(ii)
-        })
-        
-
-
         s.get("goods/get_list", {
            page:1,
            cate:4,
-           openid:open
+           openid:userinfo.openid
         }, function (e) {
             console.log(111)
             console.log(e)
@@ -124,7 +113,18 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        console.log(userinfo.openid)
+        s.get("member", {
+            openid: userinfo.openid
+        }, function (u) {
+            if (u.levelid != 0) {
+                wx.reLaunch({
+                    url: "/pages/huiyuan/membercenter/membercenter"
+                })
+            }
 
+            // a.setData(ii)
+        })
     },
 
     /**

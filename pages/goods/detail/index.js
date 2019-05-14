@@ -20,6 +20,7 @@ var iv=""
 var encryptedData=""
 var phoneerror=""
 var goodImg=""
+var version = 1
 // var phonetype=""
 // 当前登录人的openid
 var f = getApp();
@@ -76,6 +77,7 @@ Page((a = {
         rewardDis:'none',
         notaddDis:'none',
         addDis:'none',
+        shareDis:'block',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -546,6 +548,26 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
+        var k=this
+        s.get("version/appversion", {
+            openid: openid,
+        }, function (eve) {
+            console.log(eve)
+            if (eve.app_version == "devtools") {//开发者工具
+                version = 1;
+            }
+            if (eve.app_version == 0) {//体验版，开发版，审核版
+                version = 0;
+                k.setData({
+                    shareDis: 'none'
+                })
+            }
+            if (eve.app_version > 0) {//正式版
+                version = 1;
+            }
+        })
+
+
         s.get("goods/poster/sharegoodsimg", {
            id: t.id,
         }, function (a) {

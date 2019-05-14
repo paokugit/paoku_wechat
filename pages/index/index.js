@@ -131,6 +131,7 @@ Page((e = {
         mp3_url: '',
         indexdisp:'none',
         circleDis:'none',
+        condisp:'block',
         // rewarddisp:'none',
         helpstep:'',
         jindu: 100,
@@ -294,6 +295,7 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function (t) {
+        var k=this
       s.get("version/appversion", {
         openid: userinfo.openid,
       }, function (eve) {
@@ -303,6 +305,9 @@ Page((e = {
         }
         if (eve.app_version == 0 ){//体验版，开发版，审核版
           version = 0;
+          k.setData({
+              condisp:'none'
+          })
         }
         if (eve.app_version >0) {//正式版
           version = 1;

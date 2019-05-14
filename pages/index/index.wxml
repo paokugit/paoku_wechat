@@ -151,7 +151,10 @@
         
         <view class='store-service-box-bottom'>
             <view class='club-card-box' wx:for="{{goodlist}}" wx:key="{{index}}">
+            <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
+                <view class='rewardBox' wx:if="{{item.isreward==1}}" style='display:block'>赏金任务</view>
                 <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-img-box'>
+                
                     <image class='club-card-img' src='{{item.thumb}}'></image>
                 </navigator>
                 <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con flex_center'>{{item.title}}</navigator>
@@ -197,7 +200,7 @@
         </view> -->
     </view>
 </view>
-<view class='conbox'>
+<view class='conbox' style='display:{{condisp}}'>
     <!-- 附近商家-开始 -->
     <view class='nearby-shops-titlebox'>
         <view class='nearbyshops-title flex_center'>附近商家</view>
@@ -222,7 +225,7 @@
             <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
                 <image src='{{item.logo}}'></image>
             </navigator>
-            <view class='store-details-box'>
+            <navigator class='store-details-box'   url='/pages/changce/merch/detail?id={{item.id}}'>
                 <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
                  <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
                     <text class='reward_text'>赏金任务</text>
@@ -234,7 +237,7 @@
                 </view>
                 <view class='office-hour'>主营：{{item.salecate}}</view>
                 <view class=' store-address'>{{item.address}}</view>
-            </view>
+            </navigator>
         </view>
 
     </view>

@@ -96,7 +96,7 @@
                     </view>
                     <!-- wx:if="{{goods.showshare}}" -->
                     <!-- 分享 -->
-                    <view class="shareBox">
+                    <view class="shareBox" style='display:{{shareDis}}'>
                         <view class='notadd_flex' style='display:{{notaddDis}}'>
                         <button   class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
                     <view  bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
