@@ -512,7 +512,7 @@ image {
 .store-img {
     width: 150rpx;
     height: 150rpx;
-    border: 1px solid #ccc;
+    border: 1px solid #f8f8f8;
 }
 .storeImg{
     width: 100%
