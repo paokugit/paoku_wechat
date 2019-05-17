@@ -789,6 +789,8 @@ Page((e = {
         }
     },
     imagesHeight: function (t) {
+        console.log('wwwwww')
+        console.log(t)
         var a = t.detail.width, e = t.detail.height, i = t.target.dataset.type, s = this;
         wx.getSystemInfo({
             success: function (t) {

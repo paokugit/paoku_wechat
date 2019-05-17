@@ -139,8 +139,9 @@
                 </view>
             </view>
 
-            <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img flex_center'>
-                <image src='{{merchInfo.logo}}'></image>
+            <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img '>
+                <image class='storeImg' mode="aspectFit"  src='{{merchInfo.logo}}' ></image>
+                <!-- bindload="imagesHeight"  mode="widthFix" -->
             </navigator>
             <view class='store-details-box'>
                 <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}'  class='storename'>{{merchInfo.merchname}}</navigator>
@@ -225,7 +226,7 @@
                 </view>
             </navigator>
             <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
-                <image src='{{item.logo}}'></image>
+                <image mode="aspectFit" src='{{item.logo}}'></image>
             </navigator>
             <navigator class='store-details-box'   url='/pages/changce/merch/detail?id={{item.id}}'>
                 <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>

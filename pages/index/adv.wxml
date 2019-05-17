@@ -5,7 +5,7 @@
                 <block wx:for="{{item.data}}" wx:for-index="idx">
                     <swiper-item>
                         <navigator class="index-advs-navigator" openType="navigate" url="{{item.link}}">
-                            <image bindload="imagesHeight" class="advimg" data-type="advsheight" mode="widthFix" src="{{item.thumb}}"></image>
+                            <image bindload="imagesHeight"  mode="widthFix" class="advimg"   data-type="advsheight"  src="{{item.thumb}}"></image>
                         </navigator>
                     </swiper-item>
                 </block>

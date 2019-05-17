@@ -229,9 +229,13 @@ Page((e = {
         }
     },
     imagesHeight: function(t) {
+        console.log('wwww')
+        console.log(t)
         var a = t.detail.width, e = t.detail.height, i = t.target.dataset.type, s = this;
         wx.getSystemInfo({
             success: function(t) {
+                console.log('hhhhh')
+                console.log(t)
                 s.data.result[i] = t.windowWidth / a * e, (!s.data[i] || s.data[i] && result[i] < s.data[i]) && s.setData({
                     result: s.data.result
                 });
