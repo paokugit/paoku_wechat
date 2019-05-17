@@ -259,24 +259,28 @@ Page((a = {
             reward=t.goods.reward
             console.log(reward)
             if(reward==0){
+                // 没有赏金任务
                 e.setData({
+                    addDis: 'block',
                     rewardDis:'none',
                 })
+               
+                
+            }else{
+                // 有赏金任务
                 // 未添加手机号
-                if (phoneerror==1){
-                e.setData({
-                    notaddDis: 'block',
-                    addDis: 'none',
-                })
-                }else{
+                if (phoneerror == 1) {
+                    e.setData({
+                        notaddDis: 'block',
+                        addDis: 'none',
+                    })
+                } else {
                     // 已添加手机号
                     e.setData({
                         notaddDis: 'none',
                         addDis: 'block',
                     })
                 }
-                
-            }else{
                 e.setData({
                     rewardDis: 'block',
                     shareprice:  t.goods.share_price,
@@ -568,7 +572,6 @@ Page((a = {
           if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版
             version = 0;
             k.setData({
-              shareDis: 'none',
             //   rewardDis:'none',
               listDis:'none'
             })
