@@ -659,7 +659,9 @@ Page((a = {
             console.log(t.mid)
         }
         console.log(t.mid)
-
+        goodsid = t.id;
+        console.log('goosid')
+        console.log(goodsid)
         if (t.mid == undefined || !t.mid) {
             console.log('没有mid')
             console.log(o.getCache('userinfo'))
@@ -668,9 +670,6 @@ Page((a = {
         } else {
             console.log('有mid')
             sharemid = t.mid;
-            console.log(sharemid)
-            console.log(sharemid)
-            goodsid = t.id;
             s.get("myown/goodshare/click", {
                 goodid: goodsid,
                 openid: openid,
@@ -863,16 +862,32 @@ Page((a = {
         });
     },
     sharePoster: function () {
+        console.log('用户点击海报分享')
+        console.log(productid)
         s.get("myown/goodshare/share", {
-            goodid: goodid,
+            goodid: productid,
             openid: openid
         }, function (a) {
             console.log(a)
+            console.log('haibao分享')
             console.log("aaaaaaaaaaaaaaa")
         })
         wx.navigateTo({
             url: "/pages/goods/poster/poster?id=" + this.data.uid
         });
+       
+    },
+    // 微信分享
+    shareweixin: function() {
+        console.log('用户点击微信分享')
+        s.get("myown/goodshare/share", {
+            goodid: productid,
+            openid: openid
+        }, function (a) {
+            console.log(a)
+            console.log('weixin分享')
+            console.log("eeeeeeee")
+        })
     },
     closeBtn: function () {
         this.setData({
