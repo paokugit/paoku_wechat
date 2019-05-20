@@ -80,6 +80,7 @@ Page({
             var i = this;
             if (i.data.detail.province && i.data.detail.city && this.data.openstreet) {
                 var r = t[a[0]].city[a[1]].code, s = t[a[0]].city[a[1]].area[a[2]].code;
+                console.log(t)
                 e.get("getstreet", {
                     city: r,
                     area: s
@@ -99,6 +100,7 @@ Page({
         }
     },
     selectArea: function(t) {
+      console.log(t)
         var e = t.currentTarget.dataset.area, a = this.getIndex(e, this.data.areas);
         this.setData({
             pval: a,

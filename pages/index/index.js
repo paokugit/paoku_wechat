@@ -311,9 +311,7 @@ Page((e = {
               condisp: 'none',
                 storedisp:'none'
             })
-          }
-          //f.setCache('version', version,72000);
-          
+          }          
         })
 
         var a = this;
