@@ -4,7 +4,7 @@
 <view bindtap="closeBtn" class="page-shade" wx:if="{{show&&closeBtn}}">></view>
 <view class="fui-share {{isIpx?'fui-iphonex-share':''}}" wx:if="{{show&&closeBtn}}">
     <view class="share-choose">
-        <button openType="share" style="border: none;background:none;padding-left: 0;line-height: 1;margin: 0;">
+        <button openType="share" style="border: none;background:none;padding-left: 0;line-height: 1;margin: 0;" bindtap='shareweixin'>
             <view class="share-wechat">
                 <image src="/static/images/share/wechat.png"></image>
                 <view class="text-explain">分享给朋友</view>
@@ -418,7 +418,8 @@
             </view>
             <view class="fui-cell-group fui-shop-group">
             <!-- 隐藏 -->
-                <view class="fui-list" style='display:{{listDis}}'>
+            <view class='hiddenbox' style='display:{{listDis}}'>
+                <view class="fui-list" >
                     <view class="fui-list-media">
                         <image src="{{goods.shopdetail.logo}}"></image>
                     </view>
@@ -429,6 +430,7 @@
                         <view class="subtitle" wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
                     </view>
                 </view>
+            </view>
                  <!-- 隐藏 -->
             </view>
             <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">

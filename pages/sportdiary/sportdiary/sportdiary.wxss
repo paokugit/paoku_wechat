@@ -54,8 +54,8 @@ image{
     display: flex;
     justify-content: space-around;
     position: absolute;
-    bottom: 80rpx;
-    margin-top: 20rpx
+    bottom: 40rpx;
+    margin-top: 60rpx
 }
 .diary-explain{
     width: 100%;

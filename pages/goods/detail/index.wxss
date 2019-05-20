@@ -6,7 +6,10 @@
 .picker-modal {
     height: auto;
 }
-
+.hiddenbox{
+    width: auto;
+    height: auto
+}
 .shareBox {
     width: 140rpx;
     height: 60rpx;
