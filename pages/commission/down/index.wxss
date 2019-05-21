@@ -1,18 +1,21 @@
 /* @import "../../../__wuBaseWxss__/4.wxss"; */
-page{
+
+page {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
-.bg_box{
+
+.bg_box {
     width: 100%;
     height: 240rpx;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative
+    position: relative;
 }
-.bg_text_box{
+
+.bg_text_box {
     width: 722rpx;
     height: 232rpx;
     position: absolute;
@@ -22,38 +25,70 @@ page{
     justify-content: center;
     align-items: center;
 }
-.bg_text{
+
+.text-top {
+    width: 100%;
+    height: 170rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #f00 */
+}
+
+.bg_text {
     color: #fff;
     font-size: 30rpx;
-    font-weight: bold
+    font-weight: bold;
 }
-.bg_num{
+
+.bg_num {
     color: #fff;
     font-size: 60rpx;
     font-weight: bold;
-    margin-top: 20rpx
+    margin-top: 8rpx;
 }
-.greenbg{
+
+.text-bottom {
+    width: 90%;
+    height: 50px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.text-bottom-left, .text-bottom-right{
+    color: #fff;
+    font-size: 26rpx
+}
+.text-num{
+    margin-left: 10rpx
+}
+.greenbg {
     width: 722rpx;
     height: 232rpx;
     position: absolute;
-    top: 0
+    top: 0;
 }
-.row-text{
+
+.row-text {
     width: 80rpx;
     height: 40rpx;
     display: flex;
-    align-items: center
+    align-items: center;
 }
-.img_box{
+
+.img_bg-numox {
     width: 28rpx;
     height: 28rpx;
-    margin-left: 20rpx
+    margin-left: 20rpx;
 }
-image{
+
+image {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
+
 .com-down .subtitle {
     font-size: 24rpx;
     color: #999;
@@ -73,21 +108,24 @@ image {
     height: 80rpx;
     border-radius: 50%;
 }
-.fui-list{
+
+.fui-list {
     width: 98%;
     height: 150rpx;
-    padding-right: 30rpx
+    padding-right: 30rpx;
 }
+
 .com-down .fui-list-inner .row {
     font-size: 28rpx;
 }
- .fui-list-inner{
-     width: 400rpx;
-     height: 80rpx;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between
- }
+
+.fui-list-inner {
+    width: 400rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .com-down .row-remark {
     text-align: right;
@@ -98,9 +136,38 @@ image {
     color: #000;
     font-size: 24rpx;
 }
+
 button::after {
-  border: none;
+    border: none;
 }
+
 button {
-  background-color: #01d7a1;
+    background-color: #01d7a1;
+}
+
+.recommend-box {
+    width: 100%;
+    height: 120rpx;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommend-center {
+    width: 90%;
+    height: 120rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommend-left {
+    color: #1e1e1e;
+    font-size: 28rpx;
+}
+
+.recommend-right {
+    color: #9a9a9a;
+    font-size: 28rpx;
 }

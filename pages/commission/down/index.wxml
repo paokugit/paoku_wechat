@@ -4,10 +4,25 @@
     </block>
 </block>
 <view class='bg_box'>
-    <view class='greenbg'><image src='{{globalimg}}/cen-greenbg.png'></image></view>
+    <view class='greenbg'>
+        <image src='{{globalimg}}/cen-greenbg.png'></image>
+    </view>
     <view class='bg_text_box'>
-        <view class='bg_text'>推荐好友</view>
-        <view class='bg_num'>{{total}}</view>
+        <view class='text-top'>
+            <view class='bg_text'>推荐好友</view>
+            <view class='bg_num'>{{total}}</view>
+        </view>
+        <view class='text-bottom'>
+            <view class='text-bottom-left'>店主<text class='text-num'>111</text></view>
+            <view class='text-bottom-right'>粉丝量<text class='text-num'>111</text></view>
+        </view>
+    </view>
+</view>
+<!-- 推荐码 -->
+<view class='recommend-box'>
+    <view class='recommend-center'>
+        <view class='recommend-left'>推荐码：{{recommendid}}</view>
+        <view class='recommend-right'>推荐人：{{agentname}}</view>
     </view>
 </view>
 <block>
@@ -26,30 +41,30 @@
                                         <view class="row-text">
                                             {{item.nickname||'未获取'}}
                                             <view>
-                                            <!-- 会员图片 -->
-                                            <view class='img_box' wx:if="{{item.agentlevel==1}}">
-                                                <image src='{{globalimg}}/jiankang-star.png'></image>
-                                            </view>
-                                            <view class='img_box' wx:if="{{item.agentlevel==2}}">
-                                                <image src='{{globalimg}}/xingxuan-star.png'></image>
-                                            </view>
-                                            <view class='img_box' wx:if="{{item.agentlevel==3}}">
-                                                <image src='{{globalimg}}/rongyao-star.png'></image>
-                                            </view>
-                                            <view class='img_box' wx:if="{{item.agentlevel==5}}">
-                                                <image src='{{globalimg}}/dianzhu-star.png'></image>
-                                            </view>
+                                                <!-- 会员图片 -->
+                                                <view class='img_box' wx:if="{{item.agentlevel==1}}">
+                                                    <image src='{{globalimg}}/jiankang-star.png'></image>
+                                                </view>
+                                                <view class='img_box' wx:if="{{item.agentlevel==2}}">
+                                                    <image src='{{globalimg}}/xingxuan-star.png'></image>
+                                                </view>
+                                                <view class='img_box' wx:if="{{item.agentlevel==3}}">
+                                                    <image src='{{globalimg}}/rongyao-star.png'></image>
+                                                </view>
+                                                <view class='img_box' wx:if="{{item.agentlevel==5}}">
+                                                    <image src='{{globalimg}}/dianzhu-star.png'></image>
+                                                </view>
                                             </view>
                                             <text style='color:#9a9a9a;font-size24rpx;margin-left:15rpx'>{{item.levelname}}</text>
-                  </view>
+                                        </view>
                                     </view>
                                     <view class="subtitle">注册时间: {{item.createtime}}</view>
                                 </view>
                                 <block>
-                                    <block >
+                                    <block>
                                         <view class="row-remark">
                                             <view style='font-size:30rpx;color:#333;text-align:center'>
-                                            {{item.agentcount}}
+                                                {{item.agentcount}}
                                             </view>
                                             <view style='font-size:24rpx;color:#9a9a9a;text-align:center;'>好友数</view>
                                         </view>

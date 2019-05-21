@@ -15,6 +15,14 @@ Page({
     },
     onLoad: function () {
         this.getSet(), this.getList();
+        var that=this
+        t.get("commission/index", {}, function (t) {
+            console.log(t)
+            that.setData({
+                recommendid:t.member.id,
+                agentname: t.agentname,
+            })
+        })
     },
     onReachBottom: function () {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
