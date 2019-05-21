@@ -9,6 +9,7 @@ Page({
     getData: function() {
         var e = this;
         t.get("commission/index", {}, function(t) {
+            console.log(t)
             7e4 != t.error ? (t.show = !0, e.setData(t), wx.setNavigationBarTitle({
                 title: t.set.texts.center
             })) : wx.redirectTo({

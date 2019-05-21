@@ -1,12 +1,17 @@
 {
     "pages": [
+        "pages/commission/down/index",
         "pages/index/index",
+       
+       
+       
+        
         "pages/helphand/helpshare/helpshare",
        
         "pages/helphand/friendhelp/friendhelp",
        
         
-       "pages/commission/down/index",
+      
        
        
         "pages/message/auth/index",
