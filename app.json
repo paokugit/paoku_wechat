@@ -1,31 +1,18 @@
 {
     "pages": [
-        "pages/commission/down/index",
         "pages/index/index",
-       
-       
-       
-        
+        "pages/commission/down/index",
         "pages/helphand/helpshare/helpshare",
-       
         "pages/helphand/friendhelp/friendhelp",
-       
-        
-      
-       
-       
         "pages/message/auth/index",
-       
         "pages/helphand/powerlist/powerlist",
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
-       
         "pages/huiyuan/hygrade/hygrade",
         "pages/lottery/lottery/lottery",
         "pages/sportdiary/sportdiary/sportdiary",
         "pages/goods/detail/index",
         "pages/member/balance/balance",
-       
         "pages/commission/transmit/transmit",
         "pages/helphand/mypowerlist/mypowerlist",
         "pages/member/log/bushu",

@@ -13,8 +13,12 @@
             <view class='bg_num'>{{total}}</view>
         </view>
         <view class='text-bottom'>
-            <view class='text-bottom-left'>店主<text class='text-num'>111</text></view>
-            <view class='text-bottom-right'>粉丝量<text class='text-num'>111</text></view>
+            <!-- <view class='text-bottom-left'>店主
+                <text class='text-num'>111</text>
+            </view> -->
+            <!-- <view class='text-bottom-right'>粉丝量
+                <text class='text-num'>{{allcount}}</text>
+            </view> -->
         </view>
     </view>
 </view>
@@ -39,7 +43,7 @@
                                 <view class="fui-list-inner">
                                     <view class="row">
                                         <view class="row-text">
-                                            {{item.nickname||'未获取'}}
+                                            <view class='friend-nickname'> {{item.nickname||'未获取'}}</view>
                                             <view>
                                                 <!-- 会员图片 -->
                                                 <view class='img_box' wx:if="{{item.agentlevel==1}}">

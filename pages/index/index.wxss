@@ -830,6 +830,7 @@ image {
 .exchange-product {
     width: 360rpx;
     height: 480rpx;
+     /* height: auto; */
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -972,4 +973,17 @@ image {
     font-size: 24rpx;
     line-height: 40rpx;
     text-align: center
+}
+/* 包邮 */
+.postage-free-box{
+     width: 93%;
+    height: 30rpx;
+}
+.postage-free{
+    width: 50rpx;
+    height: 30rpx;
+    text-align: center;
+    color: #e01212;
+    font-size: 20rpx;
+    border: 1px solid #e01212
 }
