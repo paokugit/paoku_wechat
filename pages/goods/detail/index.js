@@ -292,6 +292,7 @@ Page((a = {
             if(version==0){
                 e.setData({
                     rewardDis: 'none',
+                    shareDis:'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
