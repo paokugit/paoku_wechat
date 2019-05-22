@@ -1,21 +1,10 @@
 {
     "pages": [
-        "pages/commission/down/index",
         "pages/index/index",
-       
-       
-       
-        
+        "pages/commission/down/index",
         "pages/helphand/helpshare/helpshare",
-       
         "pages/helphand/friendhelp/friendhelp",
-       
-        
-      
-       
-       
         "pages/message/auth/index",
-       
         "pages/helphand/powerlist/powerlist",
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
