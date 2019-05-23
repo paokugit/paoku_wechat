@@ -29,6 +29,7 @@ var scene = ''
 var login = ''
 var openid = ''
 var version = 1
+var currency_step=''
 Page((e = {
     onPullDownRefresh: function() {
         var t = this;
@@ -329,7 +330,7 @@ Page((e = {
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
                 version = 0;
                 k.setData({
-                    condisp: 'none',
+                    // condisp: 'none',
                     storedisp: 'none'
                 })
             }
@@ -523,8 +524,11 @@ Page((e = {
         });
 
         s.get("bushu", {}, function(tt) {
+            console.log(tt)
             if (tt.error == 0) {
                 console.log(tt.result);
+                // currency_step = tt.result.step
+                // console.log(currency_step)
                 // console.log('更新步数');
                 if (tt.result.length <= 1) {
                     a.setData({
@@ -534,8 +538,10 @@ Page((e = {
                 a.setData({
                     my_currency: tt.result,
                     mp3_url: tt.url,
-                    type: tt.result.type
+                    type: tt.result.type,
+                    // currency_step:tt.result.step
                 });
+               
             }
         });
     },
@@ -548,18 +554,22 @@ Page((e = {
 
     receive: function(t) {
         var ttt = this;
+        console.log(t)
+        console.log(t.currentTarget.dataset.step)
         if (1 == ttt.data.is_receive) {
             ttt.setData({
                 is_receive: 2
             });
             var eee = t.currentTarget.dataset.id,
                 aaa = t.currentTarget.dataset.source,
+                curstep = t.currentTarget.dataset.step,
                 sss = wx.createInnerAudioContext();
             s.get("getkll", {
                 id: eee,
-                source: aaa
+                source: aaa,
+                step: curstep
             }, function(t) {
-
+                console.log(t)
                 ttt.setData({
                     is_receive: 1
                 });
