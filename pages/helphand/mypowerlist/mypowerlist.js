@@ -46,6 +46,7 @@ Page({
         a.get("refresh_step", {
             openid: userinfo.openid
         }, function (e) {
+            console.log(e)
             tt.setData({
                 step: e.result.step
             })

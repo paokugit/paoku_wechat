@@ -114,9 +114,6 @@ Page({
       success(res) {
         console.log(res)
         console.log("getSetting: success");
-        // tt.setData({
-        //   dis: "block"
-        // })
           var aaa = this
           s.get("help/index/addhelp", {
               step: '2000',
