@@ -1,0 +1,43 @@
+<view class='scancode-box'>
+    <!-- <view class='scancode-desc'>消费满50元折扣宝抵扣5元，消费满100元折扣宝抵扣10元</view> -->
+    <view class="marquee">
+        <view class="content">
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+        </view>
+    </view>
+
+    <view class='consume-box'>
+        <view class='consume-top'>
+            <view class='consume-text'>消费金额</view>
+            <input class='consumeipt' type='text' placeholder='输入金额'></input>
+        </view>
+
+        <view class='consume-bottom'>
+            <view class='consume-text'>可使用折扣宝</view>
+            <!-- <view class='balance-no'>余额不足</view> -->
+            <view class='discount-none'>暂无折扣</view>
+        </view>
+    </view>
+
+    <view class='consume-box'>
+        <view class='consume-top'>
+            <view class='consume-text'>折扣宝账户</view>
+            <view class='account-total'>3688.9</view>
+        </view>
+
+        <view class='consume-bottom'>
+            <view class='consume-text'>实际支付</view>
+            <!-- <view class='balance-no'>余额不足</view> -->
+            <view class='payment-num'>￥0.00</view>
+        </view>
+    </view>
+    
+    <view class='paybox'>
+<button class='paybtn'>立即买单</button>
+    </view>
+</view>

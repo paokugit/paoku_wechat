@@ -1,6 +1,10 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/discount/code/code",
+        "pages/huiyuan/openmember/openmember",
+        "pages/discount/scancode/scancode",
+        "pages/discount/discount/discount",
         "pages/commission/down/index",
         "pages/helphand/helpshare/helpshare",
         "pages/helphand/friendhelp/friendhelp",
@@ -18,7 +22,6 @@
         "pages/member/log/bushu",
         "pages/playmethod/playmethod/playmethod",
         "pages/helphand/haibao/haibao",
-        "pages/huiyuan/openmember/openmember",
         "pages/index/moremerch/moremerch",
         "pages/member/index/index",
         "pages/index/huodong",

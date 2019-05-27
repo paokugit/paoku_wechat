@@ -1,0 +1,32 @@
+<view class='discount-box'>
+    <view class='discount-top'>
+        <!-- 扫码付 -->
+        <view class='scan-box'>
+            <view class='code-img'>
+                <image src='{{globalimg}}/saoma@2x.png'></image>
+            </view>
+            <view class='code-text'>扫码付</view>
+        </view>
+        <!-- 扫码付 -->
+        <!-- 商家收款码 -->
+        <view class='receive-code'>
+            <view class='receive-img'>
+                <image src='{{globalimg}}/shoukuan@2x.png'></image>
+            </view>
+            <view class='code-text'>商家收款码</view>
+        </view>
+        <!-- 商家收款码 -->
+    </view>
+    <!-- 账户 -->
+    <view class='account-box'>
+        <view class='zhekoubao-img'>
+            <view class='account-text-box'>
+                <view class='account-num'>2556</view>
+                <text class='account-text'>元</text>
+            </view>
+            <view class='zhanghu-img'><image src='{{globalimg}}/zhanghu@2x.png'></image></view>
+            <image src='{{globalimg}}/zhekoubao@2x.png'></image>
+        </view>
+    </view>
+    <!-- 账户 -->
+</view>
