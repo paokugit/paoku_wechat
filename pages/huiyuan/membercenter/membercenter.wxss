@@ -195,7 +195,8 @@ image{
 }
 .task-box{
     width: 680rpx;
-    height: 600rpx;
+    /* height: 600rpx; */
+    height: 400rpx;
     position: relative
 }
 .task-text{
@@ -206,7 +207,7 @@ image{
 }
 .task-bottom{
     width: 100%;
-    height: 440rpx;
+    height: 220rpx;
     position: absolute;
     top: 75rpx;
     display: flex;
@@ -220,7 +221,8 @@ image{
 }
 .bottomCon{
     width: 100%;
-    height: 440rpx;
+    height: 220rpx;
+     /* height: 440rpx; */
     position: absolute;
     top: 75rpx;
     display: flex;

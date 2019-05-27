@@ -17,7 +17,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-// console.log(userinfo)
+console.log(userinfo)
 wx.setStorageSync("useropenid", userinfo.openid)
 let open = wx.getStorageSync("useropenid")
 // console.log(open)
@@ -330,7 +330,7 @@ Page((e = {
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
                 version = 0;
                 k.setData({
-                    // condisp: 'none',
+                    condisp: 'none',
                     storedisp: 'none'
                 })
             }

@@ -99,21 +99,21 @@
                 <view class='taskbtn qdbtn member_center'>今日已签</view>
             </view>
             <!-- 注册 -->
-            <view class='taskBox'>
+            <!-- <view class='taskBox'>
             <view class='task-tit'>邀请好友注册</view>
                 <view class='task-award'>可赚取10个卡路里</view>
                 <view class='taskbtn zcbtn member_center' catchtap='invite'>去邀请</view>
-            </view>
+            </view> -->
             <!-- 资料 -->
-            <view class='taskBox'>
+            <!-- <view class='taskBox'>
                 <view class='task-tit'>完善资料</view>
                 <view class='task-award'>可赚取2个卡路里</view>
                 <view class='taskbtn zlbtn member_center' bindtap='zlBtn'>去完善</view>
-            </view>
+            </view> -->
             <!-- 分享海报 -->
             <view class='taskBox'>
                 <view class='task-tit'>分享海报</view>
-                <view class='task-award'>可赚取1-10个卡路里</view>
+                <view class='task-award'>可赚取1个卡路里</view>
                 <view class='taskbtn hbbtn member_center' bindtap='hbshare'>去分享</view>
             </view>
         </view>
