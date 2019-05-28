@@ -16,7 +16,7 @@
         <!-- 卡路里余额-结束 -->
         <!-- 点击签到之后的气泡 -->
         <view class="heard-tag absolute">
-            <form bindsubmit="receive" class="heard-tag-list absolute"  data-step="{{item.step}}"  data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
+            <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
                 <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
                     <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
                     <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
@@ -129,6 +129,12 @@
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>
+            <!-- 商家电话 -->
+                <view class='callphone-box' bindtap='tel' data-mobile='{{merchInfo.mobile}}'>
+                    <view class='callphone-img'>
+                        <image src='{{ globalimg}}/callphone.png'></image>
+                    </view>
+                </view>
                 <view class='tuijian'>
                     <image src='{{ globalimg}}/tuijian.png'></image>
                 </view>
@@ -218,6 +224,12 @@
         </view>
         <view class='nearbyshops-box'>
             <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
+            <!-- 商家电话 -->
+                <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
+                    <view class='callphone-img'>
+                        <image src='{{ globalimg}}/callphone.png'></image>
+                    </view>
+                </view>
                 <view class='nearbyshop-distance flex_center'>{{item.disname}}</view>
                 <navigator class='nearbyshop-map-box' url="/pages/changce/merch/intro?id={{item.id}}">
                     <view>地图/导航</view>
@@ -228,7 +240,7 @@
                 <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
                     <image mode="aspectFit" src='{{item.logo}}'></image>
                 </navigator>
-                <navigator class='store-details-box' url='/pages/changce/merch/detail?id={{item.id}}'>
+                <view class='store-details-box'>
                     <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
                     <view class='merch-reward' style='display:{{merchdisp}}'>
                         <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
@@ -242,7 +254,7 @@
                     </view>
                     <view class='office-hour'>主营：{{item.salecate}}</view>
                     <view class=' store-address'>{{item.address}}</view>
-                </navigator>
+                </view>
             </view>
 
         </view>

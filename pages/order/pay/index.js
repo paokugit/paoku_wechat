@@ -7,7 +7,9 @@ Page({
         successData: {},
         coupon: !1,
         operateDis:'block',
-        popupDis:'none'
+        popupDis:'none',
+        jiankangDis:'none',
+        xingxuanDis:'none'
     },
     onLoad: function(e) {
         this.setData({
@@ -62,6 +64,18 @@ Page({
                     popupDis: 'block'
                 })
             }
+            if (goodsid == 3) {
+                a.setData({
+                    operateDis: 'none',
+                    jiankangDis: 'block'
+                })
+            }
+            if (goodsid == 4) {
+                a.setData({
+                    operateDis: 'none',
+                    xingxuanDis: 'block'
+                })
+            }
             if (0 != t.error) o.toast(a, t.message); else {
                 wx.setNavigationBarTitle({
                     title: "支付成功"
@@ -80,6 +94,12 @@ Page({
     vipBtn:function(){
         wx.navigateTo({
             url: '/pages/changce/merch/detail?id='+10,
+        })
+    },
+//    查看奖励
+    rewardBtn: function() {
+        wx.navigateTo({
+            url: '/pages/member/log/bushu' ,
         })
     },
     shop: function(t) {

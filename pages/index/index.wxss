@@ -528,6 +528,7 @@ image {
 }
 
 .storename {
+    width: 350rpx;
     height: 40rpx;
     line-height: 40rpx;
     /* background: #f00; */
@@ -714,12 +715,24 @@ image {
     border-radius: 20rpx;
     position: relative;
 }
-
+.callphone-box{
+     width: 100rpx;
+    height: 42rpx;
+    position: absolute;
+    top: 50rpx;
+    right: 25rpx;
+    color: #666;
+}
+.callphone-img{
+      width: 42rpx;
+    height: 42rpx;
+    float: right
+}
 .nearbyshop-distance {
     width: auto;
     height: 30rpx;
     position: absolute;
-    top: 110rpx;
+    top: 120rpx;
     right: 25rpx;
     color: #666;
     font-size: 24rpx;

@@ -52,13 +52,34 @@ image{
     font-size: 34rpx;
 
 }
+
 .recordbox{
-    width: 100%;
+    width: 94%;
     height: 80rpx;
-    background: pink;
-    display: flex
+    padding: 0 3%; 
+    margin-top: 70rpx;
+    /* background: pink; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+
+}
+.record-left{
+    display: flex;
+    align-items: center
 }
 .record-img{
     width: 42rpx;
     height: 42rpx;
 }
+.record-text{
+    color: #333;
+    font-size: 28rpx;
+    margin-left: 10rpx
+}
+.record-right{
+    width: 36rpx;
+    height: 36rpx;
+    color: #666;
+}
+  

@@ -241,9 +241,26 @@
     right:0;
     margin: auto
 }
-
+.jiankang-maskimg, .xingxuan-maskimg{
+     width:538rpx;
+    height:760rpx;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto
+}
 .order-maskimg image{
     width:100%;
+    height:100%
+}
+.jiankang-maskimg  image{
+     width:100%;
+    height:100%
+}
+.xingxuan-maskimg image{
+      width:100%;
     height:100%
 }
 .order-mask-btn{
@@ -251,4 +268,10 @@
     height: 200rpx;
     position: absolute;
     top: 72%
+}
+.jiankang-btn{
+    width: 100%;
+    height: 150rpx;
+    position: absolute;
+    top: 64%
 }

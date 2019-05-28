@@ -5,6 +5,7 @@ var i = getApp();
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var merchphone=""
 Page({
 
   /**
@@ -23,6 +24,16 @@ Page({
   onLoad: function (options) {
       this.getSet(), this.getList();
   },
+    // 拨打电话
+    tel: function (t) {
+        console.log('phone')
+        console.log(t)
+        merchphone = t.currentTarget.dataset.mobile
+        console.log(merchphone)
+        wx.makePhoneCall({
+            phoneNumber: merchphone,
+        })
+    },
     getList: function () {
         var e = this;
         var newpos = i.getCache("mypos");
