@@ -57,12 +57,12 @@ Page({
             {
                 img: 'https://paokucoin.com/img/backgroup/qiandao.png',
             },
-            {
-                img: 'https://paokucoin.com/img/backgroup/zhuce.png',
-            },
-            {
-                img: 'https://paokucoin.com/img/backgroup/ziliao.png',
-            },
+            // {
+            //     img: 'https://paokucoin.com/img/backgroup/zhuce.png',
+            // },
+            // {
+            //     img: 'https://paokucoin.com/img/backgroup/ziliao.png',
+            // },
             {
                 img: 'https://paokucoin.com/img/backgroup/sharehaibao.png',
             },

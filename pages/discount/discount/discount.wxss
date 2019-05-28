@@ -1,0 +1,103 @@
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #f8f8f8;
+}
+
+.discount-box {
+    width: 100%;
+    height: 100%;
+   
+}
+
+.discount-top {
+    width: 100%;
+    height: 350rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scan-box {
+    width: 330rpx;
+    height: 330rpx;
+    background: #09bb07;
+    border-radius: 20rpx;
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.receive-code {
+    width: 330rpx;
+    height: 330rpx;
+    background: #128feb;
+    border-radius: 20rpx;
+    display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.code-img {
+    width: 90rpx;
+    height: 90rpx;
+}
+.receive-img{
+    width: 110rpx;
+    height: 90rpx;
+}
+
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.code-text {
+    width: auto;
+    height: 50rpx;
+    /* background: #f00; */
+    color: #fff;
+    font-size: 34rpx;
+    margin-top: 20rpx
+}
+.account-box{
+    width: 100%;
+    height: 400rpx;
+    margin-top: 10rpx;
+    display: flex;
+    justify-content: center
+}
+.zhekoubao-img{
+    width: 690rpx;
+    height: 400rpx;
+    position: relative
+}
+.account-text-box{
+    width: 240rpx;
+    height:110rpx;
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    font-size: 90rpx;
+    color: #323232;
+    display: flex
+}
+.account-text{
+    width: 50rpx;
+    height: 110rpx;
+    font-size: 40rpx;
+    color: #323232;
+    line-height: 130rpx;
+    margin-left: 10rpx
+}
+.zhanghu-img{
+    width: 252rpx;
+    height: 132rpx;
+    position: absolute;
+    bottom: 8%;
+    right: 5%
+}

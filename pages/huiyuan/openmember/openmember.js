@@ -6,6 +6,7 @@ var a, e, i = getApp(), s = i.requirejs("core"), n = i.requirejs("wxParse/wxPars
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
+var memberid=''
 Page({
  
     /**
@@ -25,8 +26,11 @@ Page({
         productprice:''
     },
     openhy: function (e) {
-      var hyid= e.currentTarget.dataset.id
-        wx.setStorageSync('hyid', hyid)
+    //   var hyid= e.currentTarget.dataset.id
+        memberid = e.currentTarget.dataset.id
+    //   console.log(hyid)
+      console.log(memberid)
+        // wx.setStorageSync('hyid', hyid)
         e.currentTarget.dataset.minprice
         this.setData({
             hydisp: 'block',
@@ -39,13 +43,13 @@ Page({
     pay: function () {
         var a = this;
         // let open = wx.getStorageSync('openid')
-        let hy = wx.getStorageSync('hyid')
+        // let hy = wx.getStorageSync('hyid')
         console.log(userinfo.openid)
-        console.log(hy)
+        // console.log(hy)
         s.get("order/create/submit", {
-            id: hy,
-            'goods[0][id]': hy,
-            'goods[0][goodsid]': hy,
+            id: memberid,
+            'goods[0][id]': memberid,
+            'goods[0][goodsid]': memberid,
             openid: userinfo.openid
         }, function (f) {
             console.log(22222)
@@ -57,8 +61,11 @@ Page({
             };
             a.setData(i)
 
+            // wx.navigateTo({
+            //     url: "/pages/order/pay/index?id=" + f.orderid
+            // })
             wx.navigateTo({
-                url: "/pages/order/pay/index?id=" + f.orderid
+                url: "/pages/order/create/index?id=" + memberid
             })
         })
        

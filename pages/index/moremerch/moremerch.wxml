@@ -1,0 +1,41 @@
+<view class='nearbyshops-box'>
+    <!-- 商家1 -开始-->
+    <view class='nearbyshop-box' wx:for="{{list}}">
+        <!-- 距离 -->
+        <view class='nearbyshop-distance'>{{item.disname}}</view>
+        <!-- 地图/导航 -->
+        <navigator class='nearbyshop-map-box' url="/pages/changce/merch/intro?id={{item.id}}">
+            <view>地图/导航</view>
+            <view class='map-img'>
+                <image src='{{globalimg}}/chakangengduo.png'></image>
+            </view>
+        </navigator>
+        <!-- 店铺图片-开始 -->
+        <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
+            <image src='{{item.logo}}'></image>
+        </navigator>
+        <!-- 店铺详情-开始 -->
+          <navigator class='store-details-box' url='/pages/changce/merch/detail?id={{item.id}}'>
+            <!-- 店铺名称 -->
+            <view class='storename'>{{item.merchname}}</view>
+            <!-- 赏金任务 -->
+            <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
+                <text class='reward_text'>赏金任务</text>
+                <text class='reward_money'>赚￥{{item.reward_money}}</text>
+            </view>
+            <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
+                <text class='reward_text'>赏金任务</text>
+                <text class='reward_money'>赚￥{{item.reward_money}}</text>
+            </view>
+            <!-- 赏金任务 -->
+            <!-- 主营 -->
+            <view class='office-hour'>主营：{{item.salecate}}</view>
+            <!-- 地址 -->
+            <view class=' store-address'>{{item.address}}</view>
+        </navigator>
+        <!-- 店铺详情-结束 -->
+    </view>
+    <!-- 商家1-结束 -->
+
+</view>
+<!-- 附件商家-结束 -->

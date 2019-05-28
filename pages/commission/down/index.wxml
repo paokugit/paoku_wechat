@@ -89,11 +89,11 @@
                     </view>
                 </block>
             </block>
-            <view class="fui-navbar {{iphonexnavbar}}">
+            <!-- <view class="fui-navbar {{iphonexnavbar}}">
                 <button class="nav-item" bindtap='transmit'>
                     <text style="color:#fff;font-weight:bold;font-size:30rpx">转发</text>
                 </button>
-            </view>
+            </view> -->
         </view>
     </block>
 </block>

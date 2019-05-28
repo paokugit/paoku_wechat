@@ -16,7 +16,7 @@
         <!-- 卡路里余额-结束 -->
         <!-- 点击签到之后的气泡 -->
         <view class="heard-tag absolute">
-            <form bindsubmit="receive" class="heard-tag-list absolute" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
+            <form bindsubmit="receive" class="heard-tag-list absolute"  data-step="{{item.step}}"  data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
                 <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
                     <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
                     <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>

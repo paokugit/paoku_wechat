@@ -50,7 +50,7 @@ Page({
     },
     hyopen: function (e) {
         var tt=this
-        // console.log(e)
+        console.log(e)
         hyid=e.currentTarget.dataset.id
         // console.log(hyid)
         let open = wx.getStorageSync('openid')
@@ -68,9 +68,13 @@ Page({
                 // order:f.orderid
             };
             tt.setData(i)
-
+            // 跳转收银台
+            // wx.navigateTo({
+            //     url: "/pages/order/pay/index?id=" + eve.orderid
+            // })
+            // 跳转确认订单页
             wx.navigateTo({
-                url: "/pages/order/pay/index?id=" + eve.orderid
+                url: "/pages/order/create/index?id=" + hyid
             })
             })
     },

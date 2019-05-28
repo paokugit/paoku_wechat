@@ -1,0 +1,9 @@
+
+{
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "扫码买单",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}
