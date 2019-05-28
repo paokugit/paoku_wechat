@@ -2,8 +2,11 @@
     "pages": [
         "pages/index/index",
         "pages/discount/code/code",
-        "pages/huiyuan/openmember/openmember",
         "pages/discount/scancode/scancode",
+        
+       
+        "pages/huiyuan/openmember/openmember",
+        
         "pages/discount/discount/discount",
         "pages/commission/down/index",
         "pages/helphand/helpshare/helpshare",
@@ -115,12 +118,12 @@
                 "iconPath": "icon1/home-n.png",
                 "selectedIconPath": "icon1/home-s.png"
             },
-            {
-                "pagePath": "pages/member/cart/index",
-                "text": "购物车",
-                "iconPath": "icon1/shop-n.png",
-                "selectedIconPath": "icon1/shop-s.png"
-            },
+        {
+            "pagePath": "pages/member/cart/index",
+            "text": "购物车",
+            "iconPath": "icon1/shop-n.png",
+            "selectedIconPath": "icon1/shop-s.png"
+        },
             {
                 "pagePath": "pages/huiyuan/openmember/openmember",
                 "text": "达人",

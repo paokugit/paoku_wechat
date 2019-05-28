@@ -8,5 +8,9 @@
             <view class='setdiscount'>设置折扣</view>
             <view class='saveimg'>保存图片</view>
         </view>
+        <view class='recordbox'>
+            <view class='record-img'><image src='{{globalimg}}/shouzhi@2x.png'></image></view>
+            <view>收款记录</view>
+        </view>
     </view>
 </view>
