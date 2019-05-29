@@ -79,7 +79,12 @@
                         <block>
                             <block wx:if="{{diyitem.params.showprice=='1'}}">
                                 <view class="price">
-                                    <text class="text" style="color:{{diyitem.style.pricecolor}}">￥{{childitem.price}} <text style="font-size: 10px" wx:if="{{childitem.deduct>0}}">-{{childitem.deduct}}卡路里</text></text>
+                                    <text class="text" style="color:{{diyitem.style.pricecolor}}">￥{{childitem.price}} <text style="font-size: 10px" wx:if="{{childitem.deduct>0&&childitem.deduct_type==1}}">-{{childitem.deduct}} 卡路里
+                                    </text>
+                                    <text style="font-size: 10px" wx:if="{{childitem.deduct>0&&childitem.deduct_type==2}}">-{{childitem.deduct}} 折扣宝
+                                    
+                                    </text>
+                                    </text>
                                     <block>
                                         <block wx:if="{{childitem.ctype==9&&childitem.bargain==0}}">
                                             <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
