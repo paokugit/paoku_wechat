@@ -54,9 +54,9 @@ image{
 }
 
 .recordbox{
-    width: 94%;
+    width: 92%;
     height: 80rpx;
-    padding: 0 3%; 
+    padding: 0 4%; 
     margin-top: 70rpx;
     /* background: pink; */
     display: flex;

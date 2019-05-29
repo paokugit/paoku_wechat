@@ -5,10 +5,10 @@
             <image src='{{globalimg}}/explain01.png'></image>
         </view>
         <view class='code-handle'>
-            <view class='setdiscount'>设置折扣</view>
-            <view class='saveimg'>保存图片</view>
+            <view class='setdiscount' bindtap='setbtn'>设置折扣</view>
+            <view class='saveimg' bindtap='onSavePicClick'  data-img="{{globalimg}}/explain01.png">保存图片</view>
         </view>
-        <view class='recordbox'>
+        <view class='recordbox' bindtap='recordbtn'>
             <view class='record-left'>
                 <view class='record-img'>
                     <image src='{{globalimg}}/shouzhi@2x.png'></image>

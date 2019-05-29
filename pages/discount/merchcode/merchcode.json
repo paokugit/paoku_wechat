@@ -1,0 +1,8 @@
+{
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商家收款码",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}

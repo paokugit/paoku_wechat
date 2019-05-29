@@ -1,14 +1,20 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/discount/code/code",
-       
-       
-        "pages/discount/scancode/scancode",
-        
+        "pages/discount/zkbrechange/zkbrechange",
+        "pages/discount/zkbaccount/zkbaccount",
+        "pages/discount/zkbscancode/zkbscancode",
+        "pages/discount/kllscancode/kllscancode",
+        "pages/discount/caloriecode/caloriecode",
+        "pages/discount/zkbcode/zkbcode",
+        "pages/discount/recordlist/recordlist",
+        "pages/discount/merchcode/merchcode",
+        "pages/discount/setzkbdiscount/setzkbdiscount",
+        "pages/discount/klldiscount/klldiscount",
+        "pages/discount/zkbdiscount/zkbdiscount",
+        "pages/discount/setklldiscount/setklldiscount",
        
         "pages/huiyuan/openmember/openmember",
-        
         "pages/discount/discount/discount",
         "pages/commission/down/index",
         "pages/helphand/helpshare/helpshare",
@@ -23,7 +29,7 @@
         "pages/goods/detail/index",
         "pages/member/balance/balance",
         "pages/commission/transmit/transmit",
-        "pages/helphand/mypowerlist/mypowerlist",
+        "pages/helphand/mypowerlist/mypowerlist", 
         "pages/member/log/bushu",
         "pages/playmethod/playmethod/playmethod",
         "pages/helphand/haibao/haibao",

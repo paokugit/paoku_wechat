@@ -1,0 +1,105 @@
+/* pages/discount/recordlist/recordlist.wxss */
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #f8f8f8;
+  background: pink
+}
+
+.record-box{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.record-header{
+    width: 100%;
+    height: 120rpx;
+    color: #8a8a8a;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.listBox{
+    width: 100%;
+    height: auto;
+    /* padding: 0 5%; */
+    /* background: #fff; */
+    margin-top: 5rpx
+}
+.itemBox{
+    width: 100%;
+    height:auto;
+    background: #f88;
+}
+.create-time{
+    width: 90%;
+    height: 90rpx;
+    padding: 0 5%;
+   background: #f8f8f8;
+   color: #8a8a8a;
+   font-size: 28rpx;
+   line-height: 90rpx;
+   margin-top: 10rpx
+}
+.create-detail-box{
+     width: 90%;
+    height: auto;
+    padding: 0 5%;
+   background: #fff;
+}
+.detail-top{
+    width: 100%;
+    height: 160rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2rpx solid #eee
+}
+.detail-bottom{
+     width: 100%;
+    height: auto;
+}
+.detail-list{
+     width: 100%;
+    height: 160rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2rpx solid #eee
+}
+.receive-count-box{
+    width: 200rpx;
+    height: 90rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+
+.money-count-box{
+    width: 200rpx;
+    height: 90rpx;
+    text-align: right;
+     display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+.receive-text, .receive-time{
+    color: #8a8a8a;
+    font-size: 24rpx
+}
+.receive-num{
+    color: #333;
+    font-size: 40rpx
+}
+.receive-name{
+    color: #333;
+    font-size: 28rpx
+}

@@ -18,7 +18,7 @@
         </navigator>
         <!-- 店铺图片-开始 -->
         <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
-            <image src='{{item.logo}}'></image>
+            <image class='storeImg' mode="aspectFit" src='{{item.logo}}'></image>
         </navigator>
         <!-- 店铺详情-开始 -->
           <view class='store-details-box' >

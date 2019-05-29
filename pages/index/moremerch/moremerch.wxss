@@ -57,14 +57,13 @@
     justify-content: space-around;
     align-items: center
 }
-.store-img{
-    width: 168rpx;
-    height: 126rpx;
-    border: 1px solid #ccc;
-    border-radius: 20rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center
+.store-img {
+    width: 150rpx;
+    height: 150rpx;
+    border: 1px solid #f8f8f8;
+}
+.storeImg{
+    width: 100%
 }
 image{
     width: 100%;
