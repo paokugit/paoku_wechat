@@ -1,8 +1,8 @@
 {
     "usingComponents": {},
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "折扣付",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "折扣宝",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light"
 }

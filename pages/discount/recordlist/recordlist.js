@@ -1,16 +1,11 @@
-// pages/discount/code/code.js
-var a, e, i = getApp(),
-    s = i.requirejs("core");
-//   当前登录人的openid
-var f = getApp();
-var userinfo = f.getCache('userinfo');
+// pages/discount/recordlist/recordlist.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+
     },
 
     /**

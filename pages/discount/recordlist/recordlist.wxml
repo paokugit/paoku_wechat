@@ -1,0 +1,85 @@
+<view class='record-box'>
+    <view class='record-header'>共查询到x笔收款,累计xxx元</view>
+    <view class='listBox'>
+        <view class='itemBox'>
+            <view class='create-time'>2019年5月28日</view>
+            <view class='create-detail-box'>
+                <view class='detail-top'>
+                    <view class='receive-count-box'>
+                        <view class='receive-text'>收款笔数</view>
+                        <view class='receive-num'>1</view>
+                    </view>
+                    <view class='money-count-box'>
+                        <view class='receive-text'>合计</view>
+                        <view class='receive-num'>￥36.00</view>
+                    </view>
+                </view>
+                <view class='detail-bottom'>
+                    <view class='detail-list'>
+                        <view class='receive-count-box'>
+                            <view class='receive-name'>candy</view>
+                            <view class='receive-time'>9:57:36</view>
+                        </view>
+                        <view class='money-count-box'>
+                            <!-- <view class='receive-text'>合计</view> -->
+                            <view class='receive-num'>￥36.00</view>
+                        </view>
+                    </view>
+
+
+                    <!-- <view class='detail-list'>
+                        <view class='receive-count-box'>
+                            <view class='receive-name'>candy</view>
+                            <view class='receive-time'>9:57:36</view>
+                        </view>
+                        <view class='money-count-box'>
+                            <view class='receive-num'>￥36.00</view>
+                        </view>
+                    </view> -->
+                </view>
+            </view>
+        </view>
+
+        <!-- itemBox -->
+       <view class='itemBox'>
+            <view class='create-time'>2019年5月28日</view>
+            <view class='create-detail-box'>
+                <view class='detail-top'>
+                    <view class='receive-count-box'>
+                        <view class='receive-text'>收款笔数</view>
+                        <view class='receive-num'>1</view>
+                    </view>
+                    <view class='money-count-box'>
+                        <view class='receive-text'>合计</view>
+                        <view class='receive-num'>￥36.00</view>
+                    </view>
+                </view>
+                <view class='detail-bottom'>
+                    <view class='detail-list'>
+                        <view class='receive-count-box'>
+                            <view class='receive-name'>candy</view>
+                            <view class='receive-time'>9:57:36</view>
+                        </view>
+                        <view class='money-count-box'>
+                            <!-- <view class='receive-text'>合计</view> -->
+                            <view class='receive-num'>￥36.00</view>
+                        </view>
+                    </view>
+
+
+                    <view class='detail-list'>
+                        <view class='receive-count-box'>
+                            <view class='receive-name'>candy</view>
+                            <view class='receive-time'>9:57:36</view>
+                        </view>
+                        <view class='money-count-box'>
+                            <!-- <view class='receive-text'>合计</view> -->
+                            <view class='receive-num'>￥36.00</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- itemBox -->
+    </view>
+</view>

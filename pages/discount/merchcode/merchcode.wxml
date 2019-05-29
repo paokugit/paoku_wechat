@@ -1,0 +1,19 @@
+<view class='merchcode-box'>
+    <view class='kll-box'>
+        <image src='{{globalimg}}/kalulibg@2x.png'></image>
+        <view class='kaluli-text-box'>
+            <view class='kllcode'>卡路里收款码</view>
+            <view class='zhuanxiang'>专享</view>
+        </view>
+        <view class='kaluli-read' bindtap='caloriebtn'>进入查看</view>
+    </view>
+
+    <view class='zkb-box'>
+        <image src='{{globalimg}}/zhekoubaobg@2x.png'></image>
+        <view class='zkb-text-box'>
+            <view class='zkbcode'>折扣宝收款码</view>
+            <view class='zhuanxiang'>专享</view>
+        </view>
+        <view class='zkb-read' bindtap='zkbbtn'>进入查看</view>
+    </view>
+</view>

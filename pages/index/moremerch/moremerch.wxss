@@ -19,6 +19,20 @@
     align-items: center;
     position: relative;
 }
+
+.callphone-box{
+     width: 100rpx;
+    height: 42rpx;
+    position: absolute;
+    top: 50rpx;
+    right: 25rpx;
+    color: #666;
+}
+.callphone-img{
+      width: 42rpx;
+    height: 42rpx;
+    float: right
+}
 .nearbyshop-distance{
     width: auto;
     height: 30rpx;
@@ -43,14 +57,13 @@
     justify-content: space-around;
     align-items: center
 }
-.store-img{
-    width: 168rpx;
-    height: 126rpx;
-    border: 1px solid #ccc;
-    border-radius: 20rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center
+.store-img {
+    width: 150rpx;
+    height: 150rpx;
+    border: 1px solid #f8f8f8;
+}
+.storeImg{
+    width: 100%
 }
 image{
     width: 100%;
@@ -73,6 +86,7 @@ image{
 }
 
 .storename {
+    width: 350rpx;
     height: 40rpx;
     line-height: 40rpx;
     /* background: #f00; */
@@ -80,7 +94,7 @@ image{
     font-size: 34rpx;
 }
 .reward_box{
-    width: 200rpx;
+    width: 260rpx;
     color: #e01212;
     font-size: 22rpx;
     /* background: #f66 */

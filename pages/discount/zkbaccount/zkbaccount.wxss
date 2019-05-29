@@ -1,0 +1,158 @@
+/* pages/discount/zkbaccount/zkbaccount.wxss */
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* background: #f8f8f8; */
+     background: #fff;
+}
+
+.account-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.zkb-img{
+    width: 690rpx;
+    height: 400rpx;
+    position: relative;
+
+}
+.account-num-box{
+    width: auto;
+    height: 90rpx;
+    position: absolute;
+    top: 35%;
+    left: 9%;
+    display: flex
+}
+.account-num{
+    color: #323232;
+    font-size: 90rpx;
+}
+.account-yuan{
+    width: auto;
+    height: 90rpx;
+    line-height: 120rpx;
+    color: #323232;
+    font-size: 40rpx;
+    margin-left: 6rpx
+}
+.account-btn-box{
+    width: 690rpx;
+    height: 120rpx;
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    display: flex;
+    justify-content: space-around
+}
+.codebtn, .rechargebtn{
+    width: 252rpx;
+    height: 132rpx
+}
+
+.about_page{
+  margin: 0 10px;
+}
+.swiper-tab{
+    width: 60%;
+    padding: 0 20%;
+    /* border-bottom: 2rpx solid #ccc; */
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    color: #333;
+    font-size: 40rpx;
+    margin-top: 30rpx
+}
+.swiper-tab-item{
+    width: 120rpx; 
+    color:#434343;
+}
+.active{
+    color:#ffce0b;
+    border-bottom: 4rpx solid #ffce0b;
+    font-weight: bold;
+}
+.juzhong{
+  margin: 0 auto;
+}
+.domain{
+  background-color: #f0f;
+  height: 100%;
+  margin:0 10px;
+}
+.show{
+  display: block;
+}
+.hidden{
+  display: none;
+}
+.content01{
+    width: 100%;
+    /* height: 200rpx; */
+    height: 100%;
+    background: #f00
+}
+.content{
+    width: 100%;
+    /* height: 200rpx; */
+     height: 100%;
+    background: #f0f
+}
+.scroll{
+    width: 100%;
+    height: 100%;
+    background: #ff0
+}
+.expend-box, .recharge-box{
+    width: 690rpx;
+    height: 100%;
+    background: pink;
+    margin-top: 20rpx;
+}
+.expend-list, .recharge-list{
+    width: 98%;
+    height: 140rpx;
+    padding: 0 1%;
+    border-bottom: 2rpx solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.list-left{
+    width: 260rpx;
+    height: 140rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.expend-title{
+    color: #262626;
+    font-size: 34rpx
+}
+.expend-time{
+    color: #9a9a9a;
+    font-size: 34rpx;
+    margin-top: 10rpx
+}
+.list-right{
+    width: auto;
+    height: 140rpx;
+    color: #333;
+    font-size: 40rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: right
+}

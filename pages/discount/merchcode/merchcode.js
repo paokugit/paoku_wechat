@@ -1,11 +1,16 @@
-//  pages/discount/discount.js
+// pages/discount/merchcode/merchcode.js
+var a, e, i = getApp(),
+    s = i.requirejs("core");
+//   当前登录人的openid
+var f = getApp();
+var userinfo = f.getCache('userinfo');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        globalimg: i.globalData.appimg
     },
 
     /**
@@ -14,7 +19,17 @@ Page({
     onLoad: function (options) {
 
     },
-
+    caloriebtn:function(){
+        wx.navigateTo({
+            url: '/pages/discount/caloriecode/caloriecode',
+        })
+    },
+    
+    zkbbtn: function() {
+        wx.navigateTo({
+            url: '/pages/discount/zkbcode/zkbcode',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

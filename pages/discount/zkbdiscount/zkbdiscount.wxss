@@ -1,0 +1,121 @@
+/* pages/discount/scancode/scancode.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* background: #f8f8f8; */
+    background: #f1f1f1;
+}
+
+.klldiscount-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes kf-marque-animation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.3%);
+    }
+}
+
+.marquee {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #fff9dd;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+    font-size: 26rpx;
+    color: #f9a504;
+}
+
+.marquee .content {
+    display: inline-block;
+    position: relative;
+    padding-right: 0px;
+    animation: kf-marque-animation 11.3s linear infinite;
+    white-space: nowrap;
+}
+.add_box{
+    width: 100%;
+    height: 180rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.addbtn{
+    width: 120rpx;
+    height: 120rpx;
+    background: #ffd129;
+    color: #fff;
+    font-size: 34rpx;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.listCon {
+    width: 90%;
+    height: auto;
+    /* background: #f00; */
+}
+
+.discountlist-box {
+    width: 100%;
+    height: 202rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+.list-top {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 2rpx solid #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-bottom {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-text {
+    width: auto;
+    margin-left: 30rpx;
+    font-size: 34rpx;
+    color: #262626;
+}
+.order-count, .calorie-count{
+     width: 200rpx;
+    font-size: 40rpx;
+    color: #ffd129;
+    text-align: right;
+    margin-right: 30rpx;
+}
+.calorie-count{
+     color: #333;
+}
+
+button::after {
+    border: none;
+}

@@ -1,0 +1,30 @@
+<view class='klldiscount-box'>
+    <view class="marquee">
+        <view class="content">
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+            <text>{{text}}</text>
+            <text style="display: inline-block; width: 5em;"></text>
+        </view>
+    </view>
+    <view class='add_box'>
+        <view class='addbtn' bindtap='addbtn'>添加</view>
+    </view>
+    <view class='listCon'>
+        <view class='discountlist-box'>
+            <view class='list-top'>
+                <view class='order-text'>订单满</view>
+                <view class='order-count'>50222</view>
+            </view>
+
+            <view class='list-bottom'>
+                <view class='order-text'>可使用卡路里</view>
+                <!-- <view class='balance-no'>余额不足</view> -->
+                <view class='calorie-count'>5222</view>
+            </view>
+        </view>
+
+    </view>
+</view>

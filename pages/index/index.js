@@ -30,6 +30,7 @@ var login = ''
 var openid = ''
 var version = 1
 var currency_step=''
+var merchphone=""
 Page((e = {
     onPullDownRefresh: function() {
         var t = this;
@@ -268,6 +269,16 @@ Page((e = {
     openhyBtn: function() {
         wx.navigateTo({
             url: '../huiyuan/hygrade/hygrade',
+        })
+    },
+    // 拨打电话
+    tel:function(t){
+console.log('phone')
+        console.log(t)
+        merchphone=t.currentTarget.dataset.mobile
+        console.log(merchphone)
+        wx.makePhoneCall({
+            phoneNumber: merchphone ,
         })
     },
     onReachBottom: function() {

@@ -1,6 +1,12 @@
 <view class='nearbyshops-box'>
     <!-- 商家1 -开始-->
     <view class='nearbyshop-box' wx:for="{{list}}">
+    <!-- 商家电话 -->
+                <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
+                    <view class='callphone-img'>
+                        <image src='{{ globalimg}}/callphone.png'></image>
+                    </view>
+                </view>
         <!-- 距离 -->
         <view class='nearbyshop-distance'>{{item.disname}}</view>
         <!-- 地图/导航 -->
@@ -12,12 +18,12 @@
         </navigator>
         <!-- 店铺图片-开始 -->
         <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
-            <image src='{{item.logo}}'></image>
+            <image class='storeImg' mode="aspectFit" src='{{item.logo}}'></image>
         </navigator>
         <!-- 店铺详情-开始 -->
-          <navigator class='store-details-box' url='/pages/changce/merch/detail?id={{item.id}}'>
+          <view class='store-details-box' >
             <!-- 店铺名称 -->
-            <view class='storename'>{{item.merchname}}</view>
+            <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
             <!-- 赏金任务 -->
             <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
                 <text class='reward_text'>赏金任务</text>
@@ -32,7 +38,7 @@
             <view class='office-hour'>主营：{{item.salecate}}</view>
             <!-- 地址 -->
             <view class=' store-address'>{{item.address}}</view>
-        </navigator>
+        </view>
         <!-- 店铺详情-结束 -->
     </view>
     <!-- 商家1-结束 -->
