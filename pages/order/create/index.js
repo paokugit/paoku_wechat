@@ -41,9 +41,11 @@ Page({
         receipttime: "",
         scope: "",
         bargainid: "",
-        selectcard: ""
+        selectcard: "",
+        condisp: 'block'
     },
     onLoad: function(t) {
+      console.log(t)
         var i = this, r = [];
         if (t.goods) {
             var s = JSON.parse(t.goods);
@@ -59,6 +61,12 @@ Page({
             if (console.log(t), 0 == t.error) {
                 console.log(t), r = i.getGoodsList(t.goods);
                 var s = (i.data.originalprice - t.goodsprice).toFixed(2);
+
+              if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice){
+                i.setData({
+                  condisp: 'none'
+                })
+              }
                 i.setData({
                     list: t,
                     goods: t,

@@ -434,6 +434,7 @@
                     </block>
                     <block>
                         <block wx:if="{{list.deductcredit>0}}">
+                        <view style='display:{{condisp}}'>
                             <view class="fui-cell">
                                 <text class="text-danger">{{list.deductcredit}}</text>
                                 <view class="fui-cell-label" style="text-align:left;width:auto">卡路里可抵扣
@@ -442,6 +443,7 @@
                                 <view class="fui-cell-info">
                                     <switch bindchange="dataChange" class="switch-80 pull-right" id="deduct"></switch>
                                 </view>
+                            </view>
                             </view>
                         </block>
                     </block>
