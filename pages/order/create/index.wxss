@@ -538,7 +538,7 @@ page {
 }
 .calorie-box{
     width: 94%;
-    height: 120rpx;
+    height: 80rpx;
     padding: 0 3%;
     background: #fff;
     margin-top: 20rpx;
