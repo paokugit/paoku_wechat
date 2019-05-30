@@ -27,11 +27,11 @@ Page({
             url: '/pages/discount/zkbscancode/zkbscancode',
         })
     },
-    // rechargebtn:function(){
-    //     wx.navigateTo({
-    //         url: '',
-    //     })
-    // },
+    rechargebtn:function(){
+        wx.navigateTo({
+            url: '/pages/discount/zkbrechange/zkbrechange',
+        })
+    },
     // 上拉加载
     onLoad: function (a) {
         a.type > 0 && this.setData({

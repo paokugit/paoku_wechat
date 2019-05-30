@@ -1,0 +1,9 @@
+<view class='success-box'>
+    <view class='success-bg'>
+        <image src='{{globalimg}}/success-green@2x.png'></image>
+    </view>
+    <view class='success-text'>恭喜你,充值成功</view>
+    <view class='btn-box'>
+        <button class='backbtn' bindtap='backbtn'>返回账户</button>
+    </view>
+</view>

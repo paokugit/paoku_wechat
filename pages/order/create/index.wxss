@@ -536,3 +536,29 @@ page {
     color: #fff;
     font-size: 26rpx;
 }
+.calorie-box{
+    width: 94%;
+    height: 120rpx;
+    padding: 0 3%;
+    background: #fff;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    color: #666;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.calorie-count{
+    color: #e01212;
+    margin-left: 2rpx;
+    margin-right: 2rpx
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.ckgd-img{
+    width: 36rpx;
+    height: 36rpx;
+}

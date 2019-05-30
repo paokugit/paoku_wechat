@@ -2,6 +2,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");                
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+console.log(userinfo)
 var num=''
 Page({
 
@@ -184,7 +185,23 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    // onShareAppMessage: function () {
 
-    }
+    // }
+
+    onShareAppMessage: function (res) {
+        // return s.onShareAppMessage();
+        var that = this;
+        return {
+            title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
+            path: '/pages/index/index?scene=' +userinfo.id,
+            success: function (res) {
+                // 转发成功
+                that.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
+    },
 })

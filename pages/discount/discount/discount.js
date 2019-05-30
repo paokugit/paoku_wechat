@@ -19,7 +19,23 @@ Page({
     onLoad: function (options) {
 
     },
-
+    accountbtn:function(){
+        wx.navigateTo({
+            url: '/pages/discount/zkbaccount/zkbaccount',
+        })
+    },
+    codebtn:function(){
+        // s.get("app/payment/index/qrcode", {
+        // }, function (eve) {
+        //     console.log(eve)
+        // })
+        wx.request({
+            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
+            success:function(e){
+console.log(e)
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

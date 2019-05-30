@@ -207,17 +207,17 @@ Page((e = {
     },
     // 跳转到运动日记
     sportbtn: function() {
-        console.log(version)
-        if (version == 0) {
-            wx.showToast({
-                title: '此功能暂未开放',
-                duration: 2000
-            })
-        } else {
+        // console.log(version)
+        // if (version == 0) {
+        //     wx.showToast({
+        //         title: '此功能暂未开放',
+        //         duration: 2000
+        //     })
+        // } else {
             wx.navigateTo({
                 url: '../sportdiary/sportdiary/sportdiary',
             })
-        }
+        // }
 
     },
     // 跳转到玩法说明
@@ -331,6 +331,8 @@ console.log('phone')
         }, this.data.show);
     },
     onLoad: function(t) {
+        console.log('运动日记')
+        console.log(t)
         var k = this
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
@@ -367,6 +369,7 @@ console.log('phone')
         if (t.scene) {
             scene = decodeURIComponent(t.scene)
             i.globalData.bindscene = scene
+            console.log(scene)
             s.get("myown/index/scene", {
                 openid: userinfo.openid,
                 scene: scene

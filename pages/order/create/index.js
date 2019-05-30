@@ -3,7 +3,7 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
 } : function(t) {
     return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
 }, e = getApp(), a = e.requirejs("core"), i = e.requirejs("foxui"), r = e.requirejs("biz/diyform"), s = e.requirejs("jquery"), d = e.requirejs("biz/selectdate");
-
+// var calorienum=""
 Page({
     data: {
         icons: e.requirejs("icons"),
@@ -42,7 +42,9 @@ Page({
         scope: "",
         bargainid: "",
         selectcard: "",
-        condisp: 'block'
+        condisp: 'block',
+        caloriedisp:'none',
+        calorienum:''
     },
     onLoad: function(t) {
       console.log(t)
@@ -58,13 +60,20 @@ Page({
         }), i.setData({
             bargainid: t.bargainid
         }), e.url(t), console.log(i.data.options), a.get("order/create", i.data.options, function(t) {
+            console.log('订单')
+            console.log(t)
             if (console.log(t), 0 == t.error) {
                 console.log(t), r = i.getGoodsList(t.goods);
                 var s = (i.data.originalprice - t.goodsprice).toFixed(2);
-
+                if (t.goodsdeduct == t.goodsprice && t.deductcredit < t.goodsdeduct){
+                    i.setData({
+                        condisp: 'none'
+                    })
+            }
               if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice){
                 i.setData({
-                  condisp: 'none'
+                    caloriedisp: 'block',
+                    calorienum : t.goodsdeduct - t.deductcredit
                 })
               }
                 i.setData({
@@ -179,6 +188,11 @@ Page({
     },
     phone: function(t) {
         a.phone(t);
+    },
+    caloriebtn:function(){
+        wx.switchTab({
+            url: '/pages/index/index',
+        })
     },
     dispatchtype: function(t) {
         var e = a.data(t).type;

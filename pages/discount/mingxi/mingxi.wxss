@@ -1,0 +1,77 @@
+/* pages/discount/mingxi/mingxi.wxss */
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  background: #f1f1f1
+}
+
+.mingxi-box{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.mingxi-con{
+    width: 94%;
+    height: 800rpx;
+    /* background: #f00 */
+}
+.mingxi-item{
+    width: 100%;
+    height: 430rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    margin-top: 30rpx
+}
+.item-top{
+    width: 100%;
+    height: 200rpx;
+    border-bottom: 2rpx solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.item-title{
+    font-size: 30rpx;
+    color: #333
+}
+.item-sum{
+    font-size: 70rpx;
+    color: #333;
+    margin-top: 20rpx
+}
+.item-bottom{
+    width: 100%;
+    height: 215rpx;
+}
+.mingxi-time-box{
+    width: 95%;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left:5%;
+    display: flex;
+    margin-top: 30rpx
+}
+.time-tit, .merch-tit{
+    color: #9a9a9a;
+    font-size: 30rpx;
+}
+.time-num, .merch-num{
+    color: #333;
+    font-size: 30rpx;
+    margin-left: 20rpx
+}
+.mingxi-merch-box{
+    width: 95%;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 5%;
+    display: flex;
+}

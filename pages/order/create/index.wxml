@@ -119,7 +119,7 @@
                                                         <span>月</span>
                                                     </block>
                                                 </block>1期，共
-              <span class="cycel_num">{{list.cycelComboPeriods}}</span>期</view>
+                                                <span class="cycel_num">{{list.cycelComboPeriods}}</span>期</view>
                                         </view>
                                     </view>
                                 </view>
@@ -226,8 +226,8 @@
                                     <block>
                                         <block wx:if="{{val.optionid!=0}}">
                                             <view class="subtitle cart-option">
-            {{val.optiontitle}}
-          </view>
+                                                {{val.optiontitle}}
+                                            </view>
                                         </block>
                                     </block>
                                 </view>
@@ -248,8 +248,8 @@
                                         </block>
                                         <block wx:elif="{{!list.changenum||list.iscycelbuy==true||bargainid>0}}">
                                             <view class="text-right">
-            x{{val.total}}
-          </view>
+                                                x{{val.total}}
+                                            </view>
                                         </block>
                                     </block>
                                 </view>
@@ -303,7 +303,7 @@
                                 <view class="fui-cell-label">{{list.fullbacktext}}详情</view>
                                 <view class="fui-cell-info">
                                     <i class="icox icox-xiaofei1" style="color: #ff5555;position: relative;top: 4rpx;margin-right: 5rpx;"></i> 总金额
-          <i style="color: #ff5555;">
+                                    <i style="color: #ff5555;">
                                         <block>
                                             <block wx:if="{{list.fullbackgoods.type==0}}">￥{{list.fullbackgoods.minallfullbackallprice}}</block>
                                         </block>
@@ -311,7 +311,7 @@
                                             <block wx:if="{{list.fullbackgoods.type==1}}">{{list.fullbackgoods.minallfullbackallratio}}%</block>
                                         </block>
                                     </i> ,每天返
-          <i style="color: #ff5555;">
+                                    <i style="color: #ff5555;">
                                         <block>
                                             <block wx:if="{{list.fullbackgoods.type==0}}">￥{{list.fullbackgoods.fullbackprice}}</block>
                                         </block>
@@ -319,7 +319,7 @@
                                             <block wx:if="{{list.fullbackgoods.type==1}}">{{list.fullbackgoods.fullbackratio}}%</block>
                                         </block>
                                     </i> ，时间：
-          <i style="color: #ff5555;">{{list.fullbackgoods.day}}天</i>
+                                    <i style="color: #ff5555;">{{list.fullbackgoods.day}}天</i>
                                 </view>
                             </view>
                         </block>
@@ -337,8 +337,8 @@
                                 </view>
                                 <view class="fui-cell">
                                     <view class="fui-cell-info" style="text-align: right;">共
-            <text class="text-danger">{{list.total}}</text> 件商品 合计：
-            <text class="text-danger">¥ {{list.goodsprice}}</text>
+                                        <text class="text-danger">{{list.total}}</text> 件商品 合计：
+                                        <text class="text-danger">¥ {{list.goodsprice}}</text>
                                     </view>
                                 </view>
                             </view>
@@ -353,7 +353,8 @@
                 <view class="{{invoicepicker?'invoice-picker':'invoice-picker invoice-pickernone'}}">
                     <view bindtap="noinvoicepicker" style="flex: 1;"></view>
                     <view class="whiteinvoice">
-                        <view class="invoicetit">发票材质 <text bindtap="clearinvoice" style="float: right;text-align: right;padding-left:50rpx;">清空</text>
+                        <view class="invoicetit">发票材质
+                            <text bindtap="clearinvoice" style="float: right;text-align: right;padding-left:50rpx;">清空</text>
                         </view>
                         <view class="flex invoice-title">
                             <block>
@@ -390,8 +391,8 @@
                 <view class="fui-cell-group">
                     <view class="fui-cell fui-cell-textarea">
                         <view class="fui-cell-label">
-          买家留言
-        </view>
+                            买家留言
+                        </view>
                         <view class="fui-cell-info">
                             <block>
                                 <block wx:if="{{!cycledate&&!invoicepicker}}">
@@ -434,16 +435,16 @@
                     </block>
                     <block>
                         <block wx:if="{{list.deductcredit>0}}">
-                        <view style='display:{{condisp}}'>
-                            <view class="fui-cell">
-                                <text class="text-danger">{{list.deductcredit}}</text>
-                                <view class="fui-cell-label" style="text-align:left;width:auto">卡路里可抵扣
-          <text class="text-danger">{{list.deductmoney}}</text> 元
-        </view>
-                                <view class="fui-cell-info">
-                                    <switch bindchange="dataChange" class="switch-80 pull-right" id="deduct"></switch>
+                            <view style='display:{{condisp}}'>
+                                <view class="fui-cell">
+                                    <text class="text-danger">{{list.deductcredit}}</text>
+                                    <view class="fui-cell-label" style="text-align:left;width:auto">卡路里可抵扣
+                                        <text class="text-danger">{{list.deductmoney}}</text> 元
+                                    </view>
+                                    <view class="fui-cell-info">
+                                        <switch bindchange="dataChange" class="switch-80 pull-right" id="deduct"></switch>
+                                    </view>
                                 </view>
-                            </view>
                             </view>
                         </block>
                     </block>
@@ -451,14 +452,25 @@
                         <block wx:if="{{list.deductcredit2>0}}">
                             <view class="fui-cell">
                                 <view class="fui-cell-label" style="text-align:left;width:auto">余额可抵扣
-          <text class="text-danger">{{list.deductcredit2}}</text> 元
-        </view>
+                                    <text class="text-danger">{{list.deductcredit2}}</text> 元
+                                </view>
                                 <view class="fui-cell-info">
                                     <switch bindchange="dataChange" class="switch-80 pull-right" id="deduct2"></switch>
                                 </view>
                             </view>
                         </block>
                     </block>
+                    <!-- 卡路里 -->
+                   <view class='calorieBox' style='display:{{caloriedisp}}'>
+                    <view class='calorie-box' bindtap='caloriebtn' >
+                        <view class='calorie-left'>卡路里还差
+                            <text class='calorie-count'>{{calorienum}}</text>,不能享受免费兑,快去挣更多哦</view>
+                        <view class='ckgd-img'>
+                            <image src='http://paokucoin.com/img/backgroup/chakangengduo.png'></image>
+                        </view>
+                    </view>
+                   </view>
+                    <!-- 卡路里 -->
                 </view>
                 <block>
                     <block wx:if="{{list.stores.length>0&&list.isforceverifystore!=1}}">
@@ -508,7 +520,7 @@
                         <view class="fui-cell-label">商品小计</view>
                         <view class="fui-cell-info"></view>
                         <view class="fui-cell-remark noremark">¥
-          <text>{{ispackage?originalprice:list.goodsprice}}</text>
+                            <text>{{ispackage?originalprice:list.goodsprice}}</text>
                         </view>
                     </view>
                     <block>
@@ -517,7 +529,7 @@
                                 <view class="fui-cell-label">套餐优惠</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{comboprice}}</text>
+                                    <text>{{comboprice}}</text>
                                 </view>
                             </view>
                         </block>
@@ -528,7 +540,7 @@
                                 <view class="fui-cell-label">重复购买优惠</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.buyagain}}</text>
+                                    <text>{{list.buyagain}}</text>
                                 </view>
                             </view>
                         </block>
@@ -539,7 +551,7 @@
                                 <view class="fui-cell-label">任务活动优惠</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.taskdiscountprice}}</text>
+                                    <text>{{list.taskdiscountprice}}</text>
                                 </view>
                             </view>
                         </block>
@@ -569,7 +581,8 @@
                             <view class="fui-cell">
                                 <view class="fui-cell-label">会员优惠</view>
                                 <view class="fui-cell-info"></view>
-                                <view class="fui-cell-remark noremark">-¥<text>{{list.discountprice}}</text>
+                                <view class="fui-cell-remark noremark">-¥
+                                    <text>{{list.discountprice}}</text>
                                 </view>
                             </view>
                         </block>
@@ -580,7 +593,7 @@
                                 <view class="fui-cell-label">促销优惠</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.isdiscountprice}}</text>
+                                    <text>{{list.isdiscountprice}}</text>
                                 </view>
                             </view>
                         </block>
@@ -589,11 +602,11 @@
                         <block wx:if="{{list.showenough}}">
                             <view class="fui-cell">
                                 <view class="fui-cell-label" style="text-align:left;width:auto">商城单笔满
-          <text class="text-danger">{{list.enoughmoney}}</text>元立减
-        </view>
+                                    <text class="text-danger">{{list.enoughmoney}}</text>元立减
+                                </view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.enoughdeduct}}</text>
+                                    <text>{{list.enoughdeduct}}</text>
                                 </view>
                             </view>
                         </block>
@@ -602,11 +615,11 @@
                         <block wx:if="{{list.merch_showenough}}">
                             <view class="fui-cell">
                                 <view class="fui-cell-label" style="text-align:left;width:auto">商户单笔满
-          <text class="text-danger">{{list.merch_enoughmoney}}</text>元立减
-        </view>
+                                    <text class="text-danger">{{list.merch_enoughmoney}}</text>元立减
+                                </view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.merch_enoughdeduct}}</text>
+                                    <text>{{list.merch_enoughdeduct}}</text>
                                 </view>
                             </view>
                         </block>
@@ -617,13 +630,14 @@
                                 <view class="fui-cell-label">秒杀优惠</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{list.seckill_price}}</text>
+                                    <text>{{list.seckill_price}}</text>
                                 </view>
                             </view>
                         </block>
                     </block>
                     <view class="fui-cell">
-                        <view class="fui-cell-label" style="width: 300rpx">{{city_express_state?'同城运费':'运费'}}<block>
+                        <view class="fui-cell-label" style="width: 300rpx">{{city_express_state?'同城运费':'运费'}}
+                            <block>
                                 <block wx:if="{{list.card_free_dispatch}}">
                                     <span style="color:#ff5555;">(会员卡包邮)</span>
                                 </block>
@@ -631,7 +645,7 @@
                         </view>
                         <view class="fui-cell-info"></view>
                         <view class="fui-cell-remark noremark">¥
-          <block>
+                            <block>
                                 <block wx:if="{{list.iscycelbuy==true}}">
                                     <text>{{list.dispatch_price}}(x{{list.cycelComboPeriods}}期)</text>
                                 </block>
@@ -647,7 +661,7 @@
                                 <view class="fui-cell-label" style="width: 350rpx;">{{coupon.coupondeduct_text}}</view>
                                 <view class="fui-cell-info"></view>
                                 <view class="fui-cell-remark noremark">-¥
-          <text>{{coupon.deductprice}}</text>
+                                    <text>{{coupon.deductprice}}</text>
                                 </view>
                             </view>
                         </block>
@@ -658,7 +672,7 @@
                 <view class="tool nopadding">
                     <view class="text">
                         <view class="title text-right">需付：
-          <text class="text-danger">{{list.realprice}}元</text>
+                            <text class="text-danger">{{list.realprice}}元</text>
                         </view>
                     </view>
                     <view class="btns">

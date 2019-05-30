@@ -1,18 +1,16 @@
-// pages/discount/zkbrechange/zkbrechange.js
+// pages/discount/resuccess/resuccess.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var iptvalue=''
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg,
-        hintDis:'none'
+        globalimg: i.globalData.appimg
     },
 
     /**
@@ -21,31 +19,12 @@ Page({
     onLoad: function (options) {
 
     },
-    // 监听输入
-    watchPassWord: function (event) {
-        var a=this
-        console.log(event.detail.value);
-        iptvalue = event.detail.value
-        if (event.detail.value>=3000){
-            a.setData({
-                hintDis: 'block'
-            })
-        }else{
-            a.setData({
-                hintDis: 'none'
-            })
-        }
+    backbtn:function(){
+        wx.navigateTo({
+            url: '/pages/discount/zkbaccount/zkbaccount',
+        })
     },
-    rechargebtn: function () {
-        console.log(iptvalue)
-        if (iptvalue<3000){
-            console.log('调充值接口')
-            wx.navigateTo({
-                url: '/pages/discount/resuccess/resuccess',
-            })
-        }
-          
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

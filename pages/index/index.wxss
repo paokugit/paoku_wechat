@@ -531,9 +531,12 @@ image {
     width: 350rpx;
     height: 40rpx;
     line-height: 40rpx;
-    /* background: #f00; */
     color: #333;
     font-size: 34rpx;
+display: block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow:ellipsis;
 }
 .merch-reward{
     width: 260rpx;
@@ -554,11 +557,15 @@ image {
 }
 
 .office-hour {
+    width: 80%;
      height: 40rpx;
     line-height: 40rpx;
-    /* background: #ff0; */
     color: #666;
     font-size: 22rpx;
+    display: block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow:ellipsis;
 }
 
 .store-address {

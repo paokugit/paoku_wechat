@@ -1,0 +1,20 @@
+<view class='mingxi-box'>
+    <view class='mingxi-con'>
+        <view class='mingxi-item'>
+            <view class='item-top'>
+                <view class='item-title'>扫商家收款码明细</view>
+                <view class='item-sum'>-100</view>
+            </view>
+            <view class='item-bottom'>
+                <view class='mingxi-time-box'>
+                    <view class='time-tit'>时间</view>
+                    <view class='time-num'>2019-05-21 19:53:12</view>
+                </view>
+                <view class='mingxi-merch-box'>
+                    <view class='merch-tit'>商户</view>
+                    <view class='merch-num'>三只松鼠旗舰店</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
