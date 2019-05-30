@@ -254,7 +254,7 @@ Page((a = {
             id: t.id
         }, function (t) {
             console.log(t)
-            
+           var smart_title = t.goods.title.slice(0,15);
             merchid=t.goods.merchid
             reward=t.goods.reward
             console.log(reward)
@@ -333,7 +333,7 @@ Page((a = {
                     navbar: t.goods.navbar,
                     labels: t.goods.labels
                 }), console.log(t.goods), wx.setNavigationBarTitle({
-                    title: t.goods.title || "商品详情"
+              title: smart_title || "商品详情"
                 }), u = t.goods.hasoption, d.isEmptyObject(t.goods.dispatchprice) || "string" == typeof t.goods.dispatchprice ? e.setData({
                     dispatchpriceObj: 0
                 }) : e.setData({
