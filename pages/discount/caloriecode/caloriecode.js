@@ -10,14 +10,30 @@ Page({
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        caloriecode:'',
+        calorieurl:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+            // s.get("app/payment/index/qrcode", {
+            // }, function (eve) {
+            //     console.log(eve)
+            // })
+            var a=this
+            wx.request({
+                url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
+                success: function (e) {
+                    console.log(e.data)
+                    a.setData({
+                        caloriecode: e.data.result.calorie_qr,
+                        calorieurl: e.data.result.calorie
+                    })
+                }
+            })
     },
     setbtn: function () {
         wx.navigateTo({

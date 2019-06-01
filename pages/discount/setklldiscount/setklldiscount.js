@@ -1,4 +1,6 @@
 // pages/discount/setklldiscount/setklldiscount.js
+var moneynum=""
+var calorienum=""
 Page({
 
     /**
@@ -14,10 +16,36 @@ Page({
     onLoad: function (options) {
 
     },
+
+    setmoney: function (e) {
+        moneynum = e.detail.value
+       console.log(moneynum)
+    },
+    setcalorie: function (e) {
+        calorienum = e.detail.value
+        console.log(calorienum)
+    },
+    // 确认
     confirm:function(){
-wx.navigateTo({
-    url: '/pages/discount/klldiscount/klldiscount',
-})
+        console.log(moneynum, calorienum)
+        wx.request({
+            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.set',
+            method: 'post',
+            data: {
+                money: moneynum,
+                deduct: calorienum,
+                cate:1
+            },
+            success: function (e) {
+                console.log(e.data)
+                // t.setData({
+                //     usercredit: e.data.result.credit1
+                // })
+            }
+        })
+        // wx.navigateTo({
+        //     url: '/pages/discount/klldiscount/klldiscount',
+        // })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
