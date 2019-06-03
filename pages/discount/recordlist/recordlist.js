@@ -12,7 +12,19 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.request({
+            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.record',
+            method: 'post',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+               page:this.data.page
+            },
+            success: function (e) {
+                console.log(e.data)
+            }
+        })
     },
 
     /**

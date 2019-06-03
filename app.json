@@ -1,9 +1,11 @@
 {
     "pages": [
         "pages/discount/setklldiscount/setklldiscount",
-        "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/discount/kllscancode/kllscancode",
-    "pages/discount/caloriecode/caloriecode",
+       
+       
+        "pages/discount/setzkbdiscount/setzkbdiscount",
+        "pages/discount/caloriecode/caloriecode",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/zkbscancode/zkbscancode",
         "pages/discount/merchcode/merchcode",

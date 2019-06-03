@@ -14,6 +14,7 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative
 }
 
 @keyframes kf-marque-animation {
@@ -71,9 +72,13 @@ page {
 .listCon {
     width: 90%;
     height: auto;
-    /* background: #f00; */
+  position: absolute;
+  top: 260rpx
 }
-
+.listItem{
+    width: auto;
+    height: auto
+}
 .discountlist-box {
     width: 100%;
     height: 202rpx;

@@ -10,6 +10,7 @@ var moneycount = ''
 var calorienum = ''
 var actualnum=''
 var merchid=31
+var itemid=''
 Page({
 
     /**
@@ -28,6 +29,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (t) {
+        // 修改卡路里列表页的数据
         console.log(merchid)
         var b = decodeURIComponent(t.scene);
             var i = s.str2Obj(b);
@@ -83,7 +85,6 @@ Page({
       var t=this
         wx.request({
             url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.getCredit',
-           
             data: {
                 openid:userinfo.openid
             },
