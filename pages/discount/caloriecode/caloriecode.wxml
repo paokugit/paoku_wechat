@@ -2,11 +2,11 @@
     <view class='code-content'>
         <view class='code-tit'>微信扫一扫，向我付钱</view>
         <view class='code-img'>
-            <image src='{{globalimg}}/explain01.png'></image>
+            <image src='{{caloriecode}}'></image>
         </view>
         <view class='code-handle'>
             <view class='setdiscount' bindtap='setbtn'>设置折扣</view>
-            <view class='saveimg' bindtap='onSavePicClick'  data-img="{{globalimg}}/explain01.png">保存图片</view>
+            <view class='saveimg' bindtap='onSavePicClick'  data-img="{{calorieurl}}">保存图片</view>
         </view>
         <view class='recordbox' bindtap='recordbtn'>
             <view class='record-left'>

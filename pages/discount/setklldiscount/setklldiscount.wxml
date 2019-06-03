@@ -3,12 +3,12 @@
         <view class='list-box'>
             <view class='list-top'>
                 <view class='order-text'>订单满</view>
-                <input class='ordeript' type='text' placeholder='设置金额'></input>
+                <input class='ordeript' type='text' placeholder='设置金额' bindinput='setmoney' value='{{moneytext}}'></input>
             </view>
 
             <view class='list-bottom'>
                 <view class='order-text'>可使用卡路里</view>
-                <input class='calorieipt' type='text' placeholder='0.00'></input>
+                <input class='calorieipt' type='text' placeholder='0.00' bindinput='setcalorie' value='{{calorietext}}'></input>
             </view>
         </view>
     </view>

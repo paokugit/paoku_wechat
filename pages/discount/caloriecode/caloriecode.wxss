@@ -26,7 +26,8 @@ page {
     line-height: 60rpx;
     color: #333;
     font-size: 34rpx;
-    /* background: #f00 */
+    text-align: center;
+     margin-top: 20rpx
 }
 image{
     width: 100%;
@@ -35,8 +36,7 @@ image{
 .code-img{
     width: 394rpx;
     height: 394rpx;
-    /* background: #f88; */
-    margin-top: 20rpx
+    margin-top: 10rpx
 }
 .code-handle{
     width: 450rpx;

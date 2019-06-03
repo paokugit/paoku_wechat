@@ -10,14 +10,27 @@ Page({
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        rebatecode:'',
+        rebateurl:''
+        
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var a=this
+        wx.request({
+            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
+            success: function (e) {
+                console.log(e.data)
+                a.setData({
+                    rebatecode: e.data.result.rebate_qr,
+                    rebateurl: e.data.result.rebate
+                })
+            }
+        })
     },
     setbtn:function(){
         wx.navigateTo({
