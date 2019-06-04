@@ -1,6 +1,8 @@
 // pages/discount/scancode/scancode.js
 var merchid=10
 var itemid=''
+var a, e, i = getApp(),
+  s = i.requirejs("core");
 Page({
 
     /**
@@ -17,18 +19,14 @@ Page({
     onLoad: function (options) {
         
         var a=this
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.getset',
-            data: {
-                cate:1,
-                merchid:merchid
-            },
-            success: function (e) {
-                console.log(e.data)
-               a.setData({
-                   calorielist:e.data.result.list
-                })
-            }
+      s.get("payment/index/getset",{
+         cate: 1,
+         merchid: merchid
+        },function(e){
+            console.log(e)
+            a.setData({
+              calorielist: e.result.list
+            })
         })
 
     },
