@@ -93,8 +93,13 @@
         <block>
             <block wx:if="{{activity.credit}}">
                 <view class="act-cell">
-                    <view class="act-cell-title">
+                    <view class="act-cell-title" wx:if="{{goods.deduct_type==1}}">
                         <text class="act-tips"></text>卡路里</view>
+                         
+                         
+                         <view class="act-cell-title" wx:if="{{goods.deduct_type==2}}">
+                        <text class="act-tips"></text>折扣宝</view>
+
                     <view class="act-cell-inner">
                         <block>
                             <block wx:if="{{activity.credit.deduct}}">
@@ -103,7 +108,9 @@
                         </block>
                         <block>
                             <block wx:if="{{activity.credit.give}}">
+
                                 <text>购买赠送{{activity.credit.give}}卡路里</text>
+                                
                             </block>
                         </block>
                     </view>

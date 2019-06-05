@@ -270,6 +270,8 @@ Page({
                 } : "",
                 remark: t.data.remark,
                 deduct: t.data.deduct,
+                //折扣付
+                discount: t.data.discount,
                 deduct2: t.data.deduct2,
                 couponid: t.data.couponid,
                 cardid: t.cardid,
@@ -316,6 +318,14 @@ Page({
             i = parseFloat(a.realprice);
             i += e.deduct ? -parseFloat(a.deductmoney) : parseFloat(a.deductmoney), a.realprice = i;
             break;
+            
+            //折扣宝
+          case "discount":
+            if (e.discount = t.detail.value, e.deduct2) return;
+            i = parseFloat(a.realprice);
+            i += e.discount ? -parseFloat(a.discount) : parseFloat(a.discount), a.realprice = i;
+            break;
+
 
           case "deduct2":
             if (e.deduct2 = t.detail.value, e.deduct) return;

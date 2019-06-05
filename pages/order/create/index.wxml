@@ -433,6 +433,7 @@
                             </navigator>
                         </block>
                     </block>
+                    
                     <block>
                         <block wx:if="{{list.deductcredit>0}}">
                             <view style='display:{{condisp}}'>
@@ -448,6 +449,24 @@
                             </view>
                         </block>
                     </block>
+                   <!-- 折扣宝 -->
+                   <block>
+                        <block wx:if="{{list.discount>0}}">
+                            <view style='display:{{condisp}}'>
+                                <view class="fui-cell">
+                                    <text class="text-danger">{{list.discount}}</text>
+                                    <view class="fui-cell-label" style="text-align:left;width:auto">折扣宝可抵扣
+                                        <text class="text-danger">{{list.discount}}</text> 元
+                                    </view>
+                                    <view class="fui-cell-info">
+                                        <switch bindchange="dataChange" class="switch-80 pull-right" id="discount"></switch>
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </block>
+
+
                     <block>
                         <block wx:if="{{list.deductcredit2>0}}">
                             <view class="fui-cell">

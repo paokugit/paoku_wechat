@@ -519,6 +519,15 @@
                             </block>
                         </block>
                         <block>
+                            <block wx:if="{{order.discount_price>0}}">
+                                <view class="fui-cell">
+                                    <view class="fui-cell-label">折扣宝抵扣</view>
+                                    <view class="fui-cell-info"></view>
+                                    <view class="fui-cell-remark noremark">-¥ {{order.discount_price}}</view>
+                                </view>
+                            </block>
+                        </block>
+                        <block>
                             <block wx:if="{{order.deductcredit2>0}}">
                                 <view class="fui-cell">
                                     <view class="fui-cell-label">余额抵扣</view>

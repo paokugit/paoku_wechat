@@ -140,7 +140,10 @@
                             <block wx:else>
                                 <text class="original" wx:if="{{goods.productprice>minprice}}">¥{{goods.productprice}}</text>
                             </block>
-                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0}}">可用卡路里抵扣{{goods.deduct}}元</text>
+                           
+                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==1}}">可用卡路里抵扣{{goods.deduct}}元</text>
+                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣付抵扣{{goods.deduct}}元</text>
+  
                         </view>
                     </view>
                     <view class="detail-Commission flex" style="padding-bottom: 0" wx:if="{{goods.cansee>0&&goods.seecommission>0}}">
@@ -293,8 +296,12 @@
                     <span wx:if="{{activity.buyagain.buyagain_sale==0}}">重复购买 不与其他优惠共享</span>
                             </view>
                             <view class="sale-line" style="font-size: 24rpx;" wx:if="{{activity.credit}}">
-                                <span class="sale-tip">{{credittext}}</span>
+                                
+                                <span class="sale-tip" wx:if="{{goods.deduct_type==1}}">{{credittext}}</span>
+                                 <span class="sale-tip" wx:if="{{goods.deduct_type==2}}">折扣宝</span>
+
                                 <text wx:if="{{activity.credit.deduct}}">最高抵扣￥{{activity.credit.deduct}}</text>
+
                                 <text wx:if="{{activity.credit.give}}">；购买赠送{{activity.credit.give}}{{credittext}}</text>
                             </view>
                         </view>

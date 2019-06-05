@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/discount/setklldiscount/setklldiscount",
         "pages/discount/kllscancode/kllscancode",
        
@@ -10,7 +11,7 @@
         "pages/discount/zkbscancode/zkbscancode",
         "pages/discount/merchcode/merchcode",
         "pages/discount/discount/discount",
-        "pages/index/index",
+        
         "pages/discount/mingxi/mingxi",
         "pages/discount/resuccess/resuccess",
         "pages/discount/zkbrechange/zkbrechange",
