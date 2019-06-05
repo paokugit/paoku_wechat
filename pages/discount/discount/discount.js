@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+console.log()
 var merchid=10
 Page({
 

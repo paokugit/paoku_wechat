@@ -8,7 +8,7 @@
 
             <view class='list-bottom'>
                 <view class='order-text'>可使用折扣宝</view>
-                <input class='calorieipt' type='text' placeholder='0.00' bindinput='setzkb' value='{{zkbtext}}'></input>
+                <input class='calorieipt' type='text' placeholder='0.00' bindinput='setcalorie' value='{{calorietext}}'></input>
             </view>
         </view>
     </view>

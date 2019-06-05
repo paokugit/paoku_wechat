@@ -152,7 +152,7 @@
      <view class='barImg'>
         <image src='../../../icon1/huiyuan-s.png'></image>
         </view>
-        <view class='barCon' style='color:#00d8a0'>达人</view>
+        <view class='barCon' style='color:#00d8a0'>专享</view>
     </view>
     <view class='bar' bindtap='userBtn'>
         <view class='barImg'>

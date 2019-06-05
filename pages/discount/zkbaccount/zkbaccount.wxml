@@ -15,39 +15,66 @@
         <image src='{{globalimg}}/zhekoubao@2x.png'></image>
     </view>
     <!-- tab -->
-    <view class="swiper-tab">
-        <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">支出</view>
-        <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">充值</view>
-    </view>
+    <block>
+        <block wx:if="{{!show}}">
+            <loading>加载中...</loading>
+        </block>
+    </block>
+    <block wx:if="{{show}}">
+        <view class="swiper-tab">
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">充值</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">支出</view>
+        </view>
 
-    <view class="{{type==1 ? 'show':'hidden'}}">
-        <scroll-view>
+        <view class="{{type==1 ? 'show':'hidden'}}">
+            <scroll-view>
 
-            <view class='expend-box'  wx:for="{{paylist}}" wx:key="{{index}}">
-                <view class='expend-list'>
-                    <view class='list-left'>
-                        <view class='expend-title'>{{item.remark}}</view>
-                        <view class='expend-time'>{{item.createtime}}</view>
-                    </view>
-                    <view class='list-right'>-{{item.num}}</view>
+                <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}">
+                    <navigator class='expend-list' url='/pages/discount/mingxi/mingxi?id={{item.id}}'>
+                        <view class='list-left'>
+                            <view class='expend-title'>{{item.remark}}</view>
+                            <view class='expend-time'>{{item.createtime}}</view>
+                        </view>
+                        <view class='list-right'>+{{item.num}}</view>
+                    </navigator>
                 </view>
-            </view>
-            <view class='ex-end'  style='display:{{exDis}}'>暂无数据</view>
-        </scroll-view>
-    </view>
-    <view class="{{type==2 ? 'show':'hidden'}}">
-        <scroll-view>
-            <view class='recharge-box' wx:for="{{incomelist}}" wx:key="{{index}}">
-                <view class='recharge-list'>
-                    <view class='list-left'>
-                        <view class='expend-title'>{{item.remark}}</view>
-                        <view class='expend-time'>{{item.createtime}}</view>
+            </scroll-view>
+        </view>
+        <view class="{{type==2 ? 'show':'hidden'}}">
+            <scroll-view>
+                <view class='recharge-box' wx:for="{{list}}" wx:key="{{index}}">
+                    <view class='recharge-list'>
+                        <view class='list-left'>
+                            <view class='expend-title'>{{item.remark}}</view>
+                            <view class='expend-time'>{{item.createtime}}</view>
+                        </view>
+                        <view class='list-right'>{{item.num}}</view>
                     </view>
-                    <view class='list-right'>+{{item.num}}</view>
                 </view>
-            </view>
-             <view class='re-end'  style='display:{{reDis}}'>暂无数据</view>
-        </scroll-view>
-    </view>
+            </scroll-view>
+        </view>
+    </block>
     <!-- tab -->
+    <block>
+    <block wx:if="{{total<=0&&!loading}}">
+        <view class="fui-loading empty">
+            <view class="text">暂无数据</view>
+        </view>
+    </block>
+</block>
 </view>
+<block>
+    <block wx:if="{{loading}}">
+        <view class="fui-loading">
+            <view class="icon"></view>
+            <view class="text">正在加载</view>
+        </view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{loaded&&list.length>0}}">
+        <view class="fui-loading empty">
+            <view class="text">没有更多了</view>
+        </view>
+    </block>
+</block>

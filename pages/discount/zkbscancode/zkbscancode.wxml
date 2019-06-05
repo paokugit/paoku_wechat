@@ -2,7 +2,7 @@
     <!-- <view class='scancode-desc'>消费满50元折扣宝抵扣5元，消费满100元折扣宝抵扣10元</view> -->
     <view class="marquee">
         <view class="content" wx:for="{{fulllist}}" wx:key="{{index}}">
-            <text>消费满{{item.money}}元,卡路里抵扣{{item.deduct}}元</text>
+            <text>消费满{{item.money}}元,卡路里抵扣{{item.deduct}}元。</text>
             <text style="display: inline-block; width: auto"></text>
         </view>
     </view>
