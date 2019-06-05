@@ -1,30 +1,22 @@
 {
     "pages": [
+        "pages/index/index",
+        "pages/discount/recordlist/recordlist",
         "pages/discount/setklldiscount/setklldiscount",
         "pages/discount/discount/discount",
-        "pages/index/index",
         "pages/exclusive/exclusive",
-      
         "pages/discount/zkbaccount/zkbaccount",
-        "pages/discount/recordlist/recordlist",
-       
         "pages/discount/zkbscancode/zkbscancode",
-
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/klldiscount/klldiscount",
-       
         "pages/discount/setzkbdiscount/setzkbdiscount",
-        
-       
-         "pages/discount/caloriecode/caloriecode",
+        "pages/discount/caloriecode/caloriecode",
         "pages/discount/kllscancode/kllscancode",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchcode/merchcode",
         "pages/commission/down/index",
         "pages/commission/down/fandetails",
-        
-       
         "pages/discount/mingxi/mingxi",
         "pages/discount/resuccess/resuccess",
         "pages/huiyuan/openmember/openmember",

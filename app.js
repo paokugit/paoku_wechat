@@ -111,6 +111,7 @@ App({
         
         }, function (a) {
             console.log(a)
+          console.log(n.getCache("userinfo"));
             if (n.globalData.applogin == '') {
                 n.globalData.applogin = a.login
             }
@@ -124,7 +125,11 @@ App({
                 iv: i.iv,
                 sessionKey: a.session_key
               }, function (e) {
-                i.userInfo.openid = "sns_wa_"+e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid,
+                i.userInfo.openid = "sns_wa_"+e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid;
+                if (e.merchInfo && e.merchInfo != '') {
+                  i.userInfo.merchInfo = e.merchInfo;
+                }
+                console.log(i.userInfo);
                     i.needauth = 0, n.setCache("userinfo", i.userInfo, expiration), n.setCache("userinfo_openid", i.userInfo.openid),
                   n.setCache("userinfo_id", e.id), n.getSet(), t && "function" == typeof t && t(o);
               });

@@ -4,7 +4,11 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var merchid = 10
+console.log(userinfo);
+var merchid = 0;
+if (userinfo.merchInfo.id){
+  var merchid = userinfo.merchInfo.id;
+}
 Page({
 
     /**
@@ -19,13 +23,13 @@ Page({
      */
     onLoad: function (options) {
         var a=this
-        s.get("payment/index/record", {
+        s.get("payment/index/oldrecord", {
             merchid: merchid,
             page: 1
         }, function (e) {
             console.log(e)
             a.setData({
-               recordlist:e.result.list
+               recordlist:e.result
             })
         })
     },
