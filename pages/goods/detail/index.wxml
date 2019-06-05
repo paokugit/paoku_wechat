@@ -142,7 +142,7 @@
                             </block>
                            
                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==1}}">可用卡路里抵扣{{goods.deduct}}元</text>
-                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣付抵扣{{goods.deduct}}元</text>
+                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣宝抵扣{{goods.deduct}}元</text>
   
                         </view>
                     </view>
