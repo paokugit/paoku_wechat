@@ -30,7 +30,7 @@ module.exports = {
     var d = this;
     i && d.loading(), n && (n.authkey = f || "");
     var l = {
-      url: (a ? this.getUrl(t) : this.getUrl(t, n)) + "&timestamp=" + +new Date() + "&versions=12",
+      url: (a ? this.getUrl(t) : this.getUrl(t, n)) + "&timestamp=" + +new Date() + "&versions=14",
       method: a ? "POST" : "GET",
       header: {
         "Content-type": a ? "application/x-www-form-urlencoded" : "application/json",

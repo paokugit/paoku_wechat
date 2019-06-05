@@ -6,7 +6,7 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo);
 var merchid = 0;
-if (userinfo.merchInfo.id){
+if (userinfo.merchInfo && userinfo.merchInfo.id != 0 && userinfo.merchInfo.id !=false){
   var merchid = userinfo.merchInfo.id;
 }
 Page({
@@ -22,10 +22,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      var cate=1;
+      //cate=1 卡路里 cate=2 折扣宝 
+      if (options.cate) cate = options.cate;
         var a=this
         s.get("payment/index/oldrecord", {
             merchid: merchid,
-            page: 1
+            page: 1,
+            cate:1
+
         }, function (e) {
             console.log(e)
             a.setData({
