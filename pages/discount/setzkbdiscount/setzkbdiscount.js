@@ -9,8 +9,8 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-console.log(userinfo.merchInfo.id)
+// var userinfo = f.getCache('userinfo');
+// console.log(userinfo.merchInfo.id)
 Page({
 
     /**
