@@ -62,8 +62,8 @@ Page({
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
           s.post("payment/index/set", {
-            money: moneynum,
-            deduct: calorienum,
+              money: this.data.moneynum,
+              deduct: this.data.calorienum,
             cate: 1,
             merchid:10
           }, function (e) {
@@ -154,9 +154,9 @@ Page({
                 success: function (res) {
                   if (res.confirm) { //这里是点击了确定以后
                     console.log('用户点击确定')
-                    // wx.navigateTo({
-                    //     url: '/pages/discount/klldiscount/klldiscount',
-                    // })
+                    wx.navigateTo({
+                        url: '/pages/discount/klldiscount/klldiscount',
+                    })
                   } else { //这里是点击了取消以后
                     console.log('用户点击取消')
                   }

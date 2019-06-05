@@ -1,7 +1,7 @@
 <view class='account-box'>
     <view class='zkb-img'>
         <view class='account-num-box'>
-            <view class='account-num'>12345</view>
+            <view class='account-num'>{{credit}}</view>
             <view class='account-yuan'>元</view>
         </view>
         <view class='account-btn-box'>
@@ -23,31 +23,30 @@
     <view class="{{type==1 ? 'show':'hidden'}}">
         <scroll-view>
 
-            <view class='expend-box'>
+            <view class='expend-box'  wx:for="{{paylist}}" wx:key="{{index}}">
                 <view class='expend-list'>
                     <view class='list-left'>
-                        <view class='expend-title'>扫码付款</view>
-                        <view class='expend-time'>3月10日 15:12</view>
+                        <view class='expend-title'>{{item.remark}}</view>
+                        <view class='expend-time'>{{item.createtime}}</view>
                     </view>
-                    <view class='list-right'>-159.00</view>
+                    <view class='list-right'>-{{item.num}}</view>
                 </view>
-                <view class='expend-list'></view>
-                <view class='expend-list'></view>
             </view>
+            <view class='ex-end'  style='display:{{exDis}}'>暂无数据</view>
         </scroll-view>
     </view>
     <view class="{{type==2 ? 'show':'hidden'}}">
         <scroll-view>
-            <view class='recharge-box'>
+            <view class='recharge-box' wx:for="{{incomelist}}" wx:key="{{index}}">
                 <view class='recharge-list'>
                     <view class='list-left'>
-                        <view class='expend-title'>卡路里兑换</view>
-                        <view class='expend-time'>3月10日 15:12</view>
+                        <view class='expend-title'>{{item.remark}}</view>
+                        <view class='expend-time'>{{item.createtime}}</view>
                     </view>
-                    <view class='list-right'>+666.00</view>
+                    <view class='list-right'>+{{item.num}}</view>
                 </view>
-                <view class='recharge-list'></view>
             </view>
+             <view class='re-end'  style='display:{{reDis}}'>暂无数据</view>
         </scroll-view>
     </view>
     <!-- tab -->

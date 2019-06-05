@@ -4,7 +4,7 @@
             <view class='kll-img'>
                 <image src='{{globalimg}}/kaluli@2x.png'></image>
             </view>
-            <view class='kll-text'>卡路里余额：￥3657.9</view>
+            <view class='kll-text'>卡路里余额：￥{{usercredit}}</view>
         </view>
         <view class='kll-desc'>1卡路里
             <text class='kll-symbol'>=</text>1折扣宝</view>

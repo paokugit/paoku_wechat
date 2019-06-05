@@ -4,19 +4,42 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var merchid=10
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        credit:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var a=this
+        s.get("payment/index/getCredit", {
+          openid:userinfo.openid
+        }, function (e) {
+            console.log(e)
+            a.setData({
+                credit:e.result.credit3
+            })
+        })
+    },
+    getScancode: function () {
+        var _this = this;
+        // 允许从相机和相册扫码
+        wx.scanCode({
+            success: (res) => {
+                console.log(res.path)
+                wx.navigateTo({
+                    url: '/' + res.path,
+                })
+            }
+        })
 
     },
     accountbtn:function(){
@@ -25,15 +48,8 @@ Page({
         })
     },
     codebtn:function(){
-        // s.get("app/payment/index/qrcode", {
-        // }, function (eve) {
-        //     console.log(eve)
-        // })
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
-            success:function(e){
-console.log(e)
-            }
+        wx.navigateTo({
+            url: '/pages/discount/merchcode/merchcode',
         })
     },
     /**

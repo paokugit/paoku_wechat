@@ -13,7 +13,7 @@
         <view class='addbtn' bindtap='addbtn'>添加</view>
     </view>
     <view class='listCon'>
-        <view class='listItem'   wx:for="{{calorielist}}" wx:key="{{index}}">
+        <view class='listItem'   wx:for="{{list}}" wx:key="{{index}}">
             <view class='discountlist-box' data-id='{{item.id}}' bindtap='orderbtn'>
                 <view class='list-top'>
                     <view class='order-text'>订单满</view>

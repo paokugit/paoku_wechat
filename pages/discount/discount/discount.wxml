@@ -1,7 +1,7 @@
 <view class='discount-box'>
     <view class='discount-top'>
         <!-- 扫码付 -->
-        <view class='scan-box'>
+        <view class='scan-box' bindtap='getScancode'>
             <view class='code-img'>
                 <image src='{{globalimg}}/saoma@2x.png'></image>
             </view>
@@ -21,7 +21,7 @@
     <view class='account-box'>
         <view class='zhekoubao-img'>
             <view class='account-text-box'>
-                <view class='account-num'>2556</view>
+                <view class='account-num'>{{credit}}</view>
                 <text class='account-text'>元</text>
             </view>
             <view class='zhanghu-img' bindtap='accountbtn'>
