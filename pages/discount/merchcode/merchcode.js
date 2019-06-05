@@ -20,9 +20,13 @@ Page({
 
     },
     caloriebtn:function(){
-        wx.navigateTo({
-            url: '/pages/discount/caloriecode/caloriecode',
+        wx.showModal({
+            title: '提示',
+            content: '暂未开放',
         })
+        // wx.navigateTo({
+        //     url: '/pages/discount/caloriecode/caloriecode',
+        // })
     },
     
     zkbbtn: function() {

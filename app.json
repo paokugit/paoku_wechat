@@ -1,7 +1,8 @@
 {
     "pages": [              
         "pages/index/index",
-        "pages/discount/recordlist/recordlist",
+        "pages/discount/zkbcode/zkbcode",
+        "pages/discount/merchcode/merchcode",
         "pages/discount/discount/discount",
         "pages/discount/zkbaccount/zkbaccount",
         "pages/discount/kllscancode/kllscancode",
@@ -14,8 +15,7 @@
         "pages/discount/caloriecode/caloriecode",
         "pages/discount/mingxi/mingxi",
         "pages/discount/zkbrechange/zkbrechange",
-        "pages/discount/zkbcode/zkbcode",
-        "pages/discount/merchcode/merchcode",
+       
         "pages/commission/down/index",
         "pages/commission/down/fandetails",
         "pages/discount/resuccess/resuccess",
@@ -129,12 +129,12 @@
                 "iconPath": "icon1/home-n.png",
                 "selectedIconPath": "icon1/home-s.png"
             },
-        {
-            "pagePath": "pages/member/cart/index",
-            "text": "购物车",
-            "iconPath": "icon1/shop-n.png",
-            "selectedIconPath": "icon1/shop-s.png"
-        },
+            {
+                "pagePath": "pages/discount/discount/discount",
+                "text": "折扣付",
+                "iconPath": "icon1/sfk-n@2x.png",
+                "selectedIconPath": "icon1/sfk-s@2x.png"
+            },
             {
                 "pagePath": "pages/exclusive/exclusive",
                 "text": "专享",

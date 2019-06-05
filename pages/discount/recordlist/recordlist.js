@@ -9,32 +9,32 @@ var merchid = 0;
 if (userinfo.merchInfo && userinfo.merchInfo.id != 0 && userinfo.merchInfo.id !=false){
   var merchid = userinfo.merchInfo.id;
 }
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        recordlist:[]
+        recordlist:[],
+        totalmoney:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var cate=1;
-      //cate=1 卡路里 cate=2 折扣宝 
-      if (options.cate) cate = options.cate;
+        console.log(options)
         var a=this
         s.get("payment/index/oldrecord", {
             merchid: merchid,
-            page: 1,
-            cate:1
-
+            page: this.data.page,
+            cate:options.cate
         }, function (e) {
             console.log(e)
             a.setData({
-               recordlist:e.result
+               recordlist:e.result,
+                totalmoney:e.result.total_money
             })
         })
     },

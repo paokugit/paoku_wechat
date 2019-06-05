@@ -4,7 +4,8 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var merchid=10
+// console.log(userinfo.merchInfo.id)
+var catenum=2
 Page({
 
     /**
@@ -23,7 +24,7 @@ Page({
     onLoad: function (options) {
         var a=this
         s.get("payment/index/qrcode", {
-            merchid: merchid,
+            merchid: userinfo.merchInfo.id,
         }, function (e) {
             console.log(e)
             a.setData({
@@ -34,12 +35,12 @@ Page({
     },
     setbtn:function(){
         wx.navigateTo({
-            url: '/pages/discount/setzkbdiscount/setzkbdiscount',
+            url: '/pages/discount/zkbdiscount/zkbdiscount',
         })
     },
     recordbtn:function(){
         wx.navigateTo({
-            url: '/pages/discount/recordlist/recordlist',
+            url: '/pages/discount/recordlist/recordlist?cate='+catenum,
         })
     },
     downloadImage: function (imageUrl) {

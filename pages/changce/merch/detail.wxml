@@ -50,5 +50,5 @@
   </view>
   <!--include src='/pages/common/menu.wxml' /-->
 
-<!-- <view class='bottombar'>扫码买单</view> -->
+<view class='bottombar' bindtap='scancodebtn'>扫码买单</view>
 </view>

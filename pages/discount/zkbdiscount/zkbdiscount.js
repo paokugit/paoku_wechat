@@ -5,7 +5,7 @@ var t = getApp().requirejs("core");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var merchid = 10
+// var merchid = 10
 var itemid = ''
 Page({
 
@@ -13,7 +13,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        text: '卡路里折扣只针对收款码付款方式有效,线上订单不影响',
+        text: '折扣宝折扣只针对收款码付款方式有效,线上订单不影响',
        list: [],
         page: 1
     },
@@ -29,7 +29,7 @@ Page({
         t.get("payment/index/getset", {
             page: e.data.page,
             cate: 2,
-            merchid: merchid,
+            merchid: userinfo.merchInfo.id,
         }, function (t) {
             console.log(t)
             var a = {
@@ -93,8 +93,6 @@ Page({
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh();
     },
-
-
     /**
      * 页面上拉触底事件的处理函数
      */

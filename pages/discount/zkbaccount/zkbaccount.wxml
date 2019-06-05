@@ -30,7 +30,7 @@
             <scroll-view>
 
                 <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <navigator class='expend-list' url='/pages/discount/mingxi/mingxi?id={{item.id}}'>
+                    <navigator class='expend-list' >
                         <view class='list-left'>
                             <view class='expend-title'>{{item.remark}}</view>
                             <view class='expend-time'>{{item.createtime}}</view>
@@ -43,13 +43,13 @@
         <view class="{{type==2 ? 'show':'hidden'}}">
             <scroll-view>
                 <view class='recharge-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <view class='recharge-list'>
+                    <navigator class='recharge-list' url='/pages/discount/mingxi/mingxi?id={{item.id}}'>
                         <view class='list-left'>
                             <view class='expend-title'>{{item.remark}}</view>
                             <view class='expend-time'>{{item.createtime}}</view>
                         </view>
                         <view class='list-right'>{{item.num}}</view>
-                    </view>
+                    </navigator>
                 </view>
             </scroll-view>
         </view>

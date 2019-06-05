@@ -11,8 +11,9 @@ Page({
     levelname: '',
     createtime: '',
     agentcount: 0,
-    mobile: '暂未获取',
+    mobile: '',
     avatar:'',
+    levelid:'',
     background:'#01d7a1',
   },
 
@@ -42,6 +43,7 @@ Page({
         createtime: e.createtime,
         agentcount: e.agentcount,
         mobile: tel,
+        levelid: e.levelid,
         avatar: e.avatar,
         background:color,
       })
