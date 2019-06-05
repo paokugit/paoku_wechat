@@ -1,50 +1,47 @@
 // pages/discount/setklldiscount/setklldiscount.js
+var a, e, i = getApp(),
+    s = i.requirejs("core");
+//   当前登录人的openid
+var f = getApp();
+var userinfo = f.getCache('userinfo');
 var moneynum = ""
 var calorienum = ""
 var itemid = ''
 var message = ''
-var remoneynum=''
-var recalorienum=''
+var remoneynum = ''
+var recalorienum = ''
+var merchid = 10
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        moneytext:'',
-        calorietext:''
+        moneytext: '',
+        calorietext: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(t) {
-        var a=this
+        var a = this
         if (t.itemid == '' || t.itemid == undefined) {
 
         } else {
             itemid = t.itemid
-            wx.request({
-                url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.edit',
-                method: 'post',
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                data: {
-                  id:itemid
-                },
-                success: function(e) {
-                    console.log(e.data)
-                    
-                    a.setData({
-                        moneytext:e.data.result.data.money,
-                        calorietext: e.data.result.data.deduct
-                    })
-                }
+            s.get("payment/index/edit", {
+                merchid: merchid,
+                id: itemid
+            }, function(e) {
+                console.log(e)
+                a.setData({
+                    moneytext: e.result.data.money,
+                    calorietext: e.result.data.deduct
+                })
             })
         }
     },
-
     setmoney: function(e) {
         moneynum = e.detail.value
     },
@@ -55,114 +52,84 @@ Page({
     confirm: function() {
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
-            wx.request({
-                url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.set',
-                data: {
-                    money: moneynum,
-                    deduct: calorienum,
-                    cate: 1
-                },
-                success: function(e) {
-                    console.log(e.data)
-                    if (e.data.status == 0) {
-                        message = e.data.result.message
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success: function(res) {
-                                if (res.confirm) { //这里是点击了确定以后
-                                    console.log('用户点击确定')
-                                } else { //这里是点击了取消以后
-                                    console.log('用户点击取消')
-                                }
+            s.get("payment/index/set", {
+                money: moneynum,
+                deduct: calorienum,
+                cate: 1,
+                merchid: merchid
+            }, function(e) {
+                console.log(e)
+                if (e.status == 0) {
+                    message = e.result.message
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
+                        success: function(res) {
+                            if (res.confirm) { //这里是点击了确定以后
+                                console.log('用户点击确定')
+                            } else { //这里是点击了取消以后
+                                console.log('用户点击取消')
                             }
-                        })
-                    } else {
-                        message = e.data.result.message
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success: function(res) {
-                                if (res.confirm) { //这里是点击了确定以后
-                                    console.log('用户点击确定')
-                                    wx.navigateTo({
-                                        url: '/pages/discount/klldiscount/klldiscount',
-                                    })
-                                } else { //这里是点击了取消以后
-                                    console.log('用户点击取消')
-                                }
+                        }
+                    })
+                } else {
+                    message = e.result.message
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
+                        success: function(res) {
+                            if (res.confirm) { //这里是点击了确定以后
+                                wx.navigateTo({
+                                    url: '/pages/discount/klldiscount/klldiscount',
+                                })
+                            } else { //这里是点击了取消以后
                             }
-                        })
-                        // wx.navigateTo({
-                        //     url: '/pages/discount/klldiscount/klldiscount',
-                        // })
-                    }
+                        }
+                    })
                 }
             })
 
         } else {
             console.log('有itemid')
-            console.log(itemid)
             console.log(moneynum, calorienum)
             console.log(this.data.moneytext, this.data.calorietext)
-            if (moneynum != this.data.moneytext){
-                console.log('输入框没有变化')
-                remoneynum = this.data.moneytext
-            }else{
-                remoneynum = moneynum
-            }
-            if (calorienum != this.data.calorietext) {
-                console.log('输入框没有变化')
-                recalorienum = this.data.calorietext
-            } else {
-                recalorienum = calorienum
-            }
             console.log(moneynum, calorienum)
             console.log(remoneynum, recalorienum)
-            // remoneynum = this.data.moneytext
-            // recalorienum = this.data.calorietext
-            wx.request({
-                url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.set',
-                data: {
-                    money: moneynum,
-                    deduct: calorienum,
-                    cate: 1,
-                    id: itemid
-                },
-                success: function(e) {
-                    console.log(e.data)
-                    if (e.data.status == 0) {
-                        message = e.data.result.message
-                        console.log(message)
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success: function(res) {
-                                if (res.confirm) { //这里是点击了确定以后
-                                    console.log('用户点击确定')
-                                } else { //这里是点击了取消以后
-                                    console.log('用户点击取消')
-                                }
+            s.get("payment/index/set", {
+                money: moneynum,
+                deduct: calorienum,
+                cate: 1,
+                merchid: merchid,
+                id:itemid,
+            }, function (e) {
+                console.log(e)
+                if (e.status == 0) {
+                    message = e.result.message
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
+                        success: function (res) {
+                            if (res.confirm) { //这里是点击了确定以后
+                                console.log('用户点击确定')
+                            } else { //这里是点击了取消以后
+                                console.log('用户点击取消')
                             }
-                        })
-                    } else {
-                        message = e.data.result.message
-                        console.log(message)
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success: function(res) {
-                                if (res.confirm) { //这里是点击了确定以后
-                                    console.log('用户点击确定')
-                                    // wx.navigateTo({
-                                    //     url: '/pages/discount/klldiscount/klldiscount',
-                                    // })
-                                } else { //这里是点击了取消以后
-                                    console.log('用户点击取消')
-                                }
+                        }
+                    })
+                } else {
+                    message = e.result.message
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
+                        success: function (res) {
+                            if (res.confirm) { //这里是点击了确定以后
+                                wx.navigateTo({
+                                    url: '/pages/discount/klldiscount/klldiscount',
+                                })
+                            } else { //这里是点击了取消以后
                             }
-                        })
-                    }
+                        }
+                    })
                 }
             })
         }
@@ -180,8 +147,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
-    },
+    onShow: function() {},
 
     /**
      * 生命周期函数--监听页面隐藏

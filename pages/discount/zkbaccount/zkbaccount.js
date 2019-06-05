@@ -17,7 +17,11 @@ Page({
         page: 1,
         loaded: !1,
         loading: !0,
-        list: []
+        incomelist: [],
+        paylist: [],
+        credit:'',
+        exDis:'none',
+        reDis:'none'
     },
     /**
      * 生命周期函数--监听页面加载
@@ -48,18 +52,31 @@ Page({
         var t = this;
         t.setData({
             loading: !0
-        }), a.get("member/log/money_log", {
+        }), a.get("payment/index/rebateRecord", {
             openid: userinfo.openid,
-            type: t.data.type,
-            page: t.data.page,
-            type: t.data.type
         }, function (a) {
             console.log(a)
+            // if ( a.result.pay=[]){
+            //     t.setData({
+            //         exDis:'block'
+            //     })
+            // }
+            // if (a.result.income = []){
+            //     t.setData({
+            //         reDis: 'block'
+            //     })
+            // }else{
+            //     t.setData({
+            //         reDis: 'none'
+            //     })
+            // }
             var e = {
                 loading: !1,
                 total: a.total,
                 show: !0,
-                list: a.list
+                credit:a.result.credit3,
+                incomelist: a.result.income,
+                paylist:a.result.pay
             };
             a.list || (a.list = []), a.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.list),
                 a.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);

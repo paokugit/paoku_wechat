@@ -1,5 +1,4 @@
 // pages/discount/scancode/scancode.js
-
 var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
@@ -7,10 +6,15 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 var moneycount = ''
-var calorienum = ''
 var actualnum = ''
-var merchid = 31
+var deductnum=''
+var merchid = 10
 var itemid = ''
+var timestamp=''
+var noncestr=''
+var pack=''
+var signtype=''
+var paysign=''
 Page({
 
     /**
@@ -19,16 +23,16 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         moneynum: '',
-        caloriecount: '',
-        actualcount: '',
         fulllist: [],
-        usercredit: ''
+        usercredit: '',
+        caloriecount:'',
+        actualcount: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (t) {
+    onLoad: function(t) {
         // 修改卡路里列表页的数据
         console.log(merchid)
         var b = decodeURIComponent(t.scene);
@@ -37,98 +41,146 @@ Page({
         console.log(t)
         console.log(b)
         var a = this
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.getset',
-            data: {
-                cate: 1,
-                merchid: merchid
-            },
-            success: function (e) {
-                console.log(e.data)
-                a.setData({
-                    fulllist: e.data.result.list
-                })
-            }
+        s.get("payment/index/getset", {
+            cate: 1,
+            merchid: merchid,
+            page: 1
+        }, function(e) {
+            console.log(e)
+            a.setData({
+                fulllist: e.result.list
+            })
         })
-
 
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
     //   获取用户输入的金额
-    moneyInput: function (e) {
+    moneyInput: function(e) {
+        var b=this
         moneycount = e.detail.value
-        calorienum = Math.floor((e.detail.value / 50)) * 5
-        actualnum = e.detail.value - Math.floor((e.detail.value / 50)) * 5
         this.setData({
             moneynum: e.detail.value,
-            caloriecount: Math.floor((e.detail.value / 50)) * 5,
-            actualcount: e.detail.value - Math.floor((e.detail.value / 50)) * 5
         })
-        console.log(actualnum)
+        console.log(moneycount)
+        s.get("payment/index/getDeduct", {
+            money: moneycount,
+            cate: 1,
+            merchid: merchid,
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e)
+            if(e.status==1){
+                if(e.result.list.length==0){
+                    wx.showModal({
+                        title: '提示',
+                        content: '余额不足',
+                    })
+                }else{
+                    deductnum = e.result.list.deduct
+                    actualnum = moneycount - e.result.list.deduct
+                    console.log(deductnum, actualnum)
+                    b.setData({
+                        caloriecount: e.result.list.deduct,
+                        actualcount: moneycount - e.result.list.deduct
+                    })
+                }
+            
+          
+            }
+        })
+        
     },
     //   立即买单
-    paymentbtn: function () {
-        console.log(moneycount)
-        console.log(calorienum)
+    paymentbtn: function() {
+        // var tt=this
+        console.log(actualnum, deductnum,userinfo.openid, merchid)
+        s.get("payment/index/order_cs", {
+            money: actualnum,
+            rebate: deductnum,
+            cate: 1,
+            merchid: merchid,
+            openid:userinfo.openid
+        }, function (eve) {
+            console.log(eve)
+            // tt.setData({
+
+            // })
+            timestamp = eve.result.timeStamp
+            noncestr = eve.result.nonceStr
+            pack = eve.result.package
+            signtype = eve.result.signType
+            paysign = eve.result.paySign
+            wx.requestPayment(
+                {
+                    'timeStamp': timestamp,
+                    'nonceStr': noncestr,
+                    'package': pack,
+                    'signType': 'MD5',
+                    'paySign': paysign,
+                    'success': function (res) { 
+                        console.log('成功')
+                    },
+                    'fail': function (res) {
+                        console.log('取消')
+                     },
+                    'complete': function (res) { }
+                })
+        })
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         var t = this
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.getCredit',
-            data: {
-                openid: userinfo.openid
-            },
-            success: function (e) {
-                console.log(e.data)
-                t.setData({
-                    usercredit: e.data.result.credit1
-                })
-            }
+        s.get("payment/index/getCredit", {
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e)
+            t.setData({
+                usercredit: e.result.credit1
+            })
         })
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

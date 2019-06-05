@@ -1,33 +1,23 @@
-// pages/discount/recordlist/recordlist.js
+// pages/exclusive/exclusive.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var merchid = 10
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        recordlist:[]
+        globalimg: i.globalData.appimg,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var a=this
-        s.get("payment/index/record", {
-            merchid: merchid,
-            page: 1
-        }, function (e) {
-            console.log(e)
-            a.setData({
-               recordlist:e.result.list
-            })
-        })
+
     },
 
     /**

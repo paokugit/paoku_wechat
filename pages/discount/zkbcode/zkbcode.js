@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var merchid=10
 Page({
 
     /**
@@ -21,15 +22,14 @@ Page({
      */
     onLoad: function (options) {
         var a=this
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
-            success: function (e) {
-                console.log(e.data)
-                a.setData({
-                    rebatecode: e.data.result.rebate_qr,
-                    rebateurl: e.data.result.rebate
-                })
-            }
+        s.get("payment/index/qrcode", {
+            merchid: merchid,
+        }, function (e) {
+            console.log(e)
+            a.setData({
+                rebatecode: e.result.rebate_qr,
+                rebateurl: e.result.rebate
+            })
         })
     },
     setbtn:function(){

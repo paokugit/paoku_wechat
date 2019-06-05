@@ -1,0 +1,40 @@
+<!--pages/commission/down/fandetails.wxml-->
+<view class='fandetails_all'>
+  <view class='fans_img'>
+    <image class='img_head' wx:if="{{avatar!=''}}" src='{{avatar}}'></image>
+    <view class='fans_name_daren_date'>
+      <view class='fans_name'>{{nickname}}</view>
+      <!-- 会员 -->
+      <view class='fans_daren' wx:if="{{levelid==1}}">
+        <image class='fans_icon' src='{{globalimg}}/jiankang-star.png'></image>
+        <view class='membershipgrade'>{{levelname}}</view>
+      </view>
+      <view class='fans_daren' wx:if="{{levelid==2}}">
+        <image class='fans_icon' src='{{globalimg}}/xingxuan-star.png'></image>
+        <view class='membershipgrade'>{{levelname}}</view>
+      </view>
+      <view class='fans_daren' wx:if="{{levelid==3}}">
+        <image class='fans_icon' src='{{globalimg}}/rongyao-star.png'></image>
+        <view class='membershipgrade'>{{levelname}}</view>
+      </view>
+      <view class='fans_daren' wx:if=" {{levelid==5}}">
+        <image class='fans_icon' src='{{globalimg}}/dianzhu-star.png'></image>
+        <view class='membershipgrade'>{{levelname}}</view>
+      </view>
+
+      <view class='fans_date'>注册时间{{createtime}}</view>
+    </view>
+    <view class='friend_num_text'>
+      <view class='friend_num'>{{agentcount}}</view>
+      <view class='friend_text'>好友数</view>
+    </view>
+  </view>
+  <view class='tel_none'>
+    <image class='tel_img' src='http://paokucoin.com/img/backgroup/phone-s.png'></image>
+    <view class='tel_text'>{{mobile}}</view>
+  </view>
+  <view class='dial_view'>
+    <view class='dial_text' wx:if="{{mobile!='暂未获取'}}" bindtap='tel' data-mobile='{{mobile}}'>拨打电话</view>
+    <view class='dial_text_noen' wx:else>拨打电话</view>
+  </view>
+</view>

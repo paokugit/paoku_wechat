@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var merchid = 10
 Page({
 
     /**
@@ -11,45 +12,40 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        caloriecode:'',
-        calorieurl:''
+        caloriecode: '',
+        calorieurl: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-            // s.get("app/payment/index/qrcode", {
-            // }, function (eve) {
-            //     console.log(eve)
-            // })
-            var a=this
-            wx.request({
-                url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.qrcode',
-                success: function (e) {
-                    console.log(e.data)
-                    a.setData({
-                        caloriecode: e.data.result.calorie_qr,
-                        calorieurl: e.data.result.calorie
-                    })
-                }
+    onLoad: function(options) {
+        var a = this
+        s.get("payment/index/qrcode", {
+            merchid: merchid,
+        }, function(e) {
+            console.log(e)
+            a.setData({
+                caloriecode: e.result.calorie_qr,
+                calorieurl: e.result.calorie
             })
+        })
     },
-    setbtn: function () {
+    setbtn: function() {
         wx.navigateTo({
             url: '/pages/discount/setklldiscount/setklldiscount',
         })
     },
-    recordbtn: function () {
+    recordbtn: function() {
         wx.navigateTo({
             url: '/pages/discount/recordlist/recordlist',
         })
     },
-    downloadImage: function (imageUrl) {
+    downloadImage: function(imageUrl) {
         // 下载文件  
         wx.downloadFile({
             url: imageUrl,
-            success: function (res) {
+            success: function(res) {
                 console.log("下载文件：success");
                 console.log(res);
 
@@ -68,13 +64,13 @@ Page({
                     }
                 })
             },
-            fail: function (res) {
+            fail: function(res) {
                 console.log("下载文件：fail");
                 console.log(res);
             }
         })
     },
-    onSavePicClick: function (e) {
+    onSavePicClick: function(e) {
         var that = this;
         console.log("onSavePicClick");
         console.log(e);
@@ -108,10 +104,10 @@ Page({
                             console.log("2-授权《保存图片》权限失败");
                             // 打开设置页面  
                             wx.openSetting({
-                                success: function (data) {
+                                success: function(data) {
                                     console.log("openSetting: success");
                                 },
-                                fail: function (data) {
+                                fail: function(data) {
                                     console.log("openSetting: fail");
                                 }
                             });
@@ -134,49 +130,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

@@ -1,25 +1,37 @@
 {
     "pages": [
+        "pages/index/index",
+        "pages/exclusive/exclusive",
+        "pages/discount/discount/discount",
+        "pages/discount/zkbaccount/zkbaccount",
+        "pages/discount/recordlist/recordlist",
+       
+        "pages/discount/zkbscancode/zkbscancode",
+
+        "pages/discount/zkbdiscount/zkbdiscount",
+        "pages/discount/klldiscount/klldiscount",
+       
+        "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/discount/setklldiscount/setklldiscount",
+       
+         "pages/discount/caloriecode/caloriecode",
         "pages/discount/kllscancode/kllscancode",
        
        
-        "pages/discount/setzkbdiscount/setzkbdiscount",
-        "pages/discount/caloriecode/caloriecode",
+        "pages/discount/zkbrechange/zkbrechange",
         "pages/discount/zkbcode/zkbcode",
-        "pages/discount/zkbscancode/zkbscancode",
+       
         "pages/discount/merchcode/merchcode",
-        "pages/discount/discount/discount",
-        "pages/index/index",
+        "pages/commission/down/index",
+        "pages/commission/down/fandetails",
+        
+       
         "pages/discount/mingxi/mingxi",
         "pages/discount/resuccess/resuccess",
-        "pages/discount/zkbrechange/zkbrechange",
-        "pages/discount/zkbaccount/zkbaccount",
-        "pages/discount/recordlist/recordlist",
-        "pages/discount/klldiscount/klldiscount",
-        "pages/discount/zkbdiscount/zkbdiscount",
+        
+      
         "pages/huiyuan/openmember/openmember",
-        "pages/commission/down/index",
+       
         "pages/helphand/helpshare/helpshare",
         "pages/helphand/friendhelp/friendhelp",
         "pages/message/auth/index",

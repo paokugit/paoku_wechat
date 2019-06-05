@@ -36,7 +36,7 @@
                 <block wx:if="{{list.length>0}}">
                     <view class="fui-list-group">
                         <block wx:for="{{list}}" wx:key="{{index}}">
-                            <view class="fui-list">
+                            <navigator class="fui-list" url='/pages/commission/down/fandetails?openid={{item.openid}}'>
                                 <view class="fui-list-media">
                                     <image src="{{item.avatar}}"></image>
                                 </view>
@@ -74,7 +74,7 @@
                                         </view>
                                     </block>
                                 </block>
-                            </view>
+                            </navigator>
                         </block>
                     </view>
                 </block>
