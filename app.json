@@ -1,23 +1,20 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/discount/klldiscount/klldiscount",
         "pages/discount/setklldiscount/setklldiscount",
         "pages/discount/kllscancode/kllscancode",
-       
-       
         "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/discount/caloriecode/caloriecode",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/zkbscancode/zkbscancode",
         "pages/discount/merchcode/merchcode",
         "pages/discount/discount/discount",
-        
         "pages/discount/mingxi/mingxi",
         "pages/discount/resuccess/resuccess",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/discount/zkbaccount/zkbaccount",
         "pages/discount/recordlist/recordlist",
-        "pages/discount/klldiscount/klldiscount",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/huiyuan/openmember/openmember",
         "pages/commission/down/index",

@@ -36,20 +36,17 @@ Page({
             t.id = i.id;
             console.log(t)
             console.log(b)
-            var a=this
-        wx.request({
-            url: 'https://paokucoin.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=app.payment.index.getset',
-            data: {
-                cate:1,
-                merchid:merchid
-            },
-            success: function (e) {
-                console.log(e.data)
-                a.setData({
-                   fulllist:e.data.result.list
-                })
-            }
-        })
+
+
+            s.get("payment/index/getset", {
+              cate: 1,
+              merchid: merchid
+            }, function (e) {
+              console.log(e)
+              // a.setData({
+              //   fulllist: e.data.result.list
+              // })
+            })
 
 
     },
