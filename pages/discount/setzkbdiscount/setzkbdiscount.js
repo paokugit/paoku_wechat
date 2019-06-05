@@ -7,7 +7,10 @@ var remoneynum = ''
 var recalorienum = ''
 var a, e, i = getApp(),
     s = i.requirejs("core");
-    var merchid=10
+//   当前登录人的openid
+var f = getApp();
+var userinfo = f.getCache('userinfo');
+console.log(userinfo.merchInfo.id)
 Page({
 
     /**
@@ -30,7 +33,7 @@ Page({
             itemid = t.itemid
             s.get("payment/index/edit", {
                 id: itemid,
-                merchid:merchid
+                merchid: userinfo.merchInfo.id
             }, function (e) {
                 console.log(e)
                 calorienum = e.result.data.deduct;
@@ -67,7 +70,7 @@ Page({
                 money: this.data.moneynum,
                 deduct: this.data.calorienum,
                 cate: 2,
-                merchid: merchid
+                merchid: userinfo.merchInfo.id
             }, function (e) {
                 console.log(e)
                 if (e.status == 0) {
@@ -130,7 +133,7 @@ Page({
                 deduct: recalorienum,
                 cate: 2,
                 id: itemid,
-                merchid: merchid
+                merchid: userinfo.merchInfo.id
             }, function (e) {
                 console.log(e)
                 if (e.status == 0) {

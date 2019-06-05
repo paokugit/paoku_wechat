@@ -124,6 +124,12 @@ Page({
         }
       }
   },
+    scancodebtn:function(){
+        wx.showModal({
+            title: '提示',
+            content: '暂未开放',
+        })
+    },
   bindTab: function (t) {
     var e = a.pdata(t).cateid;
     this.setData({

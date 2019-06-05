@@ -5,6 +5,7 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 var merchid = 10
+var catenum=1
 Page({
 
     /**
@@ -38,7 +39,7 @@ Page({
     },
     recordbtn: function() {
         wx.navigateTo({
-            url: '/pages/discount/recordlist/recordlist',
+            url: '/pages/discount/recordlist/recordlist?cate='+catenum,
         })
     },
     downloadImage: function(imageUrl) {

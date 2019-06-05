@@ -38,7 +38,7 @@ Page({
         var a = this
         console.log(event.detail.value);
         iptvalue = event.detail.value
-        if (event.detail.value >= creditnum) {
+        if (event.detail.value > creditnum) {
             a.setData({
                 hintDis: 'block'
             })

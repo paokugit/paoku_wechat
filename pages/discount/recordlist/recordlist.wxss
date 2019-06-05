@@ -4,7 +4,6 @@ page {
     height: 100%;
     overflow-x: hidden;
     background: #f8f8f8;
-  background: pink
 }
 
 .record-box{
@@ -31,7 +30,7 @@ image{
     width: 100%;
     height: auto;
     /* padding: 0 5%; */
-    /* background: #fff; */
+    background: #fff;
     margin-top: 5rpx
 }
 .itemBox{

@@ -1,5 +1,5 @@
 <view class='record-box'>
-    <view class='record-header'>共查询到{{recordlist.total}}笔收款,累计xxx元</view>
+    <view class='record-header'>共查询到{{recordlist.total}}笔收款,累计{{totalmoney}}元</view>
     <view class='listBox' wx:for='{{recordlist.list}}' wx:key='{{index}}'>
         <view class='itemBox'>
             <view class='create-time'>{{index}}</view>

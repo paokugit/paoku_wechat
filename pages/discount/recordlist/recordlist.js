@@ -5,31 +5,35 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo);
-var merchid = 0;
-if (userinfo.merchInfo.id){
-  var merchid = userinfo.merchInfo.id;
-}
+var merchid = 10;
+// if (userinfo.merchInfo.id){
+//   var merchid = userinfo.merchInfo.id;
+// }
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        recordlist:[]
+        recordlist:[],
+        totalmoney:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options)
         var a=this
         s.get("payment/index/oldrecord", {
             merchid: merchid,
-            page: 1
+            page: this.data.page,
+            cate:options.cate
         }, function (e) {
             console.log(e)
             a.setData({
-               recordlist:e.result
+               recordlist:e.result,
+                totalmoney:e.result.total_money
             })
         })
     },

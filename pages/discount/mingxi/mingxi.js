@@ -13,7 +13,8 @@ Page({
         globalimg: i.globalData.appimg,
         moneynum:'',
         create_time:'',
-        merchname:''
+        merchname:'',
+        remark:''
     },
 
     /**
@@ -30,7 +31,8 @@ Page({
             a.setData({
                 moneynum: e.result.num,
                 create_time: e.result.createtime,
-                merchname:e.result.merch_name
+                merchname:e.result.merch_name,
+                remark:e.result.remark
             })
         })
     },

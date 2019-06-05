@@ -5,6 +5,9 @@
     <view class='fans_name_daren_date'>
       <view class='fans_name'>{{nickname}}</view>
       <!-- 会员 -->
+      <view class='fans_daren' wx:if="{{levelid==0}}">
+        <view class='membershipgrade'>{{levelname}}</view>
+      </view>
       <view class='fans_daren' wx:if="{{levelid==1}}">
         <image class='fans_icon' src='{{globalimg}}/jiankang-star.png'></image>
         <view class='membershipgrade'>{{levelname}}</view>
@@ -17,7 +20,7 @@
         <image class='fans_icon' src='{{globalimg}}/rongyao-star.png'></image>
         <view class='membershipgrade'>{{levelname}}</view>
       </view>
-      <view class='fans_daren' wx:if=" {{levelid==5}}">
+      <view class='fans_daren' wx:if="{{levelid==5}}">
         <image class='fans_icon' src='{{globalimg}}/dianzhu-star.png'></image>
         <view class='membershipgrade'>{{levelname}}</view>
       </view>

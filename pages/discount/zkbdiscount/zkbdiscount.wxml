@@ -35,7 +35,7 @@
                 </view>
 
                 <view class='list-bottom'>
-                    <view class='order-text'>可使用卡路里</view>
+                    <view class='order-text'>可使用折扣宝</view>
                     <!-- <view class='balance-no'>余额不足</view> -->
                     <view class='calorie-count'>{{item.deduct}}</view>
                 </view>
