@@ -1,10 +1,11 @@
 /* pages/discount/zkbaccount/zkbaccount.wxss */
+
 page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     /* background: #f8f8f8; */
-     background: #fff;
+    background: #fff;
 }
 
 .account-box {
@@ -13,150 +14,166 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative
 }
-image{
+
+image {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
-.zkb-img{
+
+.zkb-img {
     width: 690rpx;
     height: 400rpx;
     position: relative;
-
 }
-.account-num-box{
+
+.account-num-box {
     width: auto;
     height: 90rpx;
     position: absolute;
     top: 35%;
     left: 9%;
-    display: flex
+    display: flex;
 }
-.account-num{
+
+.account-num {
     color: #323232;
     font-size: 90rpx;
 }
-.account-yuan{
+
+.account-yuan {
     width: auto;
     height: 90rpx;
     line-height: 120rpx;
     color: #323232;
     font-size: 40rpx;
-    margin-left: 6rpx
+    margin-left: 6rpx;
 }
-.account-btn-box{
+
+.account-btn-box {
     width: 690rpx;
     height: 120rpx;
     position: absolute;
     bottom: 3%;
     left: 0;
     display: flex;
-    justify-content: space-around
-}
-.codebtn, .rechargebtn{
-    width: 252rpx;
-    height: 132rpx
+    justify-content: space-around;
 }
 
-.about_page{
-  margin: 0 10px;
+.codebtn, .rechargebtn {
+    width: 252rpx;
+    height: 132rpx;
 }
-.swiper-tab{
+
+/* .about_page{
+  margin: 0 10px;
+} */
+
+.swiper-tab {
     width: 60%;
+    height: 100rpx;
+    line-height: 100rpx;
     padding: 0 20%;
     /* border-bottom: 2rpx solid #ccc; */
     text-align: center;
-    height: 100rpx;
-    line-height: 100rpx;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     color: #333;
     font-size: 40rpx;
-    margin-top: 30rpx
+    margin-top: 30rpx;
 }
-.swiper-tab-item{
-    width: 120rpx; 
-    color:#434343;
+
+.swiper-tab-item {
+    width: 120rpx;
+    color: #434343;
 }
-.active{
-    color:#ffce0b;
+
+.active {
+    color: #ffce0b;
     border-bottom: 4rpx solid #ffce0b;
     font-weight: bold;
 }
-.juzhong{
-  margin: 0 auto;
+
+.juzhong {
+    margin: 0 auto;
 }
-.domain{
-  background-color: #f0f;
-  height: 100%;
-  margin:0 10px;
+
+.domain {
+    background-color: #f0f;
+    height: 100%;
+    margin: 0 10px;
 }
+
 .show{
   display: block;
+  position: absolute;
+  top: 540rpx
 }
-.hidden{
-  display: none;
+
+.hidden {
+    display: none;
 }
-.content01{
+
+.content01 {
     width: 100%;
     /* height: 200rpx; */
     height: 100%;
 }
-.content{
+
+.content {
     width: 100%;
     /* height: 200rpx; */
-     height: 100%;
+    height: 100%;
 }
-.scroll{
+
+.scroll {
     width: 100%;
     height: auto;
 }
-.expend-box, .recharge-box{
+
+.expend-box, .recharge-box {
     width: 690rpx;
     height: auto;
     margin-top: 20rpx;
 }
-.expend-list, .recharge-list{
+
+.expend-list, .recharge-list {
     width: 98%;
     height: 140rpx;
     padding: 0 1%;
     border-bottom: 2rpx solid #eee;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
-.list-left{
+
+.list-left {
     width: auto;
     height: 140rpx;
     display: flex;
     flex-direction: column;
-    justify-content: center
+    justify-content: center;
 }
-.expend-title{
+
+.expend-title {
     color: #262626;
     font-size: 28rpx;
 }
-.expend-time{
+
+.expend-time {
     color: #9a9a9a;
     font-size: 26rpx;
-    margin-top: 15rpx
+    margin-top: 15rpx;
 }
-.list-right{
+
+.list-right {
     width: auto;
     height: 140rpx;
     font-size: 34rpx;
     font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: right
-}
-.ex-end, .re-end{
-    width: 690rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    text-align: center;
-    color: #666;
-    font-size: 28rpx;
-    margin-top: 50rpx
+    justify-content: right;
 }

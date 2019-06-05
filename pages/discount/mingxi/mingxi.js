@@ -10,14 +10,29 @@ Page({
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        moneynum:'',
+        create_time:'',
+        merchname:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var a=this
+        console.log(options.id)
+        s.get("payment/index/detail", {
+            openid:userinfo.openid,
+            id:options.id
+        }, function (e) {
+            console.log(e)
+            a.setData({
+                moneynum: e.result.num,
+                create_time: e.result.createtime,
+                merchname:e.result.merch_name
+            })
+        })
     },
 
     /**

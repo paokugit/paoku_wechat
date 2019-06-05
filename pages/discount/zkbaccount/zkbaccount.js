@@ -19,9 +19,8 @@ Page({
         loading: !0,
         incomelist: [],
         paylist: [],
-        credit:'',
-        exDis:'none',
-        reDis:'none'
+        list:[],
+        credit:''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -54,32 +53,22 @@ Page({
             loading: !0
         }), a.get("payment/index/rebateRecord", {
             openid: userinfo.openid,
+            type: t.data.type,
+            page: t.data.page,
+            type: t.data.type
         }, function (a) {
             console.log(a)
-            // if ( a.result.pay=[]){
-            //     t.setData({
-            //         exDis:'block'
-            //     })
-            // }
-            // if (a.result.income = []){
-            //     t.setData({
-            //         reDis: 'block'
-            //     })
-            // }else{
-            //     t.setData({
-            //         reDis: 'none'
-            //     })
-            // }
             var e = {
                 loading: !1,
-                total: a.total,
+                total: a.result.total,
                 show: !0,
                 credit:a.result.credit3,
-                incomelist: a.result.income,
-                paylist:a.result.pay
+                list:a.result.list
+                // incomelist: a.result.income,
+                // paylist:a.result.pay
             };
-            a.list || (a.list = []), a.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.list),
-                a.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
+            a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
+                a.result.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
         });
     },
     myTab: function (t) {

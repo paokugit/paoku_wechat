@@ -168,9 +168,14 @@ Page((e = {
         })
     },
     // 跳转到会员
-    hybtn: function() {
-        wx.switchTab({
-            url: '../huiyuan/openmember/openmember',
+    // hybtn: function() {
+    //     wx.switchTab({
+    //         url: '../huiyuan/openmember/openmember',
+    //     })
+    // },
+    hybtn: function () {
+        wx.navigateTo({
+            url: '/pages/huiyuan/openmember/openmember',
         })
     },
     merch: function() {

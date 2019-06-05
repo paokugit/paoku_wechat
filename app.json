@@ -1,34 +1,28 @@
 {
     "pages": [
-        "pages/discount/setklldiscount/setklldiscount",
-        "pages/discount/discount/discount",
         "pages/index/index",
-        "pages/exclusive/exclusive",
-      
+        "pages/discount/discount/discount",
         "pages/discount/zkbaccount/zkbaccount",
-        "pages/discount/recordlist/recordlist",
-       
+        "pages/discount/kllscancode/kllscancode",
         "pages/discount/zkbscancode/zkbscancode",
-
+        "pages/discount/setzkbdiscount/setzkbdiscount",
+        "pages/discount/setklldiscount/setklldiscount",
+       
+       
+        "pages/exclusive/exclusive",
+        "pages/discount/recordlist/recordlist",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/klldiscount/klldiscount",
-       
-        "pages/discount/setzkbdiscount/setzkbdiscount",
-        
-       
-         "pages/discount/caloriecode/caloriecode",
-        "pages/discount/kllscancode/kllscancode",
+        "pages/discount/caloriecode/caloriecode",
+        "pages/discount/mingxi/mingxi",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchcode/merchcode",
         "pages/commission/down/index",
         "pages/commission/down/fandetails",
-        
        
-        "pages/discount/mingxi/mingxi",
         "pages/discount/resuccess/resuccess",
         "pages/huiyuan/openmember/openmember",
-       
         "pages/helphand/helpshare/helpshare",
         "pages/helphand/friendhelp/friendhelp",
         "pages/message/auth/index",
@@ -145,8 +139,8 @@
             "selectedIconPath": "icon1/shop-s.png"
         },
             {
-                "pagePath": "pages/huiyuan/openmember/openmember",
-                "text": "达人",
+                "pagePath": "pages/exclusive/exclusive",
+                "text": "专享",
                 "iconPath": "icon1/huiyuan-n.png",
                 "selectedIconPath": "icon1/huiyuan-s.png"
             },
