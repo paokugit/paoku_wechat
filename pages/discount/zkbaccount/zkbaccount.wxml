@@ -30,13 +30,13 @@
             <scroll-view>
 
                 <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <navigator class='expend-list' >
+                    <view class='expend-list' >
                         <view class='list-left'>
                             <view class='expend-title'>{{item.remark}}</view>
                             <view class='expend-time'>{{item.createtime}}</view>
                         </view>
                         <view class='list-right'>+{{item.num}}</view>
-                    </navigator>
+                    </view>
                 </view>
             </scroll-view>
         </view>
