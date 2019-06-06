@@ -27,20 +27,20 @@ Page({
        
     },
     getScancode: function() {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
-        var _this = this;
-        // 允许从相机和相册扫码
-        wx.scanCode({
-            success: (res) => {
-                console.log(res.path)
-                wx.navigateTo({
-                    url: '/' + res.path,
-                })
-            }
+        wx.showModal({
+            title: '提示',
+            content: '暂未开放',
         })
+        // var _this = this;
+        // // 允许从相机和相册扫码
+        // wx.scanCode({
+        //     success: (res) => {
+        //         console.log(res.path)
+        //         wx.navigateTo({
+        //             url: '/' + res.path,
+        //         })
+        //     }
+        // })
 
     },
     accountbtn: function() {
@@ -49,21 +49,21 @@ Page({
         })
     },
     codebtn: function() {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
-        console.log(userinfo.merchInfo)
-        // if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
-        //     wx.showModal({
-        //         title: '提示',
-        //         content: '您还不是商家哦',
+        wx.showModal({
+            title: '提示',
+            content: '暂未开放',
+        })
+        // console.log(userinfo.merchInfo)
+        // // if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
+        // //     wx.showModal({
+        // //         title: '提示',
+        // //         content: '您还不是商家哦',
+        // //     })
+        // // }else{
+        //     wx.navigateTo({
+        //         url: '/pages/discount/merchcode/merchcode',
         //     })
-        // }else{
-            wx.navigateTo({
-                url: '/pages/discount/merchcode/merchcode',
-            })
-        // }
+        // // }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
