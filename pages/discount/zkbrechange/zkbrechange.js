@@ -51,7 +51,7 @@ Page({
     rechargebtn: function() {
         console.log(creditnum)
         console.log(iptvalue)
-        if (iptvalue < creditnum) {
+        if (iptvalue <= creditnum) {
             s.get("payment/index/change", {
                 money: iptvalue,
                 openid: userinfo.openid

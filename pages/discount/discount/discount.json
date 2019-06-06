@@ -4,5 +4,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "折扣付",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light"
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
 }

@@ -5,6 +5,11 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 // var merchid = 10
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
 Page({
 
     /**
@@ -19,31 +24,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var a = this
-        s.get("payment/index/getCredit", {
-            openid: userinfo.openid
-        }, function(e) {
-            console.log(e)
-            a.setData({
-                credit: e.result.credit3
-            })
-        })
+       
     },
     getScancode: function() {
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-        // var _this = this;
-        // // 允许从相机和相册扫码
-        // wx.scanCode({
-        //     success: (res) => {
-        //         console.log(res.path)
-        //         wx.navigateTo({
-        //             url: '/' + res.path,
-        //         })
-        //     }
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
         // })
+        var _this = this;
+        // 允许从相机和相册扫码
+        wx.scanCode({
+            success: (res) => {
+                console.log(res.path)
+                wx.navigateTo({
+                    url: '/' + res.path,
+                })
+            }
+        })
 
     },
     accountbtn: function() {
@@ -52,20 +49,20 @@ Page({
         })
     },
     codebtn: function() {
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-        // console.log(userinfo.merchInfo)
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
+        // })
+        console.log(userinfo.merchInfo)
         // if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
         //     wx.showModal({
         //         title: '提示',
         //         content: '您还不是商家哦',
         //     })
         // }else{
-        //     wx.navigateTo({
-        //         url: '/pages/discount/merchcode/merchcode',
-        //     })
+            wx.navigateTo({
+                url: '/pages/discount/merchcode/merchcode',
+            })
         // }
     },
     /**
@@ -79,7 +76,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        var a = this
+        s.get("payment/index/getCredit", {
+            openid: userinfo.openid
+        }, function (e) {
+            console.log(e)
+            a.setData({
+                credit: e.result.credit3
+            })
+        })
     },
 
     /**
@@ -100,7 +105,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
+        wx.showToast({
+            icon: 'loading'
+        })
     },
 
     /**

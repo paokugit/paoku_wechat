@@ -263,7 +263,7 @@
                     </block>
                 </block>
                 <view class="fui-cell-group fui-cell-click">
-                    <navigator class="fui-cell" hoverClass="none" openType="switchTab" url="/pages/member/cart/index">
+                    <navigator class="fui-cell" hoverClass="none" open-type="navigate" url="/pages/member/cart/index">
                         <view class="fui-cell-icon">
                             <text class="icox icox-cart2"></text>
                         </view>

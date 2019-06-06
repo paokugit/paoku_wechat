@@ -5,9 +5,10 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo);
-var merchid = 0;
-if (userinfo.merchInfo && userinfo.merchInfo.id != 0 && userinfo.merchInfo.id !=false){
-  var merchid = userinfo.merchInfo.id;
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
 }
 
 Page({
@@ -28,7 +29,7 @@ Page({
         var a=this
         s.get("payment/index/oldrecord", {
             merchid: merchid,
-            page: this.data.page,
+            page:a.data.page,
             cate:options.cate
         }, function (e) {
             console.log(e)

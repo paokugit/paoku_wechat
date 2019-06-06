@@ -5,6 +5,11 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 // console.log(userinfo.merchInfo.id)
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined){
+  var merchid=0
+}else{
+    var merchid = userinfo.merchInfo.id
+}
 var catenum=2
 Page({
 

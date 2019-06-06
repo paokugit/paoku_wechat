@@ -4,5 +4,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "收款记录",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light"
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
 }

@@ -4,5 +4,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "卡路里折扣",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light"
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
 }

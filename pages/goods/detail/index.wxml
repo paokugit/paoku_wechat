@@ -644,7 +644,7 @@
                 <view class="icox icox-shop1"></view>
                 <view class="label">店铺</view>
             </navigator>
-            <navigator class="nav-item cart-item" id="menucart" openType="switchTab" url="/pages/member/cart/index">
+            <navigator class="nav-item cart-item" id="menucart" open-type="navigate" url="/pages/member/cart/index">
                 <view class="badge {{goods.cartount<=0?'out':'in'}}" wx:if="{{goods.cartcount&&limits}}">{{goods.cartcount}}</view>
                 <view class="icox icox-cart1"></view>
                 <view class="label">购物车</view>

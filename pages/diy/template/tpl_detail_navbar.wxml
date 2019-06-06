@@ -27,7 +27,7 @@
             </block>
             <block>
                 <block wx:if="{{diyitem.params.hidecart!=1}}">
-                    <navigator class="nav-item cart-item" id="menucart" openType="switchTab" url="/pages/member/cart/index">
+                    <navigator class="nav-item cart-item" id="menucart" open-type="navigate" url="/pages/member/cart/index">
                         <block>
                             <block wx:if="{{goods.cartcount&&limits}}">
                                 <view class="badge {{goods.cartount<=0?'out':'in'}}" style="background:{{diyitem.style.dotcolor}}">{{goods.cartcount}}</view>

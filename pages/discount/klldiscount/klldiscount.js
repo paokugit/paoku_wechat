@@ -5,7 +5,11 @@ var t = getApp().requirejs("core");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-var merchid=10
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
 var itemid=''
 var a, e, i = getApp(),
   s = i.requirejs("core");

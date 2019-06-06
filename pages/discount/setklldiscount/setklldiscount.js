@@ -7,6 +7,13 @@ var remoneynum=''
 var recalorienum=''
 var a, e, i = getApp(),
   s = i.requirejs("core");
+var f = getApp();
+var userinfo = f.getCache('userinfo');
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
 Page({
 
     /**
@@ -65,7 +72,7 @@ Page({
               money: this.data.moneynum,
               deduct: this.data.calorienum,
             cate: 1,
-            merchid:10
+            merchid:merchid
           }, function (e) {
             console.log(e)
             if (e.status == 0) {
@@ -128,7 +135,7 @@ Page({
             deduct: recalorienum,
             cate: 1,
             id: itemid,
-            merchid:10
+            merchid:merchid
           }, function (e) {
             console.log(e)
             if (e.status == 0) {

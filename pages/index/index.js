@@ -174,8 +174,8 @@ Page((e = {
     //     })
     // },
     hybtn: function () {
-        wx.navigateTo({
-            url: '/pages/huiyuan/openmember/openmember',
+        wx.switchTab({
+            url: '/pages/exclusive/exclusive',
         })
     },
     merch: function() {
@@ -191,17 +191,17 @@ Page((e = {
 
     // 跳转到好友助力
     helpbtn: function() {
-        console.log(version)
-        if (version == 0) {
-            wx.showToast({
-                title: '此功能暂未开放',
-                duration: 2000
-            })
-        } else {
+        // console.log(version)
+        // if (version == 0) {
+        //     wx.showToast({
+        //         title: '此功能暂未开放',
+        //         duration: 2000
+        //     })
+        // } else {
             wx.navigateTo({
                 url: '../helphand/friendhelp/friendhelp?id=' + userinfo.openid,
             })
-        }
+        // }
     },
     // 跳转到幸运抽奖
     drawbtn: function() {

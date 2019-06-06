@@ -78,13 +78,74 @@
                         </block>
                         <block>
                             <block wx:if="{{diyitem.params.showprice=='1'}}">
-                                <view class="price">
-                                    <text class="text" style="color:{{diyitem.style.pricecolor}}">￥{{childitem.price}} <text style="font-size: 10px" wx:if="{{childitem.deduct>0&&childitem.deduct_type==1}}">-{{childitem.deduct}} 卡路里
-                                    </text>
-                                    <text style="font-size: 10px" wx:if="{{childitem.deduct>0&&childitem.deduct_type==2}}">-{{childitem.deduct}} 折扣宝
-                                    
-                                    </text>
-                                    </text>
+                                <view class="jiage" style='width:100%;height:100rpx;display:flex;algin-items:center'>
+<!-- //卡路里 -->
+<view style='position:absolute;top:-1rpx;' wx:if="{{childitem.subtitle==''}}">
+<image style='position:absolute;top:25rpx;left:10rpx' src='{{globalimg}}/baoyou-b@2x.png'></image>
+</view>
+<view wx:if="{{childitem.deduct_type=='1'}}">
+<view class="price">
+<!-- 全金 -->
+<view wx:if="{{childitem.deduct==0&&childitem.price!=0}}">
+<view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
+</view>
+<!-- 免费 -->
+<view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
+<view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
+<view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
+<view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}元</view>
+</view>
+</view>
+<!-- 卡路里抵扣 -->
+<view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
+<!-- 卡路里抵扣得图片和字体 -->
+<view style='width:auto;height:auto;display:flex;align-items:center;'>
+<view style='width:28rpx;height:28rpx;display:flex;algin-items:center'>
+<image style='width:28rpx;height:28rpx;' src='{{globalimg}}/kaluli02.png'></image>
+</view>
+<view style='display:flex;algin-item:center;justify-content: space-between;margin-left:5rpx'>
+<view style='width:210rpx;height:28rpx;font-size:26rpx;color:#e01212;display:flex;algin-items:center;margin-bottom:3rpx'>{{childitem.deduct}}+￥{{filters.toFix(childitem.price,childitem.deduct)}}</view>
+</view>
+<view style='width:120rpx;font-size:22rpx;color:#707070;display:flex;position:absolute;left:270rpx'>{{childitem.productprice}}</view>
+</view>
+</view>
+</view>
+</view>
+<!-- //判断是不是折口服 -->
+<view wx:if="{{childitem.deduct_type=='2'}}">
+<!-- 全金 -->
+<view class="deductandprice" wx:if="{{childitem.deduct==0&&childitem.price>=0}}">
+<view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
+</view>
+
+<!-- 免费 -->
+<view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
+<view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
+<view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
+<view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}</view>
+</view>
+</view>
+<!-- 判断有没有折扣 -->
+<view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
+<!-- 折扣报图片和折扣 -->
+<view style='width:auto;height:auto;border:1rpx solid #e01212;padding-right:5rpx;display:flex;align-items:center;margin-top:20rpx'>
+<!-- 图片 -->
+<view class='zhekou' style='width:auto;height:34rpx;display:flex;'>
+<image class='zhekouxiao' style='width:74rpx;height:34rpx;display:flex;align-items:center;' src='{{globalimg}}/zhekou-b@2x.png'></image>
+<view class='zhekounum' style='width:auto;height:24rpx;font-size:18rpx;color:#e01212;position:absolute;margin-left:75rpx;margin-top:8rpx;'>-{{childitem.deduct}}</view>
+</view>
+<!-- 折扣 -->
+</view>
+<!-- 下面的展示 -->
+<view style='width:100%;height:auto;display:flex;margin-top:20rpx'>
+<view style='font-size:18rpx;color:#707070;'>折后</view>
+<view style='font-size:20rpx;color:#e01212;'>￥</view>
+<view style='font-size:26rpx;color:#e01212;'>{{filters.toFix(childitem.price,childitem.deduct)}}</view>
+<view style='font-size:22rpx;color:#707070;position:absolute;right:15rpx;'>{{childitem.productprice}}</view>
+</view>
+</view>
+</view>
+</view>
                                     <block>
                                         <block wx:if="{{childitem.ctype==9&&childitem.bargain==0}}">
                                             <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
@@ -130,7 +191,7 @@
                                             <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
                                         </block>
                                     </block>
-                                </view>
+                                
                             </block>
                         </block>
                     </view>

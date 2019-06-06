@@ -8,7 +8,12 @@ console.log(userinfo)
 var moneycount = ''
 var actualnum = ''
 var deductnum = ''
-var merchid = 10
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
+console.log(merchid)
 var itemid = ''
 var timestamp = ''
 var noncestr = ''
@@ -92,11 +97,11 @@ Page({
             }else{
                 deductnum = e.result.list.deduct
                 param_deduct = e.result.list.deduct
-                actualnum = moneycount - e.result.list.deduct
+                actualnum = parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 console.log(deductnum, actualnum, param_deduct)
                 b.setData({
                     caloriecount: e.result.list.deduct,
-                    actualcount: moneycount - e.result.list.deduct
+                    actualcount: parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 })
             }
 

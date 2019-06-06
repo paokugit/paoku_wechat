@@ -5,7 +5,11 @@ var t = getApp().requirejs("core");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-// var merchid = 10
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
 var itemid = ''
 Page({
 
@@ -29,7 +33,7 @@ Page({
         t.get("payment/index/getset", {
             page: e.data.page,
             cate: 2,
-            merchid: userinfo.merchInfo.id,
+            merchid:merchid
         }, function (t) {
             console.log(t)
             var a = {

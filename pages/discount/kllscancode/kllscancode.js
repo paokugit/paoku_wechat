@@ -5,10 +5,14 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
+if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
+    var merchid = 0
+} else {
+    var merchid = userinfo.merchInfo.id
+}
 var moneycount = ''
 var actualnum = ''
 var deductnum = ''
-var merchid = 10
 var itemid = ''
 var timestamp = ''
 var noncestr = ''
