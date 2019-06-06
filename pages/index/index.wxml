@@ -62,7 +62,7 @@
                         <view class='peopleNum'>{{avamessage}}</view>
                         <view class='peopleExplain'>平台活跃人数</view>
                     </view>
-                    <image class='shadow-img' src='{{ globalimg}}/indexbanner02.png'></image>
+                    <image class='shadow-img' src='{{ globalimg}}/indexbanner03.png'></image>
                 </view>
             </view>
 
