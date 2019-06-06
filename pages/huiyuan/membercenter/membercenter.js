@@ -106,7 +106,7 @@ Page({
     },
     carBtn: function () {
         wx.switchTab({
-            url: '../../member/cart/index',
+          url: '/pages/discount/discount/discount',
         })
     },
     userBtn: function () {

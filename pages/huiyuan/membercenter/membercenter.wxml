@@ -144,9 +144,9 @@
     </view>
     <view class='bar' bindtap='carBtn'>
         <view class='barImg'>
-            <image src='../../../icon1/shop-n.png'></image>
+            <image src='../../../icon1/sfk-n@2x.png'></image>
         </view>
-        <view class='barCon'>购物车</view>
+        <view class='barCon'>折扣付</view>
     </view>
     <view class='bar' bindtap='huiyuanBtn'>
      <view class='barImg'>
