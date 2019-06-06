@@ -5,7 +5,7 @@
     <view class='con_box'>
         <view class='con-item-box' wx:for="{{list}}">
             <navigator class='good-img' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-                <image class='goodImg' src='{{item.thumb}}'></image>
+                <image class='goodImg' src='{{item.memberthumb}}'></image>
             </navigator>
             <view class='good-info'>
                 <navigator class='good-tit'  url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">{{item.title}}</navigator>
