@@ -12,7 +12,8 @@ Page({
     loading: false,
     loaded: false,
     list: [],
-    approot: t.globalData.approot
+    approot: t.globalData.approot,
+    globalimg: t.globalData.appimg,
   },
   onLoad: function (t) {
       var b = decodeURIComponent(t.scene);
