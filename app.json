@@ -1,8 +1,8 @@
 {
     "pages": [ 
-       
-        "pages/exclusive/exclusive",
         "pages/index/index",
+        "pages/member/user/user",
+       
 "pages/discount/kllscancode/kllscancode",
     "pages/discount/recordlist/recordlist",
         "pages/discount/setklldiscount/setklldiscount",
@@ -12,8 +12,7 @@
         "pages/discount/discount/discount",
         "pages/discount/zkbaccount/zkbaccount",
         "pages/discount/setzkbdiscount/setzkbdiscount",
-       
-       
+        "pages/exclusive/exclusive",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/klldiscount/klldiscount",
         "pages/discount/caloriecode/caloriecode",

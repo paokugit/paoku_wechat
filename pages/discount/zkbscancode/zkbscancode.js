@@ -22,6 +22,7 @@ var pack = ''
 var signtype = ''
 var paysign = ''
 var param_deduct=''
+var merchantid = ''
 Page({
 
     /**
@@ -45,12 +46,14 @@ Page({
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
+        console.log(i)
         console.log(t)
+        merchantid = i.mid
         console.log(b)
         var a = this
         s.get("payment/index/getset", {
             cate: 2,
-            merchid: merchid,
+            merchid: merchantid,
             page: 1
         }, function (e) {
             console.log(e)
@@ -78,7 +81,7 @@ Page({
         s.get("payment/index/getDeduct", {
             money: moneycount,
             cate: 2,
-            merchid: merchid,
+            merchid: merchantid,
             openid: userinfo.openid
         }, function (e) {
             console.log(e)
@@ -119,7 +122,7 @@ Page({
             money: actualnum,
             rebate: param_deduct,
             cate: 2,
-            merchid: merchid,
+            merchid: merchantid,
             openid: userinfo.openid
         }, function (eve) {
             console.log(eve)
@@ -141,9 +144,11 @@ Page({
                     'success': function (res) {
                         console.log(res)
                         console.log('成功')
-                        wx.reLaunch({
-                            url: '/pages/discount/discount/discount',
-                        })
+                        setTimeout(function () {
+                            wx.reLaunch({
+                                url: '/pages/discount/discount/discount',
+                            })
+                        }, 200)
                     },
                     'fail': function (res) {
                         console.log('取消')

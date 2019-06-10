@@ -25,7 +25,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-       
+       console.log(merchid)
     },
     getScancode: function() {
         // wx.showModal({
@@ -56,16 +56,16 @@ Page({
         // })
         console.log(userinfo.merchInfo)
         console.log(merchid)
-        if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
-            wx.showModal({
-                title: '提示',
-                content: '您还不是商家哦',
-            })
-        }else{
+        // if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
+        //     wx.showModal({
+        //         title: '提示',
+        //         content: '您还不是商家哦',
+        //     })
+        // }else{
             wx.navigateTo({
                 url: '/pages/discount/merchcode/merchcode',
             })
-        }
+        // }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

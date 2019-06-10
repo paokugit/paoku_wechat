@@ -33,10 +33,18 @@ Page({
             cate:options.cate
         }, function (e) {
             console.log(e)
-            a.setData({
-               recordlist:e.result,
-                totalmoney:e.result.total_money
-            })
+            if(e.status==0){
+                wx.showModal({
+                    title: '提示',
+                    content: '暂无数据',
+                })
+            }else{
+                a.setData({
+                    recordlist: e.result,
+                    totalmoney: e.result.total_money
+                })
+            }
+           
         })
     },
 

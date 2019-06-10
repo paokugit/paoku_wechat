@@ -20,6 +20,7 @@ var pack = ''
 var signtype = ''
 var paysign = ''
 var param_deduct = ''
+var merchantid=''
 Page({
 
     /**
@@ -44,11 +45,12 @@ Page({
         var i = s.str2Obj(b);
         t.id = i.id;
         console.log(t)
+        merchantid=i.mid
         console.log(b)
         var a = this
         s.get("payment/index/getset", {
             cate: 1,
-            merchid: merchid,
+            merchid: merchantid,
             page: 1
         }, function (e) {
             console.log(e)
@@ -69,14 +71,15 @@ Page({
     moneyInput: function (e) {
         var b = this
         moneycount = e.detail.value
-        this.setData({
+       b.setData({
             moneynum: e.detail.value,
         })
         console.log(moneycount)
+       console.log(merchid)
         s.get("payment/index/getDeduct", {
             money: moneycount,
             cate: 1,
-            merchid: merchid,
+            merchid: merchantid,
             openid: userinfo.openid
         }, function (e) {
             console.log(e)
@@ -112,8 +115,6 @@ Page({
                     actualcount: parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 })
             }
-
-
         })
 
     },
@@ -125,7 +126,7 @@ Page({
             money: actualnum,
             rebate: param_deduct,
             cate: 1,
-            merchid: merchid,
+            merchid: merchantid,
             openid: userinfo.openid
         }, function (eve) {
             console.log(eve)
@@ -146,12 +147,11 @@ Page({
                     'paySign': paysign,
                     'success': function (res) {
                         console.log('成功')
-                        wx.reLaunch({
-                            url: '/pages/discount/discount/discount',
-                        })
-                        // wx.navigateTo({
-                        //     url: '/pages/discount/discount/discount',
-                        // })
+                        setTimeout(function () {
+                            wx.reLaunch({
+                                url: '/pages/discount/discount/discount',
+                            })
+                        }, 200)
                     },
                     'fail': function (res) {
                         console.log('取消')

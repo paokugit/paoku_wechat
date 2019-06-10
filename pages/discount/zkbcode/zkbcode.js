@@ -29,7 +29,7 @@ Page({
     onLoad: function (options) {
         var a=this
         s.get("payment/index/qrcode", {
-            merchid: userinfo.merchInfo.id,
+            merchid: merchid,
         }, function (e) {
             console.log(e)
             a.setData({
