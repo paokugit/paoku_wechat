@@ -6,7 +6,7 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 // console.log(userinfo.merchInfo.id)
 if (userinfo.merchInfo == false || userinfo.merchInfo == undefined){
-  var merchid=0
+  var merchid=58
 }else{
     var merchid = userinfo.merchInfo.id
 }
