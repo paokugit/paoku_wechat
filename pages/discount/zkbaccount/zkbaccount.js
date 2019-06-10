@@ -26,20 +26,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     codebtn:function(){
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-        // var _this = this;
-        // // 允许从相机和相册扫码
-        // wx.scanCode({
-        //     success: (res) => {
-        //         console.log(res.path)
-        //         wx.navigateTo({
-        //             url: '/' + res.path,
-        //         })
-        //     }
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
         // })
+        var _this = this;
+        // 允许从相机和相册扫码
+        wx.scanCode({
+            success: (res) => {
+                console.log(res.path)
+                wx.navigateTo({
+                    url: '/' + res.path,
+                })
+            }
+        })
     },
     rechargebtn:function(){
         wx.navigateTo({

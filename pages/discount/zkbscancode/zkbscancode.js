@@ -9,9 +9,9 @@ var moneycount = ''
 var actualnum = ''
 var deductnum = ''
 if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 58
+    var merchid = 0
 } else {
-    var merchid =58
+    var merchid = userinfo.merchInfo.id
 }
 // userinfo.merchInfo.id
 console.log(merchid)
