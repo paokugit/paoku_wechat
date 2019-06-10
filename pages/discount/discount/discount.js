@@ -55,6 +55,7 @@ Page({
         //     content: '暂未开放',
         // })
         console.log(userinfo.merchInfo)
+        console.log(merchid)
         if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
             wx.showModal({
                 title: '提示',

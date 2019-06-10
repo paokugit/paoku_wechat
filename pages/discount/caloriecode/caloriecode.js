@@ -38,7 +38,7 @@ Page({
     },
     setbtn: function() {
         wx.navigateTo({
-            url: '/pages/discount/setklldiscount/setklldiscount',
+            url: '/pages/discount/klldiscount/klldiscount',
         })
     },
     recordbtn: function() {
