@@ -95,13 +95,21 @@ Page({
                     actualcount: moneycount,
                 })
             } else {
+                // deductnum = e.result.list.deduct
+                // param_deduct = e.result.list.deduct
+                // actualnum = moneycount - e.result.list.deduct
+                // console.log(deductnum, actualnum, param_deduct)
+                // b.setData({
+                //     caloriecount: e.result.list.deduct,
+                //     actualcount: moneycount - e.result.list.deduct
+
                 deductnum = e.result.list.deduct
                 param_deduct = e.result.list.deduct
-                actualnum = moneycount - e.result.list.deduct
+                actualnum = parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 console.log(deductnum, actualnum, param_deduct)
                 b.setData({
                     caloriecount: e.result.list.deduct,
-                    actualcount: moneycount - e.result.list.deduct
+                    actualcount: parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 })
             }
 
@@ -138,12 +146,12 @@ Page({
                     'paySign': paysign,
                     'success': function (res) {
                         console.log('成功')
-                        // wx.reLaunch({
-                        //     url: '/pages/discount/discount/discount',
-                        // })
-                        wx.navigateTo({
+                        wx.reLaunch({
                             url: '/pages/discount/discount/discount',
                         })
+                        // wx.navigateTo({
+                        //     url: '/pages/discount/discount/discount',
+                        // })
                     },
                     'fail': function (res) {
                         console.log('取消')
