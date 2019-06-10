@@ -6,6 +6,7 @@ var t = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
+var formid=''
 Page({
 
     /**
@@ -37,6 +38,17 @@ Page({
         })
 
   
+    },
+    form_submit: function (e) {
+        console.log(e.detail.formId);
+        formid = e.detail.formId
+        a.get("message/collect", {
+            openid: userinfo.openid,
+            formid: formid
+        }, function (event) {
+            console.log(event)
+        })
+
     },
     txBtn:function(){
         wx.navigateTo({

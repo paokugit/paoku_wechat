@@ -1,5 +1,5 @@
 <view class="balanceBox">
-<!-- header-开始 -->
+    <!-- header-开始 -->
     <view class='balance-header'>
         <image src='{{globalimg}}/yue.png'></image>
         <!-- top -->
@@ -10,34 +10,43 @@
         <!-- bottom -->
         <view class='balance-header-bottom'>
             <view class='bottom-left'>
-            <!-- 累计收入 -->
+                <!-- 累计收入 -->
                 <view class='income-text'>累计收入</view>
                 <view class='income-num'>{{come_total}}</view>
             </view>
             <view class='bottom-left'>
-            <!-- 累计收入 -->
-            <view class='income-text'>冻结中</view>
-            <view class='income-num'>{{frozen_credit2}}</view>
+                <!-- 累计收入 -->
+                <view class='income-text'>冻结中</view>
+                <view class='income-num'>{{frozen_credit2}}</view>
             </view>
             <view class='bottom-right'>
-                 <view class='income-text'>已提现</view>
+                <view class='income-text'>已提现</view>
                 <view class='income-num'>{{balance_total}}</view>
             </view>
         </view>
     </view>
-<!-- header-结束 -->
-<view class='balance-foot'>
-    <view class='foot-con' bindtap='txBtn'>
-        <view class='imgBox'>
-            <image src='{{globalimg}}/tixian.png'></image>
+    <!-- header-结束 -->
+    <view class='balance-foot'>
+        <view class='foot-con' >
+            <view class='imgBox'>
+                <image src='{{globalimg}}/tixian.png'></image>
+            </view>
+            <view class='imgCon'>提现</view>
         </view>
-        <view class='imgCon'>提现</view>
-    </view>
-    <view class='foot-con' bindtap='mxBtn'>
-        <view class='imgBox'>
-            <image src='{{globalimg}}/mingxi.png'></image>
+        <view class='foot-con' >
+            <view class='imgBox'>
+                <image src='{{globalimg}}/mingxi.png'></image>
+            </view>
+            <view class='imgCon'>明细</view>
         </view>
-        <view class='imgCon'>明细</view>
     </view>
-</view>
+    <!-- form -->
+    <view class='form-foot'>
+        <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='txBtn'>
+            <button form-type="submit" class='navbtn'></button>
+        </form>
+        <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='mxBtn'>
+            <button form-type="submit" class='navbtn'></button>
+        </form>
+    </view>
 </view>

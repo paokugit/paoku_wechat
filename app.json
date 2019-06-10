@@ -1,5 +1,7 @@
 {
     "pages": [ 
+       
+        "pages/exclusive/exclusive",
         "pages/index/index",
 "pages/discount/kllscancode/kllscancode",
     "pages/discount/recordlist/recordlist",
@@ -11,7 +13,7 @@
         "pages/discount/zkbaccount/zkbaccount",
         "pages/discount/setzkbdiscount/setzkbdiscount",
        
-        "pages/exclusive/exclusive",
+       
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/klldiscount/klldiscount",
         "pages/discount/caloriecode/caloriecode",
@@ -40,6 +42,7 @@
         "pages/helphand/haibao/haibao",
         "pages/index/moremerch/moremerch",
         "pages/member/index/index",
+        "pages/member/detail/detail",
         "pages/index/huodong",
         "pages/custom/index",
         "pages/commission/index",
