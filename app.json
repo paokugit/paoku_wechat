@@ -1,16 +1,21 @@
 {
     "pages": [ 
         "pages/index/index",
-        "pages/discount/zkbscancode/zkbscancode",
+        "pages/discount/kllscancode/kllscancode",
+      
+        
+        "pages/discount/setklldiscount/setklldiscount",
+        
+         "pages/discount/zkbscancode/zkbscancode",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchcode/merchcode",
         "pages/discount/discount/discount",
         "pages/discount/zkbaccount/zkbaccount",
-        "pages/discount/kllscancode/kllscancode",
+       
        
         
         "pages/discount/setzkbdiscount/setzkbdiscount",
-        "pages/discount/setklldiscount/setklldiscount",
+       
         "pages/exclusive/exclusive",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/klldiscount/klldiscount",

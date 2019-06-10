@@ -10,7 +10,7 @@ if (userinfo.merchInfo == false || userinfo.merchInfo == undefined){
 }else{
     var merchid = userinfo.merchInfo.id
 }
-var catenum=58
+var catenum=2
 Page({
 
     /**

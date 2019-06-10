@@ -6,9 +6,9 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
+    var merchid =58
 } else {
-    var merchid = userinfo.merchInfo.id
+    var merchid = 58
 }
 var moneycount = ''
 var actualnum = ''
@@ -85,6 +85,7 @@ Page({
                 actualnum = moneycount
                 b.setData({
                     caloriecount: '余额不足',
+                    actualcount: moneycount
                 })
             } else if (e.status == -1) {
                 param_deduct = 0
@@ -137,6 +138,12 @@ Page({
                     'paySign': paysign,
                     'success': function (res) {
                         console.log('成功')
+                        // wx.reLaunch({
+                        //     url: '/pages/discount/discount/discount',
+                        // })
+                        wx.navigateTo({
+                            url: '/pages/discount/discount/discount',
+                        })
                     },
                     'fail': function (res) {
                         console.log('取消')

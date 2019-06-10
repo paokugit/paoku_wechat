@@ -6,9 +6,9 @@ var t = getApp().requirejs("core");
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
+    var merchid = 58
 } else {
-    var merchid = userinfo.merchInfo.id
+    var merchid = 58
 }
 var itemid=''
 var a, e, i = getApp(),
