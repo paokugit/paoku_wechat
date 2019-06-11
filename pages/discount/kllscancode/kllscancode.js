@@ -45,7 +45,13 @@ Page({
         var i = s.str2Obj(b);
         t.id = i.id;
         console.log(t)
-        merchantid=i.mid
+        console.log(i.mid)
+        if(i.mid==undefined){
+            merchantid=t.mid
+        }else{
+            merchantid = i.mid
+        }
+        console.log(merchantid)
         console.log(b)
         var a = this
         s.get("payment/index/getset", {

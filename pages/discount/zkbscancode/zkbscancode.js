@@ -41,15 +41,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (t) {
-        // 修改卡路里列表页的数据
-        console.log(merchid)
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
-        console.log(i)
-        console.log(t)
-        merchantid = i.mid
-        console.log(b)
+        console.log(i.mid)
+        if (i.mid == undefined) {
+            merchantid = t.mid
+        } else {
+            merchantid = i.mid
+        }
         var a = this
         s.get("payment/index/getset", {
             cate: 2,
