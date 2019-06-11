@@ -1,7 +1,7 @@
 {
     "pages": [ 
+            
         "pages/index/index",
-       
 "pages/discount/kllscancode/kllscancode",
     "pages/discount/recordlist/recordlist",
         "pages/discount/setklldiscount/setklldiscount",

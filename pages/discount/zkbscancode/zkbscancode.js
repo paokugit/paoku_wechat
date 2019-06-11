@@ -1,20 +1,10 @@
-// pages/discount/scancode/scancode.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
-//   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-console.log(userinfo)
 var moneycount = ''
 var actualnum = ''
 var deductnum = ''
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
-// userinfo.merchInfo.id
-console.log(merchid)
+var merchid=''
 var itemid = ''
 var timestamp = ''
 var noncestr = ''
@@ -41,6 +31,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (t) {
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
@@ -99,7 +91,14 @@ Page({
                     caloriecount: '暂无折扣',
                     actualcount: moneycount,
                 })
-            }else{
+            } else if (e.status == 2){
+                param_deduct = 0
+                actualnum = moneycount
+                b.setData({
+                    caloriecount: '无符合的折扣优惠',
+                    actualcount: moneycount,
+                })
+            } else{
                 deductnum = e.result.list.deduct
                 param_deduct = e.result.list.deduct
                 actualnum = parseFloat(moneycount - e.result.list.deduct).toFixed(2)
@@ -117,7 +116,7 @@ Page({
     //   立即买单
     paymentbtn: function () {
         // var tt=this
-        console.log(actualnum, param_deduct, userinfo.openid, merchid)
+        console.log(actualnum, param_deduct, userinfo.openid, merchantid)
         s.get("payment/index/order_cs", {
             money: actualnum,
             rebate: param_deduct,

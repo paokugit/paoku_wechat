@@ -8,12 +8,7 @@ var recalorienum=''
 var a, e, i = getApp(),
   s = i.requirejs("core");
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
+var merchid=''
 Page({
 
     /**
@@ -29,6 +24,8 @@ Page({
      */
     onLoad: function(t) {
       console.log(t)
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
         var a=this
         if (t.itemid == '' || t.itemid == undefined) {
 

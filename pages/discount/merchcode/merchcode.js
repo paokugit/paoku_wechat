@@ -3,7 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
+
 Page({
 
     /**
@@ -17,7 +17,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var userinfo = f.getCache('userinfo');
+        console.log(userinfo)
     },
     caloriebtn:function(){
         // wx.showModal({
