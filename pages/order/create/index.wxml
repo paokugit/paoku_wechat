@@ -784,7 +784,7 @@
                 <i class="iconbg icox icox-huiyuan"></i>
                 <view class="content">
                     <view class="title">
-                        <image src="/static/images/icon-white.png"></image>{{item.name}}</view>
+                        <image src="https://paokucoin.com/img/backgroup/icon-white.png"></image>{{item.name}}</view>
                     <view class="date">{{item.validate}}</view>
                     <view class="tip">
                         <block>

@@ -45,6 +45,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (t) {
+      console.log('yingyingying')
+      console.log(t)
     var a = decodeURIComponent(t.scene);
     console.log(a)
     if (!t.mid && a) {

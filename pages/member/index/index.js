@@ -1,7 +1,24 @@
-var e = getApp(), a = e.requirejs("core"), t = e.requirejs("wxParse/wxParse"), i = e.requirejs("biz/diypage"), s = e.requirejs("jquery");
-
+var e = getApp(),
+    a = e.requirejs("core"),
+    p = e.requirejs("core"),
+    t = e.requirejs("wxParse/wxParse"),
+    i = e.requirejs("biz/diypage"),
+    s = e.requirejs("jquery");
+var f = getApp();
+var userinfo = f.getCache('userinfo');
+var formid = ''
+var navigaterurl = ''
+var bindcount = ''
 Page({
     data: {
+        globalimg: e.globalData.appimg,
+        imgUrls: [],
+        imgUrls: [],
+        indicatorDots: false,
+        autoplay: true,
+        circular: true,
+        interval: 3000,
+        duration: 1000,
         route: "member",
         icons: e.requirejs("icons"),
         member: {},
@@ -16,11 +33,59 @@ Page({
         iscycelbuy: !1,
         bargain: !1
     },
-    onLoad: function(a) {
-      e.getCache("userinfo")
+    swiperChange(e) {
+        let current = e.detail.current;
+        // console.log(current, '轮播图')
+        let that = this;
+        that.setData({
+            swiperCurrent: current,
+        })
+    },
+    //轮播图点击事件
+    swipclick: function (e) {
+        console.log(e)
+        navigaterurl = e.currentTarget.dataset.url
+        console.log(this.data.swiperCurrent)
+        wx.switchTab({
+            url: navigaterurl,
+        })
+    },
+    form_submit: function (e) {
+        console.log(e.detail.formId);
+        formid = e.detail.formId
+        a.get("message/collect", {
+            openid: userinfo.openid,
+            formid: formid
+        }, function (event) {
+            console.log(event)
+        })
+
+    },
+
+
+    bindphone: function () {
+        if (bindcount == 1) {
+            wx.navigateTo({
+                url: '/pages/member/bind/index',
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '您已经绑定过手机号',
+            })
+        }
+
+    },
+    onLoad: function (a) {
+        p.get("member", {}, function (i) {
+            console.log(i)
+            bindcount = i.needbind
+            console.log(bindcount)
+        })
+        e.getCache("userinfo")
         var t = this;
         e.url(a), wx.getSystemInfo({
-            success: function(e) {
+            success: function (e) {
                 var a = e.windowWidth / 1.7;
                 t.setData({
                     windowWidth: e.windowWidth,
@@ -29,16 +94,16 @@ Page({
                 });
             }
         }), i.get(this, "member", function (e) { }), "" == e.getCache("userinfo") && wx.redirectTo({
-          url: "/pages/message/auth/index"
+            url: "/pages/message/auth/index"
         });
     },
-    getInfo: function() {
+    getInfo: function () {
         var e = this;
-        a.get("member", {}, function(a) {
+        a.get("member", {}, function (a) {
             console.log(a), 1 == a.isblack && wx.showModal({
                 title: "无法访问",
                 content: "您在商城的黑名单中，无权访问！",
-                success: function(a) {
+                success: function (a) {
                     a.confirm && e.close(), a.cancel && e.close();
                 }
             }), 0 != a.error ? wx.redirectTo({
@@ -47,21 +112,19 @@ Page({
                 member: a,
                 show: !0,
                 customer: a.customer,
-                customercolor: a.customercolor,
                 phone: a.phone,
-                phonecolor: a.phonecolor,
-                phonenumber: a.phonenumber,
                 iscycelbuy: a.iscycelbuy,
-                bargain: a.bargain
+                bargain: a.bargain,
+                imgUrls: a.banner
             }), t.wxParse("wxParseData", "html", a.copyright, e, "5");
         });
     },
-    onShow: function() {
+    onShow: function () {
         this.getInfo();
         var e = this;
         wx.getSetting({
-            success: function(a) {
-              console.log(a)
+            success: function (a) {
+                console.log(a)
                 var t = a.authSetting["scope.userInfo"];
                 console.log(t)
                 e.setData({
@@ -87,24 +150,25 @@ Page({
             }
         }
     },
-    cancelclick: function() {
+    cancelclick: function () {
         wx.switchTab({
             url: "/pages/index/index"
         });
     },
-    confirmclick: function() {
+    confirmclick: function () {
         wx.openSetting({
-            success: function(e) {}
+            success: function (e) { }
         });
     },
-    phone: function() {
+    phone: function () {
         var e = this.data.phonenumber + "";
         wx.makePhoneCall({
             phoneNumber: e
         });
     },
-    play: function(e) {
-        var a = e.target.dataset.id, t = this.data.audiosObj[a] || !1;
+    play: function (e) {
+        var a = e.target.dataset.id,
+            t = this.data.audiosObj[a] || !1;
         if (!t) {
             t = wx.createInnerAudioContext("audio_" + a);
             var i = this.data.audiosObj;
@@ -113,32 +177,39 @@ Page({
             });
         }
         var s = this;
-        t.onPlay(function() {
-            var e = setInterval(function() {
-                var i = t.currentTime / t.duration * 100 + "%", r = Math.floor(Math.ceil(t.currentTime) / 60), n = (Math.ceil(t.currentTime) % 60 / 100).toFixed(2).slice(-2), o = Math.ceil(t.currentTime);
+        t.onPlay(function () {
+            var e = setInterval(function () {
+                var i = t.currentTime / t.duration * 100 + "%",
+                    r = Math.floor(Math.ceil(t.currentTime) / 60),
+                    n = (Math.ceil(t.currentTime) % 60 / 100).toFixed(2).slice(-2),
+                    o = Math.ceil(t.currentTime);
                 r < 10 && (r = "0" + r);
-                var u = r + ":" + n, c = s.data.audios;
+                var u = r + ":" + n,
+                    c = s.data.audios;
                 c[a].audiowidth = i, c[a].Time = e, c[a].audiotime = u, c[a].seconds = o, s.setData({
                     audios: c
                 });
             }, 1e3);
         });
-        var r = e.currentTarget.dataset.audio, n = e.currentTarget.dataset.time, o = e.currentTarget.dataset.pausestop, u = e.currentTarget.dataset.loopplay;
-        0 == u && t.onEnded(function(e) {
+        var r = e.currentTarget.dataset.audio,
+            n = e.currentTarget.dataset.time,
+            o = e.currentTarget.dataset.pausestop,
+            u = e.currentTarget.dataset.loopplay;
+        0 == u && t.onEnded(function (e) {
             c[a].status = !1, s.setData({
                 audios: c
             });
         });
         var c = s.data.audios;
-        c[a] || (c[a] = {}), t.paused && 0 == n ? (t.src = r, t.play(), 1 == u && (t.loop = !0), 
-        c[a].status = !0, s.pauseOther(a)) : t.paused && n > 0 ? (t.play(), 0 == o ? t.seek(n) : t.seek(0), 
-        c[a].status = !0, s.pauseOther(a)) : (t.pause(), c[a].status = !1), s.setData({
-            audios: c
-        });
+        c[a] || (c[a] = {}), t.paused && 0 == n ? (t.src = r, t.play(), 1 == u && (t.loop = !0),
+            c[a].status = !0, s.pauseOther(a)) : t.paused && n > 0 ? (t.play(), 0 == o ? t.seek(n) : t.seek(0),
+                c[a].status = !0, s.pauseOther(a)) : (t.pause(), c[a].status = !1), s.setData({
+                    audios: c
+                });
     },
-    pauseOther: function(e) {
+    pauseOther: function (e) {
         var a = this;
-        s.each(this.data.audiosObj, function(t, i) {
+        s.each(this.data.audiosObj, function (t, i) {
             if (t != e) {
                 i.pause();
                 var s = a.data.audios;
@@ -148,17 +219,20 @@ Page({
             }
         });
     },
-    onHide: function() {
+    onHide: function () {
         this.pauseOther();
     },
-    onUnload: function() {
+    onUnload: function () {
         this.pauseOther();
     },
-    navigate: function(e) {
-        var a = e.currentTarget.dataset.url, t = e.currentTarget.dataset.phone, i = e.currentTarget.dataset.appid, s = e.currentTarget.dataset.appurl;
+    navigate: function (e) {
+        var a = e.currentTarget.dataset.url,
+            t = e.currentTarget.dataset.phone,
+            i = e.currentTarget.dataset.appid,
+            s = e.currentTarget.dataset.appurl;
         a && wx.navigateTo({
             url: a,
-            fail: function() {
+            fail: function () {
                 wx.switchTab({
                     url: a
                 });
@@ -170,7 +244,7 @@ Page({
             path: s
         });
     },
-    close: function() {
+    close: function () {
         e.globalDataClose.flag = !0, wx.reLaunch({
             url: "/pages/index/index"
         });

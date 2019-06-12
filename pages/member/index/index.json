@@ -1,5 +1,9 @@
 {
-    "navigationBarTitleText": "会员中心",
-    "navigationBarBackgroundColor": "#fd5454",
-    "navigationBarTextStyle": "white"
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我的",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
 }

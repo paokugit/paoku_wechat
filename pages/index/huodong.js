@@ -47,7 +47,7 @@ Page((e = {
         intervalHot: 5e3,
         durationHOt: 1e3,
         circularHot: !0,
-        hotimg: "/static/images/hotdot.jpg",
+        hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
         notification: "/static/images/notification.png",
         saleout1: "/static/images/saleout-1.png",
         saleout2: "/static/images/saleout-2.png",

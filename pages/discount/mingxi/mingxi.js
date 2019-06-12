@@ -3,7 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
+var useropenid=''
 Page({
 
     /**
@@ -22,9 +22,11 @@ Page({
      */
     onLoad: function (options) {
         var a=this
+        var userinfo = f.getCache('userinfo');
+        useropenid=userinfo.merchInfo.id
         console.log(options.id)
         s.get("payment/index/detail", {
-            openid:userinfo.openid,
+            openid: useropenid,
             id:options.id
         }, function (e) {
             console.log(e)

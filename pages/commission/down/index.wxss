@@ -50,11 +50,12 @@ page {
 }
 
 .text-bottom {
-    width: 90%;
+    width: 86%;
     height: 50px;
-    /* padding: 0 5%; */
-    /* display: flex;
-    justify-content: space-between; */
+    line-height: 30rpx;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
     /* align-items: center; */
     text-align: right;
     padding-right: 10%

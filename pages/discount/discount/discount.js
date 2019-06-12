@@ -2,15 +2,8 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-console.log(userinfo)
-// var merchid = 10
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
-// console.log(merchid)
+var merchid=''
+var useropenid=''
 Page({
 
     /**
@@ -25,13 +18,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-       console.log(merchid)
+        var userinfo = f.getCache('userinfo');
+        console.log(userinfo)
+        console.log(userinfo.merchInfo)
+        useropenid = userinfo.openid
+        if(userinfo.merchInfo==undefined || userinfo.merchInfo==false){
+            merchid=undefined
+        }else{
+            merchid=userinfo.merchInfo.id
+        }
+        
     },
     getScancode: function() {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
         var _this = this;
         // 允许从相机和相册扫码
         wx.scanCode({
@@ -50,13 +48,7 @@ Page({
         })
     },
     codebtn: function() {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
-        console.log(userinfo.merchInfo)
-        console.log(merchid)
-        if (userinfo.merchInfo == false|| userinfo.merchInfo==undefined) {
+        if (merchid==undefined) {
             wx.showModal({
                 title: '提示',
                 content: '您还不是商家哦',
@@ -66,6 +58,7 @@ Page({
                 url: '/pages/discount/merchcode/merchcode',
             })
          }
+
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -80,7 +73,7 @@ Page({
     onShow: function() {
         var a = this
         s.get("payment/index/getCredit", {
-            openid: userinfo.openid
+            openid: useropenid
         }, function (e) {
             console.log(e)
             a.setData({

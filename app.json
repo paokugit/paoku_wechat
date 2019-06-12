@@ -1,10 +1,11 @@
 {
     "pages": [ 
         "pages/index/index",
-        "pages/member/user/user",
+        "pages/member/index/index",
        
-"pages/discount/kllscancode/kllscancode",
-    "pages/discount/recordlist/recordlist",
+        "pages/lottery/lottery/lottery",  
+        "pages/discount/kllscancode/kllscancode",
+        "pages/discount/recordlist/recordlist",
         "pages/discount/setklldiscount/setklldiscount",
          "pages/discount/zkbscancode/zkbscancode",
         "pages/discount/zkbcode/zkbcode",
@@ -18,8 +19,8 @@
         "pages/discount/caloriecode/caloriecode",
         "pages/discount/mingxi/mingxi",
         "pages/discount/zkbrechange/zkbrechange",
-       
         "pages/commission/down/index",
+       
         "pages/commission/down/fandetails",
         "pages/discount/resuccess/resuccess",
         "pages/huiyuan/openmember/openmember",
@@ -30,7 +31,7 @@
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
         "pages/huiyuan/hygrade/hygrade",
-        "pages/lottery/lottery/lottery",
+       
         "pages/sportdiary/sportdiary/sportdiary",
         "pages/goods/detail/index",
         "pages/member/balance/balance",
@@ -40,7 +41,7 @@
         "pages/playmethod/playmethod/playmethod",
         "pages/helphand/haibao/haibao",
         "pages/index/moremerch/moremerch",
-        "pages/member/index/index",
+       
         "pages/member/detail/detail",
         "pages/index/huodong",
         "pages/custom/index",

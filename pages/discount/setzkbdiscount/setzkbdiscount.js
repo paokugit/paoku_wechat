@@ -9,12 +9,6 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
 Page({
 
     /**
@@ -30,6 +24,8 @@ Page({
      */
     onLoad: function (t) {
         console.log(t)
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
         var a = this
         if (t.itemid == '' || t.itemid == undefined) {
 
@@ -37,7 +33,7 @@ Page({
             itemid = t.itemid
             s.get("payment/index/edit", {
                 id: itemid,
-                merchid: userinfo.merchInfo.id
+                merchid: merchid
             }, function (e) {
                 console.log(e)
                 calorienum = e.result.data.deduct;
@@ -74,7 +70,7 @@ Page({
                 money: this.data.moneynum,
                 deduct: this.data.calorienum,
                 cate: 2,
-                merchid: userinfo.merchInfo.id
+                merchid: merchid
             }, function (e) {
                 console.log(e)
                 if (e.status == 0) {
@@ -127,17 +123,12 @@ Page({
             } else {
                 recalorienum = calorienum
             }
-            // console.log(recalorienum)
-            // console.log(remoneynum)
-            // console.log(this.data.calorienum);
-            // console.log(this.data.moneynum);
-
             s.post("payment/index/set", {
                 money: remoneynum,
                 deduct: recalorienum,
                 cate: 2,
                 id: itemid,
-                merchid: userinfo.merchInfo.id
+                merchid: merchid
             }, function (e) {
                 console.log(e)
                 if (e.status == 0) {
@@ -147,10 +138,10 @@ Page({
                         title: '提示',
                         content: message,
                         success: function (res) {
-                            if (res.confirm) { //这里是点击了确定以后
-                                console.log('用户点击确定')
-                            } else { //这里是点击了取消以后
-                                console.log('用户点击取消')
+                            if (res.confirm) { 
+                                console.log('确定')
+                            } else { 
+                                console.log('取消')
                             }
                         }
                     })
@@ -161,13 +152,13 @@ Page({
                         title: '提示',
                         content: message,
                         success: function (res) {
-                            if (res.confirm) { //这里是点击了确定以后
-                                console.log('用户点击确定')
+                            if (res.confirm) { 
+                                console.log('确定')
                                 wx.navigateTo({
                                     url: '/pages/discount/zkbdiscount/zkbdiscount',
                                 })
-                            } else { //这里是点击了取消以后
-                                console.log('用户点击取消')
+                            } else { 
+                                console.log('取消')
                             }
                         }
                     })

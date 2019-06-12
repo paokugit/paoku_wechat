@@ -3,13 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-console.log(userinfo)
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
+var merchid=''
 var moneycount = ''
 var actualnum = ''
 var deductnum = ''
@@ -39,14 +33,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (t) {
-        // 修改卡路里列表页的数据
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
         console.log(merchid)
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
         console.log(t)
-        merchantid=i.mid
+        console.log(i.mid)
+        if(i.mid==undefined){
+            merchantid=t.mid
+        }else{
+            merchantid = i.mid
+        }
+        console.log(merchantid)
         console.log(b)
+         // 修改卡路里列表页的数据
         var a = this
         s.get("payment/index/getset", {
             cate: 1,
@@ -74,8 +76,6 @@ Page({
        b.setData({
             moneynum: e.detail.value,
         })
-        console.log(moneycount)
-       console.log(merchid)
         s.get("payment/index/getDeduct", {
             money: moneycount,
             cate: 1,
@@ -97,15 +97,14 @@ Page({
                     caloriecount: '暂无折扣',
                     actualcount: moneycount,
                 })
+            }else if(e.status==2){
+                param_deduct = 0
+                actualnum = moneycount
+                b.setData({
+                    caloriecount: '无符合的折扣优惠',
+                    actualcount: moneycount,
+                })
             } else {
-                // deductnum = e.result.list.deduct
-                // param_deduct = e.result.list.deduct
-                // actualnum = moneycount - e.result.list.deduct
-                // console.log(deductnum, actualnum, param_deduct)
-                // b.setData({
-                //     caloriecount: e.result.list.deduct,
-                //     actualcount: moneycount - e.result.list.deduct
-
                 deductnum = e.result.list.deduct
                 param_deduct = e.result.list.deduct
                 actualnum = parseFloat(moneycount - e.result.list.deduct).toFixed(2)
@@ -120,8 +119,7 @@ Page({
     },
     //   立即买单
     paymentbtn: function () {
-        // var tt=this
-        console.log(actualnum, param_deduct, userinfo.openid, merchid)
+        console.log(actualnum, param_deduct, userinfo.openid, merchantid)
         s.get("payment/index/order_cs", {
             money: actualnum,
             rebate: param_deduct,
@@ -130,9 +128,6 @@ Page({
             openid: userinfo.openid
         }, function (eve) {
             console.log(eve)
-            // tt.setData({
-
-            // })
             timestamp = eve.result.timeStamp
             noncestr = eve.result.nonceStr
             pack = eve.result.package
