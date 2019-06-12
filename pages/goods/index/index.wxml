@@ -1,277 +1,359 @@
+<wxs src="filters.wxs" module="filters" />
 <template name="tpl_list">
-    <view class="fui-goods-item">
-        <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-            <view class="image" style="background-image:url({{item.thumb}})"></view>
-            <block>
-                <block wx:if="{{item.saleout&&item.cansee<=0||item.saleout&&item.cansee>0&&item.seecommission<=0}}">
-                    <image class="salez" src="{{item.saleout}}"></image>
-                </block>
+  <view class="fui-goods-item" style='252rpx'>
+    <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+      <view class="image" style="background-image:url({{item.thumb}})"></view>
+      <block>
+        <block wx:if="{{item.saleout&&item.cansee<=0||item.saleout&&item.cansee>0&&item.seecommission<=0}}">
+          <image class="salez" src="{{item.saleout}}"></image>
+        </block>
+      </block>
+      <block>
+        <block wx:if="{{item.cansee>0&&item.seecommission>0}}">
+          <view class="goods-Commission">{{item.seetitle}}￥{{item.seecommission}}</view>
+        </block>
+      </block>
+    </navigator>
+    <view class="detail goods_list_detail" style='height:160rpx'>
+      <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+        <view class="name">
+          <block>
+            <block wx:if="{{item.type==9}}">
+              <text class="cycle-tip">周期购</text>
             </block>
-            <block>
-                <block wx:if="{{item.cansee>0&&item.seecommission>0}}">
-                    <view class="goods-Commission">{{item.seetitle}}￥{{item.seecommission}}</view>
-                </block>
+          </block>
+          <block>
+            <block wx:if="{{item.bargain>0}}">
+              <text class="cycle-tip">砍价</text>
             </block>
-        </navigator>
-        <view class="detail goods_list_detail">
-            <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-                <view class="name">
-                    <block>
-                        <block wx:if="{{item.type==9}}">
-                            <text class="cycle-tip">周期购</text>
-                        </block>
-                    </block>
-                    <block>
-                        <block wx:if="{{item.bargain>0}}">
-                            <text class="cycle-tip">砍价</text>
-                        </block>
-                    </block>
-                    <text>{{item.title}}</text>
-                </view>
-            </navigator>
-            <view class="original_price">
-                <block>
-                    <block wx:if="{{item.productprice>0}}">
-                        <text>¥{{item.productprice}}</text>
-                    </block>
-                </block>
-            </view>
-            <view class="price">
-                <view class="text">¥{{item.minprice}}</view>
-                <block>
-                    <block wx:if="{{item.type!=9&&item.type!=5&&item.bargain==0}}">
-                        <view bindtap="selectPicker" data-buytype="buy" data-id="{{item.id}}">
-                            <text class="buy icox icox-gouwuche buybtnbtn buybtn-5" style="color:#ff5555"></text>
-                        </view>
-                    </block>
-                </block>
-                <block>
-                    <block wx:if="{{item.type==9&&item.bargain==0}}">
-                        <navigator class="buy buybtnbtn buybtn-1 " style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
-                    </block>
-                </block>
-                <block>
-                    <block wx:if="{{item.type==5&&item.bargain==0}}">
-                        <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
-                    </block>
-                </block>
-                <block>
-                    <block wx:if="{{item.bargain>0}}">
-                        <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/bargain/detail/detail?id={{item.bargain}}">详情</navigator>
-                    </block>
-                </block>
-            </view>
+          </block>
+          <text>{{item.title}}</text>
         </view>
+      </navigator>
+      <!-- <view class="original_price">
+        <block>
+          <block wx:if="{{item.productprice>0}}">
+
+          </block>
+        </block>
+      </view> -->
+
+      <view class="jiage">
+        <!-- 首先判断手机的系统 -->
+        <!-- <view wx:if="{{textinfo=='devtools'||textinfo=='ios'}}">
+            
+          </view>
+          <view wx:if="{{textinfo=='android'}}">
+            <view>安卓</view>
+          </view> -->
+        <view wx:if="{{item.deduct_type=='1'}}">
+          <!-- 有卡路里抵扣 -->
+          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>0}}">
+            <!-- 图片和文字 -->
+            <view class='kaluliandimg'>
+              <view class="liebiao" style='display:flex;align-items:center'>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/calorie02.png'></image>
+              </view>
+              <view class='jianhao'>
+                <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
+              </view>
+            </view>
+            <view class='zhehouprice'>
+              <view style='font-size:18rpx;color:#707070;display:flex;align-items: center;'>折后</view>
+              <view style='font-size:20rpx;color:#e01212;display:flex;align-items: center;'>￥</view>
+              <view style='font-size:26rpx;color:#e01212;display:flex;align-items: center;'>{{filters.toFix(item.minprice,item.deduct)}}</view>
+              <view style='display:flex;align-items:center;position:absolute;right:25rpx;'>
+                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- 全额 -->
+          <view wx:if="{{item.deduct==0&&item.price!=0}}">
+              <view style='display:flex;algin-items:center;'>
+                <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
+                <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
+                  <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+                </view>
+              </view>
+          </view>
+        </view>
+        <!-- 抵扣宝 -->
+        <view wx:if="{{item.deduct_type=='2'}}">
+          <!-- 有抵扣宝抵扣 -->
+          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>0}}">
+            <!-- 图片和价格显示 -->
+            <view class="imgandprice">
+              <view style='display:flex;align-items:center'>
+                <image style='width:74rpx;height:34rpx;' src='http://paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+              </view>
+              <!-- 文字 -->
+              <view style='display:flex;align-items:center;'>
+                <view class='jianhao'>-</view>
+              </view>
+              <view style='display:flex;align-items:center;'>
+                <view class='zhekoujia'>{{item.deduct}}</view>
+              </view>
+
+            </view>
+            <view class='zhehouprice'>
+              <view style='font-size:18rpx;color:#707070;display:flex;align-items: center;'>折后</view>
+              <view style='font-size:20rpx;color:#e01212;display:flex;align-items: center;'>￥</view>
+              <view style='font-size:26rpx;color:#e01212;display:flex;align-items: center;'>{{filters.toFix(item.minprice,item.deduct)}}</view>
+              <view style='display:flex;align-items:center;position:absolute;right:25rpx;'>
+                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+              </view>
+            </view>
+            <!-- 全额 -->
+            <view wx:if="{{item.deduct==0&&item.price!=0}}">
+              <view>
+                <view style='font-size:26rpx;color:#e01212;margin-top:42rpx'>￥{{item.minprice}}</view>
+                <view style='display:flex;algin-items:center'>
+                  <text style='font-size:18rpx;color:#707070;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
+                </view>
+              </view>
+            </view>
+            <!-- 免费 -->
+            <view wx:if="{{item.deduct-item.price>=0||item.deduct==0&&item.price==0}}">
+              <view style='font-size:26rpx;color:#e01212'>免费兑</view>
+            </view>
+          </view>
+          </view>
+        </view>
+        <block>
+          <block wx:if="{{item.type!=9&&item.type!=5&&item.bargain==0}}">
+            <view bindtap="selectPicker" data-buytype="buy" data-id="{{item.id}}">
+              <!-- <text class="buy icox icox-gouwuche buybtnbtn buybtn-5" style="color:#ff5555"></text> -->
+            </view>
+          </block>
+        </block>
+        <block>
+          <block wx:if="{{item.type==9&&item.bargain==0}}">
+            <navigator class="buy buybtnbtn buybtn-1 " style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
+          </block>
+        </block>
+        <block>
+          <block wx:if="{{item.type==5&&item.bargain==0}}">
+            <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
+          </block>
+        </block>
+        <block>
+          <block wx:if="{{item.bargain>0}}">
+            <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/bargain/detail/detail?id={{item.bargain}}">详情</navigator>
+          </block>
+        </block>
+      </view>
     </view>
 </template>
 <block>
-    <block wx:if="{{!show}}">
-        <loading>加载中...</loading>
-    </block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
 </block>
 <block>
-    <block wx:if="{{modelShow}}">
-        <view class="model">
-            <view class="inner1">
-                <view class="title">用户未授权</view>
-                <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
-                </view>
-                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
-                <view class="model-btns">
-                    <view bindtap="cancelclick" class="cancel">取消</view>
-                    <view bindtap="confirmclick" class="confirm">去设置</view>
-                </view>
-            </view>
+  <block wx:if="{{modelShow}}">
+    <view class="model">
+      <view class="inner1">
+        <view class="title">用户未授权</view>
+        <view class="image">
+          <image src="/static/images/shouquan.png"></image>
         </view>
-    </block>
+        <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
+        <view class="model-btns">
+          <view bindtap="cancelclick" class="cancel">取消</view>
+          <view bindtap="confirmclick" class="confirm">去设置</view>
+        </view>
+      </view>
+    </view>
+  </block>
 </block>
 <view class="page header-sort navbar goodslist">
-    <view class="fui-header">
-        <view class="searchbar">
-            <icon size="18" type="search"></icon>
-            <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
-        </view>
+  <view class="fui-header">
+    <view class="searchbar">
+      <icon size="18" type="search"></icon>
+      <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
+    </view>
+    <block>
+      <block wx:if="{{!fromsearch}}">
+        <text bindtap="changeMode" class="icon icox {{listmode==''?'icox-app':'icox-viewlist'}}"></text>
+      </block>
+    </block>
+    <block>
+      <block wx:if="{{fromsearch}}">
+        <view bindtap="bindback" class="cancel">取消</view>
+      </block>
+    </block>
+  </view>
+  <view class="sort">
+    <view bindtap="bindSort" class="item {{params.order==''||!params.order?'on':''}}" data-order="">
+      <view class="text">综合</view>
+    </view>
+    <view bindtap="bindSort" class="item {{params.order=='sales'?'on':''}}" data-order="sales">
+      <view class="text">销量</view>
+    </view>
+    <view bindtap="bindSort" class="item item-price {{params.order=='minprice'?'on':''}}" data-order="minprice">
+      <view class="text">价格
+        <image class="icon" src="/static/images/icon/listsort{{listorder}}.png"></image>
+      </view>
+    </view>
+    <view bindtap="showFilter" class="item {{isfilter?'on':''}}">
+      <view class="text">筛选
+        <image class="icon small" src="{{isfilter?'/static/images/icon-red/filter.png':'/static/images/icon/filter.png'}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="fui-goods-group {{listmode}}">
+    <block wx:for="{{list}}">
+      <template is="tpl_list" data="{{item:item}}"></template>
+    </block>
+  </view>
+  <block>
+    <block wx:if="{{loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载</view>
+      </view>
+    </block>
+  </block>
+  <block>
+    <block wx:if="{{list.length==total&&total>0}}">
+      <view class="fui-loading empty">
+        <view class="text">没有更多了</view>
+      </view>
+    </block>
+  </block>
+  <block>
+    <block wx:if="{{total<=0&&!loading}}">
+      <view class="fui-loading empty">
+        <view class="text">暂时没有任何商品</view>
+      </view>
+    </block>
+  </block>
+  <block>
+    <block wx:if="{{fromsearch}}">
+      <view class="records">
         <block>
-            <block wx:if="{{!fromsearch}}">
-                <text bindtap="changeMode" class="icon icox {{listmode==''?'icox-app':'icox-viewlist'}}"></text>
+          <block wx:if="{{searchRecords.length>0}}">
+            <view class="records-title">
+              <view bindtap="delRecord" class="pull-right text-danger">清除</view>
+              <view>历史搜索</view>
+            </view>
+            <view class="navs">
+              <block wx:for="{{searchRecords}}">
+                <nav bindtap="bindnav" data-text="{{item}}">{{item}}</nav>
+              </block>
+            </view>
+          </block>
+        </block>
+        <view hidden class="records-title">
+          <view class="pull-right text-danger">换一批</view>
+          <view>热门搜索</view>
+        </view>
+        <view hidden class="navs">
+          <nav bindtap="bindnav" data-text="推子">推子</nav>
+          <nav bindtap="bindnav" data-text="推子">推子</nav>
+          <nav bindtap="bindnav" data-text="推子">推子</nav>
+        </view>
+      </view>
+    </block>
+  </block>
+  <include src="/pages/common/goods-picker.wxml"></include>
+  <include src="/pages/common/menu.wxml"></include>
+  <include src="/pages/common/city-picker.wxml"></include>
+  <view class="screen {{isFilterShow?'in':''}}">
+    <view class="attribute">
+      <view class="item on">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isrecommand?'btn-danger-o':''}}" data-type="isrecommand">
+          <block>
+            <block wx:if="{{filterBtns.isrecommand}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
             </block>
-        </block>
-        <block>
-            <block wx:if="{{fromsearch}}">
-                <view bindtap="bindback" class="cancel">取消</view>
+          </block> 推荐商品</view>
+      </view>
+      <view class="item">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isnew?'btn-danger-o':''}}" data-type="isnew">
+          <block>
+            <block wx:if="{{filterBtns.isnew}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
             </block>
-        </block>
+          </block> 新品上市</view>
+      </view>
+      <view class="item">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.ishot?'btn-danger-o':''}}" data-type="ishot">
+          <block>
+            <block wx:if="{{filterBtns.ishot}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
+            </block>
+          </block> 热卖商品</view>
+      </view>
+      <view class="item">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isdiscount?'btn-danger-o':''}}" data-type="isdiscount">
+          <block>
+            <block wx:if="{{filterBtns.isdiscount}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
+            </block>
+          </block> 促销商品</view>
+      </view>
+      <view class="item">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.issendfree?'btn-danger-o':''}}" data-type="issendfree">
+          <block>
+            <block wx:if="{{filterBtns.issendfree}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
+            </block>
+          </block> 卖家包邮</view>
+      </view>
+      <view class="item">
+        <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.istime?'btn-danger-o':''}}" data-type="istime">
+          <block>
+            <block wx:if="{{filterBtns.istime}}">
+              <icon color="#fd5454" size="12" type="success_no_circle"></icon>
+            </block>
+          </block> 限时抢购</view>
+      </view>
     </view>
-    <view class="sort">
-        <view bindtap="bindSort" class="item {{params.order==''||!params.order?'on':''}}" data-order="">
-            <view class="text">综合</view>
-        </view>
-        <view bindtap="bindSort" class="item {{params.order=='sales'?'on':''}}" data-order="sales">
-            <view class="text">销量</view>
-        </view>
-        <view bindtap="bindSort" class="item item-price {{params.order=='minprice'?'on':''}}" data-order="minprice">
-            <view class="text">价格 <image class="icon" src="/static/images/icon/listsort{{listorder}}.png"></image>
-            </view>
-        </view>
-        <view bindtap="showFilter" class="item {{isfilter?'on':''}}">
-            <view class="text">筛选 <image class="icon small" src="{{isfilter?'/static/images/icon-red/filter.png':'/static/images/icon/filter.png'}}"></image>
-            </view>
-        </view>
-    </view>
-    <view class="fui-goods-group {{listmode}}">
-        <block wx:for="{{list}}">
-            <template is="tpl_list" data="{{item:item}}"></template>
-        </block>
-    </view>
     <block>
-        <block wx:if="{{loading}}">
-            <view class="fui-loading">
-                <view class="icon"></view>
-                <view class="text">正在加载</view>
-            </view>
-        </block>
-    </block>
-    <block>
-        <block wx:if="{{list.length==total&&total>0}}">
-            <view class="fui-loading empty">
-                <view class="text">没有更多了</view>
-            </view>
-        </block>
-    </block>
-    <block>
-        <block wx:if="{{total<=0&&!loading}}">
-            <view class="fui-loading empty">
-                <view class="text">暂时没有任何商品</view>
-            </view>
-        </block>
-    </block>
-    <block>
-        <block wx:if="{{fromsearch}}">
-            <view class="records">
-                <block>
-                    <block wx:if="{{searchRecords.length>0}}">
-                        <view class="records-title">
-                            <view bindtap="delRecord" class="pull-right text-danger">清除</view>
-                            <view>历史搜索</view>
-                        </view>
-                        <view class="navs">
-                            <block wx:for="{{searchRecords}}">
-                                <nav bindtap="bindnav" data-text="{{item}}">{{item}}</nav>
-                            </block>
-                        </view>
-                    </block>
+      <block wx:if="{{catlevel!=-1&&opencategory}}">
+        <view class="title">选择分类</view>
+        <view class="cate" data-catlevel="{$catlevel}">
+          <view class="item">
+            <block wx:for="{{category_parent}}" wx:key="item">
+              <view>
+                <nav bindtap="bindCategoryEvents" class="{{category_parent_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="1">{{item.name}}</nav>
+              </view>
+            </block>
+          </view>
+          <block>
+            <block wx:if="{{catlevel>=2}}">
+              <view class="item">
+                <block wx:for="{{category_child}}" wx:key="item">
+                  <view>
+                    <nav bindtap="bindCategoryEvents" class="{{category_child_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="2">{{item.name}}</nav>
+                  </view>
                 </block>
-                <view hidden class="records-title">
-                    <view class="pull-right text-danger">换一批</view>
-                    <view>热门搜索</view>
-                </view>
-                <view hidden class="navs">
-                    <nav bindtap="bindnav" data-text="推子">推子</nav>
-                    <nav bindtap="bindnav" data-text="推子">推子</nav>
-                    <nav bindtap="bindnav" data-text="推子">推子</nav>
-                </view>
-            </view>
-        </block>
-    </block>
-    <include src="/pages/common/goods-picker.wxml"></include>
-    <include src="/pages/common/menu.wxml"></include>
-    <include src="/pages/common/city-picker.wxml"></include>
-    <view class="screen {{isFilterShow?'in':''}}">
-        <view class="attribute">
-            <view class="item on">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isrecommand?'btn-danger-o':''}}" data-type="isrecommand">
-                    <block>
-                        <block wx:if="{{filterBtns.isrecommand}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 推荐商品</view>
-            </view>
-            <view class="item">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isnew?'btn-danger-o':''}}" data-type="isnew">
-                    <block>
-                        <block wx:if="{{filterBtns.isnew}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 新品上市</view>
-            </view>
-            <view class="item">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.ishot?'btn-danger-o':''}}" data-type="ishot">
-                    <block>
-                        <block wx:if="{{filterBtns.ishot}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 热卖商品</view>
-            </view>
-            <view class="item">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isdiscount?'btn-danger-o':''}}" data-type="isdiscount">
-                    <block>
-                        <block wx:if="{{filterBtns.isdiscount}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 促销商品</view>
-            </view>
-            <view class="item">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.issendfree?'btn-danger-o':''}}" data-type="issendfree">
-                    <block>
-                        <block wx:if="{{filterBtns.issendfree}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 卖家包邮</view>
-            </view>
-            <view class="item">
-                <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.istime?'btn-danger-o':''}}" data-type="istime">
-                    <block>
-                        <block wx:if="{{filterBtns.istime}}">
-                            <icon color="#fd5454" size="12" type="success_no_circle"></icon>
-                        </block>
-                    </block> 限时抢购</view>
-            </view>
-        </view>
-        <block>
-            <block wx:if="{{catlevel!=-1&&opencategory}}">
-                <view class="title">选择分类</view>
-                <view class="cate" data-catlevel="{$catlevel}">
-                    <view class="item">
-                        <block wx:for="{{category_parent}}" wx:key="item">
-                            <view>
-                                <nav bindtap="bindCategoryEvents" class="{{category_parent_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="1">{{item.name}}</nav>
-                            </view>
-                        </block>
-                    </view>
-                    <block>
-                        <block wx:if="{{catlevel>=2}}">
-                            <view class="item">
-                                <block wx:for="{{category_child}}" wx:key="item">
-                                    <view>
-                                        <nav bindtap="bindCategoryEvents" class="{{category_child_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="2">{{item.name}}</nav>
-                                    </view>
-                                </block>
-                            </view>
-                        </block>
-                    </block>
-                    <block>
-                        <block wx:if="{{catlevel>=3}}">
-                            <view class="item">
-                                <block wx:for="{{category_third}}" wx:key="item">
-                                    <view>
-                                        <nav bindtap="bindCategoryEvents" class="{{category_third_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="3">{{item.name}}</nav>
-                                    </view>
-                                </block>
-                            </view>
-                        </block>
-                    </block>
-                </view>
+              </view>
             </block>
-        </block>
-        <view class="btns">
-            <view bindtap="bindFilterCancel" class="cancel">取消筛选</view>
-            <view bindtap="bindFilterSubmit" class="confirm">确认</view>
+          </block>
+          <block>
+            <block wx:if="{{catlevel>=3}}">
+              <view class="item">
+                <block wx:for="{{category_third}}" wx:key="item">
+                  <view>
+                    <nav bindtap="bindCategoryEvents" class="{{category_third_selected==item.id?'on':''}}" data-id="{{item.id}}" data-level="3">{{item.name}}</nav>
+                  </view>
+                </block>
+              </view>
+            </block>
+          </block>
         </view>
+      </block>
+    </block>
+    <view class="btns">
+      <view bindtap="bindFilterCancel" class="cancel">取消筛选</view>
+      <view bindtap="bindFilterSubmit" class="confirm">确认</view>
     </view>
+  </view>
 </view>
 <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
-    <view class="text">{{FoxUIToast.text}}</view>
+  <view class="text">{{FoxUIToast.text}}</view>
 </view>
 <view bindtap="emptyActive" class="nav-mask" style="{{active?'display:block':''}}"></view>
 <view bindtap="showFilter" class="fui-mask {{isFilterShow?'show':'hide'}}"></view>

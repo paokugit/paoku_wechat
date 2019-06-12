@@ -1,0 +1,10 @@
+var filters = {
+  toFix: function (value1, value2) {
+    var value = parseFloat(value1) - parseFloat(value2)
+    // return parseFloat(value) 
+    return parseFloat(value).toFixed(2)
+  }
+}
+module.exports = {
+  toFix: filters.toFix
+}
