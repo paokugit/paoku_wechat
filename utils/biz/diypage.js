@@ -7,6 +7,7 @@ module.exports = {
         a.get("diypage", {
             type: i
         }, function(i) {
+            console.log(i)
             i.diypage = i.diypage || {};
             for (var r in i.diypage.items) "topmenu" == i.diypage.items[r].id && e.setData({
                 topmenu: i.diypage.items[r]
@@ -14,9 +15,9 @@ module.exports = {
             e.setData({
                 customer: i.customer,
                 phone: i.phone,
-                phonecolor: i.phonecolor,
-                phonenumber: i.phonenumber,
-                customercolor: i.customercolor
+                // phonecolor: i.phonecolor,
+                // phonenumber: i.phonenumber,
+                // customercolor: i.customercolor
             });
             var p = {
                 loading: !1,

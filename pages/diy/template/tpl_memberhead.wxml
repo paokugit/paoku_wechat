@@ -39,7 +39,7 @@
             <block>
                 <block wx:if="{{member.usemembercard}}">
                     <navigator class="member_card" hoverClass="none" openType="navigate" url="/pages/member/membercard/index?hasmembercard={{member.hasmembercard}}">
-                        <image class="icon" src="/static/images/icon-huangguan.png"></image>
+                        <image class="icon" src="https://paokucoin.com/img/backgroup/huangguan.png"></image>
                         <view class="title">我的会员卡</view>
                         <view class="card-num">已拥有{{member.hasbuycardnum}}张</view>
                     </navigator>

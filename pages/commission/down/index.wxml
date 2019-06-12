@@ -13,12 +13,12 @@
             <view class='bg_num'>{{total}}</view>
         </view>
         <view class='text-bottom'>
-            <!-- <view class='text-bottom-left'>店主
-                <text class='text-num'>111</text>
-            </view> -->
-            <!-- <view class='text-bottom-right'>粉丝量
-                <text class='text-num'>{{allcount}}</text>
-            </view> -->
+            <view class='text-bottom-left'>店主
+                <text class='text-num'>{{dianzhu}}</text>
+            </view>
+            <view class='text-bottom-right'>粉丝量
+                <text class='text-num'>{{fans}}</text>
+            </view>
         </view>
     </view>
 </view>

@@ -10,7 +10,7 @@ Page({
         interval: 5e3,
         duration: 500,
         circular: !0,
-        hotimg: "/static/images/hotdot.jpg",
+        hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
         saleout1: "/static/images/saleout-1.png",
         saleout2: "/static/images/saleout-2.png",
         saleout3: "/static/images/saleout-3.png",

@@ -35,7 +35,7 @@
                 </view>
                 <block wx:for="{{info.type_array}}">
                     <radio-group>
-                        <!-- <block>
+                        <block>
                             <block wx:if="{{item.type=='0'}}">
                                 <label bindtap="typeChange" data-name="0">
                                     <view class="fui-cell applyradio">
@@ -51,7 +51,7 @@
                                     </view>
                                 </label>
                             </block>
-                        </block> -->
+                        </block>
                         <block>
                             <block wx:if="{{item.type=='2'}}">
                                 <label bindtap="typeChange" data-name="1">
