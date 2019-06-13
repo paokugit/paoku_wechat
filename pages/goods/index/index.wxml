@@ -48,7 +48,7 @@
           </view> -->
         <view wx:if="{{item.deduct_type=='1'}}">
           <!-- 有卡路里抵扣 -->
-          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>0}}">
+          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>=0}}">
             <!-- 图片和文字 -->
             <view class='kaluliandimg'>
               <view class="liebiao" style='display:flex;align-items:center'>
