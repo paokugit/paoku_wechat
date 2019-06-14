@@ -9,11 +9,11 @@ function t(t, a, e) {
 
 var a, e, i = getApp(), s = i.requirejs("core"), n = i.requirejs("wxParse/wxParse"), o = i.requirejs("biz/diypage"), r = i.requirejs("biz/diyform"), d = i.requirejs("biz/goodspicker"), c = (i.requirejs("foxui"), 
 i.requirejs("jquery"));
-
 Page((e = {
     onPullDownRefresh: function() {
         var t = this;
         o.get(this, "huodong", function(a) {
+            console.log(a)
             t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
         });
     },
@@ -40,6 +40,7 @@ Page((e = {
         storeRecommand: [],
         total: 1,
         page: 1,
+        pageSize:100,
         loaded: !1,
         loading: !0,
         indicatorDotsHot: !1,
@@ -47,6 +48,9 @@ Page((e = {
         intervalHot: 5e3,
         durationHOt: 1e3,
         circularHot: !0,
+        type:'',
+        select:0,
+        page:'',
         hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
         notification: "/static/images/notification.png",
         saleout1: "/static/images/saleout-1.png",
@@ -58,7 +62,7 @@ Page((e = {
         specs: [],
         options: [],
         diyform: {},
-        specsTitle: ""
+        specsTitle: "",
     }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""), 
     t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0), 
     t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1), 
@@ -73,8 +77,20 @@ Page((e = {
             });
         });
     },
+    myTab: function (t) {
+        console.log(t)
+        console.log(s.pdata(t))
+        var e = this, i = s.pdata(t).select;
+        e.setData({
+            select: i,
+            page: 1,
+            list: [],
+        }), o.get(this, "huodong", function (a) {
+           e.getDiypage(a);
+        });
+    },
     onReachBottom: function() {
-        this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand();
+        this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand()
     },
     getRecommand: function() {
         var t = this;
@@ -229,13 +245,13 @@ Page((e = {
         }
     },
     imagesHeight: function(t) {
-        console.log('wwww')
-        console.log(t)
+        // console.log('wwww')
+        // console.log(t)
         var a = t.detail.width, e = t.detail.height, i = t.target.dataset.type, s = this;
         wx.getSystemInfo({
             success: function(t) {
-                console.log('hhhhh')
-                console.log(t)
+                // console.log('hhhhh')
+                // console.log(t)
                 s.data.result[i] = t.windowWidth / a * e, (!s.data[i] || s.data[i] && result[i] < s.data[i]) && s.setData({
                     result: s.data.result
                 });

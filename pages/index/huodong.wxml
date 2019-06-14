@@ -143,3 +143,4 @@
         <i bindtap="closecoupon" class="icox icox-guanbi-copy"></i>
     </view>
 </view>
+

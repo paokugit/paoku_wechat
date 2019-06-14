@@ -543,3 +543,44 @@ page {
     line-height: 44rpx;
     font-size: 22rpx;
 }
+.zhekoujia {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 3rpx;
+  font-size: 18rpx;
+  color: #f84900;
+  width: auto;
+}
+
+.jianhao {
+  width: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18rpx;
+  color: #f84900;
+  margin-left: 5rpx;
+}
+
+.imgandprice {
+  width: 170rpx;
+  height: 34rpx;
+  display: flex;
+  align-items: center;
+  border: 1rpx solid #f84900;
+  border-radius: 5rpx;
+  margin-top: 10rpx;
+}
+.zhehouprice {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.kaluliandimg{
+  border: 1rpx solid #ffae00;
+  border-radius: 5rpx;
+  display:flex;
+  align-items:center;
+  width:170rpx;
+  height:34rpx;
+  margin-top: 10rpx;
+}

@@ -1,0 +1,7 @@
+<view class='intro-box'>
+<!-- 暂无内容 -->
+    <view class='nocontent-box'>
+    <view class='nocon-img'><image src='{{globalimg}}/moreuser@2x.png'></image></view>
+    </view>
+<!-- 暂无内容 -->
+</view>

@@ -1,8 +1,12 @@
 {
     "pages": [ 
         "pages/index/index",
-        "pages/member/index/index",
+        "pages/index/huodong",
+        
+        "pages/changce/merch/introduction",
        
+        "pages/member/index/index",
+        "pages/changce/merch/homepage",
         "pages/lottery/lottery/lottery",  
         "pages/discount/kllscancode/kllscancode",
         "pages/discount/recordlist/recordlist",
@@ -43,7 +47,7 @@
         "pages/index/moremerch/moremerch",
        
         "pages/member/detail/detail",
-        "pages/index/huodong",
+        
         "pages/custom/index",
         "pages/commission/index",
         "pages/commission/log/index",

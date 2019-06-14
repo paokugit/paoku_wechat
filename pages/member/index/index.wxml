@@ -27,7 +27,7 @@
     </view>
     <!-- 个人收入 -->
     <view class='income-box'>
-        <view class='reward-img'>
+        <navigator url='/pages/member/balance/balance' class='reward-img'>
             <image src='{{globalimg}}/bggreen@2x.png'></image>
             <view class='reward-num'>{{member.come_total}}</view>
             <view class='reward-text'>累计奖励收入</view>
@@ -35,8 +35,8 @@
                 <view class='reward-balance-text'>可用余额</view>
                 <view class='reward-balance-num'>{{member.credit2}}</view>
             </view>
-        </view>
-        <view class='calorie-img'>
+       </navigator>
+        <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
             <view class='calorie-num'>{{member.calorie_total}}</view>
             <view class='calorie-text'>累计卡路里收入</view>
@@ -44,7 +44,7 @@
                 <view class='calorie-balance-text'>可用余额</view>
                 <view class='calorie-balance-num'>{{member.credit1}}</view>
             </view>
-        </view>
+        </navigator>
     </view>
     <!-- 个人收入 -->
     <!-- 订单 -->

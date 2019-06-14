@@ -4,6 +4,7 @@ t.requirejs("foxui");
 
 Page({
     data: {
+        systemInfo: {}, 
         specs: [],
         options: [],
         diyform: {},
@@ -49,7 +50,9 @@ Page({
         searchRecords: [],
         areas: [],
         limits: !0,
-        modelShow: !1
+        modelShow: !1,
+        textinfo:'',
+
     },
     onLoad: function(e) {
         var s = this;
@@ -79,6 +82,13 @@ Page({
                 });
             }
         });
+      wx.getSystemInfo({
+        success: function (res) {
+          t.setData({
+            textinfo: res.platform
+          })
+        }
+      })
     },
     onReachBottom: function() {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
@@ -97,6 +107,23 @@ Page({
             });
         });
     },
+  aaa: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          systemInfo: res,
+        })
+        if (res.platform == "devtools") {
+                      PC
+        } else if (res.platform == "ios") {
+                      IOS
+        } else if (res.platform == "android") {
+                      android
+        }
+      }
+    })
+  },
     getList: function() {
         var t = this;
         t.setData({
@@ -163,6 +190,8 @@ Page({
             });
         }
     },
+  
+
     bindFilterCancel: function() {
         this.data.defaults.cate = "";
         var t = this.data.defaults;

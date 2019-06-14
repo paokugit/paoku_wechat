@@ -790,24 +790,6 @@ console.log('phone')
             tt.setData(i)
 
         })
-
-        // 超值兑换
-        // s.get("goods.get_list", {
-        //     page: 1,
-        //     deduct:1,
-        //     lat: newpos.lat,
-        //     lng: newpos.lng,
-        // }, function (even) {
-        //     // console.log("even")
-        //     console.log(even)
-        //     var i = {
-        //         loading: false,
-        //         total: even.total,
-        //         pagesize: even.pagesize,
-        //         prolist: even.list
-        //     };
-        //     tt.setData(i)
-        // })
     },
     getDiypage: function(t) {
         var a = this;

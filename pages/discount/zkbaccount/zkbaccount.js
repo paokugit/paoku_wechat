@@ -87,6 +87,7 @@ Page({
     },
     myTab: function (t) {
         console.log(t)
+        console.log(a.pdata(t))
         var e = this, i = a.pdata(t).type;
         e.setData({
             type: i,
