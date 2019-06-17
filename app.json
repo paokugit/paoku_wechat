@@ -1,7 +1,8 @@
 {
     "pages": [ 
-        "pages/member/index/index",
         "pages/index/index",
+        "pages/member/index/index",
+       
         "pages/index/huodong",
         
         "pages/changce/merch/introduction",
