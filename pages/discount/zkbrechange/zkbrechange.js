@@ -55,7 +55,7 @@ Page({
         if (iptvalue <= creditnum) {
             s.get("payment/index/change", {
                 money: iptvalue,
-                openid: userinfo.openid
+                openid: useropenid
             }, function(eve) {
                 console.log(eve)
                 if (eve.status == 1) {

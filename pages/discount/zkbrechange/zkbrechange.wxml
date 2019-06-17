@@ -7,7 +7,7 @@
             <view class='kll-text'>卡路里余额：￥{{usercredit}}</view>
         </view>
         <view class='kll-desc'>1卡路里
-            <text class='kll-symbol'>=</text>1折扣宝</view>
+            <text class='kll-symbol'>=</text>2折扣宝</view>
         <view class='empty-box'>
             <view class='empty'></view>
             <view class='empty-text'>充值金额</view>
