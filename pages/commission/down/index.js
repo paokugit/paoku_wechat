@@ -11,7 +11,9 @@ Page({
         level: 1,
         page: 1,
         list: [],
-        agentcount:''
+        agentcount:'',
+        dianzhu:'',
+        fans:''
     },
     onLoad: function () {
         this.getSet(), this.getList();
@@ -50,7 +52,9 @@ Page({
                 total: t.total,
                 pagesize: t.pagesize,
                 list:t.list,
-                allcount: t.allcount
+                allcount: t.agentcount.agentallcount,
+                dianzhu: t.agentcount.shopkeeperallcount,
+                fans: t.agentcount.agentallcount
             };
             t.list.length > 0 && (a.page = e.data.page + 1, a.list = e.data.list.concat(t.list),
             t.list.length < t.pagesize && (a.loaded = !0)), e.setData(a);

@@ -1,11 +1,11 @@
 <view class="fui-content">
     <image class="coin" src="{{globalimg}}/bg7s.png"></image>
-    <image class="contentbj" mode="widthFix" src="/static/images/coupon/sbg2.png"></image>
+    <image class="contentbj" mode="widthFix" src="{{globalimg}}/sbg2.png"></image>
     <view class="content">
         <view class="title">恭喜您,获得了3张优惠券!</view>
         <scroll-view class="coupon-list" scrollY="true">
             <view class="item">
-                <image class="itembj" src="/static/images/coupon/bg4.png"></image>
+                <image class="itembj" src="{{globalimg}}/bg4.png"></image>
                 <view class="item-con">
                     <view class="item-inner">
                         <span style="font-size:30rpx;">￥</span>500</view>
@@ -16,7 +16,7 @@
                 </view>
             </view>
             <view class="item">
-                <image class="itembj" src="/static/images/coupon/bg4.png"></image>
+                <image class="itembj" src="{{globalimg}}/bg4.png"></image>
                 <view class="item-con">
                     <view class="item-inner">
                         <span style="font-size:30rpx;">￥</span>500</view>
@@ -27,7 +27,7 @@
                 </view>
             </view>
             <view class="item">
-                <image class="itembj" src="/static/images/coupon/bg4.png"></image>
+                <image class="itembj" src="{{globalimg}}/bg4.png"></image>
                 <view class="item-con">
                     <view class="item-inner">
                         <span style="font-size:30rpx;">￥</span>500</view>
@@ -38,7 +38,7 @@
                 </view>
             </view>
             <view class="item">
-                <image class="itembj" src="/static/images/coupon/bg4.png"></image>
+                <image class="itembj" src="{{globalimg}}/bg4.png"></image>
                 <view class="item-con">
                     <view class="item-inner">
                         <span style="font-size:30rpx;">￥</span>500</view>
@@ -50,14 +50,14 @@
             </view>
         </scroll-view>
         <view class="btnlook">
-            <image class="lookbj" src="/static/images/coupon/sbtn.png"></image>
+            <image class="lookbj"src="{{globalimg}}/sbtn.png"></image>
             <view class="look-con">立即查看</view>
         </view>
     </view>
     <view class="record">
         <view class="title">
-            <image src="/static/images/coupon/circle.png"></image> 看朋友们手气如何
-      <image src="/static/images/coupon/circle.png"></image>
+            <image src="{{globalimg}}/circle.png"></image> 看朋友们手气如何
+      <image src="{{globalimg}}/circle.png"></image>
         </view>
         <view class="record-list" style="">
             <view class="item">

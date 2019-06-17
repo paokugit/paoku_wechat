@@ -4,12 +4,7 @@ var a, e, i = getApp(),
 var t = getApp().requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
+var merchid=''
 var itemid = ''
 Page({
 
@@ -26,6 +21,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
         this.getSet(), this.getList();
     },
     getList: function () {
@@ -56,6 +53,7 @@ Page({
         })
     },
     orderbtn: function (t) {
+      console.log(t)
         console.log(t.currentTarget.dataset.id)
         itemid = t.currentTarget.dataset.id
         wx.navigateTo({
@@ -88,7 +86,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+      wx.switchTab({
+        url: '/pages/discount/discount/discount',
+      })
+      console.log('监听页面卸载');
     },
 
     /**

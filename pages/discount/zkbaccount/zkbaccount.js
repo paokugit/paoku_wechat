@@ -3,8 +3,8 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
 var t = getApp(), a = t.requirejs("core");
+var useropenid=''
 Page({
 
     /**
@@ -48,6 +48,9 @@ Page({
     },
     // 上拉加载
     onLoad: function (a) {
+        var userinfo = f.getCache('userinfo');
+        useropenid=userinfo.openid
+
         a.type > 0 && this.setData({
             type: 1
         }), t.url(a), this.getList();
@@ -63,7 +66,7 @@ Page({
         t.setData({
             loading: !0
         }), a.get("payment/index/rebateRecord", {
-            openid: userinfo.openid,
+            openid: useropenid,
             type: t.data.type,
             page: t.data.page,
             type: t.data.type
@@ -84,6 +87,7 @@ Page({
     },
     myTab: function (t) {
         console.log(t)
+        console.log(a.pdata(t))
         var e = this, i = a.pdata(t).type;
         e.setData({
             type: i,

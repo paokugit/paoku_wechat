@@ -963,3 +963,25 @@
   font-weight: bold;
   border-radius: 16rpx;
 }
+.swiper-tab {
+    width: 96%;
+    padding: 0 2%;
+    height: 60rpx;
+    background: #fff;
+    line-height: 60rpx;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.swiper-tab-item {
+    width: 30%;
+    color: #434343;
+}
+
+.active {
+    color: #ff0011;
+}

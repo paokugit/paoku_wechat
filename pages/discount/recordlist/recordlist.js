@@ -3,14 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-console.log(userinfo);
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
-
+var merchid=''
 Page({
 
     /**
@@ -26,6 +19,9 @@ Page({
      */
     onLoad: function (options) {
         console.log(options)
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
+        console.log(merchid)
         var a=this
         s.get("payment/index/oldrecord", {
             merchid: merchid,
@@ -33,10 +29,18 @@ Page({
             cate:options.cate
         }, function (e) {
             console.log(e)
-            a.setData({
-               recordlist:e.result,
-                totalmoney:e.result.total_money
-            })
+            if(e.status==0){
+                wx.showModal({
+                    title: '提示',
+                    content: '暂无数据',
+                })
+            }else{
+                a.setData({
+                    recordlist: e.result,
+                    totalmoney: e.result.total_money
+                })
+            }
+           
         })
     },
 

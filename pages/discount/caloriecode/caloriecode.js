@@ -3,13 +3,8 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
-if (userinfo.merchInfo == false || userinfo.merchInfo == undefined) {
-    var merchid = 0
-} else {
-    var merchid = userinfo.merchInfo.id
-}
 var catenum=1
+var merchid=''
 Page({
 
     /**
@@ -25,6 +20,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        var userinfo = f.getCache('userinfo');
+        merchid=userinfo.merchInfo.id
+        console.log(merchid)
         var a = this
         s.get("payment/index/qrcode", {
             merchid: merchid,
@@ -157,7 +155,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+      wx.switchTab({
+        url: '/pages/discount/discount/discount',
+      })
+      console.log('监听页面卸载');
     },
 
     /**

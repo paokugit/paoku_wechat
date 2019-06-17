@@ -18,7 +18,7 @@
     </navigator>
     <navigator class="nav-item {{route!='member'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/member/index/index">
         <image class="icon" src="{{route=='member'?icons.people_red:icons.people}}"></image>
-        <text class="label">会员中心</text>
+        <text class="label">我的</text>
     </navigator>
 </view>
 <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">

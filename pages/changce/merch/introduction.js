@@ -1,40 +1,24 @@
-// pages/discount/merchcode/merchcode.js
+// pages/changce/merch/introduction.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var userinfo = f.getCache('userinfo');
-        console.log(userinfo)
+
     },
-    caloriebtn:function(){
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
-        wx.navigateTo({
-            url: '/pages/discount/caloriecode/caloriecode',
-        })
-    },
-    
-    zkbbtn: function() {
-        wx.navigateTo({
-            url: '/pages/discount/zkbcode/zkbcode',
-        })
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -55,8 +55,8 @@
             <view class="seckill-container " wx:if="{{goods.seckillinfo}}">
                 <view class="fui-list seckill-list" style="">
                     <view class="fui-list-media seckill-price">
-            ¥
-            <span>{{goods.seckillinfo.price}}</span>
+                        ¥
+                        <span>{{goods.seckillinfo.price}}</span>
                     </view>
                     <view class="fui-list-inner">
                         <view class="text">
@@ -79,10 +79,10 @@
                         <view class="text ">{{goods.seckillinfo.status==1?'距开始':'距结束'}}还有</view>
                         <view class="text timer">
                             <span class="time-hour">{{hour}}</span>
-              :
-              <span class="time-min">{{min}}</span>
-              :
-              <span class="time-sec">{{sec}}</span>
+                            :
+                            <span class="time-min">{{min}}</span>
+                            :
+                            <span class="time-sec">{{sec}}</span>
                         </view>
                     </view>
                 </view>
@@ -98,22 +98,22 @@
                     <!-- 分享 -->
                     <view class="shareBox" style='display:{{shareDis}}'>
                         <view class='notadd_flex' style='display:{{notaddDis}}'>
-                        <button   class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-                    <view  bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
-                        <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
-                        <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
-                    </view>
-                    </button>
+                            <button class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                                <view bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                                    <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                                    <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                                </view>
+                            </button>
                         </view>
-                    <!-- 分享 -->
-                    <view class='add_flex' style='display:{{addDis}}'>
-                     <button class='phone_btn'>
-                    <view  bindtap="addshow" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
-                        <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
-                        <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
-                    </view>
-                    </button>
-                    </view>
+                        <!-- 分享 -->
+                        <view class='add_flex' style='display:{{addDis}}'>
+                            <button class='phone_btn'>
+                                <view bindtap="addshow" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                                    <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                                    <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                                </view>
+                            </button>
+                        </view>
                     </view>
                     <!-- 分享 -->
                 </view>
@@ -123,27 +123,27 @@
                 <view class="fui-cell" wx:if="{{!goods.seckillinfo}}">
                     <view class="fui-cell-text price">
                         <view class="text-danger">
-                ¥
-                <block wx:if="{{goods.ispresell>0&&preselltimeend==0||preselltimeend>now}}">
+                            ¥
+                            <block wx:if="{{goods.ispresell>0&&preselltimeend==0||preselltimeend>now}}">
                                 <text wx:if="{{goods.hasoption==1}}">{{minpresellprice}}~{{maxpresellprice}}</text>
                                 <text wx:else>{{goods.presellprice}}</text>
                             </block>
                             <block wx:else>
                                 <block wx:if="{{minprice==goods.maxprice}}">
-                    {{minprice}}
-                  </block>
+                                    {{minprice}}
+                                </block>
                                 <block wx:else>
-                    {{minprice}} ~ {{maxprice}}
-                  </block>
+                                    {{minprice}} ~ {{maxprice}}
+                                </block>
                             </block>
                             <text class="original" wx:if="{{goods.isdiscount!=0&&goods.isdiscount_time>=now}}">¥{{goods.productprice}}</text>
                             <block wx:else>
                                 <text class="original" wx:if="{{goods.productprice>minprice}}">¥{{goods.productprice}}</text>
                             </block>
-                           
+
                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==1}}">可用卡路里抵扣{{goods.deduct}}元</text>
-                             <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣宝抵扣{{goods.deduct}}元</text>
-  
+                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣宝抵扣{{goods.deduct}}元</text>
+
                         </view>
                     </view>
                     <view class="detail-Commission flex" style="padding-bottom: 0" wx:if="{{goods.cansee>0&&goods.seecommission>0}}">
@@ -206,13 +206,13 @@
                     </view>
                     <view class="fui-list-inner" style="font-size:26rpx;color:#666;">
                         <view wx:if="{{preselltimeend>0}}">结束时间：{{goods.preselldateend}}</view>
-              预计发货：
-              <block wx:if="{{goods.presellsendtype>0}}">
-                购买后{{goods.presellsendtime}}天发货
-              </block>
+                        预计发货：
+                        <block wx:if="{{goods.presellsendtype>0}}">
+                            购买后{{goods.presellsendtime}}天发货
+                        </block>
                         <block wx:else>
-                {{goods.presellsendstatrttime}}
-              </block>
+                            {{goods.presellsendstatrttime}}
+                        </block>
                     </view>
                 </view>
             </view>
@@ -220,8 +220,8 @@
                 <view class="fui-cell-group fui-sale-group" style="margin-top:0" wx:if="{{goods.buyagain>0}}">
                     <view class="fui-cell">
                         <view class="fui-cell-text" style="white-space:normal;">此商品二次购买 可享受
-                <span class="text-danger">{{goods.buyagain}}</span>折优惠
-                <view wx:if="{{!goods.buyagain_sale}}">二次购买的时候 不与其他优惠共享</view>
+                            <span class="text-danger">{{goods.buyagain}}</span>折优惠
+                            <view wx:if="{{!goods.buyagain_sale}}">二次购买的时候 不与其他优惠共享</view>
                         </view>
                     </view>
                 </view>
@@ -231,7 +231,7 @@
                             <span style="margin-right: 0.25rem">优惠券</span>
                             <span class="coupon-mini" wx:if="{{index<5}}" wx:for="{{coupon}}">
                                 <span class="subtitle" wx:if="{{item.backpre}}">￥</span>{{item.backmoney}}
-                <span class="subtitle" wx:if="{{item.backtype==1}}">折</span>
+                                <span class="subtitle" wx:if="{{item.backtype==1}}">折</span>
                             </span>
                         </view>
                         <view class="fui-cell-remark">
@@ -247,7 +247,7 @@
                                 <view class="fui-cell-text">
                                     <view class="sale-line">
                                         <span class="sale-tip">{{goods.memberprice.levelname}}</span> 可享受
-                      <span class="text-danger">¥{{goods.memberprice.price}}</span> 的价格</view>
+                                        <span class="text-danger">¥{{goods.memberprice.price}}</span> 的价格</view>
                                 </view>
                             </view>
                         </view>
@@ -274,31 +274,31 @@
                             </view>
                             <view class="sale-line" style="font-size: 24rpx;" wx:if="{{fullbackgoods}}">
                                 <span class="sale-tip">{{goods.fullbacktext}}</span>
-                    该商品享受
-                    <span class="text-danger" wx:if="{{fullbackgoods.type==0}}">¥{{fullbackgoods.maxallfullbackallprice}}</span>
+                                该商品享受
+                                <span class="text-danger" wx:if="{{fullbackgoods.type==0}}">¥{{fullbackgoods.maxallfullbackallprice}}</span>
                                 <span class="text-danger" wx:if="{{fullbackgoods.type==1}}">{{maxallfullbackallratio}}%</span>
-                    的{{goods.fullbacktext}}
-                  </view>
+                                的{{goods.fullbacktext}}
+                            </view>
                             <view class="sale-line" style="font-size: 24rpx;" wx:if="{{activity.postfree}}">
                                 <span class="sale-tip">包邮</span>
                                 <span wx:if="{{activity.postfree.goods}}"> 本商品包邮;</span>
                                 <text wx:if="{{activity.postfree.scope}}">
                                     <text>{{activity.postfree.scope}}</text>
-                                    <text wx:if="{{activity.postfree.enoughfree>0}}">满￥{{activity.postfree.enoughfree}}</text>
-                                    <text>包邮</text>
+                                <text wx:if="{{activity.postfree.enoughfree>0}}">满￥{{activity.postfree.enoughfree}}</text>
+                                <text>包邮</text>
                                 </text>
                                 <text wx:if="{{activity.postfree.num}}">单品买{{activity.postfree.num}}件包邮；</text>
                                 <text wx:if="{{activity.postfree.price}}">单品买￥{{activity.postfree.price}}包邮</text>
                             </view>
                             <view class="sale-line" style="font-size: 24rpx;" wx:if="{{activity.buyagain}}">
                                 <span class="sale-tip">复购</span>
-                    此商品重复购买可享受 {{activity.buyagain.discount}}折;
-                    <span wx:if="{{activity.buyagain.buyagain_sale==0}}">重复购买 不与其他优惠共享</span>
+                                此商品重复购买可享受 {{activity.buyagain.discount}}折;
+                                <span wx:if="{{activity.buyagain.buyagain_sale==0}}">重复购买 不与其他优惠共享</span>
                             </view>
                             <view class="sale-line" style="font-size: 24rpx;" wx:if="{{activity.credit}}">
-                                
+
                                 <span class="sale-tip" wx:if="{{goods.deduct_type==1}}">{{credittext}}</span>
-                                 <span class="sale-tip" wx:if="{{goods.deduct_type==2}}">折扣宝</span>
+                                <span class="sale-tip" wx:if="{{goods.deduct_type==2}}">折扣宝</span>
 
                                 <text wx:if="{{activity.credit.deduct}}">最高抵扣￥{{activity.credit.deduct}}</text>
 
@@ -313,7 +313,7 @@
                         <view class="fui-cell-label" style="color:#000;width:86rpx">配送</view>
                         <view class="fui-cell-label sale-line" style="flex: 1;font-size: 24rpx;">
                             <span class="sale-tip">同城</span> 查看商家位置
-              </view>
+                        </view>
                         <view class="fui-cell-remark"></view>
                     </view>
                 </view>
@@ -321,7 +321,7 @@
             <view bindtap="cityPicker" class="fui-cell-group fui-cell-click  fui-sale-group" data-class="city-picker" data-tap="{{active}}" id="city-picker" style="margin-top:0" wx:if="{{goods.citys.citys.length>0}}">
                 <view class="fui-cell">
                     <view class="fui-cell-text">{{goods.citys.onlysent==0?'不':'只'}}配送区域:
-              <block wx:for="{{goods.citys.citys}}" wx:for-index="idx">{{item}}</block>
+                        <block wx:for="{{goods.citys.citys}}" wx:for-index="idx">{{item}}</block>
                     </view>
                     <view class="fui-cell-remark"></view>
                 </view>
@@ -339,7 +339,9 @@
             </view>
             <!-- 赏金任务-开始 -->
             <view class='reward_box' style='display:{{rewardDis}}'>
-                <view class='rewardImg'><image src='https://paokucoin.com/img/backgroup/shangjin01.png'></image></view>
+                <view class='rewardImg'>
+                    <image src='https://paokucoin.com/img/backgroup/shangjin01.png'></image>
+                </view>
                 <view class='reward_text'>
                     <view class='share_item'>
                         <view class='share-text'>分享奖励</view>
@@ -369,7 +371,7 @@
             <view bindtap="selectPicker" class="fui-cell-group fui-cell-click" data-buytype="select" data-class="select-picker" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canbuy}}">
                 <view class="fui-cell" wx:if="{{!isSelected}}">
                     <view class="fui-cell-text option-selector">请选择
-              <block wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</block>
+                        <block wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</block>
                         <block wx:else>数量</block>
                     </view>
                     <view class="fui-cell-remark"></view>
@@ -380,21 +382,19 @@
             </view>
             <view class="fui-cell-group fui-cell-click" wx:else>
                 <view class="fui-cell">
-                    <view class="fui-cell-text"style="display:flex;align-items:center; justify-content: space-between">
+                    <view class="fui-cell-text" style="display:flex;align-items:center; justify-content: space-between">
                         <block wx:if="{{goods.userbuy==0}}">您已经超出最大{{goods.usermaxbuy}}件购买量</block>
                         <block wx:elif="{{goods.levelbuy==0}}">
                             <view class='goods-detail-box' style='display:flex;align-items:center;'>
                                 <view class='goods-detail-img' style='width:44rpx;height:44rpx;margin-right:10rpx'>
-                                    <image style='width:100%;height:100%' 
-                            src='https://paokucoin.com/img/backgroup/hygrade01.png'></image>
+                                    <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/hygrade01.png'></image>
                                 </view>
                                 <text>{{goods.cannotbuy}}</text>
                             </view>
-                             <navigator class='goods-detail-box'  openType="switchTab"  url="/pages/huiyuan/openmember/openmember" style='display:flex;align-items:center;'>
+                            <navigator class='goods-detail-box' openType="switchTab" url="/pages/huiyuan/openmember/openmember" style='display:flex;align-items:center;'>
                                 <text style='margin-right:10rpx'>去开通</text>
                                 <view class='goods-detail-img' style='width:34rpx;height:34rpx; display:flex;align-items:center; justify-content: center'>
-                                    <image style='width:100%;height:100%' 
-                            src='https://paokucoin.com/img/backgroup/chakangengduo.png'></image>
+                                    <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/chakangengduo.png'></image>
                                 </view>
                             </navigator>
                         </block>
@@ -424,21 +424,21 @@
                 </view>
             </view>
             <view class="fui-cell-group fui-shop-group">
-            <!-- 隐藏 -->
-            <view class='hiddenbox' style='display:{{listDis}}'>
-                <view class="fui-list" >
-                    <view class="fui-list-media">
-                        <image src="{{goods.shopdetail.logo}}"></image>
-                    </view>
-                    <view class="fui-list-inner">
-                        <view class="title">{{goods.shopdetail.shopname}}
-                        <text class="title-wel" bindtap='goStore'>进店逛逛</text>
+                <!-- 隐藏 -->
+                <view class='hiddenbox' style='display:{{listDis}}'>
+                    <view class="fui-list">
+                        <view class="fui-list-media">
+                            <image src="{{goods.shopdetail.logo}}"></image>
                         </view>
-                        <view class="subtitle" wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
+                        <view class="fui-list-inner">
+                            <view class="title">{{goods.shopdetail.shopname}}
+                                <text class="title-wel" bindtap='goStore'>进店逛逛</text>
+                            </view>
+                            <view class="subtitle" wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
+                        </view>
                     </view>
                 </view>
-            </view>
-                 <!-- 隐藏 -->
+                <!-- 隐藏 -->
             </view>
             <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">
                 <view class="fui-cell" style="display: block;">
@@ -469,7 +469,7 @@
             <view class="fui-icon-group col-5 ">
                 <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
                     <view class="{{commentObjTab==index+1?'text-danger':''}}">{{index==0?'全部':''}}{{index==1?'好评':''}}{{index==2?'中评':''}}{{index==3?'差评':''}}{{index==4?'晒图':''}}
-            <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
+                        <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
                     </view>
                 </view>
             </view>
@@ -498,8 +498,8 @@
                                 </view>
                             </view>
                             <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.reply_content}}">
-                    掌柜回复：{{item.reply_content}}
-                    <view class="remark img">
+                                掌柜回复：{{item.reply_content}}
+                                <view class="remark img">
                                     <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage">
                                         <image src="{{replyImage}}"></image>
                                     </view>
@@ -510,8 +510,8 @@
                                 <view class="remark">{{item.append_content}}</view>
                             </block>
                             <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.append_reply_content}}">
-                    掌柜回复：{{item.append_reply_content}}
-                    <view class="remark img">
+                                掌柜回复：{{item.append_reply_content}}
+                                <view class="remark img">
                                     <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage">
                                         <image src="{{appendReplyImage}}"></image>
                                     </view>
@@ -530,7 +530,7 @@
                 <view class="fui-icon-group col-5 ">
                     <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
                         <view class="{{commentObjTab==index+1?'text-danger':''}}">{{index==0?'全部':''}}{{index==1?'好评':''}}{{index==2?'中评':''}}{{index==3?'差评':''}}{{index==4?'晒图':''}}
-              <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
+                            <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
                         </view>
                     </view>
                 </view>
@@ -559,8 +559,8 @@
                                     </view>
                                 </view>
                                 <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.reply_content}}">
-                      掌柜回复：{{item.reply_content}}
-                      <view class="remark img">
+                                    掌柜回复：{{item.reply_content}}
+                                    <view class="remark img">
                                         <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage">
                                             <image src="{{replyImage}}"></image>
                                         </view>
@@ -571,8 +571,8 @@
                                     <view class="remark">{{item.append_content}}</view>
                                 </block>
                                 <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.append_reply_content}}">
-                      掌柜回复：{{item.append_reply_content}}
-                      <view class="remark img">
+                                    掌柜回复：{{item.append_reply_content}}
+                                    <view class="remark img">
                                         <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage">
                                             <image src="{{appendReplyImage}}"></image>
                                         </view>
@@ -600,8 +600,8 @@
                 <view class="fui-cell-group fui-sale-group" style="margin-top:0;">
                     <view class="fui-cell">
                         <view class="fui-cell-text dispatching">
-                不配送区域:
-                <view class="dispatching-info">
+                            不配送区域:
+                            <view class="dispatching-info">
                                 <i wx:for="{{goods.citys}}" wx:for-index="idx">{{item}}</i>
                             </view>
                         </view>
@@ -705,13 +705,13 @@
             <view class="goods-con">{{goods.hint}}</view>
         </view>
         <view bindtap="selectPicker" class="goods-btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="access_time" data-timeout="true" wx:if="{{goods.access_time}}">
-      确定
-    </view>
+            确定
+        </view>
         <view bindtap="selectPicker" class="goods-btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="timeout" data-timeout="true" wx:if="{{goods.timeout}}">
-      确定
-    </view>
+            确定
+        </view>
         <view bindtap="selectPicker" class="goods-btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="{{goods.access_time?access_time:''}}" data-timeout="true" wx:if="{{!goods.access_time&&!goods.timeout}}">
-      确定
-    </view>
+            确定
+        </view>
     </view>
 </view>

@@ -25,12 +25,11 @@
             <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">充值</view>
             <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">支出</view>
         </view>
-
         <view class="{{type==1 ? 'show':'hidden'}}">
             <scroll-view>
 
                 <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <view class='expend-list' >
+                    <view class='expend-list'>
                         <view class='list-left'>
                             <view class='expend-title'>{{item.remark}}</view>
                             <view class='expend-time'>{{item.createtime}}</view>
@@ -56,12 +55,12 @@
     </block>
     <!-- tab -->
     <block>
-    <block wx:if="{{total<=0&&!loading}}">
-        <view class="fui-loading empty">
-            <view class="text">暂无数据</view>
-        </view>
+        <block wx:if="{{total<=0&&!loading}}">
+            <view class="fui-loading empty">
+                <view class="text">暂无数据</view>
+            </view>
+        </block>
     </block>
-</block>
 </view>
 <block>
     <block wx:if="{{loading}}">

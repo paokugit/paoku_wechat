@@ -94,7 +94,7 @@ Page((e = {
             intervalHot: 5e3,
             durationHOt: 1e3,
             circularHot: !0,
-            hotimg: "/static/images/hotdot.jpg",
+            hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
             notification: "/static/images/notification.png",
             saleout1: "/static/images/saleout-1.png",
             saleout2: "/static/images/saleout-2.png",
@@ -348,7 +348,7 @@ console.log('phone')
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
                 version = 0;
                 k.setData({
-                    condisp: 'none',
+                    // condisp: 'none',
                     storedisp: 'none'
                 })
             }
@@ -790,24 +790,6 @@ console.log('phone')
             tt.setData(i)
 
         })
-
-        // 超值兑换
-        // s.get("goods.get_list", {
-        //     page: 1,
-        //     deduct:1,
-        //     lat: newpos.lat,
-        //     lng: newpos.lng,
-        // }, function (even) {
-        //     // console.log("even")
-        //     console.log(even)
-        //     var i = {
-        //         loading: false,
-        //         total: even.total,
-        //         pagesize: even.pagesize,
-        //         prolist: even.list
-        //     };
-        //     tt.setData(i)
-        // })
     },
     getDiypage: function(t) {
         var a = this;

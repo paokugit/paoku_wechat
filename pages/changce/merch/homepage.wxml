@@ -1,0 +1,65 @@
+<!--pages/store/zhuye.wxml-->
+<!-- 总 -->
+<view class='allview'>
+  <!-- 头部 -->
+  <view class='zhuyehead'>
+    <view class='headimg'>
+      <!-- 店铺头像 -->
+      <image class='imghh' src="{{logo}}"></image>
+      <view class='dianname'>
+        <view class='diannametext'>{{merchname}}</view>
+        <view class='dianjuli'>距离{{distance}}</view>
+      </view>
+      <view class='heanjianjie' bindtap='heanjianjie'>简介</view>
+    </view>
+    <!-- //两图一字 -->
+    <view class='weixinguanzhu'>
+      <view bindlongtap='copy' class='copyview'>
+        <view class='weixinimg'>
+          <image class='weiimg' src='{{globalimg}}/weiimg.png'></image>
+        </view>
+        <text selectable='true' bindlongtap='copy' class='runhouse'>{{wxsignal}}</text>
+      </view>
+      <view class='weiguanzhu'>
+        <image catchtap='open' wx:if="{{iShow}}" src="{{url}}" data-msg="{{url}}" class="coding_flash_image"></image>
+        <view class='weitext'>未关注</view>
+      </view>
+    </view>
+    <view class='dizhiall'>
+      <view style='width:98%;height:100%;margin-left: 30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
+      <view class='suozai'>所在地区</view>
+      <view class='wenben' bindtap="address_img_all" style='margin-left:30rpx'>{{address}}</view>
+      <view class='diquimgview'>
+        <image class='diquimg' bindtap="address_img_all" src='{{globalimg}}/address@2x.png'></image>
+      </view>
+      </view>
+    </view>
+    <view class='zhuyingall'>
+    <view style='width:98%;height:100%;margin-left:30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
+      <view class='zhuying'>店铺主营</view>
+      <view class='zhuyingtext'>{{main_business}}</view>
+      </view>
+    </view>
+    <view class='diantuall'>
+    <view style='width:98%;height:100%;margin-left:30rpx;display:flex;align-items: center;border-bottom: 1rpx solid #f0f0f0;'>
+      <view class='diantutext'>店铺图片</view>
+      <view class='dianpuimg' wx:for="{{shopimg}}">
+        <image class='dianpuallimg' bindtap="enlarge" src='{{globalimg}}/moreuser@2x.png'></image>
+        <!-- <image class='dianpuallimg' bindtap="enlarge" src='{{globalimg}}/moreuser@2x.png'></image> -->
+        <view class='gengduo' bindtap='moreimages'>
+          <view class='dian'>...</view>
+          <view class='gengduotext'>更多</view>
+        </view>
+      </view>
+      </view>
+    </view>
+    <view class='shipingall'>
+      <view class='shipingtext'>店铺视频</view>
+      <view class='shipin'></view>
+    </view>
+    <view class='telandmap'>
+      <view class='tel' bindtap='tel'>拨打电话</view>
+      <view class='map' bindtap='navigation'>一键导航</view>
+    </view>
+  </view>
+</view>

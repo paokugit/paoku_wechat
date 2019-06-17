@@ -2,7 +2,7 @@
     "usingComponents": {},
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "我的",
+    "navigationBarTitleText": "店铺简介",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true

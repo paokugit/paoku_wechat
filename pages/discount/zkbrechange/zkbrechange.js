@@ -3,7 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
+var useropenid=''
 var iptvalue = ''
 var creditnum = ''
 Page({
@@ -21,10 +21,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        var userinfo = f.getCache('userinfo');
+        useropenid=userinfo.openid
         var t = this
         s.get("payment/index/getCredit", {
-            openid: userinfo.openid
+            openid: useropenid
         }, function(e) {
             console.log(e)
             creditnum = Number(e.result.credit1)
@@ -54,7 +55,7 @@ Page({
         if (iptvalue <= creditnum) {
             s.get("payment/index/change", {
                 money: iptvalue,
-                openid: userinfo.openid
+                openid: useropenid
             }, function(eve) {
                 console.log(eve)
                 if (eve.status == 1) {

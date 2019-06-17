@@ -64,5 +64,10 @@
   </view>
   <!--include src='/pages/common/menu.wxml' /-->
 
-<view class='bottombar' bindtap='scancodebtn'>扫码买单</view>
+<!-- <view class='bottombar' bindtap='scancodebtn'>扫码买单</view> -->
+<view class='bottombar'>
+ <navigator url="/pages/changce/merch/intro?id={{merchid}}" class='mapbtn'>地图导航</navigator>
+ <navigator url='/pages/changce/merch/homepage?id={{merchid}}' class='homebtn'>店铺主页</navigator>
+<view class='sancode' bindtap='scancodebtn'>扫码买单</view>
+</view>
 </view>

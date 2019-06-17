@@ -35,7 +35,7 @@
                         <text bindtap="getCode" class="btn btn-default btn-default-o btn-sm {{endtime>0?'disabled':''}}">{{endtime>0?endtime+'秒后重发':'获取验证码'}}</text>
                     </view>
                 </view>
-                <view class="fui-cell must">
+                 <view class="fui-cell must">
                     <view class="fui-cell-label">登录密码</view>
                     <view class="fui-cell-info">
                         <input bindinput="inputChange" class="fui-input" data-type="password" placeholder="请输入您的登录密码" type="password" value="{{postData.password}}"></input>
