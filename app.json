@@ -1,11 +1,12 @@
 {
     "pages": [ 
+        "pages/member/index/index",
         "pages/index/index",
         "pages/index/huodong",
         
         "pages/changce/merch/introduction",
        
-        "pages/member/index/index",
+        
         "pages/changce/merch/homepage",
         "pages/lottery/lottery/lottery",  
         "pages/discount/kllscancode/kllscancode",
