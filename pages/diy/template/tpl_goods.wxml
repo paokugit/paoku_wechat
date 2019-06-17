@@ -1,3 +1,4 @@
+<!-- <view class='discount_box'></view> -->
 <view class="swiper-tab">
     <view bindtap="myTab" class="swiper-tab-item {{select==0?'active':''}}" data-select="0">价格</view>
     <view bindtap="myTab" class="swiper-tab-item {{select==1?'active':''}}" data-select="1">最新</view>
@@ -5,746 +6,100 @@
 </view>
 <view class="{{select==0 ? 'show':'hidden'}}">
     <scroll-view>
-        <block>
-            <block wx:if="{{diyitem.params.goodsscroll!=1}}">
-                <view class="fui-goods-group {{diyitem.style.liststyle}}" style="background:{{diyitem.style.background}}">
-                    <block wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem">
-                        <!-- 开始标签 -->
-                        <view class="fui-goods-item">
-                            <navigator class="image {{diyitem.params.showicon=='1'?diyitem.style.iconstyle:''}}" data-text="{{diyitem.style.goodsicon}}" style="background-image:url({{childitem.thumb}})" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showicon=='2'}}">
-                                        <view class="goodsicon" style="position:relative;width:{{iconwidth}}px;height:{{iconheight}}px">
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left top'}}">
-                                                    <image bindload="goodsicon" class="left top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right top'}}">
-                                                    <image bindload="goodsicon" class="right top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left bottom'}}">
-                                                    <image bindload="goodsicon" class="left bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right bottom'}}">
-                                                    <image bindload="goodsicon" class="right bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee<=0||diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee>0&&childitem.seecommission<=0}}">
-                                        <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}"></image>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{childitem.cansee>0&&childitem.seecommission>0}}">
-                                        <view class="goods-Commission">{{childitem.seetitle}}￥{{childitem.seecommission}}</view>
-                                    </block>
-                                </block>
-                            </navigator>
-                            <view class="detail">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showtitle=='1'}}">
-                                        <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                            <block>
-                                                <block wx:if="{{childitem.bargain>0}}">
-                                                    <image class="bargain_label" src="/static/images/label.png"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{childitem.ctype==9}}">
-                                                    <text class="cycle-tip">周期购</text>
-                                                </block>
-                                            </block>
-                                            <text>{{childitem.title}} </text>
-                                        </navigator>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'&&(diyitem.params.showproductprice=='1'||diyitem.params.showsales=='1')}}">
-                                        <view class="productprice">
-                                            <block>
-                                                <block wx:if="{{childitem.productprice>0&&diyitem.params.showproductprice=='1'}}">
-                                                    <text style="color:{{diyitem.style.productpricecolor}};margin-right:16rpx">{{diyitem.params.productpricetext}}：<text class="{{diyitem.params.productpriceline=='1'?'line':''}}">￥{{childitem.productprice}}</text>
-                                                    </text>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showsales=='1'}}">
-                                                    <text style="color:{{diyitem.style.salescolor}}">{{diyitem.params.salestext}}：{{childitem.sales}}</text>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'}}">
-                                        <view class="jiage" style='width:100%;height:100rpx;display:flex;algin-items:center'>
-                                            <!-- //卡路里 -->
-                                            <view style='position:absolute;top:-1rpx;' wx:if="{{childitem.subtitle==''}}">
-                                                <image style='width:98rpx;height:88rpx;position:absolute;top:25rpx;left:10rpx' src='{{globalimg}}/baoyou-b@2x.png'></image>
-                                            </view>
-                                            <view wx:if="{{childitem.deduct_type=='1'}}">
-                                                <view class="price">
-                                                    <!-- 全金 -->
-                                                    <view wx:if="{{childitem.deduct==0&&childitem.price!=0}}">
-                                                        <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                    </view>
-                                                    <!-- 免费 -->
-                                                    <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                        <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                            <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                            <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}元</view>
-                                                        </view>
-                                                    </view>
-                                                    <!-- 卡路里抵扣 -->
-                                                    <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                        <!-- 卡路里抵扣得图片和字体 -->
-                                                        <view style='width:auto;height:auto;display:flex;align-items:center;'>
-                                                            <view style='width:28rpx;height:28rpx;display:flex;algin-items:center'>
-                                                                <image style='width:28rpx;height:28rpx;' src='{{globalimg}}/kaluli02.png'></image>
-                                                            </view>
-                                                            <view style='display:flex;algin-item:center;justify-content: space-between;margin-left:5rpx'>
-                                                                <view style='width:210rpx;height:28rpx;font-size:26rpx;color:#e01212;display:flex;algin-items:center;margin-bottom:3rpx'>{{childitem.deduct}}+￥{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                            </view>
-                                                            <view style='width:120rpx;font-size:22rpx;color:#707070;display:flex;position:absolute;left:270rpx'>{{childitem.productprice}}</view>
-                                                        </view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                            <!-- //判断是不是折口服 -->
-                                            <view wx:if="{{childitem.deduct_type=='2'}}">
-                                                <!-- 全金 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct==0&&childitem.price>=0}}">
-                                                    <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                </view>
-
-                                                <!-- 免费 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                    <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                        <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                        <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}</view>
-                                                    </view>
-                                                </view>
-                                                <!-- 判断有没有折扣 -->
-                                                <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                    <!-- 折扣报图片和折扣 -->
-                                                    <view style='width:auto;height:auto;border:1rpx solid #e01212;padding-right:5rpx;display:flex;align-items:center;margin-top:20rpx'>
-                                                        <!-- 图片 -->
-                                                        <view class='zhekou' style='width:auto;height:34rpx;display:flex;'>
-                                                            <image class='zhekouxiao' style='width:74rpx;height:34rpx;display:flex;align-items:center;' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                                                            <view class='zhekounum' style='width:auto;height:24rpx;font-size:18rpx;color:#e01212;position:absolute;margin-left:75rpx;margin-top:8rpx;'>-{{childitem.deduct}}</view>
-                                                        </view>
-                                                        <!-- 折扣 -->
-                                                    </view>
-                                                    <!-- 下面的展示 -->
-                                                    <view style='width:100%;height:auto;display:flex;margin-top:20rpx'>
-                                                        <view style='width:45rpx;font-size:18rpx;color:#707070;'>折后</view>
-                                                        <view style='font-size:20rpx;color:#e01212;'>￥</view>
-                                                        <view style='font-size:26rpx;color:#e01212;'>{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                        <view style='font-size:22rpx;color:#707070;position:absolute;right:15rpx;'>{{childitem.productprice}}</view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                        </view>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==9&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==5&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.bargain>0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/bargain/detail/detail?id={{childitem.bargain}}">砍价</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-1'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-2'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-3'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-cartfill buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-4'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-gouwuche4 buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-5'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-6'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                    </block>
-                                </block>
-                            </view>
-                        </view>
-                        <!-- 结束标签 -->
-                    </block>
+        <view class='sort_price'>
+            <view class='product-items' wx:for="{{list}}" wx:key="{{index}}">
+                <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                    <image src='{{item.thumb}}'></image>
+                    <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                        <image src='{{globalimg}}/saleout-2.png'></image>
+                    </view>
+                    <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                        <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                    </view>
+                </navigator>
+                <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+                <view class='zkBox'>
+                    <view class='zkb-box'>
+                        <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                        <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                        <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                        <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                    </view>
                 </view>
-            </block>
-        </block>
-    </scroll-view>
-</view>
-<!-- select=1 -->
-<view class="{{select==1 ? 'show':'hidden'}}">
-    <scroll-view>
-        <block>
-            <block wx:if="{{diyitem.params.goodsscroll!=1}}">
-                <view class="fui-goods-group {{diyitem.style.liststyle}}" style="background:{{diyitem.style.background}}">
-                    <block wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem">
-                        <!-- 开始标签 -->
-                        <view class="fui-goods-item">
-                            <navigator class="image {{diyitem.params.showicon=='1'?diyitem.style.iconstyle:''}}" data-text="{{diyitem.style.goodsicon}}" style="background-image:url({{childitem.thumb}})" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showicon=='2'}}">
-                                        <view class="goodsicon" style="position:relative;width:{{iconwidth}}px;height:{{iconheight}}px">
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left top'}}">
-                                                    <image bindload="goodsicon" class="left top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right top'}}">
-                                                    <image bindload="goodsicon" class="right top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left bottom'}}">
-                                                    <image bindload="goodsicon" class="left bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right bottom'}}">
-                                                    <image bindload="goodsicon" class="right bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee<=0||diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee>0&&childitem.seecommission<=0}}">
-                                        <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}"></image>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{childitem.cansee>0&&childitem.seecommission>0}}">
-                                        <view class="goods-Commission">{{childitem.seetitle}}￥{{childitem.seecommission}}</view>
-                                    </block>
-                                </block>
-                            </navigator>
-                            <view class="detail">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showtitle=='1'}}">
-                                        <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                            <block>
-                                                <block wx:if="{{childitem.bargain>0}}">
-                                                    <image class="bargain_label" src="/static/images/label.png"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{childitem.ctype==9}}">
-                                                    <text class="cycle-tip">周期购</text>
-                                                </block>
-                                            </block>
-                                            <text>{{childitem.title}} </text>
-                                        </navigator>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'&&(diyitem.params.showproductprice=='1'||diyitem.params.showsales=='1')}}">
-                                        <view class="productprice">
-                                            <block>
-                                                <block wx:if="{{childitem.productprice>0&&diyitem.params.showproductprice=='1'}}">
-                                                    <text style="color:{{diyitem.style.productpricecolor}};margin-right:16rpx">{{diyitem.params.productpricetext}}：<text class="{{diyitem.params.productpriceline=='1'?'line':''}}">￥{{childitem.productprice}}</text>
-                                                    </text>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showsales=='1'}}">
-                                                    <text style="color:{{diyitem.style.salescolor}}">{{diyitem.params.salestext}}：{{childitem.sales}}</text>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'}}">
-                                        <view class="jiage" style='width:100%;height:100rpx;display:flex;algin-items:center'>
-                                            <!-- //卡路里 -->
-                                            <view style='position:absolute;top:-1rpx;' wx:if="{{childitem.subtitle==''}}">
-                                                <image style='width:98rpx;height:88rpx;position:absolute;top:25rpx;left:10rpx' src='{{globalimg}}/baoyou-b@2x.png'></image>
-                                            </view>
-                                            <view wx:if="{{childitem.deduct_type=='1'}}">
-                                                <view class="price">
-                                                    <!-- 全金 -->
-                                                    <view wx:if="{{childitem.deduct==0&&childitem.price!=0}}">
-                                                        <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                    </view>
-                                                    <!-- 免费 -->
-                                                    <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                        <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                            <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                            <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}元</view>
-                                                        </view>
-                                                    </view>
-                                                    <!-- 卡路里抵扣 -->
-                                                    <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                        <!-- 卡路里抵扣得图片和字体 -->
-                                                        <view style='width:auto;height:auto;display:flex;align-items:center;'>
-                                                            <view style='width:28rpx;height:28rpx;display:flex;algin-items:center'>
-                                                                <image style='width:28rpx;height:28rpx;' src='{{globalimg}}/kaluli02.png'></image>
-                                                            </view>
-                                                            <view style='display:flex;algin-item:center;justify-content: space-between;margin-left:5rpx'>
-                                                                <view style='width:210rpx;height:28rpx;font-size:26rpx;color:#e01212;display:flex;algin-items:center;margin-bottom:3rpx'>{{childitem.deduct}}+￥{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                            </view>
-                                                            <view style='width:120rpx;font-size:22rpx;color:#707070;display:flex;position:absolute;left:270rpx'>{{childitem.productprice}}</view>
-                                                        </view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                            <!-- //判断是不是折口服 -->
-                                            <view wx:if="{{childitem.deduct_type=='2'}}">
-                                                <!-- 全金 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct==0&&childitem.price>=0}}">
-                                                    <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                </view>
-
-                                                <!-- 免费 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                    <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                        <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                        <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}</view>
-                                                    </view>
-                                                </view>
-                                                <!-- 判断有没有折扣 -->
-                                                <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                    <!-- 折扣报图片和折扣 -->
-                                                    <view style='width:auto;height:auto;border:1rpx solid #e01212;padding-right:5rpx;display:flex;align-items:center;margin-top:20rpx'>
-                                                        <!-- 图片 -->
-                                                        <view class='zhekou' style='width:auto;height:34rpx;display:flex;'>
-                                                            <image class='zhekouxiao' style='width:74rpx;height:34rpx;display:flex;align-items:center;' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                                                            <view class='zhekounum' style='width:auto;height:24rpx;font-size:18rpx;color:#e01212;position:absolute;margin-left:75rpx;margin-top:8rpx;'>-{{childitem.deduct}}</view>
-                                                        </view>
-                                                        <!-- 折扣 -->
-                                                    </view>
-                                                    <!-- 下面的展示 -->
-                                                    <view style='width:100%;height:auto;display:flex;margin-top:20rpx'>
-                                                        <view style='width:45rpx;font-size:18rpx;color:#707070;'>折后</view>
-                                                        <view style='font-size:20rpx;color:#e01212;'>￥</view>
-                                                        <view style='font-size:26rpx;color:#e01212;'>{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                        <view style='font-size:22rpx;color:#707070;position:absolute;right:15rpx;'>{{childitem.productprice}}</view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                        </view>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==9&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==5&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.bargain>0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/bargain/detail/detail?id={{childitem.bargain}}">砍价</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-1'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-2'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-3'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-cartfill buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-4'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-gouwuche4 buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-5'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-6'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                    </block>
-                                </block>
-                            </view>
-                        </view>
-                        <!-- 结束标签 -->
-                    </block>
+                <view class='price-box'>
+                    <view class='discountprice-box'>
+                        <view class='dis-text'>折后</view>
+                        <view class='dis-price'>￥{{item.showprice}}</view>
+                    </view>
+                    <view class='originalprice'>{{item.productprice}}元</view>
                 </view>
-            </block>
-        </block>
-    </scroll-view>
-</view>
-<!-- select=1 -->
-<!-- select=2 -->
-<view class="{{select==2 ? 'show':'hidden'}}">
-    <scroll-view>
-        <block>
-            <block wx:if="{{diyitem.params.goodsscroll!=1}}">
-                <view class="fui-goods-group {{diyitem.style.liststyle}}" style="background:{{diyitem.style.background}}">
-                    <block wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem">
-                        <!-- 开始标签 -->
-                        <view class="fui-goods-item">
-                            <navigator class="image {{diyitem.params.showicon=='1'?diyitem.style.iconstyle:''}}" data-text="{{diyitem.style.goodsicon}}" style="background-image:url({{childitem.thumb}})" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showicon=='2'}}">
-                                        <view class="goodsicon" style="position:relative;width:{{iconwidth}}px;height:{{iconheight}}px">
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left top'}}">
-                                                    <image bindload="goodsicon" class="left top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right top'}}">
-                                                    <image bindload="goodsicon" class="right top" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='left bottom'}}">
-                                                    <image bindload="goodsicon" class="left bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.iconposition=='right bottom'}}">
-                                                    <image bindload="goodsicon" class="right bottom" mode="widthFix" src="{{diyitem.params.goodsiconsrc}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee<=0||diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee>0&&childitem.seecommission<=0}}">
-                                        <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}"></image>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{childitem.cansee>0&&childitem.seecommission>0}}">
-                                        <view class="goods-Commission">{{childitem.seetitle}}￥{{childitem.seecommission}}</view>
-                                    </block>
-                                </block>
-                            </navigator>
-                            <view class="detail">
-                                <block>
-                                    <block wx:if="{{diyitem.params.showtitle=='1'}}">
-                                        <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{childitem.bargain>0?'/pages/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}">
-                                            <block>
-                                                <block wx:if="{{childitem.bargain>0}}">
-                                                    <image class="bargain_label" src="/static/images/label.png"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{childitem.ctype==9}}">
-                                                    <text class="cycle-tip">周期购</text>
-                                                </block>
-                                            </block>
-                                            <text>{{childitem.title}} </text>
-                                        </navigator>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'&&(diyitem.params.showproductprice=='1'||diyitem.params.showsales=='1')}}">
-                                        <view class="productprice">
-                                            <block>
-                                                <block wx:if="{{childitem.productprice>0&&diyitem.params.showproductprice=='1'}}">
-                                                    <text style="color:{{diyitem.style.productpricecolor}};margin-right:16rpx">{{diyitem.params.productpricetext}}：<text class="{{diyitem.params.productpriceline=='1'?'line':''}}">￥{{childitem.productprice}}</text>
-                                                    </text>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showsales=='1'}}">
-                                                    <text style="color:{{diyitem.style.salescolor}}">{{diyitem.params.salestext}}：{{childitem.sales}}</text>
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </block>
-                                </block>
-                                <block>
-                                    <block wx:if="{{diyitem.params.showprice=='1'}}">
-                                        <view class="jiage" style='width:100%;height:100rpx;display:flex;algin-items:center'>
-                                            <!-- //卡路里 -->
-                                            <view style='position:absolute;top:-1rpx;' wx:if="{{childitem.subtitle==''}}">
-                                                <image style='width:98rpx;height:88rpx;position:absolute;top:25rpx;left:10rpx' src='{{globalimg}}/baoyou-b@2x.png'></image>
-                                            </view>
-                                            <view wx:if="{{childitem.deduct_type=='1'}}">
-                                                <view class="price">
-                                                    <!-- 全金 -->
-                                                    <view wx:if="{{childitem.deduct==0&&childitem.price!=0}}">
-                                                        <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                    </view>
-                                                    <!-- 免费 -->
-                                                    <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                        <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                            <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                            <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}元</view>
-                                                        </view>
-                                                    </view>
-                                                    <!-- 卡路里抵扣 -->
-                                                    <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                        <!-- 卡路里抵扣得图片和字体 -->
-                                                        <view style='width:auto;height:auto;display:flex;align-items:center;'>
-                                                            <view style='width:28rpx;height:28rpx;display:flex;algin-items:center'>
-                                                                <image style='width:28rpx;height:28rpx;' src='{{globalimg}}/kaluli02.png'></image>
-                                                            </view>
-                                                            <view style='display:flex;algin-item:center;justify-content: space-between;margin-left:5rpx'>
-                                                                <view style='width:210rpx;height:28rpx;font-size:26rpx;color:#e01212;display:flex;algin-items:center;margin-bottom:3rpx'>{{childitem.deduct}}+￥{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                            </view>
-                                                            <view style='width:120rpx;font-size:22rpx;color:#707070;display:flex;position:absolute;left:270rpx'>{{childitem.productprice}}</view>
-                                                        </view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                            <!-- //判断是不是折口服 -->
-                                            <view wx:if="{{childitem.deduct_type=='2'}}">
-                                                <!-- 全金 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct==0&&childitem.price>=0}}">
-                                                    <view style='font-size:26rpx;color:#e01212;margin-top:15rpx'>￥{{childitem.price}}</view>
-                                                </view>
-
-                                                <!-- 免费 -->
-                                                <view class="deductandprice" wx:if="{{childitem.deduct-childitem.price>=0||childitem.deduct==0&&childitem.price==0}}">
-                                                    <view wx:if="{{childitem.price!=0}}" style='display:flex;algin-items:center;margin-top:15rpx'>
-                                                        <view style='font-size:26rpx;color:#e01212;height:30rpx'>免费兑</view>
-                                                        <view class='zhekounum' style='width:auto;height:30rpx;font-size:18rpx;color:#e01212;margin-top:4rpx;position:absolute;margin-left:240rpx'>{{childitem.deduct}}</view>
-                                                    </view>
-                                                </view>
-                                                <!-- 判断有没有折扣 -->
-                                                <view class="deductandprice" style='width:150rpx;height:30rpx;' wx:if="{{childitem.deduct!=0&&childitem.deduct-childitem.price<0}}">
-                                                    <!-- 折扣报图片和折扣 -->
-                                                    <view style='width:auto;height:auto;border:1rpx solid #e01212;padding-right:5rpx;display:flex;align-items:center;margin-top:20rpx'>
-                                                        <!-- 图片 -->
-                                                        <view class='zhekou' style='width:auto;height:34rpx;display:flex;'>
-                                                            <image class='zhekouxiao' style='width:74rpx;height:34rpx;display:flex;align-items:center;' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                                                            <view class='zhekounum' style='width:auto;height:24rpx;font-size:18rpx;color:#e01212;position:absolute;margin-left:75rpx;margin-top:8rpx;'>-{{childitem.deduct}}</view>
-                                                        </view>
-                                                        <!-- 折扣 -->
-                                                    </view>
-                                                    <!-- 下面的展示 -->
-                                                    <view style='width:100%;height:auto;display:flex;margin-top:20rpx'>
-                                                        <view style='width:45rpx;font-size:18rpx;color:#707070;'>折后</view>
-                                                        <view style='font-size:20rpx;color:#e01212;'>￥</view>
-                                                        <view style='font-size:26rpx;color:#e01212;'>{{filters.toFix(childitem.price,childitem.deduct)}}</view>
-                                                        <view style='font-size:22rpx;color:#707070;position:absolute;right:15rpx;'>{{childitem.productprice}}</view>
-                                                    </view>
-                                                </view>
-                                            </view>
-                                        </view>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==9&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.ctype==5&&childitem.bargain==0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/goods/detail/index?id={{childitem.gid}}">详情</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{childitem.bargain>0}}">
-                                                <navigator class="buy buybtnbtn buybtn-1" data-buytype="buy" data-id="{{childitem.gid}}" style="" url="/pages/bargain/detail/detail?id={{childitem.bargain}}">砍价</navigator>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-1'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-2'&&childitem.ctype!=9&&(childitem.bargain==0||childitem.bargain==null)&&childitem.ctype!=5}}">
-                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-3'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-cartfill buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-4'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-gouwuche4 buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-5'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                        <block>
-                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-6'&&childitem.ctype!=9&&childitem.ctype!=5&&childitem.bargain==0}}">
-                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitem.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                            </block>
-                                        </block>
-                                    </block>
-                                </block>
-                            </view>
-                        </view>
-                        <!-- 结束标签 -->
-                    </block>
-                </view>
-            </block>
-        </block>
-    </scroll-view>
-</view>
-<!-- select=2 -->
-
-<block>
-    <block wx:if="{{diyitem.params.goodsscroll==1}}">
-        <view class="fui-goods-swiper-group" style="position: relative;">
-            <view bindtap="cutGoods" class="cut retreat" data-id="{{diyitemid}}" data-num="{{diyitem.data_temp.length}}" data-type="retreat">
-                <i class="icox icox-qianjin-copy-copy"></i>
-            </view>
-            <block>
-                <block wx:if="{{diyitem.params.goodsscroll==1}}">
-                    <swiper circular="true" class="swiper fui-goods-group {{diyitem.style.liststyle}} {{diyitem.params.showprice=='1'&&(diyitem.params.showproductprice=='1'||diyitem.params.showsales=='1')?'showproduct':''}} {{diyitem.params.showtitle==1?'showtitle':''}} {{diyitem.params.showprice==1?'showprice':''}}"
-                        current="{{diyitem.current}}" duration="{{duration}}" interval="{{interval}}" style="background:{{diyitem.style.background}};">
-                        <block wx:for="{{diyitem.data_temp}}" wx:for-index="childid" wx:for-item="childitem">
-                            <swiper-item nextMargin="10px">
-                                <block wx:for="{{childitem}}" wx:for-index="childitemid" wx:for-item="childitems">
-                                    <view class="fui-goods-item">
-                                        <navigator class="image {{diyitem.params.showicon=='1'?diyitem.style.iconstyle:''}}" data-text="{{diyitem.style.goodsicon}}" openType="navigate" style="background-image:url({{childitems.thumb}})" url="{{childitems.bargain>0?'/pages/bargain/detail/detail?id='+childitems.bargain:'/pages/goods/detail/index?id='+childitems.gid}}">
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showicon=='2'}}">
-                                                    <view class="goodsicon" style="position:relative;width:{{iconwidth}}px;height:{{iconheight}}px">
-                                                        <block>
-                                                            <block wx:if="{{diyitem.params.iconposition=='left top'}}">
-                                                                <image bindload="goodsicon" class="left top" mode="widthFix" src="{{childitem.thumb}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.params.iconposition=='right top'}}">
-                                                                <image bindload="goodsicon" class="right top" mode="widthFix" src="{{childitem.thumb}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;top:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.params.iconposition=='left bottom'}}">
-                                                                <image bindload="goodsicon" class="left bottom" mode="widthFix" src="{{childitem.thumb}}" style="width:{{diyitem.style.iconzoom}}%; left:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.params.iconposition=='right bottom'}}">
-                                                                <image bindload="goodsicon" class="right bottom" mode="widthFix" src="{{childitem.thumb}}" style="width:{{diyitem.style.iconzoom}}%; right:{{diyitem.style.iconpaddingleft}}rpx;bottom:{{diyitem.style.iconpaddingtop}}rpx"></image>
-                                                            </block>
-                                                        </block>
-                                                    </view>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.saleout!=-1&&childitems.total==0&&childitems.cansee<=0||diyitem.params.saleout!=-1&&childitems.total==0&&childitems.cansee>0&&childitems.seecommission<=0}}">
-                                                    <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}"></image>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{childitems.cansee>0&&childitems.seecommission>0}}">
-                                                    <view class="goods-Commission">{{childitems.seetitle}}￥{{childitems.seecommission}}</view>
-                                                </block>
-                                            </block>
-                                        </navigator>
-                                        <view class="detail">
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showtitle=='1'}}">
-                                                    <navigator class="name" openType="navigate" style="color:{{diyitem.style.titlecolor}}" url="{{childitems.bargain>0?'/pages/bargain/detail/detail?id='+childitems.bargain:'/pages/goods/detail/index?id='+childitems.gid}}">
-                                                        {{childitems.title}}
-                                                    </navigator>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showprice=='1'&&(diyitem.params.showproductprice=='1'||diyitem.params.showsales=='1')}}">
-                                                    <view class="productprice"></view>
-                                                </block>
-                                            </block>
-                                            <block>
-                                                <block wx:if="{{diyitem.params.showprice=='1'}}">
-                                                    <view class="price">
-                                                        <text class="text" style="color:{{diyitem.style.pricecolor}}">￥{{childitems.price}}
-                                                            <text class="text" style="color:{{diyitem.style.pricecolor}};font-size: 10px" wx:if="{{childitems.deduct>0}}"> -{{childitems.deduct}}卡路里</text>
-                                                        </text>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-1'}}">
-                                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-2'}}">
-                                                                <text bindtap="selectPicker" class="buy buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}">购买</text>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-3'}}">
-                                                                <text bindtap="selectPicker" class="buy icox icox-cartfill buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-4'}}">
-                                                                <text bindtap="selectPicker" class="buy icox icox-gouwuche4 buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="color:{{diyitem.style.buybtncolor}};"></text>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-5'}}">
-                                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="color:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                                            </block>
-                                                        </block>
-                                                        <block>
-                                                            <block wx:if="{{diyitem.style.buystyle=='buybtn-6'}}">
-                                                                <text bindtap="selectPicker" class="buy icox icox-add buybtnbtn {{diyitem.style.buystyle}}" data-buytype="buy" data-id="{{childitems.gid}}" style="background:{{diyitem.style.buybtncolor}};border-color:{{diyitem.style.buybtncolor}}"></text>
-                                                            </block>
-                                                        </block>
-                                                    </view>
-
-                                                </block>
-                                            </block>
-                                        </view>
-                                    </view>
-                                </block>
-                            </swiper-item>
-                        </block>
-                    </swiper>
-                </block>
-            </block>
-            <view bindtap="cutGoods" class="cut advance" data-id="{{diyitemid}}" data-num="{{diyitem.data_temp.length}}" data-type="advance">
-                <i class="icox icox-qianjin-copy"></i>
             </view>
         </view>
-    </block>
-</block>
+    </scroll-view>
+</view>
+<view class="{{select==1 ? 'show':'hidden'}}">
+    <scroll-view>
+        <view class='sort-new'>
+            <view class='product-items' wx:for="{{list}}" wx:key="{{index}}">
+                <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                    <image src='{{item.thumb}}'></image>
+                    <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                        <image src='{{globalimg}}/saleout-2.png'></image>
+                    </view>
+                    <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                        <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                    </view>
+                </navigator>
+                <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+                <view class='zkBox'>
+                    <view class='zkb-box'>
+                        <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                        <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                        <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                        <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                    </view>
+                </view>
+                <view class='price-box'>
+                    <view class='discountprice-box'>
+                        <view class='dis-text'>折后</view>
+                        <view class='dis-price'>￥{{item.showprice}}</view>
+                    </view>
+                    <view class='originalprice'>{{item.productprice}}元</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="{{select==2 ? 'show':'hidden'}}">
+    <scroll-view>
+        <view class='sort-sale'>
+            <view class='product-items' wx:for="{{list}}" wx:key="{{index}}">
+                <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                    <image src='{{item.thumb}}'></image>
+                    <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                        <image src='{{globalimg}}/saleout-2.png'></image>
+                    </view>
+                    <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                        <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                    </view>
+                </navigator>
+                <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+                <view class='zkBox'>
+                    <view class='zkb-box'>
+                        <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                        <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                        <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                        <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                    </view>
+                </view>
+                <view class='price-box'>
+                    <view class='discountprice-box'>
+                        <view class='dis-text'>折后</view>
+                        <view class='dis-price'>￥{{item.showprice}}</view>
+                    </view>
+                    <view class='originalprice'>{{item.productprice}}元</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

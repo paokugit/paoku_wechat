@@ -12,7 +12,7 @@
                 <view class='level-img' wx:if="{{member.levelid==1}}">
                     <image src='{{globalimg}}/jiankang-level.png'></image>
                 </view>
-                <view class='level-img' wx:if="{{member.levelid==3}}">
+                <view class='level-img' wx:if="{{member.levelid==2}}">
                     <image src='{{globalimg}}/xingxuan-level.png'></image>
                 </view>
                 <view class='dianzhu-img' wx:if="{{member.levelid==5}}">

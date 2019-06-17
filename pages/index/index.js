@@ -348,7 +348,7 @@ console.log('phone')
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
                 version = 0;
                 k.setData({
-                    // condisp: 'none',
+                    condisp: 'none',
                     storedisp: 'none'
                 })
             }

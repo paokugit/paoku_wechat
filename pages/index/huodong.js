@@ -10,13 +10,7 @@ function t(t, a, e) {
 var a, e, i = getApp(), s = i.requirejs("core"), n = i.requirejs("wxParse/wxParse"), o = i.requirejs("biz/diypage"), r = i.requirejs("biz/diyform"), d = i.requirejs("biz/goodspicker"), c = (i.requirejs("foxui"), 
 i.requirejs("jquery"));
 Page((e = {
-    onPullDownRefresh: function() {
-        var t = this;
-        o.get(this, "huodong", function(a) {
-            console.log(a)
-            t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
-        });
-    },
+    
     data: (a = {
         globalimg: i.globalData.appimg,
         imgUrls: [ "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963648306&di=1194f5980cccf9e5ad558dfb18e895ab&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F9c16fdfaaf51f3de87bbdad39ceef01f3a29797f.jpg", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963737453&di=b1472a710a2c9ba30808fd6823b16feb&imgtype=0&src=http%3A%2F%2Fwww.qqzhi.com%2Fwenwen%2Fuploads%2Fpic.wenwen.soso.com%2Fp%2F20160830%2F20160830220016-586751007.jpg", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3004162400,3684436606&fm=11&gp=0.jpg" ],
@@ -40,7 +34,6 @@ Page((e = {
         storeRecommand: [],
         total: 1,
         page: 1,
-        pageSize:100,
         loaded: !1,
         loading: !0,
         indicatorDotsHot: !1,
@@ -50,7 +43,7 @@ Page((e = {
         circularHot: !0,
         type:'',
         select:0,
-        page:'',
+        list:[],
         hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
         notification: "/static/images/notification.png",
         saleout1: "/static/images/saleout-1.png",
@@ -85,12 +78,34 @@ Page((e = {
             select: i,
             page: 1,
             list: [],
-        }), o.get(this, "huodong", function (a) {
-           e.getDiypage(a);
-        });
+        }), e.get_list();
     },
     onReachBottom: function() {
-        this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand()
+        this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand();
+        this.get_list();
+    },
+    onPullDownRefresh: function () {
+        wx.stopPullDownRefresh();
+    },
+    get_list: function () {
+        var t = this;
+         s.get("diypage/getgoodslist", {
+            select: t.data.select,
+            page: t.data.page
+        }, function (e) {
+            console.log(e)
+            0 == e.error ? (t.setData({
+                loading: !1,
+                show: !0,
+                total: e.goods.total,
+                empty: !0
+            }), e.goods.data.length > 0 && t.setData({
+                page: t.data.page + 1,
+                list: t.data.list.concat(e.goods.data)
+                }), e.goods.data.length < e.goods.pagesize && t.setData({
+                // loaded: !0
+            })) : a.toast(e.message);
+        }, this.data.show);
     },
     getRecommand: function() {
         var t = this;
@@ -114,6 +129,11 @@ Page((e = {
         });
     },
     onLoad: function(t) {
+            var t = this;
+            o.get(this, "huodong", function (a) {
+                console.log(a)
+                t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
+            });
         t = t || {};
         var a = this;
         s.get("black", {}, function(t) {
@@ -175,6 +195,7 @@ Page((e = {
                 });
             }
         });
+        this.get_list();
     },
     onHide: function() {
         this.setData({
