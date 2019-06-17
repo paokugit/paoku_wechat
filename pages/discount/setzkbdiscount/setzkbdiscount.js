@@ -5,6 +5,7 @@ var itemid = ''
 var message = ''
 var remoneynum = ''
 var recalorienum = ''
+var merchid=''
 var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
@@ -25,10 +26,12 @@ Page({
     onLoad: function (t) {
         console.log(t)
         var userinfo = f.getCache('userinfo');
+      console.log(userinfo);
         merchid=userinfo.merchInfo.id
         var a = this
-        if (t.itemid == '' || t.itemid == undefined) {
-
+      if (t.itemid == '' || t.itemid == undefined || t == null || Object.keys(t).length ===0) {
+        console.log(itemid)
+console.log(t)
         } else {
             itemid = t.itemid
             s.get("payment/index/edit", {
@@ -64,6 +67,10 @@ Page({
     // 确认
     confirm: function (a) {
         console.log(a)
+        console.log(itemid)
+      console.log(itemid)
+        console.log('lalallaa')
+      console.log(itemid)
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
             s.post("payment/index/set", {
@@ -184,14 +191,18 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+      console.log('监听页面隐藏');
+      itemid='';
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+      wx.switchTab({
+        url: '/pages/discount/discount/discount',
+      })
+      console.log('监听页面卸载');
     },
 
     /**

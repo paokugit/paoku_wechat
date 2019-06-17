@@ -52,7 +52,7 @@ Page({
                 total: t.total,
                 pagesize: t.pagesize,
                 list:t.list,
-                allcount: t.allcount,
+                allcount: t.agentcount.agentallcount,
                 dianzhu: t.agentcount.shopkeeperallcount,
                 fans: t.agentcount.agentallcount
             };

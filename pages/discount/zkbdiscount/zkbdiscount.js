@@ -53,6 +53,7 @@ Page({
         })
     },
     orderbtn: function (t) {
+      console.log(t)
         console.log(t.currentTarget.dataset.id)
         itemid = t.currentTarget.dataset.id
         wx.navigateTo({
@@ -85,7 +86,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+      wx.switchTab({
+        url: '/pages/discount/discount/discount',
+      })
+      console.log('监听页面卸载');
     },
 
     /**
