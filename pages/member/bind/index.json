@@ -1,4 +1,9 @@
 {
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "dark"
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "绑定手机号",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
 }

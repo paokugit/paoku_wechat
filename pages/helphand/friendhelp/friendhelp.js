@@ -86,17 +86,14 @@ Page({
                         notadaDis:'block',
                         listDis: 'none'
                     })
-                }
+                }else{
                     var e = {
                         loading: !1,
                         show: !0,
-                        helpList: a.helpList.slice(0,5)
+                        helpList: a.helpList.slice(0, 5)
                     };
                     t.setData(e)
-                
-                   
-               
-               
+                }
             }),
             // 刷新步数
             a.get("refresh_step", {

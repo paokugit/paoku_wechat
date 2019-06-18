@@ -22,7 +22,7 @@
     </block>
     <block wx:if="{{show}}">
         <view class="swiper-tab">
-            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">充值</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">收入</view>
             <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">支出</view>
         </view>
         <view class="{{type==1 ? 'show':'hidden'}}">

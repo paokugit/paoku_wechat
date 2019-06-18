@@ -13,6 +13,8 @@ var signtype = ''
 var paysign = ''
 var param_deduct=''
 var merchantid = ''
+var useropenid=''
+
 Page({
 
     /**
@@ -32,6 +34,7 @@ Page({
      */
     onLoad: function (t) {
         var userinfo = f.getCache('userinfo');
+        useropenid=userinfo.openid
         merchid=userinfo.merchInfo.id
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
@@ -74,7 +77,7 @@ Page({
             money: moneycount,
             cate: 2,
             merchid: merchantid,
-            openid: userinfo.openid
+            openid: useropenid
         }, function (e) {
             console.log(e)
             if(e.status==0){
@@ -116,13 +119,13 @@ Page({
     //   立即买单
     paymentbtn: function () {
         // var tt=this
-        console.log(actualnum, param_deduct, userinfo.openid, merchantid)
+        console.log(actualnum, param_deduct, useropenid, merchantid)
         s.get("payment/index/order_cs", {
             money: actualnum,
             rebate: param_deduct,
             cate: 2,
             merchid: merchantid,
-            openid: userinfo.openid
+            openid: useropenid
         }, function (eve) {
             console.log(eve)
             // tt.setData({
@@ -163,7 +166,7 @@ Page({
     onShow: function () {
         var t = this
         s.get("payment/index/getCredit", {
-            openid: userinfo.openid
+            openid: useropenid
         }, function (e) {
             console.log(e)
             t.setData({

@@ -196,6 +196,6 @@
     </view>
     <!-- 服务 -->
     <!-- 智能员工 -->
-    <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator>
+    <!-- <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator> -->
     <!-- 智能员工 -->
 </view>

@@ -48,6 +48,18 @@
             </button>
         </form>
         <!-- 跳转的气泡-结束 -->
+        <!-- 绑定手机号的气泡 -->
+         <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
+            <button form-type='submit' style="background:rgba(0,0,0,0)">
+                <view style='display:{{bindDis}}'>
+                    <view class='paopao-box'>
+                        <image src='{{ globalimg}}/bindreward.png'></image>
+                    </view>
+                    <view class='circle-explain '>绑定手机号</view>
+                </view>
+            </button>
+        </form>
+        <!-- 绑定手机号的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
         <view class='step'>步</view>

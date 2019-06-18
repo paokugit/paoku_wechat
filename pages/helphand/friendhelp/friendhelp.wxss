@@ -11,7 +11,36 @@ page{
     position: fixed;
     overflow: auto;
 }
+.floating {
+    -webkit-animation-name: upAnimation;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+    background: rgba(0, 0, 0, 0);
+    font-size: 22rpx;
+}
 
+@keyframes upAnimation {
+    0% {
+        transform: translateY(-2%);
+    }
+
+    25% {
+        transform: translateY(2%);
+    }
+
+    50% {
+        transform: translateY(-2%);
+    }
+
+    75% {
+        transform: translateY(2%);
+    }
+
+    100% {
+        transform: translateY(-2%);
+    }
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

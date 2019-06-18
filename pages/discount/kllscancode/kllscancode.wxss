@@ -97,6 +97,9 @@ page {
     text-align: right;
     margin-right: 30rpx
 }
+.discount-none{
+    width: auto
+}
 .payment-num{
      color: #f4022a
 }

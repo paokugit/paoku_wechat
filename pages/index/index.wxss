@@ -176,7 +176,11 @@ image {
     left: 40rpx;
     top: 165rpx;
 }
-
+.phonereward{
+     position: absolute;
+    right: 40rpx;
+    top: 185rpx;
+}
 .circle {
     width: 110rpx;
     height: 130rpx;
@@ -223,7 +227,7 @@ image {
 }
 
 .circle-explain {
-    width: 96rpx;
+    width: 106rpx;
     height: 30rpx;
     color: #fff;
     font-size: 18rpx;

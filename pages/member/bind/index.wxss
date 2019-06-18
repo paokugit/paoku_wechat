@@ -1,30 +1,103 @@
-.fui-picker {
-    height: 300rpx;
-    background: red;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translate3d(0,100%,0);
-    transition-property: transform;
-    transition-property: transform,-webkit-transform;
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* background: #f8f8f8; */
+    background: #eee;
 }
 
-.fui-picker.in {
-    transform: translate3d(0,0,0);
-    transition-duration: 300ms;
+.bind_box {
+    width: 100%;
+    height: 100%;
 }
 
-.fui-picker.out {
-    transition-duration: 300ms;
-    transform: translate3d(0,100%,0);
+.bind-con {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rpx;
 }
 
-.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #ff3300;
+.bind-phone, .bind-code {
+    width: 94%;
+    height: 100rpx;
+    border-bottom: 1rpx solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.phone-left, .code-left {
+    width: 20%;
+    height: 50rpx;
+    /* background: #f00; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.phone-text, .code-text {
+    color: #666;
+    font-size: 28rpx;
+}
+
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.symbol {
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-right, .code-right {
+    width: 79%;
+    height: 50rpx;
+    /* background: #0f0; */
+    margin-left: 1%;
+}
+
+.phoneipt, .codeipt {
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    /* font-size: inherit; */
+    color: inherit;
+    font-size: 28rpx;
+}
+button::after {
+    border: none;
+}
+.code-right{
+    position: relative
+}
+.getcode {
+    width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: transparent;
+    color: #666;
+    border: 1px solid #666;
+    font-size: 26rpx;
+    position: absolute;
+    right: 3%;
+    top: -5rpx;
+    z-index: 2
+}
+.binding{
+    width: 90%;
+    height: 80rpx;
+    background: #ff5555;
+    margin-top: 20rpx;
+    color: #fff;
+    font-size: 30rpx
 }

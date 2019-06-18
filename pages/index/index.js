@@ -31,6 +31,7 @@ var openid = ''
 var version = 1
 var currency_step=''
 var merchphone=""
+var bindwhether=''
 Page((e = {
     onPullDownRefresh: function() {
         var t = this;
@@ -141,6 +142,7 @@ Page((e = {
             condisp: 'block',
             merchdisp: 'block',
             storedisp: 'block',
+            bindDis:'none',
             // rewarddisp:'none',
             helpstep: '',
             jindu: 100,
@@ -161,18 +163,17 @@ Page((e = {
             });
         });
     },
+    bindPhone:function(){
+        wx.navigateTo({
+            url: '/pages/member/bind/index',
+        })
+    },
     // 进入商城
     entrystore: function() {
         wx.switchTab({
             url: '../../pages/index/huodong',
         })
     },
-    // 跳转到会员
-    // hybtn: function() {
-    //     wx.switchTab({
-    //         url: '../huiyuan/openmember/openmember',
-    //     })
-    // },
     hybtn: function () {
         wx.switchTab({
             url: '/pages/exclusive/exclusive',
@@ -451,7 +452,6 @@ console.log('phone')
                     message: eve.message
                 })
             }
-
         });
         // 平台活跃人数
         s.get("help/index/get_member_count", {}, function(e) {
@@ -459,10 +459,7 @@ console.log('phone')
             a.setData({
                 avamessage: e.result.message
             })
-
-
         });
-
         //获取本人坐标
         //t.removeCache("mypos");
         var e = decodeURIComponent(t.scene);
@@ -645,6 +642,20 @@ console.log('phone')
                 });
 
 
+            }
+
+        });
+        // 是否绑定手机号
+        s.get("myown/bindmobile/isbind", {
+            openid: userinfo.openid
+        }, function (e) {
+            console.log(e)
+            if (e.error == 0) {
+                if (e.message.bind == 0) {
+                    t.setData({
+                        bindDis: 'block'
+                    })
+                }
             }
 
         });

@@ -1,8 +1,8 @@
 <!-- <view class='discount_box'></view> -->
 <view class="swiper-tab">
     <view bindtap="myTab" class="swiper-tab-item {{select==0?'active':''}}" data-select="0">价格</view>
-    <view bindtap="myTab" class="swiper-tab-item {{select==1?'active':''}}" data-select="1">最新</view>
-    <view bindtap="myTab" class="swiper-tab-item {{select==2?'active':''}}" data-select="2">销量</view>
+    <view bindtap="myTab" class="swiper-tab-item {{select==1?'active':''}}" data-select="1">销量</view>
+    <view bindtap="myTab" class="swiper-tab-item {{select==2?'active':''}}" data-select="2">最新</view>
 </view>
 <view class="{{select==0 ? 'show':'hidden'}}">
     <scroll-view>
