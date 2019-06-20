@@ -10,9 +10,8 @@
             <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                 <view class="name">
                     <image class="bargain_label" src="/static/images/label.png" wx:if="{{item.bargain>0}}"></image>
-                    <text class="fui-tag fui-tag-danger" wx:if="{{item.ispresell==1}}">预售</text>
-                          {{item.title}}
-                      </view>
+                    <text class="fui-tag fui-tag-danger" wx:if="{{item.ispresell==1}}">预售</text> {{item.title}}
+                </view>
             </navigator>
             <view class="index_price price">
                 <text class="text">¥{{item.minprice}}</text>
@@ -41,10 +40,10 @@
             <include src="recommand.wxml" wx:if="{{item.type=='recommand'}}"></include>
         </block>
         <view id="recommand" wx:if="{{storeRecommand}}">
-            <view class="fui-line" style="background: #f4f4f4;">
+            <!-- <view class="fui-line" style="background: #f4f4f4;">
                 <view class="text text-danger">
                     <text class="icox icox-hotfill"></text> 店铺推荐</view>
-            </view>
+            </view> -->
             <view class="fui-goods-group block border">
                 <template is="tpl_list" data="{{item:item}}" wx:for="{{storeRecommand}}" wx:for-index="idx"></template>
             </view>
@@ -80,17 +79,19 @@
                             </view>
                         </view>
                         <view class="price">
-                            <span class="bigprice text-danger">￥<span class="marketprice">{{item.marketprice}}</span>
+                            <span class="bigprice text-danger">￥
+                                <span class="marketprice">{{item.marketprice}}</span>
                             </span>
                             <span style="float:right;color:#999;font-size:24rpx">x {{item.totals}}</span>
                         </view>
                     </view>
                 </navigator>
                 <view class="fui-list" wx:if="{{nopaygoodstotal>3}}">
-                  等多件商品
-              </view>
+                    等多件商品
+                </view>
             </view>
-            <navigator bindtap="unpaidcolse2" class=" btn btn-danger disable block" id="btn-pay" openType="navigate" url="/pages/order/detail/index?id={{nopayorder.id}}">立即支付<span style="font-size:26rpx;margin-left:20rpx">(合计:￥{{nopayorder.price}})</span>
+            <navigator bindtap="unpaidcolse2" class=" btn btn-danger disable block" id="btn-pay" openType="navigate" url="/pages/order/detail/index?id={{nopayorder.id}}">立即支付
+                <span style="font-size:26rpx;margin-left:20rpx">(合计:￥{{nopayorder.price}})</span>
             </navigator>
             <i bindtap="unpaidcolse" class="icox icox-guanbi1" id="unpaid-colse" style="font-size:60rpx;color:#fff;position: absolute;top:105%;left:46%"></i>
         </view>
@@ -128,10 +129,11 @@
                     <view class="item-inner">
                         <view class="t">{{item.couponname}}</view>
                         <view class="b">
-                      {{item.enoughtext}}
-                      </view>
+                            {{item.enoughtext}}
+                        </view>
                     </view>
-                    <view class="item-remark">{{item.t2}}<span style="font-size:30rpx;">{{item.t1}}</span>
+                    <view class="item-remark">{{item.t2}}
+                        <span style="font-size:30rpx;">{{item.t1}}</span>
                     </view>
                 </view>
                 <view class="indate">{{item.timelimittext}}</view>
@@ -143,4 +145,3 @@
         <i bindtap="closecoupon" class="icox icox-guanbi-copy"></i>
     </view>
 </view>
-

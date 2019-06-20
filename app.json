@@ -1,8 +1,10 @@
 {
     "pages": [ 
         "pages/index/index",
+        "pages/contribute/contribute/contribute",
         "pages/member/index/index",
-       "pages/helphand/friendhelp/friendhelp",
+       
+        "pages/helphand/friendhelp/friendhelp",
         "pages/member/bind/index",
         "pages/index/huodong",
         "pages/changce/merch/introduction",

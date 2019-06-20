@@ -64,7 +64,7 @@ wx.getSystemInfo({
     }
 }), module.exports = {
     wxParse: function() {
-        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "wxParseData", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "html", r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : '<div class="color:red;">数据不能为空</div>', n = arguments[3], s = arguments[4];
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "wxParseData", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "html", r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : '<div style="width:100%;height:40rpx;color:#333;font-size:28rpx;line-height:40rpx;text-align:center">加载中...</div>', n = arguments[3], s = arguments[4];
         if (r && "" != r) {
             var g = n, l = {};
             if ("html" == t) l = o.default.html2json(r, e); else if ("md" == t || "markdown" == t) {

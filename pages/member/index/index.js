@@ -61,8 +61,6 @@ Page({
         })
 
     },
-
-
     bindphone: function () {
         if (bindcount == 1) {
             wx.navigateTo({

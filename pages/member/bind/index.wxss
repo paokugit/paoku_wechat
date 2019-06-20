@@ -3,7 +3,7 @@ page {
     height: 100%;
     overflow-x: hidden;
     /* background: #f8f8f8; */
-    background: #eee;
+    background: #f1f1f1
 }
 
 .bind_box {

@@ -11,13 +11,12 @@ page {
 /* image{
     width: 100%;
     height: 100%
-} */
+} */phonereward
 .indexBox {
     width: 100%;
     height: auto;
     overflow: auto
 }
-
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -177,9 +176,9 @@ image {
     top: 165rpx;
 }
 .phonereward{
-     position: absolute;
-    right: 40rpx;
-    top: 185rpx;
+    position: absolute;
+    right: 190rpx;
+    top: 285rpx;
 }
 .circle {
     width: 110rpx;

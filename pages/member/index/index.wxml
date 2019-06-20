@@ -35,7 +35,7 @@
                 <view class='reward-balance-text'>可用余额</view>
                 <view class='reward-balance-num'>{{member.credit2}}</view>
             </view>
-       </navigator>
+        </navigator>
         <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
             <view class='calorie-num'>{{member.calorie_total}}</view>
@@ -47,6 +47,14 @@
         </navigator>
     </view>
     <!-- 个人收入 -->
+    <view class='contributeBox'>
+        <view class='contribute-box'>
+            <image src='{{globalimg}}/conbg.png'></image>
+            <view class='contribute-text'>当前贡献值</view>
+            <!-- <view class='contribute-num'>1801</view> -->
+            <view class='contribute-open'>立即开通</view>
+        </view>
+    </view>
     <!-- 订单 -->
     <view class='order-box'>
         <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
@@ -151,13 +159,13 @@
                     <image src='{{globalimg}}/youhuiquan@2x.png'></image>
                 </view>
                 <view class='service-text'>优惠券</view>
-           </navigator>
+            </navigator>
             <navigator url='/pages/sale/coupon/index/index' class='service-item'>
                 <view class='lingquan-img'>
                     <image src='{{globalimg}}/lingquanzhongxin@2x.png'></image>
                 </view>
                 <view class='service-text'>领券中心</view>
-           </navigator>
+            </navigator>
             <navigator url='/pages/member/cart/index' class='service-item'>
                 <view class='gouwu-img service-img'>
                     <block>

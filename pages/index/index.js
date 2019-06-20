@@ -17,10 +17,6 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-console.log(userinfo)
-wx.setStorageSync("useropenid", userinfo.openid)
-let open = wx.getStorageSync("useropenid")
-// console.log(open)
 // 引入SDK核心类
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
@@ -29,9 +25,8 @@ var scene = ''
 var login = ''
 var openid = ''
 var version = 1
-var currency_step=''
-var merchphone=""
-var bindwhether=''
+var currency_step = ''
+var merchphone = ""
 Page((e = {
     onPullDownRefresh: function() {
         var t = this;
@@ -46,16 +41,16 @@ Page((e = {
 
         });
 
-        s.get("bushu", {}, function(ts) {
-            if (ts.error == 0) {
-                console.log(ts.result);
-                t.setData({
-                    my_currency: ts.result,
-                    mp3_url: ts.url
-                });
-            }
+        // s.get("bushu", {}, function(ts) {
+        //     if (ts.error == 0) {
+        //         console.log(ts.result);
+        //         t.setData({
+        //             my_currency: ts.result,
+        //             mp3_url: ts.url
+        //         });
+        //     }
 
-        });
+        // });
 
         o.get(this, "home", function(a) {
             t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
@@ -63,9 +58,6 @@ Page((e = {
     },
     data: (a = {
             globalimg: i.globalData.appimg,
-            imgUrls: ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963648306&di=1194f5980cccf9e5ad558dfb18e895ab&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F9c16fdfaaf51f3de87bbdad39ceef01f3a29797f.jpg", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963737453&di=b1472a710a2c9ba30808fd6823b16feb&imgtype=0&src=http%3A%2F%2Fwww.qqzhi.com%2Fwenwen%2Fuploads%2Fpic.wenwen.soso.com%2Fp%2F20160830%2F20160830220016-586751007.jpg", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3004162400,3684436606&fm=11&gp=0.jpg"],
-
-
             indicatorDotss: !0,
             autoplays: !0,
             intervals: 2e3,
@@ -139,11 +131,12 @@ Page((e = {
             mp3_url: '',
             indexdisp: 'none',
             circleDis: 'none',
-            condisp: 'block',
+            condisp: 'none',
             merchdisp: 'block',
             storedisp: 'block',
-            bindDis:'none',
+            bindDis: 'none',
             // rewarddisp:'none',
+            screenWidth: '',
             helpstep: '',
             jindu: 100,
             district: '',
@@ -163,7 +156,7 @@ Page((e = {
             });
         });
     },
-    bindPhone:function(){
+    bindPhone: function() {
         wx.navigateTo({
             url: '/pages/member/bind/index',
         })
@@ -174,7 +167,7 @@ Page((e = {
             url: '../../pages/index/huodong',
         })
     },
-    hybtn: function () {
+    hybtn: function() {
         wx.switchTab({
             url: '/pages/exclusive/exclusive',
         })
@@ -199,9 +192,9 @@ Page((e = {
         //         duration: 2000
         //     })
         // } else {
-            wx.navigateTo({
-                url: '../helphand/friendhelp/friendhelp?id=' + userinfo.openid,
-            })
+        wx.navigateTo({
+            url: '../helphand/friendhelp/friendhelp?id=' + userinfo.openid,
+        })
         // }
     },
     // 跳转到幸运抽奖
@@ -220,9 +213,9 @@ Page((e = {
         //         duration: 2000
         //     })
         // } else {
-            wx.navigateTo({
-                url: '../sportdiary/sportdiary/sportdiary',
-            })
+        wx.navigateTo({
+            url: '../sportdiary/sportdiary/sportdiary',
+        })
         // }
 
     },
@@ -278,13 +271,13 @@ Page((e = {
         })
     },
     // 拨打电话
-    tel:function(t){
-console.log('phone')
+    tel: function(t) {
+        console.log('phone')
         console.log(t)
-        merchphone=t.currentTarget.dataset.mobile
+        merchphone = t.currentTarget.dataset.mobile
         console.log(merchphone)
         wx.makePhoneCall({
-            phoneNumber: merchphone ,
+            phoneNumber: merchphone,
         })
     },
     onReachBottom: function() {
@@ -543,9 +536,6 @@ console.log('phone')
             console.log(tt)
             if (tt.error == 0) {
                 console.log(tt.result);
-                // currency_step = tt.result.step
-                // console.log(currency_step)
-                // console.log('更新步数');
                 if (tt.result.length <= 1) {
                     a.setData({
                         circleDis: 'block'
@@ -557,7 +547,7 @@ console.log('phone')
                     type: tt.result.type,
                     // currency_step:tt.result.step
                 });
-               
+
             }
         });
     },
@@ -648,12 +638,16 @@ console.log('phone')
         // 是否绑定手机号
         s.get("myown/bindmobile/isbind", {
             openid: userinfo.openid
-        }, function (e) {
+        }, function(e) {
             console.log(e)
             if (e.error == 0) {
                 if (e.message.bind == 0) {
                     t.setData({
                         bindDis: 'block'
+                    })
+                } else if (e.message.bind == 1) {
+                    t.setData({
+                        bindDis: 'none'
                     })
                 }
             }
@@ -765,7 +759,7 @@ console.log('phone')
             }
         })
 
-        console.log('获取附近商家')
+        // console.log('获取附近商家')
         var newpos = i.getCache("mypos");
         // 门店服务
         s.get("changce/merch/get_from_store", {

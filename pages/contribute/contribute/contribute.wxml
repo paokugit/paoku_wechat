@@ -1,0 +1,4 @@
+<view class='contribute_box'>
+<view class='contribute-top'><image src='{{globalimg}}/gx-bg@2x.png'></image></view>
+
+</view>
