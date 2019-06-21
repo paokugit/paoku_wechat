@@ -1,21 +1,20 @@
+
 {
-    "pages": [ 
+    "pages": [
         "pages/index/index",
         "pages/member/index/index",
         "pages/discount/discount/discount",
-       
         "pages/contribute/contribute/contribute",
         "pages/contribute/rzdata/rzdata",
         "pages/contribute/withdraw/withdraw",
         "pages/contribute/record/record",
         "pages/contribute/explain/explain",
-       
         "pages/helphand/friendhelp/friendhelp",
         "pages/member/bind/index",
         "pages/index/huodong",
         "pages/changce/merch/introduction",
         "pages/changce/merch/homepage",
-        "pages/lottery/lottery/lottery",  
+        "pages/lottery/lottery/lottery",
         "pages/discount/recordlist/recordlist",
         "pages/discount/setklldiscount/setklldiscount",
         "pages/discount/zkbscancode/zkbscancode",
@@ -31,30 +30,25 @@
         "pages/discount/mingxi/mingxi",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/commission/down/index",
-       
         "pages/commission/down/fandetails",
         "pages/discount/resuccess/resuccess",
         "pages/huiyuan/openmember/openmember",
         "pages/helphand/helpshare/helpshare",
-       
         "pages/message/auth/index",
         "pages/helphand/powerlist/powerlist",
         "pages/member/recommend/recommend",
         "pages/huiyuan/membercenter/membercenter",
         "pages/huiyuan/hygrade/hygrade",
-       
         "pages/sportdiary/sportdiary/sportdiary",
         "pages/goods/detail/index",
         "pages/member/balance/balance",
         "pages/commission/transmit/transmit",
-        "pages/helphand/mypowerlist/mypowerlist", 
+        "pages/helphand/mypowerlist/mypowerlist",
         "pages/member/log/bushu",
         "pages/playmethod/playmethod/playmethod",
         "pages/helphand/haibao/haibao",
         "pages/index/moremerch/moremerch",
-       
         "pages/member/detail/detail",
-        
         "pages/custom/index",
         "pages/commission/index",
         "pages/commission/log/index",
@@ -81,7 +75,6 @@
         "pages/order/store/map",
         "pages/order/pay/index",
         "pages/member/info/index",
-       
         "pages/member/favorite/index",
         "pages/member/history/index",
         "pages/member/recharge/index",
@@ -111,7 +104,7 @@
         "pages/order/cycle/order",
         "pages/order/express/number",
         "pages/changce/merch/index",
-       "pages/changce/merch/detail",
+        "pages/changce/merch/detail",
         "pages/changce/merch/intro",
         "pages/changce/merch/apply"
     ],
