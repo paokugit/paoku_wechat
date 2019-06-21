@@ -1,6 +1,6 @@
 
 {
-  "pages": [
+  "pages": [  
     "pages/index/index",
     "pages/contribute/rzdata/rzdata",
     "pages/contribute/withdraw/withdraw",
