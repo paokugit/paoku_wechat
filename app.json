@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/shop/notice/notification/notification",
     "pages/contribute/contribute/contribute",
     "pages/member/index/index",
     "pages/changce/merch/businesspictures",

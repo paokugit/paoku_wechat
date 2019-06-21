@@ -1,0 +1,87 @@
+.all-box{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.head-box{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #0f0;
+}
+.inform{
+  width: 200rpx;
+  height: 100%;
+  background: #7c7;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.assistant{
+  width: 200rpx;
+  height: 100%;
+  background: #7c7;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.inform-text{
+  width: 140rpx;
+  height: 100%;
+  background: #7c7;
+  display: flex;
+  align-items: center;
+}
+.assistant-text{
+  width: 140rpx;
+  height: 100%;
+  background: #7c7;
+  display: flex;
+  align-items: center;
+}
+.inform-num{
+  width: 50rpx;
+  height: 30rpx;
+  background: #00f;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 40rpx;
+  
+}
+.assistant-num{
+  width: 50rpx;
+  height: 30rpx;
+}
+.underline{
+  width: 160rpx;
+  height: 4rpx;
+  background: #00f;
+  position: absolute;
+  left: -15rpx;
+  bottom: 0;
+  border-radius: 10rpx;
+}
+.underline2{
+  width: 160rpx;
+  height: 4rpx;
+  background: #00f;
+  position: absolute;
+  left: -15rpx;
+  bottom: 0;
+}
+.no-inform{
+  width: 100%;
+  height: 600rpx;
+  /* background: #ff0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.no-inform image{
+  width: 412rpx;
+  height: 346rpx;
+}
+

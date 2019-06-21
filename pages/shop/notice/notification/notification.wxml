@@ -1,8 +1,23 @@
 <view class="all-box">
-  <view class="head-view">
-    <view class="systematic">
-      <view class="systematic-text">系统通知</view>
-      <view class="systematic-num"></view>
+  <view class="head-box">
+    <view class="inform">
+      <view class="inform-text">系统通知</view>
+      <view class="inform-num">22</view>
+      <view class="underline"></view>
+    </view>
+    <view class="assistant">
+      <view class="assistant-text">私信助手</view>
+      <view class="assistant-num"></view>
+      <view class="underline2"></view>
+    </view>
+  </view>
+  <view class="no-inform" style="display:none">
+    <image class="ibform-img" src="http://paokucoin.com/img/backgroup/zwxx@2x.png"></image>
+  </view>
+  <view class="inform-push">
+    <!-- 一条数据 -->
+    <view class="inform-all">
+      
     </view>
   </view>
 </view>

@@ -33,7 +33,7 @@
       <view class="jiage">
         <view wx:if="{{item.deduct_type=='1'}}">
           <!-- 有卡路里抵扣 -->
-          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>=0}}">
+          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>0}}">
             <!-- 图片和文字 -->
             <view class='kaluliandimg'>
               <view class="liebiao" style='display:flex;align-items:center'>
@@ -52,20 +52,26 @@
               </view>
             </view>
           </view>
+          <!-- 免费 -->
+          <view wx:if="{{item.deduct-item.minprice>=0||item.deduct==0&&item.minprice==0}}" style="position:relative;">
+            <view style='position:absolute;left:15rpx;font-size:26rpx;color:#e01212;margin-top:25rpx'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:30rpx">￥{{item.productprice}}</view>
+          </view>
           <!-- 全额 -->
-          <view wx:if="{{item.deduct==0&&item.price!=0}}">
-              <view style='display:flex;algin-items:center;'>
-                <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
-                <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
-                  <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
-                </view>
+          <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
+            <view style='display:flex;algin-items:center;'>
+              <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
+              <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
+                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+                
               </view>
+            </view>
           </view>
         </view>
         <!-- 抵扣宝 -->
         <view wx:if="{{item.deduct_type=='2'}}">
           <!-- 有抵扣宝抵扣 -->
-          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>0}}">
+          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>=0&&item.showprice!=0}}">
             <!-- 图片和价格显示 -->
             <view class="imgandprice">
               <view style='display:flex;align-items:center'>
@@ -87,45 +93,46 @@
                 <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
               </view>
             </view>
-            <!-- 全额 -->
-            <view wx:if="{{item.deduct==0&&item.price!=0}}">
-              <view>
-                <view style='font-size:26rpx;color:#e01212;margin-top:42rpx'>￥{{item.minprice}}</view>
-                <view style='display:flex;algin-items:center'>
-                  <text style='font-size:18rpx;color:#707070;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
-                </view>
+          </view>
+          <!-- 免费 -->
+          <view wx:if="{{item.showprice==0}}" style="position:relative;">
+            <view style='position:absolute;left:15rpx;font-size:26rpx;color:#e01212;margin-top:25rpx'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:30rpx">￥{{item.productprice}}</view>
+          </view>
+          <!-- 全额 -->
+          <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
+            <view>
+              <view style='font-size:26rpx;color:#e01212;margin-top:42rpx'>￥{{item.minprice}}</view>
+              <view style='display:flex;algin-items:center'>
+                <text style='font-size:18rpx;color:#707070;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
               </view>
             </view>
-            <!-- 免费 -->
-            <view wx:if="{{item.deduct-item.price>=0||item.deduct==0&&item.price==0}}">
-              <view style='font-size:26rpx;color:#e01212'>免费兑</view>
-            </view>
-          </view>
           </view>
         </view>
-        <block>
-          <block wx:if="{{item.type!=9&&item.type!=5&&item.bargain==0}}">
-            <view bindtap="selectPicker" data-buytype="buy" data-id="{{item.id}}">
-            </view>
-          </block>
-        </block>
-        <block>
-          <block wx:if="{{item.type==9&&item.bargain==0}}">
-            <navigator class="buy buybtnbtn buybtn-1 " style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
-          </block>
-        </block>
-        <block>
-          <block wx:if="{{item.type==5&&item.bargain==0}}">
-            <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
-          </block>
-        </block>
-        <block>
-          <block wx:if="{{item.bargain>0}}">
-            <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/bargain/detail/detail?id={{item.bargain}}">详情</navigator>
-          </block>
-        </block>
       </view>
+      <block>
+        <block wx:if="{{item.type!=9&&item.type!=5&&item.bargain==0}}">
+          <view bindtap="selectPicker" data-buytype="buy" data-id="{{item.id}}">
+          </view>
+        </block>
+      </block>
+      <block>
+        <block wx:if="{{item.type==9&&item.bargain==0}}">
+          <navigator class="buy buybtnbtn buybtn-1 " style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
+        </block>
+      </block>
+      <block>
+        <block wx:if="{{item.type==5&&item.bargain==0}}">
+          <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/goods/detail/index?id={{item.id}}">详情</navigator>
+        </block>
+      </block>
+      <block>
+        <block wx:if="{{item.bargain>0}}">
+          <navigator class="buy buybtnbtn buybtn-1" style="" url="/pages/bargain/detail/detail?id={{item.bargain}}">详情</navigator>
+        </block>
+      </block>
     </view>
+  </view>
 </template>
 <block>
   <block wx:if="{{!show}}">
