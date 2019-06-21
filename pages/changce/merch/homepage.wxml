@@ -1,16 +1,20 @@
 <!--pages/store/zhuye.wxml-->
 <!-- 总 -->
-<view class='allview'>
+<view class='allview' wx:if="{{play==0}}">
   <!-- 头部 -->
   <view class='zhuyehead'>
     <view class='headimg'>
       <!-- 店铺头像 -->
-      <image class='imghh' src="{{logo}}"></image>
+      <image wx:if="{{logo !=''}}" class='imghh' src="{{logo}}"></image>
+      <image wx:if="{{logo ==''}}" class='imghh' src="{{logo}}"></image>
       <view class='dianname'>
-        <view class='diannametext'>{{merchname}}</view>
-        <view class='dianjuli'>距离{{distance}}</view>
+        <view wx:if="{{merchname !=''}}" class='diannametext'>{{merchname}}</view>
+        <view wx:if="{{merchname ==''}}" class='diannametext'>名称还没有哦</view>
+        <view wx:if="{{distance !=''}}" class='dianjuli'>距离{{distance}}</view>
+        <view wx:if="{{distance ==''}}" class='dianjuli'>暂未设置</view>
+
       </view>
-      <view class='heanjianjie' bindtap='heanjianjie'>简介</view>
+      <navigator class='heanjianjie' url='/pages/changce/merch/synopsis?id={{merchid}}'>简介</navigator>
     </view>
     <!-- //两图一字 -->
     <view class='weixinguanzhu'>
@@ -18,48 +22,69 @@
         <view class='weixinimg'>
           <image class='weiimg' src='{{globalimg}}/weiimg.png'></image>
         </view>
-        <text selectable='true' bindlongtap='copy' class='runhouse'>{{wxsignal}}</text>
+        <text selectable='true' wx:if="{{wxsignal !=null}}" bindlongtap='copy' class='runhouse'>{{wxsignal}}</text>
+        <text wx:if="{{wxsignal ==null}}" class='no-runhouse'>暂未公布</text>
       </view>
-      <view class='weiguanzhu'>
-        <image catchtap='open' wx:if="{{iShow}}" src="{{url}}" data-msg="{{url}}" class="coding_flash_image"></image>
+      <view class='weiguanzhu' wx:if="{{follow=='0'}}" bindtap='follow'>
+        <image class='coding_flash_image' src='{{globalimg}}/heart-n@2x.png'></image>
         <view class='weitext'>未关注</view>
       </view>
-    </view>
-    <view class='dizhiall'>
-      <view style='width:98%;height:100%;margin-left: 30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
-      <view class='suozai'>所在地区</view>
-      <view class='wenben' bindtap="address_img_all" style='margin-left:30rpx'>{{address}}</view>
-      <view class='diquimgview'>
-        <image class='diquimg' bindtap="address_img_all" src='{{globalimg}}/address@2x.png'></image>
+      <view class='weiguanzhu' wx:if="{{follow=='1'}}" bindtap='removeattention'>
+        <image class='coding_flash_image' src='{{globalimg}}/heart-s@2x.png'></image>
+        <view class='weitext'>已关注</view>
       </view>
+    </view>
+    <view class='dizhiall' bindtap='navigation'>
+      <view style='width:98%;height:100%;margin-left: 30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
+        <view class='suozai'>所在地区</view>
+        <view class='wenben' wx:if="{{address != 'null'}}" bindtap="address_img_all" style='margin-left:30rpx'>{{address}}</view>
+        <view class='wenben' wx:if="{{address == 'null'}}" bindtap="address_img_all" style='margin-left:30rpx'>暂未设置</view>
+        <view class='diquimgview'>
+          <image class='diquimg' bindtap="address_img_all" src='{{globalimg}}/address@2x.png'></image>
+        </view>
       </view>
     </view>
     <view class='zhuyingall'>
-    <view style='width:98%;height:100%;margin-left:30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
-      <view class='zhuying'>店铺主营</view>
-      <view class='zhuyingtext'>{{main_business}}</view>
+      <view style='width:98%;height:100%;margin-left:30rpx;display:flex;border-bottom: 1rpx solid #f0f0f0;'>
+        <view class='zhuying'>店铺主营</view>
+        <view wx:if="{{main_business!=null}}" class='zhuyingtext'>{{main_business}}</view>
+        <view wx:if="{{main_business==null}}" class='zhuyingtext'>暂未设置</view>
       </view>
     </view>
     <view class='diantuall'>
-    <view style='width:98%;height:100%;margin-left:30rpx;display:flex;align-items: center;border-bottom: 1rpx solid #f0f0f0;'>
-      <view class='diantutext'>店铺图片</view>
-      <view class='dianpuimg' wx:for="{{shopimg}}">
-        <image class='dianpuallimg' bindtap="enlarge" src='{{globalimg}}/moreuser@2x.png'></image>
-        <!-- <image class='dianpuallimg' bindtap="enlarge" src='{{globalimg}}/moreuser@2x.png'></image> -->
-        <view class='gengduo' bindtap='moreimages'>
-          <view class='dian'>...</view>
-          <view class='gengduotext'>更多</view>
+      <view style='width:98%;height:100%;margin-left:30rpx;display:flex;align-items: center;border-bottom: 1rpx solid #f0f0f0;'>
+        <view class='diantutext'>店铺图片</view>
+        <!-- 店铺没有图片 -->
+        <view class='dianpuimg' wx:if="{{shopimg==null}}">
+          <image class='dianpuallimg' bindtap="enlarge" src='{{globalimg}}/kong@2x.png'></image>
         </view>
-      </view>
+        <!-- 店铺有图片 -->
+        <view class='dianpuimg' wx:if="{{shopimg!=null}}" >
+          <view>
+            <image class='dianpuallimglist' data-imglist='{{shopimg}}' data-src='{{shopimg[0]}}' src="{{shopimg[0]}}" bindtap='previewImage'></image>
+            <image class='dianpuallimglist' data-imglist='{{shopimg}}' data-src='{{shopimg[1]}}' src="{{shopimg[1]}}" bindtap='previewImage'></image>
+          </view>
+          <view class="more" bindtap='more'>
+            <view class='omit'>...</view>
+            <view class='moretext'>更多</view>
+          </view>
+        </view>
       </view>
     </view>
     <view class='shipingall'>
       <view class='shipingtext'>店铺视频</view>
-      <view class='shipin'></view>
+      <view wx:if="{{shopvideo==null}}" class='shipin'>暂未拍摄</view>
+      <view wx:if="{{shopvideo!=null}}" class='shipin'>
+        <video bindtap='playvideo' class='havevideo' src='{{shopvideo}}'></video>
+      </view>
     </view>
     <view class='telandmap'>
       <view class='tel' bindtap='tel'>拨打电话</view>
       <view class='map' bindtap='navigation'>一键导航</view>
     </view>
   </view>
+</view>
+<view class='mask' wx:if="{{play==1}}">
+  <video class='maskvideo' src='{{shopvideo}}'></video>
+  <view class='returnvideo' bindtap='nonemask'>返回</view>
 </view>

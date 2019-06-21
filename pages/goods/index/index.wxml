@@ -30,22 +30,7 @@
           <text>{{item.title}}</text>
         </view>
       </navigator>
-      <!-- <view class="original_price">
-        <block>
-          <block wx:if="{{item.productprice>0}}">
-
-          </block>
-        </block>
-      </view> -->
-
       <view class="jiage">
-        <!-- 首先判断手机的系统 -->
-        <!-- <view wx:if="{{textinfo=='devtools'||textinfo=='ios'}}">
-            
-          </view>
-          <view wx:if="{{textinfo=='android'}}">
-            <view>安卓</view>
-          </view> -->
         <view wx:if="{{item.deduct_type=='1'}}">
           <!-- 有卡路里抵扣 -->
           <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>=0}}">
@@ -93,7 +78,6 @@
               <view style='display:flex;align-items:center;'>
                 <view class='zhekoujia'>{{item.deduct}}</view>
               </view>
-
             </view>
             <view class='zhehouprice'>
               <view style='font-size:18rpx;color:#707070;display:flex;align-items: center;'>折后</view>
@@ -122,7 +106,6 @@
         <block>
           <block wx:if="{{item.type!=9&&item.type!=5&&item.bargain==0}}">
             <view bindtap="selectPicker" data-buytype="buy" data-id="{{item.id}}">
-              <!-- <text class="buy icox icox-gouwuche buybtnbtn buybtn-5" style="color:#ff5555"></text> -->
             </view>
           </block>
         </block>
