@@ -1,0 +1,8 @@
+<view class="all-box">
+  <view class="head-view">
+    <view class="systematic">
+      <view class="systematic-text">系统通知</view>
+      <view class="systematic-num"></view>
+    </view>
+  </view>
+</view>

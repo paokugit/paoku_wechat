@@ -69,10 +69,6 @@
     align-items: center;
     color: #333;
 }
-/* .sancode{
-    color: #fff;
-     background: #fa3130;
-} */
 .flex_center{
 width: 32rpx;
 height: 100%;

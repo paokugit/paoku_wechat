@@ -1,7 +1,5 @@
 var t = getApp(), e = t.requirejs("core"), a = t.requirejs("jquery"), s = t.requirejs("biz/diyform"), i = t.requirejs("biz/goodspicker");
-
 t.requirejs("foxui");
-
 Page({
     data: {
         systemInfo: {}, 

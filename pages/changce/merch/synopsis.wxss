@@ -1,0 +1,91 @@
+.all-box{
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  background: #fff;
+}
+.nameandxie{
+  width: 100%;
+  height: 80%;
+  /* background: #9e9e; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.mingcheng-nonediv{
+  width: 300rpx;
+  height: 300rpx;
+  /* background: #0f0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  /* left: 40%; */
+}
+.mg-none{
+  width: 300rpx;
+  height: 120rpx;
+  /* background: #f00; */
+}
+.img-image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.mingcheng-none-text{
+  width: auto;
+  height: 100rpx;
+  /* background: #f00; */
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lan-view{
+  width: 100%;
+  height: 300rpx;
+  /* background: #0f0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* display: none */
+}
+.img-lan{
+  width: 500rpx;
+  height: 300rpx;
+  /* background: #333; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.img-image-er{
+  width: 400rpx;
+  height: 200rpx;
+}
+.lan-text{
+  font-size: 30rpx;
+  color: #9a9a9a;
+}
+.neirong-view{
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: auto;
+  position: absolute;
+  top: 300rpx
+}
+.neirong-text{
+  font-size: 28rpx;
+  color: #333;
+  text-indent: 56rpx;
+}
