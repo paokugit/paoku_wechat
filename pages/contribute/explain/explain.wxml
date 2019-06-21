@@ -1,0 +1,17 @@
+<!--pages/contribute/explain/explain.wxml-->
+<view class='explain-box'>
+    <view class='explain-title-box'>
+        <view class='jiedu-img'>
+            <image src='{{globalimg}}/jiedu@2x.png'></image>
+        </view>
+        <view class='text-box'>
+            <view class='text-main'>贡献值解读</view>
+            <view class='subtext'>清晰了解攻略，快速增加分数</view>
+        </view>
+    </view>
+    <view class='explain-main'>
+        <view class='explain-item'>1、邀请付费会员每30个获得+60贡献值</view>
+         <view class='explain-item'>2、邀请付费会员每30个获得+60贡献值</view>
+    </view>
+
+</view>

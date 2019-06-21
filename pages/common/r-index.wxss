@@ -135,13 +135,13 @@ input {
 }
 
 .heard-tag-list:first-child {
-    top: 180rpx;
+    top: 190rpx;
     right: 45rpx;
 }
 
 .heard-tag-list:nth-child(2) {
-    top: 30rpx;
-    left: 70rpx;
+    top: 10rpx;
+    left: 150rpx;
 }
 
 .heard-tag-list:nth-child(3) {
@@ -150,7 +150,15 @@ input {
 }
 .heard-tag-list:nth-child(4) {
     top: 20rpx;
-    right: 60rpx;
+    right: 120rpx;
+}
+.heard-tag-list:nth-child(5) {
+    top: 150rpx;
+    left: 120rpx;
+}
+.heard-tag-list:nth-child(6) {
+    top: 15rpx;
+    right: 220rpx;
 }
 
 @keyframes upAnimation {

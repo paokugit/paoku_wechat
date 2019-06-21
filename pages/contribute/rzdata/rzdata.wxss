@@ -1,0 +1,143 @@
+/* pages/contribute/rzdata/rzdata.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #f1f1f1;
+}
+
+.rzdata_box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.data-con {
+    width: 92%;
+    height: 201rpx;
+    padding: 0 4%;
+    background: #fff;
+    margin-top: 20rpx;
+}
+
+.mobile-box, .wechat-box {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-box {
+    border-bottom: 1rpx solid #f1f1f1;
+}
+
+.mobile-text {
+    color: #333;
+    font-size: 34rpx;
+}
+
+.mobile-num-box {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.suo-img {
+    width: 38rpx;
+    height: 38rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-num {
+    color: #808080;
+    font-size: 34rpx;
+    margin-left: 6rpx;
+}
+
+.right-img {
+    width: 30rpx;
+    height: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6rpx;
+}
+
+button::after {
+    border: none;
+}
+
+.btn-box {
+    width: 100%;
+    height: 100rpx;
+    margin-top: 200rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backbtn {
+    width: 450rpx;
+    height: 88rpx;
+    background: #424456;
+    color: #fff;
+    font-size: 34rpx;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+}
+
+.mask-position {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.mask-con {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    margin: auto;
+    width: 680rpx;
+    height: 450rpx;
+    border-radius: 30rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+.mask-title{
+    color: #333;
+    font-size: 40rpx;
+    margin-top: 20rpx
+}
+.wechatipt{
+    width: 580rpx;
+    height: 90rpx;
+    background: #f8f8f8;
+    border-radius: 10rpx;
+    padding-left:10rpx;
+    color: #999;
+    font-size: 34rpx
+}
+.confirm-btn{
+    width: 290rpx;
+    height: 140rpx;
+    /* margin-top: 50rpx */
+}

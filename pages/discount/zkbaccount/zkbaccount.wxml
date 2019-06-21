@@ -5,11 +5,11 @@
             <view class='account-yuan'>元</view>
         </view>
         <view class='account-btn-box'>
-            <view class='codebtn' bindtap='codebtn'>
-                <image src='{{globalimg}}/maidan@2x.png'></image>
-            </view>
             <view class='rechargebtn' bindtap='rechargebtn'>
                 <image src='{{globalimg}}/chongzhi@2x.png'></image>
+            </view>
+            <view class='codebtn' bindtap='withdrawbtn'>
+                <image src='{{globalimg}}/tixian@2x.png'></image>
             </view>
         </view>
         <image src='{{globalimg}}/zhekoubao@2x.png'></image>

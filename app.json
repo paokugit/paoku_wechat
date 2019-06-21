@@ -1,8 +1,14 @@
 {
     "pages": [ 
         "pages/index/index",
-        "pages/contribute/contribute/contribute",
         "pages/member/index/index",
+        "pages/discount/discount/discount",
+       
+        "pages/contribute/contribute/contribute",
+        "pages/contribute/rzdata/rzdata",
+        "pages/contribute/withdraw/withdraw",
+        "pages/contribute/record/record",
+        "pages/contribute/explain/explain",
        
         "pages/helphand/friendhelp/friendhelp",
         "pages/member/bind/index",
@@ -16,7 +22,6 @@
         "pages/discount/kllscancode/kllscancode",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchcode/merchcode",
-        "pages/discount/discount/discount",
         "pages/discount/zkbaccount/zkbaccount",
         "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/exclusive/exclusive",

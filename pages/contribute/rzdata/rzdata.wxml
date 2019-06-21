@@ -1,0 +1,33 @@
+<!--pages/contribute/rzdata/rzdata.wxml-->
+<view class='rzdata_box'>
+    <view class='data-con'>
+        <view class='mobile-box' bindtap='gobindbtn'>
+            <view class='mobile-text'>手机号码</view>
+            <view class='mobile-num-box'>
+                <image class='suo-img' src='{{globalimg}}/suo@2x.png'></image>
+                <text class='mobile-num'>{{usermobile}}</text>
+            </view>
+        </view>
+        <view class='wechat-box' bindtap='wechatbtn'>
+            <view class='mobile-text'>微信号</view>
+            <view class='mobile-num-box'>
+                <text class='mobile-num'>{{userweixin}}</text>
+                <image class='right-img' src='{{globalimg}}/user-right.png'></image>
+            </view>
+        </view>
+    </view>
+    <view class='btn-box'>
+        <button class='backbtn' bindtap='backBtn'>返回</button>
+    </view>
+</view>
+<view class='mask' style='display:{{maskDis}}'>
+    <view class='mask-position'>
+        <view class='mask-con'>
+            <view class='mask-title'>输入您的微信号</view>
+            <input class='wechatipt' placeholder='本账户所用微信号' bindinput="inputChange"></input>
+            <view class='confirm-btn' bindtap='confirmbtn'>
+                <image src='{{globalimg}}/queren@2x.png'></image>
+            </view>
+        </view>
+    </view>
+</view>
