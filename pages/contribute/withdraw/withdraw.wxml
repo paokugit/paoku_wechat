@@ -1,0 +1,23 @@
+<view class='rechange_box'>
+    <view class='rechange-con'>
+        <view class='kll-balance-box'>
+            <!-- <view class='kll-img'>
+                <image src='{{globalimg}}/kaluli@2x.png'></image>
+            </view> -->
+            <view class='kll-text'>当前贡献值：{{usercredit}}</view>
+        </view>
+        <view class='kll-desc'>如提现100元，则折扣宝和贡献值同时扣除100</view>
+        <view class='empty-box'>
+            <view class='empty'></view>
+            <view class='empty-text'>提现金额</view>
+            <view class='hint-text' style='display:{{hintDis}}'>贡献值不足,请重新输入</view>
+        </view>
+        <view class='ipt-box'>
+            <text class='ipt-symbol'>￥</text>
+            <input bindinput='watchPassWord' class='rechangeipt' type='text' placeholder='当前最大可提现{{usercredit}}元'></input>
+        </view>
+        <view class='rechange-btnbox' bindtap='rechargebtn'>
+            <button class='rechangebtn'>充值</button>
+        </view>
+    </view>
+</view>

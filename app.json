@@ -1,6 +1,11 @@
+
 {
   "pages": [
     "pages/index/index",
+    "pages/contribute/rzdata/rzdata",
+    "pages/contribute/withdraw/withdraw",
+    "pages/contribute/record/record",
+    "pages/contribute/explain/explain",
     "pages/shop/notice/notification/notification",
     "pages/contribute/contribute/contribute",
     "pages/member/index/index",
@@ -159,4 +164,5 @@
   "debug": false,
 
   "sitemapLocation": "sitemap70.json"
+
 }

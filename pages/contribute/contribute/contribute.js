@@ -4,6 +4,9 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var bind = ''
+var mobile=''
+var weixin=''
 Page({
 
     /**
@@ -11,62 +14,114 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-
+        maskDis: 'none',
+        statedisp01: 'none',
+        statedisp02: 'none',
+        statedisp03: 'none',
+        statedisp04: 'none',
+        credit4: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
 
     },
-
+    openBtn: function() {
+        wx.navigateTo({
+            url: '/pages/contribute/rzdata/rzdata',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
-
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    onShow: function() {
+        var a = this
+        s.get("myown/devote/msg", {
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e)
+            console.log(e.message.mobile)
+            console.log(e.message.weixin)
+            mobile = e.message.mobile
+            weixin = e.message.weixin
+            a.setData({
+                bind: e.message.bind
+            })
+            if (e.message.bind == 1) {
+                credit4: e.message.credit4
+            }
+            if (e.message.mobile == '') {
+                if (e.message.weixin == '') {
+                    //电话号为空 微信为空
+                    a.setData({
+                        statedisp01: 'block'
+                    })
+                } else {
+                    // 电话号为空 微信不为空
+                    a.setData({
+                        statedisp03: 'block'
+                    })
+                }
+            } else {
+                if (e.message.weixin == '') {
+                    //电话号不为空 微信为空
+                    a.setData({
+                        statedisp02: 'block'
+                    })
+                } else {
+                    //电话号不为空 微信不为空
+                    a.setData({
+                        statedisp04: 'block'
+                    })
+                }
+            }
+        })
     },
-
+    changebtn: function () {
+        wx.navigateTo({
+            url: '/pages/contribute/rzdata/rzdata?mobile='+mobile+'&weixin='+weixin,
+        })
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

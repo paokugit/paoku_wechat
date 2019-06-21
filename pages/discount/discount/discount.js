@@ -11,7 +11,8 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        credit: ''
+        credit: '',
+        contributenum:'立即开通'
     },
 
     /**

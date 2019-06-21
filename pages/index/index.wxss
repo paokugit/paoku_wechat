@@ -11,7 +11,7 @@ page {
 /* image{
     width: 100%;
     height: 100%
-} */phonereward
+} */
 .indexBox {
     width: 100%;
     height: auto;
@@ -173,7 +173,7 @@ image {
 .stepExchange {
     position: absolute;
     left: 40rpx;
-    top: 165rpx;
+    top: 120rpx;
 }
 .phonereward{
     position: absolute;
@@ -210,7 +210,7 @@ image {
 .attendance {
     position: absolute;
     top: 50rpx;
-    right: 50rpx;
+    right: 20rpx;
 }
 
 .lottery {

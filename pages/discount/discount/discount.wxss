@@ -82,22 +82,61 @@ image {
     position: absolute;
     top: 35%;
     left: 8%;
+    /* font-size: 60rpx; */
     font-size: 90rpx;
     color: #323232;
     display: flex
 }
 .account-text{
     width: 50rpx;
+    /* height: 70rpx; */
     height: 110rpx;
     font-size: 40rpx;
     color: #323232;
-    line-height: 130rpx;
+    line-height: 120rpx;
     margin-left: 10rpx
 }
 .zhanghu-img{
     width: 252rpx;
     height: 132rpx;
     position: absolute;
-    bottom: 8%;
+    bottom: 4%;
     right: 5%
+}
+.gx-text{
+    color: #a97a3c;
+    font-size: 26rpx;
+    position: absolute;
+    top: 24%;
+    right: 5%
+}
+.gx-box{
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 35%;
+    right: 3%;
+    display: flex;
+    align-items: center
+}
+.open-text{
+    font-size: 40rpx;
+    color: #323232
+}
+.open2-img{
+    width: 22rpx;
+    height: 22rpx;
+    margin-left: 6rpx
+}
+.withdraw-box{
+    position: absolute;
+    bottom: 18%;
+    left: 8%
+}
+.withdraw-text, .withdraw-num{
+    color: #a97a3c;
+    font-size: 26rpx;
+}
+.withdraw-num{
+    margin-left: 8rpx
 }
