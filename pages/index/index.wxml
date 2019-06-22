@@ -268,7 +268,6 @@
                     <view class=' store-address'>{{item.address}}</view>
                 </view>
             </view>
-
         </view>
         <!-- 查看更多商家-开始 -->
         <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
@@ -298,6 +297,9 @@
                 <view class='exchange-product' wx:for="{{list}}" wx:key="{{index}}">
                     <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                         <image class='ex-proimg' src='{{item.thumb}}'></image>
+                        <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                        <image src='{{globalimg}}/saleout-2.png'></image>
+                    </view>
                     </navigator>
                     <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
                     <!-- 包邮 -->

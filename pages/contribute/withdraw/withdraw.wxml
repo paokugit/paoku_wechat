@@ -4,7 +4,7 @@
             <!-- <view class='kll-img'>
                 <image src='{{globalimg}}/kaluli@2x.png'></image>
             </view> -->
-            <view class='kll-text'>当前贡献值：{{usercredit}}</view>
+            <view class='kll-text'>当前贡献值：{{credit4}}</view>
         </view>
         <view class='kll-desc'>如提现100元，则折扣宝和贡献值同时扣除100</view>
         <view class='empty-box'>
@@ -14,10 +14,10 @@
         </view>
         <view class='ipt-box'>
             <text class='ipt-symbol'>￥</text>
-            <input bindinput='watchPassWord' class='rechangeipt' type='text' placeholder='当前最大可提现{{usercredit}}元'></input>
+            <input bindinput='watchPassWord' class='rechangeipt' type='text' placeholder='当前最大可提现{{credit4}}元'></input>
         </view>
         <view class='rechange-btnbox' bindtap='rechargebtn'>
-            <button class='rechangebtn'>充值</button>
+            <button class='rechangebtn'>提现</button>
         </view>
     </view>
 </view>

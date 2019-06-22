@@ -54,15 +54,14 @@ Page({
         hyid=e.currentTarget.dataset.id
         // console.log(hyid)
         let open = wx.getStorageSync('openid')
-        s.get("order/create/submit", {
+        s.get("order/create", {
             id: hyid,
             'goods[0][id]': hyid,
             'goods[0][goodsid]': hyid,
             openid: open
         }, function (eve) {
-            // console.log(22222)
 
-            // console.log(eve)
+            console.log(eve)
             var i = {
                 loading: false,
                 // order:f.orderid

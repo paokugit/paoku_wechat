@@ -12,7 +12,9 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         credit: '',
-        contributenum:'立即开通'
+        conbind: '',
+        credit4: '',
+        tixian:''
     },
 
     /**
@@ -80,6 +82,18 @@ Page({
             a.setData({
                 credit: e.result.credit3
             })
+        })
+        s.get("myown/devote/msg", {
+            openid: useropenid,
+        }, function (e) {
+            console.log(e)
+            if (e.error == 0) {
+                a.setData({
+                    conbind: e.message.bind,
+                    credit4: e.message.credit4,
+                    tixian: e.message.tixian
+                })
+            }
         })
     },
 

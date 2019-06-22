@@ -272,12 +272,14 @@
             </view>
             <!-- 订单详情模块 -结束-->
             <!-- 店主弹窗-开始 -->
-            <view class='order-mask' style='display:{{popupDis}}'>
+            <view class='order-mask' style='display:{{popupDis}}' bindtap='vipBtn'>
                 <view class='order-mask-relative'>
                     <view class='order-maskimg' >
                             <image src='https://paokucoin.com/img/backgroup/gxtc.png'></image>
                     </view>
-                    <view class='order-mask-btn' bindtap='vipBtn'></view>
+                    <view class='order-mask-btn'>
+                    <view class='gobackhome' bindtap='backbtn'>回到首页</view>
+                    </view>
                 </view>
             </view>
             <!-- 店主弹窗-结束 -->

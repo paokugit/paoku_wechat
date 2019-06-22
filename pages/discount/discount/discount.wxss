@@ -94,6 +94,7 @@ image {
     font-size: 40rpx;
     color: #323232;
     line-height: 120rpx;
+     /* line-height: 80rpx; */
     margin-left: 10rpx
 }
 .zhanghu-img{

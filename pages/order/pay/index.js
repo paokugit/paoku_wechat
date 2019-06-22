@@ -21,6 +21,12 @@ Page({
     //     success: !0
     //   }):''
     },
+    backbtn: function () {
+        wx.switchTab({
+            url: '/pages/index/index',
+        })
+    },
+
     onShow: function() {
         this.get_list();
     },

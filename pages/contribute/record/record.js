@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var useropenid=''
 Page({
 
     /**
@@ -11,13 +12,42 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        page:1,
+        list:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: function (a) {
+        var userinfo = f.getCache('userinfo');
+        useropenid=userinfo.openid
+       this.getList();
+    },
+    onPullDownRefresh: function () {
+        wx.stopPullDownRefresh();
+    },
+    onReachBottom: function () {
+        this.data.loaded || this.data.list.length == this.data.total || this.getList();
+    },
+    getList: function () {
+        var t = this;
+        t.setData({
+            loading: !0
+        }), s.get("myown/devote/dovate_log", {
+            openid: useropenid,
+            page: t.data.page,
+        }, function (a) {
+            console.log(a)
+            console.log(a.message.list[0].num-0)
+            var e = {
+                loading: !1,
+                show: !0,
+                list:a.message.list
+            };
+            a.message.list || (a.message.list = []), a.message.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.message.list),
+                a.message.list.length < a.message.pagesize && (e.loaded = !0)), t.setData(e);
+        });
     },
 
     /**

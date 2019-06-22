@@ -859,19 +859,28 @@ text-overflow:ellipsis;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 20rpx
 }
 
 .exchange-product-img {
     width: 350rpx;
     height: 350rpx;
     border-radius: 20rpx 20rpx 0rpx 0rpx;
+    position: relative
 }
 
 .ex-proimg {
     width: 100%;
     height: 100%;
 }
-
+.saleout{
+    width: 336rpx;
+    height: 336rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100
+}
 .ex-proname {
     width: 320rpx;
     height: 40rpx;

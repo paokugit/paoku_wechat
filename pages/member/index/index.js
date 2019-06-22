@@ -9,6 +9,7 @@ var userinfo = f.getCache('userinfo');
 var formid = ''
 var navigaterurl = ''
 var bindcount = ''
+// var conbind=''
 Page({
     data: {
         globalimg: e.globalData.appimg,
@@ -31,7 +32,9 @@ Page({
         duration: 500,
         swiperheight: 0,
         iscycelbuy: !1,
-        bargain: !1
+        bargain: !1,
+        conbind:'',
+        credit4:''
     },
     swiperChange(e) {
         let current = e.detail.current;
@@ -60,6 +63,11 @@ Page({
             console.log(event)
         })
 
+    },
+    opengxz:function(){
+        wx.navigateTo({
+            url: '/pages/contribute/contribute/contribute',
+        })
     },
     bindphone: function () {
         if (bindcount == 1) {
@@ -132,6 +140,18 @@ Page({
                 });
             }
         });
+        var b=this
+        a.get("myown/devote/msg", {
+            openid: userinfo.openid,
+        }, function (e) {
+            console.log(e)
+            if(e.error==0){
+                b.setData({
+                    conbind:e.message.bind,
+                    credit4:e.message.credit4
+                })
+            }
+        })
     },
     onShareAppMessage: function (res) {
         // return s.onShareAppMessage();

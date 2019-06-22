@@ -1,18 +1,21 @@
 
 {
-  "pages": [  
+  "pages": [
     "pages/index/index",
-    "pages/contribute/rzdata/rzdata",
-    "pages/contribute/withdraw/withdraw",
-    "pages/contribute/record/record",
     "pages/contribute/explain/explain",
-    "pages/shop/notice/notification/notification",
     "pages/contribute/contribute/contribute",
-    "pages/member/index/index",
+    "pages/contribute/record/record",
+    "pages/contribute/withdraw/withdraw",
+    "pages/discount/discount/discount",
+    "pages/discount/zkbaccount/zkbaccount",
+    "pages/contribute/rzdata/rzdata",
+    "pages/shop/notice/notification/notification",
+    "pages/member/bind/index",
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
     "pages/helphand/friendhelp/friendhelp",
-    "pages/member/bind/index",
+    "pages/member/index/index",
+    "pages/huiyuan/hygrade/hygrade",
     "pages/index/huodong",
     "pages/changce/merch/introduction",
     "pages/changce/merch/homepage",
@@ -23,8 +26,8 @@
     "pages/discount/kllscancode/kllscancode",
     "pages/discount/zkbcode/zkbcode",
     "pages/discount/merchcode/merchcode",
-    "pages/discount/discount/discount",
-    "pages/discount/zkbaccount/zkbaccount",
+    "pages/order/pay/index",
+    
     "pages/discount/setzkbdiscount/setzkbdiscount",
     "pages/exclusive/exclusive",
     "pages/discount/zkbdiscount/zkbdiscount",
@@ -41,7 +44,7 @@
     "pages/helphand/powerlist/powerlist",
     "pages/member/recommend/recommend",
     "pages/huiyuan/membercenter/membercenter",
-    "pages/huiyuan/hygrade/hygrade",
+ 
     "pages/sportdiary/sportdiary/sportdiary",
     "pages/goods/detail/index",
     "pages/member/balance/balance",
@@ -76,7 +79,7 @@
     "pages/order/create/index",
     "pages/order/store/index",
     "pages/order/store/map",
-    "pages/order/pay/index",
+   
     "pages/member/info/index",
     "pages/member/favorite/index",
     "pages/member/history/index",

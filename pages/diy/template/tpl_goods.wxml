@@ -27,7 +27,8 @@
                     </view>
                 </view>
                 <view class='price-box'>
-                    <view class='discountprice-box'>
+                    <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view>
+                    <view class='discountprice-box' wx:else>
                         <view class='dis-text'>折后</view>
                         <view class='dis-price'>￥{{item.showprice}}</view>
                     </view>
@@ -60,7 +61,8 @@
                     </view>
                 </view>
                 <view class='price-box'>
-                    <view class='discountprice-box'>
+                    <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view>
+                    <view class='discountprice-box' wx:else>
                         <view class='dis-text'>折后</view>
                         <view class='dis-price'>￥{{item.showprice}}</view>
                     </view>
@@ -93,7 +95,8 @@
                     </view>
                 </view>
                 <view class='price-box'>
-                    <view class='discountprice-box'>
+                    <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view>
+                    <view class='discountprice-box' wx:else>
                         <view class='dis-text'>折后</view>
                         <view class='dis-price'>￥{{item.showprice}}</view>
                     </view>
@@ -103,3 +106,4 @@
         </view>
     </scroll-view>
 </view>
+<view class='read-more'>查看更多</view>

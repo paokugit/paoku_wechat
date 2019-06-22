@@ -10,8 +10,7 @@
         </view>
     </view>
     <view class='explain-main'>
-        <view class='explain-item'>1、邀请付费会员每30个获得+60贡献值</view>
-         <view class='explain-item'>2、邀请付费会员每30个获得+60贡献值</view>
+        <view class='explain-item'>{{content}}</view>
     </view>
 
 </view>

@@ -11,6 +11,7 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        content:''
 
     },
 
@@ -18,7 +19,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var a=this
+        s.get("myown/devote/detail", {}, function (e) {
+            console.log(e)
+            a.setData({
+                content:e.message.content
+            })
+        })
     },
 
     /**

@@ -6,6 +6,7 @@ var f = getApp();
 var useropenid = ''
 var iptvalue = ''
 var creditnum = ''
+var message=''
 Page({
 
     /**
@@ -14,7 +15,7 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         hintDis: 'none',
-        usercredit: ''
+        credit4:''
     },
 
     /**
@@ -24,13 +25,13 @@ Page({
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
         var t = this
-        s.get("payment/index/getCredit", {
+        s.get("myown/devote/msg", {
             openid: useropenid
         }, function (e) {
             console.log(e)
-            creditnum = Number(e.result.credit1)
+            creditnum = Number(e.message.credit4)
             t.setData({
-                usercredit: e.result.credit1
+                credit4: e.message.credit4
             })
         })
     },
@@ -53,18 +54,25 @@ Page({
         console.log(creditnum)
         console.log(iptvalue)
         if (iptvalue <= creditnum) {
-            s.get("payment/index/change", {
+            s.get("myown/devote/withdrawal", {
                 money: iptvalue,
                 openid: useropenid
             }, function (eve) {
                 console.log(eve)
-                if (eve.status == 1) {
-                    wx.navigateTo({
-                        url: '/pages/discount/resuccess/resuccess',
+                if(eve.error==0){
+                    message=eve.message
+                        wx.showModal({
+                            title: '提示',
+                            content: message,
+                        })
+                } else if (eve.error == 1){
+                    message = eve.message
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
                     })
                 }
             })
-
         } else {
             wx.showModal({
                 title: '提示',

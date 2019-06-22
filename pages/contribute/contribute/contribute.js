@@ -30,7 +30,7 @@ Page({
     },
     openBtn: function() {
         wx.navigateTo({
-            url: '/pages/contribute/rzdata/rzdata',
+            url: '/pages/contribute/rzdata/rzdata?mobile=' + mobile + '&weixin=' + weixin,
         })
     },
     /**
@@ -53,11 +53,9 @@ Page({
             mobile = e.message.mobile
             weixin = e.message.weixin
             a.setData({
-                bind: e.message.bind
-            })
-            if (e.message.bind == 1) {
+                bind: e.message.bind,
                 credit4: e.message.credit4
-            }
+            })
             if (e.message.mobile == '') {
                 if (e.message.weixin == '') {
                     //电话号为空 微信为空

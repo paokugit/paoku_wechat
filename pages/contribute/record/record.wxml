@@ -1,18 +1,12 @@
 <view class='record_box'>
     <view class='record-con'>
-        <view class='record-item'>
+        <view class='record-item' wx:for="{{list}}" wx:key="{{index}}">
             <view class='item-left'>
-                <view class='item-title'>邀请健康达人</view>
-                <view class='item-time'>2019-06-20 16:14:16</view>
+                <view class='item-title'>{{item.remark}}</view>
+                <view class='item-time'>{{item.createtime}}</view>
             </view>
-            <view class='item-right'>+10</view>
-        </view>
-        <view class='record-item'>
-            <view class='item-left'>
-                <view class='item-title'>折扣宝提现扣除</view>
-                <view class='item-time'>2019-06-20 16:14:16</view>
-            </view>
-            <view class='item-right01'>-10</view>
+            <view class='item-right' wx:if="{{item.num-0>0}}">{{item.num}}</view>
+            <view class='item-right01' wx:if="{{item.num-0<0}}">{{item.num}}</view>
         </view>
     </view>
 </view>
