@@ -7,6 +7,7 @@ var userinfo = f.getCache('userinfo');
 var bind = ''
 var mobile=''
 var weixin=''
+var bindcount=''
 Page({
 
     /**
@@ -26,12 +27,28 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        s.get("myown/devote/msg", {
+            openid: userinfo.openid
+        }, function (e) {
+            console.log(e.message.bind)
+            // i.globalData.contributebind = e.message.bind
+            // console.log(i.globalData.contributebind)
+            bindcount = e.message.bind
+            wx.setStorageSync("appbind", bindcount)
+        })
     },
     openBtn: function() {
         wx.navigateTo({
             url: '/pages/contribute/rzdata/rzdata?mobile=' + mobile + '&weixin=' + weixin,
         })
+    },
+    hidebtn:function(){
+        this.setData({
+            maskDis: 'none'
+        })
+        // wx.navigateTo({
+        //     url: '',
+        // })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -43,6 +60,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        let app_bind = wx.getStorageSync('appbind')
+        console.log(app_bind)
         var a = this
         s.get("myown/devote/msg", {
             openid: userinfo.openid
@@ -50,6 +69,12 @@ Page({
             console.log(e)
             console.log(e.message.mobile)
             console.log(e.message.weixin)
+          if(app_bind==0 && e.message.bind==1){
+            console.log('弹窗')
+              a.setData({
+                  maskDis: 'block'
+              })
+          }
             mobile = e.message.mobile
             weixin = e.message.weixin
             a.setData({
@@ -77,7 +102,7 @@ Page({
                 } else {
                     //电话号不为空 微信不为空
                     a.setData({
-                        statedisp04: 'block'
+                        statedisp04: 'block',
                     })
                 }
             }
@@ -85,7 +110,7 @@ Page({
     },
     changebtn: function () {
         wx.navigateTo({
-            url: '/pages/contribute/rzdata/rzdata?mobile='+mobile+'&weixin='+weixin,
+            url: '/pages/contribute/rzdata/rzdata?mobile=' + mobile + '&weixin=' + weixin ,
         })
     },
     /**

@@ -28,21 +28,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     withdrawbtn: function() {
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-        // console.log(conbind)
-        // if (conbind == 0) {
-        //     wx.showModal({
-        //         title: '提示',
-        //         content: '您还未开通贡献值',
-        //     })
-        // } else if (conbind == 1) {
-        //     wx.navigateTo({
-        //         url: '/pages/contribute/withdraw/withdraw',
-        //     })
-        // }
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
+        // })
+        console.log(conbind)
+        if (conbind == 0) {
+            wx.showModal({
+                title: '提示',
+                content: '您还未开通贡献值',
+            })
+        } else if (conbind == 1) {
+            wx.navigateTo({
+                url: '/pages/contribute/withdraw/withdraw',
+            })
+        }
     },
     rechargebtn: function() {
         wx.navigateTo({

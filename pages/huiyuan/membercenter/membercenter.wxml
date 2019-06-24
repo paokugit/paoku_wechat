@@ -81,43 +81,9 @@
     <!-- 升级会员-结束 -->
     <!-- 完成以下任务部分-开始 -->
     <view class='task-box'>
-        <text class='task-text member_center'>完成以下任务，可以领取更多卡路里哦</text>
-        <!-- bottom-开始 -->
-        <view class='task-bottom'>
-        <!-- 图片-开始 -->
-            <view class='task-con' wx:for="{{arr01}}">
-            <image src='{{item.img}}'></image>
-            </view>
-            <!-- 图片-结束 -->
-        </view>
-        <!-- bottom-结束 -->
-        <view class='bottomCon'>
-        <!-- 签到 -->
-            <view class='taskBox'>
-                <view class='task-tit'>每日签到</view>
-                <view class='task-award'>可赚取1个卡路里</view>
-                <view class='taskbtn qdbtn member_center'>今日已签</view>
-            </view>
-            <!-- 注册 -->
-            <!-- <view class='taskBox'>
-            <view class='task-tit'>邀请好友注册</view>
-                <view class='task-award'>可赚取10个卡路里</view>
-                <view class='taskbtn zcbtn member_center' catchtap='invite'>去邀请</view>
-            </view> -->
-            <!-- 资料 -->
-            <!-- <view class='taskBox'>
-                <view class='task-tit'>完善资料</view>
-                <view class='task-award'>可赚取2个卡路里</view>
-                <view class='taskbtn zlbtn member_center' bindtap='zlBtn'>去完善</view>
-            </view> -->
-            <!-- 分享海报 -->
-            <view class='taskBox'>
-                <view class='task-tit'>分享海报</view>
-                <view class='task-award'>可赚取1个卡路里</view>
-                <view class='taskbtn hbbtn member_center' bindtap='hbshare'>去分享</view>
-            </view>
-        </view>
-
+        <text class='task-text member_center'>限量发售10000份，邀您体验</text>
+        <text class='libao-sub member_center'>尊享贵宾VIP权益及服务</text>
+        <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+1467 }}" class='libao-img'><image src='{{globalimg}}/libao.png'></image></navigator>
     </view>
     <!-- 完成以下任务部分-结束 -->
    
@@ -125,11 +91,6 @@
 <!-- banner之后的内容-结束 -->
 <!-- 底部 -->
  <view class='bottombar'>
-  <!-- <view class='bar' wx:for="{{imglist}}" wx:key='img' bindtap='sportBtn' data-index='{{index}}'>
-    <view class='barImg' >
-        <image src='{{imgHoverIndex == index ?item.hoverurl:item.imgurl}}'></image>
-    </view>
- </view> -->
     <view class='bar' bindtap='sportBtn'>
         <view class='barImg'>
             <image src='../../../icon1/sport-n.png'></image>

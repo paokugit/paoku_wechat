@@ -141,7 +141,7 @@ image{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30rpx
+    margin-bottom: 30rpx;
 }
 .your-rights{
     width: 680rpx;
@@ -197,80 +197,20 @@ image{
     width: 680rpx;
     /* height: 600rpx; */
     height: 400rpx;
-    position: relative
 }
-.task-text{
+.task-text, .libao-sub{
     width: 100%;
     height: 60rpx;
-    font-size: 30rpx;
-    color: #999;
+    font-size: 32rpx;
+    color: #000;
 }
-.task-bottom{
-    width: 100%;
-    height: 220rpx;
-    position: absolute;
-    top: 75rpx;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center
+.libao-sub{
+    color: #777;
+    font-size: 28rpx
 }
-.task-con{
-    width: 300rpx;
-    height: 196rpx
-}
-.bottomCon{
-    width: 100%;
-    height: 220rpx;
-     /* height: 440rpx; */
-    position: absolute;
-    top: 75rpx;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center
-}
-.taskBox{
-    width: 300rpx;
-    height: 196rpx;
-    border-radius: 10rpx
-}
-.task-tit{
-    width: auto;
-    height: auto;
-    margin-left: 20rpx;
-    margin-top: 28rpx;
-    font-size: 38rpx;
-    color: #fff
-}
-.task-award{
-    width: auto;
-    height: auto;
-    margin-left: 20rpx;
-    margin-top: 5rpx;
-    font-size: 18rpx;
-    color: #fff;
-}
-.taskbtn{
-    width: 140rpx;
-    height: 50rpx;
-    background: #fff;
-    border-radius: 30rpx;
-    font-size: 24rpx;
-    margin-top: 15rpx;
-    margin-left: 20rpx;
-}
-.qdbtn{
-    color: #66b6eb;
-}
-.zcbtn{
-  color: #fc7765
-}
-.zlbtn{
-    color: #e18ee1
-}
-.hbbtn{
-     color: #fdcb71
+.libao-img{
+    width: 680rpx;
+    height: 182rpx
 }
 .bottombar{
     width: 100%;

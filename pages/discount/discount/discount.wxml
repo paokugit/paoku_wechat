@@ -25,17 +25,17 @@
                 <text class='account-text'>元</text>
             </view>
             <!-- 贡献值 -->
-            <!-- <view class='gx-text'>贡献值</view>
+            <view class='gx-text'>贡献值</view>
             <view class='gx-box'>
                 <navigator url='/pages/contribute/contribute/contribute' class='open-text' wx:if="{{conbind==0}}">立即开通</navigator>
-                <view class='open-text' wx:if="{{conbind==1}}">{{credit4}}</view>
+                <navigator url='/pages/contribute/contribute/contribute' class='open-text' wx:if="{{conbind==1}}">{{credit4}}</navigator>
                 <image class='open2-img' src='{{globalimg}}/open2@2x.png'></image>
-            </view> -->
+            </view>
             <!-- 贡献值 -->
-            <!-- <view class='withdraw-box'>
+            <view class='withdraw-box'>
                 <text class='withdraw-text'>累计提现</text>
                 <text class='withdraw-num'>{{tixian}}元</text>
-            </view> -->
+            </view>
             <view class='zhanghu-img' bindtap='accountbtn'>
                 <image src='{{globalimg}}/zhanghu@2x.png'></image>
             </view>

@@ -82,19 +82,19 @@ image {
     position: absolute;
     top: 35%;
     left: 8%;
-    /* font-size: 60rpx; */
-    font-size: 90rpx;
+    font-size: 60rpx;
+    /* font-size: 90rpx; */
     color: #323232;
     display: flex
 }
 .account-text{
     width: 50rpx;
-    /* height: 70rpx; */
-    height: 110rpx;
+    height: 70rpx;
+    /* height: 110rpx; */
     font-size: 40rpx;
     color: #323232;
-    line-height: 120rpx;
-     /* line-height: 80rpx; */
+    /* line-height: 120rpx; */
+     line-height: 80rpx;
     margin-left: 10rpx
 }
 .zhanghu-img{

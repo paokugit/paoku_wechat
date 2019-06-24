@@ -209,6 +209,7 @@ App({
         userInfo: null,
         applogin:"",
         applog:"",
-       bindscene: ""
+       bindscene: "",
+       contributebind:"",
     }
 });

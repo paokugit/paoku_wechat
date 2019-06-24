@@ -6,8 +6,7 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 var userwechat=''
 var message=''
-// var usermobile=''
-// var userweixin=''
+var rzbind=
 Page({
 
     /**
@@ -66,6 +65,7 @@ Page({
     onLoad: function (options) {
         // 修改资料传过来的参数
         console.log(options)
+        rzbind=options.bindcount
         var t=this
         t.setData({
             usermobile:options.mobile,
