@@ -9,15 +9,20 @@ Page({
      */
     data: {
         globalimg: t.globalData.appimg,
+        mask:0,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      
     },
-
+  closemask:function(){
+    this.setData({
+      mask:1,
+    })
+  },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

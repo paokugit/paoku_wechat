@@ -1,9 +1,10 @@
-.all-box{
+.all-box {
   width: 100%;
   height: 100%;
   background: #fff;
 }
-.head-box{
+
+.head-box {
   width: 100%;
   height: 90rpx;
   display: flex;
@@ -11,7 +12,8 @@
   justify-content: space-evenly;
   background: #0f0;
 }
-.inform{
+
+.inform {
   width: 200rpx;
   height: 100%;
   background: #7c7;
@@ -19,7 +21,8 @@
   align-items: center;
   position: relative;
 }
-.assistant{
+
+.assistant {
   width: 200rpx;
   height: 100%;
   background: #7c7;
@@ -27,35 +30,40 @@
   align-items: center;
   position: relative;
 }
-.inform-text{
+
+.inform-text {
   width: 140rpx;
   height: 100%;
   background: #7c7;
   display: flex;
   align-items: center;
 }
-.assistant-text{
+
+.assistant-text {
   width: 140rpx;
   height: 100%;
   background: #7c7;
   display: flex;
   align-items: center;
 }
-.inform-num{
+
+.inform-num {
   width: 50rpx;
-  height: 30rpx;
-  background: #00f;
+  border-radius: 50rpx;
+  /* background: red; */
+  text-align: center;
+  color: white;
   position: absolute;
   top: 0;
   right: 0;
-  border-radius: 40rpx;
-  
 }
-.assistant-num{
+
+.assistant-num {
   width: 50rpx;
   height: 30rpx;
 }
-.underline{
+
+.underline {
   width: 160rpx;
   height: 4rpx;
   background: #00f;
@@ -64,7 +72,8 @@
   bottom: 0;
   border-radius: 10rpx;
 }
-.underline2{
+
+.underline2 {
   width: 160rpx;
   height: 4rpx;
   background: #00f;
@@ -72,7 +81,8 @@
   left: -15rpx;
   bottom: 0;
 }
-.no-inform{
+
+.no-inform {
   width: 100%;
   height: 600rpx;
   /* background: #ff0; */
@@ -80,8 +90,112 @@
   align-items: center;
   justify-content: center;
 }
-.no-inform image{
+
+.no-inform image {
   width: 412rpx;
   height: 346rpx;
 }
-
+.inform-all{
+  width: 100%;
+  height: auto;
+}
+.inform-ul{
+  width: 100%;
+  height: auto;
+}
+.inform-li{
+  width: 96%;
+  height: auto;
+  padding: 0 2% 0 2%;
+  background: #ff0;
+  display: flex;
+  border-bottom: 1px solid rgb(243, 243, 243);
+}
+.smallbell{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 20rpx;
+}
+.text_all{
+  width: 80%;
+  height: auto;
+  padding: 0 3% 0 3%;
+  
+}
+.headtitle{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.text-content{
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 2em;
+}
+.inform-img{
+  width: 360rpx;
+  height: 230rpx;
+  margin-top: 10rpx;
+}
+.img-img{
+  width: 360rpx;
+  height: 230rpx;
+}
+.particulars-box{
+  width: 100%;
+  height: 150rpx;
+  background: #00f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.particulars_distance{
+  position: relative;
+  background: #f0f;
+  width: 200rpx;
+  height: 100%;
+}
+.particulars{
+  position: absolute;
+  top:30rpx;
+  left: 0;
+}
+.distance-time{
+  position: absolute;
+  top:90rpx;
+  left: 0;
+}
+.praise{
+  width: 50rpx;
+  height: 50rpx;
+}
+.privateletter{
+  width: 100%;
+  height: auto;
+}
+.self-motion{
+  width: 100%;
+  height: 200rpx;
+  background: #0f0;
+  display: flex;
+  margin-top: 30rpx;
+}
+.robot{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+}
+.textandtime{
+  width: 462rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  margin-left: 20rpx;
+}
+.robot-text{
+  width: 94%;
+}

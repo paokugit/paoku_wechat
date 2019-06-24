@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/lottery/lottery/lottery",
     "pages/index/index",
-    "pages/shop/notice/notification/notification",
+    "pages/changce/merch/homepage",
     "pages/contribute/contribute/contribute",
+    "pages/shop/notice/notification/notification",
     "pages/member/index/index",
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
@@ -10,8 +12,6 @@
     "pages/member/bind/index",
     "pages/index/huodong",
     "pages/changce/merch/introduction",
-    "pages/changce/merch/homepage",
-    "pages/lottery/lottery/lottery",
     "pages/discount/recordlist/recordlist",
     "pages/discount/setklldiscount/setklldiscount",
     "pages/discount/zkbscancode/zkbscancode",

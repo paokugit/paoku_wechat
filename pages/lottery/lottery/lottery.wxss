@@ -40,14 +40,18 @@ image{
      width: 650rpx;
     height: 660rpx;
     margin-top: 30rpx;
-    position: relative
+    position: relative;
+    background: #f78d05;
+    border-radius: 35rpx;
 }
 .tiaodong{
     width: 190rpx;
     height: 190rpx;
     position: absolute;
     top: 50rpx;
-    left: 50rpx;
+    left: 43rpx;
+    /* left: 230rpx; */
+    /* left: 420rpx; */
 }
 .lottary_btn{
     width: 190rpx;
@@ -158,5 +162,69 @@ button::after {
     left: 0;
     right: 0;
     margin: auto;
-
 }
+.jukuang{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ka_1{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 60rpx;
+  margin-left: 50rpx;
+}
+.ka_2{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 60rpx;
+  margin-left: 15rpx;
+}
+.ka_3{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 60rpx;
+  margin-left: 15rpx;
+}
+.ka_4{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 50rpx;
+}
+.ka_5{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 15rpx;
+}
+.ka_6{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 15rpx;
+}
+.ka_7{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 50rpx;
+}
+.ka_8{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 15rpx;
+}
+.ka_9{
+  width: 174rpx;
+  height: 174rpx;
+  margin-top: 8rpx;
+  margin-left: 15rpx;
+}
+
+
+
+

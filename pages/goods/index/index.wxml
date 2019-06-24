@@ -54,8 +54,18 @@
           </view>
           <!-- 免费 -->
           <view wx:if="{{item.deduct-item.minprice>=0||item.deduct==0&&item.minprice==0}}" style="position:relative;">
-            <view style='position:absolute;left:15rpx;font-size:26rpx;color:#e01212;margin-top:25rpx'>免费兑</view>
-            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:30rpx">￥{{item.productprice}}</view>
+          <view class='kaluliandimg'>
+              <view class="liebiao" style='display:flex;align-items:center'>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/calorie02.png'></image>
+              </view>
+              <view class='jianhao'>
+                <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
+              </view>
+            </view>
+            <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
+            <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            </view>
           </view>
           <!-- 全额 -->
           <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
@@ -96,8 +106,18 @@
           </view>
           <!-- 免费 -->
           <view wx:if="{{item.showprice==0}}" style="position:relative;">
-            <view style='position:absolute;left:15rpx;font-size:26rpx;color:#e01212;margin-top:25rpx'>免费兑</view>
-            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:30rpx">￥{{item.productprice}}</view>
+            <view class='kaluliandimg' style="border: 1rpx solid #f84900;">
+              <view class="liebiao" style='display:flex;align-items:center'>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+              </view>
+              <view class='jianhao'>
+                <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
+              </view>
+            </view>
+            <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
+            <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            </view>
           </view>
           <!-- 全额 -->
           <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
