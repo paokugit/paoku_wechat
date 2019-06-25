@@ -6,7 +6,6 @@ var f = getApp();
 var useropenid = ''
 var iptvalue = ''
 var creditnum = ''
-var message=''
 Page({
 
     /**
@@ -15,7 +14,7 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         hintDis: 'none',
-        credit4:''
+        usercredit: ''
     },
 
     /**
@@ -25,13 +24,13 @@ Page({
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
         var t = this
-        s.get("myown/devote/msg", {
+        s.get("payment/index/getCredit", {
             openid: useropenid
         }, function (e) {
             console.log(e)
-            creditnum = Number(e.message.credit4)
+            creditnum = Number(e.result.credit1)
             t.setData({
-                credit4: e.message.credit4
+                usercredit: e.result.credit1
             })
         })
     },
@@ -54,39 +53,22 @@ Page({
         console.log(creditnum)
         console.log(iptvalue)
         if (iptvalue <= creditnum) {
-            s.get("myown/devote/withdrawal", {
+            s.get("payment/index/change", {
                 money: iptvalue,
                 openid: useropenid
             }, function (eve) {
                 console.log(eve)
-                if(eve.error==0){
-                    message=eve.message
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success:function(res){
-                                if(res.cancel){
-                                    // 点击取消
-                                }else{
-                                    // 点击确定
-                                    wx.navigateTo({
-                                        url: '/pages/discount/zkbaccount/zkbaccount',
-                                    })
-                                }
-                            }
-                        })
-                } else if (eve.error == 1){
-                    message = eve.message
-                    wx.showModal({
-                        title: '提示',
-                        content: message,
+                if (eve.status == 1) {
+                    wx.navigateTo({
+                        url: '/pages/discount/resuccess/resuccess',
                     })
                 }
             })
+
         } else {
             wx.showModal({
                 title: '提示',
-                content: '您的贡献值不足，请重新输入',
+                content: '卡路里余额不足，请重新输入',
             })
         }
 

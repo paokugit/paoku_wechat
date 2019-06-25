@@ -7,7 +7,7 @@
     </view>
     <view class='change-record-box'>
         <view class='white-bg'>
-            <image src='{{globalimg}}/white-bg@2x.png'></image>
+            <image src='{{globalimg}}/whitebg.png'></image>
             <navigator class='record-box' url='/pages/contribute/record/record'>
                 <image class='biandong-img' src='{{globalimg}}/biandong@2x.png'></image>
                 <text class='record-text'>变动记录</text>
@@ -129,7 +129,7 @@
 <view class='mask' style='display:{{maskDis}}'>
     <view class='mask-position'>
         <view class='mask-con' bindtap='hidebtn'>
-        <image src='{{globalimg}}/kaitongtishi@2x.png'></image>
+        <image src='{{globalimg}}/kaitongtishi.png'></image>
         </view>
     </view>
 </view>

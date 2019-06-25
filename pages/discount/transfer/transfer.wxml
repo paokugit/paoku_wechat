@@ -1,0 +1,24 @@
+<view class='rechange_box'>
+    <view class='rechange-con'>
+    <view class='mobile_box'>
+        <view class='mobile-text'>收款手机</view>
+        <input class='mobile-ipt' placeholder='请输入收款人手机号' maxlength='11'></input>
+    </view>
+        <view class='kll-balance-box'>
+            <view class='kll-text'>可用余额：￥{{usercredit}}</view>
+        </view>
+        <view class='kll-desc'>{{usercredit}}元冻结中（处于提现中或待支付状态）</view>
+        <view class='empty-box'>
+            <view class='empty'></view>
+            <view class='empty-text'>转账金额</view>
+            <view class='hint-text' style='display:{{hintDis}}'>余额不足,请重新输入</view>
+        </view>
+        <view class='ipt-box'>
+            <text class='ipt-symbol'>￥</text>
+            <input bindinput='watchPassWord'  class='rechangeipt' type='text' placeholder='最多可转出{{usercredit}}'></input>
+        </view>
+        <view class='rechange-btnbox' bindtap='rechargebtn'>
+            <button class='rechangebtn'>转账</button>
+        </view>
+    </view>
+</view>

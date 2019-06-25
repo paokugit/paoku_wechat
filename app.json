@@ -1,7 +1,9 @@
 
 {
   "pages": [ 
+    
     "pages/index/index",
+    "pages/discount/transfer/transfer",
     "pages/contribute/contribute/contribute",
     "pages/huiyuan/membercenter/membercenter",
     "pages/contribute/explain/explain",
