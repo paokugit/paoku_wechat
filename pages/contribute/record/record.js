@@ -13,7 +13,8 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         page:1,
-        list:[]
+        list:[],
+        maskDis:'none'
     },
 
     /**
@@ -39,7 +40,12 @@ Page({
             page: t.data.page,
         }, function (a) {
             console.log(a)
-            console.log(a.message.list[0].num-0)
+            if (a.message.list.length>0){
+            }else{
+                t.setData({
+                    maskDis:'block'
+                })
+            }
             var e = {
                 loading: !1,
                 show: !0,

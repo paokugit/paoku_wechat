@@ -10,3 +10,4 @@
         </view>
     </view>
 </view>
+<view class='record_mask' style='display:{{maskDis}}'><view class='nodata'>暂无数据哦</view></view>
