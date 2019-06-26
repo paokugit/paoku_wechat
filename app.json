@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/lottery/lottery/lottery",
     "pages/index/index",
+    "pages/lottery/lottery/lottery",
+    "pages/shop/notice/notification/notification",
     "pages/changce/merch/homepage",
     "pages/contribute/contribute/contribute",
-    "pages/shop/notice/notification/notification",
     "pages/member/index/index",
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",

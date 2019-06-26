@@ -31,6 +31,7 @@ Page({
     var a = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
+    console.log(useropenid);
     var newpos = i.getCache("mypos");
     s.get("myown/shophome/index", {
       openid: useropenid,

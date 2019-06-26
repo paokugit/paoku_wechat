@@ -72,7 +72,10 @@
     </view>
     <view class="demand">
       <image class="robot" src="http://paokucoin.com/img/backgroup/sxzs@2x.png"></image>
+      <view class="textandtime">
       <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
+      <view class="robot-time">5分钟前</view>
+      </view>
     </view>
   </view>
 </view>
