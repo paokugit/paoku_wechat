@@ -1,5 +1,6 @@
 var t = getApp(), e = t.requirejs("core"), o = t.requirejs("foxui");
 var goodsid = '', sharemid = t.getCache("sharemid");
+var errormessage=""
 Page({
     data: {
         icons: t.requirejs("icons"),
@@ -62,6 +63,13 @@ Page({
             mid: sharemid,
         }, function(t) {
             console.log(t)
+            if(t.error>0){
+                errormessage=t.message
+                wx.showModal({
+                    title: '提示',
+                    content: errormessage,
+                })
+            }
             goodsid=t.goods.goodsid
             console.log(goodsid)
             if(goodsid==7){

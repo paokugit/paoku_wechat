@@ -391,7 +391,7 @@
                                 </view>
                                 <text>{{goods.cannotbuy}}</text>
                             </view>
-                            <navigator class='goods-detail-box' openType="switchTab" url="/pages/huiyuan/openmember/openmember" style='display:flex;align-items:center;'>
+                            <navigator class='goods-detail-box' openType="switchTab" url="/pages/exclusive/exclusive" style='display:flex;align-items:center;'>
                                 <text style='margin-right:10rpx'>去开通</text>
                                 <view class='goods-detail-img' style='width:34rpx;height:34rpx; display:flex;align-items:center; justify-content: center'>
                                     <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/chakangengduo.png'></image>

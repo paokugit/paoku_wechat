@@ -75,7 +75,7 @@
     </view>
     <!-- 您正在享受的专属权益-结束 -->
     <!-- 升级会员-开始 -->
-    <view class='upgrade' bindtap='shengji'>
+    <view class='upgrade float' bindtap='shengji'>
         <image src='{{globalimg}}/hybanner.png'></image>
     </view>
     <!-- 升级会员-结束 -->

@@ -33,13 +33,16 @@ Page({
         }, function (e) {
             console.log(e.message.bind)
             console.log(i.globalData.contributebind)
-            if (i.globalData.contributebind==''){
+            if (i.globalData.contributebind.length==0){
+                console.log('空')
                 i.globalData.contributebind = e.message.bind
-            } else if (i.globalData.contributebind == 0){
-                if(e.message.bind==1){
+            }
+            console.log(i.globalData.contributebind)
+            if (i.globalData.contributebind == 0) {
+                if (e.message.bind == 1) {
                     console.log('弹窗')
                     tt.setData({
-                        maskDis:'block'
+                        maskDis: 'block'
                     })
                     i.globalData.contributebind = e.message.bind
                 }
@@ -69,35 +72,29 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        let app_bind = wx.getStorageSync('appbind')
-        console.log(app_bind)
         var a = this
         s.get("myown/devote/msg", {
             openid: userinfo.openid
         }, function(e) {
             console.log(e)
             console.log(i.globalData.contributebind)
+            if (i.globalData.contributebind.length==0) {
+                console.log('空2')
+                i.globalData.contributebind = e.message.bind
+
+            }
             if (i.globalData.contributebind == 0) {
                 if (e.message.bind == 1) {
                     console.log('弹窗')
                     a.setData({
                         maskDis: 'block'
                     })
+                    console.log('232323')
                     i.globalData.contributebind = e.message.bind
                 }
             }
             console.log(e.message.mobile)
             console.log(e.message.weixin)
-        //     if (app_bind !="" && app_bind==0 && e.message.bind==1){
-        //     console.log('弹窗')
-        //       a.setData({
-        //           maskDis: 'block'
-        //       })
-        //   }else{
-        //         a.setData({
-        //             maskDis: 'none'
-        //         })
-        //   }
             mobile = e.message.mobile
             weixin = e.message.weixin
             a.setData({

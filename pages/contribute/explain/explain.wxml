@@ -9,8 +9,11 @@
             <view class='subtext'>清晰了解攻略，快速增加分数</view>
         </view>
     </view>
-    <view class='explain-main'>
+    <!-- <view class='explain-main'>
         <view class='explain-item'>{{content}}</view>
+    </view> -->
+    <view class='explain-main wxParse'>
+        <template is="wxParse" data="{{wxParseData:con}}"></template>
     </view>
 
 </view>

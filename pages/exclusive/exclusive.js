@@ -25,59 +25,6 @@ Page({
         title: '',
         productprice: ''
     },
-    openhy: function (e) {
-        //   var hyid= e.currentTarget.dataset.id
-        memberid = e.currentTarget.dataset.id
-        //   console.log(hyid)
-        console.log(memberid)
-        // wx.setStorageSync('hyid', hyid)
-        e.currentTarget.dataset.minprice
-        this.setData({
-            hydisp: 'block',
-            id: e.currentTarget.dataset.id,
-            minprice: e.currentTarget.dataset.minprice,
-            title: e.currentTarget.dataset.title,
-            productprice: e.currentTarget.dataset.productprice
-        })
-    },
-    pay: function () {
-        var a = this;
-        // let open = wx.getStorageSync('openid')
-        // let hy = wx.getStorageSync('hyid')
-        console.log(userinfo.openid)
-        // console.log(hy)
-        s.get("order/create/submit", {
-            id: memberid,
-            'goods[0][id]': memberid,
-            'goods[0][goodsid]': memberid,
-            openid: userinfo.openid
-        }, function (f) {
-            console.log(22222)
-
-            console.log(f)
-            var i = {
-                loading: false,
-                // order:f.orderid
-            };
-            a.setData(i)
-
-            // wx.navigateTo({
-            //     url: "/pages/order/pay/index?id=" + f.orderid
-            // })
-            wx.navigateTo({
-                url: "/pages/order/create/index?id=" + memberid
-            })
-        })
-
-    },
-    hyClose: function () {
-        this.setData({
-            hydisp: "none"
-        })
-    },
-
-
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -102,11 +49,6 @@ Page({
 
 
 
-    },
-    explainhy: function () {
-        wx.navigateTo({
-            url: '../hygrade/hygrade',
-        })
     },
 
     /**

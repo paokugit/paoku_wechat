@@ -10,6 +10,31 @@ page{
     overflow: auto;
     position: relative
 }
+.float {
+    width: 680rpx;
+    height: 160rpx;
+    background: url("https://paokucoin.com/img/backgroup/button_yaoqing.png");
+    background-size: 680rpx 160rpx;
+    -webkit-animation-name: scaleDraw;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+}
+
+@keyframes scaleDraw {
+    0% {
+        transform: scale(1); 
+    }
+    25% {
+        transform: scale(1.05); 
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -192,7 +217,7 @@ image{
     width: 680rpx;
     height: 160rpx;
     margin-top: 50rpx;
-    margin-bottom: 20rpx
+    margin-bottom: 40rpx
 }
 .task-box{
     width: 680rpx;

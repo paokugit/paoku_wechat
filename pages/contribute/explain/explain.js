@@ -1,9 +1,10 @@
 // pages/contribute/explain/explain.js
 var a, e, i = getApp(),
-    s = i.requirejs("core");
+    s = i.requirejs("core"), n = i.requirejs("wxParse/wxParse");
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var con=''
 Page({
 
     /**
@@ -22,6 +23,8 @@ Page({
         var a=this
         s.get("myown/devote/detail", {}, function (e) {
             console.log(e)
+            con = e.message.content
+            n.wxParse("con", "html",con,a,5)
             a.setData({
                 content:e.message.content
             })
