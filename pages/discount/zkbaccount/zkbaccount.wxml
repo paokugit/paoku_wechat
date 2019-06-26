@@ -1,18 +1,32 @@
 <view class='account-box'>
     <view class='zkb-img'>
+        <view class='account-tit'>账户余额</view>
         <view class='account-num-box'>
             <view class='account-num'>{{credit}}</view>
             <view class='account-yuan'>元</view>
         </view>
-        <view class='account-btn-box'>
-            <view class='rechargebtn' bindtap='rechargebtn'>
-                <image src='{{globalimg}}/chongzhi@2x.png'></image>
+        <image src='{{globalimg}}/zkb-bg.png'></image>
+    </view>
+    <view class='type-box'>
+        <view class='type-item' bindtap='rechargebtn'>
+            <view class='type-img'>
+                <image src='{{globalimg}}/recharge01.png'></image>
             </view>
-            <view class='codebtn' bindtap='withdrawbtn'>
-                <image src='{{globalimg}}/tixian@2x.png'></image>
-            </view>
+            <view class='type-text'>充值</view>
         </view>
-        <image src='{{globalimg}}/zhekoubao@2x.png'></image>
+        <view class='type-item' bindtap='withdrawbtn'>
+            <view class='type-img'>
+                <image src='{{globalimg}}/tixian01.png'></image>
+            </view>
+            <view class='type-text'>提现</view>
+        </view>
+        <view class='type-item' bindtap='transferbtn'>
+            <view class='type-img'>
+                <image src='{{globalimg}}/zhuangzhang.png'></image>
+            </view>
+            <view class='type-text'>转账</view>
+        </view>
+
     </view>
     <!-- tab -->
     <block>

@@ -6,7 +6,8 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 var userwechat=''
 var message=''
-var rzbind=
+var rzbind=''
+var mobilecount=''
 Page({
 
     /**
@@ -17,12 +18,13 @@ Page({
         maskDis:'none',
         wechatnumber:'',
         usermobile:'',
-        userweixin:''
+        userweixin:'',
+        imgDis:'block'
 
     },
     gobindbtn:function(){
         wx.navigateTo({
-            url: '/pages/member/bind/index',
+            url: '/pages/member/bind/index?param=' + 3,
         })
     },
     wechatbtn:function(){
@@ -65,8 +67,14 @@ Page({
     onLoad: function (options) {
         // 修改资料传过来的参数
         console.log(options)
-        rzbind=options.bindcount
-        var t=this
+        rzbind = options.bindcount
+        var t = this
+        if(options.mobile==''){
+        t.setData({
+            imgDis:'none'
+        })
+        }
+   
         t.setData({
             usermobile:options.mobile,
             userweixin:options.weixin

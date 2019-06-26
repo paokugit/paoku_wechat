@@ -114,14 +114,6 @@ Page({
             url: '../../member/index/index',
         })
     },
-    changeColor:function(){
-        wx.switchTab({
-            url: '../openmember/openmember',
-        })
-        this.setData({
-            color:"red"
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */

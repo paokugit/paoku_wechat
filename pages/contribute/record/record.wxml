@@ -5,7 +5,7 @@
                 <view class='item-title'>{{item.remark}}</view>
                 <view class='item-time'>{{item.createtime}}</view>
             </view>
-            <view class='item-right' wx:if="{{item.num-0>0}}">{{item.num}}</view>
+            <view class='item-right' wx:if="{{item.num-0>0}}">+{{item.num}}</view>
             <view class='item-right01' wx:if="{{item.num-0<0}}">{{item.num}}</view>
         </view>
     </view>

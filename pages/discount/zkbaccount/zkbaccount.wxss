@@ -24,10 +24,17 @@ image {
 
 .zkb-img {
     width: 690rpx;
-    height: 400rpx;
+    height: 200rpx;
     position: relative;
 }
+.account-tit{
+    color: #a97a3c;
+    font-size: 28rpx;
+    position: absolute;
+     left: 9%;
+     top: 15%
 
+}
 .account-num-box {
     width: auto;
     height: 90rpx;
@@ -65,7 +72,31 @@ image {
     width: 252rpx;
     height: 132rpx;
 }
-
+.type-box{
+    width: 90%;
+    height: 200rpx;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2rpx solid #eee
+}
+.type-item{
+    width: 100rpx;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+.type-img{
+    width: 64rpx;
+    height: 56rpx
+}
+.type-text{
+    color: #333;
+    font-size: 34rpx;
+}
 /* .about_page{
   margin: 0 10px;
 } */

@@ -70,17 +70,15 @@ Page({
         })
     },
     bindphone: function () {
-        if (bindcount == 1) {
             wx.navigateTo({
-                url: '/pages/member/bind/index',
+                url: '/pages/member/bind/index?param='+2,
             })
-        } else {
-            wx.showModal({
-                title: '提示',
-                content: '您已经绑定过手机号',
-            })
-        }
-
+    },
+    bindyet:function(){
+        wx.showModal({
+            title: '提示',
+            content: '您已经绑定过手机号',
+        })
     },
     onLoad: function (a) {
         p.get("member", {}, function (i) {

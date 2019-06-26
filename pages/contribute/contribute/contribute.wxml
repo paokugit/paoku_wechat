@@ -129,7 +129,7 @@
 <view class='mask' style='display:{{maskDis}}'>
     <view class='mask-position'>
         <view class='mask-con' bindtap='hidebtn'>
-        <image src='{{globalimg}}/ktts.png'></image>
+        <image src='{{globalimg}}/tishi-kt.png'></image>
         </view>
     </view>
 </view>

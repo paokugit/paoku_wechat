@@ -21,7 +21,10 @@
             </view>
         </view>
         <view class='bind-phone'>奖励+10卡路里</view>
-        <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone'>
+        <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
+            <button form-type="submit" class='phone-btn'></button>
+        </form>
+        <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindyet' wx:if="{{conbind==1}}">
             <button form-type="submit" class='phone-btn'></button>
         </form>
     </view>
@@ -30,20 +33,20 @@
         <navigator url='/pages/member/balance/balance' class='reward-img'>
             <image src='{{globalimg}}/bggreen@2x.png'></image>
             <view class='reward-num'>{{member.come_total}}</view>
-            <view class='reward-text'>累计奖励收入</view>
-            <view class='reward-balance-box'>
+            <view class='reward-text'>可用余额</view>
+            <!-- <view class='reward-balance-box'>
                 <view class='reward-balance-text'>可用余额</view>
                 <view class='reward-balance-num'>{{member.credit2}}</view>
-            </view>
+            </view> -->
         </navigator>
         <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
             <view class='calorie-num'>{{member.calorie_total}}</view>
-            <view class='calorie-text'>累计卡路里收入</view>
-            <view class='calorie-balance-box'>
+            <view class='calorie-text'>可用卡路里</view>
+            <!-- <view class='calorie-balance-box'>
                 <view class='calorie-balance-text'>可用余额</view>
                 <view class='calorie-balance-num'>{{member.credit1}}</view>
-            </view>
+            </view> -->
         </navigator>
     </view>
     <!-- 个人收入 -->

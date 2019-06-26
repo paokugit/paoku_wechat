@@ -158,7 +158,7 @@ Page((e = {
     },
     bindPhone: function() {
         wx.navigateTo({
-            url: '/pages/member/bind/index',
+            url: '/pages/member/bind/index?param='+1,
         })
     },
     // 进入商城

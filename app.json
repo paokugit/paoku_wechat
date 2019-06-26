@@ -2,19 +2,17 @@
 {
   "pages": [ 
     "pages/index/index",
-    "pages/contribute/explain/explain",
-    
     "pages/discount/transfer/transfer",
     "pages/contribute/contribute/contribute",
     "pages/huiyuan/membercenter/membercenter",
-   
+    "pages/contribute/explain/explain",
     "pages/contribute/record/record",
     "pages/contribute/withdraw/withdraw",
     "pages/discount/discount/discount",
-    "pages/discount/zkbaccount/zkbaccount",
+"pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
     "pages/shop/notice/notification/notification",
-    "pages/member/bind/index",
+   "pages/member/bind/index",
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
     "pages/helphand/friendhelp/friendhelp",

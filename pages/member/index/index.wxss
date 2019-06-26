@@ -121,7 +121,7 @@ image {
     color: #fff;
     font-size: 40rpx;
     position: absolute;
-    top: 12%;
+    top: 25%;
     left: 10%
 }
 .reward-text, .calorie-text{
@@ -131,7 +131,7 @@ image {
     color: #fff;
     font-size: 24rpx;
     position: absolute;
-    top: 37%;
+    top: 50%;
     left: 10%;
 }
 .reward-balance-box, .calorie-balance-box{

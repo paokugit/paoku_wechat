@@ -8,6 +8,7 @@ var errormessage = ''
 var usercode = ''
 var code = ''
 var message=''
+var param=''
 Page({
 
     /**
@@ -21,7 +22,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        console.log(options)
+        param=options.param
     },
     inputChange: function(event) {
         var a = this
@@ -63,12 +65,39 @@ Page({
                 console.log(t)
                 if(t.error==0){
                 message=t.message
-                wx.showToast({
-                    title: message,
-                    success:function(){
-                        wx.switchTab({
-                            url: '/pages/member/index/index',
-                        })
+                // wx.showToast({
+                //     title: message,
+                //     success:function(){
+                //         wx.switchTab({
+                //             url: '/pages/member/index/index',
+                //         })
+                //     }
+                // })
+                wx.showModal({
+                    title: '提示',
+                    content: message,
+                    success:function(res){
+                        if(res.cancel){
+                            // 点击取消
+                        }else{
+                            // 点击确定
+                            if (param==1){
+                                console.log('首页')
+                                wx.switchTab({
+                                    url: '/pages/index/index',
+                                })
+                            }else if(param==2){
+                                console.log('我的')
+                                wx.switchTab({
+                                    url: '/pages/member/index/index',
+                                })
+                            }else if(param==3){
+                                console.log('认证资料')
+                                wx.navigateTo({
+                                    url: '/pages/contribute/contribute/contribute',
+                                })
+                            }
+                        }
                     }
                 })
                 }else{
