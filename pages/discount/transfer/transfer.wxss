@@ -21,7 +21,7 @@ image{
 }
 .rechange-con{
     width: 92%;
-    height: 800rpx;
+    height: 700rpx;
     background: #fff;
     border-radius: 20rpx;
     margin-top: 20rpx

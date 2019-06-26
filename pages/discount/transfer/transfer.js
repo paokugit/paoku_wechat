@@ -6,6 +6,8 @@ var f = getApp();
 var useropenid = ''
 var iptvalue = ''
 var creditnum = ''
+var mobile=''
+var errormessage=''
 Page({
 
     /**
@@ -24,18 +26,25 @@ Page({
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
         var t = this
-        s.get("payment/index/getCredit", {
+        s.get("payment/rebate", {
             openid: useropenid
         }, function (e) {
             console.log(e)
-            creditnum = Number(e.result.credit1)
+            creditnum = Number(e.result.credit3)
             t.setData({
-                usercredit: e.result.credit1
+                usercredit: e.result.credit3
+
             })
         })
     },
-    // 监听输入
-    watchPassWord: function (event) {
+    // 监听手机号输入
+    watchmobile:function(eve){
+        // console.log(eve.detail.value)
+        mobile = eve.detail.value
+        console.log(mobile)
+    },
+    // 监听金额输入
+    watchmoney: function (event) {
         var a = this
         console.log(event.detail.value);
         iptvalue = event.detail.value
@@ -49,30 +58,48 @@ Page({
             })
         }
     },
-    rechargebtn: function () {
+    transferbtn: function () {
         console.log(creditnum)
         console.log(iptvalue)
         if (iptvalue <= creditnum) {
-            s.get("payment/index/change", {
+            s.get("payment/rebate_change", {
                 money: iptvalue,
-                openid: useropenid
+                openid: useropenid,
+                mobile:mobile
             }, function (eve) {
                 console.log(eve)
-                if (eve.status == 1) {
-                    wx.navigateTo({
-                        url: '/pages/discount/resuccess/resuccess',
-                    })
-                }
+               if(eve.status==1){
+                   wx.showModal({
+                       title: '提示',
+                       content: '转账成功',
+                       success:function(res){
+                           if(res.cancel){
+                            //    点击取消
+                           }else{
+                               wx.navigateTo({
+                                   url: '/pages/discount/zkbaccount/zkbaccount',
+                               })
+                           }
+                       }
+                   })
+               } else if (eve.status == 0){
+                   errormessage=eve.result.message
+                   wx.showModal({
+                       title: '提示',
+                       content: errormessage,
+                   })
+               }
             })
 
         } else {
             wx.showModal({
                 title: '提示',
-                content: '卡路里余额不足，请重新输入',
+                content: '余额不足，请重新输入',
             })
         }
 
     },
+   
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -17,7 +17,7 @@
     </view>
 </view>
 <!-- mask -->
-<view class='lottary-mask'>
+<!-- <view class='lottary-mask'>
     <view class='mask-relative'>
         <view class='mask-con'><image src='{{globalimg}}/lottary-mask.png'></image></view>
         <view class='mask-text'>
@@ -26,4 +26,4 @@
         </view>
         <view class='lottary-close'><image src='{{globalimg}}/guanbi.png'></image></view>
     </view>
-</view>
+</view> -->
