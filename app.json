@@ -1,6 +1,7 @@
 
 {
   "pages": [ 
+
     "pages/index/index",
     "pages/discount/transfer/transfer",
     "pages/lottery/lottery/lottery",
@@ -11,7 +12,7 @@
     "pages/contribute/record/record",
     "pages/contribute/withdraw/withdraw",
     "pages/discount/discount/discount",
-"pages/discount/zkbaccount/zkbaccount",
+    "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
     "pages/shop/notice/notification/notification",
    "pages/member/bind/index",
