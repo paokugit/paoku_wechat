@@ -2,7 +2,7 @@
   <view class="head-box">
     <view class="inform">
       <view class="inform-text">系统通知</view>
-      <view class="inform-num">22</view>
+      <view class="inform-num">1</view>
       <view class="underline"></view>
     </view>
     <view class="assistant">
@@ -11,13 +11,71 @@
       <view class="underline2"></view>
     </view>
   </view>
+  <!-- 没有数据 -->
   <view class="no-inform" style="display:none">
     <image class="ibform-img" src="http://paokucoin.com/img/backgroup/zwxx@2x.png"></image>
   </view>
-  <view class="inform-push">
-    <!-- 一条数据 -->
+  <view class="inform-push" style="display:none">
+    <!-- 多条数据，系统通知 -->
     <view class="inform-all">
-      
+      <view class="inform-ul">
+        <view class="inform-li">
+          <image class="smallbell" src="http://paokucoin.com/img/backgroup/touxiang01@2x.png"></image>
+          <view class="text_all">
+            <view class="headtitle">系统升级提醒!</view>
+            <view class="text-content">
+              自跑库上线运营一个月以来，会员数量短时间内搭量激增，为了给会员和商家提供更好的体验和服务，将于今晚十一点进行系统升级，时间长达30秒至5分钟
+            </view>
+            <view class="inform-img">
+              <image class="img-img" src="http://paokucoin.com/img/backgroup/pic@2x.png"></image>
+            </view>
+            <view class="particulars-box">
+              <view class="particulars_distance">
+                <view class="particulars">详情</view>
+                <view class="distance-time">55分钟</view>
+              </view>
+              <image class="praise" src="http://paokucoin.com/img/backgroup/zan-s@2x.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class="inform-li">
+          <image class="smallbell" src="http://paokucoin.com/img/backgroup/touxiang01@2x.png"></image>
+          <view class="text_all">
+            <view class="headtitle">系统升级提醒!</view>
+            <view class="text-content">
+              自跑库上线运营一个月以来，会员数量短时间内搭量激增，为了给会员和商家提供更好的体验和服务，将于今晚十一点进行系统升级，时间长达30秒至5分钟
+            </view>
+            <view class="inform-img">
+              <image class="img-img" src="http://paokucoin.com/img/backgroup/pic@2x.png"></image>
+            </view>
+            <view class="particulars-box">
+              <view class="particulars_distance">
+                <view class="particulars">详情</view>
+                <view class="distance-time">55分钟</view>
+              </view>
+              <image class="praise" src="http://paokucoin.com/img/backgroup/zan-s@2x.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 私信助手 -->
+  <view class="privateletter">
+    <!-- 自动推送 -->
+    <view class="self-motion">
+      <image class="robot" src="http://paokucoin.com/img/backgroup/sxzs@2x.png"></image>
+      <view class="textandtime">
+        <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
+        <view class="robot-time">2018年6月1日 12:01</view>
+      </view>
+    </view>
+    <view class="demand">
+      <image class="robot" src="http://paokucoin.com/img/backgroup/sxzs@2x.png"></image>
+      <view class="textandtime">
+      <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
+      <view class="robot-time">5分钟前</view>
+      </view>
     </view>
   </view>
 </view>

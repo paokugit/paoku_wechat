@@ -199,10 +199,13 @@ Page((e = {
     },
     // 跳转到幸运抽奖
     drawbtn: function() {
-        wx.showToast({
-            title: '此功能暂未开放',
-            duration: 2000
-        })
+        // wx.showToast({
+        //     title: '此功能暂未开放',
+        //     duration: 2000
+        // })
+      wx.navigateTo({
+        url: '/pages/lottery/lottery/lottery',
+      })
     },
     // 跳转到运动日记
     sportbtn: function() {

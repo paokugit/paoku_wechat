@@ -3,6 +3,8 @@
   "pages": [ 
     "pages/index/index",
     "pages/discount/transfer/transfer",
+    "pages/lottery/lottery/lottery",
+    "pages/changce/merch/homepage",
     "pages/contribute/contribute/contribute",
     "pages/huiyuan/membercenter/membercenter",
     "pages/contribute/explain/explain",
@@ -20,8 +22,6 @@
     "pages/huiyuan/hygrade/hygrade",
     "pages/index/huodong",
     "pages/changce/merch/introduction",
-    "pages/changce/merch/homepage",
-    "pages/lottery/lottery/lottery",
     "pages/discount/recordlist/recordlist",
     "pages/discount/setklldiscount/setklldiscount",
     "pages/discount/zkbscancode/zkbscancode",

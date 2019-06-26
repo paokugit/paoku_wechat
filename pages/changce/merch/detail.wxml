@@ -63,7 +63,6 @@
     </view>
   </view>
   <!--include src='/pages/common/menu.wxml' /-->
-
 <!-- <view class='bottombar' bindtap='scancodebtn'>扫码买单</view> -->
 <view class='bottombar'>
  <navigator url="/pages/changce/merch/intro?id={{merchid}}" class='mapbtn'>地图导航</navigator>

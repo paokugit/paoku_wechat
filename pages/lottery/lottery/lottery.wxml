@@ -1,29 +1,126 @@
-<view class='lottaryBox'>
-    <view class='lottary-box'>
-        <view class='zhongjiang'><image src='{{globalimg}}/zhongjiang.png'></image></view>
-        <view class='lottary-name'>xxx抽中了xxx卡路里</view>
-        <view class='lottary_bg'>
-            <view class='tiaodong'><image src='{{globalimg}}/tiaodong.png'></image></view>
-            <view class='lottary_btn'></view>
-            <image src='{{globalimg}}/lottary-bg.png'></image>
-        </view>
-        <!-- btn -->
-        <view class='lottary_btn01'><image src='{{globalimg}}/lottary-btn01.png'></image></view>
-        <button class='inviteBtn' open-type='share'></button>
-        <!-- 免费抽 -->
-        <view class='lottary-free'>免费抽<text class='free-text'>0</text>次</view>
-        <view class='lottary_bg02'><image src='{{globalimg}}/lottary-bg02.png'></image></view>
-        <view class='lottary_rule'><image src='{{globalimg}}/lottary-rule.png'></image></view>
+<view class='lottaryBox' wx:if="{{mask==0}}">
+  <view class='lottary-box'>
+    <view class='zhongjiang'>
+      <image src='{{globalimg}}/zhongjiang.png'></image>
     </view>
+    <view class='lottary-name'>
+      <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="1000">
+        <block wx:for="{{msgList}}" wx:key="">
+          <swiper-item>
+            <view class="swiper_item">{{item.nickname}}抽中了{{item.num}}折扣宝</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 转盘 -->
+    <view class='container-out'>
+      <!-- 外框 -->
+      <image style='width:650rpx;height:660rpx' src='http://paokucoin.com/img/backgroup/jukuang.png'></image>
+      <!-- 里面的图片 -->
+      <view class="container-in">
+        <!-- 遍历 -->
+        <view class='frame_view'>
+          <input value='{{luckPosition}}' style="width:100%;text-align:center;display:none"></input>
+          <view class='frame_row'>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[0].reward1}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[0]}}' src='{{images[0]}}'></image>
+            </view>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[1].reward2}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[1]}}' src='{{images[1]}}'></image>
+            </view>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[2].reward3}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[2]}}' src='{{images[2]}}'></image>
+            </view>
+          </view>
+          <view class='frame_row'>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[3].reward4}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[7]}}' src='{{images[7]}}'></image>
+            </view>
+              <image class='frame_item' src='{{btnconfirm}}' bindtap='{{clickLuck}}' data-gratis="{{gratis}}"></image>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[4].reward5}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[3]}}' src='{{images[3]}}'></image>
+            </view>
+          </view>
+
+          <view class='frame_row'>
+          <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[5].reward6}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+            <image class='frame_item' style='opacity:{{color[6]}}' src='{{images[6]}}'></image>
+            </view>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[6].reward7}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+            <image class='frame_item' style='opacity:{{color[5]}}' src='{{images[5]}}'></image>
+            </view>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[7].reward8}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+            <image class='frame_item' style='opacity:{{color[4]}}' src='{{images[4]}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- btn 邀请好友 -->
+    <view class='lottary_btn01'>
+      <image src='{{globalimg}}/lottary-btn01.png'></image>
+    </view>
+    <button class='inviteBtn' data-gnum="{{gratis}}" open-type='share'></button>
+    <!-- 免费抽的次数 -->
+    <view class='lottary-free'>免费抽
+      <text class='free-text'>{{gratis}}</text>次</view>
+    <view class='lottary_bg02'>
+      <image src='{{globalimg}}/lottary-bg02.png'></image>
+    </view>
+    <view class='lottary_rule'>
+      <image src='{{globalimg}}/rule.png'></image>
+    </view>
+  </view>
 </view>
 <!-- mask -->
-<view class='lottary-mask'>
-    <view class='mask-relative'>
-        <view class='mask-con'><image src='{{globalimg}}/lottary-mask.png'></image></view>
-        <view class='mask-text'>
-            <view class='text-top'>+8<text class='lottary-kll'>卡路里</text></view>
-            <view class='text-bottom'><image src='{{globalimg}}/lottary-btn02.png'></image></view>
-        </view>
-        <view class='lottary-close'><image src='{{globalimg}}/guanbi.png'></image></view>
+<view class='lottary-mask' wx:if="{{mask==1}}">
+  <view class='mask-relative'>
+    <view class='mask-con'>
+      <image src='{{globalimg}}/lottary-mask.png'></image>
     </view>
+    <view class='mask-text'>
+      <view class='text-top'>+{{zhekounum}}
+        <text class="lottary-kll">折扣宝</text>
+      </view>
+      <view class='text-bottom'>
+        <image src='{{globalimg}}/lottary-btn02.png'></image>
+      </view>
+      <button class='inviteBtncc' data-gnum="{{gratis}}" open-type='share'></button>
+    </view>
+    <view class='lottary-close' bindtap="closemask">
+      <image src='{{globalimg}}/guanbi.png'></image>
+    </view>
+  </view>
 </view>
