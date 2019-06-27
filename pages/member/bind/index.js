@@ -16,6 +16,9 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        second: 60,
+        seconddisp:'none',
+        codedisp: 'block'
     },
 
     /**
@@ -41,8 +44,16 @@ Page({
             console.log(e)
             if (e.error == 0) {
                 code = e.message.code
-                wx.showToast({
-                    title: '短信发送成功',
+                wx.showModal({
+                    title: '提示',
+                    content: '短信发送成功',
+                    success:function(res){
+                        if(res.cancel){
+                            // 取消
+                        }else{
+                            countdown(t)
+                        }
+                    }
                 })
             } else {
                 errormessage = e.message
@@ -52,56 +63,96 @@ Page({
                 })
             }
         })
+        //倒计时方法
+        function countdown(that) {
+            var second = t.data.second;
+            if (second == 0) {
+                // console.log("Time Out...");
+                t.setData({
+                    // selected: false,
+                    // selected1: true,
+                    second: 60,
+                    seconddisp: 'none',
+                    codedisp: 'block'
+                });
+                return;
+            }
+            var time = setTimeout(function () {
+                that.setData({
+                    second: second - 1,
+                    seconddisp: 'block',
+                    codedisp: 'none'
+                });
+                countdown(that);
+            }, 1000)
+        }
     },
     bindPhone: function() {
         console.log(userinfo)
         console.log(usermobile, usercode)
-        if (usercode == code) {
+        if (usermobile==""){
+            wx.showModal({
+                title: '提示',
+                content: '请输入手机号',
+            })
+        } else if (usercode==""){
+            wx.showModal({
+                title: '提示',
+                content: '请输入验证码',
+            })
+        }else if (usercode != code){
+            console.log('验证码错误')
+            wx.showModal({
+                title: '提示',
+                content: '验证码错误',
+            })
+        } else if (usercode == code) {
+            console.log('验证码正确')
             // 验证码正确
             s.get("myown/bindmobile/bind", {
                 mobile: usermobile,
                 openid: userinfo.openid
-            }, function(t) {
+            }, function (t) {
                 console.log(t)
-                if(t.error==0){
-                message=t.message
-                // wx.showToast({
-                //     title: message,
-                //     success:function(){
-                //         wx.switchTab({
-                //             url: '/pages/member/index/index',
-                //         })
-                //     }
-                // })
-                wx.showModal({
-                    title: '提示',
-                    content: message,
-                    success:function(res){
-                        if(res.cancel){
-                            // 点击取消
-                        }else{
-                            // 点击确定
-                            if (param==1){
-                                console.log('首页')
-                                wx.switchTab({
-                                    url: '/pages/index/index',
-                                })
-                            }else if(param==2){
-                                console.log('我的')
-                                wx.switchTab({
-                                    url: '/pages/member/index/index',
-                                })
-                            }else if(param==3){
-                                console.log('认证资料')
-                                wx.navigateTo({
-                                    url: '/pages/contribute/contribute/contribute',
-                                })
+                if (t.error == 0) {
+                    message = t.message
+                    // wx.showToast({
+                    //     title: message,
+                    //     success:function(){
+                    //         wx.switchTab({
+                    //             url: '/pages/member/index/index',
+                    //         })
+                    //     }
+                    // })
+                    wx.showModal({
+                        title: '提示',
+                        content: message,
+                        success: function (res) {
+                            if (res.cancel) {
+                                // 点击取消
+                            } else {
+                                // 点击确定
+                                if (param == 1) {
+                                    console.log('首页')
+                                    wx.switchTab({
+                                        url: '/pages/index/index',
+                                    })
+                                } else if (param == 2) {
+                                    console.log('我的')
+                                    wx.switchTab({
+                                        url: '/pages/member/index/index',
+                                    })
+                                } else if (param == 3) {
+                                    console.log('认证资料')
+                                    wx.navigateTo({
+                                        url: '/pages/contribute/contribute/contribute',
+                                    })
+                                }
                             }
                         }
-                    }
-                })
-                }else{
-                    message=t.message
+                    })
+                } else {
+                    message = t.message
                     wx.showModal({
                         title: '提示',
                         content: message,
@@ -109,15 +160,11 @@ Page({
                 }
 
             })
-        } else {
-            wx.showModal({
-                title: '提示',
-                content: '验证码错误',
-            })
         }
 
 
     },
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

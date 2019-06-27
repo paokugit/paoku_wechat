@@ -93,6 +93,19 @@ button::after {
     top: -5rpx;
     z-index: 2
 }
+.get_code{
+     width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: transparent;
+    color: #666;
+    border: 1px solid #666;
+    font-size: 26rpx;
+    position: absolute;
+    right: 3%;
+    top: -5rpx;
+    z-index: 3
+}
 .binding{
     width: 90%;
     height: 80rpx;

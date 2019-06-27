@@ -1,7 +1,10 @@
 
 {
   "pages": [ 
+    
     "pages/index/index",
+    "pages/member/bind/index",
+    "pages/index/huodong",
     "pages/discount/transfer/transfer",
     "pages/lottery/lottery/lottery",
     "pages/changce/merch/homepage",
@@ -14,13 +17,13 @@
     "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
     "pages/shop/notice/notification/notification",
-   "pages/member/bind/index",
+   
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
     "pages/helphand/friendhelp/friendhelp",
     "pages/member/index/index",
     "pages/huiyuan/hygrade/hygrade",
-    "pages/index/huodong",
+    
     "pages/changce/merch/introduction",
     "pages/discount/recordlist/recordlist",
     "pages/discount/setklldiscount/setklldiscount",
