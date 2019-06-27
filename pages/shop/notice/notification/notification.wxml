@@ -1,77 +1,59 @@
-<view class="all-box">
+<view class="all-box" style="height:{{heightdiao}}">
+<!-- 头部的显示 -->
   <view class="head-box">
-    <view class="inform">
-      <view class="inform-text">系统通知</view>
-      <view class="inform-num">1</view>
-      <view class="underline"></view>
+    <view class="inform" bindtap="inform">
+      <view class="inform-text" style="color:{{color}}">系统通知</view>
+      <view class="inform-num">{{informlist.length}}</view>
+      <view class="underline" wx:if="{{underline==0}}"></view>
     </view>
-    <view class="assistant">
-      <view class="assistant-text">私信助手</view>
+    <view class="assistant" bindtap="assistant">
+      <view class="assistant-text" style="color:{{color1}}">私信助手</view>
       <view class="assistant-num"></view>
-      <view class="underline2"></view>
+      <view class="underline2" wx:if="{{underline==1}}"></view>
     </view>
   </view>
   <!-- 没有数据 -->
-  <view class="no-inform" style="display:none">
-    <image class="ibform-img" src="http://paokucoin.com/img/backgroup/zwxx@2x.png"></image>
+  <view class="no-inform" wx:if="{{mask==1}}">
+    <image class="ibform-img" src="{{globalimg}}/zwxx@2x.png"></image>
   </view>
-  <view class="inform-push" style="display:none">
+  <view class="inform-push" wx:if="{{mask==0}}">
     <!-- 多条数据，系统通知 -->
     <view class="inform-all">
-      <view class="inform-ul">
+      <view class="inform-ul" wx:for="{{informlist}}" wx:for-index="key" wx:key="{{key}}">
         <view class="inform-li">
-          <image class="smallbell" src="http://paokucoin.com/img/backgroup/touxiang01@2x.png"></image>
+          <image class="smallbell" src="{{globalimg}}/touxiang01@2x.png"></image>
           <view class="text_all">
-            <view class="headtitle">系统升级提醒!</view>
-            <view class="text-content">
-              自跑库上线运营一个月以来，会员数量短时间内搭量激增，为了给会员和商家提供更好的体验和服务，将于今晚十一点进行系统升级，时间长达30秒至5分钟
-            </view>
+            <view class="headtitle">{{item.title}}</view>`
+            <view class="text-content">{{item.detail}}</view>
             <view class="inform-img">
-              <image class="img-img" src="http://paokucoin.com/img/backgroup/pic@2x.png"></image>
+              <image class="img-img" src="{{item.thumb}}"></image>
             </view>
             <view class="particulars-box">
               <view class="particulars_distance">
                 <view class="particulars">详情</view>
-                <view class="distance-time">55分钟</view>
+                <view class="distance-time">{{item.createtime}}</view>
               </view>
-              <image class="praise" src="http://paokucoin.com/img/backgroup/zan-s@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==1||praise==1}}" src="{{globalimg}}/zan-s@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==0||praise==0}}" src="{{globalimg}}/zan-n@2x.png"></image>
             </view>
           </view>
         </view>
-        <view class="inform-li">
-          <image class="smallbell" src="http://paokucoin.com/img/backgroup/touxiang01@2x.png"></image>
-          <view class="text_all">
-            <view class="headtitle">系统升级提醒!</view>
-            <view class="text-content">
-              自跑库上线运营一个月以来，会员数量短时间内搭量激增，为了给会员和商家提供更好的体验和服务，将于今晚十一点进行系统升级，时间长达30秒至5分钟
-            </view>
-            <view class="inform-img">
-              <image class="img-img" src="http://paokucoin.com/img/backgroup/pic@2x.png"></image>
-            </view>
-            <view class="particulars-box">
-              <view class="particulars_distance">
-                <view class="particulars">详情</view>
-                <view class="distance-time">55分钟</view>
-              </view>
-              <image class="praise" src="http://paokucoin.com/img/backgroup/zan-s@2x.png"></image>
-            </view>
-          </view>
-        </view>
+        
       </view>
     </view>
   </view>
   <!-- 私信助手 -->
-  <view class="privateletter">
+  <view class="privateletter" style="display:none">
     <!-- 自动推送 -->
     <view class="self-motion">
-      <image class="robot" src="http://paokucoin.com/img/backgroup/sxzs@2x.png"></image>
+      <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
       <view class="textandtime">
         <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
         <view class="robot-time">2018年6月1日 12:01</view>
       </view>
     </view>
     <view class="demand">
-      <image class="robot" src="http://paokucoin.com/img/backgroup/sxzs@2x.png"></image>
+      <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
       <view class="textandtime">
       <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
       <view class="robot-time">5分钟前</view>

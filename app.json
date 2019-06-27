@@ -2,6 +2,7 @@
 {
   "pages": [ 
     "pages/index/index",
+    "pages/shop/notice/notification/notification",
     "pages/discount/transfer/transfer",
     "pages/lottery/lottery/lottery",
     "pages/changce/merch/homepage",
@@ -11,9 +12,9 @@
     "pages/contribute/record/record",
     "pages/contribute/withdraw/withdraw",
     "pages/discount/discount/discount",
-"pages/discount/zkbaccount/zkbaccount",
+    "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
-    "pages/shop/notice/notification/notification",
+    
    "pages/member/bind/index",
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
