@@ -5,6 +5,7 @@
     "pages/index/index",
     "pages/member/bind/index",
     "pages/index/huodong",
+    "pages/shop/notice/notification/notification",
     "pages/discount/transfer/transfer",
     "pages/lottery/lottery/lottery",
     "pages/changce/merch/homepage",
@@ -16,8 +17,6 @@
     "pages/discount/discount/discount",
     "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
-    "pages/shop/notice/notification/notification",
-   
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
     "pages/helphand/friendhelp/friendhelp",

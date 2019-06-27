@@ -1,19 +1,62 @@
+var a, e, i = getApp(),
+  s = i.requirejs("core");
+var f = getApp();
+var useropenid = ''
+var t = getApp(), e = t.requirejs("core"), a = t.requirejs("wxParse/wxParse");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    mask:1,
+    globalimg: i.globalData.appimg,
+    color: '#01d7a1',
+    underline: 0,
+    color1: '#333333',
+    informtitle:'',
+    informlist:[],
+    praise:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var a = this
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid
+    s.get("shop.notice.get_list",{
+      page : 1,
+      openid : useropenid
+    },function(e){
+      console.log(e)
+      var d = e.notice
+      if(e.list.length>0){
+        a.wxParse("wxParseData", "html", e.detail, a, "5"), r.setData({
+          mask:0,
+          informlist:e.list,
+        })
+      }
 
+    })
   },
-
+  assistant:function(){
+    var _that = this
+    _that.setData({
+      color:'#333333',
+      color1:'#01d7a1',
+      underline:1
+    })
+  },
+  inform:function(){
+    var _that = this
+    _that.setData({
+      color: '#01d7a1',
+      color1: '#333333', 
+      underline: 0
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
