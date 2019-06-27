@@ -1,33 +1,33 @@
-function t(t, e, a) {
-    return e in t ? Object.defineProperty(t, e, {
-        value: a,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : t[e] = a, t;
-}
+ function t(t, e, a) {
+        return e in t ? Object.defineProperty(t, e, {
+            value: a,
+            enumerable: !0,
+            configurable: !0,
+            writable: !0
+        }) : t[e] = a, t;
+    }
 
 var e, a, o = getApp(), s = o.requirejs("core"), i = (o.requirejs("icons"), o.requirejs("foxui")), n = o.requirejs("biz/diypage"), r = o.requirejs("biz/diyform"), c = o.requirejs("biz/goodspicker"), d = o.requirejs("jquery"), l = o.requirejs("wxParse/wxParse"), u = 0, g = o.requirejs("biz/selectdate");
-var merchid= '', reurl='',sharemid='',goodsid=''
+var merchid = '', reurl = '', sharemid = '', goodsid = ''
 var f = getApp()
 var productid = ''
-var shareprice =''
-var clickprice=''
-var commission=''
-var reward=''
-var openid=''
-var sessionKey=""
-var iv=""
-var encryptedData=""
-var phoneerror=""
-var goodImg=""
+var shareprice = ''
+var clickprice = ''
+var commission = ''
+var reward = ''
+var openid = ''
+var sessionKey = ""
+var iv = ""
+var encryptedData = ""
+var phoneerror = ""
+var goodImg = ""
 var version = 1
 // var phonetype=""
 // 当前登录人的openid
 var f = getApp();
-var userinfo =f.getCache('userinfo');
+var userinfo = f.getCache('userinfo');
 console.log(userinfo)
-openid=userinfo.openid
+openid = userinfo.openid
 console.log(openid)
 console.log('000')
 Page((a = {
@@ -70,17 +70,17 @@ Page((a = {
         optionid: 0,
         audios: {},
         audiosObj: {},
-        merchid:'',
+        merchid: '',
         defaults: {
             id: 0,
             merchid: 0
         },
         buyType: "",
-        rewardDis:'none',
-        notaddDis:'none',
-        addDis:'none',
-        shareDis:'block',
-        listDis:'block',
+        rewardDis: 'none',
+        notaddDis: 'none',
+        addDis: 'none',
+        shareDis: 'block',
+        listDis: 'block',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -109,7 +109,7 @@ Page((a = {
         nav: 0,
         giftid: "",
         limits: !0,
-        phonetype:'',
+        phonetype: '',
         modelShow: !1,
         showgoods: !0
     }, t(e, "timer", 0), t(e, "lasttime", 0), t(e, "hour", "-"), t(e, "min", "-"), t(e, "sec", "-"),
@@ -201,9 +201,9 @@ Page((a = {
             urls: t.currentTarget.dataset.urls
         });
     },
-    
+
     getPhoneNumber: function (e) {
-        var p=this
+        var p = this
         console.log(e.detail.errMsg)
         console.log(e.detail.iv)
         console.log(e.detail.encryptedData)
@@ -218,7 +218,7 @@ Page((a = {
         } else {
             //同意授权
             console.log('用户同意授权')
-             p.setData({
+            p.setData({
                 closeBtn: !0
             })
             s.get("member/index/add_mobile", {
@@ -229,25 +229,25 @@ Page((a = {
                 console.log(t)
             })
         }
-       
+
     },
 
     // 进店逛逛
-    goStore:function(){
+    goStore: function () {
         console.log(merchid)
-        if(merchid==0){
+        if (merchid == 0) {
             wx.switchTab({
                 url: '/pages/index/index',
             })
-        }else{
+        } else {
             wx.navigateTo({
                 url: '/pages/changce/merch/detail?id=' + merchid,
             })
         }
-       
+
     },
     getDetail: function (t) {
-       
+
         console.log(phoneerror)
         var e = this, a = parseInt(Date.now() / 1e3);
         e.setData({
@@ -256,19 +256,19 @@ Page((a = {
             id: t.id
         }, function (t) {
             console.log(t)
-           var smart_title = t.goods.title.slice(0,15);
-            merchid=t.goods.merchid
-            reward=t.goods.reward
+            var smart_title = t.goods.title.slice(0, 15);
+            merchid = t.goods.merchid
+            reward = t.goods.reward
             console.log(reward)
-            if(reward==0){
+            if (reward == 0) {
                 // 没有赏金任务
                 e.setData({
                     addDis: 'block',
-                    rewardDis:'none',
+                    rewardDis: 'none',
                 })
-               
-                
-            }else{
+
+
+            } else {
                 // 有赏金任务
                 // 未添加手机号
                 if (phoneerror == 1) {
@@ -285,16 +285,16 @@ Page((a = {
                 }
                 e.setData({
                     rewardDis: 'block',
-                    shareprice:  t.goods.share_price,
-                    clickprice:  t.goods.click_price,
-                    commission:  t.goods.commission,
+                    shareprice: t.goods.share_price,
+                    clickprice: t.goods.click_price,
+                    commission: t.goods.commission,
                 })
             }
             console.log(version)
-            if(version==0){
+            if (version == 0) {
                 e.setData({
                     rewardDis: 'none',
-                    shareDis:'none'
+                    shareDis: 'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -323,7 +323,7 @@ Page((a = {
                 phonenumber: t.goods.phonenumber,
                 showDate: t.goods.showDate,
                 scope: t.goods.scope,
-                merchid:t.goods.merchid
+                merchid: t.goods.merchid
             }), t.goods.packagegoods && e.package(), l.wxParse("wxParseData", "html", t.goods.content, e, "0"),
                 l.wxParse("wxParseData_buycontent", "html", t.goods.buycontent, e, "0"), e.setData({
                     show: !0,
@@ -335,7 +335,7 @@ Page((a = {
                     navbar: t.goods.navbar,
                     labels: t.goods.labels
                 }), console.log(t.goods), wx.setNavigationBarTitle({
-              title: smart_title || "商品详情"
+                    title: smart_title || "商品详情"
                 }), u = t.goods.hasoption, d.isEmptyObject(t.goods.dispatchprice) || "string" == typeof t.goods.dispatchprice ? e.setData({
                     dispatchpriceObj: 0
                 }) : e.setData({
@@ -564,29 +564,29 @@ Page((a = {
         c.number(t, e);
     },
     onLoad: function (t) {
-        var k=this
+        var k = this
         s.get("version/appversion", {
         }, function (eve) {
-          console.log(eve)
-          if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
-            version = 1;
-          }
-          var reg = /test/;
-          if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版
-            version = 0;
-            k.setData({
-            //   rewardDis:'none',
-              listDis:'none'
-            })
-          }
+            console.log(eve)
+            if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+                version = 1;
+            }
+            var reg = /test/;
+            if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版
+                version = 0;
+                k.setData({
+                    //   rewardDis:'none',
+                    listDis: 'none'
+                })
+            }
         })
 
         s.get("goods/poster/sharegoodsimg", {
-           id: t.id,
+            id: t.id,
         }, function (a) {
             console.log(a)
-            goodImg=a.url
-            })
+            goodImg = a.url
+        })
         // console.log(reward)
         wx.login({
             success: function (a) {
@@ -600,43 +600,43 @@ Page((a = {
             }
         })
         var e = this;
-            s.get("member/index/get_mobile", {
+        s.get("member/index/get_mobile", {
             openid: openid,
         }, function (t) {
-        console.log(t)
-        phoneerror=t.error
-        if(t.error==1){
-            console.log("未添加手机号")
-            // e.setData({
-            //     notaddDis: "block",
-            //     addDis: 'none'
-            // })
-            // // 有赏金
-            // if(reward==1){
-            // e.setData({
-            //     notaddDis:"block",
-            //     addDis:'none'
-            // })
-            // }else{
-            //     // 无赏金
-            //     e.setData({
-            //         notaddDis: "none",
-            //         addDis: 'block'
-            //     })
-            // }
-        }else{
-            console.log("已添加手机号")
-                  e.setData({
+            console.log(t)
+            phoneerror = t.error
+            if (t.error == 1) {
+                console.log("未添加手机号")
+                // e.setData({
+                //     notaddDis: "block",
+                //     addDis: 'none'
+                // })
+                // // 有赏金
+                // if(reward==1){
+                // e.setData({
+                //     notaddDis:"block",
+                //     addDis:'none'
+                // })
+                // }else{
+                //     // 无赏金
+                //     e.setData({
+                //         notaddDis: "none",
+                //         addDis: 'block'
+                //     })
+                // }
+            } else {
+                console.log("已添加手机号")
+                e.setData({
                     notaddDis: "none",
                     addDis: 'block'
                 })
-        }
-        } )
+            }
+        })
         console.log(t)
         // 商品id
-       productid = t.id
+        productid = t.id
         console.log(productid)
-        
+
         s.get("black", {}, function (t) {
             t.isblack && wx.showModal({
                 title: "无法访问",
@@ -725,7 +725,7 @@ Page((a = {
                 });
             }, 3e3);
         }, function () {
-            "" ==o.getCache("userinfo") && o.getUserInfo(); 
+            "" == o.getCache("userinfo") && o.getUserInfo();
         });
     },
     show_cycelbuydate: function () {
@@ -772,17 +772,17 @@ Page((a = {
         }), wx.getSetting({
             success: function (e) {
                 var a = e.authSetting["scope.userInfo"];
-                if(a!=undefined && a && a!=''){
-                  t.setData({
-                    limits: a
-                  });
-                }else{
-                  reurl = '/pages/goods/detail/index?id=' + goodsid + '&sharemid=' + sharemid + '&mid=' + sharemid;
-                  wx.redirectTo({
-                    url: "/pages/message/auth/index?refrom=goods&id=" + goodsid + "&mid=" + sharemid + "&reurl=" + reurl
-                  })
+                if (a != undefined && a && a != '') {
+                    t.setData({
+                        limits: a
+                    });
+                } else {
+                    reurl = '/pages/goods/detail/index?id=' + goodsid + '&sharemid=' + sharemid + '&mid=' + sharemid;
+                    wx.redirectTo({
+                        url: "/pages/message/auth/index?refrom=goods&id=" + goodsid + "&mid=" + sharemid + "&reurl=" + reurl
+                    })
                 }
-               
+
             }
         });
     },
@@ -878,10 +878,10 @@ Page((a = {
         wx.navigateTo({
             url: "/pages/goods/poster/poster?id=" + this.data.uid
         });
-       
+
     },
     // 微信分享
-    shareweixin: function() {
+    shareweixin: function () {
         console.log('用户点击微信分享')
         s.get("myown/goodshare/share", {
             goodid: productid,
