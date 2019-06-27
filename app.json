@@ -1,7 +1,6 @@
 
 {
   "pages": [ 
-
     "pages/index/index",
     "pages/discount/transfer/transfer",
     "pages/lottery/lottery/lottery",
