@@ -33,15 +33,15 @@
                 <view class="particulars">详情</view>
                 <view class="distance-time">{{item.createtime}}</view>
               </view>
-              <image class="praise" wx:if="{{item.is_zan==1||praise==1}}" src="{{globalimg}}/zan-s@2x.png"></image>
-              <image class="praise" wx:if="{{item.is_zan==0||praise==0}}" src="{{globalimg}}/zan-n@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==1}}" style="display:{{displayzhuang}}" bindtap="zan_tap1" src="{{globalimg}}/zan-s@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==0}}" style="display:{{displayzhuang1}}" bindtap="zan_tap" src="{{globalimg}}/zan-n@2x.png"></image>
             </view>
           </view>
         </view>
-        
       </view>
     </view>
   </view>
+
   <!-- 私信助手 -->
   <view class="privateletter" style="display:none">
     <!-- 自动推送 -->

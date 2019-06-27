@@ -2,9 +2,7 @@ var a, e, i = getApp(),
   s = i.requirejs("core");
 var f = getApp();
 var useropenid = ''
-var t = getApp(), e = t.requirejs("core"), a = t.requirejs("wxParse/wxParse");
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,7 +14,8 @@ Page({
     color1: '#333333',
     informtitle:'',
     informlist:[],
-    praise:0,
+    displayzhuang:'',
+    displayzhuang1:'',
   },
 
   /**
@@ -33,7 +32,7 @@ Page({
       console.log(e)
       var d = e.notice
       if(e.list.length>0){
-        a.wxParse("wxParseData", "html", e.detail, a, "5"), r.setData({
+       a.setData({
           mask:0,
           informlist:e.list,
         })
@@ -47,6 +46,16 @@ Page({
       color:'#333333',
       color1:'#01d7a1',
       underline:1
+    })
+  },
+  zan_tap:function(){
+    s.get("shop.notice.zan",{
+      openid:useropenid,
+      status:1
+    },function(e){
+      a.setData({
+        praise:1
+      })
     })
   },
   inform:function(){
@@ -98,7 +107,6 @@ Page({
   onReachBottom: function () {
 
   },
-
   /**
    * 用户点击右上角分享
    */

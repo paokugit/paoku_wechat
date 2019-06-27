@@ -61,7 +61,6 @@
               <image class='frame_item' style='opacity:{{color[3]}}' src='{{images[3]}}'></image>
             </view>
           </view>
-
           <view class='frame_row'>
           <view class="cc">
               <view class="dd">
