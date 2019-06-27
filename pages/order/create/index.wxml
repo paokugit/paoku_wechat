@@ -436,7 +436,7 @@
                     
                     <block>
                         <block wx:if="{{list.deductcredit>0}}">
-                            <view style='display:{{condisp}}'>
+                            <view>
                                 <view class="fui-cell">
                                     <text class="text-danger">{{list.deductcredit}}</text>
                                     <view class="fui-cell-label" style="text-align:left;width:auto">卡路里可抵扣
@@ -452,7 +452,7 @@
                    <!-- 折扣宝 -->
                    <block>
                         <block wx:if="{{list.discount>0}}">
-                            <view style='display:{{condisp}}'>
+                            <view>
                                 <view class="fui-cell">
                                     <text class="text-danger">{{list.discount}}</text>
                                     <view class="fui-cell-label" style="text-align:left;width:auto">折扣宝可抵扣

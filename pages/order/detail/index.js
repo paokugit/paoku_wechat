@@ -98,6 +98,11 @@ Page({
             t.get_list();
         });
     },
+    onUnload:function(){
+        wx.navigateTo({
+            url: '/pages/order/index',
+        })
+    },
     onShareAppMessage: function() {
         return t.onShareAppMessage();
     }

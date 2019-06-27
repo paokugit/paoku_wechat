@@ -84,3 +84,20 @@
         </view>
     </block>
 </block>
+<!-- 每日免费兑商品 -->
+<!-- <view class='free_box'>
+    <view class='img_box'>
+        <view class='free-tit'>
+            <image src='{{globalimg}}/mrd@2x.png'></image>
+        </view>
+    </view>
+    <view class='product_box'>
+        <view class='product-item'>
+            <view class='item-img'>
+                <image mode="aspectFit" src='{{globalimg}}/moreuser@2x.png'></image>
+            </view>
+            <view class='item-info'></view>
+        </view>
+    </view>
+</view> -->
+<!-- 每日免费兑商品 -->
