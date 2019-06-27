@@ -94,7 +94,7 @@ button::after {
     z-index: 2
 }
 .get_code{
-     width: 200rpx;
+     width: 240rpx;
     height: 60rpx;
     line-height: 60rpx;
     background: transparent;
