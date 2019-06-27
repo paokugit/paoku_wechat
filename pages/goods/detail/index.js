@@ -9,6 +9,7 @@ function t(t, e, a) {
 
 var e, a, o = getApp(), s = o.requirejs("core"), i = (o.requirejs("icons"), o.requirejs("foxui")), n = o.requirejs("biz/diypage"), r = o.requirejs("biz/diyform"), c = o.requirejs("biz/goodspicker"), d = o.requirejs("jquery"), l = o.requirejs("wxParse/wxParse"), u = 0, g = o.requirejs("biz/selectdate");
 var merchid= '', reurl='',sharemid='',goodsid=''
+var f = getApp()
 var productid = ''
 var shareprice =''
 var clickprice=''
@@ -31,6 +32,7 @@ console.log(openid)
 console.log('000')
 Page((a = {
     data: (e = {
+        globalimg: f.globalData.appimg,
         diypages: {},
         usediypage: !1,
         specs: [],
