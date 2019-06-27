@@ -1,8 +1,8 @@
 
 {
   "pages": [ 
-    "pages/shop/notice/notification/notification",
     "pages/index/index",
+    "pages/shop/notice/notification/notification",
     "pages/member/bind/index",
     "pages/index/huodong",
     "pages/discount/transfer/transfer",
@@ -44,8 +44,6 @@
     "pages/message/auth/index",
     "pages/helphand/powerlist/powerlist",
     "pages/member/recommend/recommend",
-  
- 
     "pages/sportdiary/sportdiary/sportdiary",
     "pages/goods/detail/index",
     "pages/member/balance/balance",
