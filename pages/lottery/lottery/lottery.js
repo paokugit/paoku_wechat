@@ -4,13 +4,11 @@ var t = getApp(),
 var f = getApp();
 var useropenid = ''
 const app = getApp()
-
 //计数器
 var interval = null;
-
 //值越大旋转时间越长  即旋转速度
 var intime = 50;
-// console.log(t.globalData.appimg)
+var userid=""
 Page({
 
   /**
@@ -54,6 +52,8 @@ Page({
     var _that = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
+      userid=userinfo.id
+      console.log(useropenid,userid)
     //调用接口
     a.get("game.reward", {
       openid: useropenid,
@@ -268,20 +268,20 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    console.log(res.target.dataset.gnum)
-    var that = this;
-    return {
-      title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
-      path: '/pages/index/index?id=' + that.data.scratchId,
-      success: function (res) {
-        // 转发成功
-        that.shareClick();
-      },
-      fail: function (res) {
-        // 转发失败
-      }
+    onShareAppMessage: function (res) {
+        // return s.onShareAppMessage();
+        var that = this;
+        return {
+            title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
+            path: '/pages/index/index?scene=' + userid,
+            success: function (res) {
+                // 转发成功
+                that.shareClick();
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     }
-  }
-},
+    },
 )
