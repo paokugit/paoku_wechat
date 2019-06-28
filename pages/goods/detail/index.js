@@ -294,7 +294,7 @@ Page((a = {
             if (version == 0) {
                 e.setData({
                     rewardDis: 'none',
-                    shareDis: 'none'
+                    // shareDis: 'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -682,17 +682,6 @@ Page((a = {
                 console.log('用户点击详情页')
             })
         }
-        // console.log(sharemid)
-        // console.log(sharemid)
-        // goodsid = t.id;
-        // s.get("myown/goodshare/click", {
-        //     goodid: goodsid,
-        //     openid: openid,
-        //     share_id: sharemid
-        // }, function (e) {
-        //     console.log(e)
-        //     console.log('用户点击详情页')
-        // })
         o.setCache("sharemid", sharemid, 7200 * 24);
         this.setData({
             id: t.id
@@ -807,12 +796,6 @@ Page((a = {
     getIndex: function (t, e) {
         return r.getIndex(t, e);
     },
-    // onShareAppMessage: function () {
-    //     return this.setData({
-    //         closeBtn: !1
-    //     }), s.onShareAppMessage("/pages/goods/detail/index?id=" + this.data.options.id + "&mid=" + sharemid, this.data.goods.title);
-    // },
-
     onShareAppMessage: function (res) {
         var that = this;
         that.setData({

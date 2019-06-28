@@ -48,6 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      console.log("页面加载")
     this.loadAnimation();
     var _that = this
     var userinfo = f.getCache('userinfo');
@@ -271,9 +272,13 @@ Page({
     onShareAppMessage: function (res) {
         // return s.onShareAppMessage();
         var that = this;
+        that.setData({
+            mask: 0
+        })
         return {
             title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
             path: '/pages/index/index?scene=' + userid,
+            imageUrl: "https://paokucoin.com/img/backgroup/lottary.png",
             success: function (res) {
                 // 转发成功
                 that.shareClick();
