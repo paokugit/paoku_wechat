@@ -1,21 +1,29 @@
+<wxs src="subutil.wxs" module="tools" />
 <view class='lottaryBox' wx:if="{{mask==0}}">
   <view class='lottary-box'>
     <view class='zhongjiang'>
       <image src='{{globalimg}}/zhongjiang.png'></image>
+      <view class="ceshi">
+        <image class="guize" src="{{globalimg}}/regulation.png"></image>
+      </view>
     </view>
     <view class='lottary-name'>
       <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="1000">
         <block wx:for="{{msgList}}" wx:key="">
-          <swiper-item>
-            <view class="swiper_item">{{item.nickname}}抽中了{{item.num}}折扣宝</view>
+          <swiper-item style="display:flex;align-items: center;justify-content: center;">
+            <view class="mingziha">{{tools.sub(item.nickname)}}</view>
+            <view class="swiper_item">抽中了{{item.num}}折扣宝</view>
           </swiper-item>
         </block>
       </swiper>
     </view>
     <!-- 转盘 -->
     <view class='container-out'>
+      <view class="daheng">
+        <view class="kaluliyu">卡路里余额 {{kaluliyu}}</view>
+      </view>
       <!-- 外框 -->
-      <image style='width:650rpx;height:660rpx' src='http://paokucoin.com/img/backgroup/jukuang.png'></image>
+      <image style='width:650rpx;height:700rpx' src='{{globalimg}}/hahakuang.png'></image>
       <!-- 里面的图片 -->
       <view class="container-in">
         <!-- 遍历 -->
@@ -47,41 +55,41 @@
           <view class='frame_row'>
             <view class="cc">
               <view class="dd">
-                <view class="frame_num">{{blocknum[3].reward4}}</view>
+                <view class="frame_num">{{blocknum[7].reward8}}</view>
                 <view class="frame_text">折扣宝</view>
               </view>
               <image class='frame_item' style='opacity:{{color[7]}}' src='{{images[7]}}'></image>
             </view>
-              <image class='frame_item' src='{{btnconfirm}}' bindtap='{{clickLuck}}' data-gratis="{{gratis}}"></image>
+            <image class='frame_item' src='{{btnconfirm}}' bindtap='{{clickLuck}}' data-zhi="{{kaluliyu}}" data-gratis="{{gratis}}"></image>
             <view class="cc">
               <view class="dd">
-                <view class="frame_num">{{blocknum[4].reward5}}</view>
+                <view class="frame_num">{{blocknum[3].reward4}}</view>
                 <view class="frame_text">折扣宝</view>
               </view>
               <image class='frame_item' style='opacity:{{color[3]}}' src='{{images[3]}}'></image>
             </view>
           </view>
           <view class='frame_row'>
-          <view class="cc">
-              <view class="dd">
-                <view class="frame_num">{{blocknum[5].reward6}}</view>
-                <view class="frame_text">折扣宝</view>
-              </view>
-            <image class='frame_item' style='opacity:{{color[6]}}' src='{{images[6]}}'></image>
-            </view>
             <view class="cc">
               <view class="dd">
                 <view class="frame_num">{{blocknum[6].reward7}}</view>
                 <view class="frame_text">折扣宝</view>
               </view>
-            <image class='frame_item' style='opacity:{{color[5]}}' src='{{images[5]}}'></image>
+              <image class='frame_item' style='opacity:{{color[6]}}' src='{{images[6]}}'></image>
             </view>
             <view class="cc">
               <view class="dd">
-                <view class="frame_num">{{blocknum[7].reward8}}</view>
+                <view class="frame_num">{{blocknum[5].reward6}}</view>
                 <view class="frame_text">折扣宝</view>
               </view>
-            <image class='frame_item' style='opacity:{{color[4]}}' src='{{images[4]}}'></image>
+              <image class='frame_item' style='opacity:{{color[5]}}' src='{{images[5]}}'></image>
+            </view>
+            <view class="cc">
+              <view class="dd">
+                <view class="frame_num">{{blocknum[4].reward5}}</view>
+                <view class="frame_text">折扣宝</view>
+              </view>
+              <image class='frame_item' style='opacity:{{color[4]}}' src='{{images[4]}}'></image>
             </view>
           </view>
         </view>
@@ -122,4 +130,20 @@
       <image src='{{globalimg}}/guanbi.png'></image>
     </view>
   </view>
+</view>
+<view class="textmask" wx:if="{{lsdas==1}}">
+  <view class="texttext">
+    <view class="tuijianrennum">
+      <view class="tuinum">今日新增推荐{{gratis}}人</view>
+    </view>
+    <view class="hahaview">
+      <view class="zanum">
+        <view class="jiahao">+</view>
+        <view class="zanshu">{{gratis}}</view>
+        <view class="changtext">次抽奖机会</view>
+      </view>
+    </view>
+  </view>
+  <view class="buttonmask" bindtap="buttonmask"></view>
+  <image class="choujiangimg" src="{{globalimg}}/immediately .png"></image>
 </view>

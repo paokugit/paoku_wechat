@@ -10,7 +10,7 @@ Page({
         var r = this;
         r.setData({
             id: i.id
-        }), t.url(i), e.get("shop/notice/detail", {
+        }), t.url(i), e.get("shop.notice.detail", {
             id: this.data.id
         }, function(t) {
             var e = t.notice;

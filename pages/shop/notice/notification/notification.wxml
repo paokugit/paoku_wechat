@@ -1,17 +1,17 @@
-<view class="all-box" style="height:{{heightdiao}}">
+<view class="all-box">
 <!-- 头部的显示 -->
   <view class="head-box">
     <view class="inform" bindtap="inform">
       <view class="inform-text" style="color:{{color}}">系统通知</view>
-      <view class="inform-num">{{informlist.length}}</view>
+      <view class="inform-num" style="display:{{xiback}}"><view class="textdd">{{weidux}}</view></view>
       <view class="underline" wx:if="{{underline==0}}"></view>
     </view>
     <view class="assistant" bindtap="assistant">
       <view class="assistant-text" style="color:{{color1}}">私信助手</view>
-      <view class="assistant-num"></view>
+      <view class="assistant-num" style="display:{{siback}}"><view class="sitextdd">7</view></view>
       <view class="underline2" wx:if="{{underline==1}}"></view>
     </view>
-  </view>
+  </view> 
   <!-- 没有数据 -->
   <view class="no-inform" wx:if="{{mask==1}}">
     <image class="ibform-img" src="{{globalimg}}/zwxx@2x.png"></image>
@@ -23,27 +23,28 @@
         <view class="inform-li">
           <image class="smallbell" src="{{globalimg}}/touxiang01@2x.png"></image>
           <view class="text_all">
-            <view class="headtitle">{{item.title}}</view>`
-            <view class="text-content">{{item.detail}}</view>
-            <view class="inform-img">
+            <view class="headtitle" data-id="{{item.id}}" bindtap="tiaozhuan">{{item.title}}</view>
+            <view style="display:none">
+            <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+            </view>
+            <view class="inform-img" data-id="{{item.id}}" bindtap="tiaozhuan">
               <image class="img-img" src="{{item.thumb}}"></image>
             </view>
             <view class="particulars-box">
               <view class="particulars_distance">
-                <view class="particulars">详情</view>
+                <view class="particulars" data-id="{{item.id}}" bindtap="tiaozhuan">详情</view>
                 <view class="distance-time">{{item.createtime}}</view>
               </view>
-              <image class="praise" wx:if="{{item.is_zan==1}}" style="display:{{displayzhuang}}" bindtap="zan_tap1" src="{{globalimg}}/zan-s@2x.png"></image>
-              <image class="praise" wx:if="{{item.is_zan==0}}" style="display:{{displayzhuang1}}" bindtap="zan_tap" src="{{globalimg}}/zan-n@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==1}}" data-id="{{item.id}}" bindtap="zan_tap1" src="{{globalimg}}/zan-s@2x.png"></image>
+              <image class="praise" wx:if="{{item.is_zan==0}}" data-id="{{item.id}}" bindtap="zan_tap" src="{{globalimg}}/zan-n@2x.png"></image>
             </view>
           </view>
         </view>
       </view>
     </view>
   </view>
-
   <!-- 私信助手 -->
-  <view class="privateletter" style="display:none">
+  <view class="privateletter" wx:if="{{mask==2}}">
     <!-- 自动推送 -->
     <view class="self-motion">
       <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
@@ -52,11 +53,11 @@
         <view class="robot-time">2018年6月1日 12:01</view>
       </view>
     </view>
-    <view class="demand">
+    <view class="demand" wx:for="{{sixilist}}"  wx:for-index="key" wx:key="{{key}}">
       <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
       <view class="textandtime">
-      <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
-      <view class="robot-time">5分钟前</view>
+      <view class="robot-text">{{item.content}}</view>
+      <view class="robot-time">{{item.createtime}}</view>
       </view>
     </view>
   </view>

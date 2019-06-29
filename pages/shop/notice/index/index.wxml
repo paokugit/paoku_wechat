@@ -14,7 +14,7 @@
                 <view class="angle"></view>
             </view>
         </view>
-    </navigator>
+    </navigator>  
 </template>
 <block>
     <block wx:if="{{!show}}">

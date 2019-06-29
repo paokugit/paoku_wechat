@@ -1,0 +1,25 @@
+/* pages/shop/notice/notification/detail.wxss */
+@import "../../../../utils/wxParse/wxParse.wxss";
+.allbox{
+  width: 96%;
+  height: 100%;
+  background: #fff;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+.fui-article{
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  height: 80rpx;
+}
+.subtitle{
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #b8b8b8;
+}

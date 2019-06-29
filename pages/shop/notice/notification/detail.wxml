@@ -1,0 +1,12 @@
+<import src="../../../../utils/wxParse/wxParse.wxml"></import>
+<view class="allbox">
+  <view class="fui-article">
+    <view class="title">{{title}}</view>
+    <view class="subtitle">
+      发布时间 : {{createtime}}
+    </view>
+  </view>
+  <view class="fuwenben">
+    <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+  </view>
+</view>

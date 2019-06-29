@@ -3,10 +3,11 @@
   "pages": [ 
     "pages/index/index",
     "pages/shop/notice/notification/notification",
+    "pages/shop/notice/notification/detail",
+    "pages/lottery/lottery/lottery",
     "pages/member/bind/index",
     "pages/index/huodong",
     "pages/discount/transfer/transfer",
-    "pages/lottery/lottery/lottery",
     "pages/changce/merch/homepage",
     "pages/contribute/contribute/contribute",
     "pages/huiyuan/membercenter/membercenter",
@@ -78,7 +79,6 @@
     "pages/order/create/index",
     "pages/order/store/index",
     "pages/order/store/map",
-   
     "pages/member/info/index",
     "pages/member/favorite/index",
     "pages/member/history/index",

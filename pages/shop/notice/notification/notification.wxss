@@ -1,7 +1,9 @@
+@import "../../../../utils/wxParse/wxParse.wxss";
 .all-box {
   width: 100%;
-  height: auto;
-  background: #fff;
+  height: 100%;
+  background: #f1f1f1;
+  margin-top: 90rpx;
 }
 .head-box {
   width: 100%;
@@ -9,7 +11,11 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #f1f1f1;
+  background: #fcfcfc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 .inform {
   width: 200rpx;
@@ -25,18 +31,21 @@
   display: flex;
   align-items: center;
   position: relative;
+  margin-right: 25rpx;
 }
 .inform-text {
   width: 140rpx;
   height: 100%;
   display: flex;
   align-items: center;
+  margin-left: 15rpx;
 }
 .assistant-text {
   width: 140rpx;
   height: 100%;
   display: flex;
   align-items: center;
+  margin-left: 15rpx
 }
 .inform-num {
   width: 40rpx;
@@ -70,20 +79,20 @@
 
 .underline {
   width: 160rpx;
-  height: 4rpx;
-  background: #7c7;
+  height: 8rpx;
+  background: #01d7a1;
   position: absolute;
-  left: -15rpx;
+  left: 0;
   bottom: 0;
   border-radius: 10rpx;
 }
 
 .underline2 {
   width: 160rpx;
-  height: 4rpx;
-  background: #7c7;
+  height: 8rpx;
+  background: #01d7a1;
   position: absolute;
-  left: -15rpx;
+  left: 0;
   bottom: 0;
 }
 
@@ -111,25 +120,27 @@
   width: 96%;
   height: auto;
   padding: 0 2% 0 2%;
+  background: #fff;
   display: flex;
   border-bottom: 1px solid rgb(243, 243, 243);
 }
 .smallbell{
   width: 80rpx;
   height: 80rpx;
-  margin-top: 20rpx;
+  margin-top: 50rpx;
 }
 .text_all{
   width: 80%;
   height: auto;
   padding: 0 3% 0 3%;
-  
+  margin-top: 20rpx;
 }
 .headtitle{
   font-size: 34rpx;
   color: #333333;
   font-weight: bold;
   margin-top: 20rpx;
+  line-height: 70rpx;
 }
 .text-content{
   margin-top: 15rpx;
@@ -139,12 +150,12 @@
 }
 .inform-img{
   width: 360rpx;
-  height: 230rpx;
+  height: auto;
   margin-top: 10rpx;
 }
 .img-img{
-  width: 360rpx;
-  height: 230rpx;
+  width: 30%;
+  mode:widthFix;
 }
 .particulars-box{
   width: 100%;
@@ -156,19 +167,21 @@
 }
 .particulars_distance{
   position: relative;
-  width: 200rpx;
+  width: 250rpx;
   height: 100%;
 }
 .particulars{
   position: absolute;
   top:30rpx;
   left: 0;
+  font-size: 30rpx;
+  color: #9b9b9b
 }
 .distance-time{
   font-size: 24rpx;
   color: #b8b8b8;
   position: absolute;
-  width: 250rpx;
+  width: 500rpx;
   top:90rpx;
   left: 0;
 }
@@ -179,6 +192,7 @@
 .privateletter{
   width: 100%;
   height: auto;
+  background: #f1f1f1;
 }
 .self-motion{
   width: 100%;
@@ -193,16 +207,17 @@
 }
 .textandtime{
   width: 462rpx;
-  height: 250rpx;
+  height: auto;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  /* background: #fff; */
   margin-left: 20rpx;
   border-radius: 30rpx;
 }
 .robot-text{
-  width: 94%;
-  height: 120rpx;
+  width: auto;
+  height: auto;
+  background: #fff;
   padding: 20rpx 3% 20rpx 3%;
   align-items: center;
   justify-content: center;
@@ -224,6 +239,18 @@
   display: flex;
   margin-top: 30rpx;
 }
-
-
+.textdd{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sitextdd{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 

@@ -2,84 +2,136 @@ var a, e, i = getApp(),
   s = i.requirejs("core");
 var f = getApp();
 var useropenid = ''
+var t = getApp(), j = t.requirejs("core"), p = t.requirejs("wxParse/wxParse");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    mask:1,
+    mask: 1,
     globalimg: i.globalData.appimg,
     color: '#01d7a1',
     underline: 0,
     color1: '#333333',
-    informtitle:'',
-    informlist:[],
-    displayzhuang:'',
-    displayzhuang1:'',
+    informtitle: '',
+    informlist: [],
+    weidux: 0,
+    sixilist: [],
+    sixinw: 0,
+    siback: 'none',
+    xiback: 'none',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var a = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
-    s.get("shop.notice.get_list",{
-      page : 1,
-      openid : useropenid
-    },function(e){
-      console.log(e)
-      var d = e.notice
-      if(e.list.length>0){
-       a.setData({
-          mask:0,
-          informlist:e.list,
-        })
-      }
-
-    })
+    console.log(userinfo);
   },
-  assistant:function(){
+  assistant: function () {
     var _that = this
     _that.setData({
-      color:'#333333',
-      color1:'#01d7a1',
-      underline:1
+      color: '#333333',
+      color1: '#01d7a1',
+      underline: 1,
+      mask: 2
     })
   },
-  zan_tap:function(){
-    s.get("shop.notice.zan",{
-      openid:useropenid,
-      status:1
-    },function(e){
-      a.setData({
-        praise:1
-      })
+  zan_tap: function (e) {
+    var d = e.currentTarget.dataset.id
+    var _that = this
+    s.get("shop.notice.zan", {
+      id: d,
+      openid: useropenid,
+      status: 1
+    }, function (e) {
+
     })
+    this.onShow()
   },
-  inform:function(){
+  zan_tap1: function (e) {
+    var d = e.currentTarget.dataset.id
+    var _that = this
+    s.get("shop.notice.zan", {
+      id: d,
+      openid: useropenid,
+      status: 0
+    }, function (e) {
+
+    })
+    this.onShow()
+  },
+
+  inform: function () {
     var _that = this
     _that.setData({
       color: '#01d7a1',
-      color1: '#333333', 
-      underline: 0
+      color1: '#333333',
+      underline: 0,
+      mask: 0
+    })
+  },
+  tiaozhuan: function (e) {
+    var ss = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/shop/notice/notification/detail?id=' + ss,
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var a = this
+    var hh = []
+    // 私信
+    s.get("shop.notice.email", {
+      openid: useropenid
+    }, function (e) {
+      if (e.result.email > 0) {
+        a.setData({
+          sixilist: e.result.list,
+          sixinw: e.result.email,
+          siback: 'block',
+        })
+      } else {
+        a.setData({
+          sixilist: e.result.list,
+          sixinw: e.result.email,
+          siback: 'none'
+        })
+      }
+    })
+    //系统通知
+    s.get("shop.notice.get_list", {
+      page: 1,
+      openid: useropenid
+    }, function (e) {
+      hh = e.list
+      if (e.notice > 0) {
+        a.setData({
+          mask: 0,
+          informlist: e.list,
+          weidux: e.notice,
+          xiback: 'block',
+        })
+      }else{
+        a.setData({
+          mask: 0,
+          informlist: e.list,
+          weidux: e.notice,
+          xiback: 'none',
+        })
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
