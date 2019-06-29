@@ -150,12 +150,12 @@
 }
 .inform-img{
   width: 360rpx;
-  height: auto;
+  height: 360rpx;
   margin-top: 10rpx;
 }
 .img-img{
-  width: 30%;
-  mode:widthFix;
+  width:  360rpx;
+  height: 360rpx;
 }
 .particulars-box{
   width: 100%;
