@@ -1,6 +1,5 @@
-<view class='merchcode-box'>
-
-
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='merchcode-box' style='margin-top:{{nvabarData.height}}px'>
  <view class='zkb-box' bindtap='zkbbtn'>
         <image src='{{globalimg}}/zhekoubaobg@2x.png'></image>
         <view class='zkb-text-box'>

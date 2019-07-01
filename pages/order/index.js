@@ -25,6 +25,7 @@ Page({
             status: t.data.status,
             merchid: 0
         }, function(e) {
+            console.log(e)
             0 == e.error ? (t.setData({
                 loading: !1,
                 show: !0,

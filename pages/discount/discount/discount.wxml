@@ -1,4 +1,5 @@
-<view class='discount-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='discount-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='discount-top'>
         <!-- 扫码付 -->
         <view class='scan-box' bindtap='getScancode'>

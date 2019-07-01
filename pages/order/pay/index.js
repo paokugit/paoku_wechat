@@ -1,6 +1,7 @@
 var t = getApp(), e = t.requirejs("core"), o = t.requirejs("foxui");
 var goodsid = '', sharemid = t.getCache("sharemid");
 var errormessage=""
+var orderId=""
 Page({
     data: {
         icons: t.requirejs("icons"),
@@ -18,6 +19,7 @@ Page({
         }), t.url(e);
         console.log("lalala")
         console.log(e)
+        orderId = e.id
     //   e.success == 1 ? this.setData({
     //     success: !0
     //   }):''
@@ -109,6 +111,31 @@ Page({
         wx.navigateTo({
             url: '/pages/changce/merch/detail?id='+10,
         })
+    },
+    
+    onUnload: function () {
+        // wx.switchTab({
+        //     url: '/pages/discount/discount/discount',
+        // })
+        wx.navigateTo({
+            url: '/pages/order/detail/index?id='+orderId
+        })
+        console.log('监听页面卸载111');
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '您还有订单未支付',
+        //     success:function(res){
+        //         if(res.cancel){
+        //             // 取消
+
+        //         }else{
+        //             // 确定
+        //             wx.navigateTo({
+        //                 url: '/pages/order/index?status='+0,
+        //             })
+        //         }
+        //     }
+        // })
     },
 //    查看奖励
     rewardBtn: function() {

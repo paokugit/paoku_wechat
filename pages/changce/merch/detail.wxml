@@ -1,4 +1,5 @@
-<view class="page">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page" style='margin-top:{{nvabarData.height}}px'>
   <view class='detail-hard' style="{{merch.storebg?'background-image:url('+merch.storebg+')':'background:#333333'}}">
     <view class="fui-list noclick">
       <view class="fui-list-media">

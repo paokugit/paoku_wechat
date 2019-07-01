@@ -12,6 +12,11 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        nvabarData: {
+            showCapsule: 1, 
+            title: '收付款', 
+            height: i.globalData.height * 2 + 20,
+        },
         caloriecode: '',
         calorieurl: ''
     },
@@ -155,9 +160,9 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-      wx.switchTab({
-        url: '/pages/discount/discount/discount',
-      })
+    //   wx.switchTab({
+    //     url: '/pages/discount/discount/discount',
+    //   })
       console.log('监听页面卸载');
     },
 

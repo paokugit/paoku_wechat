@@ -14,6 +14,12 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '折扣宝',
+            height: i.globalData.height * 2 + 20,
+        },
         type: 1,
         isopen: !1,
         page: 1,

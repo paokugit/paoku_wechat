@@ -14,7 +14,7 @@
     "pages/contribute/explain/explain",
     "pages/contribute/record/record",
     "pages/contribute/withdraw/withdraw",
-    "pages/discount/discount/discount",
+   
     "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
     "pages/changce/merch/businesspictures",
@@ -34,13 +34,12 @@
     "pages/exclusive/exclusive",
     "pages/discount/zkbdiscount/zkbdiscount",
     "pages/discount/klldiscount/klldiscount",
-    "pages/discount/caloriecode/caloriecode",
+   
     "pages/discount/mingxi/mingxi",
     "pages/discount/zkbrechange/zkbrechange",
     "pages/commission/down/index",
     "pages/commission/down/fandetails",
     "pages/discount/resuccess/resuccess",
-    "pages/huiyuan/openmember/openmember",
     "pages/helphand/helpshare/helpshare",
     "pages/message/auth/index",
     "pages/helphand/powerlist/powerlist",
@@ -123,7 +122,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#999999",

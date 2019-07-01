@@ -1,4 +1,5 @@
-<view class='record_box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='record_box' style='margin-top:{{nvabarData.height}}px'>
     <view class='record-con'>
         <view class='record-item' wx:for="{{list}}" wx:key="{{index}}">
             <view class='item-left'>

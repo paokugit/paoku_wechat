@@ -1,4 +1,5 @@
-<view class='klldiscount-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='klldiscount-box' style='margin-top:{{nvabarData.height}}px'>
     <view class="marquee">
         <view class="content">
             <text>{{text}}</text>

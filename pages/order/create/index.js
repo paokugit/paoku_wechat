@@ -298,6 +298,7 @@ Page({
                     submit: !1
                 }), 0 == t.error ? (t.couponid_id == 2 ?
                   wx.navigateTo({
+                      
                     url: "/pages/order/pay/index?id=" + t.orderid + '&success=1'
                   })
                 :wx.navigateTo({

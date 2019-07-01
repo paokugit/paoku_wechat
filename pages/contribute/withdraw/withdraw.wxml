@@ -1,4 +1,6 @@
-<view class='rechange_box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='rechange_box' style='margin-top:{{nvabarData.height}}px'>
+<view class='withdraw-explain'>提现收取3%支付通道手续费,实际到账金额减去3%</view>
     <view class='rechange-con'>
         <view class='kll-balance-box'>
             <!-- <view class='kll-img'>

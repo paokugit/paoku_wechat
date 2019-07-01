@@ -1,4 +1,5 @@
-<view class='conBox'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
 <!-- 好友捐赠outerbox-开始 -->
 <view class='outerBox'>
     <view class='helplist help_center' >
