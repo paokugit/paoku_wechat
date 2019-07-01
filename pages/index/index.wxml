@@ -1,4 +1,5 @@
-<view class='indexBox'>
+
+<view class='indexBox' >
     <view class="index-banner-box">
         <!-- banner背景图 -->
         <image src='{{ globalimg}}/indexbanner.png'></image>

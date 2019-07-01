@@ -1,5 +1,7 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarBackgroundColor": "#ebceb0",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "达人中心",

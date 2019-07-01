@@ -1,4 +1,5 @@
-<view class='user_box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='user_box' style='margin-top:{{nvabarData.height}}px'>
     <view class='user-info-box'>
         <view class='info-detail'>
             <view class='avatar-img'>

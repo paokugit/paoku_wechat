@@ -1,8 +1,8 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarBackgroundColor": "#29c8bc",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "好友捐赠",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light"
 }

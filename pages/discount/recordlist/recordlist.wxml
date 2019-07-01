@@ -1,4 +1,5 @@
-<view class='record-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='record-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='record-header'>共查询到{{recordlist.total}}笔收款,累计{{totalmoney}}元</view>
     <view class='listBox' wx:for='{{recordlist.list}}' wx:key='{{index}}'>
         <view class='itemBox'>

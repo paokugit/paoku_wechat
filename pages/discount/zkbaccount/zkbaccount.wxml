@@ -1,4 +1,5 @@
-<view class='account-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='account-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='zkb-img'>
         <view class='account-tit'>账户余额</view>
         <view class='account-num-box'>

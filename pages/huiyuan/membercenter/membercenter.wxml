@@ -1,4 +1,5 @@
-<view class='centerBox'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='centerBox' style='margin-top:{{nvabarData.height}}px'>
 <!-- banner-开始 -->
 <view class='mcbanner-box'>
    <image src='{{globalimg}}/huiyuan.png'></image>

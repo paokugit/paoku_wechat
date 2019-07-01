@@ -1,4 +1,5 @@
-<view class='play-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='play-box' style='margin-top:{{nvabarData.height}}px'>
 <!-- banner -->
 <view class='play-banner'><image src='{{globalimg}}/playbanner.png'></image></view>
 <!-- 内容-开始 -->

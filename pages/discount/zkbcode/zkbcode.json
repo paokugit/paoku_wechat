@@ -1,7 +1,8 @@
 {
-    "usingComponents": {},
-    "navigationBarBackgroundColor": "#ffd129",
-    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "收付款",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light"

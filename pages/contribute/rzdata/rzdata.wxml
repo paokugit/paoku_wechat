@@ -1,5 +1,6 @@
 <!--pages/contribute/rzdata/rzdata.wxml-->
-<view class='rzdata_box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='rzdata_box' style='margin-top:{{nvabarData.height}}px'>
     <view class='data-con'>
         <view class='mobile-box' bindtap='gobindbtn'>
             <view class='mobile-text'>手机号码</view>

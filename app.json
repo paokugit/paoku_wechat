@@ -1,8 +1,10 @@
 
 {
   "pages": [ 
-   
     "pages/index/index",
+    "pages/discount/discount/discount",
+    "pages/discount/caloriecode/caloriecode",
+   
     "pages/member/bind/index",
     "pages/index/huodong",
     "pages/discount/transfer/transfer",
@@ -13,17 +15,15 @@
     "pages/contribute/explain/explain",
     "pages/contribute/record/record",
     "pages/contribute/withdraw/withdraw",
-    "pages/discount/discount/discount",
+   
     "pages/discount/zkbaccount/zkbaccount",
     "pages/contribute/rzdata/rzdata",
     "pages/shop/notice/notification/notification",
-   
     "pages/changce/merch/businesspictures",
     "pages/changce/merch/synopsis",
     "pages/helphand/friendhelp/friendhelp",
     "pages/member/index/index",
     "pages/huiyuan/hygrade/hygrade",
-    
     "pages/changce/merch/introduction",
     "pages/discount/recordlist/recordlist",
     "pages/discount/setklldiscount/setklldiscount",
@@ -32,24 +32,20 @@
     "pages/discount/zkbcode/zkbcode",
     "pages/discount/merchcode/merchcode",
     "pages/order/pay/index",
-    
     "pages/discount/setzkbdiscount/setzkbdiscount",
     "pages/exclusive/exclusive",
     "pages/discount/zkbdiscount/zkbdiscount",
     "pages/discount/klldiscount/klldiscount",
-    "pages/discount/caloriecode/caloriecode",
+   
     "pages/discount/mingxi/mingxi",
     "pages/discount/zkbrechange/zkbrechange",
     "pages/commission/down/index",
     "pages/commission/down/fandetails",
     "pages/discount/resuccess/resuccess",
-    "pages/huiyuan/openmember/openmember",
     "pages/helphand/helpshare/helpshare",
     "pages/message/auth/index",
     "pages/helphand/powerlist/powerlist",
     "pages/member/recommend/recommend",
-  
- 
     "pages/sportdiary/sportdiary/sportdiary",
     "pages/goods/detail/index",
     "pages/member/balance/balance",
@@ -129,7 +125,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#999999",

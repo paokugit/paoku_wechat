@@ -40,24 +40,19 @@ Page((e = {
             }
 
         });
-
-        // s.get("bushu", {}, function(ts) {
-        //     if (ts.error == 0) {
-        //         console.log(ts.result);
-        //         t.setData({
-        //             my_currency: ts.result,
-        //             mp3_url: ts.url
-        //         });
-        //     }
-
-        // });
-
         o.get(this, "home", function(a) {
             t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
         });
     },
     data: (a = {
             globalimg: i.globalData.appimg,
+            // 组件所需的参数
+            nvabarData: {
+                showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
+                title: '跑库', //导航栏 中间的标题
+                // 此页面 页面内容距最顶部的距离
+                height: i.globalData.height * 2 + 20,
+            },
             indicatorDotss: !0,
             autoplays: !0,
             intervals: 2e3,
@@ -158,7 +153,7 @@ Page((e = {
     },
     bindPhone: function() {
         wx.navigateTo({
-            url: '/pages/member/bind/index?param='+1,
+            url: '/pages/member/bind/index?param=' + 1,
         })
     },
     // 进入商城
@@ -199,27 +194,15 @@ Page((e = {
     },
     // 跳转到幸运抽奖
     drawbtn: function() {
-        // wx.showToast({
-        //     title: '此功能暂未开放',
-        //     duration: 2000
-        // })
-      wx.navigateTo({
-        url: '/pages/lottery/lottery/lottery',
-      })
+        wx.navigateTo({
+            url: '/pages/lottery/lottery/lottery',
+        })
     },
     // 跳转到运动日记
     sportbtn: function() {
-        // console.log(version)
-        // if (version == 0) {
-        //     wx.showToast({
-        //         title: '此功能暂未开放',
-        //         duration: 2000
-        //     })
-        // } else {
         wx.navigateTo({
             url: '../sportdiary/sportdiary/sportdiary',
         })
-        // }
 
     },
     // 跳转到玩法说明

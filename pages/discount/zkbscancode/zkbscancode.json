@@ -1,6 +1,8 @@
 
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "扫码买单",

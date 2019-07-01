@@ -1,7 +1,8 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "运动日记",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light"

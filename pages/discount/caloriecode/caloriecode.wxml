@@ -1,4 +1,5 @@
-<view class='code-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='code-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='code-content'>
         <view class='code-tit'>微信扫一扫，向我付钱</view>
         <view class='code-img'>

@@ -1,4 +1,5 @@
-<view class='setklldiscount-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='setklldiscount-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='set-box'>
         <view class='list-box'>
             <view class='list-top'>
