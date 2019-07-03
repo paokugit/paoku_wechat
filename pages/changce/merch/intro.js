@@ -7,7 +7,13 @@ Page({
     loading: false,
     loaded: false,
     merch: [],
-    approot: t.globalData.approot
+    approot: t.globalData.approot,
+      // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: '店铺简介',
+          height: t.globalData.height * 2 + 20,
+      },
   },
   onLoad: function (t) {
     this.setData({
@@ -46,14 +52,22 @@ Page({
   daohang:function () {
     var lanlng=this.data.markers[0];
     console.log(lanlng);
-    const latitude = lanlng.latitude
-    const longitude = lanlng.longitude
-    wx.openLocation({
-      latitude,
-      longitude,
-      name:lanlng.name,
-      address:lanlng.desc,
-      scale: 18
-    })
+    //   if (lanlng==undefined){
+    //       wx.showModal({
+    //           title: '提示',
+    //           content: '商家还未设置哦',
+    //       })
+    //   }else{
+          const latitude = lanlng.latitude
+          const longitude = lanlng.longitude
+          wx.openLocation({
+              latitude,
+              longitude,
+              name: lanlng.name,
+              address: lanlng.desc,
+              scale: 18
+          })
+    //   }
+   
   }
 })

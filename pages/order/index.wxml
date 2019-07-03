@@ -5,8 +5,9 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar order">
-            <scroll-view class="fui-tab-scroll fixed" scrollX="true" style="overflow-x:scroll">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar order" style='margin-top:{{nvabarData.height}}px'>
+            <scroll-view class="fui-tab-scroll fixed" scrollX="true" style="overflow-x:scroll;margin-top:{{nvabarData.height}}px">
                 <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
                 <view bindtap="selected" class="item {{status=='0'?'active':''}}" data-type="0">待付款</view>
                 <view bindtap="selected" class="item {{status=='1'?'active':''}}" data-type="1">待发货</view>

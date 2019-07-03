@@ -1,5 +1,6 @@
 var t = getApp(), e = t.requirejs("core"), a = t.requirejs("jquery"), s = t.requirejs("biz/diyform"), i = t.requirejs("biz/goodspicker");
 t.requirejs("foxui");
+var app = getApp()
 Page({
     data: {
         systemInfo: {}, 
@@ -50,6 +51,12 @@ Page({
         limits: !0,
         modelShow: !1,
         textinfo:'',
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '商品列表', 
+            height: app.globalData.height * 2 + 20,
+        },
 
     },
     onLoad: function(e) {

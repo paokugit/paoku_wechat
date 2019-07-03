@@ -5,8 +5,9 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar">
-            <view class="category-search">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar" style='margin-top:{{nvabarData.height}}px'>
+            <view class="category-search" style='margin-top:{{nvabarData.height}}px'>
                 <view class="weui-flex">
                     <view class="weui-flex__item category-search-form">
                         <view class="flex-head-search" id="searchBar">
@@ -23,7 +24,7 @@
                     </view>
                 </view>
             </view>
-            <view class="category-content category-search-bar weui-flex">
+            <view class="category-content category-search-bar weui-flex" style='margin-top:{{nvabarData.height}}px'>
                 <block>
                     <block wx:if="{{set.level>1}}">
                         <view class="category-content-left">

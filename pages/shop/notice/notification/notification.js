@@ -10,6 +10,12 @@ Page({
   data: {
     mask: 1,
     globalimg: i.globalData.appimg,
+      // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: '消息中心', 
+          height: i.globalData.height * 2 + 20,
+      },
     color: '#01d7a1',
     underline: 0,
     color1: '#333333',
