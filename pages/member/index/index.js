@@ -151,8 +151,13 @@ Page({
         }, function (e) {
             console.log(e)
             if(e.error==0){
+              if (e.message.mobile != undefined && e.message.mobile != '' && e.message.mobile != 0){
+                var bing = 1;
+              }else{
+                var bing = 0;
+              }
                 b.setData({
-                    conbind:e.message.bind,
+                    conbind:bing,
                     credit4:e.message.credit4
                 })
             }

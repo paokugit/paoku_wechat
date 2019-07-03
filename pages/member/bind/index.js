@@ -9,6 +9,10 @@ var usercode = ''
 var code = ''
 var message=''
 var param=''
+var countyid=''
+var index=''
+var country=''
+var usecountyid=44
 Page({
 
     /**
@@ -18,15 +22,44 @@ Page({
         globalimg: i.globalData.appimg,
         second: 60,
         seconddisp:'none',
-        codedisp: 'block'
+        codedisp: 'block',
+        nvabarData: {
+          showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
+          title: '个人中心', //导航栏 中间的标题
+          // 此页面 页面内容距最顶部的距离
+          height: i.globalData.height * 2 + 20,
+        },
+        country:'',
+        index:0
     },
+   
+    
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
         console.log(options)
+        var t = this;
         param=options.param
+        s.get("myown.bindmobile.country", {
+        }, function (c) {
+          console.log(c.message.list)
+          t.setData({
+            country: c.message.list,
+          });
+          country = c.message.list
+        })
+    },
+    bindPickerChange: function (e) {
+      this.setData({
+        index: e.detail.value
+       })
+      countyid = e.detail.value
+      if (countyid == undefined || countyid==''){
+        countyid=0;
+      }
+      usecountyid = country[countyid]['id'];
     },
     inputChange: function(event) {
         var a = this
@@ -39,7 +72,8 @@ Page({
     getCode: function() {
         var t = this
         s.get("myown/bindmobile/send", {
-            mobile: usermobile
+            mobile: usermobile,
+            id: usecountyid
         }, function(e) {
             console.log(e)
             if (e.error == 0) {

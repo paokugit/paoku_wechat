@@ -1,5 +1,19 @@
-<view class='bind_box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='bind_box' style='margin-top:{{nvabarData.height}}px'>
     <view class='bind-con'>
+        <view class='bind-phone'>
+            <view class='phone-left'>
+                <view class='phone-text'>手机号</view>
+                <view class='symbol'>
+                    <image src='{{globalimg}}/asterisk.png'></image>
+                </view>
+            </view>
+            <view class='phone-right'>
+                <picker bindchange="bindPickerChange" value="{{country[index].id}}" range="{{country}}" range-key="{{'name_zh'}}">
+                <view>{{country[index].name_zh}}</view>
+                </picker>
+            </view>
+        </view>
         <view class='bind-phone'>
             <view class='phone-left'>
                 <view class='phone-text'>手机号</view>
