@@ -1,4 +1,5 @@
-<view class='nearbyshops-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='nearbyshops-box' style='margin-top:{{nvabarData.height}}px'>
     <!-- 商家1 -开始-->
     <view class='nearbyshop-box' wx:for="{{list}}">
     <!-- 商家电话 -->

@@ -176,8 +176,9 @@
     </view>
   </block>
 </block>
-<view class="page header-sort navbar goodslist">
-  <view class="fui-header">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page header-sort navbar goodslist" style='margin-top:{{nvabarData.height}}px'>
+  <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
     <view class="searchbar">
       <icon size="18" type="search"></icon>
       <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
@@ -193,7 +194,7 @@
       </block>
     </block>
   </view>
-  <view class="sort">
+  <view class="sort" style='margin-top:{{nvabarData.height}}px'>
     <view bindtap="bindSort" class="item {{params.order==''||!params.order?'on':''}}" data-order="">
       <view class="text">综合</view>
     </view>
@@ -211,7 +212,7 @@
       </view>
     </view>
   </view>
-  <view class="fui-goods-group {{listmode}}">
+  <view class="fui-goods-group {{listmode}}" style='margin-top:{{nvabarData.height}}px'>
     <block wx:for="{{list}}">
       <template is="tpl_list" data="{{item:item}}"></template>
     </block>
@@ -240,7 +241,7 @@
   </block>
   <block>
     <block wx:if="{{fromsearch}}">
-      <view class="records">
+      <view class="records" style='margin-top:{{nvabarData.height}}px'>
         <block>
           <block wx:if="{{searchRecords.length>0}}">
             <view class="records-title">

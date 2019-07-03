@@ -16,6 +16,12 @@ Page({
         level: 1,
         page: 1,
         list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '附近商家', 
+            height: ii.globalData.height * 2 + 20,
+        },
     },
 
   /**

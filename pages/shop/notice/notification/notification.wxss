@@ -5,6 +5,11 @@
   background: #f1f1f1;
   margin-top: 90rpx;
 }
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
 .head-box {
   width: 100%;
   height: 90rpx;

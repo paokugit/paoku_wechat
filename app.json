@@ -2,6 +2,7 @@
 {
   "pages": [ 
     "pages/index/index",
+    "pages/discount/discount/discount",
     "pages/shop/notice/notification/notification",
     "pages/shop/notice/notification/detail",
     "pages/lottery/lottery/lottery",
