@@ -40,7 +40,7 @@
     width: 180rpx;
     height: 58rpx;
     position: absolute;
-    bottom: 20%;
+    bottom: 5%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -83,6 +83,20 @@ position: absolute;
    display: flex;
    justify-content: center;
    align-items: center
+}
+.nav-fanhui{
+    width: 58rpx;
+    height: 58rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.nav-home{
+    width: 58rpx;
+    height: 58rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 /* .nav-capsule .back-home {
   width: 60rpx;

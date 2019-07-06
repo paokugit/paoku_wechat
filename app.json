@@ -22,7 +22,7 @@
         "pages/contribute/rzdata/rzdata",
         "pages/changce/merch/businesspictures",
         "pages/changce/merch/synopsis",
-      
+    "pages/order/index",
         "pages/member/index/index",
         "pages/huiyuan/hygrade/hygrade",
         "pages/discount/recordlist/recordlist",
@@ -68,7 +68,7 @@
         "pages/goods/package/index",
         "pages/goods/package/detail/index",
         "pages/goods/poster/poster",
-        "pages/order/index",
+      
         "pages/order/detail/index",
         "pages/order/express/index",
         "pages/order/comment/index",
