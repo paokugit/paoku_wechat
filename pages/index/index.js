@@ -65,7 +65,7 @@ Page((e = {
             merchlist: [],
             indicatorDots: !0,
             autoplay: !0,
-            interval: 5e3,
+            interval: 2000,
             duration: 500,
             circular: !0,
             storeRecommand: [],

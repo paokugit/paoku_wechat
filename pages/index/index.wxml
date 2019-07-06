@@ -134,19 +134,25 @@
         </view>
     </view>
     <!-- 快报 -->
-    <!-- <view class='index-news-box'> -->
+    <view class='index-news-box'>
+        <view class='notice-img'>
+            <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
+        </view>
         <!-- 轮播 -->
-        <!-- <view class='swiper-box'>
-            <swiper  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange" vertical="true">
+        <view class='swiper-box'>
+            <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange" vertical="true">
                 <block wx:for="{{noticelist}}" wx:key="{{index}}">
-                    <swiper-item>
-                        <view class='notice-item'>{{item.nickname}}</view>
+                    <swiper-item class="notice-box">
+                        <view class='notice-tit'>恭喜用户</view>
+                        <view class='notice-name'>{{item.nickname}}</view>
+                        <view class='notice-desc'>累计提现</view>
+                        <view class='notice-money'>{{item.sum_money}}元</view>
                     </swiper-item>
                 </block>
             </swiper>
-        </view> -->
+        </view>
         <!-- 轮播 -->
-    <!-- </view> -->
+    </view>
     <view class='store-service'>
         <view class='store-service-title flex_center'>
             <view class='storeimg'>
