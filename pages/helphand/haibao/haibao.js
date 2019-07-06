@@ -10,7 +10,13 @@ Page({
      */
     data: {
       url: '',
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '邀请海报',
+            height: i.globalData.height * 2 + 30,
+        },
     },
 
     /**

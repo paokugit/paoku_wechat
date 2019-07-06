@@ -1,5 +1,5 @@
 var a = getApp(), t = a.requirejs("core"), e = a.requirejs("biz/order");
-
+var app=getApp();
 Page({
     data: {
         code: !1,
@@ -8,7 +8,13 @@ Page({
         cancel: e.cancelArray,
         cancelindex: 0,
         diyshow: {},
-        city_express_state: 0
+        city_express_state: 0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1,
+            title: '订单详情', 
+            height: a.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         this.setData({

@@ -15,7 +15,7 @@ Page({
         nvabarData: {
             showCapsule: 1, 
             title: '收付款', 
-            height: i.globalData.height * 2 + 20,
+            height: i.globalData.height * 2 + 25,
         },
         caloriecode: '',
         calorieurl: ''

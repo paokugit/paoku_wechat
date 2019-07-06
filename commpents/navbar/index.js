@@ -1,20 +1,30 @@
 const app = getApp()
 Component({
     properties: {
-        navbarData: {   //navbarData   由父页面传递的数据，变量名字自命名
+        backgroundColor: {
+            type: String,
+            value: '#fff'
+        },
+        frontColor: {
+            type: String,
+            value: '#333'
+        },
+        navbarData: { //navbarData   由父页面传递的数据，变量名字自命名
             type: Object,
             value: {},
-            observer: function (newVal, oldVal) { }
+            observer: function(newVal, oldVal) {},
+            
         }
     },
     data: {
         height: '',
+        
         //默认值  默认显示左上角
         navbarData: {
             showCapsule: 1
         }
     },
-    attached: function () {
+    attached: function() {
         // 获取是否是通过分享进入的小程序
         this.setData({
             share: app.globalData.share
@@ -37,4 +47,4 @@ Component({
         }
     }
 
-}) 
+})

@@ -1,4 +1,5 @@
-<view class="page">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page" style='margin-top:{{nvabarData.height}}px'>
     <view class="coupon-headblock">
         <view class="top-layer"></view>
         <view class="line-layer"></view>

@@ -1,10 +1,16 @@
 var t = getApp().requirejs("core");
-
+var app=getApp()
 Page({
     data: {
         status: 0,
         page: 1,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '', 
+            height: app.globalData.height * 2 + 20,
+        },
     },
     onLoad: function() {
         this.getList();
@@ -31,9 +37,12 @@ Page({
                 show: !0
             };
             t.list.length > 0 && (s.page = a.data.page + 1, s.list = a.data.list.concat(t.list), 
-            t.list.length < t.pagesize && (s.loaded = !0)), a.setData(s), wx.setNavigationBarTitle({
-                title: t.textcomd + "(" + t.total + ")"
+            t.list.length < t.pagesize && (s.loaded = !0)), a.setData(s), a.setData({
+                'nvabarData.title': t.textcomd + "(" + t.total + ")"
             });
+            // wx.setNavigationBarTitle({
+            //     title: t.textcomd + "(" + t.total + ")"
+            // });
         }, this.data.show);
     },
     myTab: function(a) {

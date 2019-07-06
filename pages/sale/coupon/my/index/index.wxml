@@ -1,5 +1,6 @@
-<view class="page header">
-    <view class="fui-tab fixed fui-tab-danger">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page header" style='margin-top:{{nvabarData.height}}px'>
+    <view class="fui-tab fixed fui-tab-danger" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
         <view bindtap="myTab" class="item {{cate==''?'active':''}}" data-cate="">未使用</view>
         <view bindtap="myTab" class="item {{cate=='used'?'active':''}}" data-cate="used">已使用</view>
         <view bindtap="myTab" class="item {{cate=='past'?'active':''}}" data-cate="past">已过期</view>

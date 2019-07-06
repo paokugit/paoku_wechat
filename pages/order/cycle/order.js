@@ -8,7 +8,13 @@ Page({
         page: 1,
         code: !1,
         cancel: e.cancelArray,
-        cancelindex: 0
+        cancelindex: 0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(a) {
         this.setData({

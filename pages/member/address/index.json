@@ -1,4 +1,7 @@
 {
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarTitleText": "收货地址",
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark"

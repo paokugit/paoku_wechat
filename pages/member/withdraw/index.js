@@ -1,4 +1,5 @@
 var a = getApp(), e = a.requirejs("core"), t = a.requirejs("foxui"), n = a.requirejs("jquery");
+var app = getApp()
 
 Page({
     data: {
@@ -11,7 +12,13 @@ Page({
         chargeShow: !1,
         disabled: !0,
         info: {},
-        realInfo: {}
+        realInfo: {},
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '余额提现', 
+            height: app.globalData.height * 2 + 20,
+        },
     },
     onShow: function(e) {
         a.url(e), this.getInfo(), this.setData({

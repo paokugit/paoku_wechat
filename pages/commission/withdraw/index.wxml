@@ -6,7 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page withdraw navbar {{paddingb}}">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page withdraw navbar {{paddingb}}" style='margin-top:{{nvabarData.height}}px'>
             <view class="header">
                 <navigator class="btn pull-right" hoverClass="none" openType="navigate" url="/pages/commission/log/index">{{set['texts']['commission_detail']}}</navigator>
                 <view class="text">

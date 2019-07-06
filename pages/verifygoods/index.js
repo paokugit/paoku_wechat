@@ -1,5 +1,4 @@
 var t = getApp(), a = t.requirejs("core");
-
 t.requirejs("jquery");
 
 Page({
@@ -8,7 +7,13 @@ Page({
         page: 1,
         cate: "",
         loaded: !1,
-        loading: !0
+        loading: !0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '卡券包', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         this.get_list();

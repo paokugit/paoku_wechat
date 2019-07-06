@@ -1,5 +1,6 @@
 <wxs src="subutil.wxs" module="tools" />
-<view class='lottaryBox' wx:if="{{mask==0}}">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='lottaryBox' wx:if="{{mask==0}}" style='margin-top:{{nvabarData.height}}px'>
   <view class='lottary-box'>
     <view class='zhongjiang'>
       <image src='{{globalimg}}/zhongjiang.png'></image>

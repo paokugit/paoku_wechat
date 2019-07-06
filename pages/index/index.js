@@ -48,17 +48,13 @@ Page((e = {
             globalimg: i.globalData.appimg,
             // 组件所需的参数
             nvabarData: {
-                showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-                title: '跑库', //导航栏 中间的标题
-                // 此页面 页面内容距最顶部的距离
-                height: i.globalData.height * 2 + 20,
+                showCapsule: 0,
+                title: '跑库',
+                height: i.globalData.height * 2 + 20
             },
-            indicatorDotss: !0,
-            autoplays: !0,
-            intervals: 2e3,
-            durations: 500,
-            circulars: !0,
             adveradmin: !0,
+            vertical: true,
+            circular: true,
             current: 0,
             clock: "",
             diypage: "true",
@@ -136,6 +132,7 @@ Page((e = {
             jindu: 100,
             district: '',
             city: '',
+        noticelist:[],
             avamessage: ''
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
@@ -316,9 +313,13 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function(t) {
+
         console.log('运动日记')
         console.log(t)
         var k = this
+        // k.setData({
+        //     'nvabarData.title':''
+        // })
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
             if (eve.app_version == "devtools" || eve.app_version > 0) { //开发者工具|正式版
@@ -603,6 +604,14 @@ Page((e = {
                 });
             }
 
+        });
+        s.get("changce/merch/draw_rank", {}, function(e) {
+            console.log(e)
+            if (e.status == 1) {
+                t.setData({
+                    noticelist: e.result.log
+                })
+            }
         });
         s.get("bushu", {}, function(tttt) {
             if (tttt.error == 0) {

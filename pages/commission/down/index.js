@@ -1,10 +1,7 @@
 var t = getApp().requirejs("core");
 var ii = getApp();
-// console.log(ii.globalData.appimg)
-//   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
-// console.log(userinfo)
 Page({
     data: {
         globalimg: ii.globalData.appimg,
@@ -13,7 +10,14 @@ Page({
         list: [],
         agentcount:'',
         dianzhu:'',
-        fans:''
+        fans:'',
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '我的好友', 
+            height: f.globalData.height * 2 + 20,
+        },
+
     },
     onLoad: function () {
         this.getSet(), this.getList();
@@ -35,6 +39,10 @@ Page({
     getSet: function () {
         var e = this;
         t.get("commission/down/get_set", {}, function (t) {
+            console.log(t)
+            e.setData({
+                "nvabarData.title": t.textdown + "(" + t.total + ")"
+            })
             wx.setNavigationBarTitle({
                 title: t.textdown + "(" + t.total + ")"
             }), delete t.error, t.show = !0, e.setData(t);
@@ -59,19 +67,6 @@ Page({
             t.list.length > 0 && (a.page = e.data.page + 1, a.list = e.data.list.concat(t.list),
             t.list.length < t.pagesize && (a.loaded = !0)), e.setData(a);
         }, this.data.show);
-    },
-    transmit:function(){
-        wx.navigateTo({
-            url: '../transmit/transmit',
-        })
-    },
-    myTab: function (e) {
-        var a = this, i = t.pdata(e).level;
-        a.setData({
-            level: i,
-            page: 1,
-            list: []
-        }), a.getList();
     },
     onShareAppMessage: function (res) {
         // return s.onShareAppMessage();

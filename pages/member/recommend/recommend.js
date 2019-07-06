@@ -10,7 +10,13 @@ Page({
      */
     data: {
         url: '',
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+         // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: '  推荐码', 
+          height: i.globalData.height * 2 + 20, 
+      },
     },
 
     /**

@@ -22,7 +22,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page footer-navbar">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page footer-navbar" style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{!empty}}">
                     <view bindtap="edit" class="fui-cell-group  cartlist">

@@ -4,7 +4,13 @@ o.requirejs("icons"), o.requirejs("jquery");
 
 Page({
     data: {
-        show: !0
+        show: !0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '相关套餐', 
+            height: o.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(o) {
         var e = this;

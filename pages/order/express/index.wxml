@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page" style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{bundlelist.length>0}}">
                     <block wx:for="{{bundlelist}}">

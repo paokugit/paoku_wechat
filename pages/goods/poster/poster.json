@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "商品图片"
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    }
 }

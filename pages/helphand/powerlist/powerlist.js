@@ -22,7 +22,13 @@ Page({
     loading: !0,
       step:'',
       bnickname:'',
-     helplist:[]
+     helplist:[],
+      // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: '跟我跑，送你钱', 
+          height: t.globalData.height * 2 + 20,
+      },
   },
   playbtn:function(){
         wx.switchTab({

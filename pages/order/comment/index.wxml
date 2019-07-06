@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view clas="page">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view clas="page" style='margin-top:{{nvabarData.height}}px'>
             <view class="fui-list-group">
                 <view class="fui-list-group-title">
                     <text class="icox icox-dianpu1"></text>

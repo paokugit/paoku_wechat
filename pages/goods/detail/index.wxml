@@ -5,17 +5,16 @@
 <view bindtap="closeBtn" class="page-shade" wx:if="{{show&&closeBtn}}">></view>
 <view class="fui-share {{isIpx?'fui-iphonex-share':''}}" wx:if="{{show&&closeBtn}}">
     <view class="share-choose">
+    <view bindtap="sharePoster" class="share-poster">
+            <image src='{{globalimg}}/post.png'></image>
+            <view class="text-explain">生成商品图片</view>
+        </view>
         <button openType="share" style="border: none;background:none;padding-left: 0;line-height: 1;margin: 0;" bindtap='shareweixin'>
             <view class="share-wechat">
-                <!-- <image src="/static/images/share/wechat.png"></image> -->
                 <image src='{{globalimg}}/wechat02.png'></image>
                 <view class="text-explain">分享给朋友</view>
             </view>
         </button>
-        <view bindtap="sharePoster" class="share-poster">
-            <image src='{{globalimg}}/post.png'></image>
-            <view class="text-explain">生成商品图片</view>
-        </view>
     </view>
     <view bindtap="closeBtn" class="close-btn">关闭</view>
 </view>

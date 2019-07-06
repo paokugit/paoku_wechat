@@ -9,7 +9,13 @@ Page({
         key: -1,
         content: "",
         images: [],
-        imgs: []
+        imgs: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '评价', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(a) {
         this.setData({

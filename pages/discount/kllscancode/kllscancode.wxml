@@ -1,4 +1,5 @@
-<view class='scancode-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='scancode-box'  style='margin-top:{{nvabarData.height}}px'>
     <!-- <view class='scancode-desc'>消费满50元折扣宝抵扣5元，消费满100元折扣宝抵扣10元</view> -->
     <view class="marquee">
         <view class="content" wx:for="{{fulllist}}" wx:key="{{index}}">

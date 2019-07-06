@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#29c8bc" frontColor="#fff"></nav-bar>
 <view class='conBox' style='margin-top:{{nvabarData.height}}px'>
 <!-- 好友捐赠outerbox-开始 -->
 <view class='outerBox'>

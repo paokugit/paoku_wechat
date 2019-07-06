@@ -1,8 +1,14 @@
 var t = getApp(), a = t.requirejs("core");
-
+var app=getApp()
 Page({
     data: {
-        code: 0
+        code: 0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1,
+            title: '津贴佣金', 
+            height: app.globalData.height * 2 + 20,
+        },
     },
     onShow: function() {
         this.getData();

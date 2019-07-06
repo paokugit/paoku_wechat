@@ -16,6 +16,12 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '会员等级', 
+            height: i.globalData.height * 2 + 20,
+        },
     },
 
     /**

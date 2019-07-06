@@ -7,7 +7,13 @@ Page({
         loading: !1,
         loaded: !1,
         list: [],
-        approot: t.globalData.approot
+        approot: t.globalData.approot,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '我的优惠券', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         this.getList();

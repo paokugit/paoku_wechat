@@ -18,7 +18,7 @@ Page({
         nvabarData: {
             showCapsule: 1,
             title: '贡献值',
-            height: i.globalData.height * 2 + 20,
+            height: i.globalData.height * 2 + 25,
         },
         maskDis: 'none',
         statedisp01: 'none',

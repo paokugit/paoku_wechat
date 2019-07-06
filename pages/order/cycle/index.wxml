@@ -1,5 +1,6 @@
 <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
-<view class="page navbar">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page navbar" style='margin-top:{{nvabarData.height}}px'>
     <scroll-view class="cycle-periods" scrollX="true">
         <block wx:for="{{list}}">
             <view bindtap="cycle" class="cycle-card {{index==status?'active':''}}" data-id="{{item.id}}" data-status="{{index}}">

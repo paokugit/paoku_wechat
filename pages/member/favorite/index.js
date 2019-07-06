@@ -12,7 +12,13 @@ Page({
         isCheckAll: !1,
         checkObj: {},
         checkNum: 0,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '我的关注',
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         t.url(e), this.getList();

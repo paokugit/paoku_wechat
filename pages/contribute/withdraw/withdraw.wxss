@@ -82,7 +82,7 @@ image{
 .empty-text{
     color: #333;
     font-size: 30rpx;
-    margin-left: 10rpx
+    margin-left: 20rpx
 }
 .hint-text{
     color: #f4022a;
@@ -126,4 +126,27 @@ button::after {
     color: #fff;
     font-size: 30rpx;
     line-height: 88rpx
+}
+.withdraw-hint{
+    width: 92%;
+    height: 100rpx;
+    border-radius: 20rpx;
+    background: #ffffff;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center
+}
+.withdraw-empty{
+    width: 92%;
+    height: 80rpx;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    position: relative
+}
+.weixin-img{
+    width: 59rpx;
+    height: 59rpx;
+    position: absolute;
+    right: 20rpx
 }

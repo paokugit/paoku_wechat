@@ -1,5 +1,5 @@
-
-<view class='indexBox' >
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
+<view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
     <view class="index-banner-box">
         <!-- banner背景图 -->
         <image src='{{ globalimg}}/indexbanner.png'></image>
@@ -50,7 +50,7 @@
         </form>
         <!-- 跳转的气泡-结束 -->
         <!-- 绑定手机号的气泡 -->
-         <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
+        <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{bindDis}}'>
                     <view class='paopao-box'>
@@ -132,8 +132,21 @@
             </view>
             <!-- form -->
         </view>
-
     </view>
+    <!-- 快报 -->
+    <!-- <view class='index-news-box'> -->
+        <!-- 轮播 -->
+        <!-- <view class='swiper-box'>
+            <swiper  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange" vertical="true">
+                <block wx:for="{{noticelist}}" wx:key="{{index}}">
+                    <swiper-item>
+                        <view class='notice-item'>{{item.nickname}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view> -->
+        <!-- 轮播 -->
+    <!-- </view> -->
     <view class='store-service'>
         <view class='store-service-title flex_center'>
             <view class='storeimg'>
@@ -142,7 +155,7 @@
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>
-            <!-- 商家电话 -->
+                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{merchInfo.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -237,7 +250,7 @@
         </view>
         <view class='nearbyshops-box'>
             <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
-            <!-- 商家电话 -->
+                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -299,8 +312,8 @@
                     <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                         <image class='ex-proimg' src='{{item.thumb}}'></image>
                         <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                        <image src='{{globalimg}}/saleout-2.png'></image>
-                    </view>
+                            <image src='{{globalimg}}/saleout-2.png'></image>
+                        </view>
                     </navigator>
                     <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
                     <!-- 包邮 -->

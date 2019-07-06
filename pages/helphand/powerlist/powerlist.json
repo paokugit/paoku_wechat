@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "nav-bar": "/commpents/navbar/index"
+  },
   "navigationBarBackgroundColor": "#fff",
    "navigationBarTextStyle": "black",
   "navigationBarTitleText": "跟我跑，送你钱",

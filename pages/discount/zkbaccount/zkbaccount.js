@@ -18,7 +18,7 @@ Page({
         nvabarData: {
             showCapsule: 1, 
             title: '折扣宝',
-            height: i.globalData.height * 2 + 20,
+            height: i.globalData.height * 2 + 30,
         },
         type: 1,
         isopen: !1,

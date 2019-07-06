@@ -4,9 +4,16 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
     return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
 }, e = getApp(), a = e.requirejs("core"), i = e.requirejs("foxui"), r = e.requirejs("biz/diyform"), s = e.requirejs("jquery"), d = e.requirejs("biz/selectdate");
 // var calorienum=""
+var app=getApp();
 Page({
     data: {
         icons: e.requirejs("icons"),
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '确认订单', 
+            height: app.globalData.height * 2 + 20,
+        },
         list: {},
         goodslist: {},
         data: {

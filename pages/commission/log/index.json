@@ -1,4 +1,7 @@
 {
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark"
 }

@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar com-order">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar com-order" style='margin-top:{{nvabarData.height}}px'>
             <view class="fui-cell-group" style="margin-top:0px;background: #fea23d;color: #fff;">
                 <view class="fui-cell">
                     <view class="fui-cell-info" style="width:auto;color: #fff;text-align:left">{{textctotal}}<text>{{comtotal}}</text>{{textyuan}}</view>

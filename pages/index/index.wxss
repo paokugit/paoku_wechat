@@ -23,6 +23,16 @@ page {
     color: transparent;
 }
 
+
+swiper{
+  width: 100%;
+  height: 60rpx
+}
+ 
+.swiper-box{
+  position: relative;
+  width: 100%;
+}
 button::after {
     border: none;
 }
@@ -430,9 +440,14 @@ image {
     color: #333;
     font-size: 28rpx;
 }
-
-/* 门店服务-开始 */
-
+.index-news-box{
+    width: 92%;
+    height: 120rpx;
+    padding: 0 4%;
+    background: pink;
+    display: flex;
+    align-items: center
+}
 .store-service {
     width: 100%;
     height: 630rpx;
