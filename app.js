@@ -196,24 +196,16 @@ App({
       }
     });
   }, 
-//   globalData: {
-//     appid: "wx4b602a36aa1c67d1",
-//       api: "https://paoku.xingrunshidai.com/app/ewei_shopv2_api.php?i=1",
-//       approot: "https://paoku.xingrunshidai.com/app/addons/ewei_shopv2/",
-//       appimg:"https://paoku.xingrunshidai.com/img/backgroup",
-//       appscene:"",
-//     userInfo: null
-//   }
-   globalData: {
-        appid: "wx4b602a36aa1c67d1",
-        api: "https://paokucoin.com/app/ewei_shopv2_api.php?i=1",
-        approot: "https://paokucoin.com/app/addons/ewei_shopv2/",
-        appimg: "https://paokucoin.com/img/backgroup",
-        userInfo: null,
-        applogin:"",
-        applog:"",
-       bindscene: "",
-       contributebind:"",
-       height:0
-    }
+  globalData: {
+    appid: "wx4b602a36aa1c67d1",
+    api: "https://paokucoin.com/app/ewei_shopv2_api.php?i=1",
+    approot: "https://paokucoin.com/app/addons/ewei_shopv2/",
+    appimg: "https://paokucoin.com/img/backgroup",
+    userInfo: null,
+    applogin: "",
+    applog: "",
+    bindscene: "",
+    contributebind: "",
+    height: 0
+  }
 });
