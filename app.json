@@ -1,6 +1,7 @@
 {
     "pages": [
-       
+        "pages/gift/gift",
+        "pages/gift/record",
         "pages/index/index",
         "pages/index/huodong",
         "pages/helphand/helpshare/helpshare",

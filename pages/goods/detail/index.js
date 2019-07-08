@@ -37,7 +37,7 @@ Page((a = {
         nvabarData: {
             showCapsule: 1, 
             title: '商品详情',
-            height: f.globalData.height * 2 + 25,
+            height: f.globalData.height * 2 + 20,
         },
         diypages: {},
         usediypage: !1,

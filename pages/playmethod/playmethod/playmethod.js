@@ -12,7 +12,7 @@ Page({
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1, 
-            title: '玩法说明', 
+            title: '新手攻略', 
             height: t.globalData.height * 2 + 20,
         },
     },

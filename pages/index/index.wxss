@@ -172,7 +172,12 @@ image {
 .stepExchange {
     position: absolute;
     left: 40rpx;
-    top: 120rpx;
+    top: 100rpx;
+}
+.giftbox{
+    position: absolute;
+    left: 170rpx;
+    top: 210rpx;
 }
 .phonereward{
     position: absolute;
@@ -1045,4 +1050,11 @@ text-overflow:ellipsis;
     color: #e01212;
     font-size: 20rpx;
     border: 1px solid #e01212
+}
+.goTop{
+      position: fixed;
+    bottom: 10%;
+    right: 5%;
+    width: 50rpx;
+    height: 50rpx;
 }

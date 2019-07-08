@@ -1,0 +1,143 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='gift_box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='gift-topbg'>
+        <image src='{{globalimg}}/pic01@2x.png'></image>
+        <view class='time-box'>
+            <view>活动时间:</view>
+            <view class='activity-time'>2019.7.16-2019.7.31</view>
+        </view>
+
+    </view>
+    <view class='gift-bottomcon'>
+        <view class='gift-centerbg'>
+            <image src='{{globalimg}}/pic02@2x.png'></image>
+        </view>
+        <view class='grade-position-box'>
+            <view class='grade-con-box'>
+                <view class='grade-con-left'>
+                    <view class='grade-tit'>当前级别:</view>
+                    <view class='grade-level'>健康达人</view>
+                </view>
+                <view class='grade-con-right'>享受初级礼包</view>
+            </view>
+        </view>
+        <view class='help-position-box'>
+            <view class='help-relative'>
+                <view class='help-count goal'>15</view>
+                <view class='help-count success'>3</view>
+                <view class='help-count fail'>7</view>
+            </view>
+        </view>
+        <navigator url='/pages/gift/record' class='record-position-box'></navigator>
+        <view class='list-position-box'>
+            <view class='list-con-box'>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='list-item'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='gift-bottom-box'>
+        <view class='invite-img'>
+            <image src='{{globalimg}}/pic05@2x.png'></image>
+        </view>
+        <view class="swiper-tab">
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">初级礼包</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">中级礼包</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==3?'active':''}}" data-type="3">高级礼包</view>
+        </view>
+        <view class="{{type==1 ? 'show':'hidden'}}">
+            <scroll-view>
+                <view class='primary-box'>
+                    <view class='primary-con'>
+                        <view class='primary-img'>
+                            <image src='{{globalimg}}/01@2x.png'></image>
+                            <view class='good-absolute'></view>
+                            <view class='free-img'>
+                                <image src='{{globalimg}}/oqg02@2x.png'></image>
+                            </view>
+                            <view class='exclusive-box'>普通、健康达人享有</view>
+                        </view>
+                    </view>
+                    <view class='primary-con'>
+                        <view class='primary-img'>
+                            <image src='{{globalimg}}/01@2x.png'></image>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="{{type==2 ? 'show':'hidden'}}">
+            <scroll-view>
+                <view class='middle-box'>
+                    中级
+                </view>
+            </scroll-view>
+        </view>
+        <view class="{{type==3 ? 'show':'hidden'}}">
+            <scroll-view>
+                <view class='high-box'>
+                    高级
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<!-- 助力成功 -->
+<view class='help_mask' style='display:{{helpDis}}'>
+    <view class='help-mask-relative'>
+        <view class='help-success-bg'>
+            <view class='help-success-relative'>
+                <view class='avatar-img'>
+                    <image src='{{globalimg}}/touxiang02.png'></image>
+                </view>
+                <view class='zlcg-img'>
+                    <image src='{{globalimg}}/zlcg@2x.png'></image>
+                </view>
+                <view class='help-success-text'>谢谢你，为我助力!</view>
+                <view class='gift-btn'>
+                    <image src='{{globalimg}}/buttun01@2x.png'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 说明 -->
+<view class='explain_mask' style='display:{{explainDis}}'>
+    <view class='help-mask-relative'>
+        <view class='help-success-bg'>
+            <view class='help-success-relative'>
+                <view class='explain-text'>说明</view>
+                <view class='explain-con'>此活动限还未使用兑换券的店主，您的券已使用，不在活动范围内。</view>
+                <view class='explain-btn' bindtap='explainbtn'>知道了</view>
+            </view>
+        </view>
+    </view>
+</view>

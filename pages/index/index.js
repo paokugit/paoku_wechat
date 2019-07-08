@@ -45,6 +45,7 @@ Page((e = {
         });
     },
     data: (a = {
+            topdisp: 'none',
             globalimg: i.globalData.appimg,
             // 组件所需的参数
             nvabarData: {
@@ -126,13 +127,14 @@ Page((e = {
             merchdisp: 'block',
             storedisp: 'block',
             bindDis: 'none',
+            giftDis: 'block',
             // rewarddisp:'none',
             screenWidth: '',
             helpstep: '',
             jindu: 100,
             district: '',
             city: '',
-        noticelist:[],
+            noticelist: [],
             avamessage: ''
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
@@ -289,8 +291,31 @@ Page((e = {
             }), a.list.length < a.pagesize && (e.loaded = !0));
         });
     },
+    // 获取滚动条当前位置
+    // onPageScroll: function (e) {
+
+
+    // },
+    //回到顶部
+    goTop: function(e) { // 一键回到顶部
+        var a = this
+        if (wx.pageScrollTo) {
+            wx.pageScrollTo({
+                scrollTop: 0
+            })
+            a.setData({
+                topdisp: 'none'
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+            })
+        }
+    },
     get_list: function() {
         var t = this;
+
         t.setData({
             loading: !0
         }), s.get("goods/get_list", {
@@ -299,6 +324,11 @@ Page((e = {
             page: t.data.page
         }, function(e) {
             console.log(e)
+            if (t.data.page >= 5) {
+                t.setData({
+                    topdisp: 'block'
+                })
+            }
             0 == e.error ? (t.setData({
                 loading: !1,
                 show: !0,

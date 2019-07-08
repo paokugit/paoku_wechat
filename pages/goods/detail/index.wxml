@@ -20,7 +20,7 @@
 </view>
 <view bindtap="hintclick" class="hint" wx:if="{{show&&!limits}}">您还未授权无法查看商品完整信息，点击可重新获取授权喔~</view>
 <view class="page comment-block" style="margin-top:{{nvabarData.height}}px background:{{diypages.page.background}};" wx:if="{{show}}">
-    <view class="goods-detail-goods" wx:if="{{showgoods}}">
+    <view class="goods-detail-goods" style='margin-top:{{nvabarData.height}}px' wx:if="{{showgoods}}">
         <view wx:if="{{usediypage!=false}}">
             <include src="/pages/diy/index.wxml"></include>
         </view>

@@ -61,6 +61,18 @@
             </button>
         </form>
         <!-- 绑定手机号的气泡 -->
+         <!-- 礼品的气泡 -->
+        <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
+            <button form-type='submit' style="background:rgba(0,0,0,0)">
+                <view style='display:{{giftDis}}'>
+                    <view class='paopao-box'>
+                        <image src='{{ globalimg}}/paopaogif.png'></image>
+                    </view>
+                    <view class='circle-explain '>未领礼品</view>
+                </view>
+            </button>
+        </form>
+        <!-- 礼品的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
         <view class='step'>步</view>
@@ -111,7 +123,7 @@
                     <view class='activity-img'>
                         <image src='{{ globalimg}}/04.png'></image>
                     </view>
-                    <view class='activity-con'>玩法说明</view>
+                    <view class='activity-con'>新手攻略</view>
                 </view>
             </view>
             <!-- form -->
@@ -140,7 +152,7 @@
         </view>
         <!-- 轮播 -->
         <view class='swiper-box'>
-            <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange" vertical="true">
+            <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
                 <block wx:for="{{noticelist}}" wx:key="{{index}}">
                     <swiper-item class="notice-box">
                         <view class='notice-tit'>恭喜用户</view>
@@ -373,8 +385,11 @@
     </view>
 </view>
 <!-- 超值兑换部分-结束 -->
+<!-- 回到顶部 -->
+    <view class='goTop'  bindtap="goTop" style='display:{{topdisp}}'>
+        <image src='{{globalimg}}/huidaodingbu.png' ></image>
+    </view>
 <!-- 首次进入弹窗 -->
-<!-- mask-开始 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
         <view bindtap='pull' class='first-entry-img'>
@@ -386,7 +401,6 @@
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>
 </view>
-
 <!-- 首次进入弹窗mask-结束 -->
 <block>
     <block wx:if="{{loading}}">
