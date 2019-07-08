@@ -1,6 +1,7 @@
 <!--pages/store/zhuye.wxml-->
 <!-- 总 -->
-<view class='allview' wx:if="{{play==0}}">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='allview' wx:if="{{play==0}}" style='margin-top:{{nvabarData.height}}px'>
   <!-- 头部 -->
   <view class='zhuyehead'>
     <view class='headimg'>
@@ -84,7 +85,7 @@
     </view>
   </view>
 </view>
-<view class='mask' wx:if="{{play==1}}">
+<view class='mask' wx:if="{{play==1}}" style='margin-top:{{nvabarData.height}}px'>
   <video class='maskvideo' src='{{shopvideo}}'></video>
   <view class='returnvideo' bindtap='nonemask'>返回</view>
 </view>
