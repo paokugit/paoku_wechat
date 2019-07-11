@@ -1,13 +1,13 @@
 {
     "pages": [
-    "pages/personalcode/code",
+        "pages/discount/discount/discount",
+        "pages/personalcode/code",
+        "pages/personalcode/discountlist",
+        "pages/personalcode/setdiscount",
         "pages/personalcode/account",
         "pages/personalcode/withdrawrecord",
-       
-        "pages/personalcode/discountlist",
         "pages/personalcode/scancode",
-        "pages/personalcode/setdiscount",
-        "pages/discount/discount/discount",
+       
         "pages/index/index",
         "pages/discount/merchcode/merchcode",
         "pages/gift/gift",

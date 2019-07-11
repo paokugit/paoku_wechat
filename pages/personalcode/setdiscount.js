@@ -6,6 +6,7 @@ var message = ''
 var remoneynum = ''
 var recalorienum = ''
 var merchid = ''
+var openid=''
 var a, e, i = getApp(),
     s = i.requirejs("core");
 var f = getApp();
@@ -31,16 +32,16 @@ Page({
         console.log(t)
         var userinfo = f.getCache('userinfo');
         console.log(userinfo);
-        merchid = userinfo.merchInfo.id
+        openid=userinfo.openid
+        // merchid = userinfo.merchInfo.id
         var a = this
         if (t.itemid == '' || t.itemid == undefined || t == null || Object.keys(t).length === 0) {
+            console.log('没有itemid')
             console.log(itemid)
-            console.log(t)
         } else {
             itemid = t.itemid
             s.get("payment/index/edit", {
                 id: itemid,
-                merchid: merchid
             }, function(e) {
                 console.log(e)
                 calorienum = e.result.data.deduct;
@@ -70,10 +71,6 @@ Page({
     },
     // 确认
     confirm: function(a) {
-        console.log(a)
-        console.log(itemid)
-        console.log(itemid)
-        console.log('lalallaa')
         console.log(itemid)
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
@@ -81,7 +78,8 @@ Page({
                 money: this.data.moneynum,
                 deduct: this.data.calorienum,
                 cate: 2,
-                merchid: merchid
+                openid:openid,
+                merchid: 0
             }, function(e) {
                 console.log(e)
                 if (e.status == 0) {
@@ -91,9 +89,9 @@ Page({
                         content: message,
                         success: function(res) {
                             if (res.confirm) { 
-                                console.log('用户点击确定')
+                                console.log('确定')
                             } else { 
-                                console.log('用户点击取消')
+                                console.log('取消')
                             }
                         }
                     })
@@ -136,7 +134,8 @@ Page({
                 deduct: recalorienum,
                 cate: 2,
                 id: itemid,
-                merchid: merchid
+                merchid: 0,
+                openid:openid
             }, function(e) {
                 console.log(e)
                 if (e.status == 0) {
@@ -163,7 +162,7 @@ Page({
                             if (res.confirm) {
                                 console.log('确定')
                                 wx.navigateTo({
-                                    url: '/pages/discount/zkbdiscount/zkbdiscount',
+                                    url: '/pages/personalcode/discountlist',
                                 })
                             } else {
                                 console.log('取消')

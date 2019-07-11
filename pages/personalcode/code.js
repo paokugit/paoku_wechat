@@ -29,16 +29,7 @@ Page({
     onLoad: function(options) {
         var userinfo = f.getCache('userinfo');
         openid = userinfo.openid
-        var a = this
-        s.get("payment/myown/qrcode", {
-            openid: openid,
-        }, function(e) {
-            console.log(e)
-            a.setData({
-                caloriecode: e.result.rebate_qr,
-                calorieurl: e.result.rebate
-            })
-        })
+        
     },
     setbtn: function() {
         wx.navigateTo({
@@ -152,7 +143,16 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        var a = this
+        s.get("payment/myown/qrcode", {
+            openid: openid,
+        }, function (e) {
+            console.log(e)
+            a.setData({
+                caloriecode: e.result.rebate_qr,
+                calorieurl: e.result.rebate
+            })
+        })
     },
 
     /**
