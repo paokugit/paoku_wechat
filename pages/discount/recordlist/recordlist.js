@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var merchid=''
+var useropenid=''
 Page({
 
     /**
@@ -11,6 +12,7 @@ Page({
      */
     data: {
         recordlist:[],
+        page:1,
         totalmoney:'',
         // 组件所需的参数
         nvabarData: {
@@ -27,6 +29,31 @@ Page({
     onLoad: function (options) {
         console.log(options)
         var userinfo = f.getCache('userinfo');
+        // 个人收款码
+        if(options.personal==1){
+            useropenid=userinfo.openid
+            var tt=this
+            s.get("payment/index/oldrecord", {
+                merchid: useropenid,
+                page: tt.data.page,
+                cate: options.cate
+            }, function (e) {
+                console.log(e)
+                if (e.status == 0) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '暂无数据',
+                    })
+                } else {
+                    tt.setData({
+                        recordlist: e.result,
+                        totalmoney: e.result.total_money
+                    })
+                }
+
+            })
+        }
+       else{
         merchid=userinfo.merchInfo.id
         console.log(merchid)
         var a=this
@@ -49,6 +76,7 @@ Page({
             }
            
         })
+        }
     },
 
     /**

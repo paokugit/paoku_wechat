@@ -123,11 +123,11 @@ Page((e = {
             mp3_url: '',
             indexdisp: 'none',
             circleDis: 'none',
-            condisp: 'none',
+            condisp: 'block',
             merchdisp: 'block',
             storedisp: 'block',
             bindDis: 'none',
-            giftDis: 'block',
+            giftDis: 'none',
             // rewarddisp:'none',
             screenWidth: '',
             helpstep: '',
@@ -352,8 +352,12 @@ Page((e = {
         // })
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
-            if (eve.app_version == "devtools" || eve.app_version > 0) { //开发者工具|正式版
+            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1 ) { //开发者工具|正式版
                 version = 1;
+                k.setData({
+                    condisp: 'block',
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
@@ -363,6 +367,7 @@ Page((e = {
                     storedisp: 'none'
                 })
             }
+         
         })
 
         var a = this;

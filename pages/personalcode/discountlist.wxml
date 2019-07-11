@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
 <view class='klldiscount-box' style='margin-top:{{nvabarData.height}}px'>
     <view class="marquee">
         <view class="content">
@@ -13,7 +13,7 @@
     <view class='add_box'>
         <view class='addbtn' bindtap='addbtn'>添加</view>
     </view>
-    <view class='listCon'>
+        <view class='listCon'>
         <view class='listItem'   wx:for="{{list}}" wx:key="{{index}}">
             <view class='discountlist-box' data-id='{{item.id}}' bindtap='orderbtn'>
                 <view class='list-top'>
@@ -22,8 +22,7 @@
                 </view>
 
                 <view class='list-bottom'>
-                    <view class='order-text'>可使用卡路里</view>
-                    <!-- <view class='balance-no'>余额不足</view> -->
+                    <view class='order-text'>可使用折扣宝</view>
                     <view class='calorie-count'>{{item.deduct}}</view>
                 </view>
             </view>

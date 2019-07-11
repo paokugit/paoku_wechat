@@ -9,7 +9,6 @@ var merchid = ''
 var a, e, i = getApp(),
     s = i.requirejs("core");
 var f = getApp();
-var openid = ''
 Page({
 
     /**
@@ -18,11 +17,9 @@ Page({
     data: {
         moneytext: '',
         calorietext: '',
-        // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '折扣宝折扣', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1, 
+            title: '折扣宝折扣',
             height: i.globalData.height * 2 + 20,
         },
     },
@@ -35,7 +32,6 @@ Page({
         var userinfo = f.getCache('userinfo');
         console.log(userinfo);
         merchid = userinfo.merchInfo.id
-        openid=userinfo.openid
         var a = this
         if (t.itemid == '' || t.itemid == undefined || t == null || Object.keys(t).length === 0) {
             console.log(itemid)
@@ -43,7 +39,6 @@ Page({
         } else {
             itemid = t.itemid
             s.get("payment/index/edit", {
-                openid: openid,
                 id: itemid,
                 merchid: merchid
             }, function(e) {
@@ -83,7 +78,6 @@ Page({
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
             s.post("payment/index/set", {
-                openid: openid,
                 money: this.data.moneynum,
                 deduct: this.data.calorienum,
                 cate: 2,
@@ -96,9 +90,9 @@ Page({
                         title: '提示',
                         content: message,
                         success: function(res) {
-                            if (res.confirm) { //这里是点击了确定以后
+                            if (res.confirm) { 
                                 console.log('用户点击确定')
-                            } else { //这里是点击了取消以后
+                            } else { 
                                 console.log('用户点击取消')
                             }
                         }
@@ -109,19 +103,16 @@ Page({
                         title: '提示',
                         content: message,
                         success: function(res) {
-                            if (res.confirm) { //这里是点击了确定以后
+                            if (res.confirm) { 
                                 console.log('用户点击确定')
                                 wx.navigateTo({
-                                    url: '/pages/discount/zkbdiscount/zkbdiscount',
+                                    url: '/pages/personalcode/discountlist',
                                 })
-                            } else { //这里是点击了取消以后
+                            } else { 
                                 console.log('用户点击取消')
                             }
                         }
                     })
-                    // wx.navigateTo({
-                    //     url: '/pages/discount/klldiscount/klldiscount',
-                    // })
                 }
             })
 

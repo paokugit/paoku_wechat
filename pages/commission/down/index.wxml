@@ -84,7 +84,7 @@
                 <block wx:if="{{list.length<1}}">
                     <view class="center">
                         <view class="empty-tip">
-                            <image class="light" src="/static/images/icon/nomeb.png"></image>
+                            <image class="light" src="{{globalimg}}/nomeb.png"></image>
                             <view class="text-cancel">暂时没有任何数据</view>
                         </view>
                     </view>

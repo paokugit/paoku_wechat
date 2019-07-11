@@ -18,14 +18,14 @@ image{
     width: 100%;
     height: 100%
 }
-.kll-box, .zkb-box{
+.zkb-box{
     width: 690rpx;
     height: 270rpx;
     position: relative;
     margin-top: 20rpx;
     margin-bottom: 10rpx
 }
-.kaluli-text-box, .zkb-text-box{
+.zkb-text-box{
     width: 90%;
     height: 100rpx;
     padding: 0 5%;
@@ -36,7 +36,7 @@ image{
     justify-content: space-between;
     align-items: center
 }
-.kllcode, .zkbcode{
+ .zkbcode{
     color: #fff;
     font-size: 38rpx;
     font-weight: bold
@@ -46,7 +46,8 @@ image{
     font-size: 26rpx;
       font-weight: bold
 }
-.kaluli-read, .zkb-read{
+
+.zkb-read{
     width: 90%;
     height: 60rpx;
     line-height: 60rpx;

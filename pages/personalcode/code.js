@@ -3,8 +3,10 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var catenum=1
-var merchid=''
+var catenum = 2
+var merchid = ''
+var openid = ''
+var personal = 1
 Page({
 
     /**
@@ -13,8 +15,8 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         nvabarData: {
-            showCapsule: 1, 
-            title: '收付款', 
+            showCapsule: 1,
+            title: '收付款',
             height: i.globalData.height * 2 + 25,
         },
         caloriecode: '',
@@ -26,27 +28,31 @@ Page({
      */
     onLoad: function(options) {
         var userinfo = f.getCache('userinfo');
-        merchid=userinfo.merchInfo.id
-        console.log(merchid)
+        openid = userinfo.openid
         var a = this
-        s.get("payment/index/qrcode", {
-            merchid: merchid,
+        s.get("payment/myown/qrcode", {
+            openid: openid,
         }, function(e) {
             console.log(e)
             a.setData({
-                caloriecode: e.result.calorie_qr,
-                calorieurl: e.result.calorie
+                caloriecode: e.result.rebate_qr,
+                calorieurl: e.result.rebate
             })
         })
     },
     setbtn: function() {
         wx.navigateTo({
-            url: '/pages/discount/klldiscount/klldiscount',
+            url: '/pages/personalcode/discountlist',
         })
     },
     recordbtn: function() {
         wx.navigateTo({
-            url: '/pages/discount/recordlist/recordlist?cate='+catenum,
+            url: '/pages/discount/recordlist/recordlist?cate=' + catenum + '&personal=' + personal,
+        })
+    },
+    accountbtn: function() {
+        wx.navigateTo({
+            url: '/pages/personalcode/account',
         })
     },
     downloadImage: function(imageUrl) {
@@ -160,10 +166,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-    //   wx.switchTab({
-    //     url: '/pages/discount/discount/discount',
-    //   })
-      console.log('监听页面卸载');
+        //   wx.switchTab({
+        //     url: '/pages/discount/discount/discount',
+        //   })
+        console.log('监听页面卸载');
     },
 
     /**

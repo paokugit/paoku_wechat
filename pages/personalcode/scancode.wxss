@@ -19,20 +19,9 @@ page {
     0% {
         transform: translateX(0);
     }
-    20% {
-        transform: translateX(-25%);
-    }
-    40% {
-        transform: translateX(-50%);
-    }
-   60% {
-        transform: translateX(-75%);
-    }
-    80% {
-        transform: translateX(-100%);
-    }
+
     100% {
-        transform: translateX(-150%);
+        transform: translateX(-33.3%);
     }
 }
 
@@ -55,8 +44,8 @@ page {
 .marquee .content {
     display: inline-block;
     position: relative;
-    padding-right: 30px;
-    animation: kf-marque-animation 20s linear infinite;
+    padding-right: 0px;
+    animation: kf-marque-animation 11.3s linear infinite;
     white-space: nowrap;
 }
 
@@ -90,7 +79,7 @@ page {
     color: #262626;
 }
 
-.consumeipt, .balance-no, .discount-none, .account-total, .payment-num, .calorieipt {
+.consumeipt, .balance-no, .discount-none, .account-total, .payment-num {
     width: 200rpx;
     font-size: 34rpx;
     color: #262626;

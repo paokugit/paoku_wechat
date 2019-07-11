@@ -1,8 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='play-box' style='margin-top:{{nvabarData.height}}px'>
-<!-- banner -->
 <view class='play-banner'><image src='{{globalimg}}/playbanner.png'></image></view>
-<!-- 内容-开始 -->
 <view class='pm-con'>
     <view class='intro-kll'>卡路里介绍</view>
     <view class='kll-question'>1、卡路里是什么?</view>
@@ -27,17 +25,75 @@
     <view class='kll-answer'>答：第一：没有打开微信运动
    依次点击微信—设置—通用—辅助功能—微信运动—启动微信运动，然后打开跑库小程序，授权跑库读取微信运动。</view>
 </view>
-<!-- 内容-结束 -->
-<!-- 在线客服-开始 -->
 <view class='pm-service'>
     <button class="service-img" openType="contact" sessionFrom="weapp" showMessageCard="true"  style="background:url(\" {{globalimg}}/playservice.png\");background-size: 100% 100%;"></button>
     <view class='service-text'>在线客服</view>
 </view>
-
-<!-- 在线客服-结束 -->
-<!-- 全国客服电话 -->
-<!-- <view class='phone-box'>
-全国客服电话
-    <view class='phonenum'>400-000-6666</view>
 </view> -->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='play-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='play-nav-box'>
+        <view class="swiper-tab">
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">热点关注</view>
+            <view class='nav-line'></view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">帮助指南</view>
+        </view>
+        <view class='nav-service'>
+            <view class='kefu-img'>
+                <image src='{{globalimg}}/kefu@2x.png'></image>
+            </view>
+            <view class='kefu-text'>在线客服</view>
+        </view>
+    </view>
+    <view class="{{type==1 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='hot-box'>
+                <!-- 攻略 -->
+                <view class='strategy-box'>
+                    <view class='strategy-img'>
+                        <image src='{{globalimg}}/playbanner.png'></image>
+                    </view>
+                    <view class='strategy-text'>新手攻略必知秘籍?</view>
+                </view>
+                <!-- 视频 -->
+                <view class='video-box'>
+                    <view class='video'>
+                        <video style="width: 662rpx;height:282rpx;margin:1px;" src="" binderror="videoErrorCallback"></video>
+                        <view class='video-time'>05:36</view>
+                    </view>
+                    <view class='video-desc'>好友助力怎么玩,卡路里涨涨涨！</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="{{type==2 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='guide-box'>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class='feedback-box'>
+        <view class='feedback-img'>
+            <image src='{{globalimg}}/yijian@2x.png'></image>
+        </view>
+        <view class='feedback-text'>找不到你的问题,请点击这里反馈</view>
+    </view>
+    </view>
 </view>

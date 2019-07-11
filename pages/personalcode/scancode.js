@@ -1,21 +1,20 @@
-// pages/discount/scancode/scancode.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
-//   当前登录人的openid
 var f = getApp();
-var merchid=''
 var moneycount = ''
 var actualnum = ''
 var deductnum = ''
+var merchid=''
 var itemid = ''
 var timestamp = ''
 var noncestr = ''
 var pack = ''
 var signtype = ''
 var paysign = ''
-var param_deduct = ''
-var merchantid=''
+var param_deduct=''
+var merchantid = ''
 var useropenid=''
+
 Page({
 
     /**
@@ -28,12 +27,12 @@ Page({
         usercredit: '',
         caloriecount: '',
         actualcount: '',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '扫码买单',
-            height: i.globalData.height * 2 + 25,
-        },
+         // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: ' 扫码买单', 
+          height: i.globalData.height * 2 + 25, 
+      },
     },
 
     /**
@@ -43,23 +42,18 @@ Page({
         var userinfo = f.getCache('userinfo');
         useropenid=userinfo.openid
         merchid=userinfo.merchInfo.id
-        console.log(merchid)
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
-        console.log(t)
         console.log(i.mid)
-        if(i.mid==undefined){
-            merchantid=t.mid
-        }else{
+        if (i.mid == undefined) {
+            merchantid = t.mid
+        } else {
             merchantid = i.mid
         }
-        console.log(merchantid)
-        console.log(b)
-         // 修改卡路里列表页的数据
         var a = this
         s.get("payment/index/getset", {
-            cate: 1,
+            cate: 2,
             merchid: merchantid,
             page: 1
         }, function (e) {
@@ -81,38 +75,39 @@ Page({
     moneyInput: function (e) {
         var b = this
         moneycount = e.detail.value
-       b.setData({
+        this.setData({
             moneynum: e.detail.value,
         })
+        console.log(moneycount)
         s.get("payment/index/getDeduct", {
             money: moneycount,
-            cate: 1,
+            cate: 2,
             merchid: merchantid,
             openid: useropenid
         }, function (e) {
             console.log(e)
-            if (e.status == 0) {
+            if(e.status==0){
                 param_deduct = 0
                 actualnum = moneycount
                 b.setData({
-                    caloriecount: '余额不足',
-                    actualcount: moneycount
+                    caloriecount:'余额不足',
+                    actualcount: moneycount,
                 })
-            } else if (e.status == -1) {
+            } else if (e.status == -1){
                 param_deduct = 0
                 actualnum = moneycount
                 b.setData({
                     caloriecount: '暂无折扣',
                     actualcount: moneycount,
                 })
-            }else if(e.status==2){
+            } else if (e.status == 2){
                 param_deduct = 0
                 actualnum = moneycount
                 b.setData({
                     caloriecount: '无符合的折扣优惠',
                     actualcount: moneycount,
                 })
-            } else {
+            } else{
                 deductnum = e.result.list.deduct
                 param_deduct = e.result.list.deduct
                 actualnum = parseFloat(moneycount - e.result.list.deduct).toFixed(2)
@@ -122,20 +117,26 @@ Page({
                     actualcount: parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 })
             }
+
+                   
         })
 
     },
     //   立即买单
     paymentbtn: function () {
+        // var tt=this
         console.log(actualnum, param_deduct, useropenid, merchantid)
         s.get("payment/index/order_cs", {
             money: actualnum,
             rebate: param_deduct,
-            cate: 1,
+            cate: 2,
             merchid: merchantid,
             openid: useropenid
         }, function (eve) {
             console.log(eve)
+            // tt.setData({
+
+            // })
             timestamp = eve.result.timeStamp
             noncestr = eve.result.nonceStr
             pack = eve.result.package
@@ -149,6 +150,7 @@ Page({
                     'signType': 'MD5',
                     'paySign': paysign,
                     'success': function (res) {
+                        console.log(res)
                         console.log('成功')
                         setTimeout(function () {
                             wx.reLaunch({
@@ -174,7 +176,7 @@ Page({
         }, function (e) {
             console.log(e)
             t.setData({
-                usercredit: e.result.credit1
+                usercredit: e.result.credit3
             })
         })
     },

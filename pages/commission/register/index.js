@@ -2,6 +2,7 @@ var e = getApp(), t = e.requirejs("core"), i = e.requirejs("biz/diyform");
 
 Page({
     data: {
+        globalimg: e.globalData.appimg,
         areas: [],
         // 组件所需的参数
         nvabarData: {

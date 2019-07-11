@@ -4,21 +4,22 @@ var a, e, i = getApp(),
 var t = getApp().requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var merchid=''
-var itemid=''
+// var merchid=''
+var openid=''
+var itemid = ''
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        text: '卡路里折扣只针对收款码付款方式有效,线上订单不影响',
-       list:[],
+        text: '折扣宝折扣只针对收款码付款方式有效,线上订单不影响',
+       list: [],
         page: 1,
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '卡路里折扣', //导航栏 中间的标题
+            title: '折扣宝折扣', //导航栏 中间的标题
             // 此页面 页面内容距最顶部的距离
             height: f.globalData.height * 2 + 20,
         },
@@ -29,16 +30,16 @@ Page({
      */
     onLoad: function (options) {
         var userinfo = f.getCache('userinfo');
-        merchid=userinfo.merchInfo.id
-        console.log(merchid)
+        // merchid=userinfo.merchInfo.id
+        openid=userinfo.openid
         this.getSet(), this.getList();
     },
     getList: function () {
         var e = this;
         t.get("payment/index/getset", {
             page: e.data.page,
-            cate: 1,
-            merchid: merchid,
+            cate: 2,
+            merchid: openid
         }, function (t) {
             console.log(t)
             var a = {
@@ -53,18 +54,19 @@ Page({
     getSet: function () {
         var e = this;
         t.show = !0, e.setData(t);
-    },
 
+    },
     addbtn: function () {
         wx.navigateTo({
-            url: '/pages/discount/setklldiscount/setklldiscount',
+            url: '/pages/personalcode/setdiscount',
         })
     },
-    orderbtn:function(t){
+    orderbtn: function (t) {
+      console.log(t)
         console.log(t.currentTarget.dataset.id)
         itemid = t.currentTarget.dataset.id
         wx.navigateTo({
-            url: '/pages/discount/setklldiscount/setklldiscount?itemid='+itemid,
+            url: '/pages/personalcode/setdiscount?itemid=' + itemid,
         })
 
     },
@@ -105,7 +107,6 @@ Page({
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh();
     },
-
     /**
      * 页面上拉触底事件的处理函数
      */

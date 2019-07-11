@@ -2,6 +2,7 @@ var t = getApp(), e = t.requirejs("core"), i = t.requirejs("foxui"), a = t.requi
 
 Page({
     data: {
+        globalimg: t.globalData.appimg,
         route: "cart",
         icons: t.requirejs("icons"),
         merch_list: !1,

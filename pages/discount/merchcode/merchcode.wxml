@@ -1,21 +1,11 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
 <view class='merchcode-box' style='margin-top:{{nvabarData.height}}px'>
- <view class='zkb-box' bindtap='zkbbtn'>
-        <image src='{{globalimg}}/zhekoubaobg@2x.png'></image>
+    <view class='zkb-box' bindtap='zkbbtn'>
+        <image src='{{globalimg}}/kalulibg@2x.png'></image>
         <view class='zkb-text-box'>
             <view class='zkbcode'>折扣宝收款码</view>
             <view class='zhuanxiang'>专享</view>
         </view>
-        <view class='zkb-read' >进入查看</view>
+        <view class='zkb-read'>进入查看</view>
     </view>
-    <view class='kll-box' bindtap='caloriebtn'>
-        <image src='{{globalimg}}/kalulibg@2x.png'></image>
-        <view class='kaluli-text-box'>
-            <view class='kllcode'>卡路里收款码</view>
-            <view class='zhuanxiang'>专享</view>
-        </view>
-        <view class='kaluli-read' >进入查看</view>
-    </view>
-
-   
 </view>

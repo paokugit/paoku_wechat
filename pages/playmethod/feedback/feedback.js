@@ -8,22 +8,50 @@ Page({
      * 页面的初始数据
      */
     data: {
+        selectedSrc: "icox icox-xing selected",
+        key: -1,
+        content: "",
+        images: [],
+        imgs: [],
         globalimg: t.globalData.appimg,
-        src:'',
-        type:2,
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, 
-            title: '新手攻略', 
-            height: t.globalData.height * 2 + 25,
+            showCapsule: 1,
+            title: '反馈问题',
+            height: t.globalData.height * 2 + 30,
         },
+        index: 0,
+        date: '',
+        dateDis:'block'
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+    onLoad: function (a) {
+        this.setData({
+            options: a
+        }), t.url(a);
+    },
+    upload: function (t) {
+        var e = this, s = a.data(t), i = s.type, o = e.data.images, n = e.data.imgs, r = s.index;
+        "image" == i ? a.upload(function (t) {
+            o.push(t.filename), n.push(t.url), e.setData({
+                images: o,
+                imgs: n
+            });
+        }) : "image-remove" == i ? (o.splice(r, 1), n.splice(r, 1), e.setData({
+            images: o,
+            imgs: n
+        })) : "image-preview" == i && wx.previewImage({
+            current: n[r],
+            urls: n
+        });
+    },
 
+    bindDateChange: function (e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            dateDis: 'none',
+            date: e.detail.value
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -73,17 +101,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    myTab: function (t) {
-        console.log(t)
-        console.log(a.pdata(t))
-        var e = this,
-            i = a.pdata(t).type;
-        e.setData({
-            type: i,
-            page: 1,
-            list: [],
-            loading: !0
-        });
     }
 })

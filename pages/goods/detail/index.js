@@ -303,7 +303,7 @@ Page((a = {
             if (version == 0) {
                 e.setData({
                     rewardDis: 'none',
-                    // shareDis: 'none'
+                    shareDis: 'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -577,8 +577,15 @@ Page((a = {
         s.get("version/appversion", {
         }, function (eve) {
             console.log(eve)
-            if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+            // if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+            //     version = 1;
+            // }
+            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.goodsshare == 1) { //开发者工具|正式版
                 version = 1;
+                k.setData({
+                    shareDis: 'block'
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版

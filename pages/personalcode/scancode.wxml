@@ -1,9 +1,9 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='scancode-box'  style='margin-top:{{nvabarData.height}}px'>
+<view class='scancode-box' style='margin-top:{{nvabarData.height}}px'>
     <!-- <view class='scancode-desc'>消费满50元折扣宝抵扣5元，消费满100元折扣宝抵扣10元</view> -->
     <view class="marquee">
         <view class="content" wx:for="{{fulllist}}" wx:key="{{index}}">
-            <text>消费满{{item.money}}元,卡路里抵扣{{item.deduct}}元</text>
+            <text>消费满{{item.money}}元,折扣宝抵扣{{item.deduct}}元。</text>
             <text style="display: inline-block; width: auto"></text>
         </view>
     </view>
@@ -11,19 +11,19 @@
     <view class='consume-box'>
         <view class='consume-top'>
             <view class='consume-text'>消费金额</view>
-            <input class='consumeipt' type='text' placeholder='输入金额' bindinput='moneyInput'></input>
+            <input class='consumeipt' type='text' placeholder='输入金额'  bindinput='moneyInput'></input>
         </view>
 
         <view class='consume-bottom'>
-            <view class='consume-text'>可使用卡路里</view>
+            <view class='consume-text'>可使用折扣宝</view>
+            <!-- <view class='balance-no'>余额不足</view> -->
             <view class='discount-none'>{{caloriecount}}</view>
-            <!-- <input class='calorieipt' type='text' placeholder='输入金额' ></input> -->
         </view>
     </view>
 
     <view class='consume-box'>
         <view class='consume-top'>
-            <view class='consume-text'>卡路里账户</view>
+            <view class='consume-text'>折扣宝账户</view>
             <view class='account-total'>{{usercredit}}</view>
         </view>
 

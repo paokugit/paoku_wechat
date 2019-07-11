@@ -5,7 +5,7 @@
 <view bindtap="closeBtn" class="page-shade" wx:if="{{show&&closeBtn}}">></view>
 <view class="fui-share {{isIpx?'fui-iphonex-share':''}}" wx:if="{{show&&closeBtn}}">
     <view class="share-choose">
-    <view bindtap="sharePoster" class="share-poster">
+        <view bindtap="sharePoster" class="share-poster">
             <image src='{{globalimg}}/post.png'></image>
             <view class="text-explain">生成商品图片</view>
         </view>
@@ -131,10 +131,11 @@
                             </block>
                             <block wx:else>
                                 <block wx:if="{{minprice==goods.maxprice}}">
-                                    {{minprice}}
+                                    {{goods.showprice}}
                                 </block>
                                 <block wx:else>
-                                    {{minprice}} ~ {{maxprice}}
+                                    <!-- {{showprice}} ~ {{maxprice}} -->
+                                    {{goods.showprice}}
                                 </block>
                             </block>
                             <text class="original" wx:if="{{goods.isdiscount!=0&&goods.isdiscount_time>=now}}">¥{{goods.productprice}}</text>
@@ -142,8 +143,8 @@
                                 <text class="original" wx:if="{{goods.productprice>minprice}}">¥{{goods.productprice}}</text>
                             </block>
 
-                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==1}}">可用卡路里抵扣{{goods.deduct}}元</text>
-                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣宝抵扣{{goods.deduct}}元</text>
+                            <!-- <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==1}}">可用卡路里抵扣{{goods.deduct}}元</text>
+                            <text class="text-danger" style="font-size: 14px" wx:if="{{goods.deduct>0&&goods.deduct_type==2}}">可用折扣宝抵扣{{goods.deduct}}元</text> -->
 
                         </view>
                     </view>
