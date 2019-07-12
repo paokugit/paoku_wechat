@@ -562,3 +562,7 @@ image{
     width: 36rpx;
     height: 36rpx;
 }
+.postage-count{
+  color: #000;
+  font-size: 26rpx
+}

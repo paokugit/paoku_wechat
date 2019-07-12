@@ -41,7 +41,7 @@ Page({
     onLoad: function (t) {
         var userinfo = f.getCache('userinfo');
         useropenid=userinfo.openid
-        merchid=userinfo.merchInfo.id
+        // merchid=userinfo.merchInfo.id
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;
@@ -54,8 +54,8 @@ Page({
         var a = this
         s.get("payment/index/getset", {
             cate: 2,
-            merchid: merchantid,
-            page: 1
+            merchid: useropenid,
+            page: 1,
         }, function (e) {
             console.log(e)
             a.setData({
@@ -79,6 +79,7 @@ Page({
             moneynum: e.detail.value,
         })
         console.log(moneycount)
+        // 获取折扣
         s.get("payment/index/getDeduct", {
             money: moneycount,
             cate: 2,
@@ -117,8 +118,6 @@ Page({
                     actualcount: parseFloat(moneycount - e.result.list.deduct).toFixed(2)
                 })
             }
-
-                   
         })
 
     },

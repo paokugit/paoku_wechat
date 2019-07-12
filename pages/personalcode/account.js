@@ -65,13 +65,13 @@ Page({
         console.log(creditnum)
         console.log(iptvalue)
         if (iptvalue <= creditnum) {
-            s.get("myown/devote/withdrawal", {
+            s.get("payment/myown/own_draw", {
                 money: iptvalue,
                 openid: useropenid
             }, function (eve) {
                 console.log(eve)
-                if(eve.error==0){
-                    message=eve.message
+                if(eve.status==1){
+                    message=eve.result.message
                         wx.showModal({
                             title: '提示',
                             content: message,
@@ -81,7 +81,7 @@ Page({
                                 }else{
                                     // 点击确定
                                     wx.navigateTo({
-                                        url: '/pages/discount/zkbaccount/zkbaccount',
+                                        url: '/pages/personalcode/withdrawrecord',
                                     })
                                 }
                             }

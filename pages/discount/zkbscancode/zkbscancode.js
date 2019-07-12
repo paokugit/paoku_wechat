@@ -41,7 +41,7 @@ Page({
     onLoad: function (t) {
         var userinfo = f.getCache('userinfo');
         useropenid=userinfo.openid
-        merchid=userinfo.merchInfo.id
+        // merchid=userinfo.merchInfo.id
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;

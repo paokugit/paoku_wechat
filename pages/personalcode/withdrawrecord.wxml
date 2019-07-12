@@ -2,13 +2,38 @@
 <view class='record_box' style='margin-top:{{nvabarData.height}}px'>
     <view class='record-con'>
         <view class='record-item' wx:for="{{list}}" wx:key="{{index}}">
-            <view class='item-left'>
-                <view class='item-title'>{{item.remark}}</view>
-                <view class='item-time'>{{item.createtime}}</view>
+            <view class='item-top'>
+                <view class='item-left'>
+                    <view class='item-title'>{{item.title}}</view>
+                    <view class='item-time'>2019-03-10 15:12:15</view>
+                </view>
+                <view class='item-right-box'>
+                    <view class='item-money'>{{item.money}}</view>
+                    <view class='item-state-check' wx:if="{{item.status==0}}">审核中</view>
+                    <view class='item-state-success' wx:if="{{item.status==1}}">提现成功</view>
+                    <view class='item-state-fail' wx:if="{{item.status==-1}}">拒绝</view>
+                </view>
             </view>
-            <view class='item-right' wx:if="{{item.num-0>0}}">+{{item.num}}</view>
-            <view class='item-right01' wx:if="{{item.num-0<0}}">{{item.num}}</view>
+            <view class='read-reason'  wx:if="{{item.status==-1}}">
+                <view class='downBox' style='display:{{downdis}}'>
+                    <view class='read-box01' bindtap='downbtn'>
+                        <image class='downimg' src='{{globalimg}}/down@2x.png'></image>
+                        <view class='down-text'>查看原因</view>
+                    </view>
+                </view>
+                <view class='topBox' style='display:{{topdis}}'>
+                    <view class='read-box02' bindtap='topbtn'>
+                        <image class='downimg' src='{{globalimg}}/top@2x.png'></image>
+                        <view class='down-text'>查看原因</view>
+                    </view>
+                </view>
+                <view class='item-reason' style='display:{{reasondis}}'>{{item.refuse_reason}}</view>
+            </view>
+
         </view>
+
     </view>
 </view>
-<view class='record_mask' style='display:{{maskDis}}'><view class='nodata'>暂无数据哦</view></view>
+<view class='record_mask' style='display:{{maskDis}}'>
+    <view class='nodata'>暂无数据哦</view>
+</view>

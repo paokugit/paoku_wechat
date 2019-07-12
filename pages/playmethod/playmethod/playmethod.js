@@ -74,16 +74,16 @@ Page({
     onShareAppMessage: function () {
 
     },
-    myTab: function (t) {
-        console.log(t)
-        console.log(a.pdata(t))
-        var e = this,
-            i = a.pdata(t).type;
-        e.setData({
-            type: i,
-            page: 1,
-            list: [],
-            loading: !0
-        });
-    }
+    // myTab: function (t) {
+    //     console.log(t)
+    //     console.log(a.pdata(t))
+    //     var e = this,
+    //         i = a.pdata(t).type;
+    //     e.setData({
+    //         type: i,
+    //         page: 1,
+    //         list: [],
+    //         loading: !0
+    //     });
+    // }
 })

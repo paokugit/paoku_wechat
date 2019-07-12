@@ -9,6 +9,7 @@ var noncestr = ''
 var pack = ''
 var signtype = ''
 var paysign = ''
+var own=''
 Page({
 
     /**
@@ -40,6 +41,7 @@ Page({
         console.log(userinfo)
         console.log(userinfo.merchInfo)
         useropenid = userinfo.openid
+        own = userinfo.is_own
         if(userinfo.merchInfo==undefined || userinfo.merchInfo==false){
             merchid=undefined
         }else{
@@ -66,53 +68,67 @@ Page({
         })
     },
     codebtn: function() {
+        // console.log(own)
         if (merchid==undefined) {
-            wx.showModal({
-                title: '提示',
-                content: '您还不是商家哦',
-                success:function(res){
-                    if(res.cancel){
-                        // 点击取消
-                    }else{
-                        // 点击确定
-                        // 唤起微信支付
-                        s.get("payment/myown/order", {
-                                type:1,
-                                money: 0.01,
-                                openid: useropenid
-                            }, function (eve) {
-                                console.log(eve)
-                                timestamp = eve.result.timeStamp
-                                noncestr = eve.result.nonceStr
-                                pack = eve.result.package
-                                signtype = eve.result.signType
-                                paysign = eve.result.paySign
-                                wx.requestPayment(
-                                    {
-                                        'timeStamp': timestamp,
-                                        'nonceStr': noncestr,
-                                        'package': pack,
-                                        'signType': 'MD5',
-                                        'paySign': paysign,
-                                        'success': function (res) {
-                                            console.log(res)
-                                            console.log('成功')
-                                            setTimeout(function () {
-                                                wx.reLaunch({
-                                                    url: '/pages/personalcode/code',
-                                                })
-                                            }, 200)
-                                        },
-                                        'fail': function (res) {
-                                            console.log('取消')
-                                        },
-                                        'complete': function (res) { }
-                                    })
-                            })
-                     
-                    }
-                }
-            })
+          wx.showModal({
+            title: '提示',
+            content: '您还不是商家哦',
+          })
+            // if(own==0){
+            //     // 未购买个人收款码
+            //     wx.showModal({
+            //         title: '提示',
+            //         content: '确认购买个人收款码吗',
+            //         success: function (res) {
+            //             if (res.cancel) {
+            //                 // 点击取消
+            //             } else {
+            //                 // 点击确定
+            //                 // 唤起微信支付
+            //                 s.get("payment/myown/order", {
+            //                     type: 1,
+            //                     money: 0.01,
+            //                     openid: useropenid
+            //                 }, function (eve) {
+            //                     console.log(eve)
+            //                     timestamp = eve.result.timeStamp
+            //                     noncestr = eve.result.nonceStr
+            //                     pack = eve.result.package
+            //                     signtype = eve.result.signType
+            //                     paysign = eve.result.paySign
+            //                     wx.requestPayment(
+            //                         {
+            //                             'timeStamp': timestamp,
+            //                             'nonceStr': noncestr,
+            //                             'package': pack,
+            //                             'signType': 'MD5',
+            //                             'paySign': paysign,
+            //                             'success': function (res) {
+            //                                 console.log(res)
+            //                                 console.log('成功')
+            //                                 setTimeout(function () {
+            //                                     wx.reLaunch({
+            //                                         url: '/pages/personalcode/code',
+            //                                     })
+            //                                 }, 200)
+            //                             },
+            //                             'fail': function (res) {
+            //                                 console.log('取消')
+            //                             },
+            //                             'complete': function (res) { }
+            //                         })
+            //                 })
+
+            //             }
+            //         }
+            //     })
+            // }else if(own==1){
+            //     // 已购买个人收款码
+            //     wx.navigateTo({
+            //         url: '/pages/personalcode/code',
+            //     })
+            // }
+            
         }else{
             wx.navigateTo({
                 url: '/pages/discount/merchcode/merchcode',

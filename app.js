@@ -138,6 +138,9 @@ App({
                                 if (e.merchInfo && e.merchInfo != '') {
                                     i.userInfo.merchInfo = e.merchInfo;
                                 }
+                              if (e.is_own!=undefined && e.is_own != '') {
+                                i.userInfo.is_own = e.is_own;
+                              }
                                 console.log(i.userInfo);
                                 i.needauth = 0, n.setCache("userinfo", i.userInfo, expiration), n.setCache("userinfo_openid", i.userInfo.openid),
                                     n.setCache("userinfo_id", e.id), n.getSet(), t && "function" == typeof t && t(o);
