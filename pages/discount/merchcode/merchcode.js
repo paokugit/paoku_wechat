@@ -41,6 +41,12 @@ Page({
             url: '/pages/discount/zkbcode/zkbcode',
         })
     },
+    // personalbtn
+    personalbtn: function () {
+        wx.navigateTo({
+            url: '/pages/discount/zkbcode/zkbcode',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
