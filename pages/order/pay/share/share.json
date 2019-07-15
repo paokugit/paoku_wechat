@@ -1,3 +1,6 @@
 {
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarTitleText": "待领取优惠券"
 }

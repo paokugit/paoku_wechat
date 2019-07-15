@@ -1,4 +1,7 @@
 {
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
     "navigationBarTitleText": "我的足迹",
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark"

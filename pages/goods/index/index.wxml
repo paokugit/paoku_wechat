@@ -212,7 +212,7 @@
       </view>
     </view>
   </view>
-  <view class="fui-goods-group {{listmode}}" style='margin-top:{{nvabarData.height}}px'>
+  <view class="fui-goods-group {{listmode}}">
     <block wx:for="{{list}}">
       <template is="tpl_list" data="{{item:item}}"></template>
     </block>

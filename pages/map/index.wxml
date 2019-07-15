@@ -1,4 +1,5 @@
-<view class="fui-page">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="fui-page" style='margin-top:{{nvabarData.height}}px'>
     <map showLocation bindcontroltap="controltap" bindmarkertap="markertap" bindregionchange="regionchange" bindupdated="bindupdated" circles="{{circles}}" id="myMap" latitude="{{lat}}" longitude="{{lng}}" markers="{{markers}}" polyline="{{polyline}}" scale="{{scale}}" style="width: 100%;"></map>
     <view class="fui-list-group fui-list-group1 {{listout}}" style="margin-top: 0;">
         <a class="fui-list order-list title-b" data-nocache="true">

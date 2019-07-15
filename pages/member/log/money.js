@@ -8,7 +8,13 @@ Page({
         page: 1,
         loaded: !1,
         loading: !0,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '余额明细', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(a) {
         a.type > 0 && this.setData({

@@ -5,11 +5,11 @@ var itemid = ''
 var message = ''
 var remoneynum = ''
 var recalorienum = ''
-var merchid=''
+var merchid = ''
 var a, e, i = getApp(),
     s = i.requirejs("core");
-//   当前登录人的openid
 var f = getApp();
+var openid = ''
 Page({
 
     /**
@@ -30,21 +30,23 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (t) {
+    onLoad: function(t) {
         console.log(t)
         var userinfo = f.getCache('userinfo');
-      console.log(userinfo);
-        merchid=userinfo.merchInfo.id
+        console.log(userinfo);
+        merchid = userinfo.merchInfo.id
+        openid=userinfo.openid
         var a = this
-      if (t.itemid == '' || t.itemid == undefined || t == null || Object.keys(t).length ===0) {
-        console.log(itemid)
-console.log(t)
+        if (t.itemid == '' || t.itemid == undefined || t == null || Object.keys(t).length === 0) {
+            console.log(itemid)
+            console.log(t)
         } else {
             itemid = t.itemid
             s.get("payment/index/edit", {
+                openid: openid,
                 id: itemid,
                 merchid: merchid
-            }, function (e) {
+            }, function(e) {
                 console.log(e)
                 calorienum = e.result.data.deduct;
                 moneynum = e.result.data.money;
@@ -59,40 +61,41 @@ console.log(t)
         }
     },
 
-    setmoney: function (e) {
+    setmoney: function(e) {
         const that = this;
         that.setData({
             moneynum: e.detail.value
         })
     },
-    setcalorie: function (e) {
+    setcalorie: function(e) {
         const that = this;
         that.setData({
             calorienum: e.detail.value
         })
     },
     // 确认
-    confirm: function (a) {
+    confirm: function(a) {
         console.log(a)
         console.log(itemid)
-      console.log(itemid)
+        console.log(itemid)
         console.log('lalallaa')
-      console.log(itemid)
+        console.log(itemid)
         if (itemid == '' || itemid == undefined) {
             console.log('没有itemid')
             s.post("payment/index/set", {
+                openid: openid,
                 money: this.data.moneynum,
                 deduct: this.data.calorienum,
                 cate: 2,
                 merchid: merchid
-            }, function (e) {
+            }, function(e) {
                 console.log(e)
                 if (e.status == 0) {
                     message = e.result.message
                     wx.showModal({
                         title: '提示',
                         content: message,
-                        success: function (res) {
+                        success: function(res) {
                             if (res.confirm) { //这里是点击了确定以后
                                 console.log('用户点击确定')
                             } else { //这里是点击了取消以后
@@ -105,7 +108,7 @@ console.log(t)
                     wx.showModal({
                         title: '提示',
                         content: message,
-                        success: function (res) {
+                        success: function(res) {
                             if (res.confirm) { //这里是点击了确定以后
                                 console.log('用户点击确定')
                                 wx.navigateTo({
@@ -143,7 +146,7 @@ console.log(t)
                 cate: 2,
                 id: itemid,
                 merchid: merchid
-            }, function (e) {
+            }, function(e) {
                 console.log(e)
                 if (e.status == 0) {
                     message = e.result.message
@@ -151,10 +154,10 @@ console.log(t)
                     wx.showModal({
                         title: '提示',
                         content: message,
-                        success: function (res) {
-                            if (res.confirm) { 
+                        success: function(res) {
+                            if (res.confirm) {
                                 console.log('确定')
-                            } else { 
+                            } else {
                                 console.log('取消')
                             }
                         }
@@ -165,13 +168,13 @@ console.log(t)
                     wx.showModal({
                         title: '提示',
                         content: message,
-                        success: function (res) {
-                            if (res.confirm) { 
+                        success: function(res) {
+                            if (res.confirm) {
                                 console.log('确定')
                                 wx.navigateTo({
                                     url: '/pages/discount/zkbdiscount/zkbdiscount',
                                 })
-                            } else { 
+                            } else {
                                 console.log('取消')
                             }
                         }
@@ -184,52 +187,51 @@ console.log(t)
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-    },
+    onShow: function() {},
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
-      console.log('监听页面隐藏');
-      itemid='';
+    onHide: function() {
+        console.log('监听页面隐藏');
+        itemid = '';
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-    //   wx.switchTab({
-    //     url: '/pages/discount/discount/discount',
-    //   })
-      console.log('监听页面卸载');
+    onUnload: function() {
+        //   wx.switchTab({
+        //     url: '/pages/discount/discount/discount',
+        //   })
+        console.log('监听页面卸载');
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

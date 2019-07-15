@@ -69,7 +69,8 @@
                 <block wx:if="{{verifygoodlogs.length==0}}">
                     <view class="fui-cell noborder">
                         <view style="margin: 45rpx auto;font-size:26rpx;color:#b2b2b2">
-                            <image src="/static/images/empty.png" style="width:73rpx;height:73rpx;vertical-align: middle;margin-right:12rpx"></image>暂时没有记录</view>
+                            <!-- <image src="/static/images/empty.png" style="width:73rpx;height:73rpx;vertical-align: middle;margin-right:12rpx"></image>暂时没有记录</view> -->
+                            <image src='{{globalimg}}/empty.png' style="width:73rpx;height:73rpx;vertical-align: middle;margin-right:12rpx"></image>暂时没有记录</view>
                     </view>
                 </block>
                 <block wx:else>

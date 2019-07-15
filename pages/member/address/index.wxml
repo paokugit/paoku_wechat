@@ -6,7 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page footer {{paddingb}}">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page footer {{paddingb}}" style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{list.length>0}}">
                     <block wx:for="{{list}}">

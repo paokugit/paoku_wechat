@@ -3,7 +3,13 @@ var e = getApp(), t = e.requirejs("core"), a = e.requirejs("foxui"), i = e.requi
 Page({
     data: {
         id: 0,
-        detail: {}
+        detail: {},
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '优惠券', 
+            height: e.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         this.setData({

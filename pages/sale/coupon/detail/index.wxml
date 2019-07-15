@@ -6,7 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page" style='margin-top:{{nvabarData.height}}px'>
             <view class="coupon-detail">
                 <view class="coupon-detail-head {{detail.color}}">
                     <view class="coupon-detail-head-title">

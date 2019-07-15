@@ -1,84 +1,271 @@
-page{
+page {
     width: 100%;
-    height: 100%
+    height: 100%;
+     overflow-x: hidden;
 }
-.play-box{
+
+.play-box {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
+
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
+    width: 0;
+    height: 0;
+    color: transparent;
 }
-.play-banner{
+
+.play-banner {
     width: 100%;
-    height: 260rpx
+    height: 260rpx;
 }
-image{
+
+image {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
-.pm-con{
+
+.pm-con {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center
+    align-items: center;
 }
-.intro-kll{
+
+.intro-kll {
     width: 94%;
     height: 70rpx;
     line-height: 70rpx;
     color: #1bc071;
-    font-size: 32rpx
+    font-size: 32rpx;
 }
-.kll-question{
+
+.kll-question {
     width: 94%;
     height: 50rpx;
     line-height: 50rpx;
     font-size: 28rpx;
-    color: #333
+    color: #333;
 }
-.kll-answer{
+
+.kll-answer {
     width: 94%;
     height: auto;
     line-height: 60rpx;
     font-size: 28rpx;
     color: #666;
 }
-.pm-service{
+
+.pm-service {
     width: 100%;
     height: 260rpx;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
-.service-img{
+
+.service-img {
     width: 100rpx;
-    height: 100rpx
+    height: 100rpx;
 }
-.service-text{
+
+.service-text {
     width: 100rpx;
     height: 50rpx;
     line-height: 50rpx;
     color: #333;
-    font-size: 24rpx
+    font-size: 24rpx;
 }
-.phone-box{
+
+.phone-box {
     width: 100%;
     height: 60rpx;
     font-size: 24rpx;
     color: #666;
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
-.phonenum{
+
+.phonenum {
     color: #2bbe78;
-    font-size: 24rpx
+    font-size: 24rpx;
 }
+
 button::after {
-  border: none
+    border: none;
+}
+
+.play-nav-box {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.swiper-tab {
+    width: 50%;
+    padding: 0 5%;
+    /* background: pink; */
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #333;
+}
+
+.nav-service {
+    width: 30%;
+    height: 100rpx;
+    color: #333;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.nav-line {
+    width: 2rpx;
+    height: 16rpx;
+    background: #e2e2e2;
+}
+
+.kefu-img {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 15rpx;
+}
+
+.swiper-tab-item {
+    color: #333;
+    font-size: 34rpx;
+}
+
+.active {
+    color: #01d7a1;
+    font-size: 40rpx;
+}
+
+.show {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.scroll {
+    width: 100%;
+    height: auto;
+}
+
+.hot-box {
+    width: 90%;
+    height: 2000rpx;
+    padding: 0 5%;
+    margin-top: 20rpx;
+}
+
+.strategy-box {
+    width: 662rpx;
+    height: 400rpx;
+    background: #fff;
+    border-radius: 20rpx;
+}
+
+.strategy-img {
+    width: 662rpx;
+    height: 280rpx;
+}
+
+.strategy-text, .video-desc {
+    width: 600rpx;
+    height: 100rpx;
+    padding: 0 31rpx;
+    color: #333;
+    font-size: 34rpx;
+    display: flex;
+    align-items: center;
+}
+
+.video-box {
+    width: 662rpx;
+    height: 400rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+}
+
+.video {
+    width: 662rpx;
+    height: 280rpx;
+    position: relative;
+}
+
+.video-time {
+    width: 60rpx;
+    height: 40rpx;
+    color: #fff;
+    font-size: 30rpx;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.guide-box {
+    width: 95%;
+    height: auto;
+    padding-left: 5%;
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.guide-item-box {
+    width: 100%;
+    height: 110rpx;
+    border-bottom: 2rpx solid #f8f8f8;
+    display: flex;
+    align-items: center;
+}
+
+.item-text {
+    width: 90%;
+    height: 100%;
+    color: #333;
+    font-size: 34rpx;
+    display: flex;
+    align-items: center;
+}
+
+.item-img {
+    width: 30rpx;
+    height: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feedback-box{
+    width: 100%;
+    height: 98rpx;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.feedback-img{
+    width: 38rpx;
+    height: 38rpx;
+}
+.feedback-text{
+    color: #858585;
+    font-size: 30rpx;
+    margin-left: 20rpx
 }

@@ -4,6 +4,13 @@ var a, e, i = getApp(),
 var f = getApp();
 var merchid=''
 var useropenid=''
+var timestamp = ''
+var noncestr = ''
+var pack = ''
+var signtype = ''
+var paysign = ''
+var own=''
+var agentlevel=""
 Page({
 
     /**
@@ -13,10 +20,9 @@ Page({
         globalimg: i.globalData.appimg,
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
-            height: i.globalData.height * 2 + 20,
+            showCapsule: 0, 
+            title: '', 
+            height: i.globalData.height * 2 + 30,
         },
         credit: '',
         conbind: '',
@@ -36,6 +42,8 @@ Page({
         console.log(userinfo)
         console.log(userinfo.merchInfo)
         useropenid = userinfo.openid
+        own = userinfo.is_own
+        agentlevel = userinfo.agentlevel
         if(userinfo.merchInfo==undefined || userinfo.merchInfo==false){
             merchid=undefined
         }else{
@@ -63,10 +71,40 @@ Page({
     },
     codebtn: function() {
         if (merchid==undefined) {
-            wx.showModal({
-                title: '提示',
-                content: '您还不是商家哦',
-            })
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: '您还不是商家哦',
+        //   })
+            console.log(agentlevel)
+            if (agentlevel == 0 || agentlevel==1){
+                wx.showModal({
+                    title: '提示',
+                    content: '成为星选达人或店主即可开通',
+                    showCancel: true, 
+                    cancelText: "知道了", 
+                    confirmText: "去开通", 
+                    success: function (res) {
+                        if (res.cancel) {
+                            console.log("取消")
+                        } else if (res.confirm) {
+                            //点击确定
+                            console.log("确定")
+                            wx.switchTab({
+                                url: '/pages/exclusive/exclusive',
+                            })
+                        }
+                    }
+                })
+            } else if (agentlevel==2){
+                wx.navigateTo({
+                    url: '/pages/discount/merchcode/merchcode',
+                })
+            } else if (agentlevel == 5){
+                wx.navigateTo({
+                    url: '/pages/discount/merchcode/merchcode',
+                })
+            }
+            
         }else{
             wx.navigateTo({
                 url: '/pages/discount/merchcode/merchcode',

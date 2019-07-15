@@ -2,7 +2,13 @@ var t = getApp(), i = t.requirejs("core"), e = t.requirejs("jquery");
 
 Page({
     data: {
-        search: !1
+        search: !1,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '选择门店',
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(i) {
         this.setData({

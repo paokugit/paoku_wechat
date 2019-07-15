@@ -18,14 +18,21 @@ Page({
         areas: [],
         street: [],
         streetIndex: 0,
-        noArea: !1
+        noArea: !1,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         this.setData({
             id: Number(e.id)
         }), t.url(e), this.getDetail(), e.id || wx.setNavigationBarTitle({
             title: "添加收货地址"
-        }), this.setData({
+        }),this.setData({
+            "nvabarData.title": "添加收货地址",
             areas: t.getCache("cacheset").areas,
             type: e.type
         });
@@ -40,8 +47,11 @@ Page({
                 show: !0
             };
             if (!i.isEmptyObject(e.detail)) {
-                wx.setNavigationBarTitle({
-                    title: "编辑收货地址"
+                // wx.setNavigationBarTitle({
+                //     title: "编辑收货地址"
+                // });
+                t.setData({
+                    "nvabarData.title": "编辑收货地址"
                 });
                 var r = e.detail.province + " " + e.detail.city + " " + e.detail.area, s = t.getIndex(r, t.data.areas);
                 a.pval = s, a.pvalOld = s, a.detail = e.detail;

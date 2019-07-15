@@ -1,43 +1,98 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='play-box' style='margin-top:{{nvabarData.height}}px'>
-<!-- banner -->
-<view class='play-banner'><image src='{{globalimg}}/playbanner.png'></image></view>
-<!-- 内容-开始 -->
-<view class='pm-con'>
+  <view class='play-banner'>
+    <image src='{{globalimg}}/playbanner.png'></image>
+  </view>
+  <view class='pm-con'>
     <view class='intro-kll'>卡路里介绍</view>
     <view class='kll-question'>1、卡路里是什么?</view>
     <view class='kll-answer'>答：卡路里是兑换或购买商品时可以抵用现金的虚拟积分。</view>
     <view class='kll-question'>2、卡路里如何使用?</view>
     <view class='kll-answer'>答：兑换或购买商品时，直接当现金使用。</view>
     <view class='kll-question'>3、如何获得卡路里?</view>
-    <view class='kll-answer'>答：步数兑换：每日24:00点前可以将自己微信运动的步数兑换成卡路里；
-            每日签到：每日打开跑库小程序，完成签到任务，可以获得+1卡路里；好友助力：每日邀请微信好友赞助微信运动步数，可以获得相应卡路里；
-分享商品：分享指定商品给好友，可以获得相应卡路里奖励；
-幸运抽奖：参与抽奖游戏随机获得卡路里奖励；
-分享运动日记：每天分享运动日记到朋友圈，可以获得卡路里奖励；</view>
+    <view class='kll-answer'>答：步数兑换：每日24:00点前可以将自己微信运动的步数兑换成卡路里； 每日签到：每日打开跑库小程序，完成签到任务，可以获得+1卡路里；好友助力：每日邀请微信好友赞助微信运动步数，可以获得相应卡路里； 分享商品：分享指定商品给好友，可以获得相应卡路里奖励； 幸运抽奖：参与抽奖游戏随机获得卡路里奖励； 分享运动日记：每天分享运动日记到朋友圈，可以获得卡路里奖励；
+    </view>
     <view class='kll-question'>4、卡路里与步数的兑换比例是多少?每日封顶多少</view>
     <view class='kll-answer'>答：根据不同会员级别，兑换比例和每日封顶不同，详情请至微信公众号查看；</view>
     <view class='kll-question'>5、获得步数的两种方式?</view>
-    <view class='kll-answer'>答：第一：授权允许跑库访问你的微信运动；
-第二：邀请好友助力步数</view>
+    <view class='kll-answer'>答：第一：授权允许跑库访问你的微信运动； 第二：邀请好友助力步数
+    </view>
     <view class='kll-question'>6、异常行为 处理?</view>
     <view class='kll-answer'>答：一旦发现存在恶意刷数据或使用非法外挂程序等不正常获得的卡路里，立刻冻结账号，并保留一切法律权利。</view>
     <view class='intro-kll'>计步问题</view>
     <view class='kll-question'>1、为什么微信步数为0?</view>
-    <view class='kll-answer'>答：第一：没有打开微信运动
-   依次点击微信—设置—通用—辅助功能—微信运动—启动微信运动，然后打开跑库小程序，授权跑库读取微信运动。</view>
-</view>
-<!-- 内容-结束 -->
-<!-- 在线客服-开始 -->
-<view class='pm-service'>
+    <view class='kll-answer'>答：第一：没有打开微信运动 依次点击微信—设置—通用—辅助功能—微信运动—启动微信运动，然后打开跑库小程序，授权跑库读取微信运动。
+    </view>
+  </view>
+  <view class='pm-service'>
     <button class="service-img" openType="contact" sessionFrom="weapp" showMessageCard="true"  style="background:url(\" {{globalimg}}/playservice.png\");background-size: 100% 100%;"></button>
     <view class='service-text'>在线客服</view>
+  </view>
 </view>
-
-<!-- 在线客服-结束 -->
-<!-- 全国客服电话 -->
-<!-- <view class='phone-box'>
-全国客服电话
-    <view class='phonenum'>400-000-6666</view>
+<!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='play-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='play-nav-box'>
+        <view class="swiper-tab">
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">热点关注</view>
+            <view class='nav-line'></view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">帮助指南</view>
+        </view>
+        <view class='nav-service'>
+            <view class='kefu-img'>
+                <image src='{{globalimg}}/kefu@2x.png'></image>
+            </view>
+            <view class='kefu-text'>在线客服</view>
+        </view>
+    </view>
+    <view class="{{type==1 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='hot-box'>
+                
+                <view class='strategy-box'>
+                    <view class='strategy-img'>
+                        <image src='{{globalimg}}/playbanner.png'></image>
+                    </view>
+                    <view class='strategy-text'>新手攻略必知秘籍?</view>
+                </view>
+           
+                <view class='video-box'>
+                    <view class='video'>
+                        <video style="width: 662rpx;height:282rpx;margin:1px;" src="" binderror="videoErrorCallback"></video>
+                        <view class='video-time'>05:36</view>
+                    </view>
+                    <view class='video-desc'>好友助力怎么玩,卡路里涨涨涨！</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="{{type==2 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='guide-box'>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+                <view class='guide-item-box'>
+                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                    <view class='item-img'>
+                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class='feedback-box'>
+        <view class='feedback-img'>
+            <image src='{{globalimg}}/yijian@2x.png'></image>
+        </view>
+        <view class='feedback-text'>找不到你的问题,请点击这里反馈</view>
+    </view>
+    </view>
 </view> -->
-</view>

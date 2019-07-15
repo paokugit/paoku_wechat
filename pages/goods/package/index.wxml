@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page" style='margin-top:{{nvabarData.height}}px'>
             <block wx:for="{{list}}">
                 <view class="fui-list-group">
                     <navigator class="fui-list goods-item" openType="redirect" url="/pages/goods/package/detail/index?id={{item.id}}">

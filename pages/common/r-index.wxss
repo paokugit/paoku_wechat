@@ -140,13 +140,13 @@ input {
 }
 
 .heard-tag-list:nth-child(2) {
-    top: 10rpx;
-    left: 150rpx;
+    top: 5rpx;
+    left: 160rpx;
 }
 
 .heard-tag-list:nth-child(3) {
     top: 190rpx;
-    left: 20rpx;
+    left: 15rpx;
 }
 .heard-tag-list:nth-child(4) {
     top: 20rpx;

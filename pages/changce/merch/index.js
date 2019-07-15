@@ -13,7 +13,13 @@ Page({
     keyword:'',
     disopt:[],
     range:0,
-    approot: t.globalData.approot
+    approot: t.globalData.approot,
+      // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: '商户列表', 
+          height: t.globalData.height * 2 + 20,
+      },
   },
   onLoad: function (z) {
     var b = this;

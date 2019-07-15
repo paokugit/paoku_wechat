@@ -2,6 +2,12 @@ var t = getApp(), e = t.requirejs("core"), a = t.requirejs("foxui"), i = t.requi
 
 Page({
     data: {
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '', 
+            height: t.globalData.height * 2 + 20,
+        },
         id: null,
         posting: !1,
         subtext: "保存地址",
@@ -29,6 +35,7 @@ Page({
         }), t.url(e), this.getDetail(), e.id || wx.setNavigationBarTitle({
             title: "添加收货地址"
         }), this.setData({
+            "nvabarData.title":"添加收货地址",
             areas: t.getCache("cacheset").areas,
             type: e.type
         });
@@ -45,8 +52,11 @@ Page({
                 show: !0
             };
             if (!i.isEmptyObject(e.detail)) {
-                wx.setNavigationBarTitle({
-                    title: "编辑收货地址"
+                // wx.setNavigationBarTitle({
+                //     title: "编辑收货地址"
+                // });
+                t.setData({
+                    "nvabarData.title": "编辑收货地址",
                 });
                 var r = e.detail.province + " " + e.detail.city + " " + e.detail.area, s = t.getIndex(r, t.data.areas);
                 a.pval = s, a.pvalOld = s, a.detail = e.detail;

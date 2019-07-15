@@ -27,6 +27,12 @@ Page({
         usercredit: '',
         caloriecount: '',
         actualcount: '',
+         // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1, 
+          title: ' 扫码买单', 
+          height: i.globalData.height * 2 + 25, 
+      },
     },
 
     /**
@@ -35,7 +41,7 @@ Page({
     onLoad: function (t) {
         var userinfo = f.getCache('userinfo');
         useropenid=userinfo.openid
-        merchid=userinfo.merchInfo.id
+        // merchid=userinfo.merchInfo.id
         var b = decodeURIComponent(t.scene);
         var i = s.str2Obj(b);
         t.id = i.id;

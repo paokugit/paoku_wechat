@@ -1,5 +1,5 @@
-
-  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+  <scroll-view class="scroll-view_H" scroll-x style="width: 100%" style='margin-top:{{nvabarData.height}}px'>
   <!-- 体验会员 -->
     <view id="tiyan" class="scroll-view-item_H">
     <view class='bc-huiyuan'>

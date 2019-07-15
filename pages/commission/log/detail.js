@@ -1,9 +1,15 @@
 var t = getApp().requirejs("core");
-
+var app=getApp();
 Page({
     data: {
         page: 1,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '详情', 
+            height: app.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         t.id > 0 && this.setData({

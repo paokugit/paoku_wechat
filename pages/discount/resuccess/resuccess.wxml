@@ -1,4 +1,5 @@
-<view class='success-box'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='success-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='success-bg'>
         <image src='{{globalimg}}/success-green@2x.png'></image>
     </view>

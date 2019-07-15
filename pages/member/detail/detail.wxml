@@ -5,10 +5,11 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar {{isopen==1?'header':false}}">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar {{isopen==1?'header':false}}"  style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{isopen==1}}">
-                    <view class="fui-tab fixed fui-tab-danger">
+                    <view class="fui-tab fixed fui-tab-danger"style='position:fixed;top:{{nvabarData.height}}px;left:0'>
                         <view bindtap="myTab" class="item {{type==1?'active':''}}" data-type="1">收入</view>
                         <view bindtap="myTab" class="item {{type==2?'active':''}}" data-type="2">支出</view>
                     </view>

@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page register">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page register" style='margin-top:{{nvabarData.height}}px'>
             <view class="fui-content">
                 <image mode="widthFix" src="{{set['regbg']}}"></image>
             </view>
@@ -217,7 +218,8 @@
             <block>
                 <block wx:if="{{member['status']==0&&member['isagent']==1}}">
                     <view class="wait">
-                        <image src="/static/images/icon/wait-128.png"></image>
+                        <!-- <image src="/static/images/icon/wait-128.png"></image> -->
+                        <image src="{{globalimg}}/wait-128.png"></image>
                         <view>谢谢您的支持，请等待审核！</view>
                         <navigator class="btn btn-danger" openType="switchTab" url="/pages/index/index">去商城逛逛</navigator>
                     </view>

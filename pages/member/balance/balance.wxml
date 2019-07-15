@@ -1,4 +1,5 @@
-<view class="balanceBox">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="balanceBox" style='margin-top:{{nvabarData.height}}px'>
     <!-- header-开始 -->
     <view class='balance-header'>
         <image src='{{globalimg}}/yue.png'></image>

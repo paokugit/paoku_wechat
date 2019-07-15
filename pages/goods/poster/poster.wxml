@@ -3,8 +3,9 @@
         <loading>加载中...</loading>
     </block>
 </block>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="page">
-    <view bindtap="previewImage" class="fui-picture">
+    <view bindtap="previewImage" class="fui-picture" style='margin-top:{{nvabarData.height}}px'>
         <block>
             <block wx:if="{{Image.length>0}}">
                 <image bindload="loadImg" src="{{Image}}"></image>

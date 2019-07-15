@@ -1,7 +1,13 @@
 var e = getApp().requirejs("core");
-
+var app=getApp();
 Page({
     data: {
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '配送范围', 
+            height: app.globalData.height * 2 + 20,
+        },
         lng: 0,
         lat: 0,
         scale: 13,

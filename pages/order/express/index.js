@@ -1,7 +1,14 @@
 var t = getApp(), s = t.requirejs("core");
 
 Page({
-    data: {},
+    data: {
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '物流信息', 
+            height: t.globalData.height * 2 + 20,
+        },  
+    },
     onLoad: function(s) {
         this.setData({
             options: s

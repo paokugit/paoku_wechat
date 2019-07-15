@@ -10,7 +10,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg
+        globalimg: i.globalData.appimg,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '折扣宝充值', 
+            height: i.globalData.height * 2 + 20,
+        },
     },
 
     /**

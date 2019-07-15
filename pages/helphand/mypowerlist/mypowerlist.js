@@ -16,7 +16,13 @@ Page({
         loaded: !1,
         loading: !0,
         step: '',
-        helplist: []
+        helplist: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1,
+            title: '跟我跑，送你钱', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     // 回到首页
     goIndex: function () {

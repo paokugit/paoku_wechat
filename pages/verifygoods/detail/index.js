@@ -4,7 +4,8 @@ e.requirejs("jquery");
 
 Page({
     data: {
-        verifygoods: []
+        verifygoods: [],
+        globalimg: e.globalData.appimg,
     },
     onLoad: function(o) {
         this.setData({

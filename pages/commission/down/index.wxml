@@ -3,35 +3,36 @@
         <loading>加载中...</loading>
     </block>
 </block>
-<view class='bg_box'>
-    <view class='greenbg'>
-        <image src='{{globalimg}}/cen-greenbg.png'></image>
-    </view>
-    <view class='bg_text_box'>
-        <view class='text-top'>
-            <view class='bg_text'>推荐好友</view>
-            <view class='bg_num'>{{total}}</view>
-        </view>
-        <view class='text-bottom'>
-            <view class='text-bottom-left'>店主
-                <text class='text-num'>{{dianzhu}}</text>
-            </view>
-            <view class='text-bottom-right'>粉丝量
-                <text class='text-num'>{{fans}}</text>
-            </view>
-        </view>
-    </view>
-</view>
-<!-- 推荐码 -->
-<view class='recommend-box'>
-    <view class='recommend-center'>
-        <view class='recommend-left'>推荐码：{{recommendid}}</view>
-        <view class='recommend-right'>推荐人：{{agentname}}</view>
-    </view>
-</view>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar com-down">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar com-down" style='margin-top:{{nvabarData.height}}px'>
+            <view class='bg_box'>
+                <view class='greenbg'>
+                    <image src='{{globalimg}}/cen-greenbg.png'></image>
+                </view>
+                <view class='bg_text_box'>
+                    <view class='text-top'>
+                        <view class='bg_text'>推荐好友</view>
+                        <view class='bg_num'>{{total}}</view>
+                    </view>
+                    <view class='text-bottom'>
+                        <view class='text-bottom-left'>店主
+                            <text class='text-num'>{{dianzhu}}</text>
+                        </view>
+                        <view class='text-bottom-right'>粉丝量
+                            <text class='text-num'>{{fans}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 推荐码 -->
+            <view class='recommend-box'>
+                <view class='recommend-center'>
+                    <view class='recommend-left'>推荐码：{{recommendid}}</view>
+                    <view class='recommend-right'>推荐人：{{agentname}}</view>
+                </view>
+            </view>
             <block>
                 <block wx:if="{{list.length>0}}">
                     <view class="fui-list-group">
@@ -47,16 +48,16 @@
                                             <view>
                                                 <!-- 会员图片 -->
                                                 <view class='img_box' wx:if="{{item.agentlevel==1}}">
-                                                    <image src='{{globalimg}}/jiankang-star.png'></image>
+                                                    <image class='topimg' src='{{globalimg}}/jiankang-star.png'></image>
                                                 </view>
                                                 <view class='img_box' wx:if="{{item.agentlevel==2}}">
-                                                    <image src='{{globalimg}}/xingxuan-star.png'></image>
+                                                    <image class='topimg' src='{{globalimg}}/xingxuan-star.png'></image>
                                                 </view>
                                                 <view class='img_box' wx:if="{{item.agentlevel==3}}">
-                                                    <image src='{{globalimg}}/rongyao-star.png'></image>
+                                                    <image class='topimg' src='{{globalimg}}/rongyao-star.png'></image>
                                                 </view>
                                                 <view class='img_box' wx:if="{{item.agentlevel==5}}">
-                                                    <image src='{{globalimg}}/dianzhu-star.png'></image>
+                                                    <image class='topimg' src='{{globalimg}}/dianzhu-star.png'></image>
                                                 </view>
                                             </view>
                                             <text style='color:#9a9a9a;font-size24rpx;margin-left:15rpx'>{{item.levelname}}</text>
@@ -83,17 +84,12 @@
                 <block wx:if="{{list.length<1}}">
                     <view class="center">
                         <view class="empty-tip">
-                            <image class="light" src="/static/images/icon/nomeb.png"></image>
+                            <image class="light" src="{{globalimg}}/nomeb.png"></image>
                             <view class="text-cancel">暂时没有任何数据</view>
                         </view>
                     </view>
                 </block>
             </block>
-            <!-- <view class="fui-navbar {{iphonexnavbar}}">
-                <button class="nav-item" bindtap='transmit'>
-                    <text style="color:#fff;font-weight:bold;font-size:30rpx">转发</text>
-                </button>
-            </view> -->
         </view>
     </block>
 </block>

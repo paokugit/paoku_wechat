@@ -1,4 +1,5 @@
-<view class="fui-content">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="fui-content" style='margin-top:{{nvabarData.height}}px'>
     <image class="coin" src="{{globalimg}}/bg7s.png"></image>
     <image class="contentbj" mode="widthFix" src="{{globalimg}}/sbg2.png"></image>
     <view class="content">

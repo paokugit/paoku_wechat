@@ -5,7 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page apply">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page apply" style='margin-top:{{nvabarData.height}}px'>
             <view class="fui-cell-group">
                 <view class="fui-cell" style="padding-top:40rpx">
                     <view class="fui-cell-info" style="font-size: .7rem;color: #666;">我的{{set['texts']['commission_ok']}}</view>

@@ -2,6 +2,12 @@ var t = getApp(), e = (t.requirejs("core"), t.requirejs("foxui"));
 
 Page({
     data: {
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1,
+            title: '',
+            height: t.globalData.height * 2 + 25
+        },
         accredit: "",
         errMsg: "",
         Image: "https://api.clubmall.cn/attachment/images/7/2017/11/r13oT11buG60bn2ntVp1q4pe3B6EGQ.jpeg"

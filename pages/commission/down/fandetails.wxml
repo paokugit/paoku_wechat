@@ -1,5 +1,6 @@
 <!--pages/commission/down/fandetails.wxml-->
-<view class='fandetails_all'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='fandetails_all' style='margin-top:{{nvabarData.height}}px'>
   <view class='fans_img'>
     <image class='img_head' wx:if="{{avatar!=''}}" src='{{avatar}}'></image>
     <view class='fans_name_daren_date'>

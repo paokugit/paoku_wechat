@@ -11,7 +11,13 @@ Page({
         page: 1,
         loaded: !1,
         loading: !0,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '明细', 
+            height: f.globalData.height * 2 + 20,
+        },
     },
     // 上拉加载
     onLoad: function (a) {

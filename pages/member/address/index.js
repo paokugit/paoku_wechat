@@ -3,7 +3,13 @@ var t = getApp(), e = t.requirejs("core");
 Page({
     data: {
         loaded: !1,
-        list: []
+        list: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '收货地址', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         t.url(e);

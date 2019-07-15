@@ -1,0 +1,35 @@
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#01d7a1" frontColor="#fff"></nav-bar>
+<view class='code-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='code-content'>
+        <view class='code-tit'>微信扫一扫，向我付钱</view>
+        <view class='code-img'>
+            <image src='{{caloriecode}}'></image>
+        </view>
+        <view class='code-handle'>
+            <view class='setdiscount' bindtap='setbtn'>设置折扣</view>
+            <view class='saveimg' bindtap='onSavePicClick' data-img="{{calorieurl}}">保存图片</view>
+        </view>
+        <view class='recordbox' bindtap='recordbtn'>
+            <view class='record-left'>
+                <view class='record-img'>
+                    <image src='{{globalimg}}/shouzhi02.png'></image>
+                </view>
+                <view class='record-text'>收款记录</view>
+            </view>
+            <view class='record-right'>
+                <image src='{{ globalimg}}/open10.18@2x.png'></image>
+            </view>
+        </view>
+        <view class='accountbox' bindtap='accountbtn'>
+            <view class='record-left'>
+                <view class='account-img'>
+                    <image src='{{globalimg}}/wallet@2x.png'></image>
+                </view>
+                <view class='record-text'>资金账户</view>
+            </view>
+            <view class='record-right'>
+                <image src='{{ globalimg}}/open10.18@2x.png'></image>
+            </view>
+        </view>
+    </view>
+</view>

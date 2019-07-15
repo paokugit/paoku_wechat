@@ -2,7 +2,14 @@ var e = getApp(), t = e.requirejs("core"), i = e.requirejs("biz/diyform");
 
 Page({
     data: {
-        areas: []
+        globalimg: e.globalData.appimg,
+        areas: [],
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '', 
+            height: e.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         var i = this;

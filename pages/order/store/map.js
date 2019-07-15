@@ -1,11 +1,17 @@
 var t = getApp().requirejs("core");
-
+var app=getApp();
 Page({
     data: {
         storeid: 0,
         merchid: 0,
         markers: [],
-        store: {}
+        store: {},
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '地图', 
+            height: app.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         this.setData({

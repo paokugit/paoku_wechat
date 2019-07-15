@@ -1,4 +1,5 @@
-<view class="custom" style="{{istopmenu==false?'':'padding-top:'+topmenuheight+'rpx;'}}min-height:100%;background:{{diypages.page.background}}">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="custom" style="{{istopmenu==false?'':'padding-top:'+topmenuheight+'rpx;'}}min-height:100%;background:{{diypages.page.background}};margin-top:{{nvabarData.height}}px">
     <block wx:for="{{diypages.items}}" wx:for-index="diyitemid" wx:for-item="diyitem">
         <block>
             <block wx:if="{{diyitem.id=='fixedsearch'}}">

@@ -5,8 +5,9 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page">
-            <view class="fui-header">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+            <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
                 <view class="searchbar">
                     <icon size="18" type="search"></icon>
                     <input bindfocus="bindSearch" bindinput="search" name="search" placeholder="输入关键字进行搜索"></input>

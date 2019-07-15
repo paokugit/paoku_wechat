@@ -8,7 +8,13 @@ Page({
         goodsid: 0,
         money: 0,
         list: [],
-        loading: !0
+        loading: !0,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '选择优惠券', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         if (Number(e.type)) this.setData({

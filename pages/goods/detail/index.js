@@ -35,9 +35,8 @@ Page((a = {
         globalimg: f.globalData.appimg,
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1, 
+            title: '商品详情',
             height: f.globalData.height * 2 + 20,
         },
         diypages: {},
@@ -263,10 +262,10 @@ Page((a = {
             id: t.id
         }, function (t) {
             console.log(t)
-            var smart_title = t.goods.title.slice(0, 15);
-            e.setData({
-                "nvabarData.title": smart_title
-            })
+            var smart_title = t.goods.title.slice(0, 10);
+            // e.setData({
+            //     "nvabarData.title": smart_title
+            // })
             merchid = t.goods.merchid
             reward = t.goods.reward
             console.log(reward)
@@ -304,7 +303,7 @@ Page((a = {
             if (version == 0) {
                 e.setData({
                     rewardDis: 'none',
-                    // shareDis: 'none'
+                    shareDis: 'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -578,8 +577,21 @@ Page((a = {
         s.get("version/appversion", {
         }, function (eve) {
             console.log(eve)
-            if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+            // if (eve.app_version == "devtools" || eve.app_version > 0) {//开发者工具|正式版
+            //     version = 1;
+            // }
+            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.goodsshare == 1) { //开发者工具|正式版
                 version = 1;
+                k.setData({
+                    shareDis: 'block'
+                    // storedisp: 'none'
+                })
+            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.goodsshare == 0) { //开发者工具|正式版
+                version = 0;
+                k.setData({
+                    shareDis: 'none'
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版

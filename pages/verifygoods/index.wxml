@@ -5,8 +5,9 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page">
-            <view class="fui-tab fixed fui-tab-danger">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+            <view class="fui-tab fixed fui-tab-danger" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
                 <view bindtap="selected" class="item {{cate==''?'active':''}}" data-cate="">未完成</view>
                 <view bindtap="selected" class="item {{cate=='used'?'active':''}}" data-cate="used">已完成</view>
                 <view bindtap="selected" class="item {{cate=='past'?'active':''}}" data-cate="past">已过期</view>

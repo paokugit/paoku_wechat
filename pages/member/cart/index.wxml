@@ -22,7 +22,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page footer-navbar">
+    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page footer-navbar" style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{!empty}}">
                     <view bindtap="edit" class="fui-cell-group  cartlist">
@@ -152,7 +153,7 @@
                 <block wx:if="{{empty}}">
                     <view class="center">
                         <view class="empty">
-                            <image class="light" src="/static/images/icon/nogoods.png"></image>
+                            <image class="light" src="{{globalimg}}/nogoods.png"></image>
                             <view class="text-cancel">您的购物车中没有商品哦！</view>
                             <navigator class="btn btn-danger-o" openType="switchTab" url="/pages/index/huodong">去首页逛逛吧</navigator>
                         </view>

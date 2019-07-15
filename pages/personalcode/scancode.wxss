@@ -1,0 +1,111 @@
+/* pages/discount/scancode/scancode.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #f8f8f8;
+}
+
+.scancode-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes kf-marque-animation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.3%);
+    }
+}
+
+.marquee {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #fff1f3;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+    font-size: 26rpx;
+    color: #f4022a;
+}
+
+.marquee .content {
+    display: inline-block;
+    position: relative;
+    padding-right: 0px;
+    animation: kf-marque-animation 11.3s linear infinite;
+    white-space: nowrap;
+}
+
+.consume-box {
+    width: 90%;
+    height: 202rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+
+.consume-top {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 2rpx solid #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.consume-bottom{
+     width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.consume-text {
+    width: auto;
+    margin-left: 30rpx;
+    font-size: 34rpx;
+    color: #262626;
+}
+
+.consumeipt, .balance-no, .discount-none, .account-total, .payment-num {
+    width: 200rpx;
+    font-size: 34rpx;
+    color: #262626;
+    text-align: right;
+    margin-right: 30rpx
+}
+.discount-none{
+    width: auto
+}
+.payment-num{
+     color: #f4022a
+}
+.paybox{
+    width: 600rpx;
+    height: 100rpx;
+    margin-top: 80rpx
+}
+button::after {
+    border: none;
+}
+.paybtn{
+    width: 100%;
+    height: 100%;
+     line-height: 100rpx;
+    background: #01d7a1;
+    color: #fff;
+    font-size: 34rpx
+}
+

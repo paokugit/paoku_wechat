@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#29c8bc" frontColor="#fff"></nav-bar>
 <view class='conBox' style='margin-top:{{nvabarData.height}}px'>
 <!-- 好友捐赠outerbox-开始 -->
 <view class='outerBox'>
@@ -133,7 +133,9 @@
 <!-- 点击邀请好友赚钱花之后的遮罩-开始 -->
 <view style='display:{{maskDis}}' class='share-mask-box'>
 <view class='share-con-box'>
-    <view class='share-con'>
+ position: absolute;
+    bottom: 0rpx;
+    <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
         <view class='share-con-top'>
         <!-- 微信 -->
         <view  class='weixinBox'> 

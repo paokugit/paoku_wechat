@@ -9,12 +9,13 @@ Page({
      */
     data: {
         globalimg: t.globalData.appimg,
+        src:'',
+        type:2,
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '玩法说明', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
-            height: t.globalData.height * 2 + 20,
+            showCapsule: 1, 
+            title: '新手攻略', 
+            height: t.globalData.height * 2 + 25,
         },
     },
 
@@ -24,7 +25,6 @@ Page({
     onLoad: function (options) {
 
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -36,7 +36,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        // this.videoContext = wx.createVideoContext('myvideo', this);
+        // this.videoContext.requestFullScreen({ direction: 90 });
     },
 
     /**
@@ -72,5 +73,17 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+    // myTab: function (t) {
+    //     console.log(t)
+    //     console.log(a.pdata(t))
+    //     var e = this,
+    //         i = a.pdata(t).type;
+    //     e.setData({
+    //         type: i,
+    //         page: 1,
+    //         list: [],
+    //         loading: !0
+    //     });
+    // }
 })

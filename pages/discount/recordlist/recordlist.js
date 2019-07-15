@@ -4,6 +4,7 @@ var a, e, i = getApp(),
 //   当前登录人的openid
 var f = getApp();
 var merchid=''
+var useropenid=''
 Page({
 
     /**
@@ -11,12 +12,12 @@ Page({
      */
     data: {
         recordlist:[],
+        page:1,
         totalmoney:'',
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '收款记录', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1,
+            title: '收款记录',
             height: i.globalData.height * 2 + 20,
         },
     },
@@ -27,6 +28,31 @@ Page({
     onLoad: function (options) {
         console.log(options)
         var userinfo = f.getCache('userinfo');
+        // 个人收款码
+        if(options.personal==1){
+            useropenid=userinfo.openid
+            var tt=this
+            s.get("payment/index/oldrecord", {
+                merchid: useropenid,
+                page: tt.data.page,
+                cate: options.cate
+            }, function (e) {
+                console.log(e)
+                if (e.status == 0) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '暂无数据',
+                    })
+                } else {
+                    tt.setData({
+                        recordlist: e.result,
+                        totalmoney: e.result.total_money
+                    })
+                }
+
+            })
+        }
+       else{
         merchid=userinfo.merchInfo.id
         console.log(merchid)
         var a=this
@@ -49,6 +75,7 @@ Page({
             }
            
         })
+        }
     },
 
     /**

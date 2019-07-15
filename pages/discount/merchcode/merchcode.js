@@ -13,9 +13,8 @@ Page({
         globalimg: i.globalData.appimg,
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '商家收款码', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1, 
+            title: '收款码', 
             height: i.globalData.height * 2 + 20,
         },
     },
@@ -38,6 +37,12 @@ Page({
     },
     
     zkbbtn: function() {
+        wx.navigateTo({
+            url: '/pages/discount/zkbcode/zkbcode',
+        })
+    },
+    // personalbtn
+    personalbtn: function () {
         wx.navigateTo({
             url: '/pages/discount/zkbcode/zkbcode',
         })

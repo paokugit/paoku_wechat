@@ -1,5 +1,5 @@
-
-<view class='indexBox' >
+<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
+<view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
     <view class="index-banner-box">
         <!-- banner背景图 -->
         <image src='{{ globalimg}}/indexbanner.png'></image>
@@ -50,7 +50,7 @@
         </form>
         <!-- 跳转的气泡-结束 -->
         <!-- 绑定手机号的气泡 -->
-         <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
+        <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{bindDis}}'>
                     <view class='paopao-box'>
@@ -61,6 +61,18 @@
             </button>
         </form>
         <!-- 绑定手机号的气泡 -->
+         <!-- 礼品的气泡 -->
+        <!-- <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
+            <button form-type='submit' style="background:rgba(0,0,0,0)">
+                <view style='display:{{giftDis}}'>
+                    <view class='paopao-box'>
+                        <image src='{{ globalimg}}/paopaogif.png'></image>
+                    </view>
+                    <view class='circle-explain '>未领礼品</view>
+                </view>
+            </button>
+        </form> -->
+        <!-- 礼品的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
         <view class='step'>步</view>
@@ -111,7 +123,7 @@
                     <view class='activity-img'>
                         <image src='{{ globalimg}}/04.png'></image>
                     </view>
-                    <view class='activity-con'>玩法说明</view>
+                    <view class='activity-con'>新手攻略</view>
                 </view>
             </view>
             <!-- form -->
@@ -132,7 +144,26 @@
             </view>
             <!-- form -->
         </view>
-
+    </view>
+    <!-- 快报 -->
+    <view class='index-news-box'>
+        <view class='notice-img'>
+            <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
+        </view>
+        <!-- 轮播 -->
+        <view class='swiper-box'>
+            <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
+                <block wx:for="{{noticelist}}" wx:key="{{index}}">
+                    <swiper-item class="notice-box">
+                        <view class='notice-tit'>恭喜用户</view>
+                        <view class='notice-name'>{{item.nickname}}</view>
+                        <view class='notice-desc'>累计提现</view>
+                        <view class='notice-money'>{{item.sum_money}}元</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <!-- 轮播 -->
     </view>
     <view class='store-service'>
         <view class='store-service-title flex_center'>
@@ -142,7 +173,7 @@
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>
-            <!-- 商家电话 -->
+                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{merchInfo.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -237,7 +268,7 @@
         </view>
         <view class='nearbyshops-box'>
             <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
-            <!-- 商家电话 -->
+                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -299,8 +330,8 @@
                     <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                         <image class='ex-proimg' src='{{item.thumb}}'></image>
                         <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                        <image src='{{globalimg}}/saleout-2.png'></image>
-                    </view>
+                            <image src='{{globalimg}}/saleout-2.png'></image>
+                        </view>
                     </navigator>
                     <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
                     <!-- 包邮 -->
@@ -354,8 +385,11 @@
     </view>
 </view>
 <!-- 超值兑换部分-结束 -->
+<!-- 回到顶部 -->
+    <view class='goTop'  bindtap="goTop" style='display:{{topdisp}}'>
+        <image src='{{globalimg}}/huidaodingbu.png' ></image>
+    </view>
 <!-- 首次进入弹窗 -->
-<!-- mask-开始 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
         <view bindtap='pull' class='first-entry-img'>
@@ -367,7 +401,6 @@
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>
 </view>
-
 <!-- 首次进入弹窗mask-结束 -->
 <block>
     <block wx:if="{{loading}}">

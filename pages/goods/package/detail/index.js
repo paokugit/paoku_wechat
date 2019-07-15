@@ -4,7 +4,13 @@ t.requirejs("foxui"));
 Page({
     data: {
         show: !0,
-        option_mask: !1
+        option_mask: !1,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '套餐', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(t) {
         var a = this;

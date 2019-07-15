@@ -14,6 +14,12 @@ Page({
      */
     data: {
         globalimg: t.globalData.appimg,
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '余额账户',
+            height: t.globalData.height * 2 + 20,
+        },
         credit2:'',
         balance_total:'',
         come_total:'',

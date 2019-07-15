@@ -1,4 +1,3 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <wxs src="filters.wxs" module="filters" />
 <template name="tpl_list">
     <view class="fui-goods-item" data-goodsid="{{item.id}}" data-type="{{item.type}}">
@@ -21,9 +20,11 @@
     </view>
 </template>
 <include src="adver.wxml"></include>
-<loading wx:if="{{loading}}">加载中...</loading>
-<view class="page" style="margin-top:{{nvabarData.height}}px;height:auto;background:{{diypages.page.background}}" wx:else>
+<!-- <loading wx:if="{{loading}}">加载中...</loading> -->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view  class="page" style="background:{{diypages.page.background}}" >
     <include src="coupontips.wxml"></include>
+
     <view style="min-height:100%;height:100%;" wx:if="{{diypages}}">
         <view wx:if="{{diypages.page.type==2}}">
             <include src="/pages/diy/index.wxml"></include>

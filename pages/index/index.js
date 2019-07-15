@@ -45,20 +45,17 @@ Page((e = {
         });
     },
     data: (a = {
+            topdisp: 'none',
             globalimg: i.globalData.appimg,
             // 组件所需的参数
             nvabarData: {
-                showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-                title: '跑库', //导航栏 中间的标题
-                // 此页面 页面内容距最顶部的距离
-                height: i.globalData.height * 2 + 20,
+                showCapsule: 0,
+                title: '跑库',
+                height: i.globalData.height * 2 + 20
             },
-            indicatorDotss: !0,
-            autoplays: !0,
-            intervals: 2e3,
-            durations: 500,
-            circulars: !0,
             adveradmin: !0,
+            vertical: true,
+            circular: true,
             current: 0,
             clock: "",
             diypage: "true",
@@ -69,7 +66,7 @@ Page((e = {
             merchlist: [],
             indicatorDots: !0,
             autoplay: !0,
-            interval: 5e3,
+            interval: 2000,
             duration: 500,
             circular: !0,
             storeRecommand: [],
@@ -126,16 +123,18 @@ Page((e = {
             mp3_url: '',
             indexdisp: 'none',
             circleDis: 'none',
-            condisp: 'none',
+            condisp: 'block',
             merchdisp: 'block',
             storedisp: 'block',
             bindDis: 'none',
+            giftDis: 'none',
             // rewarddisp:'none',
             screenWidth: '',
             helpstep: '',
             jindu: 100,
             district: '',
             city: '',
+            noticelist: [],
             avamessage: ''
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
@@ -292,8 +291,31 @@ Page((e = {
             }), a.list.length < a.pagesize && (e.loaded = !0));
         });
     },
+    // 获取滚动条当前位置
+    // onPageScroll: function (e) {
+
+
+    // },
+    //回到顶部
+    goTop: function(e) { // 一键回到顶部
+        var a = this
+        if (wx.pageScrollTo) {
+            wx.pageScrollTo({
+                scrollTop: 0
+            })
+            a.setData({
+                topdisp: 'none'
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+            })
+        }
+    },
     get_list: function() {
         var t = this;
+
         t.setData({
             loading: !0
         }), s.get("goods/get_list", {
@@ -302,6 +324,11 @@ Page((e = {
             page: t.data.page
         }, function(e) {
             console.log(e)
+            if (t.data.page >= 5) {
+                t.setData({
+                    topdisp: 'block'
+                })
+            }
             0 == e.error ? (t.setData({
                 loading: !1,
                 show: !0,
@@ -316,13 +343,27 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function(t) {
+
         console.log('运动日记')
         console.log(t)
         var k = this
+        // k.setData({
+        //     'nvabarData.title':''
+        // })
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
-            if (eve.app_version == "devtools" || eve.app_version > 0) { //开发者工具|正式版
+            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1 ) { //开发者工具|正式版
                 version = 1;
+                k.setData({
+                    condisp: 'block',
+                    // storedisp: 'none'
+                })
+            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 0){
+                version = 0;
+                k.setData({
+                    condisp: 'none',
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
@@ -332,6 +373,7 @@ Page((e = {
                     storedisp: 'none'
                 })
             }
+         
         })
 
         var a = this;
@@ -603,6 +645,14 @@ Page((e = {
                 });
             }
 
+        });
+        s.get("changce/merch/draw_rank", {}, function(e) {
+            console.log(e)
+            if (e.status == 1) {
+                t.setData({
+                    noticelist: e.result.log
+                })
+            }
         });
         s.get("bushu", {}, function(tttt) {
             if (tttt.error == 0) {

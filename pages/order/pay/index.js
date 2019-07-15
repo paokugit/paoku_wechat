@@ -11,7 +11,13 @@ Page({
         operateDis:'block',
         popupDis:'none',
         jiankangDis:'none',
-        xingxuanDis:'none'
+        xingxuanDis:'none',
+        // 组件所需的参数
+        nvabarData: {
+            showCapsule: 1, 
+            title: '收银台', 
+            height: t.globalData.height * 2 + 20,
+        },
     },
     onLoad: function(e) {
         this.setData({

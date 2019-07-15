@@ -1,0 +1,149 @@
+/* pages/contribute/record/record.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+.record_box {
+    width: 100%;
+    height: 100%;
+}
+
+.record-con {
+    width: 92%;
+    height: 100%;
+    padding: 0 4%;
+}
+
+.record-item {
+    width: 100%;
+    height: auto;
+    padding: 30rpx 0;
+    /* background: pink; */
+    border-bottom: 1rpx solid #f1f1f1;
+}
+
+.item-top {
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-reason {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+}
+
+.downBox, .topBox {
+    width: 100%;
+    height: 40rpx;
+    position: relative;
+}
+
+.read-box01, .read-box02 {
+    /* width: 200rpx; */
+    height: 40rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.downimg {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.down-text {
+    color: #8a8a8a;
+    font-size: 28rpx;
+    margin-left: 10rpx;
+}
+
+.item-reason {
+    width: 100%;
+    height: 40rpx;
+    color: #8a8a8a;
+    font-size: 28rpx;
+}
+
+.item-left {
+    width: auto;
+    height: auto;
+    /* background: #f00; */
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title, .item-money {
+    color: #333;
+    font-size: 32rpx;
+}
+
+.item-time {
+    color: #aeaeae;
+    font-size: 28rpx;
+    margin-top: 15rpx;
+}
+
+.item-right-box {
+    width: auto;
+    height: auto;
+    /* background: #f00; */
+    display: flex;
+    flex-direction: column;
+}
+
+.item-money {
+    width: 150rpx;
+    text-align: right;
+}
+
+.item-state-check {
+    width: 150rpx;
+    color: #8a8a8a;
+    font-size: 28rpx;
+    margin-top: 15rpx;
+    text-align: right;
+}
+
+.item-state-success {
+    width: 150rpx;
+    color: #01d7a1;
+    font-size: 28rpx;
+    margin-top: 15rpx;
+    text-align: right;
+}
+
+.item-state-fail {
+    width: 150rpx;
+    color: #f83030;
+    font-size: 28rpx;
+    margin-top: 15rpx;
+    text-align: right;
+}
+
+.record_mask {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.nodata {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 34rpx;
+    color: #333;
+}

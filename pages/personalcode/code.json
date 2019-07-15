@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "收付款",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
+}
