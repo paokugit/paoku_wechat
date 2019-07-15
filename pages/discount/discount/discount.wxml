@@ -14,7 +14,7 @@
             <view class='receive-img'>
                 <image src='{{globalimg}}/shoukuan@2x.png'></image>
             </view>
-            <view class='code-text'>商家收款码</view>
+            <view class='code-text'>收款码</view>
         </view>
         <!-- 商家收款码 -->
     </view>

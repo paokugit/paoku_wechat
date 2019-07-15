@@ -586,6 +586,12 @@ Page((a = {
                     shareDis: 'block'
                     // storedisp: 'none'
                 })
+            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.goodsshare == 0) { //开发者工具|正式版
+                version = 0;
+                k.setData({
+                    shareDis: 'none'
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) {//体验版，开发版，审核版

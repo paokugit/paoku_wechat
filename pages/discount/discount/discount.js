@@ -10,6 +10,7 @@ var pack = ''
 var signtype = ''
 var paysign = ''
 var own=''
+var agentlevel=""
 Page({
 
     /**
@@ -42,6 +43,7 @@ Page({
         console.log(userinfo.merchInfo)
         useropenid = userinfo.openid
         own = userinfo.is_own
+        agentlevel = userinfo.agentlevel
         if(userinfo.merchInfo==undefined || userinfo.merchInfo==false){
             merchid=undefined
         }else{
@@ -68,66 +70,40 @@ Page({
         })
     },
     codebtn: function() {
-        // console.log(own)
         if (merchid==undefined) {
-          wx.showModal({
-            title: '提示',
-            content: '您还不是商家哦',
-          })
-            // if(own==0){
-            //     // 未购买个人收款码
-            //     wx.showModal({
-            //         title: '提示',
-            //         content: '确认购买个人收款码吗',
-            //         success: function (res) {
-            //             if (res.cancel) {
-            //                 // 点击取消
-            //             } else {
-            //                 // 点击确定
-            //                 // 唤起微信支付
-            //                 s.get("payment/myown/order", {
-            //                     type: 1,
-            //                     money: 0.01,
-            //                     openid: useropenid
-            //                 }, function (eve) {
-            //                     console.log(eve)
-            //                     timestamp = eve.result.timeStamp
-            //                     noncestr = eve.result.nonceStr
-            //                     pack = eve.result.package
-            //                     signtype = eve.result.signType
-            //                     paysign = eve.result.paySign
-            //                     wx.requestPayment(
-            //                         {
-            //                             'timeStamp': timestamp,
-            //                             'nonceStr': noncestr,
-            //                             'package': pack,
-            //                             'signType': 'MD5',
-            //                             'paySign': paysign,
-            //                             'success': function (res) {
-            //                                 console.log(res)
-            //                                 console.log('成功')
-            //                                 setTimeout(function () {
-            //                                     wx.reLaunch({
-            //                                         url: '/pages/personalcode/code',
-            //                                     })
-            //                                 }, 200)
-            //                             },
-            //                             'fail': function (res) {
-            //                                 console.log('取消')
-            //                             },
-            //                             'complete': function (res) { }
-            //                         })
-            //                 })
-
-            //             }
-            //         }
-            //     })
-            // }else if(own==1){
-            //     // 已购买个人收款码
-            //     wx.navigateTo({
-            //         url: '/pages/personalcode/code',
-            //     })
-            // }
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: '您还不是商家哦',
+        //   })
+            console.log(agentlevel)
+            if (agentlevel == 0 || agentlevel==1){
+                wx.showModal({
+                    title: '提示',
+                    content: '成为星选达人或店主即可开通',
+                    showCancel: true, 
+                    cancelText: "知道了", 
+                    confirmText: "去开通", 
+                    success: function (res) {
+                        if (res.cancel) {
+                            console.log("取消")
+                        } else if (res.confirm) {
+                            //点击确定
+                            console.log("确定")
+                            wx.switchTab({
+                                url: '/pages/exclusive/exclusive',
+                            })
+                        }
+                    }
+                })
+            } else if (agentlevel==2){
+                wx.navigateTo({
+                    url: '/pages/discount/merchcode/merchcode',
+                })
+            } else if (agentlevel == 5){
+                wx.navigateTo({
+                    url: '/pages/discount/merchcode/merchcode',
+                })
+            }
             
         }else{
             wx.navigateTo({

@@ -54,7 +54,7 @@ Page({
         var a = this
         s.get("payment/index/getset", {
             cate: 2,
-            merchid: useropenid,
+            merchid: merchantid,
             page: 1,
         }, function (e) {
             console.log(e)

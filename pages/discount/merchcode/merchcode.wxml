@@ -3,7 +3,15 @@
     <view class='zkb-box' bindtap='zkbbtn'>
         <image src='{{globalimg}}/kalulibg@2x.png'></image>
         <view class='zkb-text-box'>
-            <view class='zkbcode'>折扣宝收款码</view>
+            <view class='zkbcode'>商家收款码</view>
+            <view class='zhuanxiang'>专享</view>
+        </view>
+        <view class='zkb-read'>进入查看</view>
+    </view>
+    <view class='zkb-box' bindtap='personalbtn'>
+        <image src='{{globalimg}}/kalulibg@2x.png'></image>
+        <view class='zkb-text-box'>
+            <view class='zkbcode'>个人收款码</view>
             <view class='zhuanxiang'>专享</view>
         </view>
         <view class='zkb-read'>进入查看</view>

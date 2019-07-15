@@ -144,8 +144,8 @@ Page({
      */
     onShow: function() {
         var a = this
-        s.get("payment/myown/qrcode", {
-            openid: openid,
+        s.get("payment/index/qrcode", {
+            merchid: openid,
         }, function (e) {
             console.log(e)
             a.setData({

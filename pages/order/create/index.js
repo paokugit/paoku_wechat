@@ -55,7 +55,7 @@ Page({
     scope: "",
     bargainid: "",
     selectcard: "",
-    fardis: 'block',
+    fardis: 'none',
     condisp: 'block',
     caloriedisp: 'none',
     calorienum: '',
@@ -78,13 +78,16 @@ Page({
     }), e.url(t), console.log(i.data.options), a.get("order/create", i.data.options, function(t) {
       console.log('订单')
       console.log(t)
-      // if (t.isdispatcharea==1){
-        
-      //   i.setData({
-      //     fardis:'block',
-      //     remote_dispatchprice: t.remote_dispatchprice
-      //   })
-      // }
+      if (t.isdispatcharea==1){
+        i.setData({
+          fardis:'block',
+          remote_dispatchprice: t.remote_dispatchprice
+        })
+      } else if (t.isdispatcharea == 0){
+          i.setData({
+              fardis: 'none'
+          })
+      }
       if (console.log(t), 0 == t.error) {
         console.log(t), r = i.getGoodsList(t.goods);
         var s = (i.data.originalprice - t.goodsprice).toFixed(2);
@@ -264,7 +267,18 @@ Page({
       cardid: this.data.cardid,
       couponid: i
     }, function(a) {
+        console.log('地址')
       console.log(a)
+        if (a.isdispatcharea == 1) {
+            e.setData({
+                fardis: 'block',
+                remote_dispatchprice: a.remote_dispatchprice
+            })
+        } else if (a.isdispatcharea == 0) {
+            e.setData({
+                fardis: 'none'
+            })
+        }
       console.error(a), t.dispatch_price = a.price, t.enoughdeduct = a.deductenough_money,
         t.enoughmoney = a.deductenough_enough, t.taskdiscountprice = a.taskdiscountprice,
         t.discountprice = a.discountprice, t.isdiscountprice = a.isdiscountprice, t.seckill_price = a.seckill_price,

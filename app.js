@@ -46,7 +46,7 @@ App({
             success: function(e) {
                 console.log(e)
                 t.globalData.height = e.statusBarHeight
-                console.log(t.globalData.height)
+                // console.log(t.globalData.height)
                 wx.setStorageSync("systemInfo", e);
                 var i = e.windowWidth,
                     n = e.windowHeight;
@@ -134,6 +134,7 @@ App({
                                 iv: i.iv,
                                 sessionKey: a.session_key
                             }, function(e) {
+                                console.log(e)
                                 i.userInfo.openid = "sns_wa_" + e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid;
                                 if (e.merchInfo && e.merchInfo != '') {
                                     i.userInfo.merchInfo = e.merchInfo;
@@ -141,6 +142,9 @@ App({
                               if (e.is_own!=undefined && e.is_own != '') {
                                 i.userInfo.is_own = e.is_own;
                               }
+                                if (e.agentlevel != undefined && e.agentlevel != '') {
+                                    i.userInfo.agentlevel = e.agentlevel;
+                                }
                                 console.log(i.userInfo);
                                 i.needauth = 0, n.setCache("userinfo", i.userInfo, expiration), n.setCache("userinfo_openid", i.userInfo.openid),
                                     n.setCache("userinfo_id", e.id), n.getSet(), t && "function" == typeof t && t(o);

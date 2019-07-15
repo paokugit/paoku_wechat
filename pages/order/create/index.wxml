@@ -543,15 +543,15 @@
               <text>{{ispackage?originalprice:list.goodsprice}}</text>
             </view>
           </view>
-          <!-- <view style="display:{{fardis}}">
-            <view class="fui-cell">
+          <view style="display:{{fardis}}" >
+            <view class="fui-cell" style='display:flex;justify-content: space-between'>
               <view class="fui-cell-label" style="width:200rpx">偏远地区邮费</view>
               <view class="postage-count">
                 <text>￥{{remote_dispatchprice}}</text>
               </view>
 
             </view>
-          </view> -->
+          </view>
           <block>
             <block wx:if="{{ispackage}}">
               <view class="fui-cell">

@@ -358,6 +358,12 @@ Page((e = {
                     condisp: 'block',
                     // storedisp: 'none'
                 })
+            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 0){
+                version = 0;
+                k.setData({
+                    condisp: 'none',
+                    // storedisp: 'none'
+                })
             }
             var reg = /test/;
             if (eve.app_version == 0 || reg.test(userinfo.nickName)) { //体验版，开发版，审核版
