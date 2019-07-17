@@ -135,10 +135,45 @@ image {
     bottom: 18%;
     left: 8%
 }
+.mingxi-box{
+    position: absolute;
+    bottom: 18%;
+    right: 5%;
+    color: #333;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center
+}
 .withdraw-text, .withdraw-num{
     color: #a97a3c;
     font-size: 26rpx;
 }
 .withdraw-num{
     margin-left: 8rpx
+}
+.type-box{
+    width: 90%;
+    height: 200rpx;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20rpx
+    /* border-bottom: 2rpx solid #eee */
+}
+.type-item{
+    width: 100rpx;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+.type-img{
+    width: 64rpx;
+    height: 56rpx
+}
+.type-text{
+    color: #333;
+    font-size: 34rpx;
 }

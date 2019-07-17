@@ -64,6 +64,12 @@ Page({
     rechargebtn: function () {
         console.log(creditnum)
         console.log(iptvalue)
+        if (iptvalue==""){
+            wx.showModal({
+                title: '提示',
+                content: '请输入提现金额',
+            })
+        }else{
         if (iptvalue <= creditnum) {
             s.get("payment/myown/own_draw", {
                 money: iptvalue,
@@ -86,8 +92,8 @@ Page({
                                 }
                             }
                         })
-                } else if (eve.error == 1){
-                    message = eve.message
+                } else if (eve.status == 0){
+                    message = eve.result.message
                     wx.showModal({
                         title: '提示',
                         content: message,
@@ -99,6 +105,7 @@ Page({
                 title: '提示',
                 content: '您的余额不足，请重新输入',
             })
+        }
         }
 
     },

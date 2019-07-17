@@ -26,6 +26,8 @@ Page({
     get_list: function() {
         var t = this;
         e.get("order/refund", t.data.options, function(a) {
+            console.log('退货')
+            console.log(a)
             0 == a.error ? (a.order.status < 2 && (a.rtypeArr = [ "退款(仅退款不退货)" ]), a.show = !0, 
             t.setData(a)) : e.toast(a.message, "loading");
         });

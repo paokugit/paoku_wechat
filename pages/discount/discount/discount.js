@@ -11,6 +11,7 @@ var signtype = ''
 var paysign = ''
 var own=''
 var agentlevel=""
+var conbind=''
 Page({
 
     /**
@@ -50,6 +51,33 @@ Page({
             merchid=userinfo.merchInfo.id
         }
         
+    },
+    withdrawbtn: function () {
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
+        // })
+        console.log(conbind)
+        if (conbind == 0) {
+            wx.showModal({
+                title: '提示',
+                content: '您还未开通贡献值',
+            })
+        } else if (conbind == 1) {
+            wx.navigateTo({
+                url: '/pages/contribute/withdraw/withdraw',
+            })
+        }
+    },
+    transferbtn: function () {
+        wx.navigateTo({
+            url: '/pages/discount/transfer/transfer',
+        })
+    },
+    rechargebtn: function () {
+        wx.navigateTo({
+            url: '/pages/discount/zkbrechange/zkbrechange',
+        })
     },
     getScancode: function() {
         var _this = this;
@@ -137,6 +165,7 @@ Page({
         }, function (e) {
             console.log(e)
             if (e.error == 0) {
+                conbind = e.message.bind
                 a.setData({
                     conbind: e.message.bind,
                     credit4: e.message.credit4,

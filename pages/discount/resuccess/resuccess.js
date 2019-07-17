@@ -26,8 +26,11 @@ Page({
 
     },
     backbtn:function(){
-        wx.navigateTo({
-            url: '/pages/discount/zkbaccount/zkbaccount',
+        // wx.navigateTo({
+        //     url: '/pages/discount/zkbaccount/zkbaccount',
+        // })
+        wx.switchTab({
+            url: '/pages/discount/discount/discount',
         })
     },
 

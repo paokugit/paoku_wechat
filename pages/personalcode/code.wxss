@@ -20,7 +20,7 @@ page {
 }
 .code-content{
     width: 94%;
-    height: 1000rpx;
+    height: 900rpx;
     background: #fff;
     display: flex;
     flex-direction: column;

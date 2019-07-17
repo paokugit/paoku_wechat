@@ -1,34 +1,5 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='account-box' style='margin-top:{{nvabarData.height}}px'>
-    <view class='zkb-img'>
-        <view class='account-tit'>账户余额</view>
-        <view class='account-num-box'>
-            <view class='account-num'>{{credit}}</view>
-            <view class='account-yuan'>元</view>
-        </view>
-        <image src='{{globalimg}}/zkb-bg.png'></image>
-    </view>
-    <view class='type-box'>
-        <view class='type-item' bindtap='rechargebtn'>
-            <view class='type-img'>
-                <image src='{{globalimg}}/recharge01.png'></image>
-            </view>
-            <view class='type-text'>充值</view>
-        </view>
-        <view class='type-item' bindtap='withdrawbtn'>
-            <view class='type-img'>
-                <image src='{{globalimg}}/tixian01.png'></image>
-            </view>
-            <view class='type-text'>提现</view>
-        </view>
-        <view class='type-item' bindtap='transferbtn'>
-            <view class='type-img'>
-                <image src='{{globalimg}}/zhuangzhang.png'></image>
-            </view>
-            <view class='type-text'>转账</view>
-        </view>
-
-    </view>
     <!-- tab -->
     <block>
         <block wx:if="{{!show}}">

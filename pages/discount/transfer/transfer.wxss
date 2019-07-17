@@ -24,13 +24,14 @@ image{
     height: 700rpx;
     background: #fff;
     border-radius: 20rpx;
-    margin-top: 20rpx
+    margin-top: 20rpx;
+    position: relative
 }
 .mobile_box{
     width: 92%;
     height: 120rpx;
     padding: 0 4%;
-    border-bottom: 2rpx solid #ccc;
+    border-bottom: 2rpx solid #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: space-between
@@ -107,7 +108,7 @@ image{
     height: 120rpx;
     /* background: #f00; */
     margin-top: 10rpx;
-    border-bottom: 2rpx solid #ccc;
+    border-bottom: 2rpx solid #f1f1f1;
     display: flex;
     align-items: center
 }
@@ -127,7 +128,8 @@ image{
     margin-top: 60rpx;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    /* position: absolute */
 }
 button::after {
     border: none;

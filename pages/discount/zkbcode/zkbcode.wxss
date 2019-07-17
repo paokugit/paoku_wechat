@@ -79,8 +79,8 @@ image{
     margin-left: 10rpx
 }
 .record-right{
-    width: 36rpx;
-    height: 36rpx;
+    width: 10rpx;
+    height: 18rpx;
     color: #666;
 }
   

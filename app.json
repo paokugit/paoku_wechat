@@ -1,5 +1,6 @@
 {
     "pages": [
+      
         "pages/index/index",
         "pages/discount/discount/discount",
         "pages/personalcode/account",
@@ -21,7 +22,7 @@
         "pages/lottery/lottery/lottery",
         "pages/member/bind/index",
         "pages/helphand/friendhelp/friendhelp",
-        "pages/discount/transfer/transfer",
+        
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
         "pages/huiyuan/membercenter/membercenter",
@@ -43,6 +44,7 @@
         "pages/exclusive/exclusive",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/mingxi/mingxi",
+        "pages/discount/transfer/transfer",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/commission/down/fandetails",
         "pages/discount/resuccess/resuccess",
