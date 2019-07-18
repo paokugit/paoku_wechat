@@ -1,5 +1,6 @@
 {
     "pages": [
+        
         "pages/index/index",
         "pages/discount/discount/discount",
         "pages/personalcode/account",
@@ -9,8 +10,8 @@
         "pages/personalcode/setdiscount",
         "pages/personalcode/scancode",
         "pages/discount/merchcode/merchcode",
-        "pages/gift/gift",
-        "pages/gift/record",
+       "pages/gift/gift",
+    "pages/gift/record",
         "pages/playmethod/feedback/feedback",
         "pages/playmethod/playmethod/playmethod",
         "pages/index/huodong",

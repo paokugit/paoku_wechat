@@ -14,7 +14,7 @@ var paysign = ''
 var param_deduct=''
 var merchantid = ''
 var useropenid=''
-
+var errormsg=""
 Page({
 
     /**
@@ -133,9 +133,13 @@ Page({
             openid: useropenid
         }, function (eve) {
             console.log(eve)
-            // tt.setData({
-
-            // })
+            if(eve.status==0){
+                errormsg=eve.result.message
+                wx.showModal({
+                    title: '提示',
+                    content: errormsg,
+                })
+            }else{  
             timestamp = eve.result.timeStamp
             noncestr = eve.result.nonceStr
             pack = eve.result.package
@@ -162,6 +166,7 @@ Page({
                     },
                     'complete': function (res) { }
                 })
+            }
         })
     },
 
