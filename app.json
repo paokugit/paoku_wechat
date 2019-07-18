@@ -1,6 +1,5 @@
 {
     "pages": [
-      
         "pages/index/index",
         "pages/discount/discount/discount",
         "pages/personalcode/account",
@@ -22,7 +21,6 @@
         "pages/lottery/lottery/lottery",
         "pages/member/bind/index",
         "pages/helphand/friendhelp/friendhelp",
-        
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
         "pages/huiyuan/membercenter/membercenter",

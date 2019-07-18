@@ -566,3 +566,36 @@ image{
   color: #000;
   font-size: 26rpx
 }
+.inviter-box {
+    width: 94%;
+    height: 100rpx;
+    padding: 0 3%;
+    background: #fff;
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inviter-left {
+    width: 350rpx;
+    display: flex;
+    align-items: center;
+}
+
+.invietr-img {
+    width: 56rpx;
+    height: 50rpx;
+}
+
+.inviter-text {
+    color: #000;
+    font-size: 28rpx;
+    margin-left: 15rpx;
+}
+
+.inviter-right {
+    width: 200rpx;
+    color: #000;
+    font-size: 28rpx;
+}
