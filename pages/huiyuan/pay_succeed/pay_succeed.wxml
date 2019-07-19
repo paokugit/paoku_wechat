@@ -1,0 +1,9 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="pay_succeedImgy">
+    <image src="{{globalimg}}/jiasu02@2x.png"></image>
+  </view>
+  <view class="pay_money">{{pay_money}}</view>
+  <view class="pay_time">{{pay_time}}</view>
+  <view class="pay_btn" bindtap="pay_btn">知道了</view>
+</view>

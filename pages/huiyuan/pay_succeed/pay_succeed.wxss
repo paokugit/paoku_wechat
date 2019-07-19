@@ -1,0 +1,35 @@
+/* pages/huiyuan/pay_succeed/pay_succeed.wxss */
+.expedite-box{
+  height: 100%;
+  background: white;
+  padding-top: 10%;
+}
+.pay_succeedImgy{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 auto;
+}
+.pay_money{
+  font-size: 35rpx;
+  color: rgb(28, 216, 165);
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.pay_time{
+  font-size: 30rpx;
+  color: rgb(157, 157, 157);
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+.pay_btn{
+  width: 85%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: rgb(1, 215, 161);
+  color: #fff;
+  border-radius: 20rpx;
+  font-size: 35rpx;
+  text-align: center;
+  margin: 0 auto;
+}

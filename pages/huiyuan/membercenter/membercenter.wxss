@@ -148,7 +148,7 @@ image{
 .speedup-con{
     width: 94%;
     height: 15%;
-    margin-top: 15rpx;
+    margin-top: 25rpx;
     margin-right: 10rpx;
     display: flex;
     justify-content: space-between
@@ -176,8 +176,10 @@ image{
 .rights-tit{
     width: 100%;
     height: 80rpx;
+    line-height: 80rpx;
     font-size: 30rpx;
     color: #666;
+    /* background: olivedrab; */
 }
 .rights-box{
     width: 100%;
@@ -265,3 +267,47 @@ image{
     color: #999;
     font-size: 24rpx
 }
+
+/* xph新加 */
+.member_centerA{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25rpx 0;
+}
+
+.speed_up{
+  width: 50%;
+  height: 80rpx;
+  display: flex;
+}
+
+.rights-titA{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #666;
+  /* background: orange; */
+}
+
+.speed_img{
+  height: 80rpx;
+  line-height: 70rpx;
+  margin-right: 20rpx;
+  /* background: red; */
+}
+.speed_img image{
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.arrows_img{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 20rpx;
+}
+.arrows_img image{  
+  width: 10rpx;
+  height: 18rpx;
+}
+

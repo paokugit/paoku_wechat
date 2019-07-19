@@ -1,127 +1,150 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='centerBox' style='margin-top:{{nvabarData.height}}px'>
-<!-- banner-开始 -->
-<view class='mcbanner-box'>
-   <image src='{{globalimg}}/huiyuan.png'></image>
-   <!-- 会员介绍 -开始-->
-   <view class='member-intro'>
-        <view class='member-con'>
+  <!-- banner-开始 -->
+  <view class='mcbanner-box'>
+    <image src='{{globalimg}}/huiyuan.png'></image>
+    <!-- 会员介绍 -开始-->
+    <view class='member-intro'>
+      <view class='member-con'>
         <view class='avatarbox member_center'>
-            <image class='avatar' src='{{avatar}}'></image>
+          <image class='avatar' src='{{avatar}}'></image>
         </view>
-            <view class='member-con-top'>
-            <!-- top-开始 -->
-                <!-- 会员名称 -->
-                <view class='hy-name'>{{nickname}}</view>
-                <!-- 体验会员 -->
-                <view class='tiyan-box'>
-                    <view class='tiyan'>{{levelname}}</view>
-                    <!--<view class='time-limit member_center' wx:if="{{levelid==5}}">有效期至：{{endtime}}</view>-->
-                    <view class='time-limit member_center'>长期</view>
-                </view>
-                <!-- 体验会员-结束 -->
-            </view>
-            <!-- top-结束 -->
-            <!-- bottom（加速期）-开始 -->
-            <view class='member-con-bottom' style='display:{{speeding}}'>
-                <!-- 加速-开始 -->
-            <view class='speed-box'>
+        <view class='member-con-top'>
+          <!-- top-开始 -->
+          <!-- 会员名称 -->
+          <view class='hy-name'>{{nickname}}</view>
+          <!-- 体验会员 -->
+          <view class='tiyan-box'>
+            <view class='tiyan'>{{levelname}}</view>
+            <!--<view class='time-limit member_center' wx:if="{{levelid==5}}">有效期至：{{endtime}}</view>-->
+            <view class='time-limit member_center'>长期</view>
+          </view>
+          <!-- 体验会员-结束 -->
+        </view>
+        <!-- top-结束 -->
+        <!-- bottom（加速期）-开始 -->
+        <view class='member-con-bottom' style='display:{{speeding}}'>
+          <!-- 加速-开始 -->
+          <view class='speed-box'>
             <view class='progressbar'>
-<progress percent="{{addspead}}" color="#ebcdaf" backgroundColor="#000" active-mode="forwards" stroke-width="8" active border-radius="20rpx"/>
-</view>
-</view>
-            <!-- 加速-结束 -->
-            <!-- 加速内容-开始 -->
-            <view class='speedup-con'>
-                <text class='speed-hour'>已加速{{accelerate_day}}天，{{surplus_day}}天后加速结束</text>
-                <text class='speed-give'>赠送{{give_day}}天加速</text>
+              <progress percent="{{addspead}}" color="#ebcdaf" backgroundColor="#000" active-mode="forwards" stroke-width="8" active border-radius="20rpx" />
             </view>
-            <!-- 加速内容-结束 -->
-            </view>
-            <!-- bottom（加速期）-结束 -->
-            <!-- bottom（加速完成）-开始 -->
-            <view class='speed-done' style='display:{{speeddone}}'>
-                加速已结束，获得{{credit}}卡路里
-            </view>
-            <!-- bottom（加速完成）-结束 -->
+          </view>
+          <!-- 加速-结束 -->
+          <!-- 加速内容-开始 -->
+          <view class='speedup-con'>
+            <text class='speed-hour'>已加速{{accelerate_day}}天，{{surplus_day}}天后加速结束</text>
+            <text class='speed-give' style="display:{{member_css}}">赠送{{give_day}}天加速</text>
+            <text class='speed-give' style="display:{{precious_css}}">加速宝生效中</text>
+          </view>
+          <!-- 加速内容-结束 -->
         </view>
-   </view>
-   <!-- 会员介绍-结束 -->
-   
-</view>
-<!-- banner-结束 -->
-<!-- banner之后的内容-开始 -->
-<view class='other-box'>
+        <!-- bottom（加速期）-结束 -->
+        <!-- bottom（加速完成）-开始 -->
+        <view class='speed-done' style='display:{{speeddone}}'>
+          加速已结束，获得{{credit}}卡路里
+        </view>
+        <!-- bottom（加速完成）-结束 -->
+      </view>
+    </view>
+    <!-- 会员介绍-结束 -->
+
+  </view>
+  <!-- banner-结束 -->
+  <!-- banner之后的内容-开始 -->
+  <view class='other-box'>
     <!-- 您正在享受的专属权益-开始 -->
     <view class='your-rights'>
-        <text class='rights-tit member_center'>您正在享受的专属权益</text>
-        <view class='rights-box' wx:if="{{levelid==5}}">
-            <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
-            <!-- 图片 -->
-                <view class='rights-img'><image src= '{{globalimg}}{{item.img}}'></image></view>
-            <!-- 文字 -->
-            <view class='rights-text'>{{item.info}}</view>
-            </view>
+
+      <!-- xph:加速兑换 -->
+      <view class='member_centerA'>
+        <text class='rights-tit'>您正在享受的专属权益</text>
+
+        <view class="speed_up" bindtap="speed_up">
+          <view class="speed_img">
+            <image src="{{globalimg}}/jiasu@2x.png"></image>
+          </view>
+          <text class='rights-titA'>加速兑换</text>
+          <view class="arrows_img">
+            <image src="{{globalimg}}/open10.18@2x.png"></image>
+          </view>
         </view>
-        <!-- else -->
-        <view class='rights-box' wx:else>
-            <view  class='rights' style='width:220rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
-            <!-- 图片 -->
-                <view class='rights-img'><image src= '{{globalimg}}{{item.img}}'></image></view>
-            <!-- 文字 -->
-            <view class='rights-text'>{{item.info}}</view>
-            </view>
+
+      </view>
+
+      <view class='rights-box' wx:if="{{levelid==5}}">
+        <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
+          <!-- 图片 -->
+          <view class='rights-img'>
+            <image src='{{globalimg}}{{item.img}}'></image>
+          </view>
+          <!-- 文字 -->
+          <view class='rights-text'>{{item.info}}</view>
         </view>
-        
+      </view>
+      <!-- else -->
+      <view class='rights-box' wx:else>
+        <view class='rights' style='width:220rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
+          <!-- 图片 -->
+          <view class='rights-img'>
+            <image src='{{globalimg}}{{item.img}}'></image>
+          </view>
+          <!-- 文字 -->
+          <view class='rights-text'>{{item.info}}</view>
+        </view>
+      </view>
+
     </view>
     <!-- 您正在享受的专属权益-结束 -->
     <!-- 升级会员-开始 -->
     <view class='upgrade float' bindtap='shengji'>
-        <image src='{{globalimg}}/hybanner.png'></image>
+      <image src='{{globalimg}}/hybanner.png'></image>
     </view>
     <!-- 升级会员-结束 -->
     <!-- 完成以下任务部分-开始 -->
     <view class='task-box'>
-        <text class='task-text member_center'>限量发售10000份，邀您体验</text>
-        <text class='libao-sub member_center'>尊享贵宾VIP权益及服务</text>
-        <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+1467 }}" class='libao-img'><image src='{{globalimg}}/libao.png'></image></navigator>
+      <text class='task-text member_center'>限量发售10000份，邀您体验</text>
+      <text class='libao-sub member_center'>尊享贵宾VIP权益及服务</text>
+      <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+1467 }}" class='libao-img'>
+        <image src='{{globalimg}}/libao.png'></image>
+      </navigator>
     </view>
     <!-- 完成以下任务部分-结束 -->
-   
-</view>
-<!-- banner之后的内容-结束 -->
-<!-- 底部 -->
- <view class='bottombar'>
+
+  </view>
+  <!-- banner之后的内容-结束 -->
+  <!-- 底部 -->
+  <view class='bottombar'>
     <view class='bar' bindtap='sportBtn'>
-        <view class='barImg'>
-            <image src='../../../icon1/sport-n.png'></image>
-        </view>
-        <view class='barCon'>运动</view>
+      <view class='barImg'>
+        <image src='../../../icon1/sport-n.png'></image>
+      </view>
+      <view class='barCon'>运动</view>
     </view>
     <view class='bar' bindtap='shopBtn' style="color:{{color}};">
-        <view class='barImg'>
-            <image src='../../../icon1/home-n.png'></image>
-        </view>
-        <view class='barCon'>商城</view>
+      <view class='barImg'>
+        <image src='../../../icon1/home-n.png'></image>
+      </view>
+      <view class='barCon'>商城</view>
     </view>
     <view class='bar' bindtap='carBtn'>
-        <view class='barImg'>
-            <image src='../../../icon1/sfk-n@2x.png'></image>
-        </view>
-        <view class='barCon'>折扣付</view>
+      <view class='barImg'>
+        <image src='../../../icon1/sfk-n@2x.png'></image>
+      </view>
+      <view class='barCon'>折扣付</view>
     </view>
     <view class='bar' bindtap='huiyuanBtn'>
-     <view class='barImg'>
+      <view class='barImg'>
         <image src='../../../icon1/huiyuan-s.png'></image>
-        </view>
-        <view class='barCon' style='color:#00d8a0'>专享</view>
+      </view>
+      <view class='barCon' style='color:#00d8a0'>专享</view>
     </view>
     <view class='bar' bindtap='userBtn'>
-        <view class='barImg'>
-            <image src='../../../icon1/user-n.png'></image>
-        </view>
-        <view class='barCon'>我的</view>
+      <view class='barImg'>
+        <image src='../../../icon1/user-n.png'></image>
+      </view>
+      <view class='barCon'>我的</view>
     </view>
- 
- </view>
+
+  </view>
 </view>

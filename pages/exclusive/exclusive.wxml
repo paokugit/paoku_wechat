@@ -4,7 +4,7 @@
         <image src='{{globalimg}}/newperson.png'></image>
     </view>
     <view class='con_box'>
-        <view class='con-item-box' wx:for="{{list}}">
+        <view class='con-item-box' wx:for="{{list}}" wx:key="index">
             <navigator class='good-img' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                 <image class='goodImg' src='{{item.memberthumb}}'></image>
             </navigator>

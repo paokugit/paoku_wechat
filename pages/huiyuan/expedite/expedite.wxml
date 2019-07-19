@@ -1,0 +1,40 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <!-- 购买加速宝标题 -->
+  <view class="speed_up_tit">
+    <view class="divLine"></view>
+    <text class="tit_content">购买加速宝</text>
+    <view class="divLine"></view>
+  </view>
+
+  <!-- 购买加速宝详情 -->
+  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="{{index}}" bindtap="list_btn" data-id="{{item.id}}">
+    <view class="limit_img">
+      <image src="{{globalimg}}/xianliang@2x.png"></image>
+    </view>
+
+    <text class="content_lefts {{isSelect==item.id?'content_leftsBtn' : ''}}">{{item.money}}</text>
+    <text class="content_rights">加速{{item.accelerate_day}}天，每天可兑换{{item.duihuan}}卡路里</text>
+
+    <view class="correct_img" style="{{isSelect==item.id?'display:block' : ''}}">
+      <image src="{{globalimg}}/select@2x.png"></image>
+    </view>
+  </view>
+
+  <!-- 立即支付按钮 -->
+
+  <button class="pay_btn" bindtap="pay_btn">立即支付</button>
+
+</view> 
+
+<!-- 处于加速期内弹窗 -->
+<view class="dialog_shade"  wx:if="{{isShow}}">
+  <view class="dialog_content">
+    <view class="expediteImg">
+      <image src="{{globalimg}}/jiasu01@2x.png"></image>
+    </view> 
+    <view class="tit_one">{{tit_one}}</view>
+    <view class="tit_two">{{payDay}}</view>
+    <view class="know_btn" bindtap="know_btn">知道了</view>
+  </view>
+</view>
