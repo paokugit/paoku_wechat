@@ -57,8 +57,13 @@ Page({
         }
     },
     rechargebtn: function () {
-        console.log(creditnum)
-        console.log(iptvalue)
+        console.log(creditnum, iptvalue)
+        if(iptvalue==""){
+            wx.showModal({
+                title: '提示',
+                content: '请输入提现金额',
+            })
+        }else{
         if (iptvalue <= creditnum) {
             s.get("myown/devote/withdrawal", {
                 money: iptvalue,
@@ -94,6 +99,7 @@ Page({
                 title: '提示',
                 content: '您的贡献值不足，请重新输入',
             })
+        }
         }
 
     },

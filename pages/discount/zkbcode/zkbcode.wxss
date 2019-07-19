@@ -73,14 +73,28 @@ image{
     width: 42rpx;
     height: 42rpx;
 }
+.account-img{
+     width: 38rpx;
+    height: 38rpx;
+}
+.accountbox{
+     width: 92%;
+    height: 80rpx;
+    padding: 0 4%; 
+    margin-top: 20rpx;
+    /* background: pink; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
 .record-text{
     color: #333;
     font-size: 28rpx;
     margin-left: 10rpx
 }
 .record-right{
-    width: 36rpx;
-    height: 36rpx;
+    width: 10rpx;
+    height: 18rpx;
     color: #666;
 }
   

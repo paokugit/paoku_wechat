@@ -2,22 +2,23 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='help-record-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='help_con'>
-        <view class='help_item'>
+        <view class='help_item' wx:for="{{list}}">
             <view class='help-left'>
                 <view class='friend-avatar'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
+                    <image src='{{item.avatar}}'></image>
                 </view>
                 <view class='friend-info'>
-                    <view class='friend-name'>candy</view>
-                    <view class='friend-time'>2019-03-02 09:15</view>
+                    <view class='friend-name'>{{item.nickname}}</view>
+                    <view class='friend-time'>{{item.timestamp}}</view>
                 </view>
             </view>
             <view class='help-right'>
-                <view class='friend-step'>+2000步</view>
-                <!-- <view class='condition'>符合</view> -->
-                <view class='condition-none'>不符合</view>
+                <view class='friend-step'>+{{item.step}}步</view>
+                <view class='condition' wx:if="{{item.is_valid==1}}">符合</view>
+                <view class='condition-none' wx:if="{{item.is_valid==0}}">不符合</view>
             </view>
         </view>
     </view>
+    <view class='no-data'>沒有更多数据了哦</view>
 
 </view>

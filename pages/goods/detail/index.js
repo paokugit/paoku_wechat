@@ -8,7 +8,7 @@
     }
 
 var e, a, o = getApp(), s = o.requirejs("core"), i = (o.requirejs("icons"), o.requirejs("foxui")), n = o.requirejs("biz/diypage"), r = o.requirejs("biz/diyform"), c = o.requirejs("biz/goodspicker"), d = o.requirejs("jquery"), l = o.requirejs("wxParse/wxParse"), u = 0, g = o.requirejs("biz/selectdate");
-var merchid = '', reurl = '', sharemid = '', goodsid = ''
+var merchid = '', reurl = '', sharemid = '', goodsid = '', inviteid=""
 var f = getApp()
 var productid = ''
 var shareprice = ''
@@ -303,7 +303,7 @@ Page((a = {
             if (version == 0) {
                 e.setData({
                     rewardDis: 'none',
-                    shareDis: 'none'
+                    // shareDis: 'none'
                 })
             }
             console.log(t), t.error > 0 && (e.setData({
@@ -548,7 +548,7 @@ Page((a = {
     },
     buyNow: function (t) {
         var e = this;
-        c.buyNow(t, e, "goods_detail");
+        c.buyNow(t, e, "goods_detail", inviteid);
     },
     getCart: function (t) {
         var e = this;
@@ -589,7 +589,7 @@ Page((a = {
             } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.goodsshare == 0) { //开发者工具|正式版
                 version = 0;
                 k.setData({
-                    shareDis: 'none'
+                    // shareDis: 'none'
                     // storedisp: 'none'
                 })
             }
@@ -629,23 +629,7 @@ Page((a = {
             phoneerror = t.error
             if (t.error == 1) {
                 console.log("未添加手机号")
-                // e.setData({
-                //     notaddDis: "block",
-                //     addDis: 'none'
-                // })
-                // // 有赏金
-                // if(reward==1){
-                // e.setData({
-                //     notaddDis:"block",
-                //     addDis:'none'
-                // })
-                // }else{
-                //     // 无赏金
-                //     e.setData({
-                //         notaddDis: "none",
-                //         addDis: 'block'
-                //     })
-                // }
+               
             } else {
                 console.log("已添加手机号")
                 e.setData({
@@ -692,9 +676,11 @@ Page((a = {
             console.log(o.getCache('userinfo'))
             var userinfo = o.getCache('userinfo');
             t.mid = sharemid = userinfo.id;
+            inviteid=userinfo.agentid
         } else {
             console.log('有mid')
             sharemid = t.mid;
+            inviteid=t.mid
             s.get("myown/goodshare/click", {
                 goodid: goodsid,
                 openid: openid,

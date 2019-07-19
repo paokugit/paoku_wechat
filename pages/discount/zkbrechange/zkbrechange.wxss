@@ -85,7 +85,7 @@ image{
     height: 120rpx;
     /* background: #f00; */
     margin-top: 10rpx;
-    border-bottom: 2rpx solid #ccc;
+    border-bottom: 2rpx solid #f1f1f1;
     display: flex;
     align-items: center
 }

@@ -3,8 +3,9 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
+// var userinfo = f.getCache('userinfo');
 var useropenid = ''
+var errormessgae=""
 Page({
 
     /**
@@ -17,6 +18,17 @@ Page({
         type:1,
         helpDis: 'none',
         explainDis:"none",
+        goal:'',
+        help_count:'',
+        remain:'',
+        gradelevel:'',
+        gradegift:'',
+        helplist:[],
+        starttime: '',
+        endtime: '',
+        primarylist: [],
+        middlelist: [],
+        highlist: [],
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -73,7 +85,50 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        var t=this
+        s.get("game/index/free", {
+            openid:useropenid
+        }, function (e) {
+            console.log(e)
+            if (e.status == 1) {
+                t.setData({
+                    goal:e.result.all,
+                    help_count:e.result.help_count,
+                    remain:e.result.remain,
+                    gradelevel: e.result.agentlevel,
+                    gradegift: e.result.gift,
+                    helplist:e.result.new_member,
+                    starttime:e.result.start,
+                    endtime:e.result.end,
+                    primarylist:e.result.goods[0].thumbs,
+                    middlelist:e.result.goods[1].thumbs,
+                    highlist:e.result.goods[2].thumbs
+                });
+            }else{
+                errormessgae=e.result.message
+                wx.showModal({
+                    title: '提示',
+                    content: errormessgae,
+                })
+            }
 
+        });
+
+        s.get("game/index/getgift", {
+            openid: useropenid
+        }, function (e) {
+            console.log(e)
+            // if (e.status == 1) {
+               
+            // } else {
+            //     errormessgae = e.result.message
+            //     wx.showModal({
+            //         title: '提示',
+            //         content: errormessgae,
+            //     })
+            // }
+
+        });
     },
 
     /**

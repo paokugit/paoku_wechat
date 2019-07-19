@@ -145,6 +145,9 @@ App({
                                 if (e.agentlevel != undefined && e.agentlevel != '') {
                                     i.userInfo.agentlevel = e.agentlevel;
                                 }
+                                if (e.agentid != undefined && e.agentid != '') {
+                                    i.userInfo.agentid = e.agentid;
+                                }
                                 console.log(i.userInfo);
                                 i.needauth = 0, n.setCache("userinfo", i.userInfo, expiration), n.setCache("userinfo_openid", i.userInfo.openid),
                                     n.setCache("userinfo_id", e.id), n.getSet(), t && "function" == typeof t && t(o);

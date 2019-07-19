@@ -19,6 +19,7 @@ Page({
             title: '余额提现', 
             height: app.globalData.height * 2 + 20,
         },
+        globalimg: app.globalData.appimg,
     },
     onShow: function(e) {
         a.url(e), this.getInfo(), this.setData({

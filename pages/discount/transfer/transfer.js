@@ -19,11 +19,10 @@ Page({
         usercredit: '',
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '折扣宝转账', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1, 
+            title: '折扣宝转账', 
             height: i.globalData.height * 2 + 20,
-        },
+        }
     },
 
     /**
@@ -66,6 +65,12 @@ Page({
         }
     },
     transferbtn: function () {
+        console.log('111')
+        //执行请求之前进行showLoading()
+        wx.showLoading({
+            title: '请求中',
+            mask: true
+        })
         console.log(creditnum)
         console.log(iptvalue)
         if (iptvalue <= creditnum) {
@@ -76,6 +81,9 @@ Page({
             }, function (eve) {
                 console.log(eve)
                if(eve.status==1){
+                       setTimeout(function () {
+                           wx.hideLoading()
+                       }, 1000)
                    wx.showModal({
                        title: '提示',
                        content: '转账成功',
@@ -90,13 +98,18 @@ Page({
                        }
                    })
                } else if (eve.status == 0){
+                   setTimeout(function () {
+                       wx.hideLoading()
+                   }, 1000)
                    errormessage=eve.result.message
                    wx.showModal({
                        title: '提示',
                        content: errormessage,
                    })
                }
+               
             })
+           
 
         } else {
             wx.showModal({
@@ -104,7 +117,6 @@ Page({
                 content: '余额不足，请重新输入',
             })
         }
-
     },
    
     /**

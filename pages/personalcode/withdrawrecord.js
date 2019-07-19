@@ -49,11 +49,6 @@ Page({
             page: t.data.page,
         }, function(a) {
             console.log(a)
-            if (a.result.list.length > 0) {} else {
-                // t.setData({
-                //     maskDis:'block'
-                // })
-            }
             var e = {
                 loading: !1,
                 show: !0,
@@ -63,14 +58,16 @@ Page({
                 a.result.list.length < a.result.pagesize && (e.loaded = !0)), t.setData(e);
         });
     },
-    downbtn: function() {
+    downbtn: function(e) {
+        console.log(e.currentTarget.dataset.id)
         this.setData({
             downdis: 'none',
             topdis: 'block',
             reasondis: 'block'
         })
     },
-   topbtn: function () {
+   topbtn: function (e) {
+    //    console.log(e.currentTarget.dataset.id)
         this.setData({
             topdis: 'none',
             downdis: 'block',

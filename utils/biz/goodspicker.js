@@ -19,7 +19,12 @@ module.exports = {
             total: d
         });
     },
-    buyNow: function(t, s, d) {
+    buyNow: function(t, s, d,p) {
+        console.log(t)
+        console.log(s)
+        console.log(d)
+        console.log(p)
+        console.log('buynowbuynow')
         var i = s.data.optionid, r = s.data.goods.hasoption, l = s.data.diyform, n = s.data.giftid;
         if (9 == s.data.goods.type) var c = s.data.checkedDate / 1e3;
         if (r > 0 && !i) o.toast(s, "请选择规格"); else if (l && l.fields.length > 0) {
@@ -29,17 +34,17 @@ module.exports = {
                 diyformdata: l.f_data
             }, function(t) {
                 0 == s.data.goods.isgift || "goods_detail" != d ? wx.redirectTo({
-                    url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&gdid=" + t.gdid + "&selectDate=" + c
+                    url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&gdid=" + t.gdid + "&selectDate=" + c+"&invitid="+p
                 }) : "" != n || 1 == s.data.goods.gifts.length ? (1 == s.data.goods.gifts.length && (n = s.data.goods.gifts[0].id), 
                 wx.redirectTo({
-                    url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&gdid=" + t.gdid + "&giftid=" + n
+                        url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&gdid=" + t.gdid + "&giftid=" + n + "&invitid=" + p
                 })) : o.toast(s, "请选择赠品");
             });
         } else 0 == s.data.goods.isgift || "goods_detail" != d ? wx.navigateTo({
-            url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&selectDate=" + c
+            url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&selectDate=" + c + "&invitid=" + p
         }) : "" != n || 1 == s.data.goods.gifts.length ? (1 == s.data.goods.gifts.length && (n = s.data.goods.gifts[0].id), 
         wx.navigateTo({
-            url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&giftid=" + n
+                url: "/pages/order/create/index?id=" + s.data.id + "&total=" + s.data.total + "&optionid=" + i + "&giftid=" + n + "&invitid=" + p
         })) : o.toast(s, "请选择赠品");
     },
     getCart: function(t, s) {

@@ -1,10 +1,9 @@
 {
 
     "pages": [
-        
-        "pages/huiyuan/membercenter/membercenter",
 
         "pages/index/index",
+        "pages/discount/merchaccount/merchaccount",
         "pages/discount/discount/discount",
         "pages/personalcode/account",
         "pages/personalcode/withdrawrecord",
@@ -15,6 +14,7 @@
         "pages/discount/merchcode/merchcode",
         "pages/gift/gift",
         "pages/gift/record",
+        "pages/discount/zkbcode/zkbcode",
         "pages/playmethod/feedback/feedback",
         "pages/playmethod/playmethod/playmethod",
         "pages/index/huodong",
@@ -25,7 +25,6 @@
         "pages/lottery/lottery/lottery",
         "pages/member/bind/index",
         "pages/helphand/friendhelp/friendhelp",
-        "pages/discount/transfer/transfer",
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
         
@@ -45,12 +44,13 @@
         "pages/huiyuan/pay_succeed/pay_succeed",
         "pages/discount/recordlist/recordlist",
         "pages/discount/zkbscancode/zkbscancode",
-        "pages/discount/zkbcode/zkbcode",
+       
         "pages/order/pay/index",
         "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/exclusive/exclusive",
         "pages/discount/zkbdiscount/zkbdiscount",
         "pages/discount/mingxi/mingxi",
+        "pages/discount/transfer/transfer",
         "pages/discount/zkbrechange/zkbrechange",
         "pages/commission/down/fandetails",
         "pages/discount/resuccess/resuccess",

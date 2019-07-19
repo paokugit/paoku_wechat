@@ -171,6 +171,8 @@ Page({
         ttt.setData({
           speeding: 'none',
           speeddone: 'block'
+
+ 
         })
       } else {
         ttt.setData({

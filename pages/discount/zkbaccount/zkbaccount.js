@@ -17,8 +17,8 @@ Page({
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1, 
-            title: '折扣宝',
-            height: i.globalData.height * 2 + 30,
+            title: '收支明细',
+            height: i.globalData.height * 2 + 20,
         },
         type: 1,
         isopen: !1,
@@ -33,33 +33,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    withdrawbtn: function() {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
-        console.log(conbind)
-        if (conbind == 0) {
-            wx.showModal({
-                title: '提示',
-                content: '您还未开通贡献值',
-            })
-        } else if (conbind == 1) {
-            wx.navigateTo({
-                url: '/pages/contribute/withdraw/withdraw',
-            })
-        }
-    },
-    transferbtn: function() {
-       wx.navigateTo({
-           url: '/pages/discount/transfer/transfer',
-       })
-    },
-    rechargebtn: function() {
-        wx.navigateTo({
-            url: '/pages/discount/zkbrechange/zkbrechange',
-        })
-    },
+ 
     // 上拉加载
     onLoad: function(a) {
         var userinfo = f.getCache('userinfo');

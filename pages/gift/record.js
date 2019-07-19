@@ -41,7 +41,7 @@ Page({
         var t = this;
         t.setData({
             loading: !0
-        }), s.get("myown/devote/dovate_log", {
+        }), s.get("game/index/getstep", {
             openid: useropenid,
             page: t.data.page,
         }, function (a) {
@@ -49,10 +49,10 @@ Page({
             var e = {
                 loading: !1,
                 show: !0,
-                list: a.message.list
+                list: a.result.list
             };
-            a.message.list || (a.message.list = []), a.message.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.message.list),
-                a.message.list.length < a.message.pagesize && (e.loaded = !0)), t.setData(e);
+            a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
+                a.result.list.length < a.result.pagesize && (e.loaded = !0)), t.setData(e);
         });
     },
 

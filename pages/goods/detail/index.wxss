@@ -6,10 +6,12 @@
 .picker-modal {
     height: auto;
 }
-.hiddenbox{
+
+.hiddenbox {
     width: auto;
-    height: auto
+    height: auto;
 }
+
 .shareBox {
     width: 140rpx;
     height: 60rpx;
@@ -1854,3 +1856,4 @@ image {
     line-height: 3rem;
     font-weight: bold;
 }
+

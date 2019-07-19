@@ -3,7 +3,7 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-
+var merchid=""
 Page({
 
     /**
@@ -25,6 +25,11 @@ Page({
     onLoad: function (options) {
         var userinfo = f.getCache('userinfo');
         console.log(userinfo)
+        if (userinfo.merchInfo == undefined || userinfo.merchInfo == false) {
+            merchid = undefined
+        } else {
+            merchid = userinfo.merchInfo.id
+        }
     },
     caloriebtn:function(){
         // wx.showModal({
@@ -37,14 +42,22 @@ Page({
     },
     
     zkbbtn: function() {
-        wx.navigateTo({
-            url: '/pages/discount/zkbcode/zkbcode',
-        })
+        if(merchid==undefined){
+            wx.showModal({
+                title: '提示',
+                content: '您还不是商家哦',
+            })
+        }else{
+            wx.navigateTo({
+                url: '/pages/discount/zkbcode/zkbcode',
+            })
+        }
+       
     },
     // personalbtn
     personalbtn: function () {
         wx.navigateTo({
-            url: '/pages/discount/zkbcode/zkbcode',
+            url: '/pages/personalcode/code',
         })
     },
     /**

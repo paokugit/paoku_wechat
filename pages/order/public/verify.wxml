@@ -1,7 +1,7 @@
 <view class="fui-modal {{code?'show':'hidden'}}"></view>
 <view class="fui-modal-info {{code?'show':'hidden'}}">
     <view class="close">
-        <image bindtap="close" src="/static/images/icon-white/round_close-48.png"></image>
+        <image bindtap="close" src="https://paokucoin.com/img/backgroup/round_close-48.png"></image>
     </view>
     <image class="code" src="{{qrcode}}"></image>
     <view class="tap">
