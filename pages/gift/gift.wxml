@@ -4,9 +4,8 @@
         <image src='{{globalimg}}/pic01@2x.png'></image>
         <view class='time-box'>
             <view>活动时间:</view>
-            <view class='activity-time'>2019.7.16-2019.7.31</view>
+            <view class='activity-time'>{{starttime}}-{{endtime}}</view>
         </view>
-
     </view>
     <view class='gift-bottomcon'>
         <view class='gift-centerbg'>
@@ -49,19 +48,14 @@
         <view class="{{type==1 ? 'show':'hidden'}}">
             <scroll-view>
                 <view class='primary-box'>
-                    <view class='primary-con'>
+                    <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
                         <view class='primary-img'>
                             <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'></view>
+                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
                             <view class='exclusive-box'>普通、健康达人享有</view>
-                        </view>
-                    </view>
-                    <view class='primary-con'>
-                        <view class='primary-img'>
-                            <image src='{{globalimg}}/01@2x.png'></image>
                         </view>
                     </view>
                 </view>
@@ -70,14 +64,32 @@
         <view class="{{type==2 ? 'show':'hidden'}}">
             <scroll-view>
                 <view class='middle-box'>
-                    中级
+                   <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
+                        <view class='primary-img'>
+                            <image src='{{globalimg}}/01@2x.png'></image>
+                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
+                            <view class='free-img'>
+                                <image src='{{globalimg}}/oqg02@2x.png'></image>
+                            </view>
+                            <view class='exclusive-box'>普通、健康达人享有</view>
+                        </view>
+                    </view>
                 </view>
             </scroll-view>
         </view>
         <view class="{{type==3 ? 'show':'hidden'}}">
             <scroll-view>
                 <view class='high-box'>
-                    高级
+                    <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
+                        <view class='primary-img'>
+                            <image src='{{globalimg}}/01@2x.png'></image>
+                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
+                            <view class='free-img'>
+                                <image src='{{globalimg}}/oqg02@2x.png'></image>
+                            </view>
+                            <view class='exclusive-box'>普通、健康达人享有</view>
+                        </view>
+                    </view>
                 </view>
             </scroll-view>
         </view>

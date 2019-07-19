@@ -218,21 +218,23 @@ image {
     margin-top: 20rpx;
 }
 .primary-box{
-    background: #f00;
     display: flex;
     justify-content: center;
     align-items: center
 }
 .middle-box{
-    background: #0f0
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 .high-box{
-    background: #00f
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 .primary-con{
-    width: 90%;
+    width: 50%;
     height: 100%;
-    background: #0f0;
     display: flex;
     justify-content: space-around;
     align-items: center

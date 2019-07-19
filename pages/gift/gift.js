@@ -24,10 +24,11 @@ Page({
         gradelevel:'',
         gradegift:'',
         helplist:[],
-        image:[
-            
-        ],
-       
+        starttime: '',
+        endtime: '',
+        primarylist: [],
+        middlelist: [],
+        highlist: [],
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -96,7 +97,12 @@ Page({
                     remain:e.result.remain,
                     gradelevel: e.result.agentlevel,
                     gradegift: e.result.gift,
-                    helplist:e.result.new_member
+                    helplist:e.result.new_member,
+                    starttime:e.result.start,
+                    endtime:e.result.end,
+                    primarylist:e.result.goods[0].thumbs,
+                    middlelist:e.result.goods[1].thumbs,
+                    highlist:e.result.goods[2].thumbs
                 });
             }else{
                 errormessgae=e.result.message
