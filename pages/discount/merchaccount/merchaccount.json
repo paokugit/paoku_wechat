@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "资金账户",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}

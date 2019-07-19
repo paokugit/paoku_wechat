@@ -159,9 +159,9 @@ Page({
         });
     },
     onUnload: function() {
-        wx.navigateTo({
-            url: '/pages/order/index',
-        })
+        // wx.navigateTo({
+        //     url: '/pages/order/index',
+        // })
     },
     onShareAppMessage: function() {
         return t.onShareAppMessage();

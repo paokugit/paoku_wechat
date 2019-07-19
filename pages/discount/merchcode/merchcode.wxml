@@ -7,6 +7,7 @@
             <view class='zhuanxiang'>专享</view>
         </view>
         <view class='zkb-read'>进入查看</view>
+        <view class='hint-text'>资金提现请至微信商家后台</view>
     </view>
     <view class='zkb-box' bindtap='personalbtn'>
         <image src='{{globalimg}}/zkb-bg.png'></image>

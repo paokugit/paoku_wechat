@@ -1,7 +1,9 @@
 {
     "pages": [
-        
+        "pages/gift/gift",
+        "pages/gift/record",
         "pages/index/index",
+        "pages/discount/merchaccount/merchaccount",
         "pages/discount/discount/discount",
         "pages/personalcode/account",
         "pages/personalcode/withdrawrecord",
@@ -10,8 +12,8 @@
         "pages/personalcode/setdiscount",
         "pages/personalcode/scancode",
         "pages/discount/merchcode/merchcode",
-       "pages/gift/gift",
-    "pages/gift/record",
+      
+        "pages/discount/zkbcode/zkbcode",
         "pages/playmethod/feedback/feedback",
         "pages/playmethod/playmethod/playmethod",
         "pages/index/huodong",
@@ -37,7 +39,7 @@
         "pages/huiyuan/hygrade/hygrade",
         "pages/discount/recordlist/recordlist",
         "pages/discount/zkbscancode/zkbscancode",
-        "pages/discount/zkbcode/zkbcode",
+       
         "pages/order/pay/index",
         "pages/discount/setzkbdiscount/setzkbdiscount",
         "pages/exclusive/exclusive",

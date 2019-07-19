@@ -4,11 +4,12 @@ page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    background: #fff
 }
 
 .help-record-box {
     width: 100%;
-    height: 100%;
+    height: auto;
     background: #fff
 }
 
@@ -23,7 +24,7 @@ image {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: pink;
+    background: #fff;
     margin-top: 20rpx
 }
 
@@ -41,7 +42,9 @@ image {
     height: 90rpx;
     border-radius: 50%;
 }
-
+.friend-avatar image{
+    border-radius: 50%
+}
 .help-left {
     display: flex;
     align-items: center;
@@ -95,4 +98,14 @@ image {
     position: absolute;
     top: 45rpx;
     right: 10rpx;
+}
+.no-data{
+    width: 100%;
+    height: 80rpx;
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 30rpx
 }

@@ -4,6 +4,7 @@ var errormessage=""
 var orderId=""
 Page({
     data: {
+        globalimg: t.globalData.appimg,
         icons: t.requirejs("icons"),
         success: !1,
         successData: {},
@@ -120,28 +121,10 @@ Page({
     },
     
     onUnload: function () {
-        // wx.switchTab({
-        //     url: '/pages/discount/discount/discount',
+        // wx.navigateTo({
+        //     url: '/pages/order/detail/index?id='+orderId
         // })
-        wx.navigateTo({
-            url: '/pages/order/detail/index?id='+orderId
-        })
         console.log('监听页面卸载111');
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '您还有订单未支付',
-        //     success:function(res){
-        //         if(res.cancel){
-        //             // 取消
-
-        //         }else{
-        //             // 确定
-        //             wx.navigateTo({
-        //                 url: '/pages/order/index?status='+0,
-        //             })
-        //         }
-        //     }
-        // })
     },
 //    查看奖励
     rewardBtn: function() {

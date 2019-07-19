@@ -16,50 +16,23 @@
             <view class='grade-con-box'>
                 <view class='grade-con-left'>
                     <view class='grade-tit'>当前级别:</view>
-                    <view class='grade-level'>健康达人</view>
+                    <view class='grade-level'>{{gradelevel}}</view>
                 </view>
-                <view class='grade-con-right'>享受初级礼包</view>
+                <view class='grade-con-right'>享受{{gradegift}}</view>
             </view>
         </view>
         <view class='help-position-box'>
             <view class='help-relative'>
-                <view class='help-count goal'>15</view>
-                <view class='help-count success'>3</view>
-                <view class='help-count fail'>7</view>
+                <view class='help-count goal'>{{goal}}</view>
+                <view class='help-count success'>{{help_count}}</view>
+                <view class='help-count fail'>{{remain}}</view>
             </view>
         </view>
         <navigator url='/pages/gift/record' class='record-position-box'></navigator>
         <view class='list-position-box'>
             <view class='list-con-box'>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
-                </view>
-                <view class='list-item'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
+                <view class='list-item' wx:for="{{helplist}}">
+                    <image src='{{item.avatar}}'></image>
                 </view>
             </view>
         </view>

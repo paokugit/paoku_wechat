@@ -12,8 +12,10 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
 // var calorienum=""
 var app = getApp();
 var inviteid = ""
-var goldid=""
-var invitemsg=""
+var goldid = ""
+var invitemsg = ""
+var kllcount = ""
+var zkbcount = ""
 Page({
     data: {
         globalimg: app.globalData.appimg,
@@ -25,10 +27,10 @@ Page({
             height: app.globalData.height * 2 + 20,
         },
         list: {},
-        inviteavatar:'',
-        invitename:'',
-        invitemobile:'',
-        inviteDis:'none',
+        inviteavatar: '',
+        invitename: '',
+        invitemobile: '',
+        inviteDis: 'none',
         goodslist: {},
         data: {
             dispatchtype: 0,
@@ -66,14 +68,17 @@ Page({
         fardis: 'none',
         condisp: 'block',
         caloriedisp: 'none',
+        zkbDis: 'none',
+        kllDis: 'none',
         calorienum: '',
         remote_dispatchprice: ''
     },
     onLoad: function(t) {
+        console.log('onload')
         console.log('order/create/index')
         console.log(t)
         inviteid = t.invitid
-        goldid=t.id
+        goldid = t.id
         var i = this,
             r = [];
         if (t.goods) {
@@ -89,6 +94,20 @@ Page({
         }), e.url(t), console.log(i.data.options), a.get("order/create", i.data.options, function(t) {
             console.log('订单')
             console.log(t)
+            kllcount = t.deductcredit
+            zkbcount = t.discount
+            if (kllcount > 0) {
+                i.setData({
+                    kllDis: 'block',
+                    zkbDis: 'none'
+                })
+            }
+            if (zkbcount > 0) {
+                i.setData({
+                    zkbDis: 'block',
+                    kllDis: 'none'
+                })
+            }
             if (t.isdispatcharea == 1) {
                 i.setData({
                     fardis: 'block',
@@ -178,29 +197,43 @@ Page({
     },
     onShow: function() {
         console.log(goldid, inviteid)
-        var g=this
-        if(goldid==1467){
+        var g = this
+        console.log('onshow')
+        if (kllcount > 0) {
             g.setData({
-                inviteDis:'block'
+                kllDis: 'block',
+                zkbDis: 'none'
+            })
+        }
+        if(zkbcount>0){
+            g.setData({
+                zkbDis:'block',
+                kllDis:'none'
+            })
+        }
+
+        if (goldid == 1467) {
+            g.setData({
+                inviteDis: 'block'
             })
             console.log(inviteid)
             a.get("member/index/member_info_byid", {
                 inviteid: inviteid
-            }, function (e) {
+            }, function(e) {
                 console.log(e)
-               if(e.error==0){
-                   g.setData({
-                       inviteavatar: e.avatar,
-                       invitename: e.nickname,
-                       invitemobile: e.mobile
-                   })
-               }else{
-                   invitemsg=e.message
-                   wx.showModal({
-                       title: '提示',
-                       content: invitemsg,
-                   })
-               }
+                if (e.error == 0) {
+                    g.setData({
+                        inviteavatar: e.avatar,
+                        invitename: e.nickname,
+                        invitemobile: e.mobile
+                    })
+                } else {
+                    invitemsg = e.message
+                    wx.showModal({
+                        title: '提示',
+                        content: invitemsg,
+                    })
+                }
             })
         }
         var i = this,

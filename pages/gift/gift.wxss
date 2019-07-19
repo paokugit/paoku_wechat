@@ -147,7 +147,11 @@ image {
 .list-item{
     width: 100rpx;
     height: 100rpx;
+    border-radius: 50%;
     margin-right: 20rpx
+}
+.list-item image{
+     border-radius: 50%;
 }
 .gift-bottom-box{
     width: 100%;

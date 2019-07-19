@@ -51,6 +51,11 @@ Page({
             url: '/pages/discount/recordlist/recordlist?cate='+catenum,
         })
     },
+accountbtn:function(){
+    wx.navigateTo({
+        url: '/pages/discount/merchaccount/merchaccount' ,
+    })
+},
     downloadImage: function (imageUrl) {
         // 下载文件  
         wx.downloadFile({

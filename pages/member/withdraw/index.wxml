@@ -41,7 +41,7 @@
                                 <label bindtap="typeChange" data-name="0">
                                     <view class="fui-cell applyradio">
                                         <view class="fui-cell-icon">
-                                            <image alt="" src="/static/images/icon-white/wx.png"></image>
+                                            <image alt="" src="{{globalimg}}/wx.png"></image>
                                         </view>
                                         <view class="fui-cell-info">
                     {{item.title}}
@@ -58,7 +58,7 @@
                                 <label bindtap="typeChange" data-name="1">
                                     <view class="fui-cell applyradio">
                                         <view class="fui-cell-icon">
-                                            <image alt="" src="/static/images/icon-white/zfb.png"></image>
+                                            <image alt="" src="{{globalimg}}/zfb.png"></image>
                                         </view>
                                         <view class="fui-cell-info">
                     {{item.title}}
@@ -97,7 +97,7 @@
                                 <block wx:if="{{item.type=='3'}}">
                                     <view class="fui-cell applyradio">
                                         <view class="fui-cell-icon">
-                                            <image alt="" src="/static/images/icon-white/yinhangka.png"></image>
+                                            <image alt="" src="{{globalimg}}/yinhangka.png"></image>
                                         </view>
                                         <view class="fui-cell-info">
                     {{item.title}}

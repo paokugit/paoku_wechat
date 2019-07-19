@@ -58,3 +58,14 @@ image{
     color: #fff;
     font-size: 28rpx
 }
+.hint-text{
+     width: 90%;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 5%;
+    position: absolute;
+    bottom: 120rpx;
+    left: 0;
+    color: #fff;
+    font-size: 28rpx
+}

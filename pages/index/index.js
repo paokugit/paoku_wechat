@@ -255,6 +255,11 @@ Page((e = {
             url: '../huiyuan/hygrade/hygrade',
         })
     },
+    bindgift: function() {
+        wx.navigateTo({
+            url: '/pages/gift/gift',
+        })
+    },
     // 拨打电话
     tel: function(t) {
         console.log('phone')
@@ -352,13 +357,13 @@ Page((e = {
         // })
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
-            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1 ) { //开发者工具|正式版
+            if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1) { //开发者工具|正式版
                 version = 1;
                 k.setData({
                     condisp: 'block',
                     // storedisp: 'none'
                 })
-            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 0){
+            } else if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 0) {
                 version = 0;
                 k.setData({
                     condisp: 'none',
@@ -373,7 +378,7 @@ Page((e = {
                     storedisp: 'none'
                 })
             }
-         
+
         })
 
         var a = this;
@@ -637,6 +642,23 @@ Page((e = {
         var t = this,
             a = wx.getSystemInfoSync(),
             e = i.getCache("sysset");
+        s.get("game/index/icon", {
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e)
+            if (e.status == 1) {
+                if (e.result.is_show == 1) {
+                    t.setData({
+                        giftDis: 'none'
+                    })
+                } else if (e.result.is_show == 0) {
+                    t.setData({
+                        giftDis: 'none'
+                    })
+                }
+            }
+
+        });
         s.get("userinfo", {}, function(e) {
             if (e.status == 1) {
                 t.setData({

@@ -12,13 +12,24 @@
         <view class='recordbox' bindtap='recordbtn'>
             <view class='record-left'>
                 <view class='record-img'>
-                    <image src='{{globalimg}}/shouzhi@2x.png'></image>
+                    <image src='{{globalimg}}/shouzhi02.png'></image>
                 </view>
                 <view class='record-text'>收款记录</view>
             </view>
             <view class='record-right'>
-               <image src='{{ globalimg}}/open10.18@2x.png'></image>
+                <image src='{{ globalimg}}/open10.18@2x.png'></image>
             </view>
         </view>
+        <!-- <view class='accountbox' bindtap='accountbtn'>
+            <view class='record-left'>
+                <view class='account-img'>
+                    <image src='{{globalimg}}//wallet@2x.png'></image>
+                </view>
+                <view class='record-text'>资金账户</view>
+            </view>
+            <view class='record-right'>
+                <image src='{{ globalimg}}/open10.18@2x.png'></image>
+            </view>
+        </view> -->
     </view>
 </view>

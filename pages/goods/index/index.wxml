@@ -48,7 +48,7 @@
               <view style='font-size:20rpx;color:#e01212;display:flex;align-items: center;'>￥</view>
               <view style='font-size:26rpx;color:#e01212;display:flex;align-items: center;'>{{filters.toFix(item.minprice,item.deduct)}}</view>
               <view style='display:flex;align-items:center;position:absolute;right:25rpx;'>
-                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+                <view style='font-size:18rpx;color:#707070;text-decoration:line-through'>¥{{item.productprice}}</view>
               </view>
             </view>
           </view>
@@ -64,7 +64,7 @@
             </view>
             <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
             <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
-            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
             </view>
           </view>
           <!-- 全额 -->
@@ -72,7 +72,7 @@
             <view style='display:flex;algin-items:center;'>
               <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
               <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
-                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+                <view style='font-size:18rpx;color:#707070;text-decoration:line-through'>¥{{item.productprice}}</view>
                 
               </view>
             </view>
@@ -100,7 +100,7 @@
               <view style='font-size:20rpx;color:#e01212;display:flex;align-items: center;'>￥</view>
               <view style='font-size:26rpx;color:#e01212;display:flex;align-items: center;'>{{filters.toFix(item.minprice,item.deduct)}}</view>
               <view style='display:flex;align-items:center;position:absolute;right:25rpx;'>
-                <view style='font-size:18rpx;color:#707070;'>¥{{item.productprice}}</view>
+                <view style='font-size:18rpx;color:#707070;text-decoration:line-through'>¥{{item.productprice}}</view>
               </view>
             </view>
           </view>
@@ -116,7 +116,7 @@
             </view>
             <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
             <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
-            <view style="font-size:18rpx;color:#707070;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
             </view>
           </view>
           <!-- 全额 -->
@@ -124,7 +124,7 @@
             <view>
               <view style='font-size:26rpx;color:#e01212;margin-top:42rpx'>￥{{item.minprice}}</view>
               <view style='display:flex;algin-items:center'>
-                <text style='font-size:18rpx;color:#707070;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
+                <text style='font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
               </view>
             </view>
           </view>
