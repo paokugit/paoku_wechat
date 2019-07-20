@@ -53,7 +53,7 @@ Page({
     },
 accountbtn:function(){
     wx.navigateTo({
-        url: '/pages/discount/merchaccount/merchaccount' ,
+        url: '/pages/discount/merchaccount/merchaccount?merchantid='+merchid ,
     })
 },
     downloadImage: function (imageUrl) {

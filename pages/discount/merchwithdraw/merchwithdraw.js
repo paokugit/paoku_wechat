@@ -3,8 +3,8 @@ var a, e, i = getApp(),
     s = i.requirejs("core");
 //   当前登录人的openid
 var f = getApp();
-var userinfo = f.getCache('userinfo');
 var useropenid = ''
+var merchid = ""
 Page({
 
     /**
@@ -15,9 +15,6 @@ Page({
         page: 1,
         list: [],
         maskDis: 'none',
-        downdis: 'block',
-        topdis: 'none',
-        reasondis: 'none',
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -30,6 +27,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(a) {
+        merchid = a.id
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
         this.getList();
@@ -44,8 +42,8 @@ Page({
         var t = this;
         t.setData({
             loading: !0
-        }), s.get("payment/myown/draw_log", {
-            openid: useropenid,
+        }), s.get("payment/myown/merch_log", {
+            merchid: merchid,
             page: t.data.page,
         }, function(a) {
             console.log(a)
@@ -60,25 +58,9 @@ Page({
                     list: a.result.list
                 };
                 a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
-                    a.result.list.length < a.result.pageSize && (e.loaded = !0)), t.setData(e);
+                    a.result.list.length < a.result.pagesize && (e.loaded = !0)), t.setData(e);
             }
         });
-    },
-    downbtn: function(e) {
-        console.log(e.currentTarget.dataset.id)
-        this.setData({
-            downdis: 'none',
-            topdis: 'block',
-            reasondis: 'block'
-        })
-    },
-    topbtn: function(e) {
-        //    console.log(e.currentTarget.dataset.id)
-        this.setData({
-            topdis: 'none',
-            downdis: 'block',
-            reasondis: 'none'
-        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

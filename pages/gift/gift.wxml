@@ -51,7 +51,9 @@
                     <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
                         <view class='primary-img'>
                             <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
+                            <view class='good-absolute'>
+                                <image src='{{item.thumb}}'></image>
+                            </view>
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
@@ -64,10 +66,12 @@
         <view class="{{type==2 ? 'show':'hidden'}}">
             <scroll-view>
                 <view class='middle-box'>
-                   <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
+                    <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
                         <view class='primary-img'>
                             <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
+                            <view class='good-absolute'>
+                                <image src='{{item.thumb}}'></image>
+                            </view>
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
@@ -83,7 +87,9 @@
                     <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
                         <view class='primary-img'>
                             <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'><image src='{{item.thumb}}'></image></view>
+                            <view class='good-absolute'>
+                                <image src='{{item.thumb}}'></image>
+                            </view>
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
@@ -95,13 +101,25 @@
         </view>
     </view>
 </view>
+  <!-- 继续邀请赚更多-开始 -->
+    <form bindsubmit='form_submit' report-submit='true' class='inviteform'>
+        <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn' open-type='share'>
+            <view class='invite-friend-box'>
+                <view  class='gift-invite  ballon'>
+                    <image src='{{globalimg}}/buttun@2x.png'></image>
+                </view>
+            </view>
+        </button>
+    </form>
+    <!-- <view class='invite-box'></view> -->
+    <!-- 继续邀请赚更多-结束 -->
 <!-- 助力成功 -->
 <view class='help_mask' style='display:{{helpDis}}'>
     <view class='help-mask-relative'>
         <view class='help-success-bg'>
             <view class='help-success-relative'>
                 <view class='avatar-img'>
-                    <image src='{{globalimg}}/touxiang02.png'></image>
+                    <image src='{{friendavatar}}'></image>
                 </view>
                 <view class='zlcg-img'>
                     <image src='{{globalimg}}/zlcg@2x.png'></image>

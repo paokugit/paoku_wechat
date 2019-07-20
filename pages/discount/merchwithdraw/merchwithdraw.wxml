@@ -1,0 +1,25 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='record_box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='record-con'>
+        <view class='record-item' wx:for="{{list}}" wx:key="{{index}}">
+            <view class='item-top'>
+                <view class='item-left'>
+                    <view class='item-title'>{{item.title}}</view>
+                    <view class='item-time'>{{item.applytime}}</view>
+                </view>
+                <view class='item-right-box'>
+                    <view class='item-money'>{{item.realpricerate}}</view>
+                    <view class='item-state-check' wx:if="{{item.status==1}}">审核中</view>
+                    <view class='item-state-check' wx:if="{{item.status==2}}">审核中</view>
+                    <view class='item-state-success' wx:if="{{item.status==3}}">成功</view>
+                    <view class='item-state-fail' wx:if="{{item.status==-1}}">拒绝</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='no-data'>沒有更多数据了哦</view>
+</view>
+
+<view class='record_mask' style='margin-top:{{nvabarData.height}}px;display:{{maskDis}}'>
+    <view class='nodata'>暂无数据哦</view>
+</view>

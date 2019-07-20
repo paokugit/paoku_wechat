@@ -62,7 +62,7 @@ image{
     margin-top: 10rpx;
      display: flex;
     align-items: center;
-    font-weight: bold
+    /* font-weight: bold */
 }
 .kll-symbol{
     margin-left: 5rpx;
@@ -101,13 +101,19 @@ image{
     align-items: center
 }
 .ipt-symbol{
-    width: 10rpx;
+    /* width: 10rpx; */
     margin-left: 20rpx;
+     color: #333;
+    font-size: 80rpx;
 }
 .rechangeipt{
     width: 96%;
     height: 100%;
-    padding-left:4%;
+    /* padding-left:4%; */
+    display: flex;
+    align-items: center;
+     color: #333;
+    font-size: 80rpx;
 
 }
 .rechange-btnbox{

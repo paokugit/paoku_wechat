@@ -5,15 +5,20 @@
         <view class='kll-balance-box'>
             <view class='kll-text'>可用余额</view>
         </view>
-        <view class='kll-desc'>{{credit5}}</view>
+        <!-- <view class='kll-desc'>{{credit5}}</view> -->
+        <view class='ipt-box'>
+            <text class='ipt-symbol'>￥</text>
+        <view class='rechangeipt'>{{orderprice}}</view>
+        </view>
         <view class='empty-box'>
             <view class='empty'></view>
-            <view class='empty-text'>提现金额</view>
+            <view class='empty-text'>可提现金额</view>
             <view class='hint-text' style='display:{{hintDis}}'>余额不足,请重新输入</view>
         </view>
         <view class='ipt-box'>
             <text class='ipt-symbol'>￥</text>
-            <input bindinput='watchPassWord' class='rechangeipt' type='text' placeholder='当前最大可提现{{credit5}}元'></input>
+        <!-- <input bindinput='watchPassWord' class='rechangeipt' type='text' placeholder='当前最大可提现{{credit5}}元'></input> -->
+        <view class='rechangeipt'>{{realpricerate}}</view>
         </view>
         <view class='rechange-btnbox' bindtap='rechargebtn'>
             <button class='rechangebtn'>提现</button>
