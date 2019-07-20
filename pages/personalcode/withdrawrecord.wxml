@@ -33,7 +33,8 @@
         </view>
 
     </view>
+     <view class='no-data'>沒有更多数据了哦</view>
 </view>
-<view class='record_mask' style='display:{{maskDis}}'>
+<view class='record_mask' style='margin-top:{{nvabarData.height}}px;display:{{maskDis}}'>
     <view class='nodata'>暂无数据哦</view>
 </view>

@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "变动记录",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
+}

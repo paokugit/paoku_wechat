@@ -6,7 +6,9 @@ var f = getApp();
 var useropenid = ''
 var iptvalue = ''
 var creditnum = ''
-var message=''
+var message = ''
+var merchid = ""
+var ordercount=""
 Page({
 
     /**
@@ -15,11 +17,13 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         hintDis: 'none',
-        credit5:'',
+        credit5: '',
+        orderprice: '',
+        realpricerate: '',
         // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, 
-            title: '资金账户', 
+            showCapsule: 1,
+            title: '资金账户',
             height: i.globalData.height * 2 + 22,
         },
     },
@@ -27,134 +31,113 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
+        console.log(options)
+        merchid = options.merchantid
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
         var t = this
-        s.get("payment/myown/getCredit", {
-            openid: useropenid
-        }, function (e) {
+        s.get("payment/myown/merch", {
+            merchid: merchid
+        }, function(e) {
             console.log(e)
-            creditnum = Number(e.result.credit5)
+            ordercount = e.result.orderprice
             t.setData({
-                credit5: e.result.credit5
+                credit5: e.result.orderprice,
+                orderprice: e.result.orderprice,
+                realpricerate: e.result.realpricerate,
             })
         })
-    },
-    // 监听输入
-    watchPassWord: function (event) {
-        var a = this
-        console.log(event.detail.value);
-        iptvalue = event.detail.value
-        if (event.detail.value > creditnum) {
-            a.setData({
-                hintDis: 'block'
-            })
-        } else {
-            a.setData({
-                hintDis: 'none'
-            })
-        }
     },
     recordbtn:function(){
         wx.navigateTo({
-            url: '/pages/personalcode/withdrawrecord',
+            url: '/pages/discount/merchwithdraw/merchwithdraw?id='+merchid,
         })
     },
-    rechargebtn: function () {
-        console.log(creditnum)
-        console.log(iptvalue)
-        if (iptvalue==""){
+    rechargebtn: function() {
+        if (ordercount<1){
             wx.showModal({
                 title: '提示',
-                content: '请输入提现金额',
+                content: '提现金额不能小于1元',
             })
         }else{
-        if (iptvalue <= creditnum) {
-            s.get("payment/myown/own_draw", {
-                money: iptvalue,
-                openid: useropenid
-            }, function (eve) {
-                console.log(eve)
-                if(eve.status==1){
-                    message=eve.result.message
-                        wx.showModal({
-                            title: '提示',
-                            content: message,
-                            success:function(res){
-                                if(res.cancel){
-                                    // 点击取消
-                                }else{
-                                    // 点击确定
-                                    wx.navigateTo({
-                                        url: '/pages/personalcode/withdrawrecord',
-                                    })
-                                }
-                            }
-                        })
-                } else if (eve.status == 0){
-                    message = eve.result.message
-                    wx.showModal({
-                        title: '提示',
-                        content: message,
-                    })
-                }
-            })
-        } else {
-            wx.showModal({
-                title: '提示',
-                content: '您的余额不足，请重新输入',
-            })
+        s.get("payment/myown/merch_draw", {
+            merchid: merchid,
+            applytype: 0
+        }, function(eve) {
+            console.log(eve)
+            if (eve.status == 1) {
+                message = eve.result.message
+                wx.showModal({
+                    title: '提示',
+                    content: message,
+                    success: function(res) {
+                        if (res.cancel) {
+                            // 点击取消
+                        } else {
+                            // 点击确定
+                            wx.navigateTo({
+                                url: '/pages/discount/zkbcode/zkbcode',
+                            })
+                        }
+                    }
+                })
+            } else if (eve.status == 0) {
+                message = eve.result.message
+                wx.showModal({
+                    title: '提示',
+                    content: message,
+                })
+            }
+        })
         }
-        }
-
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

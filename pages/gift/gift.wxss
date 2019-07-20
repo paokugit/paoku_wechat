@@ -4,11 +4,14 @@ page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+      background: #a00000
 }
 
 .gift_box {
     width: 100%;
     height: 100%;
+    position: relative;
+  
 }
 
 image {
@@ -159,7 +162,9 @@ image {
     background: #a00000;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    position: absolute;
+    top: 1650rpx
 }
 .invite-img{
     width: 698rpx;
@@ -309,7 +314,15 @@ image {
     border-radius: 50%;
     border: 5rpx solid #fff;
     position: absolute;
-    top: -130rpx
+    top: -130rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.avatar-img image{
+      width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
 }
 .zlcg-img{
     width: 296rpx;
@@ -353,4 +366,75 @@ image {
     position: absolute;
     bottom: 30rpx
 }
+.invite-box{
+    width: 100%;
+    height: 160rpx;
+    background: #f00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1650rpx
+}
+.ballon {
+    width: 600rpx;
+    height: 150rpx;
+    background: url("https://paokucoin.com/img/backgroup/buttun@2x.png");
+    background-size: 600rpx 150rpx;
+    -webkit-animation-name: scaleDraw;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+}
 
+@keyframes scaleDraw {
+    0% {
+        transform: scale(1); 
+    }
+    25% {
+        transform: scale(1.1); 
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.inviteform {
+    width: 100%;
+    height: 160rpx;
+}
+
+button::after {
+    border: none;
+    background-color: transparent 
+}
+
+.invitebtn {
+    width: 100%;
+    height: 160rpx;
+    background: #a00000;
+    position: fixed;
+    bottom: 0;
+    left: 0
+}
+
+.invite-friend-box {
+    width: 100%;
+    height: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+   
+}
+
+.gift-invite {
+    width: 600rpx;
+    height: 150rpx;
+}

@@ -20,7 +20,7 @@
                 <image src='{{ globalimg}}/open10.18@2x.png'></image>
             </view>
         </view>
-        <!-- <view class='accountbox' bindtap='accountbtn'>
+        <view class='accountbox' bindtap='accountbtn'>
             <view class='record-left'>
                 <view class='account-img'>
                     <image src='{{globalimg}}//wallet@2x.png'></image>
@@ -30,6 +30,6 @@
             <view class='record-right'>
                 <image src='{{ globalimg}}/open10.18@2x.png'></image>
             </view>
-        </view> -->
+        </view>
     </view>
 </view>

@@ -56,9 +56,9 @@ Page({
             })
         }
     },
-    recordbtn:function(){
+    recordbtn: function () {
         wx.navigateTo({
-            url: '/pages/personalcode/withdrawrecord',
+            url: '/pages/personalcode/withdrawrecord?param=' + 0,
         })
     },
     rechargebtn: function () {
