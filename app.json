@@ -1,7 +1,6 @@
 {
 
     "pages": [
-        "pages/contribute/explain/explain",
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
@@ -28,7 +27,7 @@
         "pages/member/bind/index",
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
-       
+        "pages/contribute/explain/explain",
         "pages/contribute/record/record",
         "pages/contribute/withdraw/withdraw",
         "pages/discount/zkbaccount/zkbaccount",

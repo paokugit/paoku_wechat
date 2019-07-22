@@ -307,6 +307,7 @@ Page({
         }), this.caculate(this.data.list);
     },
     number: function(t) {
+        console.log('number')
         var e = this,
             r = a.pdata(t),
             d = i.number(this, t),
@@ -353,6 +354,7 @@ Page({
                 t.enoughmoney = a.deductenough_enough, t.taskdiscountprice = a.taskdiscountprice,
                 t.discountprice = a.discountprice, t.isdiscountprice = a.isdiscountprice, t.seckill_price = a.seckill_price,
                 t.deductcredit2 = a.deductcredit2, t.deductmoney = a.deductmoney, t.deductcredit = a.deductcredit,
+                t.discount = a.discount,
                 e.data.data.deduct && (a.realprice -= a.deductmoney), e.data.data.deduct2 && (a.realprice -= a.deductcredit2),
                 e.data.coupon && void 0 !== e.data.coupon.deductprice && (e.setData({
                     "coupon.deductprice": a.coupon_deductprice
