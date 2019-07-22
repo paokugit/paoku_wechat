@@ -27,9 +27,6 @@
         "pages/member/bind/index",
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
-        
-        
-
         "pages/contribute/explain/explain",
         "pages/contribute/record/record",
         "pages/contribute/withdraw/withdraw",
@@ -65,10 +62,10 @@
         "pages/index/moremerch/moremerch",
         "pages/member/detail/detail",
         "pages/custom/index",
-        "pages/commission/log/index",
-        "pages/commission/log/detail",
+        "pages/order/express/index",
+       
         "pages/commission/apply/index",
-        "pages/commission/withdraw/index",
+       
         "pages/commission/order/index",
         "pages/commission/register/index",
         "pages/shop/notice/index/index",
@@ -80,7 +77,7 @@
         "pages/goods/package/detail/index",
         "pages/goods/poster/poster",
         "pages/order/detail/index",
-        "pages/order/express/index",
+        
         "pages/order/comment/index",
         "pages/order/refund/index",
         "pages/order/create/index",
@@ -114,7 +111,7 @@
         "pages/order/cycle/index",
         "pages/order/cycle/address",
         "pages/changce/merch/apply",
-        "pages/changce/merch/index",
+      
         "pages/changce/merch/detail",
         "pages/order/express/number",
         "pages/changce/merch/intro",

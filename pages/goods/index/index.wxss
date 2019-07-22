@@ -38,9 +38,10 @@ page {
     font-size: 30rpx;
     background: transparent;
     color: #999999;
-    height: 60rpx;
-    line-height: 60rpx;
+    height: 70rpx;
+    line-height: 70rpx;
     border: none;
+    background: #ff0
 }
 
 .fui-header .icon {

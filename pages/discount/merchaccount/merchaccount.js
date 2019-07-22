@@ -43,7 +43,6 @@ Page({
             console.log(e)
             ordercount = e.result.orderprice
             t.setData({
-                credit5: e.result.orderprice,
                 orderprice: e.result.orderprice,
                 realpricerate: e.result.realpricerate,
             })
@@ -55,12 +54,12 @@ Page({
         })
     },
     rechargebtn: function() {
-        if (ordercount<1){
-            wx.showModal({
-                title: '提示',
-                content: '提现金额不能小于1元',
-            })
-        }else{
+        // if (ordercount<1){
+        //     wx.showModal({
+        //         title: '提示',
+        //         content: '提现金额不能小于1元',
+        //     })
+        // }else{
         s.get("payment/myown/merch_draw", {
             merchid: merchid,
             applytype: 0
@@ -90,7 +89,7 @@ Page({
                 })
             }
         })
-        }
+        // }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
