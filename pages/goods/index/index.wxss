@@ -16,7 +16,9 @@ page {
 }
 
 .fui-header .searchbar {
-    flex: 1;
+    width: 85%;
+    padding-left: 1%;
+    /* flex: 1; */
     background: #efefef;
     border-radius: 8rpx;
     margin-right: 15rpx;

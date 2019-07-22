@@ -192,7 +192,7 @@
     <block>
       <block wx:if="{{fromsearch}}">
         <!-- <view bindtap="bindback" class="cancel">取消</view> -->
-        <view class='searchtext' bindtap='searchbtn'>搜索</view>
+        <view class='searchtext' bindtap='searchbtn' style='width:14%;height:100%;display:flex;align-items:center;justify-content:center'>搜索</view>
       </block>
     </block>
   </view>

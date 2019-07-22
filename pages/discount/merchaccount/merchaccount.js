@@ -54,18 +54,25 @@ Page({
         })
     },
     rechargebtn: function() {
-        // if (ordercount<1){
-        //     wx.showModal({
-        //         title: '提示',
-        //         content: '提现金额不能小于1元',
-        //     })
-        // }else{
+        if (ordercount<1){
+            wx.showModal({
+                title: '提示',
+                content: '提现金额不能小于1元',
+            })
+        }else{
+            wx.showLoading({
+                title: '请求中',
+                mask: true
+            })
         s.get("payment/myown/merch_draw", {
             merchid: merchid,
             applytype: 0
         }, function(eve) {
             console.log(eve)
             if (eve.status == 1) {
+                setTimeout(function () {
+                    wx.hideLoading()
+                }, 1000)
                 message = eve.result.message
                 wx.showModal({
                     title: '提示',
@@ -76,12 +83,15 @@ Page({
                         } else {
                             // 点击确定
                             wx.navigateTo({
-                                url: '/pages/discount/zkbcode/zkbcode',
+                                url: '/pages/discount/merchwithdraw/merchwithdraw?id=' + merchid,
                             })
                         }
                     }
                 })
             } else if (eve.status == 0) {
+                setTimeout(function () {
+                    wx.hideLoading()
+                }, 1000)
                 message = eve.result.message
                 wx.showModal({
                     title: '提示',
@@ -89,7 +99,7 @@ Page({
                 })
             }
         })
-        // }
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

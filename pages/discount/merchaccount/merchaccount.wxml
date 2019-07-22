@@ -12,7 +12,7 @@
         </view>
         <view class='empty-box'>
             <view class='empty'></view>
-            <view class='empty-text'>可提现金额</view>
+            <view class='empty-text'>可提现到账金额</view>
             <view class='hint-text' style='display:{{hintDis}}'>余额不足,请重新输入</view>
         </view>
         <view class='ipt-box'>
