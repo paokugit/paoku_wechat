@@ -1,6 +1,0 @@
-{
-    "usingComponents": {
-        "nav-bar": "/commpents/navbar/index"
-    },
-  "navigationBarTitleText": "商户列表"
-}

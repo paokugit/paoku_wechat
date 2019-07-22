@@ -37,10 +37,11 @@ page {
     width: 100%;
     font-size: 30rpx;
     background: transparent;
-    color: #999999;
-    height: 60rpx;
-    line-height: 60rpx;
+    color: #999;
+    height: 70rpx;
+    line-height: 70rpx;
     border: none;
+    /* background: #ff0; */
 }
 
 .fui-header .icon {
@@ -56,7 +57,7 @@ page {
     position: fixed;
     width: 100%;
     top: 88rpx;
-    padding: .4rem 0;
+    padding: 0.4rem 0;
     background: #fff;
     align-items: center;
     display: flex;
@@ -138,11 +139,11 @@ page {
     left: 0;
     z-index: 9998;
     opacity: 0;
-    transition-property: height,opacity,-webkit-transform;
-    transition-property: height,opacity,transform;
-    transition-property: height,opacity,transform,-webkit-transform;
+    transition-property: height, opacity, -webkit-transform;
+    transition-property: height, opacity, transform;
+    transition-property: height, opacity, transform, -webkit-transform;
     transition-duration: 300ms;
-    transform: translate3d(0px,-100%,0px) scaleY(0);
+    transform: translate3d(0px, -100%, 0px) scaleY(0);
 }
 
 .page.onlysort .screen {
@@ -153,7 +154,7 @@ page {
     transition-duration: 0.3s;
     opacity: 1;
     height: auto;
-    transform: translate3d(0px,0px,0px) scaleY(1);
+    transform: translate3d(0px, 0px, 0px) scaleY(1);
 }
 
 .screen:after {
@@ -188,14 +189,14 @@ page {
     height: 56rpx;
     line-height: 56rpx;
     margin-bottom: 0;
-    border: .5px solid #999;
+    border: 0.5px solid #999;
     color: #999;
     font-size: 26rpx;
 }
 
 .screen .attribute .item .btn-danger-o {
     color: #fd5454;
-    border: .5px solid #fd5454;
+    border: 0.5px solid #fd5454;
 }
 
 .screen .attribute .item .btn .icon {
@@ -235,6 +236,12 @@ page {
 .screen .btns .cancel {
     float: left;
     color: #666;
+}
+
+.screen .btns .searchtext {
+    float: left;
+    color: #666;
+    font-size: 32rpx
 }
 
 .screen .btns .confirm {
@@ -375,7 +382,7 @@ page {
 .model {
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -468,13 +475,13 @@ page {
 .fui-goods-item .detail .price .buybtnbtn {
     display: inline-block;
     height: 40rpx;
-    border: 1px solid #ff5555;
+    border: 1px solid #f55;
     width: auto;
     border-radius: 4rpx;
 }
 
 .fui-goods-item .detail .price .buybtn-1 {
-    color: #ff5555;
+    color: #f55;
     line-height: 40rpx;
     background: #fff;
     padding: 0rpx 14rpx;
@@ -483,7 +490,7 @@ page {
 .fui-goods-item .detail .price .buybtn-2 {
     color: #fff;
     line-height: 40rpx;
-    background: #ff5555;
+    background: #f55;
     padding: 0rpx 14rpx;
 }
 
@@ -491,11 +498,12 @@ page {
     font-size: 28rpx;
 }
 
-.fui-goods-item .detail .price .buybtn-3,.fui-goods-item .detail .price .buybtn-6 {
+.fui-goods-item .detail .price .buybtn-3,
+.fui-goods-item .detail .price .buybtn-6 {
     color: #fff;
     line-height: 44rpx;
     height: 42rpx;
-    background: #ff5555;
+    background: #f55;
     width: 44rpx;
     padding: 0;
 }
@@ -509,7 +517,7 @@ page {
 }
 
 .fui-goods-item .detail .price .buybtn-5 {
-    color: #ff5555;
+    color: #f55;
     line-height: 40rpx;
     background: #fff;
     width: 40rpx;
@@ -534,8 +542,8 @@ page {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    background: linear-gradient(to right,#f0b938 0%,#f09938 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fff0b938, endColorstr=#fff09938,gradientType='1');
+    background: linear-gradient(to right, #f0b938 0%, #f09938 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fff0b938, endColorstr=#fff09938, gradientType='1');
 }
 
 .fui-goods-group.block .goods-Commission {
@@ -543,44 +551,47 @@ page {
     line-height: 44rpx;
     font-size: 22rpx;
 }
+
 .zhekoujia {
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: 3rpx;
-  font-size: 18rpx;
-  color: #f84900;
-  width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 3rpx;
+    font-size: 18rpx;
+    color: #f84900;
+    width: auto;
 }
 
 .jianhao {
-  width: 10rpx;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 18rpx;
-  color: #f84900;
-  margin-left: 5rpx;
+    width: 10rpx;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18rpx;
+    color: #f84900;
+    margin-left: 5rpx;
 }
 
 .imgandprice {
-  width: 170rpx;
-  height: 34rpx;
-  display: flex;
-  align-items: center;
-  border: 1rpx solid #f84900;
-  border-radius: 5rpx;
-  margin-top: 10rpx;
+    width: 170rpx;
+    height: 34rpx;
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #f84900;
+    border-radius: 5rpx;
+    margin-top: 10rpx;
 }
+
 .zhehouprice {
-  display: flex;
-  align-items: center;
-  margin-top: 10rpx;
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
 }
-.kaluliandimg{
-  border: 1rpx solid #ffae00;
-  border-radius: 5rpx;
-  display:flex;
-  align-items:center;
-  width:170rpx;
-  height:34rpx;
-  margin-top: 10rpx;
+
+.kaluliandimg {
+    border: 1rpx solid #ffae00;
+    border-radius: 5rpx;
+    display: flex;
+    align-items: center;
+    width: 170rpx;
+    height: 34rpx;
+    margin-top: 10rpx;
 }

@@ -1,6 +1,7 @@
 var t = getApp(), e = t.requirejs("core"), a = t.requirejs("jquery"), s = t.requirejs("biz/diyform"), i = t.requirejs("biz/goodspicker");
 t.requirejs("foxui");
 var app = getApp()
+var goodname=""
 Page({
     data: {
         systemInfo: {}, 
@@ -252,6 +253,9 @@ Page({
         });
     },
     bindSearch: function(t) {
+        console.log('enter')
+        console.log(t)
+        console.log(this.data.defaults)
         t.target;
         this.setData({
             list: [],
@@ -271,6 +275,8 @@ Page({
         }), this.getList());
     },
     bindInput: function(t) {
+        // console.log(t)
+        goodname = t.detail.value
         var e = a.trim(t.detail.value), s = this.data.defaults;
         s.keywords = "", s.order = this.data.params.order, s.by = this.data.params.by, "" == e && (this.setData({
             page: 1,
@@ -289,6 +295,34 @@ Page({
     },
     bindback: function() {
         wx.navigateBack();
+    },
+    searchbtn: function (t) {
+        console.log(this.data.defaults)
+        if(goodname==""){
+            wx.showModal({
+                title: '提示',
+                content: '请输入您想搜索的商品',
+            })
+        }else{
+            t.target;
+            this.setData({
+                list: [],
+                loading: !0,
+                loaded: !1
+            });
+            var e = goodname, s = this.data.defaults;
+            "" != e ? (s.keywords = e, this.setData({
+                page: 1,
+                params: s,
+                fromsearch: !1
+            }), this.getList(), this.setRecord(e)) : (s.keywords = "", this.setData({
+                page: 1,
+                params: s,
+                listorder: "",
+                fromsearch: !1
+            }), this.getList());
+        }
+       
     },
     bindnav: function(t) {
         var e = a.trim(t.currentTarget.dataset.text), s = this.data.defaults;

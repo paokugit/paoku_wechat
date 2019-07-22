@@ -1,7 +1,7 @@
 // pages/contribute/explain/explain.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
-// var WxParse = require('../../../utils/wxParse/wxParse.js');
+var WxParse = require('../../../utils/wxParse/wxParse.js');
 //   当前登录人的openid
 var f = getApp();
 var userinfo = f.getCache('userinfo');
@@ -31,8 +31,8 @@ Page({
         s.get("myown/devote/detail", {}, function (e) {
             console.log(e)
             a.setData({
-                content:e.message.content
-                // content: WxParse.wxParse('content', 'html', e.message.content, a, 5)
+                // content:e.message.content
+                content: WxParse.wxParse('content', 'html', e.message.content, a, 5)
                 // content: WxParse.wxParse('content', 'html', '<p>' + e.message.content+'</p>', a, 5)
             })
         })
