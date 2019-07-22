@@ -178,10 +178,11 @@
 </block>
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="page header-sort navbar goodslist" style='margin-top:{{nvabarData.height}}px'>
-  <view class="fui-header" style='margin-top:{{nvabarData.height}}px;background:#f00'>
+  <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
     <view class="searchbar">
-      <icon size="18" type="search"></icon>
+     <icon size="18" type="search"></icon>
       <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
+       
     </view>
     <block>
       <block wx:if="{{!fromsearch}}">
@@ -190,7 +191,8 @@
     </block>
     <block>
       <block wx:if="{{fromsearch}}">
-        <view bindtap="bindback" class="cancel">取消</view>
+        <!-- <view bindtap="bindback" class="cancel">取消</view> -->
+        <view class='searchtext' bindtap='searchbtn'>搜索</view>
       </block>
     </block>
   </view>
