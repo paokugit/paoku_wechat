@@ -1,0 +1,19 @@
+/* pages/annual_card/member_card/index.wxss */
+.expedite-box{
+  width: 100%;
+  height: 100%;
+}
+.tab-bar{
+  width: 100%;
+  height: 10%;
+  background: #fff;
+  position: absolute;
+  bottom: 0rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tabImg{
+  width: 50rpx;
+  height: 50rpx;
+}

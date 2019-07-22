@@ -1,6 +1,12 @@
 {
 
     "pages": [
+
+        "pages/annual_card/member_card/index",
+        "pages/annual_card/my_member/my_member",
+        "pages/annual_card/equity/equity",
+        "pages/annual_card/card_centre/card_centre",
+
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
@@ -27,9 +33,6 @@
         "pages/member/bind/index",
         "pages/changce/merch/homepage",
         "pages/contribute/contribute/contribute",
-        
-        
-
         "pages/contribute/explain/explain",
         "pages/contribute/record/record",
         "pages/contribute/withdraw/withdraw",

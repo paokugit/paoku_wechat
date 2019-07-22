@@ -1,0 +1,24 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+
+  <!-- 页面容器 -->
+  <view class="container">
+    <firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
+    <secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
+    <trailerPage wx:if="{{nowPage=='trailerPage'}}"></trailerPage>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
+      <view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
+        <view class="tabImg">
+          <image src="{{item.iconClass}}"></image>
+        </view>
+        <text class="icon-text">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+
+</view>

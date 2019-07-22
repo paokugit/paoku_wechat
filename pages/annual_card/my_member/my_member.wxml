@@ -1,0 +1,2 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>我的会员</view>
