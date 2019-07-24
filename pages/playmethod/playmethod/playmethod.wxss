@@ -167,11 +167,15 @@ button::after {
 
 .hot-box {
     width: 90%;
-    height: 2000rpx;
+    height: auto;
     padding: 0 5%;
     margin-top: 20rpx;
 }
-
+.item_box{
+     width: 662rpx;
+    height: auto;
+    border-radius: 20rpx;
+}
 .strategy-box {
     width: 662rpx;
     height: 400rpx;

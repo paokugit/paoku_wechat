@@ -47,20 +47,20 @@
     <view class="{{type==1 ? 'show':'hidden'}}">
         <scroll-view>
             <view class='hot-box'>
-                
-                <view class='strategy-box'>
-                    <view class='strategy-img'>
-                        <image src='{{globalimg}}/playbanner.png'></image>
+                <view class='item_box' wx:for="{{list}}">
+                    <view class='strategy-box' wx:if="{{item.type==0}}">
+                        <view class='strategy-img'>
+                            <image src='{{item.photo}}'></image>
+                        </view>
+                        <view class='strategy-text'>{{item.title}}</view>
                     </view>
-                    <view class='strategy-text'>新手攻略必知秘籍?</view>
-                </view>
-           
-                <view class='video-box'>
-                    <view class='video'>
-                        <video style="width: 662rpx;height:282rpx;margin:1px;" src="" binderror="videoErrorCallback"></video>
-                        <view class='video-time'>05:36</view>
+                    <view class='video-box' wx:if="{{item.type==1}}">
+                        <view class='video'>
+                            <video style="width: 662rpx;height:282rpx;margin:1px;" src="{{item.video}}" binderror="videoErrorCallback" poster='{{item.photo}}' controls objectFit='contain'></video>
+                            <view class='video-time'>05:36</view>
+                        </view>
+                        <view class='video-desc'>{{item.title}}</view>
                     </view>
-                    <view class='video-desc'>好友助力怎么玩,卡路里涨涨涨！</view>
                 </view>
             </view>
         </scroll-view>
@@ -68,31 +68,19 @@
     <view class="{{type==2 ? 'show':'hidden'}}">
         <scroll-view>
             <view class='guide-box'>
-                <view class='guide-item-box'>
-                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
-                    <view class='item-img'>
-                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
-                    </view>
-                </view>
-                <view class='guide-item-box'>
-                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
-                    <view class='item-img'>
-                        <image src='{{globalimg}}/xiangyou-xi.png'></image>
-                    </view>
-                </view>
-                <view class='guide-item-box'>
-                    <view class='item-text'>如何开启微信运动（步数为0的问题）</view>
+                <view class='guide-item-box' wx:for="{{helplist}}">
+                    <view class='item-text'>{{item.title}}</view>
                     <view class='item-img'>
                         <image src='{{globalimg}}/xiangyou-xi.png'></image>
                     </view>
                 </view>
             </view>
         </scroll-view>
-        <view class='feedback-box'>
-        <view class='feedback-img'>
-            <image src='{{globalimg}}/yijian@2x.png'></image>
+        <view class='feedback-box' bindtap='feedbackbtn'>
+            <view class='feedback-img'>
+                <image src='{{globalimg}}/yijian@2x.png'></image>
+            </view>
+            <view class='feedback-text'>找不到你的问题,请点击这里反馈</view>
         </view>
-        <view class='feedback-text'>找不到你的问题,请点击这里反馈</view>
-    </view>
     </view>
 </view> -->

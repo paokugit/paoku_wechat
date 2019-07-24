@@ -17,7 +17,13 @@
                     <view class='grade-tit'>当前级别:</view>
                     <view class='grade-level'>{{gradelevel}}</view>
                 </view>
-                <view class='grade-con-right'>享受{{gradegift}}</view>
+
+                <view class='grade-con-right' wx:if="{{is_get==0 && agent_level==5}}" bindtap='getbtn'>不符合要求
+                    <view class='jiantou-img'>
+                        <image src='{{globalimg}}/shixinjiantou (1).png'></image>
+                    </view>
+                </view>
+                <view class='grade-con-right' wx:else>享受{{gradegift}}</view>
             </view>
         </view>
         <view class='help-position-box'>
@@ -49,7 +55,7 @@
             <scroll-view>
                 <view class='primary-box'>
                     <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
-                        <view class='primary-img'>
+                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn'>
                             <image src='{{globalimg}}/01@2x.png'></image>
                             <view class='good-absolute'>
                                 <image src='{{item.thumb}}'></image>
@@ -67,7 +73,7 @@
             <scroll-view>
                 <view class='middle-box'>
                     <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
-                        <view class='primary-img'>
+                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn'>
                             <image src='{{globalimg}}/01@2x.png'></image>
                             <view class='good-absolute'>
                                 <image src='{{item.thumb}}'></image>
@@ -75,7 +81,7 @@
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
-                            <view class='exclusive-box'>普通、健康达人享有</view>
+                            <view class='exclusive-box'>星选达人享有</view>
                         </view>
                     </view>
                 </view>
@@ -85,7 +91,7 @@
             <scroll-view>
                 <view class='high-box'>
                     <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
-                        <view class='primary-img'>
+                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn'>
                             <image src='{{globalimg}}/01@2x.png'></image>
                             <view class='good-absolute'>
                                 <image src='{{item.thumb}}'></image>
@@ -93,7 +99,7 @@
                             <view class='free-img'>
                                 <image src='{{globalimg}}/oqg02@2x.png'></image>
                             </view>
-                            <view class='exclusive-box'>普通、健康达人享有</view>
+                            <view class='exclusive-box'>店主享有</view>
                         </view>
                     </view>
                 </view>
@@ -101,21 +107,27 @@
         </view>
     </view>
 </view>
-  <!-- 继续邀请赚更多-开始 -->
-    <form bindsubmit='form_submit' report-submit='true' class='inviteform'>
-        <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn' open-type='share'>
-            <view class='invite-friend-box'>
-                <view  class='gift-invite  ballon'>
-                    <image src='{{globalimg}}/buttun@2x.png'></image>
-                </view>
+<!-- 继续邀请赚更多-开始 -->
+<form bindsubmit='form_submit' report-submit='true' class='inviteform'>
+    <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn' open-type='share'>
+        <view class='invite-friend-box'>
+            <view class='gift-invite  ballon'>
+                <image src='{{globalimg}}/buttun@2x.png'></image>
             </view>
-        </button>
-    </form>
-    <!-- <view class='invite-box'></view> -->
-    <!-- 继续邀请赚更多-结束 -->
+        </view>
+    </button>
+</form>
+<!-- <view class='invite-box'></view> -->
+<!-- 继续邀请赚更多-结束 -->
 <!-- 助力成功 -->
 <view class='help_mask' style='display:{{helpDis}}'>
     <view class='help-mask-relative'>
+        <view class='light-img'>
+            <image src='{{globalimg}}/caisi@2x.png'></image>
+        </view>
+        <view class='light02-img'>
+            <image class='float' src='{{globalimg}}/light02.png'></image>
+        </view>
         <view class='help-success-bg'>
             <view class='help-success-relative'>
                 <view class='avatar-img'>
@@ -125,7 +137,7 @@
                     <image src='{{globalimg}}/zlcg@2x.png'></image>
                 </view>
                 <view class='help-success-text'>谢谢你，为我助力!</view>
-                <view class='gift-btn'>
+                <view class='gift-btn' bindtap='participantbtn'>
                     <image src='{{globalimg}}/buttun01@2x.png'></image>
                 </view>
             </view>
