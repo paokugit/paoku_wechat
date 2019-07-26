@@ -122,6 +122,7 @@ Page((e = {
             credit1: 0,
             mp3_url: '',
             indexdisp: 'none',
+            //  indexdisp: 'block',
             circleDis: 'none',
             condisp: 'block',
             merchdisp: 'block',
@@ -228,8 +229,8 @@ Page((e = {
         })
     },
     pull: function() {
-        this.setData({
-            indexdisp: 'none'
+        wx.switchTab({
+            url: '/pages/discount/discount/discount',
         })
     },
 

@@ -93,7 +93,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        
     },
 
     /**
@@ -124,7 +124,7 @@ Page({
         e.setData({
             type: i,
             page: 1,
-            list: [],
+            // list: [],
             loading: !0
         });
     }

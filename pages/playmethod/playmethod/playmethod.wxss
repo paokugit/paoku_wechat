@@ -104,6 +104,7 @@ button::after {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative
 }
 
 .swiper-tab {
@@ -126,8 +127,18 @@ button::after {
     font-size: 30rpx;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-
+.contact02{
+    width: 30%;
+    height: 100rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0
+}
 .nav-line {
     width: 2rpx;
     height: 16rpx;

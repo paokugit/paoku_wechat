@@ -43,6 +43,7 @@
             </view>
             <view class='kefu-text'>在线客服</view>
         </view>
+        <button class="contact02" openType="contact" sessionFrom="weapp" showMessageCard="true"></button>
     </view>
     <view class="{{type==1 ? 'show':'hidden'}}">
         <scroll-view>
@@ -57,7 +58,7 @@
                     <view class='video-box' wx:if="{{item.type==1}}">
                         <view class='video'>
                             <video style="width: 662rpx;height:282rpx;margin:1px;" src="{{item.video}}" binderror="videoErrorCallback" poster='{{item.photo}}' controls objectFit='contain'></video>
-                            <view class='video-time'>05:36</view>
+                            <!-- <view class='video-time'>05:36</view> -->
                         </view>
                         <view class='video-desc'>{{item.title}}</view>
                     </view>

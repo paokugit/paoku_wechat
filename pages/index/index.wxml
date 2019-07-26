@@ -396,7 +396,7 @@
             <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
         </view>
         <view class='first-entry position_absolute'>
-            <image src='{{ globalimg}}/firstentry.png'></image>
+            <image src='{{ globalimg}}/jiangli.png'></image>
         </view>
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>

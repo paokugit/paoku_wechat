@@ -82,8 +82,8 @@ button::after {
     height: 60rpx;
 }
 .first-entry{
-    width: 610rpx;
-    height: 840rpx;
+    width: 500rpx;
+    height: 700rpx;
     bottom: 0;
     top:0;
 
