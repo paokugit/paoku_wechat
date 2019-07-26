@@ -1,0 +1,5 @@
+<!--pages/playmethod/hotdetail/hotdetail.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='hotdetail-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='detail-tit'>标题</view>
+</view>

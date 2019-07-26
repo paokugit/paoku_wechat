@@ -47,7 +47,7 @@
     <view class="{{type==1 ? 'show':'hidden'}}">
         <scroll-view>
             <view class='hot-box'>
-                <view class='item_box' wx:for="{{list}}">
+                <view class='item_box' wx:for="{{list}}" bindtap='detailbtn' data-id='{{item.id}}'>
                     <view class='strategy-box' wx:if="{{item.type==0}}">
                         <view class='strategy-img'>
                             <image src='{{item.photo}}'></image>

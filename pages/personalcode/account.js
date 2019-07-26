@@ -64,11 +64,18 @@ Page({
     rechargebtn: function () {
         console.log(creditnum)
         console.log(iptvalue)
+        wx.showLoading({
+            title: '请求中',
+            mask: true
+        })
         if (iptvalue==""){
             wx.showModal({
                 title: '提示',
                 content: '请输入提现金额',
             })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
         }else{
         if (iptvalue <= creditnum) {
             s.get("payment/myown/own_draw", {
@@ -77,6 +84,9 @@ Page({
             }, function (eve) {
                 console.log(eve)
                 if(eve.status==1){
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                     message=eve.result.message
                         wx.showModal({
                             title: '提示',
@@ -93,6 +103,9 @@ Page({
                             }
                         })
                 } else if (eve.status == 0){
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                     message = eve.result.message
                     wx.showModal({
                         title: '提示',
@@ -101,6 +114,9 @@ Page({
                 }
             })
         } else {
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
             wx.showModal({
                 title: '提示',
                 content: '您的余额不足，请重新输入',

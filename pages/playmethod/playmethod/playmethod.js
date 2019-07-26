@@ -10,7 +10,7 @@ Page({
     data: {
         globalimg: t.globalData.appimg,
         src: '',
-        type: 2,
+        type: 1,
         page: 1,
         list: [],
         helplist: [],
@@ -49,6 +49,12 @@ Page({
             }
         });
 
+    },
+    detailbtn: function(e) {
+        console.log(e)
+        wx.navigateTo({
+            url: '/pages/playmethod/hotdetail/hotdetail?id=' + e.currentTarget.dataset.id,
+        })
     },
     feedbackbtn: function() {
         wx.navigateTo({

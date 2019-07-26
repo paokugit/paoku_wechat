@@ -42,9 +42,9 @@ textarea {
     line-height: 30rpx;
 }
 .feedback-time{
-    width: 96%;
+    width: 94%;
     height: 120rpx;
-    padding: 0 2%;
+    padding: 0 3%;
     background: #fff;
     margin-top: 20rpx;
      margin-bottom: 20rpx;

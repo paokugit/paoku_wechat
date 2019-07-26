@@ -2,17 +2,17 @@
     "pages": [
        
         "pages/index/index",
-        "pages/playmethod/playmethod/playmethod",
+    "pages/playmethod/playmethod/playmethod",
+        "pages/playmethod/hotdetail/hotdetail",
         "pages/playmethod/feedback/feedback",
+        "pages/discount/discount/discount",
         "pages/gift/gift",
         "pages/gift/record",
-       
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
-        "pages/discount/merchaccount/merchaccount",
-        "pages/discount/discount/discount",
         "pages/helphand/friendhelp/friendhelp",
         "pages/personalcode/account",
+        "pages/discount/merchaccount/merchaccount",
         "pages/personalcode/withdrawrecord",
         "pages/personalcode/code",
         "pages/personalcode/discountlist",

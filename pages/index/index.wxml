@@ -75,7 +75,7 @@
         <!-- 礼品的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
-        <view class='step'>步</view>
+        <!-- <view class='step'>步</view> -->
         <view class='friend-help'>好友捐赠{{helpstep}}步</view>
     </view>
     <!-- 9.9体验会员加速, 好友捐赠等部分-开始 -->

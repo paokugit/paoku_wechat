@@ -56,13 +56,21 @@ Page({
         }
     },
     rechargebtn: function() {
+        console.log('1')
         console.log(creditnum)
         console.log(iptvalue)
+        wx.showLoading({
+            title: '请求中',
+            mask: true
+        })
         if(iptvalue==''){
             wx.showModal({
                 title: '提示',
                 content: '请输入充值金额',
             })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
         }else{
         if (iptvalue <= creditnum) {
             s.get("payment/index/change", {
@@ -71,9 +79,20 @@ Page({
             }, function(eve) {
                 console.log(eve)
                 if (eve.status == 1) {
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                     wx.navigateTo({
                         url: '/pages/discount/resuccess/resuccess',
                     })
+                } else if (eve.status == 0){
+                    wx.showModal({
+                        title: '提示',
+                        content: eve.result.message,
+                    })
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                 }
             })
 
@@ -82,6 +101,9 @@ Page({
                 title: '提示',
                 content: '卡路里余额不足，请重新输入',
             })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
         }
         }
 
