@@ -56,6 +56,12 @@ Page({
             url: '/pages/playmethod/hotdetail/hotdetail?id=' + e.currentTarget.dataset.id,
         })
     },
+    helpdetailbtn: function(eve) {
+        console.log(eve)
+        wx.navigateTo({
+            url: '/pages/playmethod/helpdetail/helpdetail?id=' + eve.currentTarget.dataset.id,
+        })
+    },
     feedbackbtn: function() {
         wx.navigateTo({
             url: '/pages/playmethod/feedback/feedback',

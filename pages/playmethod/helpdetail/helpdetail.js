@@ -27,7 +27,7 @@ Page({
     onLoad: function(options) {
         console.log(options)
         var t=this
-        s.get("myown/novice/novice_detail", {
+        s.get("myown/novice/help_detail", {
             id:options.id
         }, function(e) {
             console.log(e)
@@ -35,13 +35,6 @@ Page({
                 title: e.message.title,
                 createtime: e.message.createtime
             })
-            // if (e.error == 0) {
-            //     t.setData({
-            //         createtime:e.message.createtime,
-            //         photo:e.message.photo,
-            //         title:e.message.title
-            //     })
-            // }
         });
     },
 

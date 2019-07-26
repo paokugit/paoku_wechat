@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='play-box' style='margin-top:{{nvabarData.height}}px'>
   <view class='play-banner'>
     <image src='{{globalimg}}/playbanner.png'></image>
@@ -28,8 +28,8 @@
     <button class="service-img" openType="contact" sessionFrom="weapp" showMessageCard="true"  style="background:url(\" {{globalimg}}/playservice.png\");background-size: 100% 100%;"></button>
     <view class='service-text'>在线客服</view>
   </view>
-</view>
-<!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+</view> -->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='play-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='play-nav-box'>
         <view class="swiper-tab">
@@ -47,8 +47,8 @@
     <view class="{{type==1 ? 'show':'hidden'}}">
         <scroll-view>
             <view class='hot-box'>
-                <view class='item_box' wx:for="{{list}}" bindtap='detailbtn' data-id='{{item.id}}'>
-                    <view class='strategy-box' wx:if="{{item.type==0}}">
+                <view class='item_box' wx:for="{{list}}">
+                    <view class='strategy-box' wx:if="{{item.type==0}}" bindtap='detailbtn' data-id='{{item.id}}'>
                         <view class='strategy-img'>
                             <image src='{{item.photo}}'></image>
                         </view>
@@ -68,7 +68,7 @@
     <view class="{{type==2 ? 'show':'hidden'}}">
         <scroll-view>
             <view class='guide-box'>
-                <view class='guide-item-box' wx:for="{{helplist}}">
+                <view class='guide-item-box' wx:for="{{helplist}}" bindtap='helpdetailbtn' data-id='{{item.id}}'>
                     <view class='item-text'>{{item.title}}</view>
                     <view class='item-img'>
                         <image src='{{globalimg}}/xiangyou-xi.png'></image>
@@ -83,4 +83,4 @@
             <view class='feedback-text'>找不到你的问题,请点击这里反馈</view>
         </view>
     </view>
-</view> -->
+</view>
