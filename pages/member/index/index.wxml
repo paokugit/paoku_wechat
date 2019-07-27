@@ -147,11 +147,12 @@
                 </view>
                 <view class='service-text'>粉丝</view>
             </navigator>
-            <navigator url='/pages/member/recommend/recommend' class='service-item'>
+            
+            <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
                 <view class='tuijian-img'>
                     <image src='{{globalimg}}/tuijian@2x.png'></image>
                 </view>
-                <view class='service-text'>推荐</view>
+                <view class='service-text'>通知</view>
             </navigator>
             <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
                 <view class='youhui-img service-img'>
