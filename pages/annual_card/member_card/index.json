@@ -1,9 +1,6 @@
 {
   "usingComponents": {
-    "nav-bar": "/commpents/navbar/index",
-    "firstPage": "/pages/annual_card/card_centre/card_centre",
-    "secondPage": "/pages/annual_card/equity/equity",
-    "trailerPage":"/pages/annual_card/my_member/my_member"
+    "nav-bar": "/commpents/navbar/index"
   },
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",

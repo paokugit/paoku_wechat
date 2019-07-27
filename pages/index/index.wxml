@@ -146,7 +146,7 @@
         </view>
     </view>
     <!-- 快报 -->
-    <view class='index-news-box'>
+    <view class='index-news-box'> 
         <view class='notice-img'>
             <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
         </view>

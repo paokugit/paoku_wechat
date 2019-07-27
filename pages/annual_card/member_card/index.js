@@ -3,11 +3,16 @@ var t = getApp(),
   a = t.requirejs("core");
 var f = getApp();  
 
+var imgSrc = "";
+var openid = "";
+var useropenid = "";
+var addressId = '';
+var levelId = '';
+var recordId = '';
+var levelCode = '';
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     globalimg: t.globalData.appimg,
     // 组件所需的参数
@@ -16,21 +21,47 @@ Page({
       title: '',
       height: t.globalData.height * 2 + 20,
     },
+    
+    nickname:'', 
+    timeExpire:'',
+    is_open: '',
+    goodsList:[],
+    levelImg:'',
+    levelPrice:'',
+    levelMonth:'',
+    levelTime:'',
+    couponList:[],
+    isShow: false,
+    siteList:[],
+    levelStatus:'',
+    
+    cardName:'',
+    cardOpen: '',
+    cardExpire: '',
+    cardTit:'',
+    headImg:'',
 
+    btnNum:'',
     nowPage: "firstPage",
     nowIndex: 0,
     tabBar: [
       {
+        "iconClass":"home@2x.png",
+        "imgSrc":"home03.png",
         "text": "年卡中心",
         "tapFunction": "toFirst",
         "active": "active"
       },
       {
+        "iconClass": "nianka@2x.png",
+        "imgSrc": "nianka-s@2x.png",
         "text": "权益介绍",
         "tapFunction": "toSecond",
         "active": ""
       },
       {
+        "iconClass": "wdhy@2x.png",
+        "imgSrc": "wdhy-s@2x.png",
         "text": "我的会员",
         "tapFunction": "toThird",
         "active": ""
@@ -38,78 +69,144 @@ Page({
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var userinfo = f.getCache('userinfo');
+    openid = options.useropenid;
+    useropenid = userinfo.openid;
+
+    var b = this;
+    a.get("member.level", {
+      openid: openid,
+    }, function (e) { 
+      levelId = e.result.level.level_id;
+      recordId = e.result.level.id;
+      levelCode = e.result.level.status;
+
+      var timeExpire = e.result.member.expire.substring(0, 11);
+      var level_month = e.result.level.month;
+      b.setData({
+        nickname: e.result.member.nickname,
+        is_open: e.result.member.is_open,
+        timeExpire: timeExpire,
+        goodsList: e.result.goods,
+
+        levelImg: e.result.level.thumb,
+        levelPrice: e.result.level.price,
+        levelMonth: level_month.substring(4, 6) > 9 ? level_month.substring(4, 6) : level_month.substring(5, 6),
+        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月2日',
+        levelStatus: e.result.level.status == 0 ?'未领取' : e.result.level.status == 1?'已领取':'礼包失效',
+    
+        couponList: e.result.coupon
+      })
+
+    });
+
+    a.get("member.level.my",{
+      openid: openid
+    },function(e){
+      b.setData({
+        cardName: e.result.member.nickname,
+        cardOpen: e.result.member.is_open,
+        cardExpire: e.result.member.expire.substring(0,10),
+        cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
+        headImg: e.result.member.avatar
+      })
+    })
 
   },
 
   toFirst() {
     this.setData({
       nowPage: "firstPage",
-      nowIndex: 0
+      nowIndex: 0,
     })
   },
   toSecond() {
-    this.setData({
-      nowPage: "secondPage",
-      nowIndex: 1
+    wx.navigateTo({
+      url: "../equity/equity"
     })
   },
   toThird(){
     this.setData({
       nowPage: "trailerPage",
-      nowIndex: 2
+      nowIndex: 2,
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  btnGet: function (e) {
+    if (levelCode == 0){
+      var m = this;
+      a.get("member.level.address_list",{
+        openid: openid
+      },function(e){
+        if(e.status == -1){
+          wx.showToast({
+            title: e.result.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }else{
+          addressId = e.result.list[0].id;
+          m.setData({
+            isShow: true,
+            siteList: e.result.list
+          })
+        }
+      })
+    } else if (levelCode == 1){
+      wx.showToast({
+        title: '已领取过该礼包',
+        icon: 'none',
+        duration: 1000
+      })
+    } else if (levelCode == 2){
+      wx.showToast({
+        title: '该礼包已失效',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  cancelBtn:function(e){
+    this.setData({
+      isShow: false,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  clickNum:function(e){ 
+    addressId = e.currentTarget.dataset.address;
+    this.setData({
+      btnNum: e.currentTarget.dataset.id,
+    }) 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  site_ok:function(e){
+    a.get("member.level.get",{
+      openid: useropenid,
+      level_id: levelId,
+      address_id: addressId,
+      record_id: recordId
+    },function(e){
+      if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 1000
+        })
+      } else if (e.status == 1){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none', 
+          duration: 1000
+        })
+      }
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  record_page: function () {
+    wx.navigateTo({
+      url: '../record_page/record_page'
+    })
   }
 })

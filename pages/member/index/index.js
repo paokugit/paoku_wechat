@@ -41,7 +41,12 @@ Page({
         iscycelbuy: !1,
         bargain: !1,
         conbind:'',
-        credit4:''
+        credit4:'',
+        textList: [{txt: '领1年产品'}, {txt: '享五大权益'}, {txt: '专享特权'}],
+        autoplayA:true,
+        intervalA:3000,
+        durationA:1000,
+        circularA:true
     },
     swiperChange(e) {
         let current = e.detail.current;
@@ -276,5 +281,7 @@ Page({
         e.globalDataClose.flag = !0, wx.reLaunch({
             url: "/pages/index/index"
         });
-    }
+    },
 });
+
+

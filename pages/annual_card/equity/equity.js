@@ -1,76 +1,47 @@
-
+// pages/annual_card/equity/equity.js
 var t = getApp(),
   a = t.requirejs("core");
 var f = getApp(); 
 
-Page({
+var useropenid = "";//用户openid
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     globalimg: t.globalData.appimg,
-    // 组件所需的参数
     nvabarData: {
       showCapsule: 1,
-      title: '权益介绍',
+      title: '跑库年卡',
       height: t.globalData.height * 2 + 20,
     },
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
+  },
+  
+  dredgeBtn:function(e){
+    var t = this;
+    a.get("member.level.order",{
+      openid: useropenid,
+      money: 0.01,
+      level_id: 5,
+    },function(e){
+      if(e.status == 1){
+        wx.requestPayment({
+          timeStamp: e.result.timeStamp,
+          nonceStr: e.result.nonceStr,
+          package: e.result.package,
+          signType: e.result.signType,
+          paySign: e.result.paySign,
+          success(res){ 
+            wx.navigateTo({
+              url: '../member_card/index?useropenid='+useropenid,
+            })
+          }
+        })
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

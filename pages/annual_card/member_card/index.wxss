@@ -1,4 +1,3 @@
-/* pages/annual_card/member_card/index.wxss */
 .expedite-box{
   width: 100%;
   height: 100%;
@@ -7,13 +6,456 @@
   width: 100%;
   height: 10%;
   background: #fff;
-  position: absolute;
+  position: fixed;
   bottom: 0rpx;
-  display: flex;
+  left: 0rpx;
   justify-content: space-around;
   align-items: center;
 }
 .tabImg{
-  width: 50rpx;
+  width: 45rpx;
+  height: 45rpx;
+  margin: 0 auto;
+}
+.icon_text{
+  color: rgb(105, 105, 101);
+  font-size: 25rpx;
+}
+.active{ color: rgb(193, 169, 98);}
+
+.header_outer{
+  width: 100%;
+  height: 300rpx;
+  background: #e8d3b8;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.header_within{
+  width: 90%;
+  height: 236rpx;
+  background: rgb(51, 55, 67);
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  padding:20rpx 0 0 40rpx;
+}
+.header_name{
+  font-size: 34rpx;
+  margin-bottom: 20rpx;
+}
+.header_time{font-size: 24rpx;}
+
+.header_equity{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  left: 0;
+  bottom: 0;
+  background: rgb(60, 64, 76);
+}
+.header_text{
+  font-size: 24rpx;
+  color: #8c8f98;
+  padding-left: 40rpx;
+}
+.vipTit{
+  background: rgb(203, 41, 39);
+  font-size: 20rpx;
+  padding: 20rpx 50rpx;
+  right: 0;
+  top: 0;
+  border-top-right-radius: 20rpx;
+  border-bottom-left-radius: 80rpx;
+}
+
+.product{
+  background: #ffffff;
+  padding:30rpx;
+  margin-bottom: 20rpx;
+}
+.product_head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product_head_left{
+  font-size: 34rpx;
+  color: #333333;
+}
+
+.product_head_right text{
+  font-size: 28rpx;
+  color: #929292;
+  margin-right: 30rpx;
+}
+.product_head_right image{
+  width: 13rpx;
+  height: 21rpx;
+}
+
+.product_list{
+  margin:30rpx 0;
+  padding: 60rpx;
+  border-radius: 15rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+  box-shadow: rgb(235, 235, 235) 0 0 30rpx;
+}
+.freeGet{
+  width: 70rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 24rpx;
+  border-radius: 50rpx;
+  background: rgb(255, 4, 9);
+  left: 20rpx;
+  top: 15rpx;
+}
+.leftImg image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 40rpx;
+  border-radius: 10rpx;
+}
+.titleA{
+  font-size: 30rpx;
+  color: #000;
+  font-weight: bold;
+}
+.titleB{
+  font-size: 22rpx;
+  color: #EE1515;
+  font-weight: bold;
+  margin: 10rpx 0 30rpx 0;
+}
+.cost{
+  color: #0f0f0f;
+  font-size: 40rpx;
+}
+.cost::before{
+  content: "价值 ￥";
+  font-size: 22rpx;
+  color: #212121;
+}
+.btnGet{
+  width: 140rpx;
   height: 50rpx;
+  color: #fff;
+  font-size: 35rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 50rpx;
+  background: rgb(209, 173, 101);
+  right: 40rpx;
+  bottom: 60rpx;
+}
+
+.discountList{
+  margin: 40rpx 0 20rpx 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discountA{
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.discountA image{
+  width: 330rpx;
+  height: 134rpx;
+}
+.discount_details{
+  left: 5%;
+  top: 5%;
+}
+.details_money{
+  font-size: 40rpx;
+}
+.details_money::before{
+  content: "￥";
+  font-size: 25rpx;
+}
+
+.details_money,.details_money::before,.details_tit{
+  color: rgb(250, 42, 8);
+}
+
+.details_tit{
+  font-size: 26rpx;
+}
+
+.details_condition{
+  font-size: 24rpx;
+  color: rgb(212, 208, 208);
+}
+
+.getBtnA{
+  width: 30rpx;
+  line-height: 40rpx;
+  color: #fff;
+  font-size: 20rpx;
+  right: 5rpx;
+  bottom: 10rpx;
+}
+
+.product_area{
+  width: 95%;
+  margin: 10rpx auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.product_details{
+  width: 350rpx;
+  height: 620rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin-bottom: 15rpx;
+}
+.commodity_img{
+  width: 350rpx;
+  height: 350rpx;
+}
+.commodity_tit{
+  height: 96rpx;
+  font-size: 34rpx;
+  color: #323232;
+  display:-webkit-box; 
+  overflow:hidden; 
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  margin: 15rpx 15rpx 20rpx 20rpx;
+}
+.privilege_price_tit{
+  width: 90rpx;
+  height: 34rpx;
+  text-align: center;
+  line-height: 34rpx;
+  background: #fff2ea;
+  font-size: 26rpx;
+  color: rgb(248, 87, 13);
+  padding: 5rpx;
+  border-radius: 10rpx;
+}
+.privilege_price{
+  align-items: center;
+  margin: 0 15rpx 20rpx 20rpx;
+}
+.privilege_price_money{
+  font-size: 45rpx;
+  color: #FF0137;
+  margin-left: 5rpx;
+}
+.privilege_price_money::before{
+  content: "￥ ";
+  font-size: 21rpx;
+  color: #FF0137;
+}
+.original_cost{
+  font-size: 26rpx;
+  color: #A6A4A7;
+  margin-left: 20rpx;
+  padding-bottom: 20rpx;
+}
+.purchase_btn{
+  width: 100rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: rgb(254, 78, 78);
+  right: 15rpx;
+  bottom: 15rpx;
+}
+
+/* 公用css */
+.txtColo{color: #ffffff;}
+.locationCss{position: absolute;}
+.flexCss{display: flex;}
+
+.member_details{
+  background: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 40rpx;
+}
+.left_message{
+  align-items: center;
+}
+.headImg{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 25rpx;
+}
+.my_name{
+  font-size: 34rpx;
+  color: #333333;
+}
+.expire_time,.expire_content{
+  font-size: 26rpx;
+  color: #929292;
+}
+.expire_content{
+  margin-left: 15rpx;
+}
+.right_renew{
+  width: 160rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 70rpx;
+  color: #fff;
+  border-radius: 50rpx;
+  background: linear-gradient(to right, #d2b26a , #c19443);
+}
+
+.equities_list{
+  width: 96%;
+  margin: 20rpx auto;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.contentTitle{
+  text-align: center;
+  padding-top: 40rpx;
+}
+.content_titA{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.content_titB{
+  font-size: 24rpx;
+  color: #b1b1b1;
+}
+
+.details_list{
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 60rpx;
+  padding-bottom: 45rpx;
+}
+.gift_bagImg{
+  width: 70rpx;
+  height: 70rpx;
+  margin: 10rpx auto;
+}
+.gift_bagContent{
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.get_site{
+  background: #fff;
+  height: 200rpx;
+  line-height: 100rpx;
+}
+.record{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(241, 241, 241);
+  margin-left: 30rpx;
+}
+.record_left{
+  color: #333333;
+  font-size: 34rpx;
+}
+.recordImg{
+  width: 60rpx;
+  text-align: center;
+  margin-right: 30rpx;
+
+}
+.record_img{
+  width: 13rpx;
+  height: 21rpx;
+}
+
+.siteTier{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 1000;
+  background: rgb(0, 0, 0,0.5); 
+}
+.siteList{
+  width: 80%;
+  height: 55%;
+  background: #fff;
+  border-radius: 25rpx;
+  position: relative;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%,-50%);
+  padding: 20rpx 0 40rpx 0;
+}
+.roll_tier{
+  height: 80%;
+  overflow: scroll;
+}
+.site_id{
+  font-size: 25rpx;
+  color: #000;
+  border-radius: 10rpx;
+  background: #fff;
+  margin: 15rpx 10rpx;
+  padding: 15rpx 10rpx;
+  border: 1px solid rgb(214, 214, 214);
+}
+.person_message{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox; 
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.message_name{
+  margin-right: 10rpx;
+}
+.site_message{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.site_ok{
+  width: 50%;
+  height: 80rpx;
+  color: #fff;
+  line-height: 80rpx;
+  border-radius: 50rpx;
+  background: rgb(7, 215, 163);
+  font-size: 35rpx;
+  text-align: center;
+  bottom:3%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.activeA{
+  background: rgb(254, 247, 241);
+  border: 1px solid rgb(252, 144, 82);
+}
+.cancelBtn{
+  font-size: 40rpx;
+  color: rgb(0, 0, 0,0.5);
+  right: -15rpx;
+  top: -15rpx;
+  border-radius: 50rpx;
+  background: rgb(235, 246, 247);
 }

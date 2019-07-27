@@ -1,12 +1,10 @@
 {
 
     "pages": [
-
         "pages/annual_card/member_card/index",
-        "pages/annual_card/my_member/my_member",
+        "pages/annual_card/record_page/record_page",
         "pages/annual_card/equity/equity",
-        "pages/annual_card/card_centre/card_centre",
-
+       
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
@@ -41,7 +39,7 @@
         "pages/changce/merch/businesspictures",
         "pages/changce/merch/synopsis",
         "pages/order/index",
-        "pages/member/index/index",
+        "pages/member/index/index",  
         "pages/huiyuan/hygrade/hygrade",
         "pages/huiyuan/expedite/expedite",
         "pages/huiyuan/pay_succeed/pay_succeed",
@@ -69,9 +67,7 @@
         "pages/member/detail/detail",
         "pages/custom/index",
         "pages/order/express/index",
-       
-        "pages/commission/apply/index",
-       
+        "pages/commission/apply/index",    
         "pages/commission/order/index",
         "pages/commission/register/index",
         "pages/shop/notice/index/index",
@@ -83,7 +79,6 @@
         "pages/goods/package/detail/index",
         "pages/goods/poster/poster",
         "pages/order/detail/index",
-        
         "pages/order/comment/index",
         "pages/order/refund/index",
         "pages/order/create/index",
@@ -116,8 +111,7 @@
         "pages/order/pay/sharecoupon/index",
         "pages/order/cycle/index",
         "pages/order/cycle/address",
-        "pages/changce/merch/apply",
-      
+        "pages/changce/merch/apply",     
         "pages/changce/merch/detail",
         "pages/order/express/number",
         "pages/changce/merch/intro",

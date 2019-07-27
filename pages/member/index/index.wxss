@@ -299,10 +299,40 @@ swiper{
   width: 100%;
   height: 190rpx
 }
- 
+
+ .card_banner{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: #fff;
+ }
+
+ .card_entrance{
+   border-right: 1px solid rgb(243, 243, 243);
+   display: flex;
+   margin-left:70rpx;
+   padding-right: 25rpx;
+   align-items: center;
+ }
+ .card_entranceImg{
+   width: 96rpx;
+   height: 90rpx;
+   margin-right: 20rpx;
+ }
+ .card_entranceTit{
+   font-size: 34rpx;
+   color: #1c1c1c;
+ }
+ .swiper-card{height: 38rpx;}
+ .card_entranceT{
+   font-size: 24rpx;
+   color: #666666;
+ }
+
 .swiper-box{
   position: relative;
-  width: 100%;
+  width: 365rpx;
+  margin-right: 30rpx;
 }
 .dots{ 
   position: absolute; 
@@ -323,11 +353,7 @@ swiper{
 .dots .dot.active{ 
   background: #00d8a0; 
 }
- 
-swiper image {
-  width: 100%;
-  height: 100%;
-}
+
 .service-box{
     height: 420rpx;
     margin-top: 20rpx;

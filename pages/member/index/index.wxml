@@ -1,213 +1,233 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='user_box' style='margin-top:{{nvabarData.height}}px'>
-    <view class='user-info-box'>
-        <view class='info-detail'>
-            <view class='avatar-img'>
-                <image src='{{member.avatar}}'></image>
-            </view>
-            <view class='nickname-box'>
-                <view class='nickname'>{{member.nickname}}</view>
-                <view class='level-img' wx:if="{{member.levelid==0}}">
-                    <image src='{{globalimg}}/putong-level.png'></image>
-                </view>
-                <view class='level-img' wx:if="{{member.levelid==1}}">
-                    <image src='{{globalimg}}/jiankang-level.png'></image>
-                </view>
-                <view class='level-img' wx:if="{{member.levelid==2}}">
-                    <image src='{{globalimg}}/xingxuan-level.png'></image>
-                </view>
-                <view class='dianzhu-img' wx:if="{{member.levelid==5}}">
-                    <image src='{{globalimg}}/dianzhu-level.png'></image>
-                </view>
-            </view>
+  <view class='user-info-box'>
+    <view class='info-detail'>
+      <view class='avatar-img'>
+        <image src='{{member.avatar}}'></image>
+      </view>
+      <view class='nickname-box'>
+        <view class='nickname'>{{member.nickname}}</view>
+        <view class='level-img' wx:if="{{member.levelid==0}}">
+          <image src='{{globalimg}}/putong-level.png'></image>
         </view>
-        <view class='bind-phone'>奖励+10卡路里</view>
-        <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
-            <button form-type="submit" class='phone-btn'></button>
-        </form>
-        <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindyet' wx:if="{{conbind==1}}">
-            <button form-type="submit" class='phone-btn'></button>
-        </form>
+        <view class='level-img' wx:if="{{member.levelid==1}}">
+          <image src='{{globalimg}}/jiankang-level.png'></image>
+        </view>
+        <view class='level-img' wx:if="{{member.levelid==2}}">
+          <image src='{{globalimg}}/xingxuan-level.png'></image>
+        </view>
+        <view class='dianzhu-img' wx:if="{{member.levelid==5}}">
+          <image src='{{globalimg}}/dianzhu-level.png'></image>
+        </view>
+      </view>
     </view>
-    <!-- 个人收入 -->
-    <view class='income-box'>
-        <navigator url='/pages/member/balance/balance' class='reward-img'>
-            <image src='{{globalimg}}/bggreen@2x.png'></image>
-            <view class='reward-num'>{{member.come_total}}</view>
-            <view class='reward-text'>可用余额</view>
-            <!-- <view class='reward-balance-box'>
+    <view class='bind-phone'>奖励+10卡路里</view>
+    <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
+      <button form-type="submit" class='phone-btn'></button>
+    </form>
+    <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindyet' wx:if="{{conbind==1}}">
+      <button form-type="submit" class='phone-btn'></button>
+    </form>
+  </view>
+  <!-- 个人收入 -->
+  <view class='income-box'>
+    <navigator url='/pages/member/balance/balance' class='reward-img'>
+      <image src='{{globalimg}}/bggreen@2x.png'></image>
+      <view class='reward-num'>{{member.come_total}}</view>
+      <view class='reward-text'>可用余额</view>
+      <!-- <view class='reward-balance-box'>
                 <view class='reward-balance-text'>可用余额</view>
                 <view class='reward-balance-num'>{{member.credit2}}</view>
             </view> -->
-        </navigator>
-        <navigator url='/pages/member/log/bushu' class='calorie-img'>
-            <image src='{{globalimg}}/bgyellow@2x.png'></image>
-            <view class='calorie-num'>{{member.calorie_total}}</view>
-            <view class='calorie-text'>可用卡路里</view>
-            <!-- <view class='calorie-balance-box'>
+    </navigator>
+    <navigator url='/pages/member/log/bushu' class='calorie-img'>
+      <image src='{{globalimg}}/bgyellow@2x.png'></image>
+      <view class='calorie-num'>{{member.calorie_total}}</view>
+      <view class='calorie-text'>可用卡路里</view>
+      <!-- <view class='calorie-balance-box'>
                 <view class='calorie-balance-text'>可用余额</view>
                 <view class='calorie-balance-num'>{{member.credit1}}</view>
             </view> -->
-        </navigator>
+    </navigator>
+  </view>
+  <!-- 个人收入 -->
+  <view class='contributeBox'>
+    <view class='contribute-box'>
+      <image src='{{globalimg}}/conbg.png'></image>
+      <view class='contribute-text'>当前贡献值</view>
+      <view class='contribute-num' wx:if="{{conbind==1}}" bindtap='opengxz'>{{credit4}}</view>
+      <view class='contribute-open' wx:if="{{conbind==0}}" bindtap='opengxz'>立即开通</view>
     </view>
-    <!-- 个人收入 -->
-    <view class='contributeBox'>
-        <view class='contribute-box'>
-            <image src='{{globalimg}}/conbg.png'></image>
-            <view class='contribute-text'>当前贡献值</view>
-            <view class='contribute-num' wx:if="{{conbind==1}}" bindtap='opengxz'>{{credit4}}</view>
-            <view class='contribute-open' wx:if="{{conbind==0}}" bindtap='opengxz'>立即开通</view>
+  </view>
+  <!-- 订单 -->
+  <view class='order-box'>
+    <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
+      <view class='order-tit'>订单</view>
+      <view class='order-total-box'>
+        <view class='read-totalorder'>查看全部订单</view>
+        <view class='right-img'>
+          <image src='{{globalimg}}/user-right.png'></image>
         </view>
-    </view>
-    <!-- 订单 -->
-    <view class='order-box'>
-        <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
-            <view class='order-tit'>订单</view>
-            <view class='order-total-box'>
-                <view class='read-totalorder'>查看全部订单</view>
-                <view class='right-img'>
-                    <image src='{{globalimg}}/user-right.png'></image>
-                </view>
-            </view>
-        </navigator>
-        <view class='nav-order'>
-            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
-                <view class='fukuan-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.order_0>0}}">
-                            <view class="count-img">{{member.statics.order_0}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/daifukuan@2x.png'></image>
-                    <!-- <view class='count-img'>2</view> -->
-                </view>
-                <view class='fukuan-text'>待付款</view>
-            </navigator>
-            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
-                <view class='fahuo-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.order_1>0}}">
-                            <view class="count-img">{{member.statics.order_1}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/daifahuo@2x.png'></image>
-                </view>
-                <view class='fukuan-text'>待发货</view>
-            </navigator>
-            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
-                <view class='shouhuo-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.order_2>0}}">
-                            <view class="count-img">{{member.statics.order_2}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/daishouhuo@2x.png'></image>
-                </view>
-                <view class='fukuan-text'>待收货</view>
-            </navigator>
-            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
-                <view class='tuihuan-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.order_4>0}}">
-                            <view class="count-img">{{member.statics.order_4}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/tuihuanhuo@2x.png'></image>
-                </view>
-                <view class='fukuan-text'>退换货</view>
-            </navigator>
+      </view>
+    </navigator>
+    <view class='nav-order'>
+      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
+        <view class='fukuan-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.order_0>0}}">
+              <view class="count-img">{{member.statics.order_0}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/daifukuan@2x.png'></image>
+          <!-- <view class='count-img'>2</view> -->
         </view>
+        <view class='fukuan-text'>待付款</view>
+      </navigator>
+      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
+        <view class='fahuo-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.order_1>0}}">
+              <view class="count-img">{{member.statics.order_1}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/daifahuo@2x.png'></image>
+        </view>
+        <view class='fukuan-text'>待发货</view>
+      </navigator>
+      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
+        <view class='shouhuo-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.order_2>0}}">
+              <view class="count-img">{{member.statics.order_2}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/daishouhuo@2x.png'></image>
+        </view>
+        <view class='fukuan-text'>待收货</view>
+      </navigator>
+      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
+        <view class='tuihuan-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.order_4>0}}">
+              <view class="count-img">{{member.statics.order_4}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/tuihuanhuo@2x.png'></image>
+        </view>
+        <view class='fukuan-text'>退换货</view>
+      </navigator>
     </view>
-    <!-- 订单 -->
-    <!-- 轮播 -->
+  </view>
+  <!-- 订单 -->
+  <!-- 轮播 -->
+  <view class="card_banner">
+    <!-- 跑库年卡年卡入口 -->
+    <navigator class="card_entrance" url="/pages/annual_card/equity/equity">
+      <view class="card_entranceImg"><image src="{{globalimg}}/card-circle@2x.png"></image></view>
+      <view>
+        <view class="card_entranceTit">跑库年卡</view>
+        <view class='swiper-card'>
+            <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
+                <block wx:for="{{textList}}" wx:key="{{index}}">
+                    <swiper-item class="notice-box">
+                        <view class='card_entranceT'>{{item.txt}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>   
+      </view>
+    </navigator>
+
     <view class='swiper-box'>
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
-            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-                <swiper-item>
-                    <image src="{{item.thumb}}" class="slide-image" width="355" height="150" bindtap="swipclick" data-url='{{item.url}}' />
-                </swiper-item>
-            </block>
-        </swiper>
-        <view class="dots">
-            <block wx:for="{{imgUrls}}" wx:key="unique">
-                <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-            </block>
-        </view>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item.thumb}}" class="slide-image" bindtap="swipclick" data-url='{{item.url}}' />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{imgUrls}}" wx:key="unique">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+      </view>
     </view>
-    <!-- 轮播 -->
-    <!-- 服务 -->
-    <view class='service-box'>
-        <view class='order-tit-box'>
-            <view class='order-tit'>服务</view>
-        </view>
-        <view class='nav-service'>
-            <navigator class='service-item' url='/pages/commission/down/index'>
-                <view class='fensi-img service-img'>
-                    <image src='{{globalimg}}/fensi@2x.png'></image>
-                </view>
-                <view class='service-text'>粉丝</view>
-            </navigator>
-            <navigator url='/pages/member/recommend/recommend' class='service-item'>
-                <view class='tuijian-img'>
-                    <image src='{{globalimg}}/tuijian@2x.png'></image>
-                </view>
-                <view class='service-text'>推荐</view>
-            </navigator>
-            <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
-                <view class='youhui-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.coupon>0}}">
-                            <view class="count-img">{{member.statics.coupon}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/youhuiquan@2x.png'></image>
-                </view>
-                <view class='service-text'>优惠券</view>
-            </navigator>
-            <navigator url='/pages/sale/coupon/index/index' class='service-item'>
-                <view class='lingquan-img'>
-                    <image src='{{globalimg}}/lingquanzhongxin@2x.png'></image>
-                </view>
-                <view class='service-text'>领券中心</view>
-            </navigator>
-            <navigator url='/pages/member/cart/index' class='service-item'>
-                <view class='gouwu-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.cart>0}}">
-                            <view class="count-img">{{member.statics.cart}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/gouwuche@2x.png'></image>
-                </view>
-                <view class='service-text'>购物车</view>
-            </navigator>
-            <navigator url='/pages/member/favorite/index' class='service-item'>
-                <view class='guanzhu-img service-img'>
-                    <block>
-                        <block wx:if="{{member.statics.favorite>0}}">
-                            <view class="count-img">{{member.statics.favorite}}</view>
-                        </block>
-                    </block>
-                    <image src='{{globalimg}}/user-guanzhu@2x.png'></image>
-                </view>
-                <view class='service-text'>我的关注</view>
-            </navigator>
-            <navigator url='/pages/member/history/index' class='service-item'>
-                <view class='zuji-img service-img'>
-                    <image src='{{globalimg}}/user-zuji@2x.png'></image>
-                </view>
-                <view class='service-text'>我的足迹</view>
-            </navigator>
-            <navigator url='/pages/member/address/index' class='service-item'>
-                <view class='dizhi-img service-img'>
-                    <image src='{{globalimg}}/shouhuodizhi@2x.png'></image>
-                </view>
-                <view class='service-text'>收货地址</view>
-            </navigator>
-        </view>
+    
+  </view>
+  <!-- 轮播 -->
+  <!-- 服务 -->
+  <view class='service-box'>
+    <view class='order-tit-box'>
+      <view class='order-tit'>服务</view>
     </view>
-    <!-- 服务 -->
-    <!-- 智能员工 -->
-    <!-- <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator> -->
-    <!-- 智能员工 -->
+    <view class='nav-service'>
+      <navigator class='service-item' url='/pages/commission/down/index'>
+        <view class='fensi-img service-img'>
+          <image src='{{globalimg}}/fensi@2x.png'></image>
+        </view>
+        <view class='service-text'>粉丝</view>
+      </navigator>
+      <navigator url='/pages/member/recommend/recommend' class='service-item'>
+        <view class='tuijian-img'>
+          <image src='{{globalimg}}/tuijian@2x.png'></image>
+        </view>
+        <view class='service-text'>推荐</view>
+      </navigator>
+      <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
+        <view class='youhui-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.coupon>0}}">
+              <view class="count-img">{{member.statics.coupon}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/youhuiquan@2x.png'></image>
+        </view>
+        <view class='service-text'>优惠券</view>
+      </navigator>
+      <navigator url='/pages/sale/coupon/index/index' class='service-item'>
+        <view class='lingquan-img'>
+          <image src='{{globalimg}}/lingquanzhongxin@2x.png'></image>
+        </view>
+        <view class='service-text'>领券中心</view>
+      </navigator>
+      <navigator url='/pages/member/cart/index' class='service-item'>
+        <view class='gouwu-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.cart>0}}">
+              <view class="count-img">{{member.statics.cart}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/gouwuche@2x.png'></image>
+        </view>
+        <view class='service-text'>购物车</view>
+      </navigator>
+      <navigator url='/pages/member/favorite/index' class='service-item'>
+        <view class='guanzhu-img service-img'>
+          <block>
+            <block wx:if="{{member.statics.favorite>0}}">
+              <view class="count-img">{{member.statics.favorite}}</view>
+            </block>
+          </block>
+          <image src='{{globalimg}}/user-guanzhu@2x.png'></image>
+        </view>
+        <view class='service-text'>我的关注</view>
+      </navigator>
+      <navigator url='/pages/member/history/index' class='service-item'>
+        <view class='zuji-img service-img'>
+          <image src='{{globalimg}}/user-zuji@2x.png'></image>
+        </view>
+        <view class='service-text'>我的足迹</view>
+      </navigator>
+      <navigator url='/pages/member/address/index' class='service-item'>
+        <view class='dizhi-img service-img'>
+          <image src='{{globalimg}}/shouhuodizhi@2x.png'></image>
+        </view>
+        <view class='service-text'>收货地址</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 服务 -->
+  <!-- 智能员工 -->
+  <!-- <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator> -->
+  <!-- 智能员工 -->
 </view>

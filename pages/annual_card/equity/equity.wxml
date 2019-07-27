@@ -1,2 +1,19 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>权益介绍</view>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="equity_img">
+    <image src="{{globalimg}}/card_01.png"></image>
+    <image src="{{globalimg}}/ncard_02.jpg"></image>
+    <image src="{{globalimg}}/card_03.jpg"></image>
+    <image src="{{globalimg}}/card_04.jpg"></image>
+    <image src="{{globalimg}}/card_05.jpg"></image>
+    <image src="{{globalimg}}/card_06.jpg"></image>
+    <image src="{{globalimg}}/card_07.jpg"></image>
+    <image src="{{globalimg}}/card_08.jpg"></image>
+    <image src="{{globalimg}}/card_09.jpg"></image>
+    <image src="{{globalimg}}/card_10.jpg"></image>
+  </view>
+  <view class="dredgeBtn" bindtap="dredgeBtn">
+    <text decode="{{true}}">现在开通&nbsp;&nbsp;立享豪礼</text>
+    <view class="moneyIcon">￥365</view>
+  </view>
+</view>  
