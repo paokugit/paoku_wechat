@@ -150,7 +150,7 @@
             
             <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
                 <view class='tuijian-img'>
-                    <image src='{{globalimg}}/tuijian@2x.png'></image>
+                    <image src='{{globalimg}}/tongzhi02.png'></image>
                 </view>
                 <view class='service-text'>通知</view>
             </navigator>
