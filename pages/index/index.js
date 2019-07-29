@@ -217,23 +217,11 @@ Page((e = {
             url: '../member/log/bushu',
         })
     },
-    // 关闭红包弹窗
-    // maskRemove: function () {
-    //     this.setData({
-    //         indexdisp: 'none'
-    //     })
-    // },
-    closepull: function() {
-        this.setData({
-            indexdisp: 'none'
-        })
-    },
     pull: function() {
         wx.switchTab({
             url: '/pages/discount/discount/discount',
         })
     },
-
     // 点击气泡跳转到好友助力页面
     inviteBtn: function() {
         wx.navigateTo({
