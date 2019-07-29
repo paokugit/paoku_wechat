@@ -57,7 +57,7 @@
                     </view>
                     <view class='video-box' wx:if="{{item.type==1}}">
                         <view class='video'>
-                            <video style="width: 662rpx;height:282rpx;margin:1px;" src="{{item.video}}" binderror="videoErrorCallback" poster='{{item.photo}}' controls objectFit='contain'></video>
+                            <video style="width: 662rpx;height:282rpx;margin:1px;" src="{{item.video}}" binderror="videoErrorCallback" poster='{{item.photo}}' controls objectFit='contain' bindtap='playvideo'></video>
                             <!-- <view class='video-time'>05:36</view> -->
                         </view>
                         <view class='video-desc'>{{item.title}}</view>

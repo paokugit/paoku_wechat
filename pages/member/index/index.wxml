@@ -35,10 +35,6 @@
             <image src='{{globalimg}}/bggreen@2x.png'></image>
             <view class='reward-num'>{{member.come_total}}</view>
             <view class='reward-text'>可用余额</view>
-            <!-- <view class='reward-balance-box'>
-                <view class='reward-balance-text'>可用余额</view>
-                <view class='reward-balance-num'>{{member.credit2}}</view>
-            </view> -->
         </navigator>
         <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
@@ -79,7 +75,6 @@
                         </block>
                     </block>
                     <image src='{{globalimg}}/daifukuan@2x.png'></image>
-                    <!-- <view class='count-img'>2</view> -->
                 </view>
                 <view class='fukuan-text'>待付款</view>
             </navigator>
@@ -147,11 +142,11 @@
                 </view>
                 <view class='service-text'>粉丝</view>
             </navigator>
-            <navigator url='/pages/member/recommend/recommend' class='service-item'>
+            <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
                 <view class='tuijian-img'>
-                    <image src='{{globalimg}}/tuijian@2x.png'></image>
+                    <image src='{{globalimg}}/tongzhi02.png'></image>
                 </view>
-                <view class='service-text'>推荐</view>
+                <view class='service-text'>通知</view>
             </navigator>
             <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
                 <view class='youhui-img service-img'>

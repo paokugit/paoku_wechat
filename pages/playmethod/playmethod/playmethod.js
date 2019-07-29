@@ -14,6 +14,7 @@ Page({
         page: 1,
         list: [],
         helplist: [],
+        play:0,
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -65,6 +66,14 @@ Page({
     feedbackbtn: function() {
         wx.navigateTo({
             url: '/pages/playmethod/feedback/feedback',
+        })
+    },
+    //视频的点击放大播放
+    playvideo: function () {
+        console.log('1')
+        var that = this
+        that.setData({
+            play: 1,
         })
     },
     /**
