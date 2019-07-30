@@ -1,7 +1,8 @@
 {
     "pages": [
-       "pages/index/index",
         "pages/playmethod/playmethod/playmethod",
+       "pages/index/index",
+      
         "pages/playmethod/hotdetail/hotdetail",
         "pages/playmethod/helpdetail/helpdetail",
         "pages/playmethod/feedback/feedback",

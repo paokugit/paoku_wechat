@@ -24,17 +24,23 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    
     onLoad: function(options) {
+        wx.showToast({ title: '加载中', icon: 'loading', duration: 1000 });
         console.log(options)
         var t=this
         s.get("myown/novice/help_detail", {
             id:options.id
         }, function(e) {
             console.log(e)
-            a.wxParse("wxParseData", "html", e.message.detail, t, "5"),t.setData({
-                title: e.message.title,
-                createtime: e.message.createtime
-            })
+            if(e.error==0){
+                wx.hideLoading()
+                a.wxParse("wxParseData", "html", e.message.detail, t, "5"), t.setData({
+                    title: e.message.title,
+                    createtime: e.message.createtime
+                })
+            }
+        
         });
     },
 
