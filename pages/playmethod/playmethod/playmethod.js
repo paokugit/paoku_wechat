@@ -27,11 +27,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        wx.showToast({ title: '加载中', icon: 'loading', duration: 1000 });
         var t = this
         a.get("myown/novice/novice_list", {
             page: this.data.page
         }, function(e) {
             console.log(e)
+            wx.hideLoading()
             if (e.error == 0) {
                 t.setData({
                     list: e.message

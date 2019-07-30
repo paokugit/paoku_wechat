@@ -37,7 +37,8 @@
                 <text class='withdraw-text'>累计提现</text>
                 <text class='withdraw-num'>{{tixian}}元</text>
             </view>
-            <view class='mingxi-box' bindtap='accountbtn'><view style='margin-right:5rpx'>收支明细</view>
+            <view class='mingxi-box' bindtap='accountbtn'>
+                <view style='margin-right:5rpx'>收支明细</view>
                 <image class='open2-img' src='{{globalimg}}/open2@2x.png'></image>
             </view>
             <!-- <view class='zhanghu-img' >
@@ -66,6 +67,61 @@
             </view>
             <view class='type-text'>转账</view>
         </view>
-
     </view>
+    <!-- 领取贡献值 -->
+    <view class='get-box'>
+        <view class='get-top-box'>
+            <view class='btpic-img-left'>
+                <image src='{{globalimg}}/btpic@2x.png'></image>
+            </view>
+            <view class='get-title'>请及时领取下方贡献值，每晚00:00清零</view>
+            <view class='btpic-img-right'>
+                <image src='{{globalimg}}/btpic@2x.png'></image>
+            </view>
+            <view class='down-img'>
+                <image src='{{globalimg}}/z-down@2x.png'></image>
+            </view>
+        </view>
+        <view class='get-bottom-box'>
+            <view class='operation-box'>
+                <text class='operation-text'>运行中</text>
+                <text class='operation-num'>6</text>
+            </view>
+            <view class='operation-box'>
+                <text class='operation-text'>到期</text>
+                <text class='operation-num'>0</text>
+            </view>
+        </view>
+    </view>
+    <view class='get-color-box'>
+        <view class='get-image-box'>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+                <view class='get-state'>未开启</view>
+                <view class='state-number'>+10</view>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+            <view class='gxserve-item'>
+                <image class='gxserve-img' src='{{globalimg}}/n-gxserve@2x.png'></image>
+            </view>
+        </view>
+    </view>
+
 </view>
