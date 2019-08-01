@@ -12,8 +12,10 @@
     <image src="{{globalimg}}/card_09.jpg"></image>
     <image src="{{globalimg}}/card_10.jpg"></image>
   </view>
-  <view class="dredgeBtn" bindtap="dredgeBtn">
-    <text decode="{{true}}">现在开通&nbsp;&nbsp;立享豪礼</text>
-    <view class="moneyIcon">￥365</view>
+  <view class="dredgeColor">
+    <view class="dredgeBtn" bindtap="dredgeBtn">
+      <text decode="{{true}}">现在开通&nbsp;&nbsp;立享豪礼</text>
+      <view class="moneyIcon">￥365</view>
+    </view>
   </view>
-</view>  
+</view>
