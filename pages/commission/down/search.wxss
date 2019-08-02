@@ -1,0 +1,120 @@
+.fandetails_all {
+  height: 100%;
+  background: #fff;
+}
+
+.header_search {
+  display: flex;
+  align-items: center;
+}
+
+.header_search image {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  left: 10%;
+  bottom: 0;
+}
+
+.header_search input {
+  width: 60%;
+  margin: 0 30rpx 0 10rpx;
+  padding-left: 80rpx;
+  background: rgb(248, 248, 248);
+}
+
+.header_search view {
+  width: 100rpx;
+  text-align: center;
+  line-height: 88rpx;
+  background: #01d7a1;
+  color: #fff;
+}
+
+.header_css {
+  height: 88rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+/* .inquire_empty{
+  text-align: center;
+  margin-top: 15%;
+}
+.inquire_empty image{
+  width: 130rpx;
+  height: 132rpx;
+  margin-bottom: 25rpx;
+}
+.inquire_empty view{
+  color: #9a9a9a;
+  font-size: 28rpx;
+} */
+
+
+.list_result{
+  font-size: 30rpx;
+  color: #9a9a9a;
+  margin: 60rpx 0;
+  text-align: center;
+}
+.friend_tier{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 35rpx;
+  padding: 0 35rpx 40rpx 0;
+  border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+.list_left{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fui-list-media {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.name_vip{
+  display: flex;
+  align-items: center;
+}
+.friend-nickname {
+  width: 65px;
+  height: 40rpx;
+  line-height: 40rpx;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.img_box {
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: top;
+}
+
+.friend_vip {
+  color: #9a9a9a;
+  font-size: 24rpx;
+  margin-left: 15rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.recommend{
+  font-size: 24rpx;
+  color: #333333;
+}
+.recommend_name{
+  font-size: 28rpx;
+  color: #9a9a9a;
+}

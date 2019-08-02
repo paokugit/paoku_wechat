@@ -1,0 +1,41 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='fandetails_all' style='padding-top:{{nvabarData.height}}px'>
+  <view class="header_search">
+    <image src="{{globalimg}}/search@2x.png"></image>
+    <input class="header_css" type="text" value="请输入时候" bindinput="bindInput" placeholder-style="color:#9a9a9a;"></input>
+    <view class="header_css" bindtap="seekBtn">搜索</view>
+  </view>
+
+  <!-- <view class="inquire_empty">
+    <image src="{{globalimg}}/no-user@2x.png"></image>
+    <view>没有查到哦，换个账号试试</view>
+  </view> -->
+
+  <view>
+    <view class="list_result" >共查询到2人</view>
+
+    <view class="friend_tier">
+      <view class="list_left">
+        <image class="fui-list-media" src="{{globalimg}}/no-user@2x.png"></image>
+
+        <view>
+          <view class="name_vip">
+            <view class='friend-nickname'>张海涛</view>
+
+            <!-- 会员图片 -->
+            <image class='img_box' src='{{globalimg}}/jiankang-star.png'></image>
+            
+            <view class="friend_vip">健康达人</view>
+          </view>
+          <view class="subtitle">2019-04-02 20：21</view>
+        </view>
+      </view>
+
+      <view style="text-align: right;">
+        <view class="recommend">推荐人</view>
+        <view class="recommend_name">Mark曼</view>
+      </view>
+    </view>
+
+  </view>
+</view>
