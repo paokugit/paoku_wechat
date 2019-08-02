@@ -2,15 +2,6 @@
   width: 100%;
   height: 327rpx;
 }
-.dredgeColor{
-  width: 100%;
-  height:130rpx;
-  background:rgb(51, 55, 67,0.95);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
-}
 .dredgeBtn{
   width: 500rpx;
   height: 90rpx;
@@ -18,24 +9,27 @@
   line-height: 90rpx;
   border-radius: 50rpx;
   background: linear-gradient(to right, rgb(217,171,122) , rgb(240,219,192));
-  margin: 20rpx auto;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  bottom: 10rpx;
+  transform: translate(-50%, 0%);
+  z-index: 100;
 }
 .dredgeBtn text{
   font-size: 35rpx;
   color: rgb(50, 54, 66);
 }
 .moneyIcon{
-  width: 70rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  font-size: 15rpx;
+  width: 65rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 18rpx;
   color: #fff;
   border-top-left-radius: 45rpx;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
   position: absolute;
-  right: 30rpx;
+  right: 45rpx;
   top: 10rpx;
   background: linear-gradient(to right, rgb(254,130,151) , rgb(242,32,52));
 }

@@ -2,14 +2,9 @@
 
     "pages": [
         "pages/annual_card/member_card/index",
-        
-        "pages/member/index/index",
-
-        
-        "pages/annual_card/equity/equity",
         "pages/annual_card/record_page/record_page",
-        
-
+        "pages/annual_card/equity/equity",
+       
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
@@ -44,9 +39,7 @@
         "pages/changce/merch/businesspictures",
         "pages/changce/merch/synopsis",
         "pages/order/index",
-
-
-
+        "pages/member/index/index",  
         "pages/huiyuan/hygrade/hygrade",
         "pages/huiyuan/expedite/expedite",
         "pages/huiyuan/pay_succeed/pay_succeed",

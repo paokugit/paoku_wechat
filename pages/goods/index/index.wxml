@@ -54,7 +54,7 @@
           </view>
           <!-- 免费 -->
           <view wx:if="{{item.deduct-item.minprice>=0||item.deduct==0&&item.minprice==0}}" style="position:relative;">
-            <view class='kaluliandimg'>
+          <view class='kaluliandimg'>
               <view class="liebiao" style='display:flex;align-items:center'>
                 <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/calorie02.png'></image>
               </view>
@@ -63,8 +63,8 @@
               </view>
             </view>
             <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
-              <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
-              <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
             </view>
           </view>
           <!-- 全额 -->
@@ -73,7 +73,7 @@
               <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
               <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
                 <view style='font-size:18rpx;color:#707070;text-decoration:line-through'>¥{{item.productprice}}</view>
-
+                
               </view>
             </view>
           </view>
@@ -115,8 +115,8 @@
               </view>
             </view>
             <view style="display:flex;align-items:center;width:96%;padding:0 2% 0 2%;">
-              <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
-              <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
+            <view style='position:absolute;left:10rpx;font-size:26rpx;color:#e01212;margin-top:23rpx;'>免费兑</view>
+            <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
             </view>
           </view>
           <!-- 全额 -->
@@ -180,9 +180,9 @@
 <view class="page header-sort navbar goodslist" style='margin-top:{{nvabarData.height}}px'>
   <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
     <view class="searchbar">
-      <icon size="18" type="search"></icon>
+     <icon size="18" type="search"></icon>
       <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
-
+       
     </view>
     <block>
       <block wx:if="{{!fromsearch}}">

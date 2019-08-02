@@ -19,7 +19,7 @@ Page({
         listmode: "block",
         listsort: "",
         page: 1,
-        loaded: !1, 
+        loaded: !1,
         loading: !0,
         allcategory: [],
         catlevel: -1,

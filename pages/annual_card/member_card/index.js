@@ -4,6 +4,7 @@ var t = getApp(),
 var f = getApp();  
 
 var imgSrc = "";
+var openid = "";
 var useropenid = "";
 var addressId = '';
 var levelId = '';
@@ -23,7 +24,7 @@ Page({
     
     nickname:'', 
     timeExpire:'',
-    memberTit: '',
+    is_open: '',
     goodsList:[],
     levelImg:'',
     levelPrice:'',
@@ -36,7 +37,6 @@ Page({
     
     cardName:'',
     cardOpen: '',
-    is_expire:'',
     cardExpire: '',
     cardTit:'',
     headImg:'',
@@ -71,10 +71,12 @@ Page({
 
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
-     useropenid = userinfo.openid;
+    openid = options.useropenid;
+    useropenid = userinfo.openid;
+
     var b = this;
     a.get("member.level", {
-      openid: useropenid,
+      openid: openid,
     }, function (e) { 
       levelId = e.result.level.level_id;
       recordId = e.result.level.id;
@@ -84,15 +86,15 @@ Page({
       var level_month = e.result.level.month;
       b.setData({
         nickname: e.result.member.nickname,
-        memberTit: e.result.member.is_open == 0 ? '未享受五大权益' :'已享受五大权益',
+        is_open: e.result.member.is_open,
         timeExpire: timeExpire,
         goodsList: e.result.goods,
 
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(4, 6) > 9 ? level_month.substring(4, 6) : level_month.substring(5, 6),
-        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月20日',
-        levelStatus: levelCode == 0 ? '未领取' : levelCode == 1?'已领取':'礼包失效',
+        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月2日',
+        levelStatus: e.result.level.status == 0 ?'未领取' : e.result.level.status == 1?'已领取':'礼包失效',
     
         couponList: e.result.coupon
       })
@@ -100,13 +102,12 @@ Page({
     });
 
     a.get("member.level.my",{
-      openid: useropenid
+      openid: openid
     },function(e){
       b.setData({
         cardName: e.result.member.nickname,
         cardOpen: e.result.member.is_open,
-        is_expire: e.result.member.is_expire,
-        cardExpire: e.result.member.expire,
+        cardExpire: e.result.member.expire.substring(0,10),
         cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
         headImg: e.result.member.avatar
       })
@@ -115,7 +116,6 @@ Page({
   },
 
   toFirst() {
-    this.scrollPage();
     this.setData({
       nowPage: "firstPage",
       nowIndex: 0,
@@ -127,24 +127,17 @@ Page({
     })
   },
   toThird(){
-    this.scrollPage();
     this.setData({
       nowPage: "trailerPage",
       nowIndex: 2,
     })
-  },
-  scrollPage:function(){
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 0
-    });
   },
 
   btnGet: function (e) {
     if (levelCode == 0){
       var m = this;
       a.get("member.level.address_list",{
-        openid: useropenid
+        openid: openid
       },function(e){
         if(e.status == -1){
           wx.showToast({
@@ -160,7 +153,19 @@ Page({
           })
         }
       })
-    } 
+    } else if (levelCode == 1){
+      wx.showToast({
+        title: '已领取过该礼包',
+        icon: 'none',
+        duration: 1000
+      })
+    } else if (levelCode == 2){
+      wx.showToast({
+        title: '该礼包已失效',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
 
   cancelBtn:function(e){
@@ -177,7 +182,6 @@ Page({
   },
 
   site_ok:function(e){
-    var m = this;
     a.get("member.level.get",{
       openid: useropenid,
       level_id: levelId,
@@ -186,21 +190,23 @@ Page({
     },function(e){
       if(e.status == 0){
         wx.showToast({
-          title: '领取失败',
+          title: e.result.message,
           icon: 'none',
-          duration: 2000
+          duration: 1000
         })
       } else if (e.status == 1){
         wx.showToast({
-          title: '领取成功',
+          title: e.result.message,
           icon: 'none', 
-          duration: 2000
-        }) 
-        m.setData({
-          isShow: false
+          duration: 1000
         })
       }
-    });
+    })
+  },
+
+  record_page: function () {
+    wx.navigateTo({
+      url: '../record_page/record_page'
+    })
   }
-  
 })

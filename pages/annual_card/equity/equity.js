@@ -23,7 +23,7 @@ Page({
   dredgeBtn:function(e){
     var t = this;
     a.get("member.level.order",{
-      openid: useropenid, 
+      openid: useropenid,
       money: 0.01,
       level_id: 5,
     },function(e){
@@ -39,12 +39,6 @@ Page({
               url: '../member_card/index?useropenid='+useropenid,
             })
           }
-        })
-      }else{
-        wx.showToast({
-          title: e.result.message+'，请在到期前十天续费',
-          icon: 'none',
-          duration: 2000
         })
       }
     })
