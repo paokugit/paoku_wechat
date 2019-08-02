@@ -1,15 +1,13 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
-
-  <view class="container" style="margin-bottom:150rpx;">
-    <view wx:if="{{nowPage=='firstPage'}}">
+<view style='margin-top:{{nvabarData.height}}px'>
+  <view style="margin-bottom:150rpx;">
+    <view wx:if="{{nowPage=='firstPage'?true:false}}">
       <view class="header_outer">
         <view class="header_within locationCss">
           <view class="header_name txtColo">{{nickname}}</view>
           <view class="header_time txtColo" wx:if="{{is_open == 0?false : true }}">{{timeExpire}}年卡到期</view>
           <view class="header_equity locationCss">
-            <text class="header_text" wx:if="{{is_open == 0?true : false }}">未享受五大权益</text>
-            <text class="header_text" wx:if="{{is_open == 1?true : false }}">已享受五大权益</text>
+            <text class="header_text">{{memberTit}}</text>
           </view>
           <view class="vipTit txtColo locationCss">尊贵身份，超值特权</view>
         </view>
@@ -17,19 +15,18 @@
 
       <view class="product">
         <view class="product_head">
-          <view class="product_head_left">待领取产品{{}}</view>
-          <view class="product_head_right" bindtap="record_page">
-            <text>领取记录</text>
-            <image src="{{globalimg}}/open10.18@2x.png"></image>
-          </view>
+          <view class="product_head_left">待领取产品</view>
+          <navigator url="/pages/annual_card/record_page/record_page" hover-class="none">
+            <text class="product_tit">领取记录</text>
+            <image class="product_img" src="{{globalimg}}/open10.18@2x.png"></image>
+          </navigator>
         </view>
 
         <view class="product_list flexCss">
-          <view class="leftImg">
-            <text class="freeGet txtColo locationCss">限时</text>
-            <image src="{{levelImg}}"></image>
-          </view>
-          <view class="rightContent">
+          <text class="freeGet txtColo locationCss">限时</text>
+          <image class="leftImg" src="{{levelImg}}"></image>
+
+          <view>
             <view class="titleA">{{levelMonth}}月产品礼包</view>
             <view class="titleB">{{levelTime}}前领取（过期失效）</view>
             <view class="cost">{{levelPrice}}</view>
@@ -37,42 +34,36 @@
           </view>
         </view>
 
-        <view class="product_head">
-          <view class="product_head_left">待领优惠券</view>
-          <view class="product_head_right" bindtap="record_page">
-            <text>领取记录</text>
-            <image src="{{globalimg}}/open10.18@2x.png"></image>
-          </view>
-        </view>
+        <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">待领优惠券</view>
         <view class="discountList flexCss">
           <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}">
             <image wx:if="{{index == 0?true:false}}" src="{{globalimg}}/134360@2x.png"></image>
             <image wx:if="{{index == 1?true:false}}" src="{{globalimg}}/13436001@2x.png"></image>
             <view class="discount_details locationCss">
-              <view class="details_money">{{item.deduct}}</view>
-              <view class="details_tit">{{item.couponname}}</view>
+              <view class="details_money {{index == 0?'ticket_a':'ticket_b'}}">{{item.deduct}}</view>
+              <view class="details_tit {{index == 0?'ticket_a':'ticket_b'}}">{{item.couponname}}</view>
               <view class="details_condition">单笔满{{item.enough}}元可用</view>
             </view>
-            <view class="getBtnA locationCss">待使用</view>
+            <navigator url="/pages/sale/coupon/my/index/index" class="getBtnA locationCss" wx:if="{{item.used == 0?true:false}}">待使用</navigator>
+            <view  class="getBtnA locationCss" wx:if="{{item.used == 1?true:false}}">已使用</view>
           </view>
         </view>
 
-        <view class="product_head_left">特权价产品区</view>
+        <view class="product_head_left" style="margin-top:50rpx;">特权价产品区</view>
       </view>
 
       <view class="product_area flexCss">
-        <view class="product_details" wx:for="{{goodsList}}" wx:key="{{index}}">
-          <view class="commodity_img">
-            <image src="{{item.thumb}}"></image>
+        <navigator class="product_details" wx:for="{{goodsList}}" wx:key="{{index}}" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+          <image  class="commodity_img" src="{{item.thumb}}"></image>
+
+          <view class="titWai">
+            <view class="commodity_tit">{{item.title}}</view>
           </view>
-          <view class="commodity_tit">{{item.title}}</view>
-          <view class="privilege_price flexCss">
-            <view class="privilege_price_tit">特权价</view>
-            <view class="privilege_price_money">{{item.marketprice}}</view>
-          </view>
+          <text class="privilege_price_tit">特权价</text>
+          <text class="privilege_price_money">{{item.marketprice}}</text>
           <view class="original_cost">￥{{item.productprice}}</view>
           <view class="purchase_btn locationCss txtColo">抢购</view>
-        </view>
+        </navigator>
       </view>
 
     </view>
@@ -81,27 +72,25 @@
 
       <view class="member_details flexCss">
         <view class="left_message flexCss">
-          <view class="headImg">
-            <image style="border-radius: 50rpx;" src="{{headImg}}"></image>
-          </view>
+          <image class="headImg" src="{{headImg}}"></image>
           <view class="name_time">
             <view class="my_name">{{cardName}}</view>
             <text class="expire_time">{{cardExpire}}</text>
             <text class="expire_content">{{cardTit}}</text>
           </view>
         </view>
-        <view class="right_renew" wx:if="{{cardOpen == 0?true : false}}">续费</view>
+        <navigator url="/pages/annual_card/equity/equity" class="right_renew" wx:if="{{is_expire == 1?true : false}}">续费</navigator>
       </view>
 
       <view class="equities_list">
         <view class="contentTitle">
-          <view style="font-size: 40rpx;color: #333333;" wx:if="{{cardOpen == 0?false : true}}">您已获得 <text style="font-size: 60rpx;color: #e63131;">5</text> 大权益</view>
+          <view class="content_titA" wx:if="{{cardOpen == 0?false : true}}">您已获得 <text style="font-size: 60rpx;color: #e63131;">5</text> 大权益</view>
           <view class="content_titA" wx:if="{{cardOpen == 0?true : false}}">权益已失效</view>
-          <view class="content_titB" wx:if="{{cardOpen == 0?true : false}}">更多权益升级中</view>
+           <view class="content_titB" >更多权益升级中</view>
         </view>
  
         <view class="details_list flexCss">
-          <view class="gift_bag">
+          <view>
             <view class="gift_bagImg">
               <image src="{{globalimg}}/{{cardOpen == 0?'gif@2x.png':'gif-kt@2x.png'}}"></image>
             </view>
@@ -115,21 +104,21 @@
             <view class="gift_bagContent">3650元</view>
           </view>
 
-          <view class="gift_bag">
+          <view>
             <view class="gift_bagImg">
               <image src="{{globalimg}}/{{cardOpen == 0?'sxf@2x.png':'sxf-kt@2x.png'}}"></image>
             </view>
             <view class="gift_bagContent">手续费立减</view>
           </view>
 
-          <view class="gift_bag">
+          <view>
             <view class="gift_bagImg">
               <image src="{{globalimg}}/{{cardOpen == 0?'tj@2x.png':'tj-kt@2x.png'}}"></image>
             </view>
             <view class="gift_bagContent">特权价</view>
           </view>
 
-          <view class="gift_bag">
+          <view>
             <view class="gift_bagImg">
               <image src="{{globalimg}}/{{cardOpen == 0?'quan@2x.png':'quan-kt@2x.png'}}"></image>
             </view>
@@ -139,18 +128,14 @@
       </view>
 
       <view class="get_site">
-        <view class="record">
+        <navigator class="record" url="/pages/annual_card/record_page/record_page" hover-class="none">
           <view class="record_left">领取记录</view>
-          <view class="recordImg" bindtap="record_page">
-            <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
-          </view>
-        </view>
-        <view class="record">
+          <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
+        </navigator>
+        <navigator class="record" url="/pages/member/address/index" hover-class="none">
           <view class="record_left">收货地址</view>
-          <view class="recordImg" bindtap="record_page">
-            <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
-          </view>
-        </view>
+          <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
+        </navigator>
       </view>
 
     </view>
@@ -159,7 +144,7 @@
 
   <view class="tab-bar flexCss">
     <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
-      <view class="tab-item" bindtap="{{item.tapFunction}}">
+      <view bindtap="{{item.tapFunction}}">
         <view class="tabImg">
           <image src="{{globalimg}}/{{index==nowIndex?item.imgSrc:item.iconClass}}"></image>
         </view>
@@ -170,6 +155,7 @@
 
   <view class="siteTier" wx:if="{{isShow}}">
     <view class="siteList">
+      <view class="site_title">选择收货地址</view>
       <view class="roll_tier">
         <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="{{index}}" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
           <view class="person_message flexCss">
@@ -180,8 +166,12 @@
         </view>
       </view>
 
-      <view class="site_ok locationCss" bindtap="site_ok">确认</view>
-      <view class="cancelBtn locationCss  icox icox-close" bindtap="cancelBtn"></view>
+      <view class="btn_css">
+        <navigator hover-class="none" url="/pages/member/address/index" class="site_skip site_ok_css">添加地址</navigator>
+        <view class="site_ok site_ok_css" bindtap="site_ok">确认</view>
+      </view>
+
+      <image class="cancelBtn locationCss" bindtap="cancelBtn" src='{{globalimg}}/guanbi.png'></image>
     </view>
   </view>
 

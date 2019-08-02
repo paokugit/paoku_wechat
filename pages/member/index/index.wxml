@@ -7,17 +7,22 @@
       </view>
       <view class='nickname-box'>
         <view class='nickname'>{{member.nickname}}</view>
-        <view class='level-img' wx:if="{{member.levelid==0}}">
-          <image src='{{globalimg}}/putong-level.png'></image>
-        </view>
-        <view class='level-img' wx:if="{{member.levelid==1}}">
-          <image src='{{globalimg}}/jiankang-level.png'></image>
-        </view>
-        <view class='level-img' wx:if="{{member.levelid==2}}">
-          <image src='{{globalimg}}/xingxuan-level.png'></image>
-        </view>
-        <view class='dianzhu-img' wx:if="{{member.levelid==5}}">
-          <image src='{{globalimg}}/dianzhu-level.png'></image>
+        <view style="display:flex;">
+          <view class='level-img' wx:if="{{member.levelid==0}}">
+            <image src='{{globalimg}}/putong-level.png'></image>
+          </view>
+          <view class='level-img' wx:if="{{member.levelid==1}}">
+            <image src='{{globalimg}}/jiankang-level.png'></image>
+          </view>
+          <view class='level-img' wx:if="{{member.levelid==2}}">
+            <image src='{{globalimg}}/xingxuan-level.png'></image>
+          </view>
+          <view class='dianzhu-img' wx:if="{{member.levelid==5}}">
+            <image src='{{globalimg}}/dianzhu-level.png'></image>
+          </view>
+          <view style="width:86rpx;height:30rpx;margin-left:15rpx;" wx:if="{{is_open == 1?true:false}}">
+            <image src="{{globalimg}}/yearcard@2x.png"></image>
+          </view>
         </view>
       </view>
     </view>
@@ -122,19 +127,23 @@
   <!-- 轮播 -->
   <view class="card_banner">
     <!-- 跑库年卡年卡入口 -->
-    <navigator class="card_entrance" url="/pages/annual_card/equity/equity">
-      <view class="card_entranceImg"><image src="{{globalimg}}/card-circle@2x.png"></image></view>
+    <navigator class="card_entrance" hover-class="none" url="{{is_open == 1?'/pages/annual_card/member_card/index':'/pages/annual_card/equity/equity'}}">
+      <view class="card_entranceImg">
+        <image src="{{globalimg}}/card-circle@2x.png"></image>
+      </view>
       <view>
         <view class="card_entranceTit">跑库年卡</view>
         <view class='swiper-card'>
-            <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
-                <block wx:for="{{textList}}" wx:key="{{index}}">
-                    <swiper-item class="notice-box">
-                        <view class='card_entranceT'>{{item.txt}}</view>
-                    </swiper-item>
-                </block>
-            </swiper>
-        </view>   
+          <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" wx:if="{{is_open == 0?true:false}}">
+            <block wx:for="{{textList}}" wx:key="{{index}}">
+              <swiper-item>
+                <view class='card_entranceT'>{{item.txt}}</view>
+              </swiper-item>
+            </block>
+          </swiper>
+          <view wx:if="{{is_open == 1?true:false}}" class="card_entranceT">{{expire_time}}</view>
+          <view wx:if="{{is_open == 2?true:false}}" style="color:#f60100;font-size: 20rpx;">立即续费</view>
+        </view>
       </view>
     </navigator>
 
@@ -152,7 +161,7 @@
         </block>
       </view>
     </view>
-    
+
   </view>
   <!-- 轮播 -->
   <!-- 服务 -->
@@ -161,17 +170,17 @@
       <view class='order-tit'>服务</view>
     </view>
     <view class='nav-service'>
-      <navigator class='service-item' url='/pages/commission/down/index'>
+      <navigator url='/pages/commission/down/index' class='service-item'>
         <view class='fensi-img service-img'>
           <image src='{{globalimg}}/fensi@2x.png'></image>
         </view>
         <view class='service-text'>粉丝</view>
       </navigator>
-      <navigator url='/pages/member/recommend/recommend' class='service-item'>
+      <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
         <view class='tuijian-img'>
-          <image src='{{globalimg}}/tuijian@2x.png'></image>
+          <image src='{{globalimg}}/tongzhi02.png'></image>
         </view>
-        <view class='service-text'>推荐</view>
+        <view class='service-text'>通知</view>
       </navigator>
       <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
         <view class='youhui-img service-img'>

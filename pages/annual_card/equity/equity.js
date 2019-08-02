@@ -40,6 +40,12 @@ Page({
             })
           }
         })
+      } else {
+        wx.showToast({
+          title: e.result.message + '，请在到期前十天续费',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },

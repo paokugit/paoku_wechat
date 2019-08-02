@@ -4,7 +4,6 @@ var t = getApp(),
 var f = getApp();  
 
 var imgSrc = "";
-var openid = "";
 var useropenid = "";
 var addressId = '';
 var levelId = '';
@@ -24,7 +23,7 @@ Page({
     
     nickname:'', 
     timeExpire:'',
-    is_open: '',
+    memberTit: '',
     goodsList:[],
     levelImg:'',
     levelPrice:'',
@@ -37,6 +36,7 @@ Page({
     
     cardName:'',
     cardOpen: '',
+    is_expire: '',
     cardExpire: '',
     cardTit:'',
     headImg:'',
@@ -71,13 +71,18 @@ Page({
 
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
-    openid = options.useropenid;
     useropenid = userinfo.openid;
 
     var b = this;
+    b.cal_centre();
+    b.my_vip();
+    
+  },
+  cal_centre:function(){
+    var b = this;
     a.get("member.level", {
-      openid: openid,
-    }, function (e) { 
+      openid: b.data.useropenid,
+    }, function (e) {
       levelId = e.result.level.level_id;
       recordId = e.result.level.id;
       levelCode = e.result.level.status;
@@ -86,36 +91,38 @@ Page({
       var level_month = e.result.level.month;
       b.setData({
         nickname: e.result.member.nickname,
-        is_open: e.result.member.is_open,
+        memberTit: e.result.member.is_open == 0 ? '未享受五大权益' : '已享受五大权益',
         timeExpire: timeExpire,
         goodsList: e.result.goods,
 
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(4, 6) > 9 ? level_month.substring(4, 6) : level_month.substring(5, 6),
-        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月2日',
-        levelStatus: e.result.level.status == 0 ?'未领取' : e.result.level.status == 1?'已领取':'礼包失效',
-    
+        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月20日',
+        levelStatus: levelCode == 0 ? '领取' : levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
-
     });
-
-    a.get("member.level.my",{
-      openid: openid
-    },function(e){
+  },
+  my_vip:function(){
+    var b = this;
+    a.get("member.level.my", {
+      openid: b.data.useropenid
+    }, function (e) {
       b.setData({
         cardName: e.result.member.nickname,
         cardOpen: e.result.member.is_open,
-        cardExpire: e.result.member.expire.substring(0,10),
+        is_expire: e.result.member.is_expire,
+        cardExpire: e.result.member.expire,
         cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
         headImg: e.result.member.avatar
       })
     })
-
   },
 
+
   toFirst() {
+    this.scrollPage();
     this.setData({
       nowPage: "firstPage",
       nowIndex: 0,
@@ -127,17 +134,24 @@ Page({
     })
   },
   toThird(){
+    this.scrollPage();
     this.setData({
       nowPage: "trailerPage",
       nowIndex: 2,
     })
+  },
+  scrollPage: function () {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    });
   },
 
   btnGet: function (e) {
     if (levelCode == 0){
       var m = this;
       a.get("member.level.address_list",{
-        openid: openid
+        openid: useropenid
       },function(e){
         if(e.status == -1){
           wx.showToast({
@@ -152,18 +166,6 @@ Page({
             siteList: e.result.list
           })
         }
-      })
-    } else if (levelCode == 1){
-      wx.showToast({
-        title: '已领取过该礼包',
-        icon: 'none',
-        duration: 1000
-      })
-    } else if (levelCode == 2){
-      wx.showToast({
-        title: '该礼包已失效',
-        icon: 'none',
-        duration: 1000
       })
     }
   },
@@ -182,6 +184,7 @@ Page({
   },
 
   site_ok:function(e){
+    var m = this;
     a.get("member.level.get",{
       openid: useropenid,
       level_id: levelId,
@@ -190,23 +193,20 @@ Page({
     },function(e){
       if(e.status == 0){
         wx.showToast({
-          title: e.result.message,
+          title: '领取失败',
           icon: 'none',
-          duration: 1000
+          duration: 2000
         })
       } else if (e.status == 1){
         wx.showToast({
-          title: e.result.message,
+          title: '领取成功',
           icon: 'none', 
-          duration: 1000
+          duration: 2000
+        })
+        m.setData({
+          isShow: false
         })
       }
     })
   },
-
-  record_page: function () {
-    wx.navigateTo({
-      url: '../record_page/record_page'
-    })
-  }
 })
