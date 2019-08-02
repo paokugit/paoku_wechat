@@ -30,6 +30,7 @@ Page({
       openid: b.data.useropenid,
       page: b.data.page
     }, function (e) {
+      console.log(e);
       let totalPage = Math.floor(e.result.total / e.result.pageSize);
       let totalList = e.result.record
       b.setData({

@@ -134,7 +134,7 @@ Page({
     p.get("member.level.mem_level", {
       openid: t.data.useropenid
     }, function(e) {
-      console.log('年卡入口');
+      console.log(e);
       t.setData({
         is_open: e.result.is_open,
         expire_time: e.result.expire_time + '到期'

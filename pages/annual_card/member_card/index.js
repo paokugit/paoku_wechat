@@ -206,7 +206,18 @@ Page({
         m.setData({
           isShow: false
         })
+        m.onPullDownRefresh();
       }
     })
   },
+  onPullDownRefresh:function(){
+    var b = this;
+    b.cal_centre();
+    b.my_vip();
+  },
+  onShow:function(){
+    var b = this;
+    b.cal_centre();
+    b.my_vip();
+  }
 })
