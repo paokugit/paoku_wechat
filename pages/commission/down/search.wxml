@@ -2,7 +2,7 @@
 <view class='fandetails_all' style='padding-top:{{nvabarData.height}}px'>
   <view class="header_search">
     <image src="{{globalimg}}/search@2x.png"></image>
-    <input class="header_css" type="text" value="请输入时候" bindinput="bindInput" placeholder-style="color:#9a9a9a;"></input>
+    <input class="header_css" type="text" placeholder="请输入时候" bindinput="bindInput" placeholder-style="color:#9a9a9a;"></input>
     <view class="header_css" bindtap="seekBtn">搜索</view>
   </view>
 

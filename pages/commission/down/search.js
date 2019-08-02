@@ -27,21 +27,20 @@ Page({
   },
 
   bindInput: function (t) {
-    console.log(t.detail.value);
     goodname = t.detail.value;
   },
 
   seekBtn:function(e){
-    console.log(goodname);
     if (goodname == ''){
       wx.showModal({
         title: '提示',
         content: '请输入您想搜索的商品',
       })
     }else{
-      t.get("commission/down/get_list",{
+      t.get("commission.down.search",{
         openid:useropenid,
-
+        keywords: goodname,
+        page:1
       },function(e){
         console.log(e);
       })
