@@ -22,7 +22,7 @@
 <include src="adver.wxml"></include>
 <!-- <loading wx:if="{{loading}}">加载中...</loading> -->
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view  class="page" style="background:{{diypages.page.background}}" >
+<view class="page" style="background:{{diypages.page.background}}">
     <include src="coupontips.wxml"></include>
 
     <view style="min-height:100%;height:100%;" wx:if="{{diypages}}">
@@ -32,7 +32,7 @@
         <include src="/pages/custom/index.wxml" wx:if="{{diypages.page.type==20}}"></include>
     </view>
     <view wx:else>
-        <block wx:if="{{item.visible==1}}" wx:for="{{shop.sorts}}" wx:for-index="idx">
+        <block wx:if="{{item.visible==1}}" wx:for="{{shop.sorts}}" wx:key="{{index}}" wx:for-index="idx">
             <include src="adv.wxml" wx:if="{{item.type=='adv'}}"></include>
             <include src="search.wxml" wx:if="{{item.type=='search'}}"></include>
             <include src="notice.wxml" wx:if="{{item.type=='notice'}}"></include>
@@ -47,7 +47,7 @@
                     <text class="icox icox-hotfill"></text> 店铺推荐</view>
             </view> -->
             <view class="fui-goods-group block border">
-                <template is="tpl_list" data="{{item:item}}" wx:for="{{storeRecommand}}" wx:for-index="idx"></template>
+                <template is="tpl_list" data="{{item:item}}" wx:for="{{storeRecommand}}" wx:for-index="idx" wx:key="{{index}}"></template>
             </view>
         </view>
         <view class="fui-loading" wx:if="{{loading}}">
@@ -98,10 +98,10 @@
             <i bindtap="unpaidcolse" class="icox icox-guanbi1" id="unpaid-colse" style="font-size:60rpx;color:#fff;position: absolute;top:105%;left:46%"></i>
         </view>
     </view>
-    <button class="suspended-service" openType="contact" sessionFrom="weapp" showMessageCard="true" style="background-color:{{customercolor}}" wx:if="{{customer==1}}">
+    <button class="suspended-service" openType="contact" sessionFrom="weapp" showMessageCard="true" style="background-color:#01d7a1" wx:if="{{customer==1}}">
         <text class="icox icox-customerservice"></text>
     </button>
-    <view bindtap="phone" class="phone" style="background-color:{{phonecolor}}" wx:if="{{phone==1}}">
+    <view bindtap="phone" class="phone" style="background-color:#01d7a1" wx:if="{{phone==1}}">
         <text class="icox icox-dianhua"></text>
     </view>
     <include src="/pages/common/goods-picker.wxml"></include>

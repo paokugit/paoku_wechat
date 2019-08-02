@@ -392,11 +392,11 @@
 <!-- 首次进入弹窗 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
-        <view bindtap='pull' class='first-entry-img'>
-            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
-        </view>
         <view class='first-entry position_absolute'>
             <image src='{{ globalimg}}/jiangli.png'></image>
+        </view>
+        <view class='first-entry-close' bindtap='firstclosebtn'>
+            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
         </view>
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>

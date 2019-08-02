@@ -18,7 +18,7 @@
         <view class='printscreen-box'>
             <view class="fui-cell" style='display:flex;flex-wrap:wrap'>
                 <view class="fui-images fui-images-sm" style=' display:flex;flex-wrap:wrap'>
-                    <block wx:for="{{imgs}}">
+                    <block wx:for="{{imgs}}" wx:key="{{index}}">
                         <image catchtap="upload" style='width:200rpx;height:200rpx;margin-right:20rpx' class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}">
                             <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
                                             <text class="icox icox-close"></text>

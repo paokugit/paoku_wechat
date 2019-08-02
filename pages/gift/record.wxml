@@ -2,7 +2,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='help-record-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='help_con'>
-        <view class='help_item' wx:for="{{list}}">
+        <view class='help_item' wx:for="{{list}}" wx:key="{{index}}">
             <view class='help-left'>
                 <view class='friend-avatar'>
                     <image src='{{item.avatar}}'></image>

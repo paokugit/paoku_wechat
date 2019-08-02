@@ -750,7 +750,7 @@
     </block>
 </template>
 <template name="wxParse">
-    <block wx:for="{{wxParseData}}">
+    <block wx:for="{{wxParseData}}" wx:key="{{index}}">
         <template is="wxParse0" data="{{item:item}}"></template>
     </block>
 </template>

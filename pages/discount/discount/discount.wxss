@@ -280,3 +280,38 @@ image {
     width: 70rpx;
     height: 60rpx;
 }
+
+.scroll{
+	text-align: center;
+}
+.scroll-wrap{
+	/* background: #000000; */
+	display: inline-block;
+}
+.scroll-data{
+    line-height: 42rpx;
+    height: 42rpx;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    font-size: 40rpx;
+    color: #323232
+}
+.scroll-num{
+    width:26rpx;
+    height: 42rpx;
+    display:inline-block;
+    position: relative;
+    top:0rpx;
+}
+.unit-num{
+    height: 42rpx;
+    overflow: hidden;
+    display: block;
+}
+.commachar{
+    width:26rpx;
+    display:inline-block;
+    position: relative;
+    vertical-align: top;
+}
