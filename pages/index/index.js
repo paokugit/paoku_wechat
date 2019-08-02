@@ -31,7 +31,7 @@ Page((e = {
     onPullDownRefresh: function() {
         wx.showToast({
             icon: 'loading',
-            title: '玩命加载中'
+            title: '加载中'
         })
         var t = this;
         s.get("userinfo", {}, function(e) {

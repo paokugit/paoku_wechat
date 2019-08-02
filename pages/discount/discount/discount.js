@@ -212,7 +212,7 @@ Page({
     onPullDownRefresh: function() {
         wx.showToast({
             icon: 'loading',
-            title:'玩命加载中'
+            title:'加载中'
         })
     },
 
