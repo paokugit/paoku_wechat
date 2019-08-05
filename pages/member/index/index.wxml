@@ -33,21 +33,13 @@
     <view class='income-box'>
         <navigator url='/pages/member/balance/balance' class='reward-img'>
             <image src='{{globalimg}}/bggreen@2x.png'></image>
-            <view class='reward-num'>{{member.come_total}}</view>
+            <view class='reward-num'>{{cometotal}}</view>
             <view class='reward-text'>可用余额</view>
-            <!-- <view class='reward-balance-box'>
-                <view class='reward-balance-text'>可用余额</view>
-                <view class='reward-balance-num'>{{member.credit2}}</view>
-            </view> -->
         </navigator>
         <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
-            <view class='calorie-num'>{{member.calorie_total}}</view>
+            <view class='calorie-num'>{{calorietotal}}</view>
             <view class='calorie-text'>可用卡路里</view>
-            <!-- <view class='calorie-balance-box'>
-                <view class='calorie-balance-text'>可用余额</view>
-                <view class='calorie-balance-num'>{{member.credit1}}</view>
-            </view> -->
         </navigator>
     </view>
     <!-- 个人收入 -->
@@ -79,7 +71,6 @@
                         </block>
                     </block>
                     <image src='{{globalimg}}/daifukuan@2x.png'></image>
-                    <!-- <view class='count-img'>2</view> -->
                 </view>
                 <view class='fukuan-text'>待付款</view>
             </navigator>
@@ -147,7 +138,7 @@
                 </view>
                 <view class='service-text'>粉丝</view>
             </navigator>
-            
+
             <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
                 <view class='tuijian-img'>
                     <image src='{{globalimg}}/tongzhi02.png'></image>

@@ -7,7 +7,13 @@
     <block wx:if="{{show}}">
     <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
         <view class="page" style='margin-top:{{nvabarData.height}}px'>
-        <view class='withdraw-explain'>提现收取3%支付通道手续费,实际到账金额减去3%</view>
+        <!-- <view class='withdraw-explain'>提现收取3%支付通道手续费,实际到账金额减去3%</view> -->
+        <view class="marquee">
+        <view class="content">
+            <text>提现收取:（软件服务费+终身使用费+支付通道费）共计3%费用，实际到账金额减去3%。</text>
+            <text style="display: inline-block; width: auto">提现收取:（软件服务费+终身使用费+支付通道费）共计3%费用，实际到账金额减去3%</text>
+        </view>
+    </view>
             <view class="fui-cell-title">
                 <view class="fui-cell-info" style="font-size:28rpx;color:#666;position: relative;height: 100%;line-height: 57rpx">可提现金额: ¥{{info.credit}} <text bindtap="bindAll" class="text-danger" style="position: absolute;right: 0;text-decoration: underline">全部提现</text>
                 </view>

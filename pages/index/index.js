@@ -29,8 +29,13 @@ var currency_step = ''
 var merchphone = ""
 Page((e = {
     onPullDownRefresh: function() {
+        wx.showToast({
+            icon: 'loading',
+            title: '加载中'
+        })
         var t = this;
         s.get("userinfo", {}, function(e) {
+            console.log(e)
             if (e.status == 1) {
                 t.setData({
                     credit1: e.result.credit1,
@@ -69,7 +74,6 @@ Page((e = {
             interval: 2000,
             duration: 500,
             circular: !0,
-            storeRecommand: [],
             total: 1,
             page: 1,
             loaded: !1,
@@ -79,35 +83,7 @@ Page((e = {
             intervalHot: 5e3,
             durationHOt: 1e3,
             circularHot: !0,
-            hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
-            notification: "/static/images/notification.png",
-            saleout1: "/static/images/saleout-1.png",
-            saleout2: "/static/images/saleout-2.png",
-            saleout3: "/static/images/saleout-3.png",
-            play: "/static/images/video_play.png",
-            mute: "/static/images/icon/mute.png",
-            voice: "/static/images/icon/voice.png",
-            specs: [],
-            options: [],
-            diyform: {},
-            specsTitle: "",
-            sigin: "",
-            remind: 0,
-            bgShow: !1,
-            isBag: !1,
-            suspension: "",
-            share_text: "",
-            share_image: "",
-            share_tpye: 1,
-            parent_id: 0,
             goods_id: 0,
-            dialogState: 1,
-            giveShow: !1,
-            give_status: 1,
-            cut_step: 0,
-            activated: !1,
-            author_show: 2,
-            mydialog: "",
             ad_pop: 0,
             receive_bg: 1,
             is_receive: 1,
@@ -122,6 +98,7 @@ Page((e = {
             credit1: 0,
             mp3_url: '',
             indexdisp: 'none',
+            // indexdisp: 'block',
             circleDis: 'none',
             condisp: 'block',
             merchdisp: 'block',
@@ -176,20 +153,11 @@ Page((e = {
             url: '../goods/index/index',
         })
     },
-
     // 跳转到好友助力
     helpbtn: function() {
-        // console.log(version)
-        // if (version == 0) {
-        //     wx.showToast({
-        //         title: '此功能暂未开放',
-        //         duration: 2000
-        //     })
-        // } else {
         wx.navigateTo({
             url: '../helphand/friendhelp/friendhelp?id=' + userinfo.openid,
         })
-        // }
     },
     // 跳转到幸运抽奖
     drawbtn: function() {
@@ -216,23 +184,17 @@ Page((e = {
             url: '../member/log/bushu',
         })
     },
-    // 关闭红包弹窗
-    // maskRemove: function () {
-    //     this.setData({
-    //         indexdisp: 'none'
-    //     })
-    // },
-    closepull: function() {
-        this.setData({
-            indexdisp: 'none'
-        })
-    },
     pull: function() {
-        this.setData({
+        wx.switchTab({
+            url: '/pages/discount/discount/discount',
+        })
+    },
+    firstclosebtn: function() {
+        var tt = this
+        tt.setData({
             indexdisp: 'none'
         })
     },
-
     // 点击气泡跳转到好友助力页面
     inviteBtn: function() {
         wx.navigateTo({
@@ -248,7 +210,6 @@ Page((e = {
         }, function(event) {
             console.log(event)
         })
-
     },
     openhyBtn: function() {
         wx.navigateTo({
@@ -262,8 +223,6 @@ Page((e = {
     },
     // 拨打电话
     tel: function(t) {
-        console.log('phone')
-        console.log(t)
         merchphone = t.currentTarget.dataset.mobile
         console.log(merchphone)
         wx.makePhoneCall({
@@ -271,36 +230,8 @@ Page((e = {
         })
     },
     onReachBottom: function() {
-        this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand();
-        // this.getList();
         this.get_list();
     },
-    getRecommand: function() {
-        var t = this;
-
-        "true" != t.data.diypage && s.get("shop/get_recommand", {
-            page: t.data.page
-        }, function(a) {
-            console.log(a)
-            var e = {
-                loading: !1,
-                total: a.total
-            };
-            t.setData({
-                loading: !1,
-                total: a.total,
-                show: !0
-            }), a.list || (a.list = []), a.list.length > 0 && (t.setData({
-                storeRecommand: t.data.storeRecommand.concat(a.list),
-                page: a.page + 1
-            }), a.list.length < a.pagesize && (e.loaded = !0));
-        });
-    },
-    // 获取滚动条当前位置
-    // onPageScroll: function (e) {
-
-
-    // },
     //回到顶部
     goTop: function(e) { // 一键回到顶部
         var a = this
@@ -348,13 +279,9 @@ Page((e = {
         }, this.data.show);
     },
     onLoad: function(t) {
-
         console.log('运动日记')
         console.log(t)
         var k = this
-        // k.setData({
-        //     'nvabarData.title':''
-        // })
         s.get("version/appversion", {}, function(eve) {
             console.log(eve)
             if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1) { //开发者工具|正式版
@@ -438,21 +365,16 @@ Page((e = {
                         })
                     },
                     fail: function(res) {
-                        console.log(res);
+                        // console.log(res);
                     },
                     complete: function(res) {
-                        console.log(res);
+                        // console.log(res);
                     }
                 })
             }
         })
 
         t = t || {};
-
-
-        // "" == i.getCache("userinfo") && wx.redirectTo({
-        //     url: "/pages/message/auth/index"
-        // });
         "" == i.getCache("userinfo") && i.getUserInfo();
 
         s.get("black", {}, function(t) {
@@ -471,20 +393,12 @@ Page((e = {
         s.get("index.sign_in", {
             openid: userinfo.openid
         }, function(eve) {
-            console.log(eve)
             if (eve.error == 0) {
                 a.setData({
                     signDis: "block",
                     message: eve.message
                 })
             }
-        });
-        // 平台活跃人数
-        s.get("help/index/get_member_count", {}, function(e) {
-            console.log(e)
-            a.setData({
-                avamessage: e.result.message
-            })
         });
         //获取本人坐标
         //t.removeCache("mypos");
@@ -551,7 +465,6 @@ Page((e = {
                     todaystep: ee.result.todaystep
                 });
             }
-
         });
 
         // 今日好友助力步数
@@ -577,7 +490,7 @@ Page((e = {
                 a.setData({
                     my_currency: tt.result,
                     mp3_url: tt.url,
-                    type: tt.result.type,
+                    // type: tt.result.type,
                     // currency_step:tt.result.step
                 });
 
@@ -684,14 +597,11 @@ Page((e = {
                         circleDis: 'block'
                     })
                 }
-                t.setData({
-                    my_currency: t.result,
-                    mp3_url: t.url
-                });
-
-
+                // t.setData({
+                //     my_currency: t.result,
+                //     mp3_url: t.url
+                // });
             }
-
         });
         // 是否绑定手机号
         s.get("myown/bindmobile/isbind", {
@@ -711,7 +621,13 @@ Page((e = {
             }
 
         });
-
+        // 平台活跃人数
+        s.get("help/index/get_member_count", {}, function (e) {
+            console.log(e)
+            t.setData({
+                avamessage: e.result.message
+            })
+        });
         // 获取本人坐标
         var mypos = i.getCache("mypos");
         if (!mypos) {
@@ -729,7 +645,7 @@ Page((e = {
             })
         }
         t.getList();
-        t.getShop(), t.getRecommand(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
+        t.getShop(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
             success: function(a) {
                 var e = a.authSetting["scope.userInfo"];
                 // console.log(e), 
@@ -745,7 +661,7 @@ Page((e = {
             frontColor: t.data.pages.titlebarcolor,
             backgroundColor: t.data.pages.titlebarbg
         }), t.setData({
-            screenWidth: a.windowWidthF
+            // screenWidth: a.windowWidthF
         });
     },
     goodsicon: function(t) {
@@ -764,7 +680,6 @@ Page((e = {
                     console.log(a);
                     // login=a.login
                     openid = "sns_wa_" + a.openid
-                    console.log(openid)
                     if (i.globalData.applogin == '') {
                         i.globalData.applogin = a.login
                     }
@@ -780,11 +695,12 @@ Page((e = {
                             openid: openid
                         }, function(event) {
                             console.log(event)
-
+                        })
+                    } else {
+                        tt.setData({
+                            indexdisp: 'none'
                         })
                     }
-                    // console.log(i.globalData.applogin)
-                    // console.log(openid)
                     if (i.globalData.bindscene != "") {
                         s.get("myown/sport/binding", {
                             openid: openid,
@@ -802,7 +718,6 @@ Page((e = {
                         success(res) {
                             res.sessionKey = a.session_key;
                             res.openid = i.openid;
-                            console.log(a.session_key);
                             s.post('wxapp/urundata', {
                                 res
                             }, function(e) {
@@ -816,7 +731,6 @@ Page((e = {
                 s.alert("获取用户信息失败!");
             }
         })
-
         // console.log('获取附近商家')
         var newpos = i.getCache("mypos");
         // 门店服务
@@ -892,7 +806,6 @@ Page((e = {
         }
     },
     imagesHeight: function(t) {
-        console.log('wwwwww')
         console.log(t)
         var a = t.detail.width,
             e = t.detail.height,

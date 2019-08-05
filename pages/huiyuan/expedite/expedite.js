@@ -113,7 +113,7 @@ Page({
         t.setData({
           isShow:true,
           payDay: e.message.day +'天后结束',
-          tit_one:'已经在加速期，请结束后在买哦'
+          tit_one:'已经在加速期，请结束后再买哦'
         })
       };
 

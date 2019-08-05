@@ -75,7 +75,7 @@
         <!-- 礼品的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
-        <view class='step'>步</view>
+        <!-- <view class='step'>步</view> -->
         <view class='friend-help'>好友捐赠{{helpstep}}步</view>
     </view>
     <!-- 9.9体验会员加速, 好友捐赠等部分-开始 -->
@@ -392,11 +392,11 @@
 <!-- 首次进入弹窗 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
-        <view bindtap='pull' class='first-entry-img'>
-            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
-        </view>
         <view class='first-entry position_absolute'>
-            <image src='{{ globalimg}}/firstentry.png'></image>
+            <image src='{{ globalimg}}/jiangli.png'></image>
+        </view>
+        <view class='first-entry-close' bindtap='firstclosebtn'>
+            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
         </view>
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>
@@ -423,7 +423,7 @@
             <view class="inner">
                 <view class="title">用户未授权</view>
                 <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
+                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
                 </view>
                 <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
                 <view class="model-btns">
@@ -440,7 +440,7 @@
             <view class="inner">
                 <view class="title">用户未授权</view>
                 <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
+                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
                 </view>
                 <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
                 <view class="model-btns">

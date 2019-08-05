@@ -57,12 +57,20 @@ Page({
         }
     },
     rechargebtn: function () {
+        console.log('1')
         console.log(creditnum, iptvalue)
+        wx.showLoading({
+            title: '请求中',
+            mask: true
+        })
         if(iptvalue==""){
             wx.showModal({
                 title: '提示',
                 content: '请输入提现金额',
             })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
         }else{
         if (iptvalue <= creditnum) {
             s.get("myown/devote/withdrawal", {
@@ -71,6 +79,9 @@ Page({
             }, function (eve) {
                 console.log(eve)
                 if(eve.error==0){
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                     message=eve.message
                         wx.showModal({
                             title: '提示',
@@ -92,6 +103,9 @@ Page({
                         title: '提示',
                         content: message,
                     })
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 1000)
                 }
             })
         } else {
@@ -99,6 +113,9 @@ Page({
                 title: '提示',
                 content: '您的贡献值不足，请重新输入',
             })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
         }
         }
 

@@ -8,10 +8,6 @@ page {
     overflow-x: hidden;
     background: #f8f8f8
 }
-/* image{
-    width: 100%;
-    height: 100%
-} */
 .indexBox {
     width: 100%;
     height: auto;
@@ -82,8 +78,8 @@ button::after {
     height: 60rpx;
 }
 .first-entry{
-    width: 610rpx;
-    height: 840rpx;
+    width: 500rpx;
+    height: 700rpx;
     bottom: 0;
     top:0;
 
@@ -277,10 +273,11 @@ image {
 }
 
 .today-step-con {
-    width: 200rpx;
+    width: 250rpx;
     height: 104rpx;
-    line-height: 104rpx;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 140rpx;
     left: 250rpx;
@@ -1057,4 +1054,13 @@ text-overflow:ellipsis;
     right: 5%;
     width: 50rpx;
     height: 50rpx;
+}
+.first-entry-close{
+    width: 100%;
+    height: 100rpx;
+    position: absolute;
+    bottom: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }

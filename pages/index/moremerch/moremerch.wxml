@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='nearbyshops-box' style='margin-top:{{nvabarData.height}}px'>
     <!-- 商家1 -开始-->
-    <view class='nearbyshop-box' wx:for="{{list}}">
+    <view class='nearbyshop-box' wx:for="{{list}}" wx:key="{{index}}">
     <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
                     <view class='callphone-img'>

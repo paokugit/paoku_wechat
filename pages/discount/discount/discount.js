@@ -12,6 +12,7 @@ var paysign = ''
 var own=''
 var agentlevel=""
 var conbind=''
+var creditnum=""
 Page({
 
     /**
@@ -22,13 +23,15 @@ Page({
         // 组件所需的参数
         nvabarData: {
             showCapsule: 0, 
-            title: '', 
+            title: '折扣付', 
             height: i.globalData.height * 2 + 30,
         },
         credit: '',
         conbind: '',
         credit4: '',
-        tixian:''
+        tixian:'',
+        len: '',
+        animation: [],
     },
 
     /**
@@ -36,12 +39,8 @@ Page({
      */
     onLoad: function(options) {
         var t=this
-        t.setData({
-            "nvabarData.title":'折扣付'
-        })
         var userinfo = f.getCache('userinfo');
         console.log(userinfo)
-        console.log(userinfo.merchInfo)
         useropenid = userinfo.openid
         own = userinfo.is_own
         agentlevel = userinfo.agentlevel
@@ -53,10 +52,6 @@ Page({
         
     },
     withdrawbtn: function () {
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '暂未开放',
-        // })
         console.log(conbind)
         if (conbind == 0) {
             wx.showModal({
@@ -81,7 +76,6 @@ Page({
     },
     getScancode: function() {
         var _this = this;
-        // 允许从相机和相册扫码
         wx.scanCode({
             success: (res) => {
                 console.log(res.path)
@@ -99,10 +93,6 @@ Page({
     },
     codebtn: function() {
         if (merchid==undefined) {
-        //   wx.showModal({
-        //     title: '提示',
-        //     content: '您还不是商家哦',
-        //   })
             console.log(agentlevel)
             if (agentlevel == 0 || agentlevel==1){
                 wx.showModal({
@@ -166,6 +156,8 @@ Page({
             console.log(e)
             if (e.error == 0) {
                 conbind = e.message.bind
+                creditnum = e.message.credit4
+                // a.show_num(creditnum)
                 a.setData({
                     conbind: e.message.bind,
                     credit4: e.message.credit4,
@@ -174,6 +166,31 @@ Page({
             }
         })
     },
+    // show_num(n) {
+    //     var len = String(n).length;
+    //     this.setData({
+    //         len: len,
+    //     })
+    //     var char = String(n).split("")
+    //     // h存储数字块高度
+    //     var h = ''
+    //     let self = this
+    //     // 创造节点选择器
+    //     wx.createSelectorQuery().select('.unit-num').boundingClientRect(function (rect) {
+    //         h = rect.height
+    //         var animate = []
+    //         for (var i = 0; i < len; i++) {
+    //             animate[i] = wx.createAnimation()
+    //             animate[i].top(-parseInt(h) * char[i]).step({
+    //                 duration: 1500
+    //             })
+    //             var deletedtodo = 'animation[' + i + ']';
+    //             self.setData({
+    //                 [deletedtodo]: animate[i].export()
+    //             })
+    //         }
+    //     }).exec()
+    // },
 
     /**
      * 生命周期函数--监听页面隐藏
@@ -194,7 +211,8 @@ Page({
      */
     onPullDownRefresh: function() {
         wx.showToast({
-            icon: 'loading'
+            icon: 'loading',
+            title:'加载中'
         })
     },
 

@@ -8,6 +8,12 @@ Page({
   data: {
     title:'',
     createtime:'',
+      // 组件所需的参数
+      nvabarData: {
+          showCapsule: 1,
+          title: '消息详情',
+          height: t.globalData.height * 2 + 25,
+      },
   },
 
   /**

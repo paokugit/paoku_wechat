@@ -104,6 +104,7 @@ button::after {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative
 }
 
 .swiper-tab {
@@ -126,8 +127,18 @@ button::after {
     font-size: 30rpx;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-
+.contact02{
+    width: 30%;
+    height: 100rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0
+}
 .nav-line {
     width: 2rpx;
     height: 16rpx;
@@ -167,11 +178,15 @@ button::after {
 
 .hot-box {
     width: 90%;
-    height: 2000rpx;
+    height: auto;
     padding: 0 5%;
     margin-top: 20rpx;
 }
-
+.item_box{
+     width: 662rpx;
+    height: auto;
+    border-radius: 20rpx;
+}
 .strategy-box {
     width: 662rpx;
     height: 400rpx;
@@ -183,7 +198,9 @@ button::after {
     width: 662rpx;
     height: 280rpx;
 }
-
+.strategy-img image{
+    border-radius: 20rpx 20rpx 0 0
+}
 .strategy-text, .video-desc {
     width: 600rpx;
     height: 100rpx;

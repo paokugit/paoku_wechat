@@ -165,7 +165,7 @@
       <view class="inner1">
         <view class="title">用户未授权</view>
         <view class="image">
-          <image src="/static/images/shouquan.png"></image>
+          <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
         </view>
         <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
         <view class="model-btns">
@@ -192,7 +192,7 @@
     <block>
       <block wx:if="{{fromsearch}}">
         <!-- <view bindtap="bindback" class="cancel">取消</view> -->
-        <view class='searchtext' bindtap='searchbtn'>搜索</view>
+        <view class='searchtext' bindtap='searchbtn' style='width:14%;height:100%;display:flex;align-items:center;justify-content:center'>搜索</view>
       </block>
     </block>
   </view>
@@ -215,7 +215,7 @@
     </view>
   </view>
   <view class="fui-goods-group {{listmode}}">
-    <block wx:for="{{list}}">
+    <block wx:for="{{list}}" wx:key="{{index}}">
       <template is="tpl_list" data="{{item:item}}"></template>
     </block>
   </view>
