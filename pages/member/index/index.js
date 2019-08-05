@@ -207,6 +207,7 @@ Page({
             title:'加载中'
         })
         this.getList();
+        wx.stopPullDownRefresh();
     },
 
     navigate: function(e) {

@@ -213,7 +213,8 @@ Page({
         wx.showToast({
             icon: 'loading',
             title:'加载中'
-        })
+        });
+        wx.stopPullDownRefresh();
     },
 
     /**

@@ -1,9 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
 <view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
     <view class="index-banner-box">
-        <!-- banner背景图 -->
         <image src='{{ globalimg}}/indexbanner.png'></image>
-        <!-- 卡路里余额 -开始-->
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view class='kll'>
@@ -14,8 +12,6 @@
                 </view>
             </button>
         </form>
-        <!-- 卡路里余额-结束 -->
-        <!-- 点击签到之后的气泡 -->
         <view class="heard-tag absolute">
             <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
                 <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
@@ -26,8 +22,6 @@
                 </button>
             </form>
         </view>
-        <!-- 气泡部分 -->
-        <!-- 跳转的气泡-开始 -->
         <form bindsubmit='form_submit' report-submit='true' class='circle stepExchange floating' catchtap='inviteBtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{circleDis}}'>
@@ -48,7 +42,6 @@
                 </view>
             </button>
         </form>
-        <!-- 跳转的气泡-结束 -->
         <!-- 绑定手机号的气泡 -->
         <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
@@ -78,7 +71,6 @@
         <!-- <view class='step'>步</view> -->
         <view class='friend-help'>好友捐赠{{helpstep}}步</view>
     </view>
-    <!-- 9.9体验会员加速, 好友捐赠等部分-开始 -->
     <view class='member-speedup-box'>
         <view class='member-relative'>
             <view class='member-speedup-box-top' bindtap='hybtn'>
@@ -91,11 +83,9 @@
                 </view>
             </view>
 
-            <!-- 好友捐赠，幸运抽奖，运动日记，玩法说明-开始 -->
             <view class='activity-nav'>
                 <view class='activity activity-nav-friend'>
                     <view class='activity-img'>
-                        <!-- 加速收益 -->
                         <view class='earnings-speed'>
                             <image src='{{ globalimg}}/jiasu.png'></image>
                         </view>
@@ -106,7 +96,6 @@
                 <view class='activity activity-nav-draw'>
                     <view class='activity-img'>
                         <image src='{{ globalimg}}/02.png'></image>
-                        <!-- 千元大奖 -->
                         <view class='earnings-speed'>
                             <image src='{{ globalimg}}/qianyuan.png'></image>
                         </view>
@@ -150,7 +139,6 @@
         <view class='notice-img'>
             <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
         </view>
-        <!-- 轮播 -->
         <view class='swiper-box'>
             <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
                 <block wx:for="{{noticelist}}" wx:key="{{index}}">
@@ -163,7 +151,6 @@
                 </block>
             </swiper>
         </view>
-        <!-- 轮播 -->
     </view>
     <view class='store-service'>
         <view class='store-service-title flex_center'>
@@ -191,7 +178,6 @@
 
                 <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img '>
                     <image class='storeImg' mode="aspectFit" src='{{merchInfo.logo}}'></image>
-                    <!-- bindload="imagesHeight"  mode="widthFix" -->
                 </navigator>
                 <view class='store-details-box'>
                     <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='storename'>{{merchInfo.merchname}}</navigator>
@@ -240,35 +226,21 @@
 
                 </view>
             </view>
-            <!-- <view class='formBox'>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm' bindtap='godetail'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-        </view> -->
         </view>
     </view>
     <view class='conbox' style='display:{{condisp}}'>
         <!-- 附近商家-开始 -->
         <view class='nearby-shops-titlebox'>
             <view class='nearbyshops-title flex_center'>附近商家</view>
-            <!-- 位置 -->
             <view class='nearbyshops-location'>
                 <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
                     <image src='{{ globalimg}}/weizhi.png'></image>
                 </view>
                 <view bindtap='position'>{{city}}{{district}}</view>
             </view>
-
         </view>
         <view class='nearbyshops-box'>
             <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
-                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -301,7 +273,6 @@
                 </view>
             </view>
         </view>
-        <!-- 查看更多商家-开始 -->
         <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
             <button form-type="submit" class='moreBtn'>
                 <view class='readmore-shops-box flex_center'>
@@ -312,7 +283,6 @@
                 </view>
             </button>
         </form>
-        <!-- 查看更多商家-结束 -->
         <view class='advertise-space'>
             <image src='{{ globalimg}}/advertise.png'></image>
         </view>
@@ -320,7 +290,6 @@
     <!-- 超值兑换部分-开始 -->
     <view class='pro-exchange-box flex_center'>
         <view class='pro-exchange-box-con'>
-            <!-- title-开始 -->
             <view class='pro-exchange-tit-box'>
                 <view class='pro-exchange-tit'>超值兑换</view>
                 <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
@@ -334,14 +303,12 @@
                         </view>
                     </navigator>
                     <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-                    <!-- 包邮 -->
                     <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
                         <view class='postage-free'>包邮</view>
                     </view>
                     <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
                         <view class='postage-free'>包邮</view>
                     </view>
-                    <!-- 包邮 -->
                     <view class='ex-procalorie-box'>
                         <!-- 显示卡路里加价格 -->
                         <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
@@ -380,11 +347,9 @@
                     <image src='{{ globalimg}}/chakangengduo.png'></image>
                 </view>
             </view>
-            <!-- 查看更多商品-结束 -->
         </view>
     </view>
 </view>
-<!-- 超值兑换部分-结束 -->
 <!-- 回到顶部 -->
     <view class='goTop'  bindtap="goTop" style='display:{{topdisp}}'>
         <image src='{{globalimg}}/huidaodingbu.png' ></image>

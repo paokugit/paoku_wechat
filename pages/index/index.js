@@ -481,7 +481,7 @@ Page((e = {
         s.get("bushu", {}, function(tt) {
             console.log(tt)
             if (tt.error == 0) {
-                console.log(tt.result);
+                console.log(tt);
                 if (tt.result.length <= 1) {
                     a.setData({
                         circleDis: 'block'
