@@ -44,7 +44,7 @@ App({
         var t = this;
         wx.getSystemInfo({
             success: function(e) {
-                console.log(e)
+                // console.log(e)
                 t.globalData.height = e.statusBarHeight
                 // console.log(t.globalData.height)
                 wx.setStorageSync("systemInfo", e);

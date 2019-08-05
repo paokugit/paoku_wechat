@@ -365,10 +365,10 @@ Page((e = {
                         })
                     },
                     fail: function(res) {
-                        console.log(res);
+                        // console.log(res);
                     },
                     complete: function(res) {
-                        console.log(res);
+                        // console.log(res);
                     }
                 })
             }
@@ -490,7 +490,7 @@ Page((e = {
                 a.setData({
                     my_currency: tt.result,
                     mp3_url: tt.url,
-                    type: tt.result.type,
+                    // type: tt.result.type,
                     // currency_step:tt.result.step
                 });
 
@@ -597,10 +597,10 @@ Page((e = {
                         circleDis: 'block'
                     })
                 }
-                t.setData({
-                    my_currency: t.result,
-                    mp3_url: t.url
-                });
+                // t.setData({
+                //     my_currency: t.result,
+                //     mp3_url: t.url
+                // });
             }
         });
         // 是否绑定手机号
@@ -661,7 +661,7 @@ Page((e = {
             frontColor: t.data.pages.titlebarcolor,
             backgroundColor: t.data.pages.titlebarbg
         }), t.setData({
-            screenWidth: a.windowWidthF
+            // screenWidth: a.windowWidthF
         });
     },
     goodsicon: function(t) {

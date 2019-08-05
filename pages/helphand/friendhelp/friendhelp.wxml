@@ -133,8 +133,6 @@
 <!-- 点击邀请好友赚钱花之后的遮罩-开始 -->
 <view style='display:{{maskDis}}' class='share-mask-box'>
 <view class='share-con-box'>
- position: absolute;
-    bottom: 0rpx;
     <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
         <view class='share-con-top'>
         <!-- 微信 -->

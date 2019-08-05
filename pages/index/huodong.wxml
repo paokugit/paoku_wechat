@@ -9,7 +9,7 @@
         <view class="detail">
             <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
                 <view class="name">
-                    <image class="bargain_label" src="/static/images/label.png" wx:if="{{item.bargain>0}}"></image>
+                    <image class="bargain_label" src="https://paokucoin.com/img/backgroup/label.png" wx:if="{{item.bargain>0}}"></image>
                     <text class="fui-tag fui-tag-danger" wx:if="{{item.ispresell==1}}">预售</text> {{item.title}}
                 </view>
             </navigator>
@@ -68,7 +68,7 @@
             <view class="unpaid-title">您有一个订单待支付</view>
             <view class="unpaid-subtitle">未支付的订单将在不久之后自动关闭，请尽快支付哦！</view>
             <view class="unpaid-content fui-list-group">
-                <navigator class="fui-list" openType="navigate" url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{nopaygoods}}">
+                <navigator class="fui-list" openType="navigate" url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{nopaygoods}}" wx:key="{{index}}">
                     <view class="fui-list-media img-media">
                         <view id="btn-pay">
                             <image class="" src="{{item.thumb}}"></image>
@@ -111,7 +111,7 @@
     <view class="inner">
         <view class="title">用户未授权</view>
         <view class="image">
-            <image src="/static/images/shouquan.png"></image>
+            <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
         </view>
         <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
         <view class="model-btns">

@@ -16,7 +16,8 @@
                         <image class="icon" src="{{member.avatar||'/static/images/noface.png'}}"></image>
                     </view>
                     <view class="nickname" style="color:{{diyitem.style.textcolor||''}}">{{member.nickname}}</view>
-                    <view class="level" style="color:{{diyitem.style.textcolor||''}}">{{member.levelname}}<block>
+                    <view class="level" style="color:{{diyitem.style.textcolor||''}}">{{member.levelname}}
+                        <block>
                             <block wx:if="{{diyitem.params.levellink!=''&&diyitem.params.levellink!=undefined}}">
                                 <navigator style="display:inline-block" url="{{diyitem.params.levellink}}">
                                     <i class="icox icox-feedback"></i>
@@ -43,7 +44,7 @@
                         <view class="title">我的会员卡</view>
                         <view class="card-num">已拥有{{member.hasbuycardnum}}张</view>
                     </navigator>
-                    <image class="cover-img" src="/static/images/cover.png"></image>
+                    <image class="cover-img" src="https://paokucoin.com/img/backgroup/cover.png"></image>
                 </block>
             </block>
         </view>
@@ -53,7 +54,7 @@
             <block>
                 <block wx:if="{{member.usemembercard}}">
                     <navigator class="icon-style2" hoverClass="none" openType="navigate" url="/pages/member/membercard/index?hasmembercard={{member.hasmembercard}}">
-                        <image src="/static/images/header-style2.png"></image>
+                        <image src="https://paokucoin.com/img/backgroup/header-style2.png"></image>
                     </navigator>
                 </block>
             </block>
@@ -67,10 +68,10 @@
                 <view class="name" style="color:{{diyitem.style.textcolor||''}}">{{member.nickname}}</view>
                 <view class="level" style="color:{{diyitem.style.textcolor||''}}">{{member.levelname}}</view>
                 <view class="credit" style="color:{{diyitem.style.textcolor||''}}">余额 :
-      <text style="color:{{diyitem.style.textlight||''}}">{{member.credit2}}</text>
+                    <text style="color:{{diyitem.style.textlight||''}}">{{member.credit2}}</text>
                 </view>
                 <view class="credit" style="color:{{diyitem.style.textcolor||''}}">卡路里 :
-      <text style="color:{{diyitem.style.textlight||''}}">{{member.credit1}}</text>
+                    <text style="color:{{diyitem.style.textlight||''}}">{{member.credit1}}</text>
                 </view>
             </view>
         </view>
