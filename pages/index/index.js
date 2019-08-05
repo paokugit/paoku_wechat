@@ -475,13 +475,11 @@ Page((e = {
             a.setData({
                 helpstep: aaa.result.step
             })
-
         });
-
         s.get("bushu", {}, function(tt) {
             console.log(tt)
             if (tt.error == 0) {
-                console.log(tt);
+                // console.log(tt);
                 if (tt.result.length <= 1) {
                     a.setData({
                         circleDis: 'block'

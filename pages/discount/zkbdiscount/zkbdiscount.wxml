@@ -13,20 +13,6 @@
     <view class='add_box'>
         <view class='addbtn' bindtap='addbtn'>添加</view>
     </view>
-    <!-- <view class='listCon'>
-        <view class='discountlist-box'>
-            <view class='list-top'>
-                <view class='order-text'>订单满</view>
-                <view class='order-count'>50222</view>
-            </view>
-
-            <view class='list-bottom'>
-                <view class='order-text'>可使用折扣宝</view>
-                <view class='calorie-count'>5222</view>
-            </view>
-        </view>
-
-    </view> -->
         <view class='listCon'>
         <view class='listItem'   wx:for="{{list}}" wx:key="{{index}}">
             <view class='discountlist-box' data-id='{{item.id}}' bindtap='orderbtn'>

@@ -26,17 +26,6 @@
                             <view class='receive-num'>￥{{item.price}}</view>
                         </view>
                     </view>
-
-
-                    <!-- <view class='detail-list'>
-                        <view class='receive-count-box'>
-                            <view class='receive-name'>candy</view>
-                            <view class='receive-time'>9:57:36</view>
-                        </view>
-                        <view class='money-count-box'>
-                            <view class='receive-num'>￥36.00</view>
-                        </view>
-                    </view> -->
                 </view>
             </view>
         </view>

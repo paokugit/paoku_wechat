@@ -4,11 +4,9 @@
     <view class='helplist help_center' >
         <view>捐赠榜</view>
     </view>
-
     <form bindsubmit='form_submit' report-submit='true' class='listform' bindtap='myList'>
             <button form-type='submit' style="background:rgba(0,0,0,0)" class='listbtn'></button>
     </form>
-
     <view class='bannerbox'><image src='{{globalimg}}/friendbanner.png'></image></view>
     <form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
         <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
