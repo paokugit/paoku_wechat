@@ -39,7 +39,7 @@ Page({
     var m = this;
     if (goodname == ''){
       wx.showToast({
-        title: '请输入微信昵称、手机号',
+        title: '请输入微信昵称、姓名、手机号',
         icon: 'none',
         duration: 2000,
       })

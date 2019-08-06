@@ -1,9 +1,7 @@
 {
 
     "pages": [
-        "pages/commission/down/search",
-        "pages/commission/down/index",
-  
+        
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
@@ -23,8 +21,9 @@
         "pages/playmethod/playmethod/playmethod",
         "pages/index/huodong",
         "pages/helphand/helpshare/helpshare",
-        
 
+        "pages/commission/down/index",
+        "pages/commission/down/search",
 
         "pages/shop/notice/notification/notification",
         "pages/shop/notice/notification/detail",
@@ -68,7 +67,7 @@
         "pages/member/detail/detail",
         "pages/custom/index",
         "pages/order/express/index",
-       
+
         "pages/commission/apply/index",
        
         "pages/commission/order/index",
