@@ -10,8 +10,7 @@ Page({
     list: [],
     agentcount: '',
     dianzhu: '',
-    fans: '',
-    // 组件所需的参数
+    fans: '', 
     nvabarData: {
       showCapsule: 1,
       title: '我的好友',

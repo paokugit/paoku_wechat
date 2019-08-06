@@ -28,7 +28,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    console.log(options.openid)
     t.get("member/member_info", {
       fansopenid: options.openid
     }, function (e) {

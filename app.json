@@ -1,11 +1,9 @@
 {
 
     "pages": [
-        
         "pages/commission/down/search",
         "pages/commission/down/index",
-        
-
+  
         "pages/index/index",
         "pages/discount/zkbcode/zkbcode",
         "pages/discount/merchwithdraw/merchwithdraw",
