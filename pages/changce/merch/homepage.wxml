@@ -1,11 +1,7 @@
-<!--pages/store/zhuye.wxml-->
-<!-- 总 -->
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='allview' wx:if="{{play==0}}" style='margin-top:{{nvabarData.height}}px'>
-  <!-- 头部 -->
   <view class='zhuyehead'>
     <view class='headimg'>
-      <!-- 店铺头像 -->
       <image wx:if="{{logo !=''&&logo != null}}" class='imghh' src="{{logo}}"></image>
       <image wx:if="{{logo ==''||logo == null}}" class='imghh' src="{{logo}}"></image>
       <view class='dianname'>
@@ -17,7 +13,6 @@
       </view>
       <navigator class='heanjianjie' url='/pages/changce/merch/synopsis?id={{merchid}}'>简介</navigator>
     </view>
-    <!-- //两图一字 -->
     <view class='weixinguanzhu'>
       <view bindlongtap='copy' class='copyview'>
         <view class='weixinimg'>

@@ -470,6 +470,7 @@ Page((e = {
       }
     });
 
+
     // 今日好友助力步数
     s.get("help/index/helpstep_today", {
       openid: userinfo.openid

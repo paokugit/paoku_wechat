@@ -1,60 +1,37 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
 <view class='outerbox' style='margin-top:{{nvabarData.height}}px'>
 <view class='sharebox share_center'>
-<!-- bg图片-开始 -->
 <view class='bg-box'><image src='{{globalimg}}/sharebg.png'></image></view>
-<!-- bg图片-结束 -->
-<!-- 会员累计兑换xx万元-开始 -->
 <!-- <view class='total-exchange share_center'>会员累计兑换{{count}}万元</view>  -->
-<!-- 会员累计兑换xx万元-结束 -->
-<!-- 步数说明-开始 -->
 <view class='step-explain' bindtap='stepExplain'>
     <image src='{{globalimg}}/stepexplain.png'></image>
 </view>
-<!-- 步数说明-结束 -->
-<!-- 立即捐赠-开始(初始页面) -->
 <view class='instantly-help-box'>
-<!-- 头像 -->
     <view class='help-pro-pic'>
     <image class='help-pic' src='{{avatar}}'></image></view>
-    <!-- xxx邀请你捐赠微信步数-开始 -->
     <view class='help-pro-box'>
-    <!-- 名字 -->
         <view class='help-pro-name'>{{nickname}}</view>
         <view class='help-pro-con-box share_center'>
             邀请你捐赠
             <view class='step-num'>微信步数</view>
         </view>
-    <!-- xxx邀请你捐赠微信步数-结束-->
 </view>
-<!-- xxx邀请你捐赠微信步数-结束 -->
-<!-- 立即捐赠按钮-开始 -->
 <view bindtap='showbtn'  class='liji'>
     <image src='{{globalimg}}/sharebuttun.png'></image>
 </view>
-<!-- 立即捐赠按钮-结束 -->
 </view>
-<!-- 立即捐赠-结束 （初始页面）-->
-   <!-- xxx邀请你捐赠微信步数-开始（输入步数页面） -->
    <view class='enterBox' style='display:{{dis}}'>
         <view class='enter-step-box'>
-        <!-- 头像 -->
         <view class='help-pro-pic'>
         <image class='help-pic' src='{{avatar}}'></image></view>
-        <!-- 捐赠微信步数-开始 -->
         <view class='help-pro-box'>
-        <!-- 名字 -->
             <view class='help-pro-name'>{{nickname}}</view>
             <view class='help-pro-con-box share_center'>
                邀请你捐赠
                 <view class='step-num'>微信步数</view>
             </view>
-        <!-- 捐赠微信步数-结束-->
     </view>
-    <!-- xxx邀请你捐赠微信步数-结束 -->
-            <!-- 输入步数-按钮 -->
             <input class='ipt-step ipt-enter share_center' placeholder='请输入0-2000步数' bindinput='stepInput' name='step'></input>
-            <!-- 提示 -->
             <text class='hint'>您的步数共计{{steptoday}}步，最多可捐赠2000步</text>
             <input class='ipt-step ipt-word share_center' placeholder='英雄，留下一句话吧' name='message' bindinput='msgInput'>
                 <text class='optional'>选填</text>
@@ -63,57 +40,36 @@
                 <image src='{{globalimg}}/buttun.png'></image>
             </view>
         </view>
-        <!-- xxx邀请你捐赠微信步数-结束（输入步数页面） -->
     </view>
 </view>
 </view>
-<!-- 点击好友捐赠之后的遮罩-开始 -->
 <view style='display:{{disp}}' class='help-mask'>
-<!-- 遮罩层内容-开始 -->
     <view class='mask-con-box'>
         <view class='mask-con'>
-            <!-- 跑库申请-开始 -->
             <view class='pk-apply-box'>
-                <!-- 跑库头像 -->
                 <view class='pk-pic-box'>
                     <image class='pk-pic' src='{{globalimg}}/logo.png'></image>
                 </view>
                 <view class='pk-name'>跑库</view>
-                <!-- 申请 -->
                 <view class='apply'>申请</view>
             </view>
-            <!-- 跑库申请-结束 -->
-            <!-- 获取你的微信运动步数-开始 -->
             <view class='gain-step'>获取你的微信运动步数</view>
-            <!-- 获取你的微信运动步数-结束 -->
-            <!-- 按钮-开始 -->
             <view class='btn-box'>
                 <button bindtap='cancelbtn' class='apply-btn cancel-btn share_center'>取消</button>
                 <button bindtap='applybtn' class='apply-btn allow-btn'>允许</button>
             </view>
-            <!-- 按钮-结束 -->
         </view>
     </view>
-<!-- 遮罩层内容-结束 -->
 </view>
-<!-- 点击好友捐赠之后的遮罩-结束 -->
-
-<!-- 点击步数说明之后的弹窗-开始 -->
 <view class='stepMask' style='display:{{explainDis}}'>
    <view class='step-text-box'>
-        <!-- 文字说明 -->
         <view class='step-text'>"1500步=1至5卡路里不等（根据会员等级兑换比例不同）1卡路里=1元；每人最高可捐赠2000步"</view>
-        <!-- 关闭按钮 -->
         <view class='step-close' bindtap='stepClose'><image src='{{globalimg}}/guanbi.png'></image></view>
    </view>
 </view>
-<!-- 点击步数说明之后的弹窗-结束 -->
-<!-- 助力失败后的弹窗-开始 -->
 <view class='failMask' style='display:{{failDis}}'>
     <view class='fail-text-box'>
-        <!-- 文字说明 -->
         <view class='fail-text'>{{message}}</view>
-        <!-- 关闭按钮 -->
         <view class='fail-close' bindtap='failClose'><image src='{{globalimg}}/guanbi.png'></image></view>
    </view>
 </view>
