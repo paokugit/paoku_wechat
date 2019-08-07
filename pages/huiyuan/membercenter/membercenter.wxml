@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='centerBox' style='margin-top:{{nvabarData.height}}px'>
   <view class='mcbanner-box'>
-    <image src='{{globalimg}}/huiyuan.png'></image>
+    <image src='{{backgroundimg}}'></image>
     <view class='member-intro'>
       <view class='member-con'>
         <view class='avatarbox member_center'>
@@ -49,6 +49,7 @@
           </view>
         </view>
       </view>
+      
       <view class='rights-box' wx:if="{{levelid==5}}">
         <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
           <view class='rights-img'>
@@ -65,9 +66,10 @@
           <view class='rights-text'>{{item.info}}</view>
         </view>
       </view>
+
     </view>
     <view class='upgrade float' bindtap='shengji'>
-      <image src='{{globalimg}}/hybanner.png'></image>
+      <image src='{{bannerimg}}'></image>
     </view>
     <view class='task-box'>
       <text class='task-text member_center'>限量发售10000份，邀您体验</text>

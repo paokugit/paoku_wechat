@@ -88,11 +88,8 @@
                 <navigator url="{{item.url}}">
                   <view class='activity-img'>
                     
-                    <view class='earnings-speed' wx:if="{{index == 0?true:false}}">
-                      <image src='{{ globalimg}}/jiasu.png'></image>
-                    </view>
-                    <view class='earnings-speed' wx:if="{{index == 1?true:false}}">
-                      <image src='{{ globalimg}}/qianyuan.png'></image>
+                    <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
+                      <image src='{{item.icon}}'></image>
                     </view>
 
                     <image src='{{item.img}}'></image>
