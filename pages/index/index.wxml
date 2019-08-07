@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
 <view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
     <view class="index-banner-box">
-        <image src='{{ globalimg}}/indexbanner.png'></image>
+        <image src='{{ backgroundimg}}'></image>
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view class='kll'>
@@ -84,36 +84,17 @@
             </view>
 
             <view class='activity-nav'>
-                <view class='activity activity-nav-friend'>
-                    <view class='activity-img'>
-                        <view class='earnings-speed'>
-                            <image src='{{ globalimg}}/jiasu.png'></image>
-                        </view>
-                        <image src='{{ globalimg}}/01.png'></image>
+              <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                <view>
+                  <view class='activity-img'>
+                    <view class='earnings-speed' wx:if="{{index == 0 || index == 1?true:false}}">
+                      <image src='{{ globalimg}}/jiasu.png'></image>
                     </view>
-                    <view class='activity-con'>好友捐赠</view>
+                    <image src='{{item.img}}'></image>
+                  </view>
+                  <view class='activity-con'>{{item.title}}</view>
                 </view>
-                <view class='activity activity-nav-draw'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/02.png'></image>
-                        <view class='earnings-speed'>
-                            <image src='{{ globalimg}}/qianyuan.png'></image>
-                        </view>
-                    </view>
-                    <view class='activity-con'>幸运抽奖</view>
-                </view>
-                <view class='activity activity-navfriend-diary'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/03.png'></image>
-                    </view>
-                    <view class='activity-con'>运动日记</view>
-                </view>
-                <view class='activity activity-navfriend-play-method'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/04.png'></image>
-                    </view>
-                    <view class='activity-con'>新手攻略</view>
-                </view>
+              </block>
             </view>
             <!-- form -->
             <view class='formNav'>

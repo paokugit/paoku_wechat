@@ -5,7 +5,6 @@ Page({
         type: 0,
         page: 1,
         list: [],
-        // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
             title: '全返记录', 

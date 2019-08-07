@@ -1,5 +1,6 @@
 {
     "pages": [
+        
         "pages/index/index",
         "pages/playmethod/playmethod/playmethod",
         "pages/playmethod/hotdetail/hotdetail",
@@ -21,7 +22,10 @@
         "pages/discount/merchcode/merchcode",
         "pages/index/huodong",
         "pages/helphand/helpshare/helpshare",
+
         "pages/commission/down/index",
+        "pages/commission/down/search",
+
         "pages/shop/notice/notification/notification",
         "pages/shop/notice/notification/detail",
         "pages/lottery/lottery/lottery",
