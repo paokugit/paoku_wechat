@@ -156,31 +156,35 @@ Page((e = {
       url: '../goods/index/index',
     })
   },
-  // 跳转到好友助力
-  helpbtn: function () {
-    wx.navigateTo({
-      url: '../helphand/friendhelp/friendhelp?id=' + userinfo.openid,
-    })
-  },
-  // 跳转到幸运抽奖
-  drawbtn: function () {
-    wx.navigateTo({
-      url: '/pages/lottery/lottery/lottery',
-    })
-  },
-  // 跳转到运动日记
-  sportbtn: function () {
-    wx.navigateTo({
-      url: '../sportdiary/sportdiary/sportdiary',
-    })
 
-  },
+
+  // 跳转到好友助力
+  // helpbtn: function () {
+  //   wx.navigateTo({
+  //     url: '../helphand/friendhelp/friendhelp?id' + userinfo.openid,
+  //   })
+  // },
+  // 跳转到幸运抽奖
+  // drawbtn: function () {
+  //   wx.navigateTo({
+  //     url: '/pages/lottery/lottery/lottery',
+  //   })
+  // },
+  // 跳转到运动日记
+  // sportbtn: function () {
+  //   wx.navigateTo({
+  //     url: '../sportdiary/sportdiary/sportdiary',
+  //   })
+
+  // },
   // 跳转到玩法说明
-  playbtn: function () {
-    wx.navigateTo({
-      url: '../playmethod/playmethod/playmethod',
-    })
-  },
+  // playbtn: function () {
+  //   wx.navigateTo({
+  //     url: '../playmethod/playmethod/playmethod',
+  //   })
+  // },
+
+
   // 卡路里明细
   kllbtn: function () {
     wx.navigateTo({
@@ -505,7 +509,7 @@ Page((e = {
       a.setData({
         home_icon: e.result.icon,
         backgroundimg: e.result.backgroup
-      })
+      }) 
     })
   },
   onHide: function () {

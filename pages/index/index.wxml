@@ -85,19 +85,24 @@
 
             <view class='activity-nav'>
               <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                <view>
+                <navigator url="{{item.url}}">
                   <view class='activity-img'>
-                    <view class='earnings-speed' wx:if="{{index == 0 || index == 1?true:false}}">
+                    
+                    <view class='earnings-speed' wx:if="{{index == 0?true:false}}">
                       <image src='{{ globalimg}}/jiasu.png'></image>
                     </view>
+                    <view class='earnings-speed' wx:if="{{index == 1?true:false}}">
+                      <image src='{{ globalimg}}/qianyuan.png'></image>
+                    </view>
+
                     <image src='{{item.img}}'></image>
                   </view>
                   <view class='activity-con'>{{item.title}}</view>
-                </view>
+                </navigator>
               </block>
             </view>
             <!-- form -->
-            <view class='formNav'>
+            <!-- <view class='formNav'>
                 <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
                     <button form-type="submit" class='navBtn'></button>
                 </form>
@@ -111,7 +116,7 @@
                     <button form-type="submit" class='navBtn'></button>
                 </form>
 
-            </view>
+            </view> -->
             <!-- form -->
         </view>
     </view>
