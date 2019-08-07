@@ -498,7 +498,6 @@ Page((e = {
 
       }
     });
-
     s.get("myown.index.opt", {
       id: 1
     }, function (e) {

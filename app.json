@@ -2,6 +2,7 @@
     "pages": [
         
         "pages/index/index",
+        "pages/huiyuan/membercenter/membercenter",
         "pages/playmethod/playmethod/playmethod",
         "pages/playmethod/hotdetail/hotdetail",
         "pages/playmethod/helpdetail/helpdetail",
