@@ -37,3 +37,16 @@ page{
 .fui-list-group:first-of-type:before {
     display: none;
 }
+
+.fui-tab .item{line-height: 76rpx;}
+.fui-tab .activeA{
+  color: #01d7a1;
+  
+}
+.wireCss{
+  width: 80rpx;
+  height: 6rpx;
+  background: #01d7a1;
+  margin: 0 auto;
+  border-radius: 50rpx;
+}

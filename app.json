@@ -26,6 +26,8 @@
         "pages/commission/down/index",
         "pages/commission/down/search",
 
+        "pages/huiyuan/membercenter/membercenter",
+
         "pages/shop/notice/notification/notification",
         "pages/shop/notice/notification/detail",
         "pages/lottery/lottery/lottery",

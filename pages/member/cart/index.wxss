@@ -99,7 +99,7 @@ checkbox {
     color: #999;
 }
 
-.btns .btn {
+.btns .btn { 
     border-radius: 0;
     height: 98rpx;
     line-height: 98rpx;
@@ -217,4 +217,15 @@ checkbox {
 .model-btns .confirm {
     width: 50%;
     color: #50b33c;
+}
+
+.cssBtn{
+  height: 80rpx;
+  width: 280rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  background: #01d7a1;
+  color: #fff;
+  border-radius: 50rpx;
+  margin: 0 auto;
 }
