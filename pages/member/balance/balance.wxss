@@ -44,8 +44,7 @@ image{
     margin-top: 10rpx;
     font-size: 60rpx;
     color: #fff;
-    font-weight: 600;
-    font-family: PingFang SC;
+   font-family: 'DIN Next LT Pro';
 }
 .balance-header-bottom{
     width: 100%;
@@ -69,7 +68,6 @@ image{
     height: auto;
     font-size: 26rpx;
     color: #ffcccc;
-    font-family: PingFang SC;
 }
 .income-num{
      width: auto;
@@ -77,8 +75,7 @@ image{
     margin-top: 10rpx;
     font-size: 30rpx;
     color: #fff;
-    font-weight: 600;
-     font-family: PingFang SC;
+    font-family: 'DIN Next LT Pro';
 }
 .bottom-right{
     width: 30%;

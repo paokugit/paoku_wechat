@@ -14,7 +14,7 @@
         </form>
         <view class="heard-tag absolute">
             <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
-                <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
+                <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;font-family: 'DIN Next LT Pro'">
                     <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
                     <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
                     <text class='ex-text' wx:if="{{item.type==1}}">好友捐赠</text>
@@ -54,7 +54,7 @@
             </button>
         </form>
         <!-- 绑定手机号的气泡 -->
-         <!-- 礼品的气泡 -->
+        <!-- 礼品的气泡 -->
         <!-- <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{giftDis}}'>
@@ -84,17 +84,17 @@
             </view>
 
             <view class='activity-nav'>
-              <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                <view>
-                  <view class='activity-img'>
-                    <view class='earnings-speed' wx:if="{{index == 0 || index == 1?true:false}}">
-                      <image src='{{ globalimg}}/jiasu.png'></image>
+                <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                    <view>
+                        <view class='activity-img'>
+                            <view class='earnings-speed' wx:if="{{index == 0 || index == 1?true:false}}">
+                                <image src='{{ globalimg}}/jiasu.png'></image>
+                            </view>
+                            <image src='{{item.img}}'></image>
+                        </view>
+                        <view class='activity-con'>{{item.title}}</view>
                     </view>
-                    <image src='{{item.img}}'></image>
-                  </view>
-                  <view class='activity-con'>{{item.title}}</view>
-                </view>
-              </block>
+                </block>
             </view>
             <!-- form -->
             <view class='formNav'>
@@ -332,9 +332,9 @@
     </view>
 </view>
 <!-- 回到顶部 -->
-    <view class='goTop'  bindtap="goTop" style='display:{{topdisp}}'>
-        <image src='{{globalimg}}/huidaodingbu.png' ></image>
-    </view>
+<view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>
+    <image src='{{globalimg}}/huidaodingbu.png'></image>
+</view>
 <!-- 首次进入弹窗 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>

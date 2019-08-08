@@ -1,22 +1,17 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="balanceBox" style='margin-top:{{nvabarData.height}}px'>
-    <!-- header-开始 -->
     <view class='balance-header'>
         <image src='{{globalimg}}/yue.png'></image>
-        <!-- top -->
         <view class='balance-header-top'>
             <view class='top-text'>可用余额</view>
             <view class='top-num'>{{credit2}}</view>
         </view>
-        <!-- bottom -->
         <view class='balance-header-bottom'>
             <view class='bottom-left'>
-                <!-- 累计收入 -->
                 <view class='income-text'>累计收入</view>
                 <view class='income-num'>{{come_total}}</view>
             </view>
             <view class='bottom-left'>
-                <!-- 累计收入 -->
                 <view class='income-text'>冻结中</view>
                 <view class='income-num'>{{frozen_credit2}}</view>
             </view>
@@ -26,7 +21,6 @@
             </view>
         </view>
     </view>
-    <!-- header-结束 -->
     <view class='balance-foot'>
         <view class='foot-con' >
             <view class='imgBox'>
@@ -41,7 +35,6 @@
             <view class='imgCon'>明细</view>
         </view>
     </view>
-    <!-- form -->
     <view class='form-foot'>
         <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='txBtn'>
             <button form-type="submit" class='navbtn'></button>

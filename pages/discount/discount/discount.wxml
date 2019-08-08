@@ -22,7 +22,7 @@
     <view class='account-box'>
         <view class='zhekoubao-img'>
             <view class='account-text-box'>
-                <view class='account-num'>{{credit}}</view>
+                <view class='account-num' style=" font-family: 'DIN Next LT Pro'">{{credit}}</view>
                 <text class='account-text'>元</text>
             </view>
             <!-- 贡献值 -->

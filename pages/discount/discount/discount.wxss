@@ -89,10 +89,10 @@ image {
 
 .account-text {
     width: 50rpx;
-    height: 70rpx;
+    height: 60rpx;
     font-size: 40rpx;
     color: #323232;
-    line-height: 80rpx;
+    line-height: 70rpx;
     margin-left: 10rpx;
 }
 
@@ -156,6 +156,7 @@ image {
 
 .withdraw-num {
     margin-left: 8rpx;
+     font-family: 'DIN Next LT Pro'
 }
 
 .type-box {
@@ -320,8 +321,8 @@ image {
 }
 
 .scroll-wrap {
-    /* background: #000000; */
     display: inline-block;
+     font-family: 'DIN Next LT Pro'
 }
 
 .scroll-data {

@@ -6,7 +6,7 @@ page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    background: #f8f8f8
+    background: #f8f8f8;
 }
 .indexBox {
     width: 100%;
@@ -132,6 +132,7 @@ image {
     height: 40rpx;
     line-height: 40rpx;
     color: #fff;
+    font-family: 'DIN Next LT Pro'
 }
 
 .floating {
@@ -142,7 +143,6 @@ image {
     background: rgba(0, 0, 0, 0);
     font-size: 22rpx;
 }
-
 @keyframes upAnimation {
     0% {
         transform: translateY(-2%);
@@ -284,6 +284,7 @@ image {
     color: #fff;
     font-size: 70rpx;
     text-shadow: #32c17d 1rpx 5rpx;
+    font-family: 'DIN Next LT Pro'
 }
 
 .step {
@@ -308,6 +309,7 @@ image {
     left: 280rpx;
     color: #fff;
     font-size: 24rpx;
+    font-family: 'DIN Next LT Pro'
 }
 
 .member-speedup-box {
@@ -352,6 +354,7 @@ image {
     height: 60%;
     color: #333;
     font-size: 40rpx;
+    font-family: 'DIN Next LT Pro';
     display: flex;
     justify-content: center;
     align-items: center
@@ -457,7 +460,9 @@ swiper{
      color: #333;
      font-size: 30rpx
  }
-
+.notice-money{
+ font-family: 'DIN Next LT Pro'
+}
 .swiper-box{
   position: relative;
   width: 100%;
