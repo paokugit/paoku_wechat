@@ -109,16 +109,6 @@
                 </form>
                 
               </block>
-
-                <!-- <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='sportbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='playbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form> -->
             </view>
             <!-- form -->
         </view>
