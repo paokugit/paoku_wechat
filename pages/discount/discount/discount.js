@@ -236,7 +236,7 @@ Page({
     notget: function() {
         wx.showModal({
             title: '提示',
-            content: '该贡献值未开启',
+            content: '该贡献机未开启',
         })
     },
     show_num(n) {
