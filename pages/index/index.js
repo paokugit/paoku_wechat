@@ -520,21 +520,6 @@ Page((e = {
             }
 
         });
-        // 引入字体
-        // wx.loadFontFace({
-        //     family: 'DIN Next LT Pro',
-        //     source: 'url("https://paokucoin.com/font/DINNextLTPro-Bold.woff")',
-        //     success:function(res){
-        //         console.log(res)
-        //     },
-        //     fail:function(res){
-        //         console.log(res)
-        //     },
-        //     complete:function(res){
-        //         console.log("加载字体")
-        //         console.log(res)
-        //     }
-        // });
         s.get("userinfo", {}, function(e) {
             if (e.status == 1) {
                 t.setData({
