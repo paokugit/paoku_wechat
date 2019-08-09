@@ -22,7 +22,7 @@ image{
 }
 .balance-header-top{
     width: 100%;
-    height: 60%;
+    height: 60%; 
     position: absolute;
     top: 0rpx;
     left: 0rpx;
@@ -90,9 +90,6 @@ image{
 /* footer */
 .balance-foot, .form-foot{
     width: 93%;
-    position: absolute;
-    top: 30%;
-    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
