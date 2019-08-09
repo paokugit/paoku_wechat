@@ -97,6 +97,12 @@ image{
     padding-top: 24rpx;
     margin-left: 3%;
 }
+
+.form-foot{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .footerForm{
     width: 330rpx;
     height: 240rpx;
