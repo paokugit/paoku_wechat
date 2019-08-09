@@ -1,7 +1,6 @@
 @import "../../__wuBaseWxss__/7.wxss";
 @import "../common/city-picker.wxss";
 @import "../common/r-index.wxss";
-
 page {
     width: 100%;
     height: 100%;

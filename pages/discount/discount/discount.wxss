@@ -90,9 +90,10 @@ image {
 .account-text {
     width: 50rpx;
     height: 60rpx;
+    line-height: 70rpx;
     font-size: 40rpx;
     color: #323232;
-    line-height: 70rpx;
+   
     margin-left: 10rpx;
 }
 
@@ -315,14 +316,14 @@ image {
     width: 70rpx;
     height: 60rpx;
 }
-
 .scroll {
     text-align: center;
+    margin-top: 15rpx
 }
 
 .scroll-wrap {
     display: inline-block;
-     font-family: 'DIN Next LT Pro'
+    font-family: 'DIN Next LT Pro'
 }
 
 .scroll-data {

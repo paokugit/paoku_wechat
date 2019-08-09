@@ -109,16 +109,6 @@
                 </form>
                 
               </block>
-
-                <!-- <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='sportbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='playbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form> -->
             </view>
             <!-- form -->
         </view>
@@ -225,7 +215,7 @@
                 <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
                     <image src='{{ globalimg}}/weizhi.png'></image>
                 </view>
-                <view bindtap='position'>{{city}}{{district}}</view>
+                <!-- <view bindtap='position'>{{city}}{{district}}</view> -->
             </view>
         </view>
         <view class='nearbyshops-box'>
