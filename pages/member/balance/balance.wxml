@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="balanceBox" style='margin-top:{{nvabarData.height}}px'>
     <view class='balance-header'>
-        <image src='{{globalimg}}/yue.png'></image>
+        <image src='{{globalimg}}/yue1.png'></image>
         <view class='balance-header-top'>
             <view class='top-text'>可用余额</view>
             <view class='top-num'>{{credit2}}</view>
