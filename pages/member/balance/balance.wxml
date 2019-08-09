@@ -21,26 +21,29 @@
             </view>
         </view>
     </view>
-    <view class='balance-foot'>
-        <view class='foot-con' >
-            <view class='imgBox'>
-                <image src='{{globalimg}}/tixian.png'></image>
-            </view>
-            <view class='imgCon'>提现</view>
-        </view>
-        <view class='foot-con' >
-            <view class='imgBox'>
-                <image src='{{globalimg}}/mingxi.png'></image>
-            </view>
-            <view class='imgCon'>明细</view>
-        </view>
-    </view>
-    <view class='form-foot'>
-        <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='txBtn'>
-            <button form-type="submit" class='navbtn'></button>
-        </form>
-        <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='mxBtn'>
-            <button form-type="submit" class='navbtn'></button>
-        </form>
+
+    <view style="position: relative;">
+      <view class='balance-foot'>
+          <view class='foot-con' >
+              <view class='imgBox'>
+                  <image src='{{globalimg}}/tixian.png'></image>
+              </view>
+              <view class='imgCon'>提现</view>
+          </view>
+          <view class='foot-con' >
+              <view class='imgBox'>
+                  <image src='{{globalimg}}/mingxi.png'></image>
+              </view>
+              <view class='imgCon'>明细</view>
+          </view>
+      </view>
+      <view class='form-foot'>
+          <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='txBtn'>
+              <button form-type="submit" class='navbtn'></button>
+          </form>
+          <form bindsubmit="form_submit" report-submit='true' class='footerForm' bindtap='mxBtn'>
+              <button form-type="submit" class='navbtn'></button>
+          </form>
+      </view>
     </view>
 </view>
