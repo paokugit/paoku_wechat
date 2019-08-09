@@ -84,24 +84,33 @@
             </view>
 
             <view class='activity-nav'>
-                <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                    <view>
-                        <view class='activity-img'>
-                            <view class='earnings-speed' wx:if="{{index == 0 || index == 1?true:false}}">
-                                <image src='{{ globalimg}}/jiasu.png'></image>
-                            </view>
-                            <image src='{{item.img}}'></image>
-                        </view>
-                        <view class='activity-con'>{{item.title}}</view>
+              <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                <view>
+                  <view class='activity-img'>
+                    
+                    <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
+                      <image src='{{item.icon}}'></image>
                     </view>
-                </block>
+
+                    <image src='{{item.img}}'></image>
+                  </view>
+                  <view class='activity-con'>{{item.title}}</view>
+                </view>
+              </block>
             </view>
             <!-- form -->
             <view class='formNav'>
+              <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                
                 <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
+                  <navigator url="{{item.url}}">
                     <button form-type="submit" class='navBtn'></button>
+                  </navigator>
                 </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
+                
+              </block>
+
+                <!-- <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
                     <button form-type="submit" class='navBtn'></button>
                 </form>
                 <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='sportbtn'>
@@ -109,8 +118,7 @@
                 </form>
                 <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='playbtn'>
                     <button form-type="submit" class='navBtn'></button>
-                </form>
-
+                </form> -->
             </view>
             <!-- form -->
         </view>

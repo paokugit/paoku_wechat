@@ -43,6 +43,9 @@ Page({
     member_css:"none",//赠送加速
     precious_css:"none",//加速宝生效
     imgHoverIndex: '',
+
+    backgroundimg:'',
+    bannerimg:''
   },
   shengji: function() {
     wx.navigateTo({
@@ -109,6 +112,15 @@ Page({
     //   avatarUrl: myUserInfo.avatarUrl
     // })
 
+    s.get("myown.index.opt",{
+      id:2
+    },function(e){
+      console.log(e);
+      i.setData({
+        backgroundimg: e.result.backgroup,
+        bannerimg: e.result.banner
+      })
+    })
   },
 
   /**

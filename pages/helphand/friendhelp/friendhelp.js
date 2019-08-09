@@ -72,7 +72,7 @@ Page({
      */
     onLoad: function (options) {
       userinfo = n.getCache('userinfo');
-        console.log(options)
+      console.log(userinfo)
         a.type > 0 && this.setData({
             type: 1
         }), t.url(a), this.getList();
