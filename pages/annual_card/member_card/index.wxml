@@ -66,6 +66,11 @@
         </navigator>
       </view>
 
+
+      <view wx:if="{{goodsList}}" class="null_hint">
+        <image src="{{globalimg}}/none.png"></image>
+        <view>稍等片刻，甄选好物正在路上，尽快上架哦</view>
+      </view>
     </view>
 
     <view wx:if="{{nowPage=='trailerPage'}}">
@@ -84,7 +89,7 @@
 
       <view class="equities_list">
         <view class="contentTitle">
-          <view class="content_titA" wx:if="{{cardOpen == 0?false : true}}">您已获得 <text style="font-size: 60rpx;color: #e63131;">5</text> 大权益</view>
+          <view class="content_titA" wx:if="{{cardOpen == 0?false : true}}">您已获得 <text style="font-size: 60rpx;color: #e63131;">4</text> 大权益</view>
           <view class="content_titA" wx:if="{{cardOpen == 0?true : false}}">权益已失效</view>
            <view class="content_titB" >更多权益升级中</view>
         </view>
@@ -102,13 +107,6 @@
               <image src="{{globalimg}}/{{cardOpen == 0?'bao@2x.png':'bao-kt@2x.png'}}"></image>
             </view>
             <view class="gift_bagContent">3650元</view>
-          </view>
-
-          <view>
-            <view class="gift_bagImg">
-              <image src="{{globalimg}}/{{cardOpen == 0?'sxf@2x.png':'sxf-kt@2x.png'}}"></image>
-            </view>
-            <view class="gift_bagContent">手续费立减</view>
           </view>
 
           <view>

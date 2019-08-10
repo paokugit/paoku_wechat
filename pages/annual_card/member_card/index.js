@@ -83,6 +83,8 @@ Page({
     a.get("member.level", {
       openid: b.data.useropenid,
     }, function (e) {
+      console.log(e);
+
       levelId = e.result.level.level_id;
       recordId = e.result.level.id;
       levelCode = e.result.level.status;

@@ -248,6 +248,17 @@
   margin-left: 20rpx;
   border-radius: 10rpx;
 }
+.null_hint{
+  text-align: center;
+}
+.null_hint image{
+  width: 200rpx;
+  height: 182rpx;
+}
+.null_hint view{
+  font-size: 24rpx;
+  color: #929292;
+}
 
 .privilege_price_money{
   font-size: 45rpx;

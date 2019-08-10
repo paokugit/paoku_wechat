@@ -313,4 +313,18 @@ Page({
       url: "/pages/index/index"
     });
   },
+
+
+
+  // start: function () {
+  //   var animation = wx.createAnimation({
+  //     duration: 4000,
+  //     timingFunction: 'ease',
+  //     delay: 1000
+  //   });
+  //   animation.width('0rpx').translate(100, -100).opacity(0).step()
+  //   this.setData({
+  //     ani: animation.export()
+  //   })
+  // }
 });

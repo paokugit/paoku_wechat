@@ -34,6 +34,7 @@
       <button form-type="submit" class='phone-btn'></button>
     </form>
   </view>
+
   <!-- 个人收入 -->
   <view class='income-box'>
     <navigator url='/pages/member/balance/balance' class='reward-img'>
@@ -130,7 +131,7 @@
     <!-- 跑库年卡年卡入口 -->
     <navigator class="card_entrance" hover-class="none" url="{{is_open == 1?'/pages/annual_card/member_card/index':'/pages/annual_card/equity/equity'}}">
       <view class="card_entranceImg">
-        <image src="{{globalimg}}/card-circle@2x.png"></image>
+        <image src="{{globalimg}}/card-circle.gif"></image>
       </view>
       <view>
         <view class="card_entranceTit">跑库年卡</view>
@@ -237,6 +238,13 @@
     </view>
   </view>
   
+  <!-- 动画<view>
+    <view class="usermotto" animation="{{ani}}">
+      <text class="user-motto">123</text>
+    </view>
+    <button bindtap='start'>动画</button>
+  </view> -->
+
   <!-- 服务 -->
   <!-- 智能员工 -->
   <!-- <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator> -->

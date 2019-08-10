@@ -2,7 +2,7 @@
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="equity_img">
     <image src="{{globalimg}}/card_01.png"></image>
-    <image src="{{globalimg}}/ncard_02.jpg"></image>
+    <image src="{{globalimg}}/card_02.jpg"></image>
     <image src="{{globalimg}}/card_03.jpg"></image>
     <image src="{{globalimg}}/card_04.jpg"></image>
     <image src="{{globalimg}}/card_05.jpg"></image>
@@ -13,9 +13,6 @@
     <image src="{{globalimg}}/card_10.jpg"></image>
   </view>
   <view class="dredgeColor">
-    <view class="dredgeBtn" bindtap="dredgeBtn">
-      <text decode="{{true}}">现在开通&nbsp;&nbsp;立享豪礼</text>
-      <view class="moneyIcon">￥365</view>
-    </view>
+    <image class="dredgeBtn" bindtap="dredgeBtn" src="{{globalimg}}/buttun-kt.gif"></image>
   </view>
 </view>  
