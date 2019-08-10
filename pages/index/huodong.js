@@ -9,6 +9,7 @@ function t(t, a, e) {
 
 var a, e, i = getApp(), s = i.requirejs("core"), n = i.requirejs("wxParse/wxParse"), o = i.requirejs("biz/diypage"), r = i.requirejs("biz/diyform"), d = i.requirejs("biz/goodspicker"), c = (i.requirejs("foxui"), 
 i.requirejs("jquery"));
+var telphone=""
 Page((e = {
     
     data: (a = {
@@ -138,6 +139,7 @@ Page((e = {
             var t = this;
             o.get(this, "huodong", function (a) {
                 console.log(a)
+                telphone = a.phonenumber
                 t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
             });
         t = t || {};
@@ -421,9 +423,11 @@ Page((e = {
         soundpic: !1
     });
 }), t(e, "phone", function() {
+    console.log(this)
     var t = this.data.phonenumber + "";
     wx.makePhoneCall({
-        phoneNumber: t
+        phoneNumber: telphone
+        // phoneNumber: t
     });
 }), t(e, "cancelclick", function() {
     this.setData({

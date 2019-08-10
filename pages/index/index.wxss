@@ -1,17 +1,12 @@
 @import "../../__wuBaseWxss__/7.wxss";
 @import "../common/city-picker.wxss";
 @import "../common/r-index.wxss";
-
 page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     background: #f8f8f8
 }
-/* image{
-    width: 100%;
-    height: 100%
-} */
 .indexBox {
     width: 100%;
     height: auto;
@@ -82,8 +77,8 @@ button::after {
     height: 60rpx;
 }
 .first-entry{
-    width: 610rpx;
-    height: 840rpx;
+    width: 500rpx;
+    height: 700rpx;
     bottom: 0;
     top:0;
 
@@ -136,6 +131,7 @@ image {
     height: 40rpx;
     line-height: 40rpx;
     color: #fff;
+    font-family: 'DIN Next LT Pro'
 }
 
 .floating {
@@ -277,16 +273,18 @@ image {
 }
 
 .today-step-con {
-    width: 200rpx;
+    width: 250rpx;
     height: 104rpx;
-    line-height: 104rpx;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 140rpx;
     left: 250rpx;
     color: #fff;
     font-size: 70rpx;
     text-shadow: #32c17d 1rpx 5rpx;
+    font-family: 'DIN Next LT Pro'
 }
 
 .step {
@@ -311,6 +309,7 @@ image {
     left: 280rpx;
     color: #fff;
     font-size: 24rpx;
+    font-family: 'DIN Next LT Pro'
 }
 
 .member-speedup-box {
@@ -355,6 +354,7 @@ image {
     height: 60%;
     color: #333;
     font-size: 40rpx;
+    font-family: 'DIN Next LT Pro';
     display: flex;
     justify-content: center;
     align-items: center
@@ -460,7 +460,9 @@ swiper{
      color: #333;
      font-size: 30rpx
  }
-
+.notice-money{
+ font-family: 'DIN Next LT Pro'
+}
 .swiper-box{
   position: relative;
   width: 100%;
@@ -1057,4 +1059,13 @@ text-overflow:ellipsis;
     right: 5%;
     width: 50rpx;
     height: 50rpx;
+}
+.first-entry-close{
+    width: 100%;
+    height: 100rpx;
+    position: absolute;
+    bottom: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }

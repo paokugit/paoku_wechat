@@ -3,7 +3,7 @@
     <view class='contribute-top'>
         <image src='{{globalimg}}/gx-bg@2x.png'></image>
         <view class='open-state'  wx:if="{{bind==0}}">暂未开通</view>
-        <view class='open-state'  wx:if="{{bind==1}}">{{credit4}}</view>
+        <view class='open-state state-num'  wx:if="{{bind==1}}">{{credit4}}</view>
         <view class='update'>实时更新</view>
     </view>
     <view class='change-record-box'>

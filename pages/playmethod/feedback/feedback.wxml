@@ -2,7 +2,7 @@
 <view class='feedback-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='problem-desc'>
         <view class='pro-text'>请描述具体问题</view>
-        <textarea placeholder='订单问题、奖励问题、好友数量等'></textarea>
+        <textarea placeholder='订单问题、奖励问题、好友数量等' bindinput='inputchange' value='{{inputtext}}'></textarea>
     </view>
     <view class='feedback-time'>
         <view class='fault-time'>故障时间</view>
@@ -18,7 +18,7 @@
         <view class='printscreen-box'>
             <view class="fui-cell" style='display:flex;flex-wrap:wrap'>
                 <view class="fui-images fui-images-sm" style=' display:flex;flex-wrap:wrap'>
-                    <block wx:for="{{imgs}}">
+                    <block wx:for="{{imgs}}" wx:key="{{index}}">
                         <image catchtap="upload" style='width:200rpx;height:200rpx;margin-right:20rpx' class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}">
                             <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
                                             <text class="icox icox-close"></text>
@@ -33,7 +33,9 @@
     <!-- 联系方式 -->
     <view class='contact-box'>
         <view class='contact-text'>联系方式（选填，便于我们与你联系）</view>
-        <input class='phoneipt' maxlength='11' placeholder='请输入手机号码'></input>
+        <input class='phoneipt' maxlength='11' placeholder='请输入手机号码' bindinput='phonechange'></input>
     </view>
-    <view class='submit-box'><button class='submit-btn'>提交</button></view>
+    <view class='submit-box' bindtap='submitbtn'>
+        <button class='submit-btn'>提交</button>
+    </view>
 </view>

@@ -18,9 +18,8 @@ Page({
     globalimg: i.globalData.appimg,
     // 组件所需的参数
     nvabarData: {
-      showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '达人中心', //导航栏 中间的标题
-      // 此页面 页面内容距最顶部的距离
+      showCapsule: 0, 
+      title: '达人中心', 
       height: i.globalData.height * 2 + 20,
     },
     color: 'green',
@@ -41,45 +40,12 @@ Page({
     give_day: "",
     accelerate_day: "",
     levelinfo: '',
-
     member_css:"none",//赠送加速
     precious_css:"none",//加速宝生效
-
-    imglist: [{
-        imgurl: '/icon1/sport-n.png',
-        hoverurl: '/icon1/sport-s.png'
-      },
-      {
-        imgurl: '/icon1/home-n.png',
-        hoverurl: '/icon1/home-s.png'
-      },
-      {
-        imgurl: '/icon1/shop-n.png',
-        hoverurl: '/icon1/shop-s.png'
-      },
-      {
-        imgurl: '/icon1/huiyuan-n.png',
-        hoverurl: '/icon1/huiyuan-s.png'
-      },
-      {
-        imgurl: '/icon1/user-n.png',
-        hoverurl: '/icon1/user-s.png'
-      },
-    ],
     imgHoverIndex: '',
-    arr01: [{
-        img: 'https://paokucoin.com/img/backgroup/qiandao.png',
-      },
-      // {
-      //     img: 'https://paokucoin.com/img/backgroup/zhuce.png',
-      // },
-      // {
-      //     img: 'https://paokucoin.com/img/backgroup/ziliao.png',
-      // },
-      {
-        img: 'https://paokucoin.com/img/backgroup/sharehaibao.png',
-      },
-    ]
+
+    backgroundimg:'',
+    bannerimg:''
   },
   shengji: function() {
     wx.navigateTo({
@@ -93,19 +59,6 @@ Page({
       url: '../expedite/expedite'
     })
   },
-
-
-  // 邀请好友
-  invite: function() {
-    wx.navigateTo({
-      url: '../../commission/down/index',
-    })
-  },
-  hbshare: function() {
-    wx.navigateTo({
-      url: '/pages/sportdiary/sportdiary/sportdiary',
-    })
-  },
   zlBtn: function() {
     wx.showToast({
       title: '暂未开放',
@@ -114,9 +67,6 @@ Page({
   },
   sportBtn: function(e) {
     console.log(e)
-    // this.setData({
-    //     imgHoverIndex: e.currentTarget.dataset.index
-    // })
     wx.switchTab({
       url: '../../index/index',
     })
@@ -141,7 +91,6 @@ Page({
    */
   onLoad: function(options) {
     var i = this
-    // let open = wx.getStorageSync('openid')
     s.get("member", {
       openid: userinfo.openid
     }, function(e) {
@@ -157,49 +106,21 @@ Page({
         levelinfo: e.levelinfo
       })
     })
-    let myUserInfo = wx.getStorageSync('myUserInfo');
-    this.setData({
-      nickName: myUserInfo.nickName,
-      avatarUrl: myUserInfo.avatarUrl
-    })
-    var ttt = this
-    s.get("myown/index/accelerate", {
-      openid: userinfo.openid
-    }, function(eve) {
-      console.log(eve)
-      if (eve.message.surplus_day == 0) {
-        ttt.setData({
-          speeding: 'none',
-          speeddone: 'block'
+    // let myUserInfo = wx.getStorageSync('myUserInfo');
+    // this.setData({
+    //   nickName: myUserInfo.nickName,
+    //   avatarUrl: myUserInfo.avatarUrl
+    // })
 
- 
-        })
-      } else {
-        ttt.setData({
-          speeding: 'block',
-          speeddone: 'none' 
-        }) 
-      }
-      if (eve.message.type == 0){
-        ttt.setData({
-          member_css: "block",
-          precious_css: "none"
-        })
-      } else if (eve.message.type == 1){
-        ttt.setData({
-          member_css: "none",
-          precious_css: "block"
-        })
-      }
-      ttt.setData({
-        credit: eve.message.credit,
-        surplus_day: eve.message.surplus_day,
-        give_day: eve.message.give_day,
-        accelerate_day: eve.message.accelerate_day,
-        addspead: (eve.message.accelerate_day) / (eve.message.accelerate_day + eve.message.surplus_day) * 100
+    s.get("myown.index.opt",{
+      id:2
+    },function(e){
+      console.log(e);
+      i.setData({
+        backgroundimg: e.result.backgroup,
+        bannerimg: e.result.banner
       })
     })
-
   },
 
   /**
@@ -213,7 +134,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+      var ttt = this
+      s.get("myown/index/accelerate", {
+          openid: userinfo.openid
+      }, function (eve) {
+          console.log(eve)
+          if (eve.message.surplus_day == 0) {
+              ttt.setData({
+                  speeding: 'none',
+                  speeddone: 'block'
+              })
+          } else {
+              ttt.setData({
+                  speeding: 'block',
+                  speeddone: 'none'
+              })
+          }
+          if (eve.message.type == 0) {
+              ttt.setData({
+                  member_css: "block",
+                  precious_css: "none"
+              })
+          } else if (eve.message.type == 1) {
+              ttt.setData({
+                  member_css: "none",
+                  precious_css: "block"
+              })
+          }
+          ttt.setData({
+              credit: eve.message.credit,
+              surplus_day: eve.message.surplus_day,
+              give_day: eve.message.give_day,
+              accelerate_day: eve.message.accelerate_day,
+              addspead: (eve.message.accelerate_day) / (eve.message.accelerate_day + eve.message.surplus_day) * 100
+          })
+      })
   },
 
   /**
@@ -234,7 +189,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+      wx.showToast({
+          icon: 'loading',
+          title:'加载中'
+      })
+      wx.stopPullDownRefresh();
   },
 
   /**

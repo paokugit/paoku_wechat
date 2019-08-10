@@ -9,7 +9,7 @@
             <view class="inner">
                 <view class="title">用户未授权</view>
                 <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
+                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
                 </view>
                 <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
                 <view class="model-btns">
@@ -154,8 +154,8 @@
                     <view class="center">
                         <view class="empty">
                             <image class="light" src="{{globalimg}}/nogoods.png"></image>
-                            <view class="text-cancel">您的购物车中没有商品哦！</view>
-                            <navigator class="btn btn-danger-o" openType="switchTab" url="/pages/index/huodong">去首页逛逛吧</navigator>
+                            <view class="text-cancel">购物车空荡荡哦~</view>
+                            <navigator class="cssBtn" openType="switchTab" url="/pages/index/huodong">去首页逛逛吧</navigator>
                         </view>
                     </view>
                 </block>

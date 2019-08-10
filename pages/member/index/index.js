@@ -8,6 +8,7 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 var formid = ''
 var navigaterurl = ''
+
 var bindcount = ''
 // var conbind=''
 
@@ -48,7 +49,7 @@ Page({
     textList: [{
       txt: '领1年产品'
     }, {
-      txt: '享五大权益'
+      txt: '享四大权益'
     }, {
       txt: '专享特权'
     }],

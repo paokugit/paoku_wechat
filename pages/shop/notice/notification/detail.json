@@ -1,3 +1,6 @@
 {
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
   "navigationBarTitleText": "消息详情"
 }

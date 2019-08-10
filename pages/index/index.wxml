@@ -1,9 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
 <view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
     <view class="index-banner-box">
-        <!-- banner背景图 -->
-        <image src='{{ globalimg}}/indexbanner.png'></image>
-        <!-- 卡路里余额 -开始-->
+        <image src='{{ backgroundimg}}'></image>
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view class='kll'>
@@ -14,11 +12,9 @@
                 </view>
             </button>
         </form>
-        <!-- 卡路里余额-结束 -->
-        <!-- 点击签到之后的气泡 -->
         <view class="heard-tag absolute">
             <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
-                <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;">
+                <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;font-family: 'DIN Next LT Pro'">
                     <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
                     <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
                     <text class='ex-text' wx:if="{{item.type==1}}">好友捐赠</text>
@@ -26,8 +22,6 @@
                 </button>
             </form>
         </view>
-        <!-- 气泡部分 -->
-        <!-- 跳转的气泡-开始 -->
         <form bindsubmit='form_submit' report-submit='true' class='circle stepExchange floating' catchtap='inviteBtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{circleDis}}'>
@@ -48,7 +42,6 @@
                 </view>
             </button>
         </form>
-        <!-- 跳转的气泡-结束 -->
         <!-- 绑定手机号的气泡 -->
         <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
@@ -61,7 +54,7 @@
             </button>
         </form>
         <!-- 绑定手机号的气泡 -->
-         <!-- 礼品的气泡 -->
+        <!-- 礼品的气泡 -->
         <!-- <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{giftDis}}'>
@@ -75,10 +68,9 @@
         <!-- 礼品的气泡 -->
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
-        <view class='step'>步</view>
+        <!-- <view class='step'>步</view> -->
         <view class='friend-help'>好友捐赠{{helpstep}}步</view>
     </view>
-    <!-- 9.9体验会员加速, 好友捐赠等部分-开始 -->
     <view class='member-speedup-box'>
         <view class='member-relative'>
             <view class='member-speedup-box-top' bindtap='hybtn'>
@@ -91,56 +83,32 @@
                 </view>
             </view>
 
-            <!-- 好友捐赠，幸运抽奖，运动日记，玩法说明-开始 -->
             <view class='activity-nav'>
-                <view class='activity activity-nav-friend'>
-                    <view class='activity-img'>
-                        <!-- 加速收益 -->
-                        <view class='earnings-speed'>
-                            <image src='{{ globalimg}}/jiasu.png'></image>
-                        </view>
-                        <image src='{{ globalimg}}/01.png'></image>
+              <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                <view>
+                  <view class='activity-img'>
+                    
+                    <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
+                      <image src='{{item.icon}}'></image>
                     </view>
-                    <view class='activity-con'>好友捐赠</view>
+
+                    <image src='{{item.img}}'></image>
+                  </view>
+                  <view class='activity-con'>{{item.title}}</view>
                 </view>
-                <view class='activity activity-nav-draw'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/02.png'></image>
-                        <!-- 千元大奖 -->
-                        <view class='earnings-speed'>
-                            <image src='{{ globalimg}}/qianyuan.png'></image>
-                        </view>
-                    </view>
-                    <view class='activity-con'>幸运抽奖</view>
-                </view>
-                <view class='activity activity-navfriend-diary'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/03.png'></image>
-                    </view>
-                    <view class='activity-con'>运动日记</view>
-                </view>
-                <view class='activity activity-navfriend-play-method'>
-                    <view class='activity-img'>
-                        <image src='{{ globalimg}}/04.png'></image>
-                    </view>
-                    <view class='activity-con'>新手攻略</view>
-                </view>
+              </block>
             </view>
             <!-- form -->
             <view class='formNav'>
+              <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                
                 <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
+                  <navigator url="{{item.url}}">
                     <button form-type="submit" class='navBtn'></button>
+                  </navigator>
                 </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='drawbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='sportbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='playbtn'>
-                    <button form-type="submit" class='navBtn'></button>
-                </form>
-
+                
+              </block>
             </view>
             <!-- form -->
         </view>
@@ -150,7 +118,6 @@
         <view class='notice-img'>
             <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
         </view>
-        <!-- 轮播 -->
         <view class='swiper-box'>
             <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
                 <block wx:for="{{noticelist}}" wx:key="{{index}}">
@@ -163,7 +130,6 @@
                 </block>
             </swiper>
         </view>
-        <!-- 轮播 -->
     </view>
     <view class='store-service'>
         <view class='store-service-title flex_center'>
@@ -191,7 +157,6 @@
 
                 <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img '>
                     <image class='storeImg' mode="aspectFit" src='{{merchInfo.logo}}'></image>
-                    <!-- bindload="imagesHeight"  mode="widthFix" -->
                 </navigator>
                 <view class='store-details-box'>
                     <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='storename'>{{merchInfo.merchname}}</navigator>
@@ -240,35 +205,21 @@
 
                 </view>
             </view>
-            <!-- <view class='formBox'>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm' bindtap='godetail'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-                <form bindsubmit="form_submit" report-submit='true' class='freeForm'>
-                <button form-type="submit" class='freeBtn'></button>
-                </form>
-        </view> -->
         </view>
     </view>
     <view class='conbox' style='display:{{condisp}}'>
         <!-- 附近商家-开始 -->
         <view class='nearby-shops-titlebox'>
             <view class='nearbyshops-title flex_center'>附近商家</view>
-            <!-- 位置 -->
             <view class='nearbyshops-location'>
                 <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
                     <image src='{{ globalimg}}/weizhi.png'></image>
                 </view>
-                <view bindtap='position'>{{city}}{{district}}</view>
+                <!-- <view bindtap='position'>{{city}}{{district}}</view> -->
             </view>
-
         </view>
         <view class='nearbyshops-box'>
             <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
-                <!-- 商家电话 -->
                 <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
                     <view class='callphone-img'>
                         <image src='{{ globalimg}}/callphone.png'></image>
@@ -301,7 +252,6 @@
                 </view>
             </view>
         </view>
-        <!-- 查看更多商家-开始 -->
         <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
             <button form-type="submit" class='moreBtn'>
                 <view class='readmore-shops-box flex_center'>
@@ -312,7 +262,6 @@
                 </view>
             </button>
         </form>
-        <!-- 查看更多商家-结束 -->
         <view class='advertise-space'>
             <image src='{{ globalimg}}/advertise.png'></image>
         </view>
@@ -320,7 +269,6 @@
     <!-- 超值兑换部分-开始 -->
     <view class='pro-exchange-box flex_center'>
         <view class='pro-exchange-box-con'>
-            <!-- title-开始 -->
             <view class='pro-exchange-tit-box'>
                 <view class='pro-exchange-tit'>超值兑换</view>
                 <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
@@ -334,14 +282,12 @@
                         </view>
                     </navigator>
                     <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-                    <!-- 包邮 -->
                     <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
                         <view class='postage-free'>包邮</view>
                     </view>
                     <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
                         <view class='postage-free'>包邮</view>
                     </view>
-                    <!-- 包邮 -->
                     <view class='ex-procalorie-box'>
                         <!-- 显示卡路里加价格 -->
                         <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
@@ -380,23 +326,21 @@
                     <image src='{{ globalimg}}/chakangengduo.png'></image>
                 </view>
             </view>
-            <!-- 查看更多商品-结束 -->
         </view>
     </view>
 </view>
-<!-- 超值兑换部分-结束 -->
 <!-- 回到顶部 -->
-    <view class='goTop'  bindtap="goTop" style='display:{{topdisp}}'>
-        <image src='{{globalimg}}/huidaodingbu.png' ></image>
-    </view>
+<view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>
+    <image src='{{globalimg}}/huidaodingbu.png'></image>
+</view>
 <!-- 首次进入弹窗 -->
 <view class='mask' style='display:{{indexdisp}}'>
     <view class='first-entry-box position_absolute'>
-        <view bindtap='pull' class='first-entry-img'>
-            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
-        </view>
         <view class='first-entry position_absolute'>
-            <image src='{{ globalimg}}/firstentry.png'></image>
+            <image src='{{ globalimg}}/jiangli.png'></image>
+        </view>
+        <view class='first-entry-close' bindtap='firstclosebtn'>
+            <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>
         </view>
         <view class='pullBtn position_absolute' bindtap='pull'></view>
     </view>
@@ -423,7 +367,7 @@
             <view class="inner">
                 <view class="title">用户未授权</view>
                 <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
+                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
                 </view>
                 <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
                 <view class="model-btns">
@@ -440,7 +384,7 @@
             <view class="inner">
                 <view class="title">用户未授权</view>
                 <view class="image">
-                    <image src="/static/images/shouquan.png"></image>
+                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
                 </view>
                 <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
                 <view class="model-btns">

@@ -1,5 +1,4 @@
 {
-
     "pages": [
         "pages/member/index/index",
 
@@ -8,25 +7,32 @@
         "pages/annual_card/equity/equity",
        
         "pages/index/index",
-        "pages/discount/zkbcode/zkbcode",
-        "pages/discount/merchwithdraw/merchwithdraw",
-        "pages/discount/merchaccount/merchaccount",
+        "pages/playmethod/playmethod/playmethod",
+        "pages/playmethod/hotdetail/hotdetail",
+        "pages/playmethod/helpdetail/helpdetail",
+        "pages/playmethod/feedback/feedback",
         "pages/discount/discount/discount",
-        "pages/helphand/friendhelp/friendhelp",
         "pages/gift/gift",
         "pages/gift/record",
+        "pages/discount/zkbcode/zkbcode",
+        "pages/discount/merchwithdraw/merchwithdraw",
+        "pages/helphand/friendhelp/friendhelp",
         "pages/personalcode/account",
+        "pages/discount/merchaccount/merchaccount",
         "pages/personalcode/withdrawrecord",
         "pages/personalcode/code",
         "pages/personalcode/discountlist",
         "pages/personalcode/setdiscount",
         "pages/personalcode/scancode",
         "pages/discount/merchcode/merchcode",
-        "pages/playmethod/feedback/feedback",
-        "pages/playmethod/playmethod/playmethod",
         "pages/index/huodong",
         "pages/helphand/helpshare/helpshare",
+
         "pages/commission/down/index",
+        "pages/commission/down/search",
+
+        "pages/huiyuan/membercenter/membercenter",
+
         "pages/shop/notice/notification/notification",
         "pages/shop/notice/notification/detail",
         "pages/lottery/lottery/lottery",
@@ -71,7 +77,7 @@
         "pages/member/detail/detail",
         "pages/custom/index",
         "pages/order/express/index",
-        "pages/commission/apply/index",    
+        "pages/commission/apply/index",
         "pages/commission/order/index",
         "pages/commission/register/index",
         "pages/shop/notice/index/index",
@@ -115,7 +121,7 @@
         "pages/order/pay/sharecoupon/index",
         "pages/order/cycle/index",
         "pages/order/cycle/address",
-        "pages/changce/merch/apply",     
+        "pages/changce/merch/apply",
         "pages/changce/merch/detail",
         "pages/order/express/number",
         "pages/changce/merch/intro",

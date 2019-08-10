@@ -22,7 +22,7 @@
     width: 140rpx;
     height: 60rpx;
     position: absolute;
-    top: 0;
+    top: 25rpx;
     left: 0;
 }
 

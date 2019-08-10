@@ -1,0 +1,132 @@
+.fandetails_all {
+  background: #fff;
+  height:100%;
+}
+
+.header_search {
+  display: flex;
+  align-items: center; 
+  position: relative;
+}
+
+.header_search image {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 8%;
+  top: 30%;
+}
+
+.header_search input {
+  width: 64%;
+  margin: 0 15rpx 0 30rpx;
+  padding-left: 80rpx;
+  background: rgb(248, 248, 248);
+}
+
+.header_search view {
+  width: 110rpx;
+  text-align: center;
+  line-height: 88rpx;
+  background: #01d7a1;
+  color: #fff;
+}
+
+.header_css {
+  height: 88rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+.inquire_empty {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.inquire_empty image {
+  width: 130rpx;
+  height: 132rpx;
+  margin-bottom: 25rpx;
+}
+
+.inquire_empty view {
+  color: #9a9a9a;
+  font-size: 28rpx;
+}
+
+.list_tier{background: #fff;}
+.list_result {
+  font-size: 30rpx;
+  color: #9a9a9a;
+  margin: 60rpx 0;
+  text-align: center;
+}
+
+.friend_tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 30rpx 40rpx 30rpx 0;
+  border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+.list_left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fui-list-media {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.name_vip {
+  display: flex;
+  align-items: center;
+}
+
+.friend-nickname {
+  width: 65px;
+  height: 40rpx;
+  line-height: 40rpx;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.img_box {
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: top;
+  margin: 0 10rpx;
+}
+
+.friend_vip {
+  color: #9a9a9a;
+  font-size: 24rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.recommend {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.recommend_name {
+  width: 65px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  color: #9a9a9a;
+  margin-top: 10rpx;
+}

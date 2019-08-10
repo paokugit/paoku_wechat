@@ -8,6 +8,9 @@ var useropenid = ''
 var errormessgae = ""
 var formid = ""
 var invitedid = ''
+var agentid = ""
+// 被助力人的openid
+var bopenid = ""
 Page({
 
     /**
@@ -31,7 +34,9 @@ Page({
         primarylist: [],
         middlelist: [],
         highlist: [],
-        friendavatar:'',
+        friendavatar: '',
+        agent_level: '',
+        is_get: '',
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -39,16 +44,26 @@ Page({
             height: i.globalData.height * 2 + 20,
         },
     },
+    getbtn: function() {
+        this.setData({
+            explainDis: 'block'
+        })
+    },
     explainbtn: function() {
         this.setData({
             explainDis: 'none'
+        })
+    },
+    participantbtn:function(){
+        this.setData({
+            helpDis: 'none'
         })
     },
     form_submit: function(e) {
         console.log(e.detail.formId);
         formid = e.detail.formId
         s.get("message/collect", {
-            openid: userinfo.openid,
+            openid: useropenid,
             formid: formid
         }, function(event) {
             console.log(event)
@@ -66,44 +81,38 @@ Page({
         var tt = this
         if (a.invitedid != undefined && a.invitedid != "") {
             console.log('通过分享进入')
+            bopenid = a.invitedid
             tt.setData({
-                // helpDis:'block',
-                friendavatar: userinfo.avatarUrl
+                helpDis: 'block',
+                // friendavatar: userinfo.avatarUrl
             })
         } else {
             console.log('非')
-            // tt.setData({
-            //     helpDis: 'none'
-            // })
+            bopenid = useropenid
+            tt.setData({
+                helpDis: 'none'
+            })
         }
-       
-        this.getList();
     },
-    onPullDownRefresh: function() {
-        wx.stopPullDownRefresh();
-    },
-    onReachBottom: function() {
-        this.data.loaded || this.data.list.length == this.data.total || this.getList();
-    },
-    getList: function() {
-        var t = this;
-        t.setData({
-            loading: !0
-        }), s.get("myown/devote/dovate_log", {
+    getgiftbtn: function(event) {
+        console.log(event)
+        s.get("game/index/getgift", {
             openid: useropenid,
-            page: t.data.page,
-        }, function(a) {
-
-            var e = {
-                loading: !1,
-                show: !0,
-                list: a.message.list
-            };
-            a.message.list || (a.message.list = []), a.message.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.message.list),
-                a.message.list.length < a.message.pagesize && (e.loaded = !0)), t.setData(e);
-        });
+        }, function(e) {
+            console.log(e)
+            if (e.status == 0) {
+                errormessgae = e.result.message
+                wx.showModal({
+                    title: '提示',
+                    content: errormessgae,
+                })
+            } else if (e.status == 1) {
+                wx.navigateTo({
+                    url: '/pages/goods/detail/index?id=' + event.currentTarget.dataset.id,
+                })
+            }
+        })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -115,13 +124,19 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        console.log('bopenid')
+        console.log(bopenid)
         var t = this
         s.get("game/index/free", {
-            openid: useropenid
+            help_openid: bopenid
         }, function(e) {
             console.log(e)
+            agentid = e.result.agent_level
             if (e.status == 1) {
                 t.setData({
+                    friendavatar: e.result.avatar,
+                    agent_level: e.result.agent_level,
+                    is_get: e.result.is_get,
                     goal: e.result.all,
                     help_count: e.result.help_count,
                     remain: e.result.remain,
@@ -141,22 +156,19 @@ Page({
                     content: errormessgae,
                 })
             }
-
-        });
-
-        s.get("game/index/getgift", {
-            openid: useropenid
-        }, function(e) {
-            console.log(e)
-            // if (e.status == 1) {
-
-            // } else {
-            //     errormessgae = e.result.message
-            //     wx.showModal({
-            //         title: '提示',
-            //         content: errormessgae,
-            //     })
-            // }
+            if (agentid == 5) {
+                t.setData({
+                    type: 3
+                })
+            } else if (agentid == 2) {
+                t.setData({
+                    type: 2
+                })
+            } else if (agentid == 1 || agentid == 0) {
+                t.setData({
+                    type: 1
+                })
+            }
 
         });
     },
@@ -203,6 +215,6 @@ Page({
             page: 1,
             list: [],
             loading: !0
-        }), e.getList();
+        });
     }
 })

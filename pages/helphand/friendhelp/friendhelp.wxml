@@ -1,17 +1,13 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#29c8bc" frontColor="#fff"></nav-bar>
 <view class='conBox' style='margin-top:{{nvabarData.height}}px'>
-<!-- 好友捐赠outerbox-开始 -->
 <view class='outerBox'>
     <view class='helplist help_center' >
         <view>捐赠榜</view>
     </view>
-
     <form bindsubmit='form_submit' report-submit='true' class='listform' bindtap='myList'>
             <button form-type='submit' style="background:rgba(0,0,0,0)" class='listbtn'></button>
     </form>
-
     <view class='bannerbox'><image src='{{globalimg}}/friendbanner.png'></image></view>
-     <!-- 邀请好友赚钱花-开始 -->
     <form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
         <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
             <view class='invite-friend-box help_center'>
@@ -21,19 +17,15 @@
             </view>
         </button>
     </form>
-    <!-- 邀请好友赚钱花-结束 -->
-    <!-- 好友捐赠记录(暂无数据情况)-开始 -->
     <view class='help-record-box' style='display:{{notadaDis}}'>
         <view class='help-record-con'>
         <view class='help-record'>
-        <!-- 好友捐赠记录 -->
             <view class='recordCon'>
                 <image src='{{globalimg}}/biaoti02.png'></image>
             </view>
             <view class='distance-goal help_center'>距离今日目标还差
             <view class='distance-goal-num'>{{result.step}}</view>步
             </view>
-            <!-- 还没有好友 -->
             <view class='nodata-box'>
                 <view class='nodata-img'>
                     <image src='{{globalimg}}/nodata02.png'></image>
@@ -41,18 +33,12 @@
                 <view class='nodata-con help_center'>还没有好友呢，快去邀请吧!</view>
             
             </view>
-            <!-- 还没有好友-结束 -->
-                <!-- 举个例子-开始 -->
                 <view class='example-box'>
                 <view class='doubt'><image src='{{globalimg}}/about@2x.png'></image></view>
                     <image src='{{globalimg}}/lizi02.png'></image>
                 </view>
-                <!-- 举个例子-结束 -->
-                <!-- 累计邀请xx人-开始 -->
                 <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:<view class='invite-num'>{{creditsum}}</view>卡路里
                 </view>
-                <!-- 累计邀请xx人-结束 -->
-                <!-- 约等于xx元 -->
                 <view class='symbol-box help_center'>≈
                     <view class='value-kaluli'>{{creditprice}}</view>元
                 </view>
@@ -60,27 +46,19 @@
         </view>
            
     </view>
-    <!-- 好友捐赠记录（暂无数据情况）-结束 -->
-    <!-- 好友捐赠记录（显示好友捐赠列表）-开始 -->
     <view style='display:{{listDis}}' class='help-record-listBox'>
     <view class='help-record-listCon'>
         <view class='help-record-list'>
-        <!-- 好友捐赠记录 -->
             <view class='recordCon'>
                 <image src='{{globalimg}}/biaoti02.png'></image>
             </view>
-            <!-- 今日目标未完成-开始 -->
            <view class='goal-today-box' style='display:{{goalDis}}'>
                 <view class='goal-today-con'>
-             <!-- 距离今日目标还差xx步-开始 -->
             <view class='distance-goal help_center'>距离今日目标还差
             <view class='distance-goal-num help_center'>{{result.step}}</view>步
             </view>
-            <!-- 距离今日目标还差xx步-结束 -->
             </view>
            </view>
-           <!-- 今日目标未完成-结束 -->
-           <!-- 今日目标已完成-开始 -->
            <view class='finish-today-box' style='display:{{finishDis}}'>
             <view class='finish-today-con'>
                 <view class='finish-today-text help_center'>恭喜你，今日目标已完成</view>
@@ -88,56 +66,35 @@
                 <view class='finish-img'><image src='{{globalimg}}/finish.png'></image></view>
             </view>
            </view>
-           <!-- 今日目标已完成-结束 -->
-            <!-- 捐赠列表-开始 -->
             <view class='helpList'>
                 <view class='listCon' wx:for='{{helpList}}' wx:key='{{index}}' >
-                    <!-- 头像 -->
                     <view class='friend-icon'><image class='friend-img' src='{{item.avatar}}'></image></view>
-                    <!-- 捐赠信息 -->
                     <view class='help-info'>
-                        <!-- 名字 -->
                         <view class='friend-name'>{{item.nickname}}</view>
-                        <!-- 捐赠时间 -->
                     <view class='friend-time'>{{item.day}}</view>
                     </view>
-                    <!-- +2000步 -->
                     <view class='helpNum help_center'>{{item.step}}步</view>
                 </view>
             </view>
-            <!-- 捐赠列表-结束 -->
-            <!-- 举个例子-开始 -->
-            <!-- 举个例子-开始 -->
                 <view class='example-box'>
                 <view class='doubt'><image src='{{globalimg}}/about@2x.png'></image></view>
                     <image src='{{globalimg}}/lizi02.png'></image>
                 </view>
-                <!-- 举个例子-结束 -->
-                <!-- 累计邀请xx人-开始 -->
                 <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:<view class='invite-num'>{{creditsum}}</view>卡路里
                 </view>
-                <!-- 累计邀请xx人-结束 -->
-                <!-- 约等于xx元 -->
                 <view class='symbol-box help_center'>≈
                     <view class='value-kaluli'>{{creditprice}}</view>元
                 </view>
-            <!-- 举个例子-结束 -->
         </view>
     </view>
     </view>
-    <!-- 好友捐赠记录（显示好友捐赠列表）-结束 -->
     
 </view>
-<!-- 好友捐赠outerbox-结束 -->
 </view>
-<!-- 点击邀请好友赚钱花之后的遮罩-开始 -->
 <view style='display:{{maskDis}}' class='share-mask-box'>
 <view class='share-con-box'>
- position: absolute;
-    bottom: 0rpx;
     <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
         <view class='share-con-top'>
-        <!-- 微信 -->
         <view  class='weixinBox'> 
             <button class='wxbtn' open-type='share'>
                 <view class='share-weixin'>
@@ -146,7 +103,6 @@
             <view class='tofriend'>分享给朋友</view>
             </button>
       </view>
-        <!-- 海报 -->
         <view class='haibaoBox'>
             <button class='hbbtn' bindtap='createHbao'>
                 <view class='haibao'>

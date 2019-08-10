@@ -28,8 +28,6 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 openid = userinfo.openid
-console.log(openid)
-console.log('000')
 Page((a = {
     data: (e = {
         globalimg: f.globalData.appimg,

@@ -26,6 +26,7 @@
         </view>
       </view>
     </view>
+
     <view class='bind-phone'>奖励+10卡路里</view>
     <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
       <button form-type="submit" class='phone-btn'></button>
@@ -41,19 +42,11 @@
       <image src='{{globalimg}}/bggreen@2x.png'></image>
       <view class='reward-num'>{{member.come_total}}</view>
       <view class='reward-text'>可用余额</view>
-      <!-- <view class='reward-balance-box'>
-                <view class='reward-balance-text'>可用余额</view>
-                <view class='reward-balance-num'>{{member.credit2}}</view>
-            </view> -->
     </navigator>
     <navigator url='/pages/member/log/bushu' class='calorie-img'>
       <image src='{{globalimg}}/bgyellow@2x.png'></image>
       <view class='calorie-num'>{{member.calorie_total}}</view>
       <view class='calorie-text'>可用卡路里</view>
-      <!-- <view class='calorie-balance-box'>
-                <view class='calorie-balance-text'>可用余额</view>
-                <view class='calorie-balance-num'>{{member.credit1}}</view>
-            </view> -->
     </navigator>
   </view>
   <!-- 个人收入 -->
@@ -66,63 +59,63 @@
     </view>
   </view>
 
-  <!-- 订单 -->
-  <view class='order-box'>
-    <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
-      <view class='order-tit'>订单</view>
-      <view class='order-total-box'>
-        <view class='read-totalorder'>查看全部订单</view>
-        <view class='right-img'>
-          <image src='{{globalimg}}/user-right.png'></image>
-        </view>
-      </view>
-    </navigator>
-    <view class='nav-order'>
-      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
-        <view class='fukuan-img service-img'>
-          <block>
-            <block wx:if="{{member.statics.order_0>0}}">
-              <view class="count-img">{{member.statics.order_0}}</view>
-            </block>
-          </block>
-          <image src='{{globalimg}}/daifukuan@2x.png'></image>
-          <!-- <view class='count-img'>2</view> -->
-        </view>
-        <view class='fukuan-text'>待付款</view>
-      </navigator>
-      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
-        <view class='fahuo-img service-img'>
-          <block>
-            <block wx:if="{{member.statics.order_1>0}}">
-              <view class="count-img">{{member.statics.order_1}}</view>
-            </block>
-          </block>
-          <image src='{{globalimg}}/daifahuo@2x.png'></image>
-        </view>
-        <view class='fukuan-text'>待发货</view>
-      </navigator>
-      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
-        <view class='shouhuo-img service-img'>
-          <block>
-            <block wx:if="{{member.statics.order_2>0}}">
-              <view class="count-img">{{member.statics.order_2}}</view>
-            </block>
-          </block>
-          <image src='{{globalimg}}/daishouhuo@2x.png'></image>
-        </view>
-        <view class='fukuan-text'>待收货</view>
-      </navigator>
-      <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
-        <view class='tuihuan-img service-img'>
-          <block>
-            <block wx:if="{{member.statics.order_4>0}}">
-              <view class="count-img">{{member.statics.order_4}}</view>
-            </block>
-          </block>
-          <image src='{{globalimg}}/tuihuanhuo@2x.png'></image>
-        </view>
-        <view class='fukuan-text'>退换货</view>
-      </navigator>
+    <!-- 订单 -->
+    <view class='order-box'>
+        <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
+            <view class='order-tit'>订单</view>
+            <view class='order-total-box'>
+                <view class='read-totalorder'>查看全部订单</view>
+                <view class='right-img'>
+                    <image src='{{globalimg}}/user-right.png'></image>
+                </view>
+            </view>
+        </navigator>
+        <view class='nav-order'>
+            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
+                <view class='fukuan-img service-img'>
+                    <block>
+                        <block wx:if="{{member.statics.order_0>0}}">
+                            <view class="count-img">{{member.statics.order_0}}</view>
+                        </block>
+                    </block>
+                    <image src='{{globalimg}}/daifukuan@2x.png'></image>
+                </view>
+                <view class='fukuan-text'>待付款</view>
+            </navigator>
+            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
+                <view class='fahuo-img service-img'>
+                    <block>
+                        <block wx:if="{{member.statics.order_1>0}}">
+                            <view class="count-img">{{member.statics.order_1}}</view>
+                        </block>
+                    </block>
+                    <image src='{{globalimg}}/daifahuo@2x.png'></image>
+                </view>
+                <view class='fukuan-text'>待发货</view>
+            </navigator>
+            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
+                <view class='shouhuo-img service-img'>
+                    <block>
+                        <block wx:if="{{member.statics.order_2>0}}">
+                            <view class="count-img">{{member.statics.order_2}}</view>
+                        </block>
+                    </block>
+                    <image src='{{globalimg}}/daishouhuo@2x.png'></image>
+                </view>
+                <view class='fukuan-text'>待收货</view>
+            </navigator>
+            <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
+                <view class='tuihuan-img service-img'>
+                    <block>
+                        <block wx:if="{{member.statics.order_4>0}}">
+                            <view class="count-img">{{member.statics.order_4}}</view>
+                        </block>
+                    </block>
+                    <image src='{{globalimg}}/tuihuanhuo@2x.png'></image>
+                </view>
+                <view class='fukuan-text'>退换货</view>
+            </navigator>
+  
     </view>
   </view>
   <!-- 订单 -->

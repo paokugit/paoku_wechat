@@ -9,13 +9,15 @@ page {
     height: 100%;
     position: relative;
 }
-.capacity{
+
+.capacity {
     width: 130rpx;
     height: 130rpx;
     position: fixed;
     bottom: 23%;
-    right: 5%
+    right: 5%;
 }
+
 image {
     width: 100%;
     height: 100%;
@@ -44,7 +46,8 @@ image {
     height: 118rpx;
     border-radius: 50%;
 }
-.avatar-img image{
+
+.avatar-img image {
     border-radius: 50%;
 }
 
@@ -53,7 +56,7 @@ image {
     height: 100rpx;
     display: flex;
     flex-direction: column;
-    justify-content: space-around
+    justify-content: space-around;
 }
 
 .nickname {
@@ -66,14 +69,17 @@ image {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.level-img{
+
+.level-img {
     width: 130rpx;
-    height: 30rpx
+    height: 30rpx;
 }
-.dianzhu-img{
+
+.dianzhu-img {
     width: 86rpx;
-    height: 30rpx
+    height: 30rpx;
 }
+
 .bind-phone, .phone-form {
     width: 240rpx;
     height: 60rpx;
@@ -98,21 +104,24 @@ image {
     height: 60rpx;
     opacity: 0;
 }
-.income-box{
+
+.income-box {
     width: 94%;
     height: 250rpx;
     padding: 0 3%;
     background: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
-.reward-img, .calorie-img{
+
+.reward-img, .calorie-img {
     width: 358rpx;
     height: 212rpx;
-    position: relative
+    position: relative;
 }
-.reward-num, .calorie-num{
+
+.reward-num, .calorie-num {
     width: 280rpx;
     height: 40rpx;
     font-weight: bold;
@@ -120,9 +129,11 @@ image {
     font-size: 40rpx;
     position: absolute;
     top: 25%;
-    left: 10%
+    left: 10%;
+    font-family: 'DIN Next LT Pro';
 }
-.reward-text, .calorie-text{
+
+.reward-text, .calorie-text {
     width: 280rpx;
     height: 40rpx;
     line-height: 40rpx;
@@ -132,7 +143,8 @@ image {
     top: 50%;
     left: 10%;
 }
-.reward-balance-box, .calorie-balance-box{
+
+.reward-balance-box, .calorie-balance-box {
     width: 90%;
     height: 40rpx;
     color: #fff;
@@ -141,143 +153,170 @@ image {
     top: 65%;
     left: 10%;
     display: flex;
-    align-items: center
+    align-items: center;
 }
-.reward-balance-text, .calorie-balance-text{
+
+.reward-balance-text, .calorie-balance-text {
     color: #fff;
     font-size: 28rpx;
 }
-.reward-balance-num, .calorie-balance-num{
+
+.reward-balance-num, .calorie-balance-num {
     color: #fff;
     font-size: 30rpx;
-    margin-left: 15rpx
+    margin-left: 15rpx;
 }
-.contributeBox{
+
+.contributeBox {
     width: 100%;
     height: 110rpx;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.contribute-box{
+
+.contribute-box {
     width: 726rpx;
     height: 88rpx;
     position: relative;
 }
-.contribute-text{
+
+.contribute-text {
     height: 88rpx;
     line-height: 88rpx;
     font-size: 30rpx;
     color: #fff;
     position: absolute;
     left: 13%;
-    top: 0
+    top: 0;
 }
-.contribute-num, .contribute-open{
+
+.contribute-num, .contribute-open {
     width: auto;
     padding-right: 25rpx;
-    /* background: #f00; */
     height: 88rpx;
     line-height: 88rpx;
     font-size: 30rpx;
     color: #fff;
     position: absolute;
     right: 3%;
-    top: 0
+    top: 0;
 }
-.order-box, .service-box{
+
+.contribute-num {
+    font-family: 'DIN Next LT Pro';
+}
+
+.order-box, .service-box {
     width: 94%;
     height: 260rpx;
     padding: 0 3%;
     background: #fff;
 }
-.order-tit-box{
+
+.order-tit-box {
     width: 100%;
     height: 80rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.order-tit{
+
+.order-tit {
     width: 100rpx;
     height: 60rpx;
     font-size: 40rpx;
-    color: #1c1c1c
+    color: #1c1c1c;
 }
-.order-total-box{
+
+.order-total-box {
     width: auto;
     height: 60rpx;
-  display: flex;
-  align-items: center
+    display: flex;
+    align-items: center;
 }
-.read-totalorder{
+
+.read-totalorder {
     color: #888;
     font-size: 24rpx;
 }
-.right-img{
+
+.right-img {
     width: 34rpx;
     height: 34rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 5rpx
+    margin-left: 5rpx;
 }
-.nav-order{
+
+.nav-order {
     width: 92%;
     height: 160rpx;
     padding: 0 4%;
     background: #fff;
     display: flex;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
 }
-.nav-item, .service-item{
+
+.nav-item, .service-item {
     width: 85rpx;
     height: 110rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
 }
-.fukuan-img{
+
+.fukuan-img {
     width: 62rpx;
     height: 62rpx;
 }
-.fahuo-img{
-     width: 58rpx;
+
+.fahuo-img {
+    width: 58rpx;
     height: 58rpx;
 }
-.shouhuo-img{
+
+.shouhuo-img {
     width: 72rpx;
     height: 72rpx;
 }
-.tuihuan-img, .fensi-img, .guanzhu-img, .zuji-img, .dizhi-img{
+
+.tuihuan-img, .fensi-img, .guanzhu-img, .zuji-img, .dizhi-img {
     width: 50rpx;
-    height: 50rpx
+    height: 50rpx;
 }
-.tuijian-img{
-     width: 56rpx;
-    height: 56rpx
+
+.tuijian-img {
+    width: 56rpx;
+    height: 56rpx;
 }
-.youhui-img{
-     width: 60rpx;
-    height: 60rpx
+
+.youhui-img {
+    width: 60rpx;
+    height: 60rpx;
 }
-.lingquan-img{
-     width: 54rpx;
-    height: 54rpx
+
+.lingquan-img {
+    width: 54rpx;
+    height: 54rpx;
 }
-.gouwu-img{
-      width: 52rpx;
-    height: 52rpx
+
+.gouwu-img {
+    width: 52rpx;
+    height: 52rpx;
 }
- .service-img{
-    position: relative
+
+.service-img {
+    position: relative;
 }
-.count-img{
+
+.count-img {
     width: 30rpx;
     height: 30rpx;
-    background: #ff0011;
+    background: #f01;
     border-radius: 50%;
     position: absolute;
     top: -10rpx;
@@ -288,7 +327,8 @@ image {
     align-items: center;
     font-size: 22rpx;
 }
-.fukuan-text, .service-text{
+
+.fukuan-text, .service-text {
     color: #7a7a7a;
     font-size: 26rpx
 }
@@ -359,18 +399,19 @@ swiper{
 .service-box{
     height: 420rpx;
     margin-top: 20rpx;
-
 }
-.nav-service{
+
+.nav-service {
     width: 92%;
     height: 300rpx;
     padding: 0 4%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
 }
-.service-item{
+
+.service-item {
     width: 22%;
     height: 110rpx;
 }
