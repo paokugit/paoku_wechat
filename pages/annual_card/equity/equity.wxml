@@ -4,7 +4,10 @@
     <image src="{{globalimg}}/card_01.png"></image>
     <image src="{{globalimg}}/card_02.jpg"></image>
     <image src="{{globalimg}}/card_03.jpg"></image>
-    <image src="{{globalimg}}/card_04.jpg"></image>
+    <view class="card_04">
+      <image src="{{globalimg}}/card_04.jpg"></image>
+      <navigator url="/pages/goods/detail/index?id={{goodGift}}">查看产品</navigator>
+    </view>
     <image src="{{globalimg}}/card_05.jpg"></image>
     <image src="{{globalimg}}/card_06.jpg"></image>
     <image src="{{globalimg}}/card_07.jpg"></image>

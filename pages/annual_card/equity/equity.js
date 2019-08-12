@@ -1,9 +1,8 @@
-// pages/annual_card/equity/equity.js
 var t = getApp(),
   a = t.requirejs("core");
 var f = getApp(); 
 
-var useropenid = "";//用户openid
+var useropenid = "";
 
 Page({
   data: {
@@ -13,11 +12,20 @@ Page({
       title: '跑库年卡',
       height: t.globalData.height * 2 + 20,
     },
+
+    goodGift:''
   },
 
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
+    var m = this;
+    a.get("member.level.detail",{},function(e){
+      console.log(e);
+      m.setData({
+        goodGift: e.result.goods_id
+      })
+    })
   },
   
   dredgeBtn:function(e){

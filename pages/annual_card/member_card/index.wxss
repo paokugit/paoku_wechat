@@ -20,7 +20,6 @@
 .active{ color: rgb(193, 169, 98);}
 
 .header_outer{
-  width: 100%;
   height: 300rpx;
   background: #e8d3b8;
   position: relative;
@@ -96,8 +95,6 @@
   padding: 60rpx;
   border-radius: 15rpx;
   position: relative;
-  left: 0;
-  top: 0;
   box-shadow: rgb(235, 235, 235) 0 0 30rpx;
 }
 .freeGet{
@@ -213,8 +210,6 @@
   background: #fff;
   border-radius: 10rpx;
   position: relative;
-  left: 0;
-  top: 0;
   margin-bottom: 15rpx;
 }
 .commodity_img{
@@ -250,6 +245,7 @@
 }
 .null_hint{
   text-align: center;
+  padding: 15rpx 0;
 }
 .null_hint image{
   width: 200rpx;

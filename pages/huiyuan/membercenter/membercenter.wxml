@@ -35,7 +35,6 @@
   </view>
   <view class='other-box'>
     <view class='your-rights'>
-      <!-- xph:加速兑换 -->
       <view class='member_centerA'>
         <text class='rights-tit'>您正在享受的专属权益</text>
 

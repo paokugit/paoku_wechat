@@ -67,7 +67,7 @@
       </view>
 
 
-      <view wx:if="{{goodsList}}" class="null_hint">
+      <view wx:if="{{goodsList == ''}}" class="null_hint">
         <image src="{{globalimg}}/none.png"></image>
         <view>稍等片刻，甄选好物正在路上，尽快上架哦</view>
       </view>

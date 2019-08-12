@@ -59,6 +59,8 @@ Page({
     circularA: true,
     is_open: '',
     expire_time: '',
+
+    isShow:false
   },
 
   swiperChange(e) {
@@ -129,6 +131,18 @@ Page({
 
     useropenid = e.getCache("userinfo").openid;
     t.paoku_card();
+
+    p.get("member.level.level_alert", {
+      openid: t.data.useropenid,
+      no_id:1
+    }, function (e) {
+      console.log(e);
+      if(e.status == '1'){
+        t.setData({
+          isShow:true
+        })
+      }
+    })
   },
   paoku_card: function() {
     var t = this;
@@ -315,17 +329,23 @@ Page({
     });
   },
 
+  start: function () {
+    var m = this;
+    var animation = wx.createAnimation({
+      duration: 150,
+      timingFunction: 'linear',
+      delay: 0
+    });
+    animation.translate(-150, 180).width('0rpx').height('0rpx').step();
+    m.setData({
+      ani: animation.export(),
+    });
+    setTimeout(function(){
+      m.setData({
+        isShow:false
+      })
+    },500)
+  }
 
-
-  // start: function () {
-  //   var animation = wx.createAnimation({
-  //     duration: 4000,
-  //     timingFunction: 'ease',
-  //     delay: 1000
-  //   });
-  //   animation.width('0rpx').translate(100, -100).opacity(0).step()
-  //   this.setData({
-  //     ani: animation.export()
-  //   })
-  // }
+ 
 });

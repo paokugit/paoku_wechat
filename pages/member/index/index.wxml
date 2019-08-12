@@ -230,16 +230,21 @@
       </navigator>
     </view>
   </view>
-  
-  <!-- 动画<view>
-    <view class="usermotto" animation="{{ani}}">
-      <text class="user-motto">123</text>
-    </view>
-    <button bindtap='start'>动画</button>
-  </view> -->
 
+
+  <view class="cartoon" wx:if="{{isShow}}">
+    <view class="cartoonimg">
+      <view style="position: relative;">
+        <image class="cartoonImgD" animation="{{ani}}" src="{{globalimg}}/csi@2x.png"></image>
+        <image class="cartoonImgA" animation="{{ani}}" src="{{globalimg}}/yyl@2x.png"></image>
+        <image class="cartoonImgB" animation="{{ani}}" src="{{globalimg}}/buttun-yk@2x.gif"></image>
+      </view>
+      <image class="cartoonImgC" animation="{{ani}}" bindtap='start' src="{{globalimg}}/guanbi.png"></image>
+    </view>
+  </view>
   <!-- 服务 -->
   <!-- 智能员工 -->
   <!-- <navigator class='capacity' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+7}}"><image src='{{globalimg}}/fudong@2x.png'></image></navigator> -->
   <!-- 智能员工 -->
 </view>
+

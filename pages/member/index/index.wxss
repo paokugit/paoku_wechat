@@ -416,9 +416,41 @@ swiper{
     height: 110rpx;
 }
 
-/* 动画.usermotto {
-  width: 120rpx;
-  margin-top: 100px;
-  border: solid;
-  z-index: 1000;
-} */
+.cartoon{
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0,0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+.cartoonimg{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.cartoonImgA{
+  width: 566rpx;
+  height: 702rpx;
+}
+.cartoonImgB{
+  width: 422rpx;
+  height: 84rpx;
+  position: absolute;
+  left: 12%;
+  bottom: 6%;
+}
+.cartoonImgC{
+  width: 54rpx;
+  height: 54rpx; 
+  margin: 60rpx auto 0;
+}
+.cartoonImgD{
+  width: 580rpx;
+  height: 132rpx;
+  position: absolute;
+  left: 0;
+  top: -15%;
+}

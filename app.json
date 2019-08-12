@@ -1,5 +1,7 @@
 {
     "pages": [
+
+      
         "pages/member/index/index",
 
         "pages/annual_card/member_card/index",
