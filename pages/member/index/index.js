@@ -40,7 +40,10 @@ Page({
         conbind: '',
         credit4: '',
         cometotal:"",
-        calorietotal: ""
+        calorietotal: "",
+
+        order:[],
+        server:[]
     },
     swiperChange(e) {
         let current = e.detail.current;
@@ -98,6 +101,14 @@ Page({
         }), i.get(this, "member", function(e) {}), "" == e.getCache("userinfo") && wx.redirectTo({
             url: "/pages/message/auth/index"
         });
+
+      p.get("myown.index.mycenter",{},function(e){
+        console.log(e);
+        t.setData({
+          order:e.result.order,
+          server:e.result.server
+        })
+      })
     },
     getInfo: function() {
         var e = this;

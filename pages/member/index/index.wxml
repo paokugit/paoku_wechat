@@ -70,7 +70,7 @@
                             <view class="count-img">{{member.statics.order_0}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/daifukuan@2x.png'></image>
+                    <image src='{{order.payment}}'></image>
                 </view>
                 <view class='fukuan-text'>待付款</view>
             </navigator>
@@ -81,7 +81,7 @@
                             <view class="count-img">{{member.statics.order_1}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/daifahuo@2x.png'></image>
+                    <image src='{{order.send}}'></image>
                 </view>
                 <view class='fukuan-text'>待发货</view>
             </navigator>
@@ -92,7 +92,7 @@
                             <view class="count-img">{{member.statics.order_2}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/daishouhuo@2x.png'></image>
+                    <image src='{{order.received}}'></image>
                 </view>
                 <view class='fukuan-text'>待收货</view>
             </navigator>
@@ -103,7 +103,7 @@
                             <view class="count-img">{{member.statics.order_4}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/tuihuanhuo@2x.png'></image>
+                    <image src='{{order.evaluated}}'></image>
                 </view>
                 <view class='fukuan-text'>退换货</view>
             </navigator>
@@ -134,14 +134,14 @@
         <view class='nav-service'>
             <navigator class='service-item' url='/pages/commission/down/index'>
                 <view class='fensi-img service-img'>
-                    <image src='{{globalimg}}/fensi@2x.png'></image>
+                    <image src='{{server.fans}}'></image>
                 </view>
                 <view class='service-text'>粉丝</view>
             </navigator>
 
             <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
                 <view class='tuijian-img'>
-                    <image src='{{globalimg}}/tongzhi02.png'></image>
+                    <image src='{{server.recommend}}'></image>
                 </view>
                 <view class='service-text'>通知</view>
             </navigator>
@@ -152,13 +152,13 @@
                             <view class="count-img">{{member.statics.coupon}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/youhuiquan@2x.png'></image>
+                    <image src='{{server.coupon}}'></image>
                 </view>
                 <view class='service-text'>优惠券</view>
             </navigator>
             <navigator url='/pages/sale/coupon/index/index' class='service-item'>
                 <view class='lingquan-img'>
-                    <image src='{{globalimg}}/lingquanzhongxin@2x.png'></image>
+                    <image src='{{server.coupon_center}}'></image>
                 </view>
                 <view class='service-text'>领券中心</view>
             </navigator>
@@ -169,7 +169,7 @@
                             <view class="count-img">{{member.statics.cart}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/gouwuche@2x.png'></image>
+                    <image src='{{server.cart}}'></image>
                 </view>
                 <view class='service-text'>购物车</view>
             </navigator>
@@ -180,19 +180,19 @@
                             <view class="count-img">{{member.statics.favorite}}</view>
                         </block>
                     </block>
-                    <image src='{{globalimg}}/user-guanzhu@2x.png'></image>
+                    <image src='{{server.concern}}'></image>
                 </view>
                 <view class='service-text'>我的关注</view>
             </navigator>
             <navigator url='/pages/member/history/index' class='service-item'>
                 <view class='zuji-img service-img'>
-                    <image src='{{globalimg}}/user-zuji@2x.png'></image>
+                    <image src='{{server.track}}'></image>
                 </view>
                 <view class='service-text'>我的足迹</view>
             </navigator>
             <navigator url='/pages/member/address/index' class='service-item'>
                 <view class='dizhi-img service-img'>
-                    <image src='{{globalimg}}/shouhuodizhi@2x.png'></image>
+                    <image src='{{server.addr}}'></image>
                 </view>
                 <view class='service-text'>收货地址</view>
             </navigator>
