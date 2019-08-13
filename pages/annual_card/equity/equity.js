@@ -21,7 +21,6 @@ Page({
     useropenid = userinfo.openid;
     var m = this;
     a.get("member.level.detail",{},function(e){
-      console.log(e);
       m.setData({
         goodGift: e.result.goods_id
       })
@@ -30,11 +29,16 @@ Page({
   
   dredgeBtn:function(e){
     var t = this;
+    var order = '';
+
     a.get("member.level.order",{
       openid: useropenid,
       money: 0.01,
       level_id: 5,
     },function(e){
+      console.log(e);
+      order = e.result.order_id;
+
       if(e.status == 1){
         wx.requestPayment({
           timeStamp: e.result.timeStamp,
@@ -45,6 +49,14 @@ Page({
           success(res){ 
             wx.navigateTo({
               url: '../member_card/index?useropenid='+useropenid,
+            })
+          },
+          fail(res) {
+            a.get("member.level.cancel", {
+              openid: useropenid,
+              order_id: order
+            }, function (e) {
+              console.log(e);
             })
           }
         })

@@ -129,12 +129,16 @@ Page({
     a.get("member.level", {
       openid: b.data.useropenid,
     }, function (e) {
+      console.log(e);
+      
       levelId = e.result.level.level_id;
       recordId = e.result.level.id;
       levelCode = e.result.level.status;
 
       var timeExpire = e.result.member.expire.substring(0, 11);
+
       var level_month = e.result.level.month;
+
       b.setData({
         nickname: e.result.member.nickname,
         memberTit: e.result.member.is_open == 0 ? '未享受五大权益' : '已享受五大权益',
@@ -143,8 +147,8 @@ Page({
 
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
-        levelMonth: level_month.substring(4, 6) > 9 ? level_month.substring(4, 6) : level_month.substring(5, 6),
-        levelTime: level_month.substring(0, 4) + '年' + level_month.substring(5, 7) + '月20日',
+        levelMonth: level_month.substring(5, 7),
+        levelTime: e.result.level.month,
         levelStatus: levelCode == 0 ? '领取' : levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
@@ -184,6 +188,7 @@ Page({
   cancelBtn:function(e){
     this.setData({
       isShow: false,
+      btnNum:0
     })
   },
 
@@ -208,6 +213,8 @@ Page({
   // 礼包领取地址邮费支付
   site_ok:function(e){
     var m = this;
+    var order = '';
+
     a.get("member.level.get",{
       openid: useropenid,
       level_id: levelId,
@@ -215,6 +222,9 @@ Page({
       record_id: recordId,
       money: m.data.rental
     },function(e){
+      console.log(e);
+      order = e.result.order_id;
+
       wx.requestPayment({
         timeStamp: e.result.timeStamp,
         nonceStr: e.result.nonceStr,
@@ -222,7 +232,13 @@ Page({
         signType: e.result.signType,
         paySign: e.result.paySign,
         success(res) {
-          m.setData({ isShow: false })
+          m.setData({ 
+            isShow: false, 
+            levelStatus:'已领取',
+          });
+
+          levelCode = 1;
+
           wx.showToast({
             title: '领取成功,请耐心等待',
             icon: 'none',
@@ -230,10 +246,11 @@ Page({
           });
         },
         fail(res){
-          wx.showToast({
-            title: '领取失败',
-            icon: 'none',
-            dufailration: 1000
+          a.get("member.level.cancel", { 
+            openid: useropenid,
+            order_id: order
+          },function(e){
+            console.log(e);
           })
         }
       })
@@ -245,7 +262,10 @@ Page({
     wx.navigateTo({
       url: '/pages/member/address/index'
     })
-    this.setData({isShow:false})
+    this.setData({
+      isShow:false,
+      btnNum:0
+    })
   },
   
   // 下拉刷新

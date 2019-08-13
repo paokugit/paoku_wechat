@@ -231,13 +231,12 @@
     </view>
   </view>
 
-
   <view class="cartoon" wx:if="{{isShow}}">
     <view class="cartoonimg">
       <view style="position: relative;">
         <image class="cartoonImgD" animation="{{ani}}" src="{{globalimg}}/csi@2x.png"></image>
         <image class="cartoonImgA" animation="{{ani}}" src="{{globalimg}}/yyl@2x.png"></image>
-        <image class="cartoonImgB" animation="{{ani}}" src="{{globalimg}}/buttun-yk@2x.gif"></image>
+        <navigator url="/pages/annual_card/equity/equity"><image class="cartoonImgB" animation="{{ani}}" src="{{globalimg}}/buttun-yk@2x.gif"></image></navigator>
       </view>
       <image class="cartoonImgC" animation="{{ani}}" bindtap='start' src="{{globalimg}}/guanbi.png"></image>
     </view>

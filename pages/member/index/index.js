@@ -336,7 +336,7 @@ Page({
       timingFunction: 'linear',
       delay: 0
     });
-    animation.translate(-150, 180).width('0rpx').height('0rpx').step();
+    animation.translate(-100, 150).width('0rpx').height('0rpx').step();
     m.setData({
       ani: animation.export(),
     });

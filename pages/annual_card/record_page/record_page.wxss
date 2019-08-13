@@ -59,3 +59,18 @@
   padding: 60rpx 0;
   text-align: center;
 }
+
+.hintTit{
+  text-align: center;
+  margin-top: 30%;
+}
+.text-cancel {
+    padding: 10rpx;
+    margin-bottom: 30rpx;
+    margin-top: 25rpx;
+    font-size: 30rpx;
+}
+.light {
+    height: 240rpx;
+    width: 240rpx;
+}

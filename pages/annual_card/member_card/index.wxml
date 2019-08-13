@@ -34,7 +34,7 @@
           </view>
         </view>
 
-        <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">待领优惠券</view>
+        <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">优惠券</view>
         <view class="discountList flexCss">
           <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}">
             <image wx:if="{{index == 0?true:false}}" src="{{globalimg}}/134360@2x.png"></image>
@@ -164,17 +164,15 @@
         </view>
 
         <view class="titMessage" wx:if="{{isShow}}">{{titMessage}}</view>
-
       </view>
-
 
       <view style="display:flex">
         <view class="btn_css">
-          <view class="cost_prompt">运费：{{postage}}</view>
+          <view class="cost_prompt" style="margin-left:15%;">运费：{{postage}}</view>
           <view class="site_skip site_ok_css" bindtap="site_skip">添加地址</view>        
         </view>
         <view class="btn_css">
-          <view class="cost_prompt">总额：{{rental}}</view>
+          <view class="cost_prompt" style="margin-left:-2%;">总额：{{rental}}</view>
           <view class="site_ok site_ok_css" bindtap="site_ok">支付</view>
         </view>
       </view>

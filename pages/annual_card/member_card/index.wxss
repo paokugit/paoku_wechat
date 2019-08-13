@@ -409,7 +409,7 @@
   padding: 20rpx 0 40rpx 0;
 }
 .roll_tier{
-  height: 75%;
+  height: 70%;
   overflow: scroll;
 }
 .site_title{
@@ -458,18 +458,20 @@
 .site_ok{
   color: #fff;
   background: rgb(7, 215, 163);
+  margin-left: 5%;
+  
 }
 .site_ok_css{
-  width: 93%;
+  width: 80%;
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 50rpx;
   font-size: 26rpx;
-  margin: 0 auto;
 }
 .site_skip{
   color: rgb(7, 215, 163);
   border: 1px solid rgb(7, 215, 163);
+  margin-left: 15%;
 }
 .activeA{
   background: rgb(254, 247, 241);
@@ -486,5 +488,5 @@
 .cost_prompt{
   font-size: 25rpx;
   color: #929292;
-  margin: 10rpx 0;
+  margin: 10rpx 0 40rpx;
 }

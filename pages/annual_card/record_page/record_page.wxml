@@ -15,6 +15,12 @@
         </view>
       </view>
     </view>
+
+    <view class="hintTit" wx:if="{{recordList == ''?true:false}}">
+      <image class="light" src="{{globalimg}}/nogoods.png"></image>
+      <view class="text-cancel">您还没有领取记录哦~</view>
+    </view>
+
     <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
   </view>
 </view>
