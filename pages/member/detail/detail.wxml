@@ -5,23 +5,23 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page navbar {{isopen==1?'header':false}}"  style='margin-top:{{nvabarData.height}}px'>
+        <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+        <view class="page navbar {{isopen==1?'header':false}}" style='margin-top:{{nvabarData.height}}px'>
             <block>
                 <block wx:if="{{isopen==1}}">
-                    <view class="fui-tab fixed fui-tab-danger"style='position:fixed;top:{{nvabarData.height}}px;left:0'>
+                    <view class="fui-tab fixed fui-tab-danger" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
                         <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">
-                          <view>收入</view>
-                          <view class="wireCss" wx:if="{{type == 1}}"></view>
+                            <view>收入</view>
+                            <view class="wireCss" wx:if="{{type == 1}}"></view>
                         </view>
                         <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">
-                          <view>支出</view>
-                          <view class="wireCss" wx:if="{{type == 2}}"></view>
+                            <view>支出</view>
+                            <view class="wireCss" wx:if="{{type == 2}}"></view>
                         </view>
                     </view>
                 </block>
             </block>
-            <view style="margin-top:20rpx">
+            <view style="margin-top:10rpx">
                 <block wx:for="{{list}}">
                     <block>
                         <block wx:if="{{list.length>0}}">
@@ -32,18 +32,41 @@
                                             <block>
                                                 <view class="title">
                                                     <block>
-                                                            <text>{{item.title}}</text>
+                                                        <text>{{item.title}}</text>
                                                     </block>
-
                                                 </view>
                                             </block>
                                         </block>
-                                        <view class="text">{{item.createtime}}</view>
+                                        <view class="text" style='margin-top:6rpx'>{{item.createtime}}</view>
                                     </view>
-                                    <view class="fui-list-angle">
-                                        <view style="font-size: 40rpx;color: #08c261;" wx:if="{{item.num>=0}}">{{item.money}}</view>
-                                        <view style="font-size: 40rpx;color: #08c261;" wx:else>{{item.money}}</view>
+                                    <view class="item-right-box">
+                                        <view>
+                                            <view style="font-size: 40rpx;color: #08c261;" wx:if="{{item.num>=0}}">{{item.money}}</view>
+                                            <view style="font-size: 40rpx;color: #08c261;" wx:else>{{item.money}}</view>
+                                        </view>
+                                        <view class='apply-state-box' wx:if="{{item.type==1}}">
+                                            <view class='state-refuse' wx:if="{{item.status==-1}}">拒绝</view>
+                                            <view class='state-applying' wx:if="{{item.status==-0}}">申请中</view>
+                                            <view class='state-success' wx:if="{{item.status==1}}">提现成功</view>
+                                        </view>
                                     </view>
+                                </view>
+                                <!-- 拒绝原因 -->
+                                <!-- <view class='refuse-box' wx:if="{{item.status==-1}}"></view> -->
+                                <view class='read-reason' wx:if="{{item.status==-1}}">
+                                    <view class='downBox' style='display:{{downdis}}'>
+                                        <view class='read-box01' bindtap='downbtn' data-id='{{item.id}}'>
+                                            <image class='downimg' src='{{globalimg}}/down@2x.png'></image>
+                                            <view class='down-text'>查看原因</view>
+                                        </view>
+                                    </view>
+                                    <view class='topBox' style='display:{{topdis}}'>
+                                        <view class='read-box02' bindtap='topbtn' data-id='{{item.id}}'>
+                                            <image class='downimg' src='{{globalimg}}/top@2x.png'></image>
+                                            <view class='down-text'>查看原因</view>
+                                        </view>
+                                    </view>
+                                    <view class='item-reason' style='display:{{reasondis}}'>{{item.refuse_reason}}</view>
                                 </view>
                             </view>
                         </block>

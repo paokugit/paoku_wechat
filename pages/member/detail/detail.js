@@ -5,6 +5,7 @@ var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 Page({
     data: {
+        globalimg: f.globalData.appimg,
         icons: t.requirejs("icons"),
         type: 1,
         isopen: !1,
@@ -12,6 +13,9 @@ Page({
         loaded: !1,
         loading: !0,
         list: [],
+        downdis: 'block',
+        topdis: 'none',
+        reasondis: 'none',
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1, 
@@ -22,8 +26,24 @@ Page({
     // 上拉加载
     onLoad: function (a) {
         a.type > 0 && this.setData({
-            type: 1
+            type: 2
         }), t.url(a), this.getList();
+    },
+    downbtn: function (e) {
+        console.log(e.currentTarget.dataset.id)
+        this.setData({
+            downdis: 'none',
+            topdis: 'block',
+            reasondis: 'block'
+        })
+    },
+    topbtn: function (e) {
+        //    console.log(e.currentTarget.dataset.id)
+        this.setData({
+            topdis: 'none',
+            downdis: 'block',
+            reasondis: 'none'
+        })
     },
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh();

@@ -154,7 +154,7 @@ Page({
                     });
                     t.toast(i, "提现申请成功，请等待审核"), setTimeout(function() {
                         wx.navigateTo({
-                            url: "/pages/member/detail/detail?type=1"
+                            url: "/pages/member/detail/detail?type=2"
                             // url: "/pages/member/log/index?type=1"
                         });
                     }, 500);
