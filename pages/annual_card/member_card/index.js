@@ -5,11 +5,10 @@ var f = getApp();
 
 var imgSrc = "";
 var useropenid = "";
-var addressId = '';
 var levelId = '';
 var recordId = '';
 var levelCode = '';
-
+var addressId = '';
 Page({
 
   data: {
@@ -44,6 +43,11 @@ Page({
     btnNum:'',
     nowPage: "firstPage",
     nowIndex: 0,
+
+    postage:0,
+    rental:0,
+
+    titMessage:'',
     tabBar: [
       {
         "iconClass":"home@2x.png",
@@ -69,6 +73,32 @@ Page({
     ]
   },
 
+  toFirst() {
+    this.scrollPage();
+    this.setData({
+      nowPage: "firstPage",
+      nowIndex: 0,
+    })
+  },
+  toSecond() {
+    wx.navigateTo({
+      url: "../equity/equity"
+    })
+  },
+  toThird() {
+    this.scrollPage();
+    this.setData({
+      nowPage: "trailerPage",
+      nowIndex: 2,
+    })
+  },
+  scrollPage: function () {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    });
+  },
+
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
@@ -76,15 +106,29 @@ Page({
     var b = this;
     b.cal_centre();
     b.my_vip();
-    
   },
+  
+  my_vip: function () {
+    var b = this;
+    a.get("member.level.my", {
+      openid: b.data.useropenid
+    }, function (e) {
+      b.setData({
+        cardName: e.result.member.nickname,
+        cardOpen: e.result.member.is_open,
+        is_expire: e.result.member.is_expire,
+        cardExpire: e.result.member.expire,
+        cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
+        headImg: e.result.member.avatar
+      })
+    })
+  },
+
   cal_centre:function(){
     var b = this;
     a.get("member.level", {
       openid: b.data.useropenid,
     }, function (e) {
-      console.log(e);
-
       levelId = e.result.level.level_id;
       recordId = e.result.level.id;
       levelCode = e.result.level.status;
@@ -104,119 +148,113 @@ Page({
         levelStatus: levelCode == 0 ? '领取' : levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
-    });
-  },
-  my_vip:function(){
-    var b = this;
-    a.get("member.level.my", {
-      openid: b.data.useropenid
-    }, function (e) {
-      b.setData({
-        cardName: e.result.member.nickname,
-        cardOpen: e.result.member.is_open,
-        is_expire: e.result.member.is_expire,
-        cardExpire: e.result.member.expire,
-        cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
-        headImg: e.result.member.avatar
-      })
-    })
+    }); 
   },
 
-
-  toFirst() {
-    this.scrollPage();
-    this.setData({
-      nowPage: "firstPage",
-      nowIndex: 0,
-    })
-  },
-  toSecond() {
-    wx.navigateTo({
-      url: "../equity/equity"
-    })
-  },
-  toThird(){
-    this.scrollPage();
-    this.setData({
-      nowPage: "trailerPage",
-      nowIndex: 2,
-    })
-  },
-  scrollPage: function () {
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 0
-    });
-  },
-
+  // 打开礼包领取
   btnGet: function (e) {
+    var m = this;
     if (levelCode == 0){
-      var m = this;
       a.get("member.level.address_list",{
         openid: useropenid
-      },function(e){
+      },function(e){    
+  
         if(e.status == -1){
-          wx.showToast({
-            title: e.result.message,
-            icon: 'none',
-            duration: 2000
+          m.setData({
+            titMessage: e.result.message,
+            isShow:true,
+            siteList:[]
           })
         }else{
+          let price = e.result.data.price;
           addressId = e.result.list[0].id;
           m.setData({
+            siteList: e.result.list,
+            postage: e.result.data.is_remote == 0 ? price : price+'（偏远）',
+            rental:price,
             isShow: true,
-            siteList: e.result.list
+            titMessage:''
           })
         }
       })
     }
   },
 
+  // 关闭礼包领取
   cancelBtn:function(e){
     this.setData({
       isShow: false,
     })
   },
 
+  // 邮费显示
   clickNum:function(e){ 
     addressId = e.currentTarget.dataset.address;
-    this.setData({
-      btnNum: e.currentTarget.dataset.id,
-    }) 
+    let btnNum = e.currentTarget.dataset.id;
+    let m = this;
+    a.get("member.level.change",{
+      openid: useropenid,
+      address_id: addressId
+    },function(e){
+      let price = e.result.data.price;
+      m.setData({
+        btnNum: btnNum,
+        postage: e.result.data.is_remote == 0 ? price : price + '(偏远)',
+        rental:price
+      }) 
+    })
   },
 
+  // 礼包领取地址邮费支付
   site_ok:function(e){
     var m = this;
     a.get("member.level.get",{
       openid: useropenid,
       level_id: levelId,
       address_id: addressId,
-      record_id: recordId
+      record_id: recordId,
+      money: m.data.rental
     },function(e){
-      if(e.status == 0){
-        wx.showToast({
-          title: '领取失败',
-          icon: 'none',
-          duration: 2000
-        })
-      } else if (e.status == 1){
-        wx.showToast({
-          title: '领取成功',
-          icon: 'none', 
-          duration: 2000
-        })
-        m.setData({
-          isShow: false
-        })
-        m.onPullDownRefresh();
-      }
+      wx.requestPayment({
+        timeStamp: e.result.timeStamp,
+        nonceStr: e.result.nonceStr,
+        package: e.result.package,
+        signType: e.result.signType,
+        paySign: e.result.paySign,
+        success(res) {
+          m.setData({ isShow: false })
+          wx.showToast({
+            title: '领取成功,请耐心等待',
+            icon: 'none',
+            dufailration: 1000
+          });
+        },
+        fail(res){
+          wx.showToast({
+            title: '领取失败',
+            icon: 'none',
+            dufailration: 1000
+          })
+        }
+      })
     })
   },
+
+  // 添加地址跳转
+  site_skip:function(){
+    wx.navigateTo({
+      url: '/pages/member/address/index'
+    })
+    this.setData({isShow:false})
+  },
+  
+  // 下拉刷新
   onPullDownRefresh:function(){
     var b = this;
     b.cal_centre();
     b.my_vip();
   },
+  // 每次打开页面都会调用
   onShow:function(){
     var b = this;
     b.cal_centre();

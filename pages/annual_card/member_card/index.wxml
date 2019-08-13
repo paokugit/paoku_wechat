@@ -162,11 +162,21 @@
           </view>
           <view class="site_message">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
         </view>
+
+        <view class="titMessage" wx:if="{{isShow}}">{{titMessage}}</view>
+
       </view>
 
-      <view class="btn_css">
-        <navigator hover-class="none" url="/pages/member/address/index" class="site_skip site_ok_css">添加地址</navigator>
-        <view class="site_ok site_ok_css" bindtap="site_ok">确认</view>
+
+      <view style="display:flex">
+        <view class="btn_css">
+          <view class="cost_prompt">运费：{{postage}}</view>
+          <view class="site_skip site_ok_css" bindtap="site_skip">添加地址</view>        
+        </view>
+        <view class="btn_css">
+          <view class="cost_prompt">总额：{{rental}}</view>
+          <view class="site_ok site_ok_css" bindtap="site_ok">支付</view>
+        </view>
       </view>
 
       <image class="cancelBtn locationCss" bindtap="cancelBtn" src='{{globalimg}}/guanbi.png'></image>
