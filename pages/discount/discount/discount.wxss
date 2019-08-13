@@ -89,8 +89,8 @@ image {
 
 .account-text {
     width: 50rpx;
-    height: 60rpx;
-    line-height: 70rpx;
+    height: 70rpx;
+    line-height: 80rpx;
     font-size: 40rpx;
     color: #323232;
    

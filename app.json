@@ -91,7 +91,6 @@
         "pages/member/history/index",
         "pages/member/recharge/index",
         "pages/member/withdraw/index",
-        "pages/member/log/index",
         "pages/member/log/money",
         "pages/member/address/index",
         "pages/member/address/post",
