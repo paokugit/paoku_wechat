@@ -1,11 +1,7 @@
 {
   "pages": [
 
-    "pages/member/index/index",
-    "pages/annual_card/member_card/index",
-    "pages/annual_card/record_page/record_page",
-    "pages/annual_card/equity/equity",
-
+    
     
     "pages/index/index",
     "pages/playmethod/playmethod/playmethod",
@@ -71,6 +67,12 @@
     "pages/index/moremerch/moremerch",
     "pages/member/detail/detail",
     "pages/custom/index",
+
+    "pages/member/index/index",
+    "pages/annual_card/member_card/index",
+    "pages/annual_card/record_page/record_page",
+    "pages/annual_card/equity/equity",
+
     "pages/order/express/index",
     "pages/commission/apply/index",
     "pages/commission/order/index",

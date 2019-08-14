@@ -247,7 +247,15 @@
   text-align: center;
   padding: 15rpx 0;
 }
-.null_hint image{
+.hintImageA{
+  width: 206rpx;
+  height: 136rpx;
+}
+.hintImageB{
+  width: 200rpx;
+  height: 186rpx;
+}
+.hintImage{
   width: 200rpx;
   height: 182rpx;
 }

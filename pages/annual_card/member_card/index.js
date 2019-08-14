@@ -102,12 +102,12 @@ Page({
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
-
+    
     var b = this;
     b.cal_centre();
     b.my_vip();
   },
-  
+
   my_vip: function () {
     var b = this;
     a.get("member.level.my", {
@@ -141,7 +141,7 @@ Page({
 
       b.setData({
         nickname: e.result.member.nickname,
-        memberTit: e.result.member.is_open == 0 ? '未享受五大权益' : '已享受五大权益',
+        memberTit: e.result.member.is_open == 0 ? '未享受4大权益' : '已享受4大权益',
         timeExpire: timeExpire,
         goodsList: e.result.goods,
 
@@ -149,13 +149,18 @@ Page({
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(5, 7),
         levelTime: e.result.level.month,
-        levelStatus: levelCode == 0 ? '领取' : levelCode == 1 ? '已领取' : '礼包失效',
+        levelStatus: levelCode == 0 ? '免费领取' : levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
     }); 
   },
 
-  // 打开礼包领取
+  ticketBtn:function(){
+    wx.navigateTo({
+      url: '/pages/sale/coupon/my/index/index',
+    })
+  },
+
   btnGet: function (e) {
     var m = this;
     if (levelCode == 0){
@@ -184,7 +189,6 @@ Page({
     }
   },
 
-  // 关闭礼包领取
   cancelBtn:function(e){
     this.setData({
       isShow: false,
@@ -192,7 +196,6 @@ Page({
     })
   },
 
-  // 邮费显示
   clickNum:function(e){ 
     addressId = e.currentTarget.dataset.address;
     let btnNum = e.currentTarget.dataset.id;
@@ -210,7 +213,6 @@ Page({
     })
   },
 
-  // 礼包领取地址邮费支付
   site_ok:function(e){
     var m = this;
     var order = '';
@@ -257,7 +259,6 @@ Page({
     })
   },
 
-  // 添加地址跳转
   site_skip:function(){
     wx.navigateTo({
       url: '/pages/member/address/index'
@@ -267,14 +268,13 @@ Page({
       btnNum:0
     })
   },
-  
-  // 下拉刷新
+
+
   onPullDownRefresh:function(){
     var b = this;
     b.cal_centre();
     b.my_vip();
   },
-  // 每次打开页面都会调用
   onShow:function(){
     var b = this;
     b.cal_centre();

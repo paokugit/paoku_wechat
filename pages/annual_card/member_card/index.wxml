@@ -33,10 +33,14 @@
             <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view>
           </view>
         </view>
+        <view class="null_hint" wx:if="{{couponList == ''?true:false}}">
+          <image class="hintImageB" src="{{globalimg}}/20190725103651.png"></image>
+          <view>暂无可领取礼包，请下月在来查看</view>
+        </view>
 
         <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">优惠券</view>
         <view class="discountList flexCss">
-          <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}">
+          <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}" bindtap="{{item.used == 0?'ticketBtn':''}}">
             <image wx:if="{{index == 0?true:false}}" src="{{globalimg}}/134360@2x.png"></image>
             <image wx:if="{{index == 1?true:false}}" src="{{globalimg}}/13436001@2x.png"></image>
             <view class="discount_details locationCss">
@@ -44,9 +48,13 @@
               <view class="details_tit {{index == 0?'ticket_a':'ticket_b'}}">{{item.couponname}}</view>
               <view class="details_condition">单笔满{{item.enough}}元可用</view>
             </view>
-            <navigator url="/pages/sale/coupon/my/index/index" class="getBtnA locationCss" wx:if="{{item.used == 0?true:false}}">待使用</navigator>
+            <view  class="getBtnA locationCss" wx:if="{{item.used == 0?true:false}}">待使用</view>
             <view  class="getBtnA locationCss" wx:if="{{item.used == 1?true:false}}">已使用</view>
           </view>
+        </view>
+        <view class="null_hint" wx:if="{{couponList == ''?true:false}}">
+          <image class="hintImageA" src="{{globalimg}}/20190725103723.png"></image>
+          <view>暂无优惠券哦</view>
         </view>
 
         <view class="product_head_left" style="margin-top:50rpx;">特权价产品区</view>
@@ -68,7 +76,7 @@
 
 
       <view wx:if="{{goodsList == ''}}" class="null_hint">
-        <image src="{{globalimg}}/none.png"></image>
+        <image class="hintImage" src="{{globalimg}}/none.png"></image>
         <view>稍等片刻，甄选好物正在路上，尽快上架哦</view>
       </view>
     </view>
