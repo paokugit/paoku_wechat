@@ -33,7 +33,7 @@ Page({
 
     a.get("member.level.order",{
       openid: useropenid,
-      money: 0.01,
+      money: 396,
       level_id: 5,
     },function(e){
       console.log(e);

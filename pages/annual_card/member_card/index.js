@@ -32,6 +32,7 @@ Page({
     isShow: false,
     siteList:[],
     levelStatus:'',
+    levelList:[],
     
     cardName:'',
     cardOpen: '',
@@ -145,6 +146,7 @@ Page({
         timeExpire: timeExpire,
         goodsList: e.result.goods,
 
+        levelList:e.result.level,
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(5, 7),

@@ -33,7 +33,7 @@
             <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view>
           </view>
         </view>
-        <view class="null_hint" wx:if="{{couponList == ''?true:false}}">
+        <view class="null_hint" wx:if="{{levelList == ''?true:false}}">
           <image class="hintImageB" src="{{globalimg}}/20190725103651.png"></image>
           <view>暂无可领取礼包，请下月在来查看</view>
         </view>
