@@ -115,7 +115,11 @@
         "pages/order/cycle/index",
         "pages/order/cycle/address",
         "pages/order/express/number",
-        "pages/order/cycle/order"
+        "pages/order/cycle/order",
+
+        "pages/annual_card/member_card/index",
+        "pages/annual_card/record_page/record_page",
+        "pages/annual_card/equity/equity"
     ],
     "permission": {
         "scope.userLocation": {

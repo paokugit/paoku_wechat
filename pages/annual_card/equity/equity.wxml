@@ -1,0 +1,21 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="equity_img">
+    <image src="{{globalimg}}/card_01.png"></image>
+    <image src="{{globalimg}}/card_02.jpg"></image>
+    <image src="{{globalimg}}/card_03.jpg"></image>
+    <view class="card_04">
+      <image src="{{globalimg}}/card_04.jpg"></image>
+      <navigator url="/pages/goods/detail/index?id={{goodGift}}">查看产品</navigator>
+    </view>
+    <image src="{{globalimg}}/card_05.jpg"></image>
+    <image src="{{globalimg}}/card_06.jpg"></image>
+    <image src="{{globalimg}}/card_07.jpg"></image>
+    <image src="{{globalimg}}/card_08.jpg"></image>
+    <image src="{{globalimg}}/card_09.jpg"></image>
+    <image src="{{globalimg}}/card_10.jpg"></image>
+  </view>
+  <view class="dredgeColor">
+    <image class="dredgeBtn" bindtap="dredgeBtn" src="{{globalimg}}/buttun-kt.gif"></image>
+  </view>
+</view>  

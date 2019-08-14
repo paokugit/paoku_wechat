@@ -114,7 +114,7 @@
         </view>
     </view>
     <!-- 快报 -->
-    <view class='index-news-box'>
+    <view class='index-news-box'> 
         <view class='notice-img'>
             <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
         </view>
@@ -131,6 +131,21 @@
             </swiper>
         </view>
     </view>
+
+   
+    <view class='swiper-card'>
+      <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
+        <block wx:for="{{bannerList}}" wx:key="{{index}}">
+          <swiper-item>
+            <navigator url="{{item.url}}">
+              <image class="bannerGif" src="{{item.thumb}}"></image>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+
     <view class='store-service'>
         <view class='store-service-title flex_center'>
             <view class='storeimg'>

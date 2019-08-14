@@ -174,12 +174,10 @@ image{
     height: auto;
 }
 .rights-tit{
-    width: 100%;
     height: 80rpx;
     line-height: 80rpx;
     font-size: 30rpx;
     color: #666;
-    /* background: olivedrab; */
 }
 .rights-box{
     width: 100%;
@@ -223,7 +221,6 @@ image{
 }
 .task-box{
     width: 680rpx;
-    /* height: 600rpx; */
     height: 400rpx;
 }
 .task-text, .libao-sub{
@@ -277,7 +274,6 @@ image{
 }
 
 .speed_up{
-  width: 50%;
   height: 80rpx;
   display: flex;
 }
@@ -287,14 +283,12 @@ image{
   line-height: 80rpx;
   font-size: 30rpx;
   color: #666;
-  /* background: orange; */
 }
 
 .speed_img{
   height: 80rpx;
   line-height: 70rpx;
   margin-right: 20rpx;
-  /* background: red; */
 }
 .speed_img image{
   width: 38rpx;

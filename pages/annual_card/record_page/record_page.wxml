@@ -1,0 +1,26 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box tierCss" style='padding-top:{{nvabarData.height}}px;height: 100%;'>
+  <view class="tierCss">
+    <view class="getList" wx:for="{{recordList}}" wx:key="{{index}}" wx:if="{{recordList == ''?false:true}}">
+      <view class="leftImg">
+        <text class="freeGet">免费</text>
+        <image style="border-radius: 10rpx;" src="{{item.thumb}}"></image>
+      </view>
+      <view class="rightContent">
+        <view class="titleA">{{item.month}}产品礼包</view>
+        <view class="titleB" wx:if="{{item.status == 1?true:false}}">{{item.updatetime}}手动领取</view>
+        <view class="titleB" wx:if="{{item.status == 2?true:false}}">过期未领取</view>
+        <view class="getStateImg">
+          <image src="{{globalimg}}/{{item.status == 1?'ylq@2x.png':'ysx@2x.png'}}"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="hintTit" wx:if="{{recordList == ''?true:false}}">
+      <image class="light" src="{{globalimg}}/nogoods.png"></image>
+      <view class="text-cancel">您还没有领取记录哦~</view>
+    </view>
+
+    <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
+  </view>
+</view>

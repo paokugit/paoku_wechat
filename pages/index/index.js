@@ -114,6 +114,11 @@ Page((e = {
 
             home_icon: [],
             backgroundimg: '',
+
+            autoplayA: true,
+            intervalA: 3000,
+            durationA: 1000,
+            circularA: true,
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
         t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1),
@@ -446,7 +451,23 @@ Page((e = {
                 backgroundimg: e.result.backgroup
             })
         })
+      
+       l.openPage();
     },
+
+    openPage:function(){
+      var a = this;
+      s.get("myown.index.adsense", {
+        type: 1,
+        openid: userinfo.openid
+      }, function (e) {
+        console.log(e);
+        a.setData({
+          bannerList: e.result.list
+        })
+      })
+    },
+
     onHide: function() {
         this.setData({
             adveradmin: !1,
@@ -614,6 +635,8 @@ Page((e = {
         }), t.setData({
             // screenWidth: a.windowWidthF
         });
+
+      t.openPage();
     },
     goodsicon: function(t) {
         this.setData({

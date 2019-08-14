@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0 auto; 
+  margin: 0 auto;  
   padding-top: 20rpx;
   margin-bottom: 40rpx;
 }
@@ -32,8 +32,6 @@
   border-radius: 4rpx;
   border: 1px solid rgb(214, 214, 214);
   position: relative;
-  left: 0rpx;
-  top: 0rpx;
 }
 
 /* 点击时显示 */
@@ -77,8 +75,7 @@
   height: 100rpx;
   line-height: 100rpx;
   border-radius: 10rpx;
-  margin: 0 auto;
-  margin-top: 100rpx;
+  margin: 100rpx auto;
   color: #fff;
   background: rgb(1, 215, 161);
 }
