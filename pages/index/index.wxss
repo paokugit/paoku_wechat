@@ -361,7 +361,7 @@ image {
 }
 .peopleExplain{
     width: auto;
-    height: 40%;
+    height: 30%;
     font-size: 20rpx;
     color: #0bc99d;
     display: flex;
@@ -449,8 +449,7 @@ image {
     width: 112rpx;
     height: 52rpx;
 }
-swiper{
-  /* width: 100%; */
+.swiper-box swiper{
   height: 60rpx
 }
  .notice-box{
@@ -1068,4 +1067,13 @@ text-overflow:ellipsis;
     display: flex;
     justify-content: center;
     align-items: center
+}
+
+.swiper-card{
+  height: 220rpx;
+  padding: 0 20rpx;
+  background: #fff;
+}
+.swiper-card swiper,.bannerGif{
+  height: 220rpx;
 }

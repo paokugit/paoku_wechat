@@ -330,47 +330,73 @@ image {
 
 .fukuan-text, .service-text {
     color: #7a7a7a;
-    font-size: 26rpx;
+    font-size: 26rpx
 }
 
-swiper {
-    width: 100%;
-    height: 190rpx;
+swiper{
+  width: 100%;
+  height: 190rpx
 }
 
-.swiper-box {
-    position: relative;
-    width: 100%;
+ .card_banner{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: #fff;
+ }
+
+ .card_entrance{
+   width: 50%;
+   border-right: 1px solid rgb(243, 243, 243);
+   display: flex;
+   margin-left:50rpx;
+   padding-right: 0rpx;
+   align-items: center;
+ }
+ .card_entranceImg{
+   width: 96rpx;
+   height: 90rpx;
+   margin-right: 15rpx;
+ }
+ .card_entranceTit{
+   font-size: 34rpx;
+   color: #1c1c1c;
+ }
+ .swiper-card{
+   height: 38rpx;
+   margin-top: 20rpx; 
+  }
+ .card_entranceT{
+   font-size: 20rpx;
+   color: #666666;
+ }
+
+.swiper-box{
+  position: relative;
+  width: 365rpx;
+  margin-right: 30rpx;
+}
+.dots{ 
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom: 20rpx; 
+  display: flex; 
+  justify-content: center; 
+} 
+.dots .dot{ 
+  margin: 0 8rpx; 
+  width: 28rpx; 
+  height: 6rpx; 
+  background: #b7fdeb; 
+  border-radius: 8rpx; 
+  transition: all .6s; 
+} 
+.dots .dot.active{ 
+  background: #00d8a0; 
 }
 
-.dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 20rpx;
-    display: flex;
-    justify-content: center;
-}
-
-.dots .dot {
-    margin: 0 8rpx;
-    width: 28rpx;
-    height: 6rpx;
-    background: #b7fdeb;
-    border-radius: 8rpx;
-    transition: all 0.6s;
-}
-
-.dots .dot.active {
-    background: #00d8a0;
-}
-
-swiper image {
-    width: 100%;
-    height: 100%;
-}
-
-.service-box {
+.service-box{
     height: 420rpx;
     margin-top: 20rpx;
 }
@@ -388,4 +414,43 @@ swiper image {
 .service-item {
     width: 22%;
     height: 110rpx;
+}
+
+.cartoon{
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0,0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+.cartoonimg{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.cartoonImgA{
+  width: 566rpx;
+  height: 702rpx;
+}
+.cartoonImgB{
+  width: 422rpx;
+  height: 84rpx;
+  position: absolute;
+  left: 12%;
+  bottom: 6%;
+}
+.cartoonImgC{
+  width: 54rpx;
+  height: 54rpx; 
+  margin: 60rpx auto 0;
+}
+.cartoonImgD{
+  width: 580rpx;
+  height: 132rpx;
+  position: absolute;
+  left: 0;
+  top: -15%;
 }

@@ -51,7 +51,7 @@ Page({
     
   },
 
-  // 列表点击事件
+  // 列表点击事件 
   list_btn:function(e){
     speedId = e.currentTarget.dataset.id;
     

@@ -14,11 +14,9 @@ Page({
         exchangeDis:'none',
         url: '',
         globalimg: i.globalData.appimg,
-        // 组件所需的参数
         nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '运动日记', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
+            showCapsule: 1, 
+            title: '运动日记', 
             height: i.globalData.height * 2 + 20,
         },
         num:'',
@@ -103,25 +101,19 @@ Page({
             })
             return;
         }
-
-        // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.writePhotosAlbum" 这个 scope  
         wx.getSetting({
             success(res) {
                 console.log("getSetting: success");
                 if (!res.authSetting['scope.writePhotosAlbum']) {
-                    console.log("1-没有授权《保存图片》权限");
-
-                    // 接口调用询问  
+                    console.log("没有授权");
                     wx.authorize({
                         scope: 'scope.writePhotosAlbum',
                         success() {
-                            console.log("2-授权《保存图片》权限成功");
+                            console.log("授权");
                             that.downloadImage(downloadUrl);
                         },
                         fail() {
-                            // 用户拒绝了授权  
                             console.log("2-授权《保存图片》权限失败");
-                            // 打开设置页面  
                             wx.openSetting({
                                 success: function (data) {
                                     console.log("openSetting: success");
@@ -192,10 +184,6 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    // onShareAppMessage: function () {
-
-    // }
-
     onShareAppMessage: function (res) {
         // return s.onShareAppMessage();
         var that = this;

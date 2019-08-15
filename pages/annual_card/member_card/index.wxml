@@ -1,0 +1,192 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style='margin-top:{{nvabarData.height}}px'>
+  <view style="margin-bottom:150rpx;">
+    <view wx:if="{{nowPage=='firstPage'?true:false}}">
+      <view class="header_outer">
+        <view class="header_within locationCss">
+          <view class="header_name txtColo">{{nickname}}</view>
+          <view class="header_time txtColo" wx:if="{{is_open == 0?false : true }}">{{timeExpire}}年卡到期</view>
+          <view class="header_equity locationCss">
+            <text class="header_text">{{memberTit}}</text>
+          </view>
+          <view class="vipTit txtColo locationCss">尊贵身份，超值特权</view>
+        </view>
+      </view>
+
+      <view class="product">
+        <view class="product_head">
+          <view class="product_head_left">待领取产品</view>
+          <navigator url="/pages/annual_card/record_page/record_page" hover-class="none">
+            <text class="product_tit">领取记录</text>
+            <image class="product_img" src="{{globalimg}}/open10.18@2x.png"></image>
+          </navigator>
+        </view>
+
+        <view class="product_list flexCss">
+          <text class="freeGet txtColo locationCss">限时</text>
+          <image class="leftImg" src="{{levelImg}}"></image>
+
+          <view>
+            <view class="titleA">{{levelMonth}}月产品礼包</view>
+            <view class="titleB">{{levelTime}}前领取（过期失效）</view>
+            <view class="cost">{{levelPrice}}</view>
+            <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view>
+          </view>
+        </view>
+        <view class="null_hint" wx:if="{{levelList == ''?true:false}}">
+          <image class="hintImageB" src="{{globalimg}}/20190725103651.png"></image>
+          <view>暂无可领取礼包，请下月在来查看</view>
+        </view>
+
+        <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">优惠券</view>
+        <view class="discountList flexCss">
+          <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}" bindtap="{{item.used == 0?'ticketBtn':''}}">
+            <image wx:if="{{index == 0?true:false}}" src="{{globalimg}}/134360@2x.png"></image>
+            <image wx:if="{{index == 1?true:false}}" src="{{globalimg}}/13436001@2x.png"></image>
+            <view class="discount_details locationCss">
+              <view class="details_money {{index == 0?'ticket_a':'ticket_b'}}">{{item.deduct}}</view>
+              <view class="details_tit {{index == 0?'ticket_a':'ticket_b'}}">{{item.couponname}}</view>
+              <view class="details_condition">单笔满{{item.enough}}元可用</view>
+            </view>
+            <view  class="getBtnA locationCss" wx:if="{{item.used == 0?true:false}}">待使用</view>
+            <view  class="getBtnA locationCss" wx:if="{{item.used == 1?true:false}}">已使用</view>
+          </view>
+        </view>
+        <view class="null_hint" wx:if="{{couponList == ''?true:false}}">
+          <image class="hintImageA" src="{{globalimg}}/20190725103723.png"></image>
+          <view>暂无优惠券哦</view>
+        </view>
+
+        <view class="product_head_left" style="margin-top:50rpx;">特权价产品区</view>
+      </view>
+
+      <view class="product_area flexCss">
+        <navigator class="product_details" wx:for="{{goodsList}}" wx:key="{{index}}" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+          <image  class="commodity_img" src="{{item.thumb}}"></image>
+
+          <view class="titWai">
+            <view class="commodity_tit">{{item.title}}</view>
+          </view>
+          <text class="privilege_price_tit">特权价</text>
+          <text class="privilege_price_money">{{item.marketprice}}</text>
+          <view class="original_cost">￥{{item.productprice}}</view>
+          <view class="purchase_btn locationCss txtColo">抢购</view>
+        </navigator>
+      </view>
+
+
+      <view wx:if="{{goodsList == ''}}" class="null_hint">
+        <image class="hintImage" src="{{globalimg}}/none.png"></image>
+        <view>稍等片刻，甄选好物正在路上，尽快上架哦</view>
+      </view>
+    </view>
+
+    <view wx:if="{{nowPage=='trailerPage'}}">
+
+      <view class="member_details flexCss">
+        <view class="left_message flexCss">
+          <image class="headImg" src="{{headImg}}"></image>
+          <view class="name_time">
+            <view class="my_name">{{cardName}}</view>
+            <text class="expire_time">{{cardExpire}}</text>
+            <text class="expire_content">{{cardTit}}</text>
+          </view>
+        </view>
+        <navigator url="/pages/annual_card/equity/equity" class="right_renew" wx:if="{{is_expire == 1?true : false}}">续费</navigator>
+      </view>
+
+      <view class="equities_list">
+        <view class="contentTitle">
+          <view class="content_titA" wx:if="{{cardOpen == 0?false : true}}">您已获得 <text style="font-size: 60rpx;color: #e63131;">4</text> 大权益</view>
+          <view class="content_titA" wx:if="{{cardOpen == 0?true : false}}">权益已失效</view>
+           <view class="content_titB" >更多权益升级中</view>
+        </view>
+ 
+        <view class="details_list flexCss">
+          <view>
+            <view class="gift_bagImg">
+              <image src="{{globalimg}}/{{cardOpen == 0?'gif@2x.png':'gif-kt@2x.png'}}"></image>
+            </view>
+            <view class="gift_bagContent">超值礼包</view>
+          </view>
+
+          <view class="gift_bag ">
+            <view class="gift_bagImg">
+              <image src="{{globalimg}}/{{cardOpen == 0?'bao@2x.png':'bao-kt@2x.png'}}"></image>
+            </view>
+            <view class="gift_bagContent">3650元</view>
+          </view>
+
+          <view>
+            <view class="gift_bagImg">
+              <image src="{{globalimg}}/{{cardOpen == 0?'tj@2x.png':'tj-kt@2x.png'}}"></image>
+            </view>
+            <view class="gift_bagContent">特权价</view>
+          </view>
+
+          <view>
+            <view class="gift_bagImg">
+              <image src="{{globalimg}}/{{cardOpen == 0?'quan@2x.png':'quan-kt@2x.png'}}"></image>
+            </view>
+            <view class="gift_bagContent">现金券</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="get_site">
+        <navigator class="record" url="/pages/annual_card/record_page/record_page" hover-class="none">
+          <view class="record_left">领取记录</view>
+          <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
+        </navigator>
+        <navigator class="record" url="/pages/member/address/index" hover-class="none">
+          <view class="record_left">收货地址</view>
+          <image class="record_img" src="{{globalimg}}/open10.18@2x.png"></image>
+        </navigator>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="tab-bar flexCss">
+    <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
+      <view bindtap="{{item.tapFunction}}">
+        <view class="tabImg">
+          <image src="{{globalimg}}/{{index==nowIndex?item.imgSrc:item.iconClass}}"></image>
+        </view>
+        <text class="icon_text {{index==nowIndex?'active':''}}">{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="siteTier" wx:if="{{isShow}}">
+    <view class="siteList">
+      <view class="site_title">选择收货地址</view>
+      <view class="roll_tier">
+        <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="{{index}}" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
+          <view class="person_message flexCss">
+            <view class="message_name">{{item.realname}}</view>
+            <view class="message_phone">{{item.mobile}}</view>
+          </view>
+          <view class="site_message">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
+        </view>
+
+        <view class="titMessage" wx:if="{{isShow}}">{{titMessage}}</view>
+      </view>
+
+      <view style="display:flex">
+        <view class="btn_css">
+          <view class="cost_prompt" style="margin-left:15%;">运费：{{postage}}</view>
+          <view class="site_skip site_ok_css" bindtap="site_skip">添加地址</view>        
+        </view>
+        <view class="btn_css">
+          <view class="cost_prompt" style="margin-left:-2%;">总额：{{rental}}</view>
+          <view class="site_ok site_ok_css" bindtap="site_ok">支付</view>
+        </view>
+      </view>
+
+      <image class="cancelBtn locationCss" bindtap="cancelBtn" src='{{globalimg}}/guanbi.png'></image>
+    </view>
+  </view>
+
+</view>
