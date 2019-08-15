@@ -11,7 +11,6 @@ Page({
     data: {
       url: '',
         globalimg: i.globalData.appimg,
-        // 组件所需的参数
         nvabarData: {
             showCapsule: 1, 
             title: '邀请海报',
@@ -32,7 +31,6 @@ Page({
             mid: userinfo.id,
             mids: userinfo.id,
        }, function (e) {
-            console.log(888)
             console.log(e)
            t.setData({
               url:e.url
@@ -43,14 +41,11 @@ Page({
 
     },
     downloadImage: function (imageUrl) {
-        // 下载文件  
         wx.downloadFile({
             url: imageUrl,
             success: function (res) {
                 console.log("下载文件：success");
                 console.log(res);
-
-                // 保存图片到系统相册  
                 wx.saveImageToPhotosAlbum({
                     filePath: res.tempFilePath,
                     success(res) {
@@ -85,14 +80,11 @@ Page({
             })
             return;
         }
-
-        // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.writePhotosAlbum" 这个 scope  
         wx.getSetting({
             success(res) {
                 console.log("getSetting: success");
                 if (!res.authSetting['scope.writePhotosAlbum']) {
                     console.log("1-没有授权《保存图片》权限");
-
                     // 接口调用询问  
                     wx.authorize({
                         scope: 'scope.writePhotosAlbum',

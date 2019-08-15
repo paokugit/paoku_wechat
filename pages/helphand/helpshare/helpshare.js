@@ -39,7 +39,6 @@ Page({
         myid: '',
         count: '',
         steptoday: '',
-        // 组件所需的参数
         nvabarData: {
             showCapsule: 1, 
             title: '跟我跑，送你钱', 
@@ -232,18 +231,6 @@ Page({
         })
     },
 
-    // 获取用户输入的用户名
-    //   stepInput: function (e) {
-    //     this.setData({
-    //       step: e.detail.value
-    //     })
-    //   },
-    //   msgInput: function (e) {
-    //     this.setData({
-    //       messgae: e.detail.value
-    //     })
-    //   },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -280,22 +267,6 @@ Page({
     onShow: function() {
         this.getInfo();
         var e = this;
-        // wx.getSetting({
-        //   success: function (a) {
-        //     console.log(a)
-        //     var t = a.authSetting["scope.userInfo"];
-        //     console.log(t)
-        //     e.setData({
-        //       limits: t
-        //     }), t || wx.redirectTo({
-        //       url: "/pages/message/auth/index?refrom=helpshare&hlpid=" + hlpid + "&mid=" + hlpid+"&reurl=" + reurl
-        //     });
-        //   }
-        // });
-        // console.log('lihanwen')
-        // console.log(userinfo)
-
-
     },
 
     /**
