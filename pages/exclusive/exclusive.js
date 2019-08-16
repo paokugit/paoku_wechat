@@ -75,7 +75,7 @@ Page({
         }, function (u) {
             if (u.levelid != 0) {
                 wx.reLaunch({
-                    url: "/pages/huiyuan/membercenter/membercenter"
+                    url: "/packageA/pages/huiyuan/membercenter/membercenter"
                 })
             }
 

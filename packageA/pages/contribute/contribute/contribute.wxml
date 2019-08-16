@@ -1,0 +1,137 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='contribute_box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='contribute-top'>
+        <image src='{{globalimg}}/gx-bg@2x.png'></image>
+        <view class='open-state'  wx:if="{{bind==0}}">暂未开通</view>
+        <view class='open-state state-num'  wx:if="{{bind==1}}">{{credit4}}</view>
+        <view class='update'>实时更新</view>
+    </view>
+    <view class='change-record-box'>
+        <view class='white-bg'>
+            <image src='{{globalimg}}/whitebg.png'></image>
+            <navigator class='record-box' url='/packageA/pages/contribute/record/record'>
+                <image class='biandong-img' src='{{globalimg}}/biandong@2x.png'></image>
+                <text class='record-text'>变动记录</text>
+           </navigator>
+            <navigator class='desc-box' url='/packageA/pages/contribute/explain/explain'>
+                <image class='biandong-img' src='{{globalimg}}/gxjd@2x.png'></image>
+                <text class='record-text'>贡献值解读</text>
+            </navigator>
+        </view>
+    </view>
+    <view class='gx-condition'>
+        <!-- 还差2项 -->
+        <view class='condition-state01' style='display:{{statedisp01}}'>
+            <view class='rz-box01'>
+                <view class='open-condition'>完成以下信息，即可开通</view>
+                <view class='reminder'>为了保证安全，请务必认真填写</view>
+            </view>
+            <view class='condition-item-box'>
+                <view class='mobile-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/mobile-n@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>手机号码</view>
+                </view>
+                <view class='wechat-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/wechat-n@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>微信号</view>
+                </view>
+            </view>
+            <view class='btn-box'>
+                <button class='openbtn' bindtap='openBtn'>立即开通</button>
+            </view>
+
+        </view>
+        <!-- 还差2项 -->
+        <!-- 还差1项微信 -->
+        <view class='condition-state02' style='display:{{statedisp02}}'>
+            <view class='rz-box01'>
+                <view class='open-condition'>还差1项，即可开通</view>
+                <view class='reminder'>为了保证安全，请务必认真填写</view>
+            </view>
+            <view class='condition-item-box'>
+                <view class='mobile-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/mobile-s@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>手机号码</view>
+                </view>
+                <view class='wechat-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/wechat-n@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>微信号</view>
+                </view>
+            </view>
+            <view class='btn-box'>
+                <button class='openbtn' bindtap='openBtn'>立即开通</button>
+            </view>
+        </view>
+        <!-- 还差1项微信 -->
+        <!-- 还差1项手机 -->
+        <view class='condition-state02' style='display:{{statedisp03}}'>
+            <view class='rz-box01'>
+                <view class='open-condition'>还差1项，即可开通</view>
+                <view class='reminder'>为了保证安全，请务必认真填写</view>
+            </view>
+            <view class='condition-item-box'>
+                <view class='mobile-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/mobile-n@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>手机号码</view>
+                </view>
+                <view class='wechat-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/wechat-s@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>微信号</view>
+                </view>
+            </view>
+            <view class='btn-box'>
+                <button class='openbtn' bindtap='openBtn'>立即开通</button>
+            </view>
+        </view>
+        <!-- 还差1项手机 -->
+        <!-- 完成认证 -->
+        <view class='condition-state03' style='display:{{statedisp04}}'>
+             <view class='rz-box02'>
+            <view class='open-condition'>已完成认证!</view>
+            <view class='reminder-box'>
+                <text class='reminder-left'>为了保证安全，请务必认真填写</text>
+                <view class='reminder-rigth' bindtap='changebtn'>
+                    <view>修改资料</view>
+                    <image class='right-img' src='{{globalimg}}/user-right.png'></image>
+                </view>
+            </view>
+        </view>
+            <view class='condition-item-box'>
+                <view class='mobile-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/mobile-s@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>手机号码</view>
+                </view>
+                <view class='wechat-box'>
+                    <view class='mobile-img'>
+                        <image src='{{globalimg}}/wechat-s@2x.png'></image>
+                    </view>
+                    <view class='mobile-text'>微信号</view>
+                </view>
+            </view>
+        </view>  
+        <!-- 完成认证 -->
+    </view>
+</view>
+<!-- mask -->
+<view class='mask' style='display:{{maskDis}}'>
+    <view class='mask-position'>
+        <view class='mask-con' bindtap='hidebtn'>
+        <image src='{{globalimg}}/tishi-kt.png'></image>
+        </view>
+    </view>
+</view>
+<!-- mask -->

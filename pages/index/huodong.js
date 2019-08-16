@@ -563,7 +563,7 @@ Page((e = {
     });
 }), t(e, "close", function() {
     i.globalData.flag = !0, wx.reLaunch({
-        url: "../index/index"
+        url: "/pages/index/index"
     });
 }), t(e, "initSeckill", function(t) {
     var a = this, e = parseInt(t.status), s = t.starttime, n = t.endtime;

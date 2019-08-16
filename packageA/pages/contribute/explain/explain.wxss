@@ -1,0 +1,56 @@
+
+/* @import "../../../utils/wxParse/wxParse.wxss"; */
+page {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+.explain-box {
+    width: 100%;
+    height: 100%;
+    margin-top: 20rpx;
+   
+}
+image{
+    width: 100%;
+    height: 100%
+}
+.explain-title-box{
+    width: 94%;
+    height: 88rpx;
+    padding: 0 3%;
+    display: flex;
+    margin-top: 30rpx
+}
+.jiedu-img{
+    width: 88rpx;
+    height: 88rpx
+}
+.text-box{
+    height: 88rpx;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rpx
+}
+.text-main{
+    color: #333;
+    font-size: 34rpx
+}
+.subtext{
+    color: #8b8a99;
+    font-size: 22rpx;
+    margin-top: 10rpx
+}
+.explain-main{
+    width: 94%;
+    height: 500rpx;
+    padding: 0 3%;
+    margin-top: 20rpx
+}
+.explain-item{
+    line-height: 50rpx;
+    color: #282828;
+    font-size: 30rpx;
+}

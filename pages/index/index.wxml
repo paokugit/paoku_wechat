@@ -149,17 +149,17 @@
                     <image src='{{ globalimg}}/tuijian.png'></image>
                 </view>
                 <view class='jdyl-box'>
-                    <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='jdyl'>进店有礼</navigator>
+                    <navigator url='/packageA/pages/changce/merch/detail?id={{merchInfo.id}}' class='jdyl'>进店有礼</navigator>
                     <view class='jdyl-img flex_center'>
                         <image src='{{ globalimg}}/open.png'></image>
                     </view>
                 </view>
 
-                <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img '>
+                <navigator url='/packageA/pages/changce/merch/detail?id={{merchInfo.id}}' class='store-img '>
                     <image class='storeImg' mode="aspectFit" src='{{merchInfo.logo}}'></image>
                 </navigator>
                 <view class='store-details-box'>
-                    <navigator url='/pages/changce/merch/detail?id={{merchInfo.id}}' class='storename'>{{merchInfo.merchname}}</navigator>
+                    <navigator url='/packageA/pages/changce/merch/detail?id={{merchInfo.id}}' class='storename'>{{merchInfo.merchname}}</navigator>
                     <view class='office-hour'>主营：{{merchInfo.salecate}}</view>
                     <view class=' store-address'>{{merchInfo.address}}</view>
                 </view>
@@ -226,17 +226,17 @@
                     </view>
                 </view>
                 <view class='nearbyshop-distance flex_center'>{{item.disname}}</view>
-                <navigator class='nearbyshop-map-box' url="/pages/changce/merch/intro?id={{item.id}}">
+                <navigator class='nearbyshop-map-box' url="/packageA/pages/changce/merch/intro?id={{item.id}}">
                     <view>地图/导航</view>
                     <view class='map-img flex_center'>
                         <image src='{{ globalimg}}/chakangengduo.png'></image>
                     </view>
                 </navigator>
-                <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
+                <navigator class='store-img' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>
                     <image mode="aspectFit" src='{{item.logo}}'></image>
                 </navigator>
                 <view class='store-details-box'>
-                    <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
+                    <navigator class='storename' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
                     <view class='merch-reward' style='display:{{merchdisp}}'>
                         <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
                             <text class='reward_text'>赏金任务</text>

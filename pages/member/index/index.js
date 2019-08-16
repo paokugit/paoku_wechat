@@ -69,7 +69,7 @@ Page({
     },
     opengxz: function() {
         wx.navigateTo({
-            url: '/pages/contribute/contribute/contribute',
+            url: '/packageA/pages/contribute/contribute/contribute',
         })
     },
     bindphone: function() {

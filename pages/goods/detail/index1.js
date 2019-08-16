@@ -796,6 +796,6 @@ Page((a = {
     });
 }), t(a, "close", function () {
     o.globalData.flag = !0, wx.reLaunch({
-        url: "../index/index"
+        url: "/pages/index/index"
     });
 }), a));

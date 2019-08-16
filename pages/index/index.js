@@ -137,7 +137,7 @@ Page((e = {
     // 进入商城
     entrystore: function() {
         wx.switchTab({
-            url: '../../pages/index/huodong',
+            url: '/pages/index/huodong',
         })
     },
     hybtn: function() {
@@ -152,18 +152,18 @@ Page((e = {
     },
     products: function() {
         wx.navigateTo({
-            url: '../goods/index/index',
+            url: '/pages/goods/index/index',
         })
     },
     // 卡路里明细
     kllbtn: function() {
         wx.navigateTo({
-            url: '../member/log/bushu',
+            url: '/pages/member/log/bushu',
         })
     },
     pull: function() {
         wx.switchTab({
-            url: '/pages/discount/discount/discount',
+            url: '/pages/rebate/discount/discount',
         })
     },
     firstclosebtn: function() {
@@ -175,7 +175,7 @@ Page((e = {
     // 点击气泡跳转到好友助力页面
     inviteBtn: function() {
         wx.navigateTo({
-            url: '../helphand/friendhelp/friendhelp',
+            url: '/packageA/pages/helphand/friendhelp/friendhelp',
         })
     },
     form_submit: function(e) {
@@ -190,18 +190,17 @@ Page((e = {
     },
     openhyBtn: function() {
         wx.navigateTo({
-            url: '../huiyuan/hygrade/hygrade',
+            url: '/packageA/pages/huiyuan/hygrade/hygrade',
         })
     },
     bindgift: function() {
         wx.navigateTo({
-            url: '/pages/gift/gift',
+            url: '/packageA/pages/gift/gift',
         })
     },
     // 拨打电话
     tel: function(t) {
         merchphone = t.currentTarget.dataset.mobile
-        console.log(merchphone)
         wx.makePhoneCall({
             phoneNumber: merchphone,
         })
@@ -1071,7 +1070,7 @@ Page((e = {
     });
 }), t(e, "close", function() {
     i.globalData.flag = !0, wx.reLaunch({
-        url: "../index/index"
+        url: "/pages/index/index"
     });
 }), t(e, "initSeckill", function(t) {
     var a = this,
