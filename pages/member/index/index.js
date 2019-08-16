@@ -91,16 +91,16 @@ Page({
     })
 
   },
-  opengxz: function() {
-    wx.navigateTo({
-      url: '/pages/contribute/contribute/contribute',
-    })
-  },
-  bindphone: function() {
-    wx.navigateTo({
-      url: '/pages/member/bind/index?param=' + 2,
-    })
-  },
+    opengxz: function () {
+        wx.navigateTo({
+            url: '/packageA/pages/contribute/contribute/contribute',
+        })
+    },
+    bindphone: function () {
+        wx.navigateTo({
+            url: '/pages/member/bind/index?param=' + 2,
+        })
+    },
   bindyet: function() {
     wx.showModal({
       title: '提示',
@@ -122,12 +122,12 @@ Page({
           windowWidth: e.windowWidth,
           windowHeight: e.windowHeight,
           swiperheight: a
+
         });
       }
     }), i.get(this, "member", function(e) {}), "" == e.getCache("userinfo") && wx.redirectTo({
       url: "/pages/message/auth/index"
     });
-
 
     useropenid = e.getCache("userinfo").openid;
     t.paoku_card();

@@ -178,7 +178,7 @@ Page({
                                 } else if (param == 3) {
                                     console.log('认证资料')
                                     wx.navigateTo({
-                                        url: '/pages/contribute/contribute/contribute',
+                                        url: '/packageA/pages/contribute/contribute/contribute',
                                     })
                                 }
                             }

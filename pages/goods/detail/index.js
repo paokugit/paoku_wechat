@@ -245,7 +245,7 @@ Page((a = {
             })
         } else {
             wx.navigateTo({
-                url: '/pages/changce/merch/detail?id=' + merchid,
+                url: '/packageA/pages/changce/merch/detail?id=' + merchid,
             })
         }
 
@@ -1042,6 +1042,6 @@ Page((a = {
     });
 }), t(a, "close", function () {
     o.globalData.flag = !0, wx.reLaunch({
-        url: "../index/index"
+        url: "/pages/index/index"
     });
 }), a));

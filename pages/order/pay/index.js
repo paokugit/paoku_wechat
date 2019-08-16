@@ -116,14 +116,11 @@ Page({
     },
     vipBtn:function(){
         wx.navigateTo({
-            url: '/pages/changce/merch/detail?id='+10,
+            url: '/packageA/pages/changce/merch/detail?id='+10,
         })
     },
     
     onUnload: function () {
-        // wx.navigateTo({
-        //     url: '/pages/order/detail/index?id='+orderId
-        // })
         console.log('监听页面卸载111');
     },
 //    查看奖励

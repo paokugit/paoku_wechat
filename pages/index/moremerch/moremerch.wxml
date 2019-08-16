@@ -7,17 +7,17 @@
                     </view>
                 </view>
         <view class='nearbyshop-distance'>{{item.disname}}</view>
-        <navigator class='nearbyshop-map-box' url="/pages/changce/merch/intro?id={{item.id}}">
+        <navigator class='nearbyshop-map-box' url="/packageA/pages/changce/merch/intro?id={{item.id}}">
             <view>地图/导航</view>
             <view class='map-img'>
                 <image src='{{globalimg}}/chakangengduo.png'></image>
             </view>
         </navigator>
-        <navigator class='store-img' url='/pages/changce/merch/detail?id={{item.id}}'>
+        <navigator class='store-img' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>
             <image class='storeImg' mode="aspectFit" src='{{item.logo}}'></image>
         </navigator>
           <view class='store-details-box' >
-            <navigator class='storename' url='/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
+            <navigator class='storename' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
             <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
                 <text class='reward_text'>赏金任务</text>
                 <text class='reward_money'>赚￥{{item.reward_money}}</text>

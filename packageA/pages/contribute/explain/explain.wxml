@@ -1,0 +1,20 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='explain-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='explain-title-box'>
+        <view class='jiedu-img'>
+            <image src='{{globalimg}}/jiedu@2x.png'></image>
+        </view>
+        <view class='text-box'>
+            <view class='text-main'>贡献值解读</view>
+            <view class='subtext'>清晰了解攻略，快速增加分数</view>
+        </view>
+    </view>
+    <!-- <view class='explain-main'>
+        <view class='explain-item'>{{content}}</view>
+    </view> -->
+    <import src="../../../../utils/wxParse/wxParse.wxml" />
+    <view class="wxParse explain-main">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+
+</view>
