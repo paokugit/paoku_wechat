@@ -1,30 +1,28 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="equity_img">
-    <image src="{{globalimg}}/card_01.png"></image>
-    <image src="{{globalimg}}/card_02.jpg"></image>
-    <image src="{{globalimg}}/card_03.jpg"></image>
-    <view class="card_04">
-      <image src="{{globalimg}}/card_04.jpg"></image>
-      <navigator url="/pages/goods/detail/index?id={{goodGift}}">查看产品</navigator>
+    <image class="mai_01" src="{{globalimg}}/mai_01.jpg"></image>
+    <image class="mai_02" src="{{globalimg}}/mai_02.jpg"></image>
+
+    <view style="position: relative;">
+      <image class="mai_03" src="{{globalimg}}/mai_03.jpg"></image>
+      <view class='swiper-card'>
+        <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" indicator-dots="true" indicator-color="rgb(225,225,225)" indicator-active-color="rgb(250,230,150)">
+          <!-- <block> -->
+            <swiper-item>
+                <image class="bannerGif" src="{{globalimg}}/134360@2x.png"></image>
+            </swiper-item>
+          <!-- </block> -->
+        </swiper>
+      </view>
     </view>
-
-    <!-- <view class='swiper-card'>
-      <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
-        <block wx:for="{{bannerList}}" wx:key="{{index}}">
-          <swiper-item>
-              <image class="bannerGif" src="{{item.thumb}}"></image>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view> -->
-
-    <image src="{{globalimg}}/card_05.jpg"></image>
-    <image src="{{globalimg}}/card_06.jpg"></image>
-    <image src="{{globalimg}}/card_07.jpg"></image>
-    <image src="{{globalimg}}/card_08.jpg"></image>
-    <image src="{{globalimg}}/card_09.jpg"></image>
-    <image src="{{globalimg}}/card_10.jpg"></image>
+    
+    <image class="mai_04" src="{{globalimg}}/mai_04-05.jpg"></image>
+    <image class="mai_06" src="{{globalimg}}/mai_06.jpg"></image>
+    <image class="mai_06" src="{{globalimg}}/mai_07.jpg"></image>
+    <image class="mai_06" src="{{globalimg}}/mai_08.jpg"></image>
+    <image class="mai_06" src="{{globalimg}}/mai_09.jpg"></image>
+    <image class="mai_06" src="{{globalimg}}/mai_10.jpg"></image>
   </view>
   <view class="dredgeColor">
     <image class="dredgeBtn" bindtap="dredgeBtn" src="{{globalimg}}/buttun-kt.gif"></image>
