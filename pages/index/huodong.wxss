@@ -1009,7 +1009,7 @@
 .product-items {
     width: 48%;
     height: 540rpx;
-    background: #fff;
+    /* background: #fff; */
     margin-top: 20rpx;
     display: flex;
     flex-direction: column;
@@ -1211,4 +1211,40 @@ image {
     width: 430rpx;
     height: 268rpx;
     background: #f00
+}
+
+
+
+.proImgA{
+  width: 90%;
+  height: 325rpx;
+  margin: 20rpx 0;
+}
+.proImgA image{
+  border-radius: 10rpx;
+}
+
+.main_target,.substandard,.checkBtn{
+  width: 70%;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main_target{
+  font-weight: bold;
+  font-size: 30rpx;
+  margin: 30rpx 0 10rpx 0;
+}
+.substandard{
+  font-size: 26rpx;
+}
+.checkBtn{
+  width: 35%;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: rgb(255, 212, 1);
+  border-radius: 50rpx;
+  font-size: 28rpx;
 }

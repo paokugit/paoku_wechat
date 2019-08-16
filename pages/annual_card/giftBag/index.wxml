@@ -1,0 +1,20 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="listHead">以下产品任选一件</view>
+
+  <block wx:for="{{goods_list}}" wx:key="{{index}}">
+    <view class="product">
+      <image class="productImg" src="{{item.thumb}}"></image> 
+      <view class="productCon">
+        <view class="conTit">{{item.title}}</view>
+        <view class="conMoney">
+          <view>
+            <text class="conMoneyA">￥{{item.marketprice}}</text>
+            <text class="conMoneyB">￥{{item.productprice}}</text>
+          </view>
+          <view class="btnGet">免费领取</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

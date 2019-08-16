@@ -6,7 +6,7 @@
   height:130rpx;
   background:rgb(51, 55, 67,0.95);
   position: fixed;
-  left: 0;
+  left: 0; 
   bottom: 0;
   text-align: center;
 }
@@ -32,4 +32,13 @@
   text-align: center;
   line-height: 50rpx;
   border-radius: 50rpx;
+}
+
+.swiper-card{
+  height: 220rpx;
+  padding: 0 20rpx;
+  background: #fff;
+}
+.swiper-card swiper,.bannerGif{
+  height: 220rpx;
 }
