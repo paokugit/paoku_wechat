@@ -13,7 +13,12 @@ Page({
       height: t.globalData.height * 2 + 20,
     },
 
-    goodGift:''
+    goodGift:'' ,
+
+    autoplayA: true,
+    intervalA: 3000,
+    durationA: 1000,
+    circularA: true
   },
 
   onLoad: function (options) {

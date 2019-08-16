@@ -8,6 +8,17 @@
       <image src="{{globalimg}}/card_04.jpg"></image>
       <navigator url="/pages/goods/detail/index?id={{goodGift}}">查看产品</navigator>
     </view>
+
+    <!-- <view class='swiper-card'>
+      <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
+        <block wx:for="{{bannerList}}" wx:key="{{index}}">
+          <swiper-item>
+              <image class="bannerGif" src="{{item.thumb}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view> -->
+
     <image src="{{globalimg}}/card_05.jpg"></image>
     <image src="{{globalimg}}/card_06.jpg"></image>
     <image src="{{globalimg}}/card_07.jpg"></image>
