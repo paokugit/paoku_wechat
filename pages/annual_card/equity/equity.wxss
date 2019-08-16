@@ -11,7 +11,7 @@
   top: 0;
 }
 .mai_04{
-  height: 292rpx;
+  height: 292rpx; 
 }
 .mai_06{
   height: 280rpx;
@@ -21,8 +21,12 @@
   height: 396rpx;
   padding: 0 20rpx;
   background: #fff;
+  border: 1px solid red;
 }
-.swiper-card swiper,.bannerGif{
+.swiper-card swiper{
+  height: 350rpx;
+}
+.bannerGif{
   height: 396rpx;
 }
 
