@@ -32,9 +32,9 @@
           <view>
             <view class="titleA">{{levelMonth}}月产品礼包</view>
             <view class="titleB">{{levelTime}}前领取（过期失效）</view>
-            <!-- <view class="cost">{{levelPrice}}</view> -->
-            <!-- <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view> -->
-            <navigator class="btnGet locationCss" url="/pages/annual_card/giftBag/index">{{levelStatus}}</navigator>
+            <view class="cost">{{levelPrice}}</view>
+            <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view>
+            <!-- <navigator class="btnGet locationCss" url="/pages/annual_card/giftBag/index">{{levelStatus}}</navigator> -->
           </view>
 
 
