@@ -1,4 +1,4 @@
-<import src="../../../../utils/wxParse/wxParse.wxml"></import>
+<import src="/utils/wxParse/wxParse.wxml"></import>
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="allbox" style='margin-top:{{nvabarData.height}}px'>
   <view class="circle">

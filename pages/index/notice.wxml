@@ -10,7 +10,7 @@
                     <swiper autoplay="{{autoplayHot}}" circular="{{circularHot}}" class="index-adcs-sqiper index-notification-swiper" duration="{{durationHot}}" indicatorDots="{{indicatorDotsHot}}" interval="{{intervalHot}}">
                         <block wx:for="{{item.data}}" wx:for-index="idx">
                             <swiper-item>
-                                <navigator class="notification-navigoter" hoverClass="none" openType="navigate" url="/pages/shop/notice/detail/detail?id={{item.id}}">
+                                <navigator class="notification-navigoter" hoverClass="none" openType="navigate" url="/packageA/pages/shop/notice/detail/detail?id={{item.id}}">
                                 {{item.title}}
                             </navigator>
                             </swiper-item>
