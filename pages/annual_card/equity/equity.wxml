@@ -8,11 +8,13 @@
       <image class="mai_03" src="{{globalimg}}/mai_03.jpg"></image>
       <view class='swiper-card'>
         <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" indicator-dots="true" indicator-color="rgb(225,225,225)" indicator-active-color="rgb(250,230,150)">
-          <block>
+          <block wx:for="{{goods_list}}" wx:if="{{index}}">
             <swiper-item>
-                <image class="bannerGif" src="{{globalimg}}/134360@2x.png"></image>
+              <navigator url="/pages/goods/detail/index?id={{item.id}}">
+                <image class="bannerGif" src="{{item.image}}"></image>
+              </navigator>
             </swiper-item>
-          </block> 
+          </block>  
         </swiper>
       </view>
     </view>

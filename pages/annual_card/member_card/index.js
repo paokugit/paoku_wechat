@@ -29,7 +29,7 @@ Page({
     siteList:[],
     levelStatus:'',
     levelList:[],
-    levelCode:0,
+    levelCode:'',
     
     cardName:'',
     cardOpen: '',
@@ -129,7 +129,7 @@ Page({
     }, function (e) {
       recordId = e.result.level.id;
 
-      var timeExpire = e.result.member.expire.substring(0, 11);
+      var timeExpire = e.result.member.expire.substring(0, 11); 
 
       var level_month = e.result.level.month;
 
@@ -140,12 +140,12 @@ Page({
         goodsList: e.result.goods,
 
         levelCode:e.result.level.status,
+        levelStatus: e.result.level.status == 0 ? '免费领取' : e.result.level.status == 1 ? '已领取' : '礼包失效',
         levelList:e.result.level,
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(5, 7),
         levelTime: e.result.level.month,
-        levelStatus: b.data.levelCode == 0 ? '免费领取' : b.data.levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
     }); 

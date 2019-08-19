@@ -21,13 +21,16 @@
   height: 396rpx;
   padding: 0 20rpx;
   background: #fff;
-  border: 1px solid red;
 }
 .swiper-card swiper{
-  height: 350rpx;
-}
-.bannerGif{
   height: 396rpx;
+  text-align: center;
+}
+
+.bannerGif{
+  width: 95%;
+  height: 350rpx;
+  border-radius: 10rpx;
 }
 
 .dredgeColor{

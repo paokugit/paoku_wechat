@@ -5,6 +5,7 @@
   color: rgb(51, 51, 51);
   font-size: 34rpx;
   background: #fff;
+  border-top: 1px solid #f8f8f8;
 }
 
 .product{
@@ -15,7 +16,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .productImg{
@@ -24,15 +24,12 @@
   border-radius: 10rpx;
 }
 
-.productCon{
-  width: 80%;
-  padding-left: 20rpx;
-}
+
 .conTit{
-  height: 100rpx;
+  width: 400rpx;
+  hanging-punctuation: 95rpx;
   color: rgb(51, 51, 51);
   font-size: 34rpx;
-  
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -41,19 +38,19 @@
 }
 .conMoney{
   position: relative;
-  margin-top: 40rpx;
+  margin-top: 45rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .conMoneyA{
   color: rgb(224, 18, 18);
-  font-size: 24rpx;
+  font-size: 34rpx;
   margin-right: 10rpx;
 }
 .conMoneyB{
   color: rgb(146, 146, 146);
-  font-size: 18rpx;
+  font-size: 22rpx;
   text-decoration:line-through;
 }
 .btnGet{

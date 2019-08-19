@@ -1,10 +1,10 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="listHead">以下产品任选一件</view>
-
+ 
   <block wx:for="{{goods_list}}" wx:key="{{index}}">
     <view class="product">
-      <image class="productImg" src="{{item.thumb}}"></image> 
+      <image class="productImg" src="{{item.thumb}}"></image>  
       <view class="productCon">
         <view class="conTit">{{item.title}}</view>
         <view class="conMoney">
@@ -12,7 +12,7 @@
             <text class="conMoneyA">￥{{item.marketprice}}</text>
             <text class="conMoneyB">￥{{item.productprice}}</text>
           </view>
-          <view class="btnGet" bindtap="btnGet" data-productid="{{item.id}}">免费领取</view>
+          <view class="btnGet" style="{{item.is_get == 1?'background:#929292':''}}" bindtap="{{item.is_get == 0?'btnGet':''}}" data-productid="{{item.id}}" wx:if="{{item.is_get == 2?false:true}}">{{levelStatus}}</view>
         </view>
       </view>
     </view>

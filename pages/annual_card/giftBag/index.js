@@ -12,7 +12,7 @@ Page({
     nvabarData: {
       showCapsule: 1,
       title: '每月礼包',
-      height: t.globalData.height * 2 + 22,
+      height: t.globalData.height * 2 + 20,
     }, 
 
     goods_list:[],
@@ -22,7 +22,8 @@ Page({
     btnNum:0,
     postage: 0,
     rental: 0,
- 
+
+    levelStatus:''
   },
 
   onLoad: function (options) {
@@ -42,6 +43,7 @@ Page({
     }, function (e) {
       console.log(e);
       b.setData({
+        levelStatus:e.result.get == 1?'已领取':'免费领取',
         goods_list: e.result.goods
       })
     })
@@ -122,32 +124,45 @@ Page({
       goods_id: productId
     }, function (e) {
       console.log(e);
-      wx.requestPayment({
-        timeStamp: e.result.timeStamp,
-        nonceStr: e.result.nonceStr,
-        package: e.result.package,
-        signType: e.result.signType,
-        paySign: e.result.paySign,
-        success(res) {
-          wx.redirectTo({
-            url: '/pages/annual_card/member_card/index',
-          })
-          wx.showToast({
-            title: '领取成功,请耐心等待',
-            icon: 'none',
-            dufailration: 1000
-          });
-        },
-        fail(res) {
-          a.get("member.level.cancel", { 
-            openid: useropenid,
-            order_id: order
-          },function(e){
-            console.log(e);
-          })
-        }
-      })
 
+      if(e.status == 2){
+        m.setData({
+          isShow: false
+        });
+        wx.showToast({
+          title: '领取成功,请耐心等待',
+          icon: 'none',
+          dufailration: 1000
+        });
+        m.list();
+      } else if (e.status == 1){
+        wx.requestPayment({
+          timeStamp: e.result.timeStamp,
+          nonceStr: e.result.nonceStr,
+          package: e.result.package,
+          signType: e.result.signType,
+          paySign: e.result.paySign,
+          success(res) {
+            m.setData({
+              isShow:false
+            })
+            wx.showToast({
+              title: '领取成功,请耐心等待',
+              icon: 'none',
+              dufailration: 1000
+            });
+            m.list();
+          },
+          fail(res) {
+            a.get("member.level.cancel", { 
+              openid: useropenid,
+              order_id: order
+            },function(e){
+              console.log(e);
+            })
+          }
+        })
+      }
     })
   },
   

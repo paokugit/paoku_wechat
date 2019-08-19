@@ -29,10 +29,7 @@
           <view>
             <view class="titleA">{{levelMonth}}月产品礼包</view>
             <view class="titleB">{{levelTime}}前领取（过期失效）</view>
-            <view class="liBao">
-              <view class="cardHint">年卡中心</view>
-              <view class="btnGet" style="{{levelCode == 0?'':'background:#929292'}}" bindtap="{{levelCode == 0?'btnList':''}}">{{levelStatus}}</view>
-            </view>
+            <view class="btnGet" style="{{levelCode == 0?'':'background:#929292'}}" bindtap="btnList">{{levelStatus}}</view>
           </view>
         </view>
 
