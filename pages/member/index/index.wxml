@@ -126,7 +126,7 @@
       <view class="card_entranceImg">
         <image src="{{globalimg}}/card-circle.gif"></image>
       </view>
-      <view>
+      <view style="width:200rpx;">
         <view class="card_entranceTit">跑库年卡</view>
         <view class='swiper-card'>
           <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" wx:if="{{is_open == 0?true:false}}">
@@ -134,14 +134,14 @@
               <swiper-item>
                 <view class='card_entranceT'>{{item.txt}}</view>
               </swiper-item>
-            </block>
+            </block> 
           </swiper>
           <view wx:if="{{is_open == 1?true:false}}" class="card_entranceT">{{expire_time}}</view>
           <view wx:if="{{is_open == 2?true:false}}" style="color:#f60100;font-size: 20rpx;">立即续费</view>
         </view>
       </view>
     </navigator>
-
+    
     <view class='swiper-box'>
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">

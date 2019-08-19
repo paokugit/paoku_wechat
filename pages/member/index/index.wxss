@@ -13,7 +13,7 @@ page {
 .capacity {
     width: 130rpx;
     height: 130rpx;
-    position: fixed;
+    position: fixed; 
     bottom: 23%;
     right: 5%;
 }
@@ -333,25 +333,22 @@ image {
     font-size: 26rpx
 }
 
-swiper{
+.swiper-card swiper{
   width: 100%;
   height: 190rpx
 }
 
  .card_banner{
    display: flex;
-   justify-content: space-between;
    align-items: center;
    background: #fff;
  }
 
  .card_entrance{
-   width: 50%;
    border-right: 1px solid rgb(243, 243, 243);
    display: flex;
-   margin-left:50rpx;
-   padding-right: 0rpx;
    align-items: center;
+   margin-left: 8%;
  }
  .card_entranceImg{
    width: 96rpx;
@@ -362,6 +359,7 @@ swiper{
    font-size: 34rpx;
    color: #1c1c1c;
  }
+ 
  .swiper-card{
    height: 38rpx;
    margin-top: 20rpx; 
@@ -373,9 +371,13 @@ swiper{
 
 .swiper-box{
   position: relative;
-  width: 365rpx;
-  margin-right: 30rpx;
 }
+
+.swiper-box swiper{
+  width: 375rpx;
+  height: 190rpx;
+}
+
 .dots{ 
   position: absolute; 
   left: 0; 
