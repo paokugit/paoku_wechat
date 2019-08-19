@@ -37,7 +37,7 @@ Page({
       openid: m.data.useropenid,
       level_id: 5
     }, function (e) {
-      console.log(e);
+      console.log(e.result.goods);
       m.setData({
         goods_list: e.result.goods
       })
