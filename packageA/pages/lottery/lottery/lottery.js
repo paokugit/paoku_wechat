@@ -119,7 +119,7 @@ Page({
 
             } else if (res.confirm) {
               wx.navigateTo({
-                url: '/pages/helphand/friendhelp/friendhelp',
+                  url: '/packageA/pages/helphand/friendhelp/friendhelp',
               })
             }
           },
