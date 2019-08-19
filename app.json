@@ -1,15 +1,12 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/annual_card/member_card/index",
         "pages/annual_card/giftBag/index",
-
-        "pages/index/index",
         "pages/rebate/discount/discount",
         "pages/index/huodong",
         "pages/commission/down/index",
         "pages/commission/down/search",
-        "pages/shop/notice/notification/notification",
-        "pages/shop/notice/notification/detail",
         "pages/member/bind/index",
         "pages/order/index",
         "pages/member/index/index",
@@ -28,9 +25,6 @@
         "pages/commission/apply/index",
         "pages/commission/order/index",
         "pages/commission/register/index",
-        "pages/shop/notice/index/index",
-        "pages/shop/notice/detail/detail",
-        "pages/shop/caregory/index",
         "pages/goods/index/index",
         "pages/goods/region/index",
         "pages/goods/package/index",
@@ -70,8 +64,6 @@
         "pages/order/cycle/address",
         "pages/order/express/number",
         "pages/order/cycle/order",
-
-        
         "pages/annual_card/record_page/record_page",
         "pages/annual_card/equity/equity"
     ],
@@ -125,7 +117,12 @@
                 "pages/huiyuan/membercenter/membercenter",
                 "pages/huiyuan/hygrade/hygrade",
                 "pages/huiyuan/expedite/expedite",
-                "pages/huiyuan/pay_succeed/pay_succeed"
+                "pages/huiyuan/pay_succeed/pay_succeed",
+                "pages/shop/notice/notification/notification",
+                "pages/shop/notice/notification/detail",
+                "pages/shop/notice/index/index",
+                "pages/shop/notice/detail/detail",
+                "pages/shop/caregory/index"
             ]
         }
     ],

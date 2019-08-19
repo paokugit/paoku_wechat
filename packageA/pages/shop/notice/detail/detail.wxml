@@ -1,4 +1,4 @@
-<import src="../../../../utils/wxParse/wxParse.wxml"></import>
+<import src="/utils/wxParse/wxParse.wxml"></import>
 <block>
     <block wx:if="{{!show}}">
         <loading>加载中...</loading>

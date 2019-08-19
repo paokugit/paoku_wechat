@@ -3,7 +3,7 @@
         <image class="icon" src="{{route=='home'?icons.home_red:icons.home}}"></image>
         <text class="label">商城首页</text>
     </navigator>
-    <navigator class="nav-item {{route!='category'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/shop/caregory/index">
+    <navigator class="nav-item {{route!='category'||'active'}}" hoverClass="none" openType="reLaunch" url="/packageA/pages/shop/caregory/index">
         <image class="icon" src="{{route=='category'?icons.cate_red:icons.cate}}"></image>
         <text class="label">全部分类</text>
     </navigator>

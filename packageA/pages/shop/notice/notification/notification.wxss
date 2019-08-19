@@ -1,4 +1,4 @@
-@import "../../../../utils/wxParse/wxParse.wxss";
+@import "/utils/wxParse/wxParse.wxss";
 .all-box {
   width: 100%;
   height: 100%;

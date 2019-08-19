@@ -82,7 +82,7 @@ Page({
   tiaozhuan: function (e) {
     var ss = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/shop/notice/notification/detail?id=' + ss,
+        url: '/packageA/pages/shop/notice/notification/detail?id=' + ss,
     })
   },
   /**

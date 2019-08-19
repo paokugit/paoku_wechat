@@ -171,7 +171,7 @@
         </view>
         <view class='service-text'>粉丝</view>
       </navigator>
-      <navigator url='/pages/shop/notice/notification/notification' class='service-item'>
+      <navigator url='/packageA/pages/shop/notice/notification/notification' class='service-item'>
         <view class='tuijian-img'>
           <image src='{{globalimg}}/tongzhi02.png'></image>
         </view>
