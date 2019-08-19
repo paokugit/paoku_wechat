@@ -1,8 +1,5 @@
 {
     "pages": [
-        "pages/annual_card/member_card/index",
-        "pages/annual_card/giftBag/index",
-
         "pages/index/index",
         "pages/rebate/discount/discount",
         "pages/index/huodong",
@@ -71,7 +68,8 @@
         "pages/order/express/number",
         "pages/order/cycle/order",
 
-        
+        "pages/annual_card/member_card/index",
+        "pages/annual_card/giftBag/index",
         "pages/annual_card/record_page/record_page",
         "pages/annual_card/equity/equity"
     ],

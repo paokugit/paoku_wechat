@@ -1,6 +1,38 @@
-.equity_img image{
+.mai_01{
+  height: 278rpx;
+}
+.mai_02{
+  height: 433rpx;
+}
+.mai_03{
+  height: 396rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.mai_04{
+  height: 292rpx; 
+}
+.mai_06{
   height: 280rpx;
 }
+
+.swiper-card{
+  height: 396rpx;
+  padding: 0 20rpx;
+  background: #fff;
+}
+.swiper-card swiper{
+  height: 396rpx;
+  text-align: center;
+}
+
+.bannerGif{
+  width: 95%;
+  height: 350rpx;
+  border-radius: 10rpx;
+}
+
 .dredgeColor{
   width: 100%;
   height:130rpx;
@@ -16,29 +48,3 @@
   margin: 25rpx 0;
 }
 
-.card_04{
-  height: 280rpx;
-  position: relative;
-}
-.card_04 navigator{
-  width: 140rpx;
-  height: 50rpx;
-  background: #fa2539;
-  font-size: 28rpx;
-  color: #FFFEFE;
-  position: absolute;
-  right: 10%;
-  bottom: 30%;
-  text-align: center;
-  line-height: 50rpx;
-  border-radius: 50rpx;
-}
-
-.swiper-card{
-  height: 220rpx;
-  padding: 0 20rpx;
-  background: #fff;
-}
-.swiper-card swiper,.bannerGif{
-  height: 220rpx;
-}

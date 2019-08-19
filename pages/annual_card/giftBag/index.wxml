@@ -1,10 +1,10 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="listHead">以下产品任选一件</view>
-
+ 
   <block wx:for="{{goods_list}}" wx:key="{{index}}">
     <view class="product">
-      <image class="productImg" src="{{item.thumb}}"></image> 
+      <image class="productImg" src="{{item.thumb}}"></image>  
       <view class="productCon">
         <view class="conTit">{{item.title}}</view>
         <view class="conMoney">
@@ -12,9 +12,41 @@
             <text class="conMoneyA">￥{{item.marketprice}}</text>
             <text class="conMoneyB">￥{{item.productprice}}</text>
           </view>
-          <view class="btnGet">免费领取</view>
+          <view class="btnGet" style="{{item.is_get == 1?'background:#929292':''}}" bindtap="{{item.is_get == 0?'btnGet':''}}" data-productid="{{item.id}}" wx:if="{{item.is_get == 2?false:true}}">{{levelStatus}}</view>
         </view>
       </view>
     </view>
   </block>
+
+  <!-- 地址领取弹窗 -->
+  <view class="siteTier" wx:if="{{isShow}}">
+    <view class="siteList">
+      <view class="site_title">选择收货地址</view>
+      <view class="roll_tier">
+        <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="{{index}}" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
+          <view class="person_message flexCss">
+            <view class="message_name">{{item.realname}}</view>
+            <view class="message_phone">{{item.mobile}}</view>
+          </view>
+          <view class="site_message">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
+        </view>
+
+        <view class="titMessage" wx:if="{{isShow}}">{{titMessage}}</view>
+      </view>
+
+      <view style="display:flex">
+        <view class="btn_css">
+          <view class="cost_prompt" style="margin-left:15%;">运费：{{postage}}</view>
+          <view class="site_skip site_ok_css" bindtap="site_skip">添加地址</view>        
+        </view>
+        <view class="btn_css">
+          <view class="cost_prompt" style="margin-left:-2%;">总额：{{rental}}</view>
+          <view class="site_ok site_ok_css" bindtap="site_ok">支付</view>
+        </view>
+      </view>
+
+      <image class="cancelBtn" bindtap="cancelBtn" src='{{globalimg}}/guanbi.png'></image>
+    </view>
+  </view>
+
 </view>

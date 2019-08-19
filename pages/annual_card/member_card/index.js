@@ -2,13 +2,10 @@
 var t = getApp(),
   a = t.requirejs("core");
 var f = getApp();  
-
+ 
 var imgSrc = "";
 var useropenid = "";
-var levelId = '';
 var recordId = '';
-var levelCode = '';
-var addressId = '';
 Page({
 
   data: {
@@ -16,7 +13,7 @@ Page({
     // 组件所需的参数
     nvabarData: {
       showCapsule: 1,
-      title: '',
+      title: '年卡中心',
       height: t.globalData.height * 2 + 20,
     },
     
@@ -29,10 +26,10 @@ Page({
     levelMonth:'',
     levelTime:'',
     couponList:[],
-    isShow: false,
     siteList:[],
     levelStatus:'',
     levelList:[],
+    levelCode:'',
     
     cardName:'',
     cardOpen: '',
@@ -130,13 +127,9 @@ Page({
     a.get("member.level", {
       openid: b.data.useropenid,
     }, function (e) {
-      console.log(e);
-      
-      levelId = e.result.level.level_id;
       recordId = e.result.level.id;
-      levelCode = e.result.level.status;
 
-      var timeExpire = e.result.member.expire.substring(0, 11);
+      var timeExpire = e.result.member.expire.substring(0, 11); 
 
       var level_month = e.result.level.month;
 
@@ -146,12 +139,13 @@ Page({
         timeExpire: timeExpire,
         goodsList: e.result.goods,
 
+        levelCode:e.result.level.status,
+        levelStatus: e.result.level.status == 0 ? '免费领取' : e.result.level.status == 1 ? '已领取' : '礼包失效',
         levelList:e.result.level,
         levelImg: e.result.level.thumb,
         levelPrice: e.result.level.price,
         levelMonth: level_month.substring(5, 7),
         levelTime: e.result.level.month,
-        levelStatus: levelCode == 0 ? '免费领取' : levelCode == 1 ? '已领取' : '礼包失效',
         couponList: e.result.coupon
       })
     }); 
@@ -163,114 +157,11 @@ Page({
     })
   },
 
-  btnGet: function (e) {
-    var m = this;
-    if (levelCode == 0){
-      a.get("member.level.address_list",{
-        openid: useropenid
-      },function(e){    
-  
-        if(e.status == -1){
-          m.setData({
-            titMessage: e.result.message,
-            isShow:true,
-            siteList:[]
-          })
-        }else{
-          let price = e.result.data.price;
-          addressId = e.result.list[0].id;
-          m.setData({
-            siteList: e.result.list,
-            postage: e.result.data.is_remote == 0 ? price : price+'（偏远）',
-            rental:price,
-            isShow: true,
-            titMessage:''
-          })
-        }
-      })
-    }
-  },
-
-  cancelBtn:function(e){
-    this.setData({
-      isShow: false,
-      btnNum:0
-    })
-  },
-
-  clickNum:function(e){ 
-    addressId = e.currentTarget.dataset.address;
-    let btnNum = e.currentTarget.dataset.id;
-    let m = this;
-    a.get("member.level.change",{
-      openid: useropenid,
-      address_id: addressId
-    },function(e){
-      let price = e.result.data.price;
-      m.setData({
-        btnNum: btnNum,
-        postage: e.result.data.is_remote == 0 ? price : price + '(偏远)',
-        rental:price
-      }) 
-    })
-  },
-
-  site_ok:function(e){
-    var m = this;
-    var order = '';
-
-    a.get("member.level.get",{
-      openid: useropenid,
-      level_id: levelId,
-      address_id: addressId,
-      record_id: recordId,
-      money: m.data.rental
-    },function(e){
-      console.log(e);
-      order = e.result.order_id;
-
-      wx.requestPayment({
-        timeStamp: e.result.timeStamp,
-        nonceStr: e.result.nonceStr,
-        package: e.result.package,
-        signType: e.result.signType,
-        paySign: e.result.paySign,
-        success(res) {
-          m.setData({ 
-            isShow: false, 
-            levelStatus:'已领取',
-          });
-
-          levelCode = 1;
-
-          wx.showToast({
-            title: '领取成功,请耐心等待',
-            icon: 'none',
-            dufailration: 1000
-          });
-        },
-        fail(res){
-          a.get("member.level.cancel", { 
-            openid: useropenid,
-            order_id: order
-          },function(e){
-            console.log(e);
-          })
-        }
-      })
-    })
-  },
-
-  site_skip:function(){
+  btnList:function(){
     wx.navigateTo({
-      url: '/pages/member/address/index'
-    })
-    this.setData({
-      isShow:false,
-      btnNum:0
+      url: '/pages/annual_card/giftBag/index?recordId='+recordId
     })
   },
-
 
   onPullDownRefresh:function(){
     var b = this;

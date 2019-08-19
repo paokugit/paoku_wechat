@@ -8,15 +8,16 @@ Page({
   data: {
     globalimg: t.globalData.appimg,
     nvabarData: {
-      showCapsule: 1,
+      showCapsule: 1, 
       title: '跑库年卡',
       height: t.globalData.height * 2 + 20,
     },
 
     goodGift:'' ,
+    goods_list:[],
 
     autoplayA: true,
-    intervalA: 3000,
+    intervalA: 2000,
     durationA: 1000,
     circularA: true
   },
@@ -29,7 +30,19 @@ Page({
       m.setData({
         goodGift: e.result.goods_id
       })
+    });
+
+    
+    a.get("member.level.goods_list", {
+      openid: m.data.useropenid,
+      level_id: 5
+    }, function (e) {
+      console.log(e);
+      m.setData({
+        goods_list: e.result.goods
+      })
     })
+    
   },
   
   dredgeBtn:function(e){

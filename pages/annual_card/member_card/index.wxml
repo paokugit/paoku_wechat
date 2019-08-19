@@ -22,24 +22,18 @@
           </navigator>
         </view>
 
+
         <view class="product_list flexCss">
           <text class="freeGet txtColo locationCss">限时</text>
-
-          
-          <image class="leftImg" src="{{levelImg}}"></image>
-
-
+          <image class="leftImg" src="{{globalimg}}/libaoImg.png"></image>
           <view>
             <view class="titleA">{{levelMonth}}月产品礼包</view>
             <view class="titleB">{{levelTime}}前领取（过期失效）</view>
-            <view class="cost">{{levelPrice}}</view>
-            <view class="btnGet locationCss" bindtap="btnGet">{{levelStatus}}</view>
-            <!-- <navigator class="btnGet locationCss" url="/pages/annual_card/giftBag/index">{{levelStatus}}</navigator> -->
+            <view class="btnGet" style="{{levelCode == 0?'':'background:#929292'}}" bindtap="btnList">{{levelStatus}}</view>
           </view>
-
-
-
         </view>
+
+
         <view class="null_hint" wx:if="{{levelList == ''?true:false}}">
           <image class="hintImageB" src="{{globalimg}}/20190725103651.png"></image>
           <view>暂无可领取礼包，请下月在来查看</view>
@@ -164,36 +158,6 @@
         <text class="icon_text {{index==nowIndex?'active':''}}">{{item.text}}</text>
       </view>
     </block>
-  </view>
-
-  <view class="siteTier" wx:if="{{isShow}}">
-    <view class="siteList">
-      <view class="site_title">选择收货地址</view>
-      <view class="roll_tier">
-        <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="{{index}}" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
-          <view class="person_message flexCss">
-            <view class="message_name">{{item.realname}}</view>
-            <view class="message_phone">{{item.mobile}}</view>
-          </view>
-          <view class="site_message">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
-        </view>
-
-        <view class="titMessage" wx:if="{{isShow}}">{{titMessage}}</view>
-      </view>
-
-      <view style="display:flex">
-        <view class="btn_css">
-          <view class="cost_prompt" style="margin-left:15%;">运费：{{postage}}</view>
-          <view class="site_skip site_ok_css" bindtap="site_skip">添加地址</view>        
-        </view>
-        <view class="btn_css">
-          <view class="cost_prompt" style="margin-left:-2%;">总额：{{rental}}</view>
-          <view class="site_ok site_ok_css" bindtap="site_ok">支付</view>
-        </view>
-      </view>
-
-      <image class="cancelBtn locationCss" bindtap="cancelBtn" src='{{globalimg}}/guanbi.png'></image>
-    </view>
   </view>
 
 </view>
