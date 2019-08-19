@@ -142,6 +142,14 @@ Page({
           isShow:true
         })
       }
+    });
+
+    p.get("myown.index.mycenter", {}, function (e) {
+      console.log(e);
+      t.setData({
+        order: e.result.order,
+        server: e.result.server
+      })
     })
   },
   paoku_card: function() {
