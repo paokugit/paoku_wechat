@@ -269,44 +269,9 @@ image {
     align-items: center;
 }
 
-.fukuan-img {
-    width: 62rpx;
-    height: 62rpx;
-}
-
-.fahuo-img {
-    width: 58rpx;
-    height: 58rpx;
-}
-
-.shouhuo-img {
-    width: 72rpx;
-    height: 72rpx;
-}
-
-.tuihuan-img, .fensi-img, .guanzhu-img, .zuji-img, .dizhi-img {
-    width: 50rpx;
-    height: 50rpx;
-}
-
-.tuijian-img {
-    width: 56rpx;
-    height: 56rpx;
-}
-
-.youhui-img {
-    width: 60rpx;
-    height: 60rpx;
-}
-
-.lingquan-img {
-    width: 54rpx;
-    height: 54rpx;
-}
-
-.gouwu-img {
-    width: 52rpx;
-    height: 52rpx;
+.dingdan-img{
+  width: 54rpx;
+  height: 54rpx;
 }
 
 .service-img {
