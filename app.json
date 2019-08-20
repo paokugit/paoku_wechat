@@ -1,5 +1,7 @@
 {
     "pages": [
+      "pages/expert/circle/circle",
+      
         "pages/index/index",
         "pages/rebate/discount/discount",
         "pages/index/huodong",

@@ -74,7 +74,7 @@
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
                 <view class='fukuan-img service-img'>
                     <block>
-                        <block wx:if="{{member.statics.order_0>0}}">
+                        <block wx:if="{{member.statics.order_0>0}}"> 
                             <view class="count-img">{{member.statics.order_0}}</view>
                         </block>
                     </block>

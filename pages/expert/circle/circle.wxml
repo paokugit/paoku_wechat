@@ -1,0 +1,48 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+
+  <view class="listCon">
+    <!-- 头像、昵称、发布时间 -->
+    <view class="circleMes">
+      <view class="nameMes">
+        <image src="{{globalimg}}/mai_04-05.jpg"></image>
+        <text class="circleCss">流浪的夜</text>
+      </view>
+      <view class="timeMes">2019-08-11 13：22</view>
+    </view>
+    
+    <!-- 动态内容 -->
+    <view class="circleCon circleCss">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+    
+    <!-- 动态图片 -->
+    <view class="circleImg">
+      <image src="{{globalimg}}/mai_01.jpg"></image>
+    </view>
+
+    <!-- 图标 -->
+    <!-- <view></view> -->
+  </view> 
+
+  <view class="listCon">
+    <!-- 头像、昵称、发布时间 -->
+    <view class="circleMes">
+      <view class="nameMes">
+        <image src="{{globalimg}}/mai_04-05.jpg"></image>
+        <text class="circleCss">流浪的夜</text>
+      </view>
+      <view class="timeMes">2019-08-11 13：22</view>
+    </view>
+    
+    <!-- 动态内容 -->
+    <view class="circleCon circleCss">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+    
+    <!-- 动态图片 -->
+    <view class="circleImg">
+      <image src="{{globalimg}}/mai_01.jpg"></image>
+    </view>
+
+    <!-- 商品推荐 -->
+    <!-- <view></view> -->
+  </view>  
+
+</view>

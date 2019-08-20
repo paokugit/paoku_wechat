@@ -12,7 +12,7 @@ page {
 
 .capacity {
     width: 130rpx;
-    height: 130rpx;
+    height: 130rpx; 
     position: fixed; 
     bottom: 23%;
     right: 5%;
@@ -262,7 +262,7 @@ image {
 
 .nav-item, .service-item {
     width: 85rpx;
-    height: 110rpx;
+    height: 110rpx; 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
