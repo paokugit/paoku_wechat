@@ -174,7 +174,6 @@ Page({
      */
     onShow: function() {
         var t = this
-        // 累计邀请人数
         a.get("index/share_help", {}, function(e) {
             console.log(e)
             t.setData({
