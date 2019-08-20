@@ -1,6 +1,8 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/discount/zkbscancode/zkbscancode",
+        "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
         "pages/index/huodong",
         "pages/commission/down/index",
@@ -88,7 +90,7 @@
                 "pages/discount/merchcode/merchcode",
                 "pages/discount/zkbaccount/zkbaccount",
                 "pages/discount/recordlist/recordlist",
-                "pages/discount/zkbscancode/zkbscancode",
+               
                 "pages/discount/setzkbdiscount/setzkbdiscount",
                 "pages/discount/zkbdiscount/zkbdiscount",
                 "pages/discount/mingxi/mingxi",
@@ -102,7 +104,6 @@
                 "pages/personalcode/code",
                 "pages/personalcode/discountlist",
                 "pages/personalcode/setdiscount",
-                "pages/personalcode/scancode",
                 "pages/contribute/contribute/contribute",
                 "pages/contribute/explain/explain",
                 "pages/contribute/record/record",

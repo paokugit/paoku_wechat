@@ -1,121 +1,134 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#29c8bc" frontColor="#fff"></nav-bar>
 <view class='conBox' style='margin-top:{{nvabarData.height}}px'>
-<view class='outerBox'>
-    <view class='helplist help_center' >
-        <view>捐赠榜</view>
-    </view>
-    <form bindsubmit='form_submit' report-submit='true' class='listform' bindtap='myList'>
+    <view class='outerBox'>
+        <view class='helplist help_center'>
+            <view>捐赠榜</view>
+        </view>
+        <form bindsubmit='form_submit' report-submit='true' class='listform' bindtap='myList'>
             <button form-type='submit' style="background:rgba(0,0,0,0)" class='listbtn'></button>
-    </form>
-    <view class='bannerbox'><image src='{{globalimg}}/friendbanner.png'></image></view>
-    <form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
-        <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
-            <view class='invite-friend-box help_center'>
-                <view  class='inviteFriend  ballon'>
-                    <image src='{{globalimg}}/button_yaoqing.png'></image>
-                </view>
-            </view>
-        </button>
-    </form>
-    <view class='help-record-box' style='display:{{notadaDis}}'>
-        <view class='help-record-con'>
-        <view class='help-record'>
-            <view class='recordCon'>
-                <image src='{{globalimg}}/biaoti02.png'></image>
-            </view>
-            <view class='distance-goal help_center'>距离今日目标还差
-            <view class='distance-goal-num'>{{result.step}}</view>步
-            </view>
-            <view class='nodata-box'>
-                <view class='nodata-img'>
-                    <image src='{{globalimg}}/nodata02.png'></image>
-                </view>
-                <view class='nodata-con help_center'>还没有好友呢，快去邀请吧!</view>
-            
-            </view>
-                <view class='example-box'>
-                <view class='doubt'><image src='{{globalimg}}/about@2x.png'></image></view>
-                    <image src='{{globalimg}}/lizi02.png'></image>
-                </view>
-                <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:<view class='invite-num'>{{creditsum}}</view>卡路里
-                </view>
-                <view class='symbol-box help_center'>≈
-                    <view class='value-kaluli'>{{creditprice}}</view>元
-                </view>
+        </form>
+        <view class='bannerbox'>
+            <image src='{{globalimg}}/friendbanner.png'></image>
         </view>
-        </view>
-           
-    </view>
-    <view style='display:{{listDis}}' class='help-record-listBox'>
-    <view class='help-record-listCon'>
-        <view class='help-record-list'>
-            <view class='recordCon'>
-                <image src='{{globalimg}}/biaoti02.png'></image>
-            </view>
-           <view class='goal-today-box' style='display:{{goalDis}}'>
-                <view class='goal-today-con'>
-            <view class='distance-goal help_center'>距离今日目标还差
-            <view class='distance-goal-num help_center'>{{result.step}}</view>步
-            </view>
-            </view>
-           </view>
-           <view class='finish-today-box' style='display:{{finishDis}}'>
-            <view class='finish-today-con'>
-                <view class='finish-today-text help_center'>恭喜你，今日目标已完成</view>
-                <view class='today-award help_center'><view class='award-num'>+{{addstep}}</view>步</view>
-                <view class='finish-img'><image src='{{globalimg}}/finish.png'></image></view>
-            </view>
-           </view>
-            <view class='helpList'>
-                <view class='listCon' wx:for='{{helpList}}' wx:key='{{index}}' >
-                    <view class='friend-icon'><image class='friend-img' src='{{item.avatar}}'></image></view>
-                    <view class='help-info'>
-                        <view class='friend-name'>{{item.nickname}}</view>
-                    <view class='friend-time'>{{item.day}}</view>
+        <form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
+            <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
+                <view class='invite-friend-box help_center'>
+                    <view class='inviteFriend  ballon'>
+                        <image src='{{globalimg}}/button_yaoqing.png'></image>
                     </view>
-                    <view class='helpNum help_center'>{{item.step}}步</view>
+                </view>
+            </button>
+        </form>
+        <view class='help-record-box' style='display:{{notadaDis}}'>
+            <view class='help-record-con'>
+                <view class='help-record'>
+                    <view class='recordCon'>
+                        <image src='{{globalimg}}/biaoti02.png'></image>
+                    </view>
+                    <view class='distance-goal help_center'>距离今日目标还差
+                        <view class='distance-goal-num'>{{result.step}}</view>步
+                    </view>
+                    <view class='nodata-box'>
+                        <view class='nodata-img'>
+                            <image src='{{globalimg}}/nodata02.png'></image>
+                        </view>
+                        <view class='nodata-con help_center'>还没有好友呢，快去邀请吧!</view>
+
+                    </view>
+                    <view class='example-box'>
+                        <view class='doubt'>
+                            <image src='{{globalimg}}/about@2x.png'></image>
+                        </view>
+                        <image src='{{globalimg}}/lizi02.png'></image>
+                    </view>
+                    <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:
+                        <view class='invite-num'>{{creditsum}}</view>卡路里
+                    </view>
+                    <view class='symbol-box help_center'>≈
+                        <view class='value-kaluli'>{{creditprice}}</view>元
+                    </view>
                 </view>
             </view>
-                <view class='example-box'>
-                <view class='doubt'><image src='{{globalimg}}/about@2x.png'></image></view>
-                    <image src='{{globalimg}}/lizi02.png'></image>
-                </view>
-                <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:<view class='invite-num'>{{creditsum}}</view>卡路里
-                </view>
-                <view class='symbol-box help_center'>≈
-                    <view class='value-kaluli'>{{creditprice}}</view>元
-                </view>
+
         </view>
+        <view style='display:{{listDis}}' class='help-record-listBox'>
+            <view class='help-record-listCon'>
+                <view class='help-record-list'>
+                    <view class='recordCon'>
+                        <image src='{{globalimg}}/biaoti02.png'></image>
+                    </view>
+                    <view class='goal-today-box' style='display:{{goalDis}}'>
+                        <view class='goal-today-con'>
+                            <view class='distance-goal help_center'>距离今日目标还差
+                                <view class='distance-goal-num help_center'>{{result.step}}</view>步
+                            </view>
+                        </view>
+                    </view>
+                    <view class='finish-today-box' style='display:{{finishDis}}'>
+                        <view class='finish-today-con'>
+                            <view class='finish-today-text help_center'>恭喜你，今日目标已完成</view>
+                            <view class='today-award help_center'>
+                                <view class='award-num'>+{{addstep}}</view>步</view>
+                            <view class='finish-img'>
+                                <image src='{{globalimg}}/finish.png'></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class='helpList'>
+                        <view class='listCon' wx:for='{{helpList}}' wx:key='{{index}}'>
+                            <view class='friend-icon'>
+                                <image class='friend-img' src='{{item.avatar}}'></image>
+                            </view>
+                            <view class='help-info'>
+                                <view class='friend-name'>{{item.nickname}}</view>
+                                <view class='friend-time'>{{item.day}}</view>
+                            </view>
+                            <view class='helpNum help_center'>{{item.step}}步</view>
+                        </view>
+                    </view>
+                    <view class='example-box'>
+                        <view class='doubt'>
+                            <image src='{{globalimg}}/about@2x.png'></image>
+                        </view>
+                        <image src='{{globalimg}}/lizi02.png'></image>
+                    </view>
+                    <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:
+                        <view class='invite-num'>{{creditsum}}</view>卡路里
+                    </view>
+                    <view class='symbol-box help_center'>≈
+                        <view class='value-kaluli'>{{creditprice}}</view>元
+                    </view>
+                </view>
+            </view>
+        </view>
+
     </view>
-    </view>
-    
-</view>
 </view>
 <view style='display:{{maskDis}}' class='share-mask-box'>
-<view class='share-con-box'>
-    <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
-        <view class='share-con-top'>
-        <view  class='weixinBox'> 
-            <button class='wxbtn' open-type='share'>
-                <view class='share-weixin'>
-                <image src='https://paoku.xingrunshidai.com/img/backgroup/weixin.png'></image>
+    <view class='share-con-box'>
+        <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
+            <view class='share-con-top'>
+                <view class='weixinBox'>
+                    <button class='wxbtn' open-type='share'>
+                        <view class='share-weixin'>
+                            <image src='https://paoku.xingrunshidai.com/img/backgroup/weixin.png'></image>
+                        </view>
+                        <view class='tofriend'>分享给朋友</view>
+                    </button>
+                </view>
+                <view class='haibaoBox'>
+                    <button class='hbbtn' bindtap='createHbao'>
+                        <view class='haibao'>
+                            <image src='https://paoku.xingrunshidai.com/img/backgroup/shengchenghaibao.png'></image>
+                        </view>
+                        <view class='tohb'>生成专属海报</view>
+                    </button>
+                </view>
             </view>
-            <view class='tofriend'>分享给朋友</view>
-            </button>
-      </view>
-        <view class='haibaoBox'>
-            <button class='hbbtn' bindtap='createHbao'>
-                <view class='haibao'>
-                <image src='https://paoku.xingrunshidai.com/img/backgroup/shengchenghaibao.png'></image>
-            </view>
-            <view class='tohb'>生成专属海报</view>
-            </button>
+            <!-- 取消 -->
+            <view bindtap='hidemask' class='share-con-bottom help_center'>取消</view>
         </view>
-        </view>
-        <!-- 取消 -->
-        <view bindtap='hidemask' class='share-con-bottom help_center'>取消</view>
-    </view>
 
-</view>
+    </view>
 </view>
 <!-- 点击邀请好友赚钱花之后的遮罩-结束 -->
