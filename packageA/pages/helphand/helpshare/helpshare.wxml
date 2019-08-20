@@ -1,47 +1,51 @@
 <nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
 <view class='outerbox' style='margin-top:{{nvabarData.height}}px'>
-<view class='sharebox share_center'>
-<view class='bg-box'><image src='{{globalimg}}/sharebg.png'></image></view>
-<!-- <view class='total-exchange share_center'>会员累计兑换{{count}}万元</view>  -->
-<view class='step-explain' bindtap='stepExplain'>
-    <image src='{{globalimg}}/stepexplain.png'></image>
-</view>
-<view class='instantly-help-box'>
-    <view class='help-pro-pic'>
-    <image class='help-pic' src='{{avatar}}'></image></view>
-    <view class='help-pro-box'>
-        <view class='help-pro-name'>{{nickname}}</view>
-        <view class='help-pro-con-box share_center'>
-            邀请你捐赠
-            <view class='step-num'>微信步数</view>
+    <view class='sharebox share_center'>
+        <view class='bg-box'>
+            <image src='{{globalimg}}/sharebg.png'></image>
         </view>
-</view>
-<view bindtap='showbtn'  class='liji'>
-    <image src='{{globalimg}}/sharebuttun.png'></image>
-</view>
-</view>
-   <view class='enterBox' style='display:{{dis}}'>
-        <view class='enter-step-box'>
-        <view class='help-pro-pic'>
-        <image class='help-pic' src='{{avatar}}'></image></view>
-        <view class='help-pro-box'>
-            <view class='help-pro-name'>{{nickname}}</view>
-            <view class='help-pro-con-box share_center'>
-               邀请你捐赠
-                <view class='step-num'>微信步数</view>
+        <!-- <view class='total-exchange share_center'>会员累计兑换{{count}}万元</view>  -->
+        <view class='step-explain' bindtap='stepExplain'>
+            <image src='{{globalimg}}/stepexplain.png'></image>
+        </view>
+        <view class='instantly-help-box'>
+            <view class='help-pro-pic'>
+                <image class='help-pic' src='{{avatar}}'></image>
             </view>
-    </view>
-            <input class='ipt-step ipt-enter share_center' placeholder='请输入0-2000步数' bindinput='stepInput' name='step'></input>
-            <text class='hint'>您的步数共计{{steptoday}}步，最多可捐赠2000步</text>
-            <input class='ipt-step ipt-word share_center' placeholder='英雄，留下一句话吧' name='message' bindinput='msgInput'>
+            <view class='help-pro-box'>
+                <view class='help-pro-name'>{{nickname}}</view>
+                <view class='help-pro-con-box share_center'>
+                    邀请你捐赠
+                    <view class='step-num'>微信步数</view>
+                </view>
+            </view>
+            <view bindtap='showbtn' class='liji'>
+                <image src='{{globalimg}}/sharebuttun.png'></image>
+            </view>
+        </view>
+        <view class='enterBox' style='display:{{dis}}'>
+            <view class='enter-step-box'>
+                <view class='help-pro-pic'>
+                    <image class='help-pic' src='{{avatar}}'></image>
+                </view>
+                <view class='help-pro-box'>
+                    <view class='help-pro-name'>{{nickname}}</view>
+                    <view class='help-pro-con-box share_center'>
+                        邀请你捐赠
+                        <view class='step-num'>微信步数</view>
+                    </view>
+                </view>
+                <input class='ipt-step ipt-enter share_center' placeholder='请输入0-2000步数' bindinput='stepInput' name='step'></input>
+                <text class='hint'>您的步数共计{{steptoday}}步，最多可捐赠2000步</text>
+                <input class='ipt-step ipt-word share_center' placeholder='英雄，留下一句话吧' name='message' bindinput='msgInput'>
                 <text class='optional'>选填</text>
-            </input>
-            <view class='enter-help-img' bindtap='tap'>
-                <image src='{{globalimg}}/buttun.png'></image>
+                </input>
+                <view class='enter-help-img' bindtap='tap'>
+                    <image src='{{globalimg}}/buttun.png'></image>
+                </view>
             </view>
         </view>
     </view>
-</view>
 </view>
 <view style='display:{{disp}}' class='help-mask'>
     <view class='mask-con-box'>
@@ -62,16 +66,19 @@
     </view>
 </view>
 <view class='stepMask' style='display:{{explainDis}}'>
-   <view class='step-text-box'>
+    <view class='step-text-box'>
         <view class='step-text'>"1500步=1至5卡路里不等（根据会员等级兑换比例不同）1卡路里=1元；每人最高可捐赠2000步"</view>
-        <view class='step-close' bindtap='stepClose'><image src='{{globalimg}}/guanbi.png'></image></view>
-   </view>
+        <view class='step-close' bindtap='stepClose'>
+            <image src='{{globalimg}}/guanbi.png'></image>
+        </view>
+    </view>
 </view>
 <view class='failMask' style='display:{{failDis}}'>
     <view class='fail-text-box'>
         <view class='fail-text'>{{message}}</view>
-        <view class='fail-close' bindtap='failClose'><image src='{{globalimg}}/guanbi.png'></image></view>
-   </view>
+        <view class='fail-close' bindtap='failClose'>
+            <image src='{{globalimg}}/guanbi.png'></image>
+        </view>
+    </view>
 </view>
 <!-- 助力失败后的弹窗-结束-->
-
