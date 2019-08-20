@@ -35,6 +35,7 @@ Page({
         page: 1,
         loaded: !1,
         loading: !0,
+        bannerUrl:'',
         steptoday: '',
         creditsum: '',
         creditprice: '',
@@ -172,7 +173,14 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        var t = this
+        // 累计邀请人数
+        a.get("index/share_help", {}, function(e) {
+            console.log(e)
+            t.setData({
+                bannerUrl: e.result.thumb
+            })
+        })
     },
 
     /**

@@ -1,8 +1,11 @@
 {
+    "entryPagePath": "pages/index/index",
     "pages": [
       "pages/expert/circle/circle",
       
         "pages/index/index",
+        "pages/discount/zkbscancode/zkbscancode",
+        "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
         "pages/index/huodong",
         "pages/commission/down/index",
@@ -69,7 +72,7 @@
         "pages/annual_card/record_page/record_page",
         "pages/annual_card/equity/equity"
     ],
-    "subpackages": [
+    "subPackages": [
         {
             "root": "packageA",
             "pages": [
@@ -90,7 +93,7 @@
                 "pages/discount/merchcode/merchcode",
                 "pages/discount/zkbaccount/zkbaccount",
                 "pages/discount/recordlist/recordlist",
-                "pages/discount/zkbscancode/zkbscancode",
+               
                 "pages/discount/setzkbdiscount/setzkbdiscount",
                 "pages/discount/zkbdiscount/zkbdiscount",
                 "pages/discount/mingxi/mingxi",
@@ -104,7 +107,6 @@
                 "pages/personalcode/code",
                 "pages/personalcode/discountlist",
                 "pages/personalcode/setdiscount",
-                "pages/personalcode/scancode",
                 "pages/contribute/contribute/contribute",
                 "pages/contribute/explain/explain",
                 "pages/contribute/record/record",
