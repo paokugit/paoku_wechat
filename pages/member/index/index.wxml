@@ -72,7 +72,7 @@
         </navigator>
         <view class='nav-order'>
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
-                <view class='fukuan-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.order_0>0}}">
                             <view class="count-img">{{member.statics.order_0}}</view>
@@ -83,7 +83,7 @@
                 <view class='fukuan-text'>待付款</view>
             </navigator>
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
-                <view class='fahuo-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.order_1>0}}">
                             <view class="count-img">{{member.statics.order_1}}</view>
@@ -94,7 +94,7 @@
                 <view class='fukuan-text'>待发货</view>
             </navigator>
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
-                <view class='shouhuo-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.order_2>0}}">
                             <view class="count-img">{{member.statics.order_2}}</view>
@@ -105,7 +105,7 @@
                 <view class='fukuan-text'>待收货</view>
             </navigator>
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
-                <view class='tuihuan-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.order_4>0}}">
                             <view class="count-img">{{member.statics.order_4}}</view>
@@ -118,6 +118,7 @@
 
         </view>
     </view>
+
     <!-- 订单 -->
     <!-- 轮播 -->
     <view class="card_banner">
@@ -167,20 +168,20 @@
 
         <view class='nav-service'>
             <navigator class='service-item' url='/pages/commission/down/index'>
-                <view class='fensi-img service-img'>
+                <view class='dingdan-img service-img'>
                     <image src='{{server.fans}}'></image>
                 </view>
                 <view class='service-text'>粉丝</view>
             </navigator>
 
             <navigator url='/packageA/pages/shop/notice/notification/notification' class='service-item'>
-                <view class='tuijian-img'>
+                <view class='dingdan-img'>
                     <image src='{{server.recommend}}'></image>
                 </view>
                 <view class='service-text'>通知</view>
             </navigator>
             <navigator url='/pages/sale/coupon/my/index/index' class='service-item'>
-                <view class='youhui-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.coupon>0}}">
                             <view class="count-img">{{member.statics.coupon}}</view>
@@ -191,13 +192,13 @@
                 <view class='service-text'>优惠券</view>
             </navigator>
             <navigator url='/pages/sale/coupon/index/index' class='service-item'>
-                <view class='lingquan-img'>
+                <view class='dingdan-img'>
                     <image src='{{server.coupon_center}}'></image>
                 </view>
                 <view class='service-text'>领券中心</view>
             </navigator>
             <navigator url='/pages/member/cart/index' class='service-item'>
-                <view class='gouwu-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.cart>0}}">
                             <view class="count-img">{{member.statics.cart}}</view>
@@ -208,7 +209,7 @@
                 <view class='service-text'>购物车</view>
             </navigator>
             <navigator url='/pages/member/favorite/index' class='service-item'>
-                <view class='guanzhu-img service-img'>
+                <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.favorite>0}}">
                             <view class="count-img">{{member.statics.favorite}}</view>
@@ -219,13 +220,13 @@
                 <view class='service-text'>我的关注</view>
             </navigator>
             <navigator url='/pages/member/history/index' class='service-item'>
-                <view class='zuji-img service-img'>
+                <view class='dingdan-img service-img'>
                     <image src='{{server.track}}'></image>
                 </view>
                 <view class='service-text'>我的足迹</view>
             </navigator>
             <navigator url='/pages/member/address/index' class='service-item'>
-                <view class='dizhi-img service-img'>
+                <view class='dingdan-img service-img'>
                     <image src='{{server.addr}}'></image>
                 </view>
                 <view class='service-text'>收货地址</view>
