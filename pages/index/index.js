@@ -103,6 +103,7 @@ Page((e = {
             storedisp: 'block',
             bindDis: 'none',
             giftDis: 'none',
+            updateDis: 'none',
             // rewarddisp:'none',
             screenWidth: '',
             helpstep: '',
@@ -259,6 +260,51 @@ Page((e = {
             })) : a.toast(e.message, "loading");
         }, this.data.show);
     },
+    updatebtn: function() {
+        // 用户版本更新
+        if (wx.canIUse("getUpdateManager")) {
+            let updateManager = wx.getUpdateManager();
+            updateManager.onCheckForUpdate((res) => {
+                console.log(res)
+                // 请求完新版本信息的回调
+                // hasUpdate是否有新的版本
+                console.log(res.hasUpdate);
+                if (res.hasUpdate == false) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '已经是最新版本',
+                    })
+                }
+            })
+            updateManager.onUpdateReady(() => {
+                console.log('更新')
+                wx.showModal({
+                    title: '有新版本更新啦',
+                    content: '99%的小伙伴已经更新啦，快来试试',
+                    success: (res) => {
+                        if (res.confirm) {
+                            console.log('确认')
+                            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                            updateManager.applyUpdate();
+                        } else if (res.cancel) {
+                            console.log('取消')
+                            return false;
+                        }
+                    }
+                })
+            })
+            updateManager.onUpdateFailed(() => {
+                console.log('新版本下载失败')
+                // 新的版本下载失败
+                wx.hideLoading();
+                wx.showModal({
+                    title: '升级失败',
+                    content: '新版本下载失败，请检查网络！',
+                    showCancel: false
+                });
+            });
+        }
+    },
     onLoad: function(t) {
         console.log('运动日记')
         console.log(t)
@@ -413,7 +459,6 @@ Page((e = {
             }
         });
 
-
         // 今日好友助力步数
         s.get("help/index/helpstep_today", {
             openid: userinfo.openid
@@ -450,21 +495,21 @@ Page((e = {
                 backgroundimg: e.result.backgroup
             })
         })
-      
-       l.openPage();
+
+        l.openPage();
     },
 
-    openPage:function(){
-      var a = this;
-      s.get("myown.index.adsense", {
-        type: 1,
-        openid: userinfo.openid
-      }, function (e) {
-        console.log(e);
-        a.setData({
-          bannerList: e.result.list
+    openPage: function() {
+        var a = this;
+        s.get("myown.index.adsense", {
+            type: 1,
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e);
+            a.setData({
+                bannerList: e.result.list
+            })
         })
-      })
     },
 
     onHide: function() {
@@ -568,10 +613,6 @@ Page((e = {
                         circleDis: 'block'
                     })
                 }
-                // t.setData({
-                //     my_currency: t.result,
-                //     mp3_url: t.url
-                // });
             }
         });
         // 是否绑定手机号
@@ -589,6 +630,22 @@ Page((e = {
                         bindDis: 'none'
                     })
                 }
+            }
+
+        });
+        // 测试
+        s.get("index/ceshi", {
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e)
+            if (e.status == 1) {
+                t.setData({
+                    updateDis: 'block'
+                })
+            } else {
+                t.setData({
+                    updateDis: 'none'
+                })
             }
 
         });
@@ -635,7 +692,7 @@ Page((e = {
             // screenWidth: a.windowWidthF
         });
 
-      t.openPage();
+        t.openPage();
     },
     goodsicon: function(t) {
         this.setData({
