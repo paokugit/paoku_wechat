@@ -1,34 +1,67 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
-
+  <!-- 动态提醒 -->
+  <view class="tiXing" wx:if="{{false}}">为你更新10条动态</view>
   <view class="listCon">
     <!-- 头像、昵称、发布时间 -->
-    <view class="circleMes">
-      <view class="nameMes">
-        <image src="{{globalimg}}/mai_04-05.jpg"></image>
-        <text class="circleCss">流浪的夜</text>
+    <view class="circleMes flexCss">
+      <view class="nameMes flexCss">
+        <image src="{{globalimg}}/mai_04-05.jpg"></image> 
+        <view class="circleCss">流浪的夜发啊所大所大所大所</view>
       </view>
       <view class="timeMes">2019-08-11 13：22</view>
     </view>
     
-    <!-- 动态内容 -->
-    <view class="circleCon circleCss">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+    <!-- 动态内容 --> 
+    <navigator url="/pages/expert/discuss/discuss" class="circleCon circleCss">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</navigator>
     
     <!-- 动态图片 -->
-    <view class="circleImg">
-      <image src="{{globalimg}}/mai_01.jpg"></image>
+    <view class="circleImg">  
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}//mai_03.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_02.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
     </view>
 
     <!-- 图标 -->
-    <!-- <view></view> -->
+    <view class="ico flexCss">
+      <view style="display: flex;">
+        <view class="circle_read">
+          <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+
+        <navigator url="/pages/expert/discuss/discuss" class="circle_news">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">10</text>
+        </navigator>
+      </view>
+
+      <view class="circle_parise">
+        <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+        <text class="iconTxt">45</text>
+      </view>
+    </view>
   </view> 
 
+  
   <view class="listCon">
     <!-- 头像、昵称、发布时间 -->
-    <view class="circleMes">
-      <view class="nameMes">
+    <view class="circleMes flexCss">
+      <view class="nameMes flexCss">
         <image src="{{globalimg}}/mai_04-05.jpg"></image>
-        <text class="circleCss">流浪的夜</text>
+        <view class="circleCss">流浪的夜发啊所大所大所大所</view>
       </view>
       <view class="timeMes">2019-08-11 13：22</view>
     </view>
@@ -38,11 +71,98 @@
     
     <!-- 动态图片 -->
     <view class="circleImg">
-      <image src="{{globalimg}}/mai_01.jpg"></image>
+      <view class="typeA">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
     </view>
 
-    <!-- 商品推荐 -->
-    <!-- <view></view> -->
+    <!-- 图标 -->
+    <view class="ico flexCss">
+      <view style="display: flex;">
+        <view class="circle_read">
+          <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+
+        <view class="circle_news">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+      </view>
+
+      <view class="circle_parise">
+        <image class="iconImg" src="{{globalimg}}/circle_parise@2.png"></image>
+        <text class="iconTxt">45</text>
+      </view>
+    </view>
   </view>  
+
+
+   <view class="listCon">
+    <!-- 头像、昵称、发布时间 -->
+    <view class="circleMes flexCss">
+      <view class="nameMes flexCss">
+        <image src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view class="circleCss">流浪的夜发啊所大所大所大所</view>
+      </view>
+      <view class="timeMes">2019-08-11 13：22</view>
+    </view>
+    
+    <!-- 动态内容 -->
+    <view class="circleCon circleCss">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+    
+    <!-- 动态图片 -->
+    <view class="circleImg">
+      <view class="typeB">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
+      <view class="typeB">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
+    </view>
+
+    <!-- 图标 -->
+    <view class="ico flexCss">
+      <view style="display: flex;">
+        <view class="circle_read">
+          <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+
+        <view class="circle_news">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+      </view>
+
+      <view class="circle_parise">
+        <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+        <text class="iconTxt">45</text>
+      </view>
+    </view>
+  </view>  
+ 
+
+  <!-- 功能选择 -->
+  <view class="publish">
+    <view class="fabu fixedCss" bindtap="imgBall" wx:if="{{cartoon}}">
+      <image src="{{globalimg}}/icon-shouye-xiangji@2x.png"></image>
+    </view>
+    <navigator url="/pages/expert/photo/photo" class="xiangce fixedCss" bindtap="xiangce" wx:if="{{cartoon}}">
+      <image src="{{globalimg}}/xiangce.png"></image>
+    </navigator>
+    <view class="fixedCss"  bindtap="dakai">
+      <image src="{{globalimg}}/{{cartoon? 'dakai.png' : 'gengduo.png'}}"></image>
+    </view>
+  </view>
+ 
+
+  <!-- 选择图片路径弹窗 -->
+  <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
+    <view class="imgBallC">
+      <view class="cssBall paizhao" bindtap="chooseimage" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" bindtap="chooseimage" data-select="album">从相册选择</view>
+    </view>
+  </view>
 
 </view>

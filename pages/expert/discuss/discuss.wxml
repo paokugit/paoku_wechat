@@ -1,0 +1,62 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="area">
+
+    <view class="dingBu">
+      <view class="dingLeft">
+        <image src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view>萌驼旅行家</view>
+      </view>
+      <view class="dingRight">2019-08-12 16：22</view> 
+    </view> 
+ 
+    <view class="imgQu">
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}//mai_03.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_02.jpg"></image>
+      </view>
+
+      <view class="typeC">
+        <image class="typeImage" src="{{globalimg}}/mai_01.jpg"></image>
+      </view>
+    </view>
+
+    <view class="shangpin">
+      <image class="tuiImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+      <view>
+        <view class="tuiTa">楠竹椅子</view>
+        <view class="tuiTb">高山楠竹不一样的生活品质</view>
+        <view class="jiaGe">
+          <view>
+            <text class="xianJia">￥350</text>
+            <text class="yuanJia">￥599</text>
+          </view>
+          <view class="xiaoL">销量162</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="icon">
+      <view class="cha-dian">
+        <view class="circle_read">
+          <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+        <view class="circle_parise">
+          <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+          <text class="iconTxt">45</text>
+        </view>
+      </view>
+      
+      <view class="remove">删除此条动态</view>
+    </view>
+
+  </view>
+</view>

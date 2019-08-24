@@ -41,10 +41,23 @@ Page({
     _that.setData({
       color: '#333333',
       color1: '#01d7a1',
+      color2: '#333333',
       underline: 1,
       mask: 2
     })
   },
+
+  discuss:function(){
+    var _that = this
+    _that.setData({
+      color: '#333333',
+      color1: '#333333',
+      color2: '#01d7a1',
+      underline: 2,
+      mask: 3
+    })
+  },
+
   zan_tap: function (e) {
     var d = e.currentTarget.dataset.id
     var _that = this
@@ -75,6 +88,7 @@ Page({
     _that.setData({
       color: '#01d7a1',
       color1: '#333333',
+      color2: '#333333',
       underline: 0,
       mask: 0
     })

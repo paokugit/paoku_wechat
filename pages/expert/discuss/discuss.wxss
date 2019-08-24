@@ -1,0 +1,137 @@
+page{
+  background: #fff;
+}
+
+.area{
+  padding: 30rpx;
+}
+
+
+.dingBu{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+.dingLeft{
+  display: flex;
+  align-items: center;
+}
+.dingLeft image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin-right: 15rpx;
+}
+.dingLeft view{
+  width: 200rpx;
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.dingRight{
+  font-size: 22rpx;
+  color: rgb(146, 146, 146);
+}
+
+
+.imgQu{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30rpx 0;
+}
+.typeC{
+  margin-bottom: 16rpx !important;
+  margin-left: 10rpx;
+  width: 220rpx;
+  height: 220rpx;
+}
+.typeC:nth-child(1) {
+  margin: 0;
+}
+.typeC:nth-child(4) {
+  margin: 0;
+}
+.typeC:nth-child(7) {
+  margin: 0;
+}
+.typeImage{
+  border-radius: 10rpx;
+}
+
+
+.shangpin {
+  margin-top: 30rpx;
+  display: flex;
+  background: rgb(248, 248, 248);
+  border-radius: 10rpx;
+}
+.tuiImg {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+.tuiTa {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+  margin: 16rpx 0rpx 20rpx;
+  width: 430rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tuiTb, .yuanJia, .xiaoL {
+  font-size: 22rpx;
+  color: rgb(146, 146, 146);
+}
+.tuiTb {
+  width: 430rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jiaGe {
+  width: 430rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.xianJia {
+  font-size: 34rpx;
+  color: rgb(224, 18, 18);
+  margin-right: 10rpx;
+}
+.yuanJia {
+  text-decoration: line-through;
+}
+
+
+.icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30rpx 0 20rpx;
+}
+.cha-dian{
+  display: flex;
+  align-items: center;
+}
+.iconImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+.iconTxt{
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+}
+.circle_parise{
+  margin-left: 40rpx;
+}
+.remove{
+  font-size: 28rpx;
+  color: rgb(51, 150, 255);
+}

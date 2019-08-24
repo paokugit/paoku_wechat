@@ -1,0 +1,83 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+  <view class='outer'>
+    <view class="release_text">
+      <textarea placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
+    </view>
+  
+    <view class='inner' catchtouchmove='true'>
+      <movable-area>
+        <block wx:for="{{tempFilePaths}}" wx:key="{{index}}">
+          <view class='pic_box item' id="{{item.index}}" data-index='{{index}}' bindlongpress='_longtap' bindtouchstart='touchs' bindtouchend='touchend' bindtouchmove='touchm'  data-img='{{item}}'>
+            <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
+
+            <view class="deleteImg" data-id="{{index}}">
+              <image src="{{globalimg}}/imgGuanBi.png"></image>
+            </view>
+         
+          </view>
+        </block>
+        
+        <movable-view x="{{x}}" y="{{y}}" direction="all" damping="{{5000}}" friction="{{1}}" disabled="{{disabled}}">
+          <view class='item-move' hidden='{{hidden}}'>
+            <image src="{{maskImg}}"></image>
+          </view>
+        </movable-view>
+
+
+        <view class="nullPic" bindtap='imgBall' wx:if="{{tempFilePaths.length < 9}}">
+          <image src="{{globalimg}}/imgAdd.png"></image>
+        </view>
+      </movable-area>
+
+      <view class="shangpin">
+        <image class="tuiImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view>
+          <view class="tuiTa">楠竹椅子</view>
+          <view class="tuiTb">高山楠竹不一样的生活品质</view>
+          <view class="jiaGe">
+            <view>
+              <text class="xianJia">￥350</text>
+              <text class="yuanJia">￥599</text>
+            </view>
+            <view class="xiaoL">销量162</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="fabuC">
+      <view bindtap="send"  class="sendBtn">发布</view>
+      <navigator url="/pages/expert/tuijian/recommend" class="tuijianS">商品推荐</navigator>
+    </view>
+
+  </view>
+
+
+  <!-- 选择图片路径弹窗 -->
+  <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
+    <view class="imgBallC tanCss">
+      <view class="cssBall paizhao" bindtap="choose" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" bindtap="choose" data-select="album">从相册选择</view>
+    </view>
+  </view>
+
+  <!-- 温馨提示弹窗 -->
+  <view class="imgBall" wx:if="{{showTishi}}" bindtap="showBall">
+    <view class="tanCss tishi">
+      <view class="details">温馨提示：亲亲，你暂未开通店主“开通店主，用户可在线购买自己的商品哦”！</view>
+      <view class="knowBtn">我知道了</view>
+    </view>
+  </view>
+
+  <!-- 是否保存编辑弹窗 -->
+  <view class="imgBall" wx:if="{{showTishi}}" bindtap="showBall">
+    <view class="tanCss tishi">
+      <view class="editCon">保留此次编辑</view>
+      <view class="editBtn">
+        <view class="editLeft">不保留</view>
+        <view class="editRight">保留</view>
+      </view>
+    </view>
+  </view>
+</view>

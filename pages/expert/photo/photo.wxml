@@ -1,0 +1,119 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin:{{nvabarData.height}}px 0'>
+  
+  <view class="itmeList">
+    <view class="today">今天</view>
+    
+    <view class="tanchu" bindtap="imgBall">
+      <image src="{{globalimg}}/icon-shouye-xiangji@2x.png"></image>
+      <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view>
+    </view>
+
+    <view class="details">
+      <view class="itemDet">18:10</view>
+      <view class="rightDet">
+        <image class="rightImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view>
+          <view class="rightTxt">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+          <view>
+            <view class="iconCsss">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">10</text>
+            </view>
+
+            <view class="iconCsss circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+              <text class="iconTxt">10</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="details">
+      <view class="itemDet">9:10</view>
+      <view class="rightDet">
+        <image class="rightImg" src="{{globalimg}}/mai_06.jpg"></image>
+        <view>
+          <view class="rightTxt">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+          <view>
+            <view class="iconCsss">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">30</text>
+            </view>
+
+            <view class="iconCsss circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+              <text class="iconTxt">50</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class="itmeList">
+    <view class="today">昨天</view>
+
+    <view class="details">
+      <view class="itemDet">19:10</view>
+      <view class="rightDet">
+        <image class="rightImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view>
+          <view class="rightTxt">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+          <view>
+            <view class="iconCsss">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">30</text>
+            </view>
+
+            <view class="iconCsss circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+              <text class="iconTxt">35</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class="itmeList">
+    <view class="today">2018年</view>
+
+    <view class="details">
+      <view class="itemDet">7月14日12：09</view>
+      <view class="rightDet">
+        <image class="rightImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+        <view>
+          <view class="rightTxt">趁青春,敢闯敢爱敢自由,这里有着不一样的世界，等你来发现Ta的奇迹之夜~</view>
+          <view>
+            <view class="iconCsss">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">30</text>
+            </view>
+
+            <view class="iconCsss circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+              <text class="iconTxt">35</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  
+
+  <!-- 选择图片路径弹窗 -->
+  <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
+    <view class="imgBallC">
+      <view class="cssBall paizhao" bindtap="chooseimage" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" bindtap="chooseimage" data-select="album">从相册选择</view>
+    </view>
+  </view>
+
+</view>

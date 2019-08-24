@@ -16,6 +16,14 @@
             </view>
             <view class="underline2" wx:if="{{underline==1}}"></view>
         </view>
+
+
+
+        <view class="discuss" bindtap="discuss">
+          <view class="discuss-text" style="color:{{color2}}">评论</view>
+          <view class="underline3" wx:if="{{underline==2}}"></view>
+        </view>
+
     </view>
     <!-- 没有数据 -->
     <view class="no-inform" wx:if="{{mask==1}}">
@@ -66,4 +74,44 @@
             </view>
         </view>
     </view>
+
+
+    <!-- 评论 -->
+    <view class="privateletter" style='margin-top:{{nvabarData.height}}px' wx:if="{{mask==3}}">
+      
+      <view class="reviewList">
+        <view class="reviewHead">
+          <view class="headLeft">
+            <image class="leftImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+            <view>
+              <view class="leftName">萌驼旅行家</view>
+              <view class="leftTime">今天16：40</view>
+            </view>
+          </view>
+          <view class="headRight headRightA">回复</view>
+        </view>
+
+        <view class="details">回复<text class="nickname">@苏萌</text>：为未来的我们加油，向着希望努力，为理想奋斗。</view>
+
+        <view class="replyX">
+          <view class="huifu"><text class="huifuN">@苏萌</text>回复<text class="huifuN">@萌驼旅行家</text>：未来会更好</view>
+
+          <view class="tiezi">
+            <image class="tieziImg" src="{{globalimg}}/mai_01.jpg"></image>
+            <view class="tieziRight">
+              <view class="tieziName huifuN">@生无可恋</view>
+              <view class="tieziTxt">趁青春，敢爱敢闯敢自由，这里有着不一样的景，爱吃爱玩爱打闹，生活完美</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- <view class="KongNull">
+        <image src="{{globalimg}}/tongzhi-null.png"></image>
+        <view>你暂未有评论</view>
+      </view> -->
+
+    </view>
+
+
 </view>

@@ -2,38 +2,41 @@ var t = getApp(),
   a = t.requirejs("core");
 var f = getApp();
 
-var useropenid = "";
 Page({
   data: {
     globalimg: t.globalData.appimg,
     nvabarData: {
       showCapsule: 1,
-      title: '达人圈',
+      title: '相册',
       height: t.globalData.height * 2 + 20,
     },
-    showBall:false,
-    img_url:[],
-    cartoon: false
-  }, 
+    showBall: false,
+    img_url:[]
+  },
 
-  
   onLoad: function (options) {
 
   },
 
-  imgBall: function (options){
+  imgBall: function (options) {
     this.setData({
-      showBall:true
+      showBall: true
     })
   },
 
-  chooseimage: function (options){
+  showBall: function (e) {
+    this.setData({
+      showBall: false
+    })
+  },
+
+  chooseimage: function (options) {
     let m = this;
     let select = options.currentTarget.dataset.select;
     wx.chooseImage({
-      count: 9, 
-      sizeType: ['original', 'compressed'], 
-      sourceType: [select], 
+      count: 9,
+      sizeType: ['original', 'compressed'],
+      sourceType: [select],
       success: function (res) {
         let img_list = m.data.img_url;
         for (let i = 0; i < res.tempFilePaths.length; i++) {
@@ -51,31 +54,7 @@ Page({
       showBall: false
     })
   },
-  showBall: function (e) {
-    this.setData({
-      showBall: false
-    })
-  },
-  dakai:function(){
-    
-    var m = this;
-    if (m.data.cartoon == true){
-      m.setData({
-        cartoon:false
-      })
-    }else{
-      m.setData({
-        cartoon: true
-      })
-    }
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
