@@ -1,6 +1,6 @@
 @import "../../date/date.wxss";
 @import "../../common/city-picker.wxss";
-@import "../../../__wuBaseWxss__/7.wxss";
+@import "../../../wuBaseWxss/7.wxss";
 @import "../../custom/index.wxss";
 
 .picker-modal {

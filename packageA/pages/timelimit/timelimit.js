@@ -56,7 +56,7 @@ Page({
         var t = this
         a.get("seckill/list", {
             type: 2,
-            page: t.data.page,
+            page: 1,
         }, function (e) {
             console.log(e)
             secend_time = e.result.end_time
@@ -64,6 +64,7 @@ Page({
             var TIME = util.formatTime(new Date());
             var timestamp = Date.parse(new Date());
             timestampcount = timestamp / 1000
+            console.log(secend_time - timestampcount)
                 t.startTimer(secend_time - timestampcount);
         })
         
