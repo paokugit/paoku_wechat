@@ -91,7 +91,6 @@
                 "pages/discount/merchcode/merchcode",
                 "pages/discount/zkbaccount/zkbaccount",
                 "pages/discount/recordlist/recordlist",
-               
                 "pages/discount/setzkbdiscount/setzkbdiscount",
                 "pages/discount/zkbdiscount/zkbdiscount",
                 "pages/discount/mingxi/mingxi",
@@ -124,7 +123,10 @@
                 "pages/shop/notice/notification/detail",
                 "pages/shop/notice/index/index",
                 "pages/shop/notice/detail/detail",
-                "pages/shop/caregory/index"
+                "pages/shop/caregory/index",
+                "pages/setpassword/set/set",
+                "pages/setpassword/setpassword/setpassword",
+                "pages/timelimit/timelimit"
             ]
         }
     ],

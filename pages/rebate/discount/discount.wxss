@@ -183,7 +183,6 @@ image {
     width: 64rpx;
     height: 56rpx;
 }
-
 .type-text {
     color: #333;
     font-size: 34rpx;

@@ -80,6 +80,11 @@ Page({
             url: '/packageA/pages/discount/zkbrechange/zkbrechange',
         })
     },
+    setbtn:function(){
+        wx.navigateTo({
+            url: '/packageA/pages/setpassword/set/set',
+        })
+    },
     getScancode: function() {
         var _this = this;
         wx.scanCode({

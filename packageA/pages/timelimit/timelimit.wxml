@@ -1,0 +1,112 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='timelimit-box' style='margin-top:{{nvabarData.height}}px'>
+    <!-- tab -->
+    <view class="swiper-tab">
+        <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">正在热抢</view>
+        <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">即将开始</view>
+    </view>
+    <view class="{{type==1 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='hotrob-box'>
+                <view class='hot-container'>
+                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="{{index}}">
+                        <view class='sec-item-img'>
+                            <image src='{{item.thumb}}'></image>
+                            <view class='sec-saleout-img' wx:if="{{item.total==0}}">
+                                <image src='{{globalimg}}/qiangwan-s.png'></image>
+                            </view>
+                        </view>
+                        <view class='sec-item-content'>
+                            <view class='sec-item-tit'>{{item.title}}</view>
+                            <view class='progressbar'>
+                                <progress percent="{{(item.sales+item.salesreal)/(item.sales+item.salesreal+item.total)*100}}" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" active border-radius="20rpx" />
+                            </view>
+                            <view class='progress-text'>已抢{{item.sales+item.salesreal}}件</view>
+                            <view class='limit-num'>限抢{{item.sales+item.salesreal+item.total}}件</view>
+                            <view class='sec-sale-absolute'>
+                                <view class='sec-sale'>
+                                    <text class='sale-symbol'>￥</text>
+                                    <text class='sale-text'>{{item.marketprice}}</text>
+                                </view>
+                                <view class='sec-original'>￥{{item.productprice}}</view>
+                            </view>
+                            <view class='rob-btn' wx:if="{{item.total > 0}}">马上抢</view>
+                            <view class='rob-btn-over' wx:if="{{item.total==0}}" bindtap='saleoutbtn'>马上抢</view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="{{type==2 ? 'show':'hidden'}}">
+        <scroll-view>
+            <view class='upcome-box' style='display:{{upcomeDis}}'>
+                <view class='djs-box'>
+                    <view class='bg-img'>
+                        <image src='{{globalimg}}/countleft01.png'></image>
+                    </view>
+                    <view class='sec-djs-box'>
+                        <view class='sec-text'>距离开抢</view>
+                        <view class='timeText'>
+                            <text class='timebox'>{{countDownHour}}</text>
+                            <text class='time-symbol'>:</text>
+                            <text class='timebox'>{{countDownMinute}}</text>
+                            <text class='time-symbol'>:</text>
+                            <text class='timebox'>{{countDownSecond}}</text>
+                        </view>
+                    </view>
+                    <view class='bg01-img'>
+                        <image src='{{globalimg}}/countright01.png'></image>
+                    </view>
+                </view>
+                <view class='upcome-container'>
+                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="{{index}}">
+                        <view class='sec-item-img'>
+                            <image src='{{item.thumb}}'></image>
+                        </view>
+                        <view class='sec-item-content'>
+                            <view class='sec-item-tit'>{{item.title}}</view>
+                            <view class='limit-num-none'>限抢{{item.sales+item.salesreal+item.total}}件</view>
+                            <view class='sec-sale-absolute'>
+                                <view class='sec-sale-none'>
+                                    <text class='sale-symbol'>￥</text>
+                                    <text class='sale-text'>{{item.marketprice}}</text>
+                                </view>
+                                <view class='sec-original'>￥{{item.productprice}}</view>
+                            </view>
+                            <view class='rob-btn-none'>未开始</view>
+                        </view>
+                    </navigator>
+
+
+                </view>
+            </view>
+            <!-- 未开始 -->
+            <view class='notbegin' style='display:{{botbeginDis}}'>
+                <view class='notbegin-con'>
+                    <view class='nodata-img'>
+                        <image src='{{globalimg}}/secnodata.png'></image>
+                    </view>
+                    <view class='notbegin-text'>活动即将开始,佳讯即将到来...</view>
+                </view>
+
+            </view>
+        </scroll-view>
+    </view>
+    <!-- tab -->
+</view>
+<block>
+    <block wx:if="{{loading}}">
+        <view class="fui-loading">
+            <view class="icon"></view>
+            <view class="text">正在加载</view>
+        </view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{loaded&&list.length>0}}">
+        <view class="fui-loading empty">
+            <view class="text">没有更多了</view>
+        </view>
+    </block>
+</block>
