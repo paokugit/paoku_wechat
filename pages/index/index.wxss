@@ -1181,9 +1181,11 @@ image {
 }
 
 .sec-tit {
-    color: rgb(255, 0, 0);
+    /* color: rgb(255, 0, 0);
     font-size: 36rpx;
-    font-weight: bold;
+    font-weight: bold; */
+    width: 288rpx;
+    height: 34rpx;
     margin-bottom: 20rpx;
 }
 

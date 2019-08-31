@@ -58,7 +58,7 @@
                 <view class='sec-absolute-box'>
                     <view class='sec-saleprice'>
                         <text class='sec-symbol'>￥</text>
-                        <text class='sec-price'>{{goods.marketprice}}</text>
+                        <text class='sec-price'>{{goods.showprice}}</text>
                     </view>
                     <view class='sec-originalprice'>￥{{goods.productprice}}</view>
                     <view class='robbtn'>限时抢购</view>

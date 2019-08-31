@@ -26,7 +26,7 @@
                             <view class='sec-sale-absolute'>
                                 <view class='sec-sale'>
                                     <text class='sale-symbol'>￥</text>
-                                    <text class='sale-text'>{{item.marketprice}}</text>
+                                    <text class='sale-text'>{{item.showprice}}</text>
                                 </view>
                                 <view class='sec-original'>￥{{item.productprice}}</view>
                             </view>
@@ -70,7 +70,7 @@
                             <view class='sec-sale-absolute'>
                                 <view class='sec-sale-none'>
                                     <text class='sale-symbol'>￥</text>
-                                    <text class='sale-text'>{{item.marketprice}}</text>
+                                    <text class='sale-text'>{{item.showprice}}</text>
                                 </view>
                                 <view class='sec-original'>￥{{item.productprice}}</view>
                             </view>
@@ -82,7 +82,7 @@
                 </view>
             </view>
             <!-- 未开始 -->
-            <view class='notbegin' style='display:{{botbeginDis}}'>
+            <view class='notbegin' style='display:{{notbeginDis}}'>
                 <view class='notbegin-con'>
                     <view class='nodata-img'>
                         <image src='{{globalimg}}/secnodata.png'></image>

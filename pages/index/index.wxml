@@ -288,7 +288,7 @@
     <!-- 限时秒杀部分 -->
     <view class='seckill-box' style='display:{{seckillDis}}'>
         <view class='seckill-tit-box'>
-            <view class='sec-tit'>限时抢购中</view>
+            <view class='sec-tit'><image src='{{globalimg}}/xianshiqg.png'></image></view>
             <view class='sec-djs-box'>
                 <view class='sec-text'>距结束</view>
                 <view class='timeText'>
@@ -319,7 +319,7 @@
                     <view class='sec-sale-absolute'>
                         <view class='sec-sale'>
                             <text class='sale-symbol'>￥</text>
-                            <text class='sale-text'>{{item.marketprice}}</text>
+                            <text class='sale-text'>{{item.showprice}}</text>
                         </view>
                         <view class='sec-original'>￥{{item.productprice}}</view>
                     </view>

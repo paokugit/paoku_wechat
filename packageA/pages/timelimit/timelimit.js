@@ -33,45 +33,53 @@ Page({
         loading: !0,
         list: [],
         credit: '',
-        upcomeDis:'block',
-        botbeginDis:'none'
+        upcomeDis: 'block',
+        notbeginDis: 'none'
     },
     /**
      * 生命周期函数--监听页面加载
      */
 
     // 上拉加载
-    onLoad: function () {
-        
+    onLoad: function() {
+
     },
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         this.getList();
         var t = this
         a.get("seckill/list", {
             type: 2,
             page: 1,
-        }, function (e) {
+        }, function(e) {
             console.log(e)
-            secend_time = e.result.end_time
-            console.log(secend_time)
-            var TIME = util.formatTime(new Date());
-            var timestamp = Date.parse(new Date());
-            timestampcount = timestamp / 1000
-            console.log(secend_time - timestampcount)
+            if (e.status == 1) {
+                secend_time = e.result.end_time
+                console.log(secend_time)
+                var TIME = util.formatTime(new Date());
+                var timestamp = Date.parse(new Date());
+                timestampcount = timestamp / 1000
+                console.log(secend_time - timestampcount)
                 t.startTimer(secend_time - timestampcount);
+            } else if (e.status == 0) {
+                t.setData({
+                    upcomeDis: 'none',
+                    notbeginDis: 'block',
+                })
+            }
+
         })
-        
+
     },
-    startTimer: function (currentstartTimer) {
+    startTimer: function(currentstartTimer) {
         clearInterval(interval);
-        interval = setInterval(function () {
+        interval = setInterval(function() {
             // 秒数
             var second = currentstartTimer;
             // 天数位
@@ -112,35 +120,36 @@ Page({
             }
         }.bind(this), 1000);
     },
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         wx.stopPullDownRefresh();
         this.startTimer(secend_time - timestampcount);
     },
-    onReachBottom: function () {
+    onReachBottom: function() {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
     },
-    getList: function () {
+    getList: function() {
         var t = this;
         t.setData({
             loading: !0
         }), a.get("seckill/list", {
             type: t.data.type,
             page: t.data.page,
-        }, function (a) {
+        }, function(a) {
             console.log(a)
-            var e = {
-                loading: !1,
-                total: a.result.total,
-                show: !0,
-                list: a.result.list,
-                // addspead: (eve.message.accelerate_day) / (eve.message.accelerate_day + eve.message.surplus_day) * 100
+            if (a.status == 1) {
+                var e = {
+                    loading: !1,
+                    total: a.result.total,
+                    show: !0,
+                    list: a.result.list,
+                };
+                a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
+                    a.result.list.length < a.result.pageSize && (e.loaded = !0)), t.setData(e);
+            }
 
-            };
-            a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
-                a.result.list.length < a.result.pageSize && (e.loaded = !0)), t.setData(e);
         });
     },
-    myTab: function (t) {
+    myTab: function(t) {
         var e = this,
             i = a.pdata(t).type;
         e.setData({
