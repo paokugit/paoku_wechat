@@ -1,0 +1,52 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+
+  <view class="particulars">
+    <view class="head-img flexCss">
+      <view class="left-head flexCss">
+        <image src="{{globalimg}}/mai_02.jpg"></image>
+        <view>
+          <view class="reName">生无可恋</view>
+          <view class="reTime">今天16：40</view>
+        </view>
+      </view>
+      <view class="icon flexCss">
+        <view style="margin-right:10rpx;">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+        <view>
+          <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+          <text class="iconTxt">15</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="textA">坚持运动，行走兑换，打卡记录第五天，又要一起的小伙伴吗？</view>
+  </view>
+
+  <view class="particulars">
+    <view class="head-img flexCss">
+      <view class="left-head flexCss">
+        <image src="{{globalimg}}/mai_02.jpg"></image>
+        <view>
+          <view class="reName">生无可恋</view>
+          <view class="reTime">今天16：40</view>
+        </view>
+      </view>
+      <view class="icon flexCss">
+        <view style="margin-right:10rpx;">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">10</text>
+        </view>
+        <view>
+          <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
+          <text class="iconTxt">15</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="textA"> <text>回复萌驼旅行家</text>：坚持运动，行走兑换，打卡记录第五天，又要一起的小伙伴吗？</view>
+  </view>
+
+</view>

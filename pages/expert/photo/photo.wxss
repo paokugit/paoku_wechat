@@ -13,7 +13,7 @@ page{
   font-weight: bold;
 }
 
-
+ 
 .tanchu{
   padding: 30rpx 24rpx 40rpx;
   display: flex;
@@ -46,7 +46,6 @@ page{
   display: flex;
   align-items: center;
   background: rgb(255, 255, 255);
-  padding-right: 15rpx;
   border-radius: 10rpx;
 }
 .rightImg{
@@ -54,6 +53,10 @@ page{
   height: 172rpx;
   margin-right: 20rpx;
   border-radius: 10rpx;
+}
+.character{
+  height: 200rpx;
+  position: relative;
 }
 .rightTxt{
   width: 340rpx;
@@ -63,11 +66,18 @@ page{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  position: relative;
+  left: 0;
+  top: 34rpx;
 }
-
+.iconPosi{
+  width: 300rpx;
+  position: absolute;
+  left: 0;
+  bottom: 34rpx;
+}
 .iconCsss{
   display: inline-block;
-  margin-top: 50rpx;
 }
 .circle_news{
   margin-left: 15rpx;
@@ -80,6 +90,13 @@ page{
   width: 36rpx;
   height: 36rpx;
   margin-right: 10rpx;
+}
+
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
 }
 
 /* 选择图片路径弹窗 */

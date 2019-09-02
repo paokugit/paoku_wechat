@@ -16,8 +16,8 @@
 
 .listCon{
   background: #fff;
-  margin: 20rpx 15rpx;
-  padding: 20rpx 20rpx;
+  margin: 20rpx 25rpx;
+  padding: 20rpx;
   border-radius: 30rpx;
 }
 
@@ -89,6 +89,55 @@
   border-radius: 10rpx;
 }
 
+/* 商品推荐 */
+.tuijian{
+  display: flex;
+  border-radius: 15rpx;
+  background: rgb(248, 248, 248);
+  margin-top: 30rpx;
+}
+.goodsImg{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 15rpx;
+}
+
+
+.tuiTa {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  left: 15rpx;
+  top: 16rpx;
+}
+.tuiTb{
+  width: 400rpx;
+  height: 65rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  position: relative;
+  left: 15rpx;
+  top: 20rpx;
+}
+.jiaGe{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  left: 15rpx;
+  top: 50rpx;
+}
+
+.tuiTb, .yuanJia, .xiaoL {
+  font-size: 22rpx;
+  color: rgb(146, 146, 146);
+}
 
 /* 图标 */
 .ico{
@@ -108,6 +157,12 @@
   margin-left: 40rpx;
 }
 
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}
 
 /* 功能选择 */
 .publish{

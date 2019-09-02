@@ -2,19 +2,21 @@
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="title colorCss">店铺内商品任选一件</view>
 
-  <view class="product">
-    <image class="productImg" src="{{globalimg}}/mai_04-05.jpg"></image>  
-    <view>
-      <view class="conTit colorCss">清华大学联合研制迷迭香护眼贴专注视力、疲劳等</view>
-      <view class="conMoney">
-        <view>
-          <text class="conMoneyA">￥350</text>
-          <text class="conMoneyB">￥599</text>
+  <block wx:for="{{message}}" wx:key="{{index}}">
+    <view class="product">
+      <image class="productImg" src="{{item.thumb}}"></image>  
+      <view>
+        <view class="conTit colorCss">{{item.title}}</view>
+        <view class="conMoney">
+          <view class="jinE">
+            <text class="conMoneyA">￥{{item.marketprice}}</text>
+            <text class="conMoneyB">￥{{item.productprice}}</text>
+          </view>
+          <view class="btnGet {{btnId == item.id? 'btnB' : 'btnA'}}" bindtap="btnA" data-id="{{item.id}}">选择</view>
         </view>
-        <view class="btnGet btnA">推荐</view>
       </view>
-    </view>
-  </view>
-  
+    </view> 
+  </block>
+  <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
 
 </view>

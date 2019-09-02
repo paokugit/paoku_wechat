@@ -1,11 +1,13 @@
 {
-    "entryPagePath": "pages/expert/discuss/discuss",
+    "entryPagePath": "pages/expert/circle/circle",
     "pages": [
-      "pages/expert/discuss/discuss",
+      
       "pages/expert/circle/circle",
       "pages/expert/issue/issue",
       "pages/expert/tuijian/recommend",
       "pages/expert/photo/photo",
+      "pages/expert/discuss/discuss",
+      "pages/expert/particulars/particulars",
       
 
         "pages/index/index", 

@@ -31,7 +31,7 @@ Page({
       page: b.data.page
     }, function (e) {
       console.log(e);
-      let totalPage = Math.floor(e.result.total / e.result.pageSize);
+      let totalPage = Math.ceil(e.result.total / e.result.pageSize);
       let totalList = e.result.record
       b.setData({
         totalPage: totalPage,

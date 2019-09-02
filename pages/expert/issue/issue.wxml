@@ -2,7 +2,7 @@
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
   <view class='outer'>
     <view class="release_text">
-      <textarea placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
+      <textarea bindinput='gaysText' value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
     </view>
   
     <view class='inner' catchtouchmove='true'>
@@ -11,10 +11,10 @@
           <view class='pic_box item' id="{{item.index}}" data-index='{{index}}' bindlongpress='_longtap' bindtouchstart='touchs' bindtouchend='touchend' bindtouchmove='touchm'  data-img='{{item}}'>
             <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
 
-            <view class="deleteImg" data-id="{{index}}">
+            <view class="deleteImg" data-id="{{index}}" bindtap='deletePic'>
               <image src="{{globalimg}}/imgGuanBi.png"></image>
             </view>
-         
+          
           </view>
         </block>
         
@@ -30,25 +30,25 @@
         </view>
       </movable-area>
 
-      <view class="shangpin">
-        <image class="tuiImg" src="{{globalimg}}/mai_04-05.jpg"></image>
+      <view class="shangpin" wx:if="{{btnId == 0?false:true}}">
+        <image class="tuiImg" src="{{message.thumb}}"></image>
         <view>
-          <view class="tuiTa">楠竹椅子</view>
-          <view class="tuiTb">高山楠竹不一样的生活品质</view>
+          <view class="tuiTa">{{message.title}}</view>
+          <view class="tuiTb">{{message.subtitle}}</view>
           <view class="jiaGe">
             <view>
-              <text class="xianJia">￥350</text>
-              <text class="yuanJia">￥599</text>
+              <text class="xianJia">￥{{message.marketprice}}</text>
+              <text class="yuanJia">￥{{message.productprice}}</text>
             </view>
-            <view class="xiaoL">销量162</view>
+            <view class="xiaoL">销量{{message.sales}}</view>
           </view>
         </view>
       </view>
     </view>
 
     <view class="fabuC">
-      <view bindtap="send"  class="sendBtn">发布</view>
-      <navigator url="/pages/expert/tuijian/recommend" class="tuijianS">商品推荐</navigator>
+      <view bindtap='submit'  class="sendBtn">发布</view>
+      <view class="tuijianS" bindtap="{{shopErr== 1? 'tiShiBtn' : 'shopBtn'}}">商品推荐</view>
     </view>
 
   </view>
@@ -63,21 +63,10 @@
   </view>
 
   <!-- 温馨提示弹窗 -->
-  <view class="imgBall" wx:if="{{showTishi}}" bindtap="showBall">
+  <view class="imgBall" wx:if="{{showTishi}}">
     <view class="tanCss tishi">
-      <view class="details">温馨提示：亲亲，你暂未开通店主“开通店主，用户可在线购买自己的商品哦”！</view>
-      <view class="knowBtn">我知道了</view>
-    </view>
-  </view>
-
-  <!-- 是否保存编辑弹窗 -->
-  <view class="imgBall" wx:if="{{showTishi}}" bindtap="showBall">
-    <view class="tanCss tishi">
-      <view class="editCon">保留此次编辑</view>
-      <view class="editBtn">
-        <view class="editLeft">不保留</view>
-        <view class="editRight">保留</view>
-      </view>
+      <view class="details">{{hintT}}</view>
+      <view class="knowBtn" bindtap="showBall">我知道了</view>
     </view>
   </view>
 </view>

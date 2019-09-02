@@ -207,29 +207,6 @@ movable-area {
   line-height: 80rpx;
   border-top: 1px solid rgb(230, 230, 230);
 }
-.editCon{
-  height: 180rpx;
-  text-align: center;
-  line-height: 180rpx;
-  font-size: 34rpx;
-  color: rgb(51, 51, 51);
-}
-.editBtn{
-  height: 90rpx;
-  line-height: 90rpx;
-  font-size: 34rpx;
-  display: flex;
-  justify-content: space-around;
-  border-top: 1px solid rgb(229, 229, 229);
-}
-.editLeft,.editRight{
-  width: 50%;
-  text-align: center;
-}
-.editRight{
-  border-left: 1px solid rgb(230, 230, 230);
-  color: rgb(1, 215, 161);
-}
 
 .tanCss {
   border-radius: 20rpx;

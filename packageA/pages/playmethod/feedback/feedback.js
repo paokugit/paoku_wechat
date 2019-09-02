@@ -38,11 +38,11 @@ Page({
         this.setData({
             options: a
         }), t.url(a);
-    },
+    }, 
     upload: function(t) {
         var e = this,
             s = a.data(t),
-            i = s.type,
+            i = s.type, 
             o = e.data.images,
             n = e.data.imgs,
             r = s.index;
