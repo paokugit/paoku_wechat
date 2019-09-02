@@ -16,7 +16,7 @@
       <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   bindtap="previewImage">
         <image class="typeImage" src="{{itemImg}}"></image>
       </view>
-    </view>
+    </view> 
 
     <navigator url="/pages/goods/detail/index?id={{detailList.goods_id}}" class="shangpin" wx:if="{{detailList.goods_id == 0?false:true}}">
       <image class="tuiImg" src="{{detailList.good.img}}"></image>
@@ -131,7 +131,7 @@
 
   <view class="comInt">
     <input class='solid-bottom' placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="true"></input>
-    <text>发送</text>
+    <text bindtap="sendBtn">发送</text>
   </view> 
 
   <view class="shade" wx:if="{{shadeShow}}" catchtap="shadeShow">

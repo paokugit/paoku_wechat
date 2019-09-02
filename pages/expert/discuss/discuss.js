@@ -18,7 +18,7 @@ Page({
     detailList:{},
     page: 1,
     totalPage: 0,
-    newestList:[],
+    newestList:[], 
     abcShow: false,
     shadeShow:false,
     catid:''
@@ -204,6 +204,17 @@ Page({
       console.log(e);
     })
   },
+
+
+  // sendBtn:function(){  
+  //   var m = this;
+  //   a.get("drcircle.my.comment",{
+  //     openid: useropenid,
+
+  //   },function(){
+
+  //   })
+  // },
 
 
   /**
