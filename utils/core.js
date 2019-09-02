@@ -162,28 +162,24 @@ module.exports = {
     //   当前登录人的openid
     var n = getApp();
     var userinfo = n.getCache('userinfo');
-    console.log(userinfo)
     if (userinfo.nickName == undefined) {
       var bnickname = userinfo.nickname
     } else {
       var bnickname = userinfo.nickName
     }
-    console.log(bnickname)
-    console.log(userinfo.nickname)
     //   判断openid中是否含有sns_wa_
     var useropenid = userinfo.openid
     useropenid = useropenid.replace(/sns_wa_/g, "");
     useropenid = "sns_wa_" + useropenid;
-    console.log(userinfo.openid);
-    console.log(useropenid);
 
     var o = n.getCache("sysset"), i = o.share || {}, a = n.getCache("userinfo_id"),
-      s = title || '哇，这里竟然可以用微信步数免费拿商品，每天走走，就是赚钱!', r = o.description || "";
+        s = title || '哇，这里竟然可以用微信步数免费拿商品，每天走走，就是赚钱!', r = o.description || "";
       return i.title && (s = i.title), e && (s = e), i.desc && (r = i.desc), t = t || "/packageA/pages/helphand/helpshare/helpshare?hlpid=" + useropenid + '&nickname=' + bnickname,
       t = -1 != t.indexOf("?") ? t + "&" : t + "?", {
         title: s,
         desc: r,
         path: t + "mid=" + userinfo.id,
+          imageUrl: 'https://paokucoin.com/attachment/images/1/2019/08/X8Hh9FwohHwA8Na8llAWH9oLalWH5p.jpg',
         success: function () {
         },
         fail: function () {

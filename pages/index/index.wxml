@@ -12,6 +12,12 @@
                 </view>
             </button>
         </form>
+        <view class='update-box' style='display:{{updateDis}}'>
+            <view class='update' bindtap='updatebtn'>
+                <image class='update-img' src='{{globalimg}}/update01.png'></image>
+                <text class='update-text'>版本更新</text>
+            </view>
+        </view>
         <view class="heard-tag absolute">
             <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
                 <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;font-family: 'DIN Next LT Pro'">
@@ -84,37 +90,37 @@
             </view>
 
             <view class='activity-nav'>
-              <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                <view>
-                  <view class='activity-img'>
-                    
-                    <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
-                      <image src='{{item.icon}}'></image>
-                    </view>
+                <block wx:for="{{home_icon}}" wx:key="{{index}}">
+                    <view>
+                        <view class='activity-img'>
 
-                    <image src='{{item.img}}'></image>
-                  </view>
-                  <view class='activity-con'>{{item.title}}</view>
-                </view>
-              </block>
+                            <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
+                                <image src='{{item.icon}}'></image>
+                            </view>
+
+                            <image src='{{item.img}}'></image>
+                        </view>
+                        <view class='activity-con'>{{item.title}}</view>
+                    </view>
+                </block>
             </view>
             <!-- form -->
             <view class='formNav'>
-              <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                
-                <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
-                  <navigator url="{{item.url}}">
-                    <button form-type="submit" class='navBtn'></button>
-                  </navigator>
-                </form>
-                
-              </block>
+                <block wx:for="{{home_icon}}" wx:key="{{index}}">
+
+                    <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
+                        <navigator url="{{item.url}}">
+                            <button form-type="submit" class='navBtn'></button>
+                        </navigator>
+                    </form>
+
+                </block>
             </view>
             <!-- form -->
         </view>
     </view>
     <!-- 快报 -->
-    <view class='index-news-box'> 
+    <view class='index-news-box'>
         <view class='notice-img'>
             <image mode="aspectFit" src='{{globalimg}}/kuaibao@2x.png'></image>
         </view>
@@ -131,18 +137,16 @@
             </swiper>
         </view>
     </view>
-
-   
     <view class='swiper-card'>
-      <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
-        <block wx:for="{{bannerList}}" wx:key="{{index}}">
-          <swiper-item>
-            <navigator url="{{item.url}}">
-              <image class="bannerGif" src="{{item.thumb}}"></image>
-            </navigator>
-          </swiper-item>
-        </block>
-      </swiper>
+        <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
+            <block wx:for="{{bannerList}}" wx:key="{{index}}">
+                <swiper-item>
+                    <navigator url="{{item.url}}">
+                        <image class="bannerGif" src="{{item.thumb}}"></image>
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
 
 

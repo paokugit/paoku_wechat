@@ -93,7 +93,29 @@ image {
     width: 100%;
     height: 100%;
 }
+.update-box{
+    position: absolute;
+    top: 15rpx;
+    right: 0rpx;
+}
+.update{
+    width: auto;
+    height: 50rpx;
+    padding: 0 15rpx;
+    display: flex;
+    align-items: center;
+    border-radius: 20rpx 0 0 20rpx
 
+}
+.update-img{
+    width: 44rpx;
+    height: 31rpx;
+}
+.update-text{
+    color: #fff;
+    font-size: 30rpx;
+    margin-left: 10rpx
+}
 .balance {
     width: auto;
     height: 50rpx;
@@ -129,7 +151,8 @@ image {
 .balance-right {
     width: auto;
     height: 40rpx;
-    line-height: 40rpx;
+    display: flex;
+    align-items: center;
     color: #fff;
     font-family: 'DIN Next LT Pro'
 }
@@ -209,7 +232,7 @@ image {
 
 .attendance {
     position: absolute;
-    top: 50rpx;
+    top: 80rpx;
     right: 20rpx;
 }
 
