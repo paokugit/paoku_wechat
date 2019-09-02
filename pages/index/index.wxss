@@ -137,11 +137,12 @@ image {
 .balance {
     width: auto;
     height: 50rpx;
+    line-height: 50rpx;
     background: #1daf69;
     position: absolute;
     top: 5rpx;
     left: 0rpx;
-    border-radius: 0 20rpx 20rpx 0;
+    border-radius: 0 30rpx 30rpx 0;
 }
 
 .button {
@@ -169,12 +170,11 @@ image {
 }
 
 .balance-right {
-    width: auto;
-    height: 40rpx;
+    color: #fff;
     display: flex;
     align-items: center;
-    color: #fff;
     font-family: 'DIN Next LT Pro';
+
 }
 
 .floating {
@@ -529,7 +529,8 @@ image {
 .store-service {
     width: 100%;
     height: 630rpx;
-    background: #12bfa3;
+    /* background: #12bfa3; */
+    background: #f8f8f8;
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
@@ -538,12 +539,25 @@ image {
 }
 
 .store-service-title {
-    width: 100%;
+    width: 94%;
     height: 80rpx;
-    color: #fff;
-    font-size: 32rpx;
+    padding: 0 3%;
+    display: flex;
+    align-items: center;
 }
-
+.storeservice-tit{
+    font-size: 40rpx;
+    color: #333;
+    font-weight: bold;
+}
+.service-circle{
+    width: 26rpx;
+    height: 26rpx;
+    background: #f8f8f8;
+    border: 8rpx solid #01d7a1;
+    border-radius: 50%;
+    margin-left: 12rpx;
+}
 .storeimg {
     width: 196rpx;
     height: 32rpx;
@@ -553,7 +567,7 @@ image {
     width: 726rpx;
     height: 530rpx;
     background: #fff;
-    border-radius: 10rpx;
+    border-radius: 20rpx;
     position: relative;
 }
 
@@ -915,21 +929,21 @@ image {
 }
 
 .pro-exchange-tit-box {
-    width: 100%;
+    width: 94%;
     height: 80rpx;
-    background: #fff;
-    position: relative;
+    padding: 0 3%;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
 }
 
 .pro-exchange-tit {
-    width: 200rpx;
+    width: auto;
     height: 80rpx;
     color: #333;
-    position: absolute;
-    top: 0rpx;
-    left: 20rpx;
-    font-weight: 600;
-    font-size: 32rpx;
+    font-size: 40rpx;
+    font-weight: bold;
     display: flex;
     align-items: center;
 }
@@ -937,9 +951,6 @@ image {
 .pro-exchange-entry {
     width: 120rpx;
     height: 80rpx;
-    position: absolute;
-    top: 0rpx;
-    right: 20rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1172,21 +1183,20 @@ image {
 }
 
 .seckill-tit-box {
-    width: 100%;
-    height: 200rpx;
+    width: 94%;
+    height: 100rpx;
+    padding: 0 3%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between
 }
 
 .sec-tit {
     /* color: rgb(255, 0, 0);
     font-size: 36rpx;
     font-weight: bold; */
-    width: 288rpx;
-    height: 34rpx;
-    margin-bottom: 20rpx;
+    width: 308rpx;
+    height: 38rpx;
 }
 
 .sec-djs {
@@ -1195,7 +1205,7 @@ image {
 }
 
 .sec-djs-box {
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1370,10 +1380,20 @@ image {
 .rob-btn-over{
     background: rgb(146, 146, 146)
 }
-.readmore-sec {
+.readmore-flex{
     width: 100%;
     height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rpx;
+}
+.readmore-sec {
+    width: 92%;
+    height: 100rpx;
     font-size: 36rpx;
+    border-radius: 20rpx;
     color: #333;
     font-weight: 600;
+    background: #fff;
 }

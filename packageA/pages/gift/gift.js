@@ -34,6 +34,10 @@ Page({
         primarylist: [],
         middlelist: [],
         highlist: [],
+        noticelist:[],
+        autoplay: !0,
+        interval: 2000,
+        duration: 500,
         friendavatar: '',
         agent_level: '',
         is_get: '',
@@ -170,6 +174,14 @@ Page({
                 })
             }
 
+        });
+        s.get("changce/merch/draw_rank", {}, function (e) {
+            console.log(e)
+            if (e.status == 1) {
+                t.setData({
+                    noticelist: e.result.log
+                })
+            }
         });
     },
 

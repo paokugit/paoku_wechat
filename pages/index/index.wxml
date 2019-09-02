@@ -8,7 +8,7 @@
                     <view class='balance-left flex_center'>
                         <image src='{{ globalimg}}/kaluli.png'></image>
                     </view>
-                    <view class='balance-right'>{{credit1}}</view>
+                    <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
                 </view>
             </button>
         </form>
@@ -151,10 +151,9 @@
 
 
     <view class='store-service'>
-        <view class='store-service-title flex_center'>
-            <view class='storeimg'>
-                <image src='{{ globalimg}}/mendianfuwu.png'></image>
-            </view>
+        <view class='store-service-title'>
+            <view class='storeservice-tit'>门店服务</view>
+            <view class='service-circle'></view>
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>
@@ -288,7 +287,9 @@
     <!-- 限时秒杀部分 -->
     <view class='seckill-box' style='display:{{seckillDis}}'>
         <view class='seckill-tit-box'>
-            <view class='sec-tit'><image src='{{globalimg}}/xianshiqg.png'></image></view>
+            <view class='sec-tit'>
+                <image src='{{globalimg}}/xsqg.png'></image>
+            </view>
             <view class='sec-djs-box'>
                 <view class='sec-text'>距结束</view>
                 <view class='timeText'>
@@ -330,19 +331,25 @@
 
 
         </view>
-        <view class='readmore-sec flex_center'>
-            <view class='readmore-pro-con' bindtap='moresecbtn'>查看更多</view>
-            <view class='readmore-pro-img flex_center'>
-                <image src='{{ globalimg}}/chakangengduo.png'></image>
+        <view class='readmore-flex'>
+            <view class='readmore-sec flex_center'>
+                <view class='readmore-pro-con' bindtap='moresecbtn'>查看更多</view>
+                <view class='readmore-pro-img flex_center'>
+                    <image src='{{ globalimg}}/chakangengduo.png'></image>
+                </view>
             </view>
         </view>
+
     </view>
     <!-- 限时秒杀部分 -->
     <!-- 超值兑换部分-开始 -->
     <view class='pro-exchange-box flex_center'>
         <view class='pro-exchange-box-con'>
             <view class='pro-exchange-tit-box'>
-                <view class='pro-exchange-tit'>超值兑换</view>
+                <view class='pro-exchange-tit'>
+                    <view>超值兑换</view>
+                    <view class='service-circle'></view>
+                </view>
                 <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
             </view>
             <view class='exchange-products-box'>
