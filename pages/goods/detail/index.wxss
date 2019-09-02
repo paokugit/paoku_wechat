@@ -1,6 +1,6 @@
 @import "../../date/date.wxss";
 @import "../../common/city-picker.wxss";
-@import "../../../__wuBaseWxss__/7.wxss";
+@import "../../../wuBaseWxss/7.wxss";
 @import "../../custom/index.wxss";
 
 .picker-modal {
@@ -1857,3 +1857,113 @@ image {
     font-weight: bold;
 }
 
+.sec-box {
+    width: 100%;
+    height: 100rpx;
+    background: #f00;
+    position: relative;
+}
+.sec-absolute-box{
+    width: auto;
+    height: 100%;
+    position: absolute;
+    left: 14rpx;
+    display: flex;
+    align-items: center
+}
+.sec-saleprice {
+    color: rgb(255, 255, 255);
+}
+
+.sec-symbol {
+    font-size: 28rpx;
+}
+.sec-price{
+    font-size: 40rpx;
+}
+.sec-originalprice {
+    height: 35rpx;
+    line-height: 40rpx;
+    margin-left: 15rpx;
+    margin-right: 20rpx;
+    color: rgb(255, 255, 255);
+    font-size: 24rpx;
+    text-decoration: line-through;
+}
+.robbtn{
+    width: 100rpx;
+    height: 30rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    color: #f00;
+    font-size: 18rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.sec-djs-box {
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 13rpx;
+    right: 20rpx
+}
+
+.sec-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 22rpx;
+    margin-right: 12rpx;
+}
+
+.timeText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timebox {
+    width: 40rpx;
+    height: 40rpx;
+    background: #7f0000;
+    border-radius: 50%;
+    color: rgb(254, 254, 254);
+    font-size: 18rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-symbol {
+    width: 20rpx;
+    height: 40rpx;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progressbar{
+    width: 134rpx;
+    height: 20rpx;
+    position: absolute;
+    bottom: 15rpx;
+    right: 130rpx
+}
+.sec-num{
+    position: absolute;
+    bottom: 10rpx;
+    right: 20rpx;
+    font-size: 22rpx;
+    color: rgb(255, 255, 255)
+}
+.fanhui-img{
+    width: 13rpx;
+    height: 25rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 36%
+}

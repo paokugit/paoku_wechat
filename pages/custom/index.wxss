@@ -1,4 +1,4 @@
-@import "../../__wuBaseWxss__/7.wxss";
+@import "../../wuBaseWxss/7.wxss";
 
 @import "../common/city-picker.wxss";
 

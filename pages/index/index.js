@@ -24,6 +24,11 @@ var openid = ''
 var version = 1
 var currency_step = ''
 var merchphone = ""
+var secend_time = ""
+var timestampcount = ""
+const app = getApp()
+var interval = new Object();
+var util = require('../../utils/util.js');
 Page((e = {
     onPullDownRefresh: function() {
         wx.showToast({
@@ -45,6 +50,8 @@ Page((e = {
         o.get(this, "home", function(a) {
             t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
         });
+        console.log(secend_time - timestampcount)
+        t.startTimer(secend_time - timestampcount);
     },
 
     data: (a = {
@@ -56,6 +63,10 @@ Page((e = {
                 title: '跑库',
                 height: i.globalData.height * 2 + 20
             },
+            countDownHour: 0,
+            countDownMinute: 0,
+            countDownSecond: 0,
+            addspead: "",
             adveradmin: !0,
             vertical: true,
             circular: true,
@@ -105,6 +116,9 @@ Page((e = {
             giftDis: 'none',
             updateDis: 'none',
             // rewarddisp:'none',
+            seckillDis: '',
+            killlist: [],
+            sec_end_time: "",
             screenWidth: '',
             helpstep: '',
             jindu: 100,
@@ -182,6 +196,11 @@ Page((e = {
     inviteBtn: function() {
         wx.navigateTo({
             url: '/packageA/pages/helphand/friendhelp/friendhelp',
+        })
+    },
+    moresecbtn: function() {
+        wx.navigateTo({
+            url: '/packageA/pages/timelimit/timelimit',
         })
     },
     form_submit: function(e) {
@@ -587,6 +606,36 @@ Page((e = {
             }
 
         });
+        var TIME = util.formatTime(new Date());
+        var timestamp = Date.parse(new Date());
+        timestampcount = timestamp / 1000
+        console.log(timestampcount)
+        this.setData({
+            time: TIME,
+            timestamp: timestamp / 1000
+        });
+
+        // 秒杀列表
+        s.get("seckill/list", {
+            type: 1,
+            page:1
+        }, function(e) {
+            console.log(e)
+            if (e.status == 1) {
+                secend_time = e.result.end_time
+                console.log(secend_time)
+                t.startTimer(secend_time - timestamp / 1000);
+                t.setData({
+                    killlist: e.result.list,
+                    sec_end_time: e.result.end_time
+                })
+            } else if (e.status == 0) {
+                t.setData({
+                    seckillDis: 'none'
+                })
+            }
+
+        });
 
         s.get("userinfo", {}, function(e) {
             if (e.status == 1) {
@@ -699,6 +748,47 @@ Page((e = {
             iconheight: t.detail.height,
             iconwidth: t.detail.width
         });
+    },
+    startTimer: function(currentstartTimer) {
+        clearInterval(interval);
+        interval = setInterval(function() {
+            var second = currentstartTimer;
+            // 天数位
+            var day = Math.floor(second / 3600 / 24);
+            var dayStr = day.toString();
+            if (dayStr.length == 1) dayStr = '0' + dayStr;
+
+            // 小时位
+            var hr = Math.floor((second) / 3600);
+            var hrStr = hr.toString();
+            if (hrStr.length == 1) hrStr = '0' + hrStr;
+            // 分钟位
+            var min = Math.floor((second - hr * 3600) / 60);
+            var minStr = min.toString();
+            if (minStr.length == 1) minStr = '0' + minStr;
+
+            // 秒位
+            var sec = second - hr * 3600 - min * 60;
+            var secStr = sec.toString();
+            if (secStr.length == 1) secStr = '0' + secStr;
+
+            this.setData({
+                countDownHour: hrStr,
+                countDownMinute: minStr,
+                countDownSecond: secStr,
+            });
+            currentstartTimer--;
+            if (currentstartTimer <= 0) {
+                clearInterval(interval);
+                this.setData({
+                    seckillDis: 'none',
+                    countDownDay: '00',
+                    countDownHour: '00',
+                    countDownMinute: '00',
+                    countDownSecond: '00',
+                });
+            }
+        }.bind(this), 1000);
     },
     getList: function() {
         var tt = this;

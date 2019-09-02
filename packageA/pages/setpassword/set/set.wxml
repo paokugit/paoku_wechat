@@ -1,0 +1,11 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='set-box' style='margin-top:{{nvabarData.height}}px'>
+    <view class='set-con'>
+        <view class='set-con-center' bindtap='setbtn'>
+            <view class='set-text'>交易密码设置</view>
+            <view class='set-img'>
+                <image src='{{globalimg}}/open0@2x.png'></image>
+            </view>
+        </view>
+    </view>
+</view>

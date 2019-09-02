@@ -8,7 +8,7 @@
                     <view class='balance-left flex_center'>
                         <image src='{{ globalimg}}/kaluli.png'></image>
                     </view>
-                    <view class='balance-right'>{{credit1}}</view>
+                    <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
                 </view>
             </button>
         </form>
@@ -130,7 +130,7 @@
                     <swiper-item class="notice-box">
                         <view class='notice-tit'>恭喜用户</view>
                         <view class='notice-name'>{{item.nickname}}</view>
-                        <view class='notice-desc'>累计提现</view>
+                        <view class='notice-desc'>成功提现</view>
                         <view class='notice-money'>{{item.sum_money}}元</view>
                     </swiper-item>
                 </block>
@@ -151,10 +151,9 @@
 
 
     <view class='store-service'>
-        <view class='store-service-title flex_center'>
-            <view class='storeimg'>
-                <image src='{{ globalimg}}/mendianfuwu.png'></image>
-            </view>
+        <view class='store-service-title'>
+            <view class='storeservice-tit'>门店服务</view>
+            <view class='service-circle'></view>
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>
@@ -285,11 +284,72 @@
             <image src='{{ globalimg}}/advertise.png'></image>
         </view>
     </view>
+    <!-- 限时秒杀部分 -->
+    <view class='seckill-box' style='display:{{seckillDis}}'>
+        <view class='seckill-tit-box'>
+            <view class='sec-tit'>
+                <image src='{{globalimg}}/xsqg.png'></image>
+            </view>
+            <view class='sec-djs-box'>
+                <view class='sec-text'>距结束</view>
+                <view class='timeText'>
+                    <text class='timebox'>{{countDownHour}}</text>
+                    <text class='time-symbol'>:</text>
+                    <text class='timebox'>{{countDownMinute}}</text>
+                    <text class='time-symbol'>:</text>
+                    <text class='timebox'>{{countDownSecond}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class='seckill-continer'>
+            <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="{{index}}">
+                <view class='sec-item-img'>
+                    <image src='{{item. thumb}}'></image>
+                    <view class='sec-saleout-img' wx:if="{{item.total==0}}">
+                        <image src='{{globalimg}}/qiangwan-s.png'></image>
+                    </view>
+                </view>
+                <view class='sec-item-content'>
+                    <view class='sec-item-tit'>{{item.title}}</view>
+                    <view class='progressbar'>
+                        <progress percent="{{(item.sales+item.salesreal)/(item.sales+item.salesreal+item.total)*100}}" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" active border-radius="20rpx" />
+                    </view>
+                    <view class='progress-text'>已抢{{item.sales+item.salesreal}}件</view>
+                    <view class='limit-num'>限抢{{item.sales+item.salesreal+item.total}}件</view>
+                    <view class='sec-sale-absolute'>
+                        <view class='sec-sale'>
+                            <text class='sale-symbol'>￥</text>
+                            <text class='sale-text'>{{item.showprice}}</text>
+                        </view>
+                        <view class='sec-original'>￥{{item.productprice}}</view>
+                    </view>
+                    <view class='rob-btn' wx:if="{{item.total > 0}}">马上抢</view>
+                    <view class='rob-btn-over' wx:if="{{item.total==0}}">马上抢</view>
+                </view>
+            </navigator>
+
+
+        </view>
+        <view class='readmore-flex'>
+            <view class='readmore-sec flex_center'>
+                <view class='readmore-pro-con' bindtap='moresecbtn'>查看更多</view>
+                <view class='readmore-pro-img flex_center'>
+                    <image src='{{ globalimg}}/chakangengduo.png'></image>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <!-- 限时秒杀部分 -->
     <!-- 超值兑换部分-开始 -->
     <view class='pro-exchange-box flex_center'>
         <view class='pro-exchange-box-con'>
             <view class='pro-exchange-tit-box'>
-                <view class='pro-exchange-tit'>超值兑换</view>
+                <view class='pro-exchange-tit'>
+                    <view>超值兑换</view>
+                    <view class='service-circle'></view>
+                </view>
                 <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
             </view>
             <view class='exchange-products-box'>

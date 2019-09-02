@@ -1,4 +1,4 @@
-@import "../../../__wuBaseWxss__/4.wxss";
+@import "../../../wuBaseWxss/4.wxss";
 
 .fui-list .fui-list-inner .subtitle {
     font-size: 24rpx;

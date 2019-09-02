@@ -28,6 +28,11 @@ var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
 openid = userinfo.openid
+const app = getApp()
+var interval = new Object();
+var second_time=""
+var timestampcount = ""
+var util = require('../../../utils/util.js');
 Page((a = {
     data: (e = {
         globalimg: f.globalData.appimg,
@@ -37,6 +42,9 @@ Page((a = {
             title: '商品详情',
             height: f.globalData.height * 2 + 20,
         },
+        countDownHour: 10,
+        countDownMinute: 10,
+        countDownSecond: 10,
         diypages: {},
         usediypage: !1,
         specs: [],
@@ -85,6 +93,7 @@ Page((a = {
         addDis: 'none',
         shareDis: 'block',
         listDis: 'block',
+        seckillDis:'none',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -264,9 +273,11 @@ Page((a = {
             // e.setData({
             //     "nvabarData.title": smart_title
             // })
+            second_time = t.goods.timeend
             merchid = t.goods.merchid
             reward = t.goods.reward
             console.log(reward)
+            console.log(second_time)
             if (reward == 0) {
                 // 没有赏金任务
                 e.setData({
@@ -570,6 +581,10 @@ Page((a = {
         var e = this;
         c.number(t, e);
     },
+    onPullDownRefresh: function () {
+        var t = this;
+        t.startTimer(second_time - timestampcount);
+    },
     onLoad: function (t) {
         var k = this
         s.get("version/appversion", {
@@ -780,6 +795,78 @@ Page((a = {
 
             }
         });
+        s.get("goods.get_end", {
+            id: goodsid
+        }, function (e) {
+           console.log(e)
+            var TIME = util.formatTime(new Date());
+            var timestamp = Date.parse(new Date());
+            timestampcount = timestamp / 1000
+            console.log(timestampcount)
+           if(e.status==2){
+            //    2为秒杀中
+               t.setData({
+                   seckillDis:'block'
+               })
+               second_time = e.result.end
+               console.log(second_time)
+               t.startTimer(second_time - timestampcount);
+           }
+           else if(e.status==1){
+            //1为秒杀未开始
+               t.setData({
+                   seckillDis: 'block'
+               })
+               second_time = e.result.start
+               t.startTimer(second_time - timestampcount);
+           }else if(e.status==4){
+               t.setData({
+                   seckillDis: 'none'
+               })
+           }
+        });  
+    },
+    startTimer: function (currentstartTimer) {
+        clearInterval(interval);
+        interval = setInterval(function () {
+            // 秒数
+            var second = currentstartTimer;
+            // 天数位
+            var day = Math.floor(second / 3600 / 24);
+            var dayStr = day.toString();
+            if (dayStr.length == 1) dayStr = '0' + dayStr;
+
+            // 小时位
+            var hr = Math.floor((second) / 3600);
+            var hrStr = hr.toString();
+            if (hrStr.length == 1) hrStr = '0' + hrStr;
+
+            // 分钟位
+            var min = Math.floor((second - hr * 3600) / 60);
+            var minStr = min.toString();
+            if (minStr.length == 1) minStr = '0' + minStr;
+
+            // 秒位
+            var sec = second - hr * 3600 - min * 60;
+            var secStr = sec.toString();
+            if (secStr.length == 1) secStr = '0' + secStr;
+
+            this.setData({
+                countDownDay: dayStr,
+                countDownHour: hrStr,
+                countDownMinute: minStr,
+                countDownSecond: secStr,
+            });
+            currentstartTimer--;
+            if (currentstartTimer <= 0) {
+                clearInterval(interval);
+                this.setData({
+                    countDownHour: '00',
+                    countDownMinute: '00',
+                    countDownSecond: '00',
+                });
+            }
+        }.bind(this), 1000);
     },
     onChange: function (t) {
         return r.onChange(this, t);

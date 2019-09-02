@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "nav-bar": "/commpents/navbar/index"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+}

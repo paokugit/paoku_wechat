@@ -49,17 +49,71 @@ image {
     position: relative;
 }
 
+.title-rule-box {
+    width: 100%;
+    height: 60rpx;
+    position: absolute;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-rule-con {
+    width: 600rpx;
+    height: 60rpx;
+    /* background: #f66; */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.title-limit {
+    color: #bb0002;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.title-libao {
+    color: #bb0002;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.title-remark {
+    display: flex;
+    height: 60rpx;
+    line-height: 70rpx;
+    color: #bb0002;
+    font-size: 20rpx;
+    margin-left: 5rpx;
+    font-weight: bold;
+}
+
+.rule-btn {
+    width: 130rpx;
+    height: 40rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid #bb0002;
+    color: #bb0002;
+    font-size: 22rpx;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .gift-centerbg {
-    width: 692rpx;
+    width: 672rpx;
     height: 900rpx;
 }
 
 .grade-position-box {
     width: 100%;
-    height: 100rpx;
-    opacity: 0.5;
+    height: 40rpx;
     position: absolute;
-    top: 20.3%;
+    top: 23%;
     left: 0;
     display: flex;
     justify-content: center;
@@ -67,13 +121,16 @@ image {
 }
 
 .grade-con-box {
-    width: 75%;
-    height: 38rpx;
+    width: 560rpx;
+    height: 40rpx;
+    padding: 0 20rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 30rpx;
+    font-size: 24rpx;
     color: #efb46c;
+    background: #a00000;
+    border-radius: 30rpx;
 }
 
 .grade-con-left {
@@ -82,6 +139,11 @@ image {
 
 .grade-con-right {
     display: flex;
+}
+
+.title-record-box {
+    position: absolute;
+    top: 28%;
 }
 
 .jiantou-img {
@@ -97,22 +159,66 @@ image {
 .help-position-box {
     width: 100%;
     height: 145rpx;
-    opacity: 0.6;
     position: absolute;
-    top: 35%;
+    top: 37%;
     left: 0;
+    /* background: #f77; */
+    display: flex;
+    justify-content: center;
 }
 
 .help-relative {
-    width: 100%;
+    width: 600rpx;
     height: 100%;
     position: relative;
+    display: flex;
+}
+
+.help-total-box, .help-line-box {
+    width: 198rpx;
+    height: 145rpx;
+    /* background: #fff; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.help-line-box {
+    border-left: 2rpx solid #ffbb68;
+    border-right: 2rpx solid #ffbb68;
+}
+
+.invite-time {
+    width: 198rpx;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 26%;
+    color: #262e22;
+    font-size: 20rpx;
+}
+
+.help-total-tit {
+    color: #262e22;
+    font-size: 24rpx;
 }
 
 .help-count {
     color: #bb0002;
     font-size: 60rpx;
     font-weight: bold;
+}
+
+.help-total-count {
+    font-size: 60rpx;
+    color: #bb0002;
+}
+
+.help-total-remark {
+    font-size: 24rpx;
+    color: #bb0002;
+    margin-left: 4rpx;
 }
 
 .goal {
@@ -136,9 +242,54 @@ image {
 .record-position-box {
     width: 100%;
     height: 60rpx;
-    opacity: 0.6;
     position: absolute;
     top: 52%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-con {
+    width: 600rpx;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.record-img-box {
+    width: 100rpx;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-text {
+    color: #bb0002;
+    font-size: 26rpx;
+}
+
+.recordimg {
+    width: 12rpx;
+    height: 22rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8rpx;
+}
+
+.record-title {
+    width: 600rpx;
+    height: 100%;
+    color: #bb0002;
+    font-size: 26rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .list-position-box {
@@ -149,6 +300,7 @@ image {
     top: 60%;
     display: flex;
     justify-content: center;
+    background: pink;
 }
 
 .list-con-box {
@@ -311,20 +463,23 @@ image {
     right: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.6);
-     /* background: rgba(0, 0, 0, 0.9); */
+    /* background: rgba(0, 0, 0, 0.9); */
 }
 
-.float{
-     animation: que 5s linear infinite;
+.float {
+    animation: que 5s linear infinite;
 }
+
 @keyframes que {
-        0%{
-            transform: rotate(0deg);
-        }
-        100%{
-            transform: rotate(360deg);
-        }
+    0% {
+        transform: rotate(0deg);
     }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .help-mask-relative {
     width: 100%;
     height: 100%;
@@ -339,12 +494,14 @@ image {
     position: absolute;
     top: 40%;
 }
-.light02-img{
+
+.light02-img {
     width: 750rpx;
     height: 758rpx;
     position: absolute;
     top: 25%;
 }
+
 .help-success-bg {
     width: 480rpx;
     height: 360rpx;
@@ -504,4 +661,75 @@ button::after {
 .gift-invite {
     width: 600rpx;
     height: 150rpx;
+}
+
+.index-news-box {
+    width: 270rpx;
+    height: 50rpx;
+    padding: 0 15rpx;
+    background: #000;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 80%;
+    left: 20rpx;
+    border-radius: 30rpx;
+}
+
+.notice-name {
+    margin-left: 8rpx;
+}
+
+.notice-img {
+    width: 36rpx;
+    height: 36rpx;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.swiper-box swiper {
+    height: 60rpx;
+}
+
+.notice-box {
+    display: flex;
+    align-items: center;
+    margin-left: 10rpx;
+    color: #fff;
+    font-size: 20rpx;
+}
+
+/* .notice-money {
+    font-family: 'DIN Next LT Pro';
+} */
+
+.swiper-box {
+    position: relative;
+    width: 100%;
+}
+
+.activity-explain-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+.activity-relative{
+    width: 100%;
+    height: 100%;
+}
+.activity-conbox{
+    width: 86%;
+    height: 600rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    margin: auto
 }

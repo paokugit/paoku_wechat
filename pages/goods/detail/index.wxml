@@ -53,6 +53,37 @@
                     <view bindtap="showpic" class="pic_btn active" wx:if="{{goods.video}}">图片</view>
                 </view>
             </view>
+            <!-- 秒杀 -->
+            <view class='sec-box' style='display:{{seckillDis}}'>
+                <view class='sec-absolute-box'>
+                    <view class='sec-saleprice'>
+                        <text class='sec-symbol'>￥</text>
+                        <text class='sec-price'>{{goods.showprice}}</text>
+                    </view>
+                    <view class='sec-originalprice'>￥{{goods.productprice}}</view>
+                    <view class='robbtn'>限时抢购</view>
+                </view>
+                <view class='sec-djs-box'>
+                    <view class='sec-text' wx:if="{{goods.istime==1&&goods.timebuy==-1}}">距开始</view>
+                    <view class='sec-text' wx:else>距结束</view>
+
+                    <view class='timeText'>
+                        <text class='timebox'>{{countDownHour}}</text>
+                        <text class='time-symbol'>:</text>
+                        <text class='timebox'>{{countDownMinute}}</text>
+                        <text class='time-symbol'>:</text>
+                        <text class='timebox'>{{countDownSecond}}</text>
+                    </view>
+                </view>
+                <view class='progressbar'>
+                    <progress percent="{{(goods.sales+goods.salesreal)/(goods.sales+goods.salesreal+goods.total)*100}}" color="#fff" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="10" active border-radius="20rpx" />
+                </view>
+                <view class='sec-num'>仅剩{{goods.total}}件</view>
+                <!-- <view class='fanhui-img'>
+                    <image src='{{globalimg}}/fanhui02.png'></image>
+                </view> -->
+            </view>
+            <!-- 秒杀 -->
             <view class="seckill-container " wx:if="{{goods.seckillinfo}}">
                 <view class="fui-list seckill-list" style="">
                     <view class="fui-list-media seckill-price">
@@ -159,7 +190,7 @@
                         <span class="number" style="{{index==0?'margin-left:20rpx':''}}" wx:for="{{time}}">{{item}}{{index==0?' 天 ':''}}{{index==1?' 时 ':''}}{{index==2?' 分 ':''}}{{index==3?' 秒 ':''}}</span>
                     </view>
                 </view>
-                <view class="row row-time" id="discount" wx:if="{{goods.isdiscount!=0&&goods.isdiscount_time>=now}}">
+                <!-- <view class="row row-time" id="discount" wx:if="{{goods.isdiscount!=0&&goods.isdiscount_time>=now}}">
                     <view id="discount-container">
                         <text class="icox icox-shijian1"></text>
                         <text class="label">{{goods.isdiscount_title?goods.isdiscount_title:'促销'}}</text>
@@ -168,8 +199,8 @@
                             <span class="number" style="{{index==0?'margin-left:20rpx':''}}" wx:for="{{time}}">{{item}}{{index==0?' 天 ':''}}{{index==1?' 时 ':''}}{{index==2?' 分 ':''}}{{index==3?' 秒 ':''}}</span>
                         </block>
                     </view>
-                </view>
-                <view class="row row-time" wx:if="{{goods.istime>0}}">
+                </view> -->
+                <!-- <view class="row row-time" wx:if="{{goods.istime>0}}">
                     <view id="time-container">
                         <text class=" icox icox-shijian1"></text>
                         <text class="label">{{istimeTitle?istimeTitle:'限时购'}}</text>
@@ -178,7 +209,7 @@
                             <span class="number" style="{{index==0?'margin-left:20rpx':''}}" wx:for="{{time}}">{{item}}{{index==0?' 天 ':''}}{{index==1?' 时 ':''}}{{index==2?' 分 ':''}}{{index==3?' 秒 ':''}}</span>
                         </block>
                     </view>
-                </view>
+                </view> -->
                 <view class="fui-cell">
                     <view class="fui-cell-text flex">
                         <block wx:if="{{dispatchpriceObj==1}}">

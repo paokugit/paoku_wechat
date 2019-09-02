@@ -1,69 +1,81 @@
-@import "../../__wuBaseWxss__/7.wxss";
+@import "../../wuBaseWxss/7.wxss";
 @import "../common/city-picker.wxss";
 @import "../common/r-index.wxss";
+
 page {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    background: #f8f8f8
+    background: #f8f8f8;
 }
+
 .indexBox {
     width: 100%;
     height: auto;
-    overflow: auto
+    overflow: auto;
 }
+
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
     color: transparent;
 }
+
 button::after {
     border: none;
 }
 
-.mask{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  display: block;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 3000;
+.mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: block;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
 }
+
 /* 居中显示 */
-.position_absolute{
+
+.position_absolute {
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
 }
-.first-entry-box{
+
+.first-entry-box {
     width: 100%;
     height: auto;
     bottom: 0;
-    top:0;
+    top: 0;
 }
-.pullBtn{
-   width: 100%;
+
+.pullBtn {
+    width: 100%;
     height: 300rpx;
-    top:60%;
+    top: 60%;
 }
-.close_pull{
+
+.close_pull {
     width: 100%;
     height: 150rpx;
-    top:15%;
+    top: 15%;
 }
-.packetbtn{
+
+.packetbtn {
     width: 60rpx;
     height: 60rpx;
-    top:85%;
+    top: 85%;
     border-radius: 50%;
 }
-.login_account{
+
+.login_account {
     width: 100%;
     height: 50%;
-    top:28%;
+    top: 28%;
 }
-.first-entry-img{
+
+.first-entry-img {
     width: 60rpx;
     height: 60rpx;
     position: absolute;
@@ -71,18 +83,20 @@ button::after {
     right: 60rpx;
     border-radius: 50%;
 }
-.symbol{
+
+.symbol {
     display: block;
     width: 60rpx;
     height: 60rpx;
 }
-.first-entry{
+
+.first-entry {
     width: 500rpx;
     height: 700rpx;
     bottom: 0;
-    top:0;
-
+    top: 0;
 }
+
 .index-banner-box {
     width: 100%;
     height: 478rpx;
@@ -93,37 +107,42 @@ image {
     width: 100%;
     height: 100%;
 }
-.update-box{
+
+.update-box {
     position: absolute;
     top: 15rpx;
     right: 0rpx;
 }
-.update{
+
+.update {
     width: auto;
     height: 50rpx;
     padding: 0 15rpx;
     display: flex;
     align-items: center;
-    border-radius: 20rpx 0 0 20rpx
-
+    border-radius: 20rpx 0 0 20rpx;
 }
-.update-img{
+
+.update-img {
     width: 44rpx;
     height: 31rpx;
 }
-.update-text{
+
+.update-text {
     color: #fff;
     font-size: 30rpx;
-    margin-left: 10rpx
+    margin-left: 10rpx;
 }
+
 .balance {
     width: auto;
     height: 50rpx;
+    line-height: 50rpx;
     background: #1daf69;
     position: absolute;
     top: 5rpx;
     left: 0rpx;
-    border-radius: 0 20rpx 20rpx 0;
+    border-radius: 0 30rpx 30rpx 0;
 }
 
 .button {
@@ -137,11 +156,13 @@ image {
     display: flex;
     align-items: center;
 }
-.flex_center{
+
+.flex_center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .balance-left {
     width: 40rpx;
     height: 40rpx;
@@ -149,12 +170,11 @@ image {
 }
 
 .balance-right {
-    width: auto;
-    height: 40rpx;
+    color: #fff;
     display: flex;
     align-items: center;
-    color: #fff;
-    font-family: 'DIN Next LT Pro'
+    font-family: 'DIN Next LT Pro';
+
 }
 
 .floating {
@@ -193,16 +213,19 @@ image {
     left: 40rpx;
     top: 100rpx;
 }
-.giftbox{
+
+.giftbox {
     position: absolute;
     left: 170rpx;
     top: 210rpx;
 }
-.phonereward{
+
+.phonereward {
     position: absolute;
     right: 190rpx;
     top: 285rpx;
 }
+
 .circle {
     width: 110rpx;
     height: 130rpx;
@@ -307,7 +330,7 @@ image {
     color: #fff;
     font-size: 70rpx;
     text-shadow: #32c17d 1rpx 5rpx;
-    font-family: 'DIN Next LT Pro'
+    font-family: 'DIN Next LT Pro';
 }
 
 .step {
@@ -332,7 +355,7 @@ image {
     left: 280rpx;
     color: #fff;
     font-size: 24rpx;
-    font-family: 'DIN Next LT Pro'
+    font-family: 'DIN Next LT Pro';
 }
 
 .member-speedup-box {
@@ -352,6 +375,7 @@ image {
     justify-content: center;
     align-items: center;
 }
+
 .member-speedup-box-top {
     width: 670rpx;
     height: 110rpx;
@@ -360,19 +384,22 @@ image {
     border-radius: 70rpx;
     box-shadow: 0px 10rpx 5rpx #eee;
 }
-.indexbannerImg{
+
+.indexbannerImg {
     width: 100%;
     height: 100%;
-    position: relative
+    position: relative;
 }
-.number_people{
+
+.number_people {
     width: 200rpx;
     height: 80%;
     position: absolute;
     top: 10%;
     left: 20rpx;
 }
-.peopleNum{
+
+.peopleNum {
     width: auto;
     height: 60%;
     color: #333;
@@ -380,17 +407,19 @@ image {
     font-family: 'DIN Next LT Pro';
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
-.peopleExplain{
+
+.peopleExplain {
     width: auto;
     height: 30%;
     font-size: 20rpx;
     color: #0bc99d;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
+
 .shadow-img {
     width: 100%;
     height: 100%;
@@ -457,7 +486,8 @@ image {
     color: #333;
     font-size: 28rpx;
 }
-.index-news-box{
+
+.index-news-box {
     width: 92%;
     height: 110rpx;
     padding: 0 4%;
@@ -465,34 +495,42 @@ image {
     display: flex;
     align-items: center;
 }
-.notice-name{
-    margin-left: 8rpx
+
+.notice-name {
+    margin-left: 8rpx;
 }
-.notice-img{
+
+.notice-img {
     width: 112rpx;
     height: 52rpx;
 }
-.swiper-box swiper{
-  height: 60rpx
+
+.swiper-box swiper {
+    height: 60rpx;
 }
- .notice-box{
-     display: flex;
-     align-items: center;
-     margin-left: 20rpx;
-     color: #333;
-     font-size: 30rpx
- }
-.notice-money{
- font-family: 'DIN Next LT Pro'
+
+.notice-box {
+    display: flex;
+    align-items: center;
+    margin-left: 20rpx;
+    color: #333;
+    font-size: 30rpx;
 }
-.swiper-box{
-  position: relative;
-  width: 100%;
+
+.notice-money {
+    font-family: 'DIN Next LT Pro';
 }
+
+.swiper-box {
+    position: relative;
+    width: 100%;
+}
+
 .store-service {
     width: 100%;
     height: 630rpx;
-    background: #12bfa3;
+    /* background: #12bfa3; */
+    background: #f8f8f8;
     border-radius: 20rpx;
     display: flex;
     flex-direction: column;
@@ -501,12 +539,25 @@ image {
 }
 
 .store-service-title {
-    width: 100%;
+    width: 94%;
     height: 80rpx;
-    color: #fff;
-    font-size: 32rpx;
+    padding: 0 3%;
+    display: flex;
+    align-items: center;
 }
-
+.storeservice-tit{
+    font-size: 40rpx;
+    color: #333;
+    font-weight: bold;
+}
+.service-circle{
+    width: 26rpx;
+    height: 26rpx;
+    background: #f8f8f8;
+    border: 8rpx solid #01d7a1;
+    border-radius: 50%;
+    margin-left: 12rpx;
+}
 .storeimg {
     width: 196rpx;
     height: 32rpx;
@@ -516,7 +567,7 @@ image {
     width: 726rpx;
     height: 530rpx;
     background: #fff;
-    border-radius: 10rpx;
+    border-radius: 20rpx;
     position: relative;
 }
 
@@ -573,12 +624,14 @@ image {
     height: 150rpx;
     border: 1px solid #f8f8f8;
 }
-.storeImg{
-    width: 100%
+
+.storeImg {
+    width: 100%;
 }
+
 .store-details-box {
     width: 500rpx;
-    height:150rpx;
+    height: 150rpx;
     /* background: #f00; */
     margin-left: 20rpx;
     display: flex;
@@ -592,39 +645,42 @@ image {
     line-height: 40rpx;
     color: #333;
     font-size: 34rpx;
-display: block;
-overflow: hidden;
-white-space: nowrap;
-text-overflow:ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.merch-reward{
+
+.merch-reward {
     width: 260rpx;
-    }
-.reward_box{
+}
+
+.reward_box {
     width: 260rpx;
     color: #e01212;
     font-size: 22rpx;
     /* background: #f66 */
 }
-.reward_text{
-    
+
+.reward_text {
     width: 100rpx;
-    background: #fdeddd
+    background: #fdeddd;
 }
-.reward_money{
-    margin-left: 20rpx
+
+.reward_money {
+    margin-left: 20rpx;
 }
 
 .office-hour {
     width: 80%;
-     height: 40rpx;
+    height: 40rpx;
     line-height: 40rpx;
     color: #666;
     font-size: 22rpx;
     display: block;
-overflow: hidden;
-white-space: nowrap;
-text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .store-address {
@@ -633,11 +689,11 @@ text-overflow:ellipsis;
     /* background: #00f; */
     color: #666;
     font-size: 22rpx;
-    line-height:40rpx;
+    line-height: 40rpx;
     display: block;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 }
 
 .store-service-box-bottom {
@@ -682,7 +738,7 @@ text-overflow:ellipsis;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    position: relative
+    position: relative;
 }
 
 .club-card-img-box {
@@ -706,8 +762,7 @@ text-overflow:ellipsis;
     display: block;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow:ellipsis;
-
+    text-overflow: ellipsis;
 }
 
 .club-card-free {
@@ -715,7 +770,7 @@ text-overflow:ellipsis;
     height: 40rpx;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 /* 门店服务-结束 */
@@ -781,19 +836,22 @@ text-overflow:ellipsis;
     border-radius: 20rpx;
     position: relative;
 }
-.callphone-box{
-     width: 100rpx;
+
+.callphone-box {
+    width: 100rpx;
     height: 42rpx;
     position: absolute;
     top: 50rpx;
     right: 25rpx;
     color: #666;
 }
-.callphone-img{
-      width: 42rpx;
+
+.callphone-img {
+    width: 42rpx;
     height: 42rpx;
-    float: right
+    float: right;
 }
+
 .nearbyshop-distance {
     width: auto;
     height: 30rpx;
@@ -831,9 +889,9 @@ text-overflow:ellipsis;
 }
 
 .moreBtn {
-     width: 100%;
+    width: 100%;
     height: 80rpx;
-        background: #fff;
+    background: #fff;
 }
 
 .readmore-shops-box {
@@ -850,46 +908,49 @@ text-overflow:ellipsis;
     color: #666;
     font-weight: 600;
 }
+
 .advertise-space {
     width: 726rpx;
     height: 188rpx;
     margin-top: 20rpx;
 }
+
 /* 超值兑换部分-开始 */
+
 .pro-exchange-box {
     width: 100%;
     height: auto;
     margin-top: 20rpx;
 }
+
 .pro-exchange-box-con {
     width: 100%;
     height: auto;
 }
+
 .pro-exchange-tit-box {
-    width: 100%;
+    width: 94%;
     height: 80rpx;
-    background: #fff;
-    position: relative;
+    padding: 0 3%;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
 }
 
 .pro-exchange-tit {
-    width: 200rpx;
+    width: auto;
     height: 80rpx;
     color: #333;
-    position: absolute;
-    top: 0rpx;
-    left: 20rpx;
-    font-weight: 600;
-    font-size: 32rpx;
+    font-size: 40rpx;
+    font-weight: bold;
     display: flex;
     align-items: center;
 }
+
 .pro-exchange-entry {
     width: 120rpx;
     height: 80rpx;
-    position: absolute;
-    top: 0rpx;
-    right: 20rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -909,34 +970,36 @@ text-overflow:ellipsis;
 .exchange-product {
     width: 360rpx;
     height: 480rpx;
-     /* height: auto; */
+    /* height: auto; */
     background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 20rpx
+    margin-bottom: 20rpx;
 }
 
 .exchange-product-img {
     width: 350rpx;
     height: 350rpx;
     border-radius: 20rpx 20rpx 0rpx 0rpx;
-    position: relative
+    position: relative;
 }
 
 .ex-proimg {
     width: 100%;
     height: 100%;
 }
-.saleout{
+
+.saleout {
     width: 336rpx;
     height: 336rpx;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100
+    z-index: 100;
 }
+
 .ex-proname {
     width: 320rpx;
     height: 40rpx;
@@ -947,7 +1010,7 @@ text-overflow:ellipsis;
     display: block;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 }
 
 .ex-procalorie-box {
@@ -965,29 +1028,33 @@ text-overflow:ellipsis;
     justify-content: space-between;
     align-items: center;
 }
-.calorieimgBox{
-     width: auto;
+
+.calorieimgBox {
+    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
 }
-.calorie_person_box{
- width: 95%;
+
+.calorie_person_box {
+    width: 95%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.calorie-person{
+
+.calorie-person {
     width: auto;
     height: 100%;
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
     color: #666;
-    font-size: 20rpx
+    font-size: 20rpx;
 }
-.calorie-price{
+
+.calorie-price {
     width: auto;
     height: 100%;
     float: right;
@@ -996,8 +1063,7 @@ text-overflow:ellipsis;
     align-items: center;
     color: #666;
     font-size: 20rpx;
-    /* margin-left: 50rpx; */
-    /* text-decoration: line-through */
+    /* margin-left: 50rpx; *//* text-decoration: line-through */
 }
 
 .calorie-img {
@@ -1012,7 +1078,8 @@ text-overflow:ellipsis;
     font-size: 24rpx;
     margin-left: 10rpx;
 }
-.calorie-num02{
+
+.calorie-num02 {
     width: auto;
     height: 40rpx;
     color: #e01212;
@@ -1045,14 +1112,16 @@ text-overflow:ellipsis;
 }
 
 /* 查看更多-商品-结束 */
-.store-reward{
+
+.store-reward {
     width: 120rpx;
     height: 40rpx;
-     position: absolute;
+    position: absolute;
     top: 5rpx;
     left: 10rpx;
 }
-.rewardBox{
+
+.rewardBox {
     width: 120rpx;
     height: 40rpx;
     background: #e01212;
@@ -1060,43 +1129,271 @@ text-overflow:ellipsis;
     color: #fff;
     font-size: 24rpx;
     line-height: 40rpx;
-    text-align: center
+    text-align: center;
 }
+
 /* 包邮 */
-.postage-free-box{
-     width: 93%;
+
+.postage-free-box {
+    width: 93%;
     height: 30rpx;
 }
-.postage-free{
+
+.postage-free {
     width: 50rpx;
     height: 30rpx;
     text-align: center;
     color: #e01212;
     font-size: 20rpx;
-    border: 1px solid #e01212
+    border: 1px solid #e01212;
 }
-.goTop{
-      position: fixed;
+
+.goTop {
+    position: fixed;
     bottom: 10%;
     right: 5%;
     width: 50rpx;
     height: 50rpx;
 }
-.first-entry-close{
+
+.first-entry-close {
     width: 100%;
     height: 100rpx;
     position: absolute;
     bottom: 12%;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
-.swiper-card{
-  height: 220rpx;
-  padding: 0 20rpx;
-  background: #fff;
+.swiper-card {
+    height: 220rpx;
+    padding: 0 20rpx;
+    background: #fff;
 }
-.swiper-card swiper,.bannerGif{
-  height: 220rpx;
+
+.swiper-card swiper, .bannerGif {
+    height: 220rpx;
+}
+
+.seckill-box {
+    width: 100%;
+    height: auto;
+    background: #f8f8f8;
+}
+
+.seckill-tit-box {
+    width: 94%;
+    height: 100rpx;
+    padding: 0 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.sec-tit {
+    /* color: rgb(255, 0, 0);
+    font-size: 36rpx;
+    font-weight: bold; */
+    width: 308rpx;
+    height: 38rpx;
+}
+
+.sec-djs {
+    color: rgb(51, 51, 51);
+    font-size: 24rpx;
+}
+
+.sec-djs-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    font-size: 30rpx;
+    margin-right: 20rpx;
+}
+
+.timeText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timebox {
+    width: 50rpx;
+    height: 50rpx;
+    background: rgb(54, 54, 54);
+    border-radius: 6rpx;
+    color: rgb(254, 254, 254);
+    font-size: 36rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-symbol {
+    width: 20rpx;
+    height: 60rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seckill-continer {
+    width: 92%;
+    height: auto;
+    padding: 0 4%;
+}
+
+.sec-itembox {
+    width: 94%;
+    height: 215rpx;
+    padding: 24rpx 3%;
+    background: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    margin-top: 25rpx;
+}
+
+.sec-item-img {
+    width: 212rpx;
+    height: 212rpx;
+    border-radius: 10rpx;
+    position: relative;
+}
+
+.sec-saleout-img {
+    width: 116rpx;
+    height: 116rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.sec-item-content {
+    width: 420rpx;
+    height: 180rpx;
+    /* background: #f56; */
+    margin-left: 15rpx;
+    position: relative;
+}
+
+.sec-item-tit {
+    width: 400rpx;
+    height: 40rpx;
+    color: #333;
+    font-size: 34rpx;
+    line-height: 40rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.progressbar, .progress-text {
+    width: 240rpx;
+    height: 28rpx;
+    position: absolute;
+    top: 70rpx;
+    left: 0rpx;
+}
+
+.progress-text {
+    width: 210rpx;
+    padding-left: 20rpx;
+    font-size: 22rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.limit-num {
+    width: auto;
+    height: 26rpx;
+    position: absolute;
+    top: 70rpx;
+    left: 255rpx;
+    color: rgb(51, 51, 51);
+    font-size: 22rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec-sale-absolute {
+    width: auto;
+    position: absolute;
+    left: 0rpx;
+    top: 130rpx;
+    display: flex;
+    align-items: center;
+}
+
+.sec-sale {
+    width: auto;
+    color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sale-symbol {
+    font-size: 28rpx;
+}
+
+.sale-text {
+    font-size: 40rpx;
+}
+
+.sec-original {
+    color: rgb(146, 146, 146);
+    font-size: 22rpx;
+    text-decoration: line-through;
+    margin-left: 10rpx;
+}
+
+.rob-btn, .rob-btn-over {
+    width: 140rpx;
+    height: 52rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 120rpx;
+    right: 0rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 24rpx;
+}
+.rob-btn-over{
+    background: rgb(146, 146, 146)
+}
+.readmore-flex{
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rpx;
+}
+.readmore-sec {
+    width: 92%;
+    height: 100rpx;
+    font-size: 36rpx;
+    border-radius: 20rpx;
+    color: #333;
+    font-weight: 600;
+    background: #fff;
 }
