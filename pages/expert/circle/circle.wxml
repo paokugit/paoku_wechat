@@ -2,12 +2,12 @@
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
   <!-- 动态提醒 -->
   <view class="tiXing" wx:if="{{isShow}}">为你更新{{updateData}}条动态</view>
-  <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}" >
+  <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}">
     <!-- 头像、昵称、发布时间 -->
     <view class="circleMes flexCss">
       <view class="nameMes flexCss">
         <image src="{{item.avatar}}"></image> 
-        <view class="circleCss">{{item.nickname}}</view> 
+        <view class="circleCss nickname">{{item.nickname}}</view> 
       </view>
       <view class="timeMes">{{item.create_day}}</view>
     </view>
@@ -15,33 +15,33 @@
     <!-- 动态内容 --> 
     <navigator url="/pages/expert/discuss/discuss?listId={{item.id}}" class="circleCon circleCss">{{item.content}}</navigator>
     
-    <!-- 动态图片 -->
+    <!-- 动态图片 --> 
     <view class="circleImg" >  
-      <view class="{{item.img_len == 1 ? 'typeA' : item.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}"   catchtap="previewImage">
+      <view class="{{item.img_len == 1 ? 'typeA' : item.img_le == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}"   catchtap="previewImage">
         <image class="typeImage" src="{{itemImg}}"></image>
       </view>
-    </view>
+    </view> 
   
     <!-- 商品推荐 -->
-    <navigator url="/pages/goods/detail/index?id={{item.good.goods_id}}" class="tuijian" wx:if="{{item.goods_id == 0?false:true}}">
+    <view data-tuijianid="{{item.good.goods_id}}" catchtap="tuijianBtn" class="tuijian" wx:if="{{item.goods_id == 0?false:true}}">
       <image class="goodsImg" src="{{item.good.img}}"></image>
       <view class="goodsRight">
         <view class="tuiTa">{{item.good.title}}</view>
         <view class="tuiTb">{{item.good.subtitle}}</view>
         <view class="jiaGe">
           <view>
-            <text class="xianJia">￥{{item.good.marketprice}}</text>
+            <text class="xianJia">{{item.good.marketprice}}</text>
             <text class="yuanJia">￥{{item.good.productprice}}</text>
           </view>
           <view class="xiaoL">销量{{item.good.sales}}</view>
         </view>
       </view>
-    </navigator>
+    </view>
 
     <!-- 图标 -->
     <view class="ico flexCss">
-      <view style="display: flex;">
-        <view class="circle_read">
+      <view style="display: flex;" class="circle_parise">
+        <view class="circle_read" catchtap="lookOver">
           <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
           <text class="iconTxt">{{item.view_count}}</text>
         </view>
@@ -52,7 +52,7 @@
         </navigator> 
       </view>
 
-      <view class="circle_parise" bindtap="support" data-supportid="{{item.id}}" data-supp="{{item.support}}">
+      <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-supp="{{item.support}}">
         <image class="iconImg" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
         <text class="iconTxt">{{item.zan_count}}</text>
       </view>

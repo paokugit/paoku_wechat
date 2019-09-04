@@ -1,52 +1,61 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
 
-  <view class="particulars">
+  <view class="particulars head">
     <view class="head-img flexCss">
       <view class="left-head flexCss">
-        <image src="{{globalimg}}/mai_02.jpg"></image>
+        <image src="{{details.avatar}}"></image>
         <view>
-          <view class="reName">生无可恋</view>
-          <view class="reTime">今天16：40</view>
+          <view class="reName">{{details.nickname}}</view>
+          <view class="reTimeA">{{details.create_time}}</view>
         </view>
       </view>
       <view class="icon flexCss">
-        <view style="margin-right:10rpx;">
+        <view style="margin-right:10rpx;" bindtap="showBtn" data-supportid="{{details.id}}">
           <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-          <text class="iconTxt">10</text>
+          <text class="iconTxt">{{details.comment_count}}</text>
         </view>
-        <view>
-          <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
-          <text class="iconTxt">15</text>
+        <view bindtap="support" data-supp="{{details.support}}" data-supportid="{{details.id}}">
+          <image class="iconImg" src="{{globalimg}}/{{details.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+          <text class="iconTxt">{{details.zan_count}}</text>
         </view>
       </view>
     </view>
 
-    <view class="textA">坚持运动，行走兑换，打卡记录第五天，又要一起的小伙伴吗？</view>
+    <view class="textA">{{details.content}}</view>
   </view>
 
-  <view class="particulars">
+  <view class="particulars cont" wx:for="{{list}}" wx:key="{{index}}" data-catid="{{item.id}}" data-openid="{{item.openid}}" bindlongpress="shadeCat" catchtap="showBtn" data-supportid="{{item.id}}">
     <view class="head-img flexCss">
       <view class="left-head flexCss">
-        <image src="{{globalimg}}/mai_02.jpg"></image>
+        <image src="{{item.avatar}}"></image>
         <view>
-          <view class="reName">生无可恋</view>
-          <view class="reTime">今天16：40</view>
+          <view class="reName">{{item.nickname}}</view>
+          <view class="reTimeB">{{item.create_time}}</view>
         </view>
       </view>
       <view class="icon flexCss">
-        <view style="margin-right:10rpx;">
-          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-          <text class="iconTxt">10</text>
-        </view>
-        <view>
-          <image class="iconImg" src="{{globalimg}}/circle_parise@1.png"></image>
-          <text class="iconTxt">15</text>
+        <view bindtap="support" data-supp="{{item.support}}" data-supportid="{{item.id}}">
+          <image class="iconImg" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+          <text class="iconTxt">{{item.zan_count}}</text>
         </view>
       </view>
     </view>
 
-    <view class="textA"> <text>回复萌驼旅行家</text>：坚持运动，行走兑换，打卡记录第五天，又要一起的小伙伴吗？</view>
+    <view class="textB">回复 <text style="color:#01d7a1;">{{item.bnickname}}</text>：{{item.content}}</view>
+  </view>
+
+  <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
+
+
+  <view class="comInt">
+    <input class='solid-bottom' value="{{discuss}}" placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{sendShow}}" bindinput ='formName' ></input>
+    <text bindtap="sendBtn">发送</text>
+  </view> 
+
+  <view class="shade" wx:if="{{shadeShow}}" catchtap="shadeShow">
+    <image class="shadeImg" src="{{globalimg}}/shanchu@2x.png" catchtap="delBTn"></image>
+    <view class="icoDel icox icox-close" catchtap="shadeShow"></view>
   </view>
 
 </view>

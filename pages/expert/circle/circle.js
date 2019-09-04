@@ -14,7 +14,7 @@ Page({
     showBall:false,
     img_url:[],
     img_file:[],
-    cartoon: false,
+    cartoon: false, 
     cartoonA: true,
     cartoonB: false,
 
@@ -23,7 +23,9 @@ Page({
     updateData:0,
     dataList:[],
     isShow:false,
-    abcShow:false
+    abcShow:false,
+
+    pageminus:''
   }, 
 
   
@@ -52,6 +54,14 @@ Page({
     })
   },
 
+  tuijianBtn:function(e){
+    let id = e.currentTarget.dataset.tuijianid;
+    wx.navigateTo({
+      url: '/pages/goods/detail/index?id=' + id,
+    })
+  },  
+
+  // 点赞与取消
   support:function(e){
     var m = this;
     var supportId = e.currentTarget.dataset.supportid;
@@ -85,6 +95,7 @@ Page({
     }
   },
 
+  //是否有上次保存的信息 
   imgBall: function (options){
     var m = this;
     a.get("drcircle.my.log", {
@@ -102,6 +113,7 @@ Page({
     })
   },
 
+  // 图片上传
   chooseimage: function (options){
     let m = this;
     let select = options.currentTarget.dataset.select;
@@ -142,8 +154,7 @@ Page({
       showBall: false
     })
   },
-  dakai:function(){
-    
+  dakai:function(){  
     var m = this;
     if (m.data.cartoon == true){
       m.setData({
@@ -160,8 +171,8 @@ Page({
     }
   },
 
+  // 图片预览
   previewImage: function (event) {
-    
     var src = event.currentTarget.dataset.src;
     var imgList = event.currentTarget.dataset.list;
     var imgArr = [];
@@ -176,26 +187,30 @@ Page({
 
   onShow: function () {
     var m = this;
+    console.log(m.data.page);
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];
     let json = currPage.data.mydata;
     if (json != undefined) {
       m.data.dataList = [];
-      if (json.pageB == 1) {
+      if (json.pageB == -1) {
+        m.setData({
+          page:1,
+          pageminus:0
+        })
         m.pageData();
-        console.log(m.data.dataList);
       }
     }
-    
+    console.log(m.data.updateData);
     if (m.data.updateData != 0){
       m.setData({
         isShow: true
       })
       setTimeout(function(){
         m.setData({
-          isShow: false
+          isShow: false 
         })
-      },2000)
+      },3000)
     }
     m.data.img_url = [];
   },
@@ -204,7 +219,29 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var m = this;
+    let page = m.data.pageminus;
+    console.log(page);
+    if (page > 1) {
+      wx.showLoading({
+        title: '加载中...',
+      });
+      m.setData({
+        pageminus: page-1
+      }) 
+      a.get("drcircle.index.index", {
+        openid: useropenid, 
+        page: m.data.pageminus
+      }, function (e) {
+        let totalList = e.message.list;
+        m.setData({
+          dataList: totalList.concat(m.data.dataList)
+        })  
+      })
+    }
+    setTimeout(() => {
+      wx.hideLoading()
+    }, 1000)
   },
 
   /**
@@ -218,7 +255,8 @@ Page({
         title: '加载中...',
       });
       this.setData({
-        page: page + 1
+        page: page + 1,
+        pageminus:page+1
       })
       this.pageData();
     } else {

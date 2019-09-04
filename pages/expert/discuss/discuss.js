@@ -14,14 +14,19 @@ Page({
     },
 
     hShow: '1',
-    listId:'',
+    listId:'', 
     detailList:{},
-    page: 1,
+    page: 1, 
     totalPage: 0,
     newestList:[], 
     abcShow: false,
     shadeShow:false,
-    catid:''
+    catid:'',
+    discuss:'',
+    replyId:'',
+    type_state:1,
+    focus:false,
+    myopenid:''
   },
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
@@ -29,7 +34,9 @@ Page({
 
     var m = this;
     m.setData({
-      listId : options.listId
+      listId : options.listId,
+      replyId: options.listId,
+      myopenid: useropenid
     })
   
     m.detail();
@@ -66,14 +73,14 @@ Page({
     })
   },
 
+  // 点赞和取消
   support: function (e) {
     var m = this;
     var supp = e.currentTarget.dataset.supp;
     var supportid = e.currentTarget.dataset.supportid;
     var type = e.currentTarget.dataset.type;
     var reP = e.currentTarget.dataset.rep;
-    console.log(supp, supportid, type, reP)
-    console.log(m.data.newestList);
+    console.log(reP);
     if (supp == 0) {
       a.get("drcircle.my.support", {
         openid: useropenid,
@@ -87,8 +94,8 @@ Page({
             m.setData({
               newestList: []
             })
-            console.log(m.data.newestList)
-            m.newest();
+            m.detail();
+            m.newest(); 
           }
         }
       })
@@ -102,11 +109,10 @@ Page({
           if (reP != 1) {
             m.detail();
           } else {
-            
             m.setData({
               newestList:[]
             })
-            console.log(m.data.newestList)
+            m.detail();
             m.newest();
           }
         }
@@ -128,8 +134,8 @@ Page({
     
   },
 
+  // 预览
   previewImage: function (event) {
-
     var src = event.currentTarget.dataset.src;
     var imgList = event.currentTarget.dataset.list;
     var imgArr = [];
@@ -142,6 +148,7 @@ Page({
     })
   },
 
+  // 动态删除
   deleteBtn:function(e){
     var m = this;
     wx.showModal({
@@ -173,20 +180,24 @@ Page({
     var prevPage = pages[pages.length - 2];
     prevPage.setData({
       mydata: {
-        pageB: 1
+        pageB: -1
       }
     })
     wx.navigateBack({
       delta: 1,
     })
   },
-
+  
+  // 删除评论
   shadeCat:function(e){
     var m = this;
-    m.data.catid = e.currentTarget.dataset.catid
-    m.setData({
-      shadeShow:true
-    })
+    m.data.catid = e.currentTarget.dataset.catid;
+    var dataOpenid = e.currentTarget.dataset.openid;
+    if (dataOpenid == useropenid){
+      m.setData({
+        shadeShow:true
+      })
+    }
   },
   shadeShow:function(){
     var m = this;
@@ -194,6 +205,8 @@ Page({
       shadeShow: false
     })
   },
+
+  // 删除动态
   delBTn:function(){
     var m = this;
     console.log(m.data.catid)
@@ -202,20 +215,58 @@ Page({
       comment_id: m.data.catid
     },function(e){
       console.log(e);
+      if(e.error == 0){
+        m.setData({
+          shadeShow:false,
+          newestList: []
+        })
+        m.detail();
+        m.newest();
+      }
     })
   },
 
+  formName: function (e) {
+    this.setData({
+      discuss: e.detail.value,
+      focus:true
+    })
+  }, 
+  replyBtn:function(e){
+    this.setData({
+      focus:true,
+      replyId:e.currentTarget.dataset.parentid,
+      type_state:2
+    })
+  },
+  // 留言
+  sendBtn:function(){  
+    var m = this;
+    a.get("drcircle.my.comment",{
+      openid: useropenid,
+      content: m.data.discuss,
+      type: m.data.type_state,
+      parent_id: m.data.replyId
+    },function(e){
+      console.log(e);
+      if(e.error == 0){
+        m.setData({
+          newestList: [],
+          discuss:''
+        })
+        m.detail();
+        m.newest();
+      }
+    })
+  },
 
-  // sendBtn:function(){  
-  //   var m = this;
-  //   a.get("drcircle.my.comment",{
-  //     openid: useropenid,
-
-  //   },function(){
-
-  //   })
-  // },
-
+  // 跳转详情
+  commentBtn:function(e){
+    let comid = e.currentTarget.dataset.comid;
+    wx.navigateTo({
+      url: '/pages/expert/particulars/particulars?comid='+comid,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -229,7 +280,7 @@ Page({
     var prevPage = pages[pages.length - 2];
     prevPage.setData({
       mydata: {
-        pageB: 1
+        pageB: -1
       }
     })
   },

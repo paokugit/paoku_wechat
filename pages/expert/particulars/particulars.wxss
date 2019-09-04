@@ -3,9 +3,14 @@ page{
   background: #fff;
 }
 
-.particulars{
+.head{
+  background: #ffffff;
   margin: 30rpx 0;
 }
+.cont{
+  background: #fcfcfc;
+  padding-top: 30rpx;
+} 
 .head-img{
   justify-content: space-between;
   margin: 0 30rpx;
@@ -25,8 +30,12 @@ page{
   text-overflow:ellipsis;
   white-space: nowrap;
 }
-.reTime{
-  font-size: 20rpx;
+.reTimeA{
+  font-size: 24rpx;
+  color: rgb(146, 146, 146);
+}
+.reTimeB{
+  font-size: 22rpx;
   color: rgb(146, 146, 146);
 }
 .iconImg{
@@ -41,7 +50,13 @@ page{
 .textA{
   font-size: 28rpx;
   color: rgb(51, 51, 51);
-  margin: 20rpx 30rpx 0 100rpx;
+  margin: 20rpx 0rpx 0 100rpx;
+  padding-bottom: 40rpx;
+}
+.textB{
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  margin: 20rpx 0rpx 0 100rpx;
   padding-bottom: 40rpx;
   border-bottom: 1px solid rgb(235, 235, 235);
 }
@@ -52,4 +67,67 @@ page{
 .flexCss{
   display: flex;
   align-items: center;
+}
+
+
+.comInt{
+  width: 100%;
+  height: 120rpx;
+  border-top: 1rpx solid #f8f8f8;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.solid-bottom{
+  width: 70%;
+  margin-left: 48rpx;
+  border-radius: 50rpx;
+  background: rgb(248, 248, 248);
+  padding: 20rpx 30rpx;
+}
+.palClass{
+  color: rgb(153, 153, 153);
+  font-size: 28rpx;
+}
+.comInt text{
+  font-size: 34rpx;
+  color: rgb(1, 215, 161);
+  margin-right: 24rpx;
+}
+
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}
+
+.shade{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(50, 50, 50, 0.5);
+}
+.shadeImg{
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 50%;
+  bottom: 80rpx;
+  transform: translate(-50%, -50%);
+}
+.icoDel{
+  color: #fff;
+  font-size: 45rpx; 
+  position: absolute;
+  left: 50%;
+  bottom: 40rpx;
+  transform: translate(-50%, -50%);
 }

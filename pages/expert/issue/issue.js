@@ -14,7 +14,7 @@ Page({
     showBall: false,
     showTishi:false, 
     arrayNull: true,
-    releaseText: '',
+    releaseText: '', 
     replayMore: false,
     hidden: true,
     flag: false,
@@ -28,7 +28,7 @@ Page({
     
     btnId:0,
     message:{},
-    shopErr:1,
+    shopErr:1, 
     hintT:'',
 
     mydata:'',
@@ -50,6 +50,17 @@ Page({
         tempFilePaths: options.imgList.split(','),
         fileName: options.fileList.split(',')
       })
+
+      var query = wx.createSelectorQuery();
+      var nodesRef = query.selectAll(".item");
+      nodesRef.fields({
+        dataset: true,
+        rect: true
+      }, (result) => {
+        m.setData({
+          elements: result
+        })
+      }).exec();
     }
   },
 
@@ -127,6 +138,13 @@ Page({
     this.setData({
       releaseText: e.detail.value
     })
+    var query = wx.createSelectorQuery();
+    var that = this;
+    query.select('.release_text').boundingClientRect(function (rect) {
+      that.setData({
+        textHeight: rect.height
+      })
+    }).exec();
   },
 
   // 上传
@@ -153,19 +171,21 @@ Page({
                 tempFilePaths: tempFilePaths,
                 showBall: false
               });
+
+              var query = wx.createSelectorQuery();
+              var nodesRef = query.selectAll(".item");
+              nodesRef.fields({
+                dataset: true,
+                rect: true
+              }, (result) => {
+                that.setData({
+                  elements: result
+                })
+              }).exec();
+
             }
           });
         };  
-        var query = wx.createSelectorQuery();
-        var nodesRef = query.selectAll(".item");
-        nodesRef.fields({
-          dataset: true,
-          rect: true
-        }, (result) => {
-          that.setData({
-            elements: result
-          })
-        }).exec();
       }
     })
   },
@@ -200,7 +220,7 @@ Page({
 
   // 长按
   _longtap: function (e) {
-    var maskImg = e.currentTarget.dataset.img
+    var maskImg = e.currentTarget.dataset.img;
     this.setData({
       maskImg: maskImg, 
       hidden: false,
@@ -208,13 +228,7 @@ Page({
       x: e.currentTarget.offsetLeft,
       y: e.currentTarget.offsetTop
     })
-    var query = wx.createSelectorQuery();
-    var that = this;
-    query.select('.release_text').boundingClientRect(function (rect) {
-      that.setData({
-        textHeight: rect.height
-      })
-    }).exec();
+    
   },
 
   // 触摸开始
@@ -232,13 +246,14 @@ Page({
     const x = e.changedTouches[0].pageX
     const y = e.changedTouches[0].pageY
     const list = this.data.elements;
-    let data = this.data.tempFilePaths
+    let data = this.data.tempFilePaths;
+
     for (var j = 0; j < list.length; j++) {
       const item = list[j];
       if (x > item.left && x < item.right && y > item.top && y < item.bottom) {
         const endIndex = item.dataset.index;
         const beginIndex = this.data.beginIndex;
-
+  
         if (beginIndex < endIndex) {
           let tem = data[beginIndex];
           for (let i = beginIndex; i < endIndex; i++) {
@@ -267,17 +282,17 @@ Page({
   // 滑动
   touchm: function (e) {
     if (this.data.flag) {
-      const x = e.touches[0].pageX
-      const y = e.touches[0].pageY
+      const x = e.touches[0].pageX;
+      const y = e.touches[0].pageY;
       if (this.data.textHeight > 70) {
         this.setData({
-          x: x - 75,
-          y: y - this.data.textHeight * 2
+          x: x - 75, 
+          y: y - this.data.textHeight*2
         })
       } else {
         this.setData({
           x: x - 75,
-          y: y - 140
+          y: y - 310
         })
       }
     }
@@ -295,11 +310,18 @@ Page({
       goods_id:that.data.btnId
     },function(e){
       if(e.error == 0){
+        
+        that.setData({
+          tempFilePaths:[],
+          fileName:[]
+        })
+
+
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2];
         prevPage.setData({
           mydata: {
-            pageB: 1
+            pageB: -1
           }
         })
         wx.navigateBack({
@@ -320,6 +342,8 @@ Page({
 
   onShow: function () {
     var m = this;
+    console.log(m.data.tempFilePaths);
+    console.log(m.data.fileName)
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];
     let json = currPage.data.mydata;

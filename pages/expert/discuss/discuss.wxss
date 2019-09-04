@@ -150,9 +150,10 @@ page{
   background: rgb(248, 248, 248);
   border-radius: 10rpx;
   position: relative;
+  overflow: hidden;
+  margin-bottom: 15rpx;
 }
 .headList{
-  overflow: hidden;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -203,6 +204,7 @@ page{
 .rePingTxt view{
   font-size: 34rpx;
   color: rgb(51, 51, 51);
+  font-weight: bold;
 }
 
 .iconImg{
@@ -278,7 +280,7 @@ page{
   overflow: hidden;
 }
 .replyName{
-  color: rgb(1, 215, 161);
+  color: #01d7a1;
 }
 
 .allReply{

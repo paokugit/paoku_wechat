@@ -25,7 +25,7 @@ page{
   margin-right: 20rpx;
 }
 .tanchu view{
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: rgb(51, 51, 51);
 }
 
@@ -60,7 +60,7 @@ page{
 }
 .rightTxt{
   width: 340rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: rgb(51, 51, 51);
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -75,12 +75,18 @@ page{
   position: absolute;
   left: 0;
   bottom: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .iconCsss{
   display: inline-block;
 }
 .circle_news{
   margin-left: 15rpx;
+}
+.circle_read{
+  margin-right: 15rpx;
 }
 .iconTxt{
   font-size: 28rpx;

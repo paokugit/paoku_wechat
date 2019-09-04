@@ -37,6 +37,7 @@ Page({
       openid: useropenid,
       page: m.data.page
     },function(e){
+      console.log(e);
       let totalList = e.message.list;
       var arr = m.data.sumList.concat(totalList);
       if (m.data.sumList.length != 0){  
@@ -131,7 +132,7 @@ Page({
     let json = currPage.data.mydata;
     if (json != undefined){
       m.data.sumList = [];
-      if (json.pageB == 1){
+      if (json.pageB == -1){
         m.myList()
       }  
     }

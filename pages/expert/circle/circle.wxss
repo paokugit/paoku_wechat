@@ -13,11 +13,11 @@
   top: 13%;
 }
  
-
+ 
 .listCon{
   background: #fff;
-  margin: 20rpx 25rpx;
-  padding: 20rpx;
+  margin: 20rpx;
+  padding: 20rpx 10rpx;
   border-radius: 30rpx;
 }
 
@@ -38,10 +38,11 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .timeMes{
-  font-size: 22rpx;
+  font-size: 24rpx;
   color: rgb(146, 146, 146);
 }
 
@@ -113,6 +114,7 @@
   position: relative;
   left: 15rpx;
   top: 16rpx;
+  font-weight: bold;
 }
 .tuiTb{
   width: 400rpx;
@@ -124,6 +126,8 @@
   position: relative;
   left: 15rpx;
   top: 20rpx;
+  font-size: 24rpx;
+  color: #666666;
 }
 .jiaGe{
   display: flex;
@@ -133,13 +137,31 @@
   left: 15rpx;
   top: 50rpx;
 }
-
-.tuiTb, .yuanJia, .xiaoL {
-  font-size: 22rpx;
-  color: rgb(146, 146, 146);
+.xianJia{
+  font-size: 40rpx;
+  color: #e01212;
+}
+.xianJia::before{
+  content: "￥";
+  font-size:28rpx
+}
+.yuanJia{
+  font-size: 28rpx;
+  color: #999999;
+  margin-left: 15rpx;
+  text-decoration:line-through;
+}
+.xiaoL {
+  font-size: 26rpx;
+  color: #999999;
 }
 
+
 /* 图标 */
+.circle_parise{
+  height: 80rpx; 
+  line-height: 80rpx;
+}
 .ico{
   margin-top:30rpx; 
   justify-content: space-between;

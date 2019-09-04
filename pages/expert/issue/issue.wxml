@@ -4,7 +4,8 @@
     <view class="release_text">
       <textarea bindinput='gaysText' value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
     </view>
-  
+
+    <view class="littleHint">按住照片拖拽可以调整顺序</view>
     <view class='inner' catchtouchmove='true'>
       <movable-area>
         <block wx:for="{{tempFilePaths}}" wx:key="{{index}}">
@@ -15,7 +16,7 @@
               <image src="{{globalimg}}/imgGuanBi.png"></image>
             </view>
           
-          </view>
+          </view> 
         </block>
         
         <movable-view x="{{x}}" y="{{y}}" direction="all" damping="{{5000}}" friction="{{1}}" disabled="{{disabled}}">

@@ -12,11 +12,11 @@
 
     <view class="circleCssA">{{detailList.content}}</view>
  
-    <view class="imgQu">
+    <view class="imgQu"> 
       <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   bindtap="previewImage">
         <image class="typeImage" src="{{itemImg}}"></image>
       </view>
-    </view> 
+    </view>  
 
     <navigator url="/pages/goods/detail/index?id={{detailList.goods_id}}" class="shangpin" wx:if="{{detailList.goods_id == 0?false:true}}">
       <image class="tuiImg" src="{{detailList.good.img}}"></image>
@@ -45,11 +45,11 @@
         </view>
       </view>
       
-      <view class="remove" bindtap="deleteBtn">删除此条动态</view>
+      <view class="remove" bindtap="deleteBtn" wx:if="{{myopenid == detailList.openid}}">删除此条动态</view>
     </view>
 
-    <view class="head-portrait" wx:if="{{detailList.zan_list.length == 0?false:true}}">
-      <view class="headList" style="{{hShow == '2'?'' : 'height:200rpx'}}">
+    <view class="head-portrait" style="{{hShow == '2'?'' : 'max-height:245rpx'}}" wx:if="{{detailList.zan_list.length == 0?false:true}}">
+      <view class="headList" >
         <view class="headImage" wx:for="{{detailList.zan_list}}" wx:for-item="listImg" wx:key="{{index}}">
           <image src="{{listImg}}"></image>
         </view>
@@ -67,7 +67,7 @@
       </view>
     </view> 
   
-    <view class="reList" wx:for="{{detailList.hot}}" wx:for-item="listHot" wx:key="{{indexHot}}">
+    <view class="reList" wx:for="{{detailList.hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" data-parentid="{{listHot.id}}"  catchtap="replyBtn">
       <view class="fleCss topRe">
         <view class="img-name fleCss">
           <image src="{{listHot.avatar}}"></image>
@@ -77,10 +77,10 @@
           </view>
         </view>
         <view class="fleCss">
-          <navigator url="/pages/expert/particulars/particulars" class="circle_news circle_read">
+          <view catchtap="commentBtn" data-comid="{{listHot.id}}" class="circle_news circle_read">
             <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
             <text class="iconTxt">{{listHot.comment_count}}</text>
-          </navigator>
+          </view>
 
           <view class="circle_read">
             <image class="iconImg" bindtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" src="{{globalimg}}/{{listHot.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
@@ -88,7 +88,7 @@
           </view>
         </view>
       </view>
-      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{listHot.id}}">{{listHot.content}}</view>
+      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{listHot.id}}" data-openid="{{listHot.openid}}">{{listHot.content}}</view>
     </view>
 
     <view class="rePing" wx:if="{{newestList.length == 0?false:true}}">
@@ -97,7 +97,7 @@
       </view>
     </view>
 
-    <view class="reList" wx:for="{{newestList}}" wx:key="{{index}}">
+    <view class="reList" wx:for="{{newestList}}" wx:key="{{index}}" data-parentid="{{item.id}}" catchtap="replyBtn">
       <view class="fleCss topRe">
         <view class="img-name fleCss">
           <image src="{{item.avatar}}"></image>
@@ -106,31 +106,34 @@
             <view class="reTime">{{item.create_time}}</view>
           </view>
         </view>
-        <view class="fleCss">
-          <navigator url="/pages/expert/particulars/particulars" class="circle_news">
+        <view class="fleCss"> 
+          <view catchtap="commentBtn" data-comid="{{item.id}}" class="circle_news">
             <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
             <text class="iconTxt">{{item.comment_count}}</text>
-          </navigator>
+          </view>
 
           <view class="circle_read">
             <image class="iconImg" bindtap="support" data-type="2" data-supp="{{item.support}}" data-supportid="{{item.id}}" data-rep="1" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
             <text class="iconTxt">{{item.zan_count}}</text>
           </view>
         </view>
-      </view>
-      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{item.id}}">{{item.content}}</view>
+      </view> 
+      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}">{{item.content}}</view>
       <view class="twoReply" wx:if="{{item.comment.length == 0?false:true}}">
-        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" bindlongpress="shadeCat" data-catid="{{replyIt.id}}">
-          <text class="replyName">{{replyIt.nickname}}</text>回复<text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
+        
+        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" bindlongpress="shadeCat" data-catid="{{replyIt.id}}" data-parentid="{{replyIt.id}}" catchtap="replyBtn" data-openid="{{replyIt.openid}}">
+          <text class="replyName">{{replyIt.nickname}}</text> 回复 <text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
         </view>
-        <navigator class="allReply" wx:if="{{item.comment.length==2?false:true}}" url="/pages/expert/particulars/particulars">查看全部评论＞</navigator>
+
+        <view class="allReply" wx:if="{{item.comment.length <2?false:true}}" data-comid="{{item.id}}" catchtap="commentBtn" >查看全部评论＞</view>
+
       </view>
     </view> 
     <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
   </view>
 
   <view class="comInt">
-    <input class='solid-bottom' placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="true"></input>
+    <input class='solid-bottom' value="{{discuss}}" placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
     <text bindtap="sendBtn">发送</text>
   </view> 
 

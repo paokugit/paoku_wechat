@@ -3,7 +3,7 @@
   
   <view class="tanchu" bindtap="imgBall">
     <image src="{{globalimg}}/icon-xiangji.png"></image>
-    <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view>
+    <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view> 
   </view>
   
   <view class="itmeList" wx:for="{{sumList}}" wx:key="index">
@@ -17,10 +17,18 @@
         <image class="rightImg" src="{{itemdt.img}}"></image>
         <view class="character">
           <view class="rightTxt">{{itemdt.content}}</view>
+          
           <view class="iconPosi">
-            <view class="iconCsss">
-              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-              <text class="iconTxt">{{itemdt.comment_count}}</text>
+            <view style="display:flex;">
+              <view class="circle_read" catchtap="lookOver">
+                <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+                <text class="iconTxt">{{itemdt.view_count}}</text>
+              </view>
+              
+              <view class="iconCsss">
+                <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+                <text class="iconTxt">{{itemdt.comment_count}}</text>
+              </view>
             </view>
 
             <view class="iconCsss circle_news">
@@ -28,7 +36,9 @@
               <text class="iconTxt">{{itemdt.zan_count}}</text>
             </view>
           </view>
+
         </view>
+
       </view>
     </navigator>
   </view>
