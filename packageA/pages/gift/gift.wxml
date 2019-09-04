@@ -32,7 +32,7 @@
         </view>
         <view class='title-rule-box'>
             <view class='title-rule-con'>
-                <text class='title-limit'>每周可领{{getall}}个免费礼包</text>
+                <text class='title-limit'>每周可领3个免费礼包</text>
                 <text class='title-remark'>(最多)</text>
                 <view class='rule-btn' bindtap='rulebtn'>规则说明</view>
             </view>
@@ -44,13 +44,13 @@
                     <view class='grade-level'>{{gradelevel}}</view>
                 </view>
 
-                <view class='grade-con-right' wx:if="{{is_get==0 && agent_level==5}}" bindtap='getbtn'>不符合要求
+                <!-- <view class='grade-con-right' wx:if="{{is_get==0 && agent_level==5}}" bindtap='getbtn'>不符合要求
                     <view class='jiantou-img'>
                         <image src='{{globalimg}}/shixinjiantou (1).png'></image>
                     </view>
-                </view>
+                </view> -->
                 <!-- <view class='grade-con-right' wx:else>享受{{gradegift}}</view> -->
-                <view class='grade-con-right' wx:else>免费享受{{getall}}个礼包</view>
+                <view class='grade-con-right'>免费享受{{getall}}个礼包</view>
             </view>
         </view>
         <view class='title-record-box'>
