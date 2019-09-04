@@ -596,7 +596,7 @@ Page((e = {
             if (e.status == 1) {
                 if (e.result.is_show == 1) {
                     t.setData({
-                        giftDis: 'none'
+                        giftDis: 'block'
                     })
                 } else if (e.result.is_show == 0) {
                     t.setData({

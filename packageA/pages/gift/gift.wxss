@@ -3,12 +3,15 @@ page {
     height: 100%;
     overflow-x: hidden;
     background: #a00000;
+    overflow-y: hidden;
 }
-
+ /* scroll-view {
+ height: 100%;
+}  */
 .gift_box {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: relative
 }
 
 image {
@@ -295,12 +298,10 @@ image {
 .list-position-box {
     width: 100%;
     height: 240rpx;
-    opacity: 0.6;
     position: absolute;
     top: 60%;
     display: flex;
     justify-content: center;
-    background: pink;
 }
 
 .list-con-box {
@@ -324,7 +325,7 @@ image {
 
 .gift-bottom-box {
     width: 100%;
-    height: 800rpx;
+    height: 900rpx;
     background: #a00000;
     display: flex;
     flex-direction: column;
@@ -422,11 +423,24 @@ image {
     position: relative;
 }
 
+.lingqu {
+    width: 70rpx;
+    height: 32rpx;
+    background: #e4001f;
+    color: #fff;
+    font-size: 22rpx;
+    border-radius: 16rpx;
+    position: absolute;
+    right: 6%;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
 .good-absolute {
     width: 220rpx;
     height: 220rpx;
-    /* background: #f00; */
-    opacity: 0.6;
     position: absolute;
     left: 10%;
     top: 5%;
@@ -664,7 +678,7 @@ button::after {
 }
 
 .index-news-box {
-    width: 270rpx;
+    width: 280rpx;
     height: 50rpx;
     padding: 0 15rpx;
     background: #000;
@@ -678,13 +692,23 @@ button::after {
 }
 
 .notice-name {
+    width: 60rpx;
+    font-size: 20rpx;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     margin-left: 8rpx;
 }
 
 .notice-img {
     width: 36rpx;
     height: 36rpx;
-    background: #fff;
+    /* background: #fff; */
+    border-radius: 50%;
+}
+
+.notice-img image {
     border-radius: 50%;
 }
 
@@ -700,10 +724,6 @@ button::after {
     font-size: 20rpx;
 }
 
-/* .notice-money {
-    font-family: 'DIN Next LT Pro';
-} */
-
 .swiper-box {
     position: relative;
     width: 100%;
@@ -718,18 +738,45 @@ button::after {
     top: 0;
     background: rgba(0, 0, 0, 0.6);
 }
-.activity-relative{
+
+.activity-relative {
     width: 100%;
     height: 100%;
 }
-.activity-conbox{
-    width: 86%;
+
+.activity-conbox {
+    width: 80%;
     height: 600rpx;
+    padding: 0 3%;
+    line-height: 45rpx;
+    font-size: 30rpx;
+    color: #323232;
     background: #fff;
     border-radius: 30rpx;
     position: absolute;
     left: 0;
     right: 0;
     top: 30%;
-    margin: auto
+    margin: auto;
+     overflow-y: scroll;
+}
+
+.activity-conbox::-webkit-scrollbar {
+    display: none; /* 隐藏滚动条 */
+}
+
+.close-flex {
+    width: 100%;
+    height: 100rpx;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn {
+    width: 50rpx;
+    height: 50rpx;
 }

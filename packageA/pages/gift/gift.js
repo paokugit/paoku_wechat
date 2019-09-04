@@ -1,6 +1,8 @@
 // pages/contribute/record/record.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
+var t = getApp(),
+    a = t.requirejs("wxParse/wxParse");
 //   当前登录人的openid
 var f = getApp();
 // var userinfo = f.getCache('userinfo');
@@ -23,6 +25,7 @@ Page({
         type: 1,
         helpDis: 'none',
         explainDis: "none",
+        activityDis: 'none',
         goal: '',
         help_count: '',
         remain: '',
@@ -34,13 +37,20 @@ Page({
         primarylist: [],
         middlelist: [],
         highlist: [],
-        noticelist:[],
-        autoplay: !0,
-        interval: 2000,
+        noticelist: [],
+        autoplay: true,
+        interval: 3000,
         duration: 500,
+        circular: true,
         friendavatar: '',
         agent_level: '',
         is_get: '',
+        getall:'',
+        gets:'',
+        weekstart: '',
+        weekend: '',
+        isDialogShow: false,
+        isScroll: true,
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -58,7 +68,7 @@ Page({
             explainDis: 'none'
         })
     },
-    participantbtn:function(){
+    participantbtn: function() {
         this.setData({
             helpDis: 'none'
         })
@@ -100,8 +110,10 @@ Page({
     },
     getgiftbtn: function(event) {
         console.log(event)
+        console.log(event.currentTarget.dataset.id)
         s.get("game/index/getgift", {
             openid: useropenid,
+            goodsid: event.currentTarget.dataset.id
         }, function(e) {
             console.log(e)
             if (e.status == 0) {
@@ -135,6 +147,7 @@ Page({
             help_openid: bopenid
         }, function(e) {
             console.log(e)
+            a.wxParse("wxParseData", "html", e.result.desc, t, "5")
             agentid = e.result.agent_level
             if (e.status == 1) {
                 t.setData({
@@ -149,6 +162,10 @@ Page({
                     helplist: e.result.new_member,
                     starttime: e.result.start,
                     endtime: e.result.end,
+                    getall: e.result.get_all,
+                    gets:e.result.gets,
+                    weekstart: e.result.week_start,
+                    weekend: e.result.week_end,
                     primarylist: e.result.goods[0].thumbs,
                     middlelist: e.result.goods[1].thumbs,
                     highlist: e.result.goods[2].thumbs
@@ -175,14 +192,34 @@ Page({
             }
 
         });
-        s.get("changce/merch/draw_rank", {}, function (e) {
+        s.get("game/notice", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
                 t.setData({
-                    noticelist: e.result.log
+                    noticelist: e.result.list
                 })
             }
         });
+    },
+    receivebtn: function() {
+        wx.navigateTo({
+            url: '/packageA/pages/gift/getrecord',
+        })
+    },
+    helpbtn: function() {
+        wx.navigateTo({
+            url: '/packageA/pages/gift/helprecord',
+        })
+    },
+    rulebtn: function() {
+        this.setData({
+            activityDis: 'block'
+        })
+    },
+    closebtn: function() {
+        this.setData({
+            activityDis: 'none'
+        })
     },
 
     /**
