@@ -25,7 +25,7 @@ Page({
         type: 1,
         helpDis: 'none',
         explainDis: "none",
-        activityDis: 'none',
+        activityDis: 'block',
         goal: '',
         help_count: '',
         remain: '',

@@ -122,6 +122,10 @@ Page({
     
     onUnload: function () {
         console.log('监听页面卸载111');
+        wx.redirectTo({
+            url: "/pages/order/detail/index?id=" + orderId
+        })
+        
     },
 //    查看奖励
     rewardBtn: function() {

@@ -43,13 +43,6 @@
                     <view class='grade-tit'>当前级别:</view>
                     <view class='grade-level'>{{gradelevel}}</view>
                 </view>
-
-                <!-- <view class='grade-con-right' wx:if="{{is_get==0 && agent_level==5}}" bindtap='getbtn'>不符合要求
-                    <view class='jiantou-img'>
-                        <image src='{{globalimg}}/shixinjiantou (1).png'></image>
-                    </view>
-                </view> -->
-                <!-- <view class='grade-con-right' wx:else>享受{{gradegift}}</view> -->
                 <view class='grade-con-right'>免费享受{{getall}}个礼包</view>
             </view>
         </view>
@@ -222,10 +215,33 @@
 </view>
 <!-- 活动说明 -->
 <view class='activity-explain-box' style='display:{{activityDis}}'>
-    <import src="../../../utils/wxParse/wxParse.wxml" />
     <view class='activity-relative'>
-        <view class='wxParse activity-conbox'>
-            <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}" />
+        <view class='activity-conbox'>
+            <view class='activity-position'>
+                <view class='eventtit'>活动说明</view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>1、活动时间：</text>
+                    <text class='eventcon'>每7天一个活动，每周最多可免费领取3个礼包，根据会员级别，数量不同；</text>
+                </view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>2、活动对象：</text>
+                    <text class='eventcon'>所有用户可参与免费得礼包</text>
+                </view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>3、活动奖励：</text>
+                    <text class='eventcon'>受邀人须为新用户（特指从未进过跑库小程序的用户），每邀请10人，获得一个领取礼包权益，每个礼包每周最多领取1次；</text>
+                </view>
+                <view>
+                    <view class='eventcon'>例如：</view>
+                    <text class='eventcon'>小明当前是普通用户，成功邀请10人，获得1个初级礼包权益；如果小明开通了星选达人，则再邀请10人，可再获得1个中级礼包；如果小明是普通用户，一次性邀请了20人，不获得礼包，如果开通星选达人，则再获得1个中级礼包（无须再邀请10人）</text>
+                </view>
+                <view class='eventcon'>以上每个级别权益奖励每7天每个礼包只能各领1次。</view>
+                <view class='eventcon'>普通/健康达人，每7天可免费领取1个初级礼包；7天成功邀请10人，可免费领取1个礼包。</view>
+                 <view class='eventcon'>星选达人，每7天可免费领取1个中级礼包、1个初级礼包；7天成功邀请20人，可免费领取2个礼包。</view>
+                 <view class='eventcon'>店主，每7天可免费领取1个高级礼包、1个中级礼包，1个初级礼包；7天成功邀请30人，即可领取3个礼包各一件。</view>
+                <!-- <view class='activity-black'></view> -->
+            </view>
+
         </view>
         <view class='close-flex' bindtap='closebtn'>
             <view class='close-btn'>

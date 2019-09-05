@@ -26,12 +26,12 @@ image {
     width: 100%;
     height: 30rpx;
     color: #efb46c;
-    font-size: 20rpx;
+    font-size: 24rpx;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 48%;
+    top: 8%;
     left: 0;
 }
 
@@ -676,7 +676,7 @@ button::after {
 .index-news-box {
     width: 280rpx;
     height: 50rpx;
-    padding: 0 15rpx;
+    padding: 0 15rpx 0 3rpx;
     background: #000;
     opacity: 0.7;
     display: flex;
@@ -743,10 +743,6 @@ button::after {
 .activity-conbox {
     width: 80%;
     height: 600rpx;
-    padding: 0 3%;
-    line-height: 45rpx;
-    font-size: 30rpx;
-    color: #323232;
     background: #fff;
     border-radius: 30rpx;
     position: absolute;
@@ -754,9 +750,54 @@ button::after {
     right: 0;
     top: 30%;
     margin: auto;
-     overflow-y: scroll;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center
 }
+.activity-position{
+    width: 100%;
+    height: 540rpx;
+    padding: 0 4% 30rpx;
+    line-height: 45rpx;
+    font-size: 30rpx;
+    color: #323232;
+    overflow-y: scroll;
+    /* background: pink; */
+    position: relative;
+    /* box-shadow: 0 0 0 20rpx #fff inset */
+}
+.activity-black{
+    width: 100%;
+    height: 20rpx;
+    background: #f66;
+    border-radius: 0 0 30rpx 30rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0
+}
+.eventtit{
+    width: 100%;
+    height: 60rpx;
+    /* background: #f89; */
+    color: #333;
+    font-weight: bold;
+    font-size: 34rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.eventcon-bold{
+    /* width: 100%;
+    height: auto; */
+    color: #333;
+    font-size: 32rpx;
+    font-weight: bold
 
+}
+.eventcon{
+    color: #666;
+    font-size: 32rpx;
+}
 .activity-conbox::-webkit-scrollbar {
     display: none; /* 隐藏滚动条 */
 }
