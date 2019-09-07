@@ -12,7 +12,7 @@ Page({
     globalimg: i.globalData.appimg,
       // 组件所需的参数
       nvabarData: {
-          showCapsule: 1,  
+          showCapsule: 1,   
           title: '消息中心', 
           height: i.globalData.height * 2 + 20,
       },
@@ -31,7 +31,6 @@ Page({
     totalPage:0,
     listCritic:[],
     abcShow: false,
-    typeid:'',
     itemid:'',
     discuss: '',
     focus: false
@@ -51,8 +50,15 @@ Page({
       color: '#333333',
       color1: '#01d7a1',
       color2: '#333333',
+      fontcss: '28rpx',
+      fontcss1: '33rpx',
+      fontcss2: '28rpx',
       underline: 1,
-      mask: 2
+      mask: 2,
+      listCritic: [],
+      criticPage: 1,
+      discuss: '',
+      focus: false
     })
   },
 
@@ -62,8 +68,15 @@ Page({
       color: '#333333',
       color1: '#333333',
       color2: '#01d7a1',
+      fontcss: '28rpx',
+      fontcss1: '28rpx',
+      fontcss2: '33rpx',
       underline: 2,
-      mask: 3
+      mask: 3,
+      listCritic: [],
+      criticPage:1,
+      discuss: '',
+      focus: false
     });
     _that.critic();
   },
@@ -99,8 +112,15 @@ Page({
       color: '#01d7a1',
       color1: '#333333',
       color2: '#333333',
+      fontcss: '33rpx',
+      fontcss1: '28rpx',
+      fontcss2: '28rpx',
       underline: 0,
-      mask: 0
+      mask: 0,
+      listCritic:[],
+      criticPage: 1,
+      discuss: '',
+      focus: false
     })
   },
   tiaozhuan: function (e) {
@@ -199,10 +219,8 @@ Page({
 
   // 回复按钮
   replyBtn:function(e){
-    var typeid = e.currentTarget.dataset.typeid;
     var itemid = e.currentTarget.dataset.itemid;
     this.setData({
-      typeid: typeid,
       itemid: itemid,
       focus: true
     })
@@ -216,13 +234,20 @@ Page({
   // 留言
   sendBtn: function () {
     var m = this;
+    wx.showLoading({
+      title: '评论中...',
+      mask: true
+    })
     s.get("drcircle.my.comment", {
       openid: useropenid,
       content: m.data.discuss,
-      type: m.data.typeid,
+      type: 2,
       parent_id: m.data.itemid
     }, function (e) {
       console.log(e);
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       if (e.error == 0) {
         m.setData({
           discuss: '',
@@ -230,6 +255,12 @@ Page({
         })
         wx.showToast({
           title: '回复成功',
+          icon: 'none',
+          duration: 2000
+        })
+      }else{
+        wx.showToast({
+          title: e.message,
           icon: 'none',
           duration: 2000
         })
@@ -244,20 +275,20 @@ Page({
     if (page < totalpage) {
       wx.showLoading({
         title: '加载中...',
-      });
+        mask: true
+      })
       this.setData({
         criticPage: page + 1
       })
       this.critic();
-
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
     } else {
       this.setData({
         abcShow: true
       })
     }
-    setTimeout(() => {
-      wx.hideLoading()
-    }, 1000)
   },
   /**
    * 生命周期函数--监听页面隐藏

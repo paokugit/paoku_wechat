@@ -13,7 +13,7 @@ page{
 }
 .dingLeft{
   display: flex;
-  align-items: center;
+  align-items: center; 
 }
 .dingLeft image{
   width: 80rpx;
@@ -28,9 +28,10 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  font-weight: bold;
 }
 .dingRight{
-  font-size: 22rpx;
+  font-size: 24rpx;
   color: rgb(146, 146, 146);
 }
 
@@ -50,7 +51,7 @@ page{
   margin: 0rpx 4.5rpx 9rpx;
 }
 .typeC{
-  margin-bottom: 16rpx !important;
+  margin-bottom: 10rpx !important;
   margin-left: 10rpx;
   width: 220rpx;
   height: 220rpx;
@@ -134,7 +135,7 @@ page{
   margin-right: 20rpx;
 }
 .iconTxt{
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: rgb(102, 102, 102);
 }
 .circle_parise{
@@ -151,7 +152,7 @@ page{
   border-radius: 10rpx;
   position: relative;
   overflow: hidden;
-  margin-bottom: 15rpx;
+  margin-bottom: 40rpx;
 }
 .headList{
   display: flex;
@@ -242,6 +243,7 @@ page{
   text-overflow:ellipsis;
   white-space: nowrap;
   color: rgb(51, 51, 51);
+  font-weight: bold;
 }
 .reTime{
   font-size: 20rpx;

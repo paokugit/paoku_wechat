@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
 
-  <view class="particulars head">
+  <view class="particulars head" bindtap="showBtn" data-supportid="{{details.id}}">
     <view class="head-img flexCss">
       <view class="left-head flexCss">
         <image src="{{details.avatar}}"></image>
@@ -11,32 +11,32 @@
         </view>
       </view>
       <view class="icon flexCss">
-        <view style="margin-right:10rpx;" bindtap="showBtn" data-supportid="{{details.id}}">
+        <view style="margin-right:10rpx;" >
           <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
           <text class="iconTxt">{{details.comment_count}}</text>
         </view>
-        <view bindtap="support" data-supp="{{details.support}}" data-supportid="{{details.id}}">
+        <view bindtap="supportA" data-supp="{{details.support}}" data-supportid="{{details.id}}">
           <image class="iconImg" src="{{globalimg}}/{{details.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
           <text class="iconTxt">{{details.zan_count}}</text>
         </view>
       </view>
-    </view>
+    </view> 
 
     <view class="textA">{{details.content}}</view>
   </view>
 
-  <view class="particulars cont" wx:for="{{list}}" wx:key="{{index}}" data-catid="{{item.id}}" data-openid="{{item.openid}}" bindlongpress="shadeCat" catchtap="showBtn" data-supportid="{{item.id}}">
+  <view class="particulars cont" wx:for="{{list}}" wx:key="{{index}}" data-catid="{{item.id}}" data-openid="{{item.openid}}" bindlongpress="shadeCat" catchtap="showBtn" data-supportid="{{item.id}}" data-index="{{index}}" style="{{twoid == item.id?'background:red':' '}}">
     <view class="head-img flexCss">
       <view class="left-head flexCss">
         <image src="{{item.avatar}}"></image>
         <view>
           <view class="reName">{{item.nickname}}</view>
-          <view class="reTimeB">{{item.create_time}}</view>
+          <view class="reTimeA">{{item.create_time}}</view>
         </view>
       </view>
       <view class="icon flexCss">
-        <view bindtap="support" data-supp="{{item.support}}" data-supportid="{{item.id}}">
-          <image class="iconImg" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+        <view bindtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
+          <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
           <text class="iconTxt">{{item.zan_count}}</text>
         </view>
       </view>
@@ -44,7 +44,7 @@
 
     <view class="textB">回复 <text style="color:#01d7a1;">{{item.bnickname}}</text>：{{item.content}}</view>
   </view>
-
+ 
   <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
 
 
@@ -57,5 +57,4 @@
     <image class="shadeImg" src="{{globalimg}}/shanchu@2x.png" catchtap="delBTn"></image>
     <view class="icoDel icox icox-close" catchtap="shadeShow"></view>
   </view>
-
 </view>

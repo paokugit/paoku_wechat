@@ -1,8 +1,9 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
   <view class='outer'>
-    <view class="release_text">
-      <textarea bindinput='gaysText' value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
+    <view class="release_text" catchtap="replyBtn">
+      <textarea wx:if="{{txtShow}}" bindinput='gaysText' auto-focus="{{focus}}" value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true'/>
+      <view wx:if="{{vieShow}}">{{releaseText}}</view>
     </view>
 
     <view class="littleHint">按住照片拖拽可以调整顺序</view>
@@ -10,8 +11,8 @@
       <movable-area>
         <block wx:for="{{tempFilePaths}}" wx:key="{{index}}">
           <view class='pic_box item' id="{{item.index}}" data-index='{{index}}' bindlongpress='_longtap' bindtouchstart='touchs' bindtouchend='touchend' bindtouchmove='touchm'  data-img='{{item}}'>
-            <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
-
+            <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" mode='aspectFill' data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
+ 
             <view class="deleteImg" data-id="{{index}}" bindtap='deletePic'>
               <image src="{{globalimg}}/imgGuanBi.png"></image>
             </view>
@@ -48,7 +49,7 @@
     </view>
 
     <view class="fabuC">
-      <view bindtap='submit'  class="sendBtn">发布</view>
+      <view bindtap='submit'  class="sendBtn" style="{{btnCss}}">发布</view>
       <view class="tuijianS" bindtap="{{shopErr== 1? 'tiShiBtn' : 'shopBtn'}}">商品推荐</view>
     </view>
 

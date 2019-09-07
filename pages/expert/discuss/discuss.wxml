@@ -2,21 +2,23 @@
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="area">
 
-    <view class="dingBu">
-      <view class="dingLeft">
-        <image src="{{detailList.avatar}}"></image>
-        <view>{{detailList.nickname}}</view>
-      </view>
-      <view class="dingRight">{{detailList.create_day}}</view> 
-    </view> 
-
-    <view class="circleCssA">{{detailList.content}}</view>
- 
-    <view class="imgQu"> 
-      <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   bindtap="previewImage">
-        <image class="typeImage" src="{{itemImg}}"></image>
-      </view>
-    </view>  
+    <view catchtap="replyBtn" data-parentid="{{detailList.id}}" data-type="1">
+      <view class="dingBu">
+        <view class="dingLeft">
+          <image src="{{detailList.avatar}}"></image>
+          <view>{{detailList.nickname}}</view>
+        </view> 
+        <view class="dingRight">{{detailList.create_day}}</view> 
+      </view> 
+  
+      <view class="circleCssA">{{detailList.content}}</view> 
+    
+      <view class="imgQu"> 
+        <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   bindtap="previewImage">
+          <image class="typeImage" mode='aspectFill' src="{{itemImg}}"></image>
+        </view>
+      </view>    
+    </view>
 
     <navigator url="/pages/goods/detail/index?id={{detailList.goods_id}}" class="shangpin" wx:if="{{detailList.goods_id == 0?false:true}}">
       <image class="tuiImg" src="{{detailList.good.img}}"></image>
@@ -39,8 +41,8 @@
           <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
           <text class="iconTxt">{{detailList.view_count}}</text>
         </view>
-        <view class="circle_parise">
-          <image class="iconImg" bindtap="support" data-type="1" data-supp="{{detailList.support}}" data-supportid="{{listId}}" src="{{globalimg}}/{{detailList.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+        <view class="circle_parise" bindtap="support" data-type="1" data-supp="{{detailList.support}}" data-supportid="{{listId}}">
+          <image class="iconImg" src="{{globalimg}}/{{detailList.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
           <text class="iconTxt">{{detailList.zan_count}}</text>
         </view>
       </view>
@@ -55,19 +57,19 @@
         </view>
       </view>
 
-      <view class="dakai" bindtap="dakai">
+      <view class="dakai" bindtap="dakai" wx:if="{{detailList.zan_count > 18?true:false }}">
         <image style="transform:rotate{{hShow == '1' ? '(180deg)' : '(0deg)'}}" src="{{globalimg}}/top@x1a.png"></image>
       </view> 
     </view>
 
-    <view class="rePing" wx:if="{{detailList.hot.length == 0?false:true}}">
+    <view class="rePing" wx:if="{{hot.length == 0?false:true}}">
       <view class="rePingTxt fleCss">
         <image src="{{globalimg}}/reping.png"></image>
         <view>热评</view>
       </view>
     </view> 
   
-    <view class="reList" wx:for="{{detailList.hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" data-parentid="{{listHot.id}}"  catchtap="replyBtn">
+    <view class="reList" wx:for="{{hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" bindlongpress="shadeCat" data-catid="{{listHot.id}}" data-openid="{{listHot.openid}}" catchtap="commentBtn" data-comid="{{listHot.id}}">
       <view class="fleCss topRe">
         <view class="img-name fleCss">
           <image src="{{listHot.avatar}}"></image>
@@ -82,13 +84,13 @@
             <text class="iconTxt">{{listHot.comment_count}}</text>
           </view>
 
-          <view class="circle_read">
-            <image class="iconImg" bindtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" src="{{globalimg}}/{{listHot.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+          <view class="circle_read" bindtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" >
+            <image class="iconImg" src="{{globalimg}}/{{listHot.support == 0?wei_zan:yi_zan}}"></image>
             <text class="iconTxt">{{listHot.zan_count}}</text>
           </view>
         </view>
       </view>
-      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{listHot.id}}" data-openid="{{listHot.openid}}">{{listHot.content}}</view>
+      <view class="circleCssB">{{listHot.content}}</view>
     </view>
 
     <view class="rePing" wx:if="{{newestList.length == 0?false:true}}">
@@ -97,38 +99,40 @@
       </view>
     </view>
 
-    <view class="reList" wx:for="{{newestList}}" wx:key="{{index}}" data-parentid="{{item.id}}" catchtap="replyBtn">
-      <view class="fleCss topRe">
-        <view class="img-name fleCss">
-          <image src="{{item.avatar}}"></image>
-          <view>
-            <view class="reName">{{item.nickname}}</view>
-            <view class="reTime">{{item.create_time}}</view>
+    <block  wx:for="{{newestList}}" wx:key="{{index}}">
+      <view class="reList" data-parentid="{{item.id}}" catchtap="replyBtn" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}" data-index="{{index}}" data-type="2">
+        <view class="fleCss topRe">
+          <view class="img-name fleCss">
+            <image src="{{item.avatar}}"></image>
+            <view>
+              <view class="reName">{{item.nickname}}</view>
+              <view class="reTime">{{item.create_time}}</view>
+            </view>
           </view>
-        </view>
-        <view class="fleCss"> 
-          <view catchtap="commentBtn" data-comid="{{item.id}}" class="circle_news">
-            <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-            <text class="iconTxt">{{item.comment_count}}</text>
-          </view>
+          <view class="fleCss"> 
+            <view catchtap="commentBtn" data-comid="{{item.id}}" class="circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">{{item.comment_count}}</text>
+            </view>
 
-          <view class="circle_read">
-            <image class="iconImg" bindtap="support" data-type="2" data-supp="{{item.support}}" data-supportid="{{item.id}}" data-rep="1" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
-            <text class="iconTxt">{{item.zan_count}}</text>
+            <view class="circle_read" catchtap="supportA" data-supportid="{{item.id}}" data-index="{{index}}">
+              <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
+              <text class="iconTxt">{{item.zan_count}}</text>
+            </view>
           </view>
-        </view>
-      </view> 
-      <view class="circleCssB" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}">{{item.content}}</view>
+        </view> 
+        <view class="circleCssB">{{item.content}}</view>
+      </view>
       <view class="twoReply" wx:if="{{item.comment.length == 0?false:true}}">
         
-        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" bindlongpress="shadeCat" data-catid="{{replyIt.id}}" data-parentid="{{replyIt.id}}" catchtap="replyBtn" data-openid="{{replyIt.openid}}">
+        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" bindlongpress="shadeCat" data-catid="{{replyIt.id}}"  data-openid="{{replyIt.openid}}" data-comid="{{item.id}}" data-twoid="{{replyIt.id}}" catchtap="commentBtn">
           <text class="replyName">{{replyIt.nickname}}</text> 回复 <text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
         </view>
 
         <view class="allReply" wx:if="{{item.comment.length <2?false:true}}" data-comid="{{item.id}}" catchtap="commentBtn" >查看全部评论＞</view>
 
       </view>
-    </view> 
+    </block> 
     <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
   </view>
 

@@ -17,10 +17,10 @@
     
     <!-- 动态图片 --> 
     <view class="circleImg" >  
-      <view class="{{item.img_len == 1 ? 'typeA' : item.img_le == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}"   catchtap="previewImage">
-        <image class="typeImage" src="{{itemImg}}"></image>
+      <view class="{{item.img_len == 1 ? 'typeA' : item.img_le == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}" catchtap="previewImage">
+        <image class="typeImage" mode='aspectFill' src="{{itemImg}}" ></image>
       </view>
-    </view> 
+    </view>  
   
     <!-- 商品推荐 -->
     <view data-tuijianid="{{item.good.goods_id}}" catchtap="tuijianBtn" class="tuijian" wx:if="{{item.goods_id == 0?false:true}}">
@@ -46,14 +46,14 @@
           <text class="iconTxt">{{item.view_count}}</text>
         </view>
 
-        <navigator url="/pages/expert/discuss/discuss?listId={{item.id}}" class="circle_news">
+        <view class="circle_news">
           <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
           <text class="iconTxt">{{item.comment_count}}</text>
-        </navigator> 
+        </view> 
       </view>
 
-      <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-supp="{{item.support}}">
-        <image class="iconImg" src="{{globalimg}}/{{item.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
+      <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
+        <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
         <text class="iconTxt">{{item.zan_count}}</text>
       </view>
     </view>
@@ -62,13 +62,13 @@
 
   <!-- 功能选择 -->
   <view class="publish">
-    <view class="fabu fixedCss" bindtap="imgBall" wx:if="{{cartoon}}">
+    <view class="fabu fixedCss" catchtap="imgBall" wx:if="{{cartoon}}">
       <image src="{{globalimg}}/icon-shouye-xiangji@2x.png"></image>
     </view>
-    <navigator url="/pages/expert/photo/photo" class="xiangce fixedCss" bindtap="xiangce" wx:if="{{cartoon}}">
+    <navigator url="/pages/expert/photo/photo" class="xiangce fixedCss" catchtap="xiangce" wx:if="{{cartoon}}">
       <image src="{{globalimg}}/xiangce.png"></image>
     </navigator>
-    <view class="fixedCss"  bindtap="dakai">
+    <view class="fixedCss" catchtap="dakai">
       <image src="{{globalimg}}/{{'dakai.png'}}" hidden="{{cartoonA}}" ></image>
       <image src="{{globalimg}}/{{'gengduo.png'}}" hidden="{{cartoonB}}"></image>
     </view>
@@ -78,8 +78,8 @@
   <!-- 选择图片路径弹窗 -->
   <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
     <view class="imgBallC">
-      <view class="cssBall paizhao" bindtap="chooseimage" data-select="camera">拍摄</view>
-      <view class="cssBall xiangce" bindtap="chooseimage" data-select="album">从相册选择</view>
+      <view class="cssBall paizhao" catchtap="chooseimage" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" catchtap="chooseimage" data-select="album">从相册选择</view>
     </view>
   </view>
 

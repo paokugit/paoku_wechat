@@ -3,13 +3,17 @@ page{
   background: #fff;
 }
 
+.expedite-box{
+  margin-bottom: 100rpx;
+}
+
 .head{
   background: #ffffff;
   margin: 30rpx 0;
 }
 .cont{
   background: #fcfcfc;
-  padding-top: 30rpx;
+  padding-top: 30rpx; 
 } 
 .head-img{
   justify-content: space-between;
@@ -29,13 +33,10 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  font-weight: bold;
 }
 .reTimeA{
   font-size: 24rpx;
-  color: rgb(146, 146, 146);
-}
-.reTimeB{
-  font-size: 22rpx;
   color: rgb(146, 146, 146);
 }
 .iconImg{
@@ -44,7 +45,7 @@ page{
   margin-right: 5rpx;
 }
 .iconTxt{
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: rgb(102, 102, 102);
 }
 .textA{

@@ -3,14 +3,14 @@
     <!-- 头部的显示 -->
     <view class="head-box" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
         <view class="inform" bindtap="inform">
-            <view class="inform-text" style="color:{{color}}">系统通知</view>
+            <view class="inform-text" style="color:{{color}};font-size:{{fontcss}}">系统通知</view>
             <view class="inform-num" style="display:{{xiback}}">
                 <view class="textdd">{{weidux}}</view>
             </view>
             <view class="underline" wx:if="{{underline==0}}"></view>
         </view>
         <view class="assistant" bindtap="assistant">
-            <view class="assistant-text" style="color:{{color1}}">私信助手</view>
+            <view class="assistant-text fontcss" style="color:{{color1}};font-size:{{fontcss1}}">私信助手</view>
             <view class="assistant-num" style="display:{{siback}}">
                 <view class="sitextdd">7</view>
             </view>
@@ -18,9 +18,8 @@
         </view>
 
 
-
         <view class="discuss" bindtap="discuss">
-          <view class="discuss-text" style="color:{{color2}}">评论</view>
+          <view class="discuss-text fontcss" style="color:{{color2}};font-size:{{fontcss2}}">评论</view>
           <view class="underline3" wx:if="{{underline==2}}"></view>
         </view>
 
@@ -77,7 +76,7 @@
 
 
     <!-- 评论 -->
-    <scroll-view scroll-y  bindscrolltolower="lower" scroll-bottom="100" class="criticTter" style='margin-top:{{nvabarData.height-20}}px' wx:if="{{mask==3}}">  
+    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}" style='margin-top:{{nvabarData.height}}px'>  
       <view class="reviewList" wx:for="{{listCritic}}" wx:key="{{index}}">
         <view class="reviewHead">
           <view class="headLeft">
@@ -87,13 +86,17 @@
               <view class="leftTime">{{item.create_time}}</view>
             </view>
           </view>
-          <view class="headRight headRightA" bindtap="replyBtn" data-typeid="{{item.type}}" data-itemid="{{item.id}}">回复</view>
+          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}">回复</view>
+          <view class="headRight headRightA" wx:if="{{item.reply == 0?fasle:true}}">已回复</view>
         </view>
  
-        <view class="details">回复<text class="nickname">{{item.bcommnet_openid}}</text>：{{item.content}}</view>
+        <view class="details" wx:if="{{item.is_del == 0?true:false}}">
+          回复<text class="nickname">{{item.bcommnet_openid}}</text>：{{item.content}}
+        </view>
+        <view class="details" wx:if="{{item.is_del == 0?false:true}}">该评论已被删除</view>
 
         <view class="replyX">
-          <view class="huifu"><text class="huifuN">@{{item.comment.comment_nickname}}</text>回复<text class="huifuN">@{{item.comment.bcomment_nickname}}</text>：{{item.comment.content}}</view>
+          <view class="huifu" wx:if="{{item.type == 1?false:true}}"><text class="huifuN">@{{item.comment.comment_nickname}}</text> 回复 <text class="huifuN">@{{item.comment.bcomment_nickname}}</text>：{{item.comment.content}}</view>
 
           <view class="tiezi" bindtap="dynamicBtn" data-isdel="{{item.circle.is_del}}" data-circleid="{{item.circle.circle_id}}">
             <image class="tieziImg" src="{{item.circle.img}}"></image>

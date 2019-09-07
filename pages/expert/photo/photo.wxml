@@ -1,7 +1,7 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   
-  <view class="tanchu" bindtap="imgBall">
+  <view class="tanchu" bindtap="imgBall"> 
     <image src="{{globalimg}}/icon-xiangji.png"></image>
     <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view> 
   </view>
@@ -11,9 +11,9 @@
     <view class="today" wx:elif="{{item.type == 1?true:false}}">昨天</view>
     <view class="today" wx:else>{{item.time}}</view>
     
-    <navigator url="/pages/expert/discuss/discuss?goodsId={{itemdt.id}}" hover-class="none"  class="details" wx:for="{{item.dt}}"  wx:for-item="itemdt" wx:key="indexdt">
+    <navigator url="/pages/expert/discuss/discuss?listId={{itemdt.id}}" hover-class="none"  class="details" wx:for="{{item.dt}}"  wx:for-item="itemdt" wx:key="indexdt">
       <view class="itemDet">{{itemdt.create_time}}</view>
-      <view class="rightDet">
+      <view class="rightDet"> 
         <image class="rightImg" src="{{itemdt.img}}"></image>
         <view class="character">
           <view class="rightTxt">{{itemdt.content}}</view>

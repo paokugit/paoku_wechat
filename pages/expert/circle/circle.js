@@ -14,7 +14,7 @@ Page({
     showBall:false,
     img_url:[],
     img_file:[],
-    cartoon: false, 
+    cartoon: false,  
     cartoonA: true,
     cartoonB: false,
 
@@ -25,7 +25,10 @@ Page({
     isShow:false,
     abcShow:false,
 
-    pageminus:''
+    pageminus:'',
+
+    yi_zan:'circle_parise@2.png',
+    wei_zan:'circle_parise@1.png'
   }, 
 
   
@@ -46,6 +49,16 @@ Page({
       console.log(e);  
       let totalList = e.message.list;
       let totalPage = Math.ceil(e.message.total / 10);
+
+      if (e.message.count > 0) {
+        m.setData({
+          isShow: true
+        })
+        setTimeout(function () {
+          m.setData({ isShow: false })
+        }, 5000)
+      }
+
       m.setData({
         updateData:e.message.count,
         dataList: m.data.dataList.concat(totalList),
@@ -64,35 +77,50 @@ Page({
   // 点赞与取消
   support:function(e){
     var m = this;
+
+    // 获取当前点击下标
+    var index = e.currentTarget.dataset.index;
+    // data中获取列表
+    var message = this.data.dataList;
+
+    // 当前点击动态的id
     var supportId = e.currentTarget.dataset.supportid;
-    var supp = e.currentTarget.dataset.supp;
-    if (supp == 0){
-      a.get("drcircle.my.support", {
-        openid: useropenid,
-        content_id: supportId,
-        type: 1  
-      }, function (e) {
-        if (e.error == 0) {
-          m.setData({
-            dataList: []
+
+    for (let i in message) { //遍历列表数据
+      if (i == index) { //根据下标找到目标
+        var collectStatus = false
+        if (message[i].support == 0) { //如果是没点赞+1
+          collectStatus = true
+          message[i].support = parseInt(message[i].support) + 1
+          message[i].zan_count = parseInt(message[i].zan_count) + 1
+          
+          a.get("drcircle.my.support", {
+            openid: useropenid,
+            content_id: supportId,
+            type: 1  
+          }, function (e) {
+            console.log(e);
           })
-          m.pageData();
-        }
-      })
-    }else{
-      a.get("drcircle.my.del_support", {
-        openid: useropenid,
-        content_id: supportId,
-        type: 1
-      }, function (e) {
-        if (e.error == 0) {
-          m.setData({
-            dataList: []
+
+        } else {
+          collectStatus = false
+          message[i].support = parseInt(message[i].support) - 1
+          message[i].zan_count = parseInt(message[i].zan_count) - 1
+
+          a.get("drcircle.my.del_support", {
+            openid: useropenid,
+            content_id: supportId,
+            type: 1
+          }, function (e) {
+            console.log(e);
           })
-          m.pageData();
+          
         }
-      })
+      }
     }
+    m.setData({
+      dataList: message
+    })
   },
 
   //是否有上次保存的信息 
@@ -123,7 +151,6 @@ Page({
       sizeType: ['original', 'compressed'], 
       sourceType: [select], 
       success: function (res) {
-        
         let file_list = m.data.img_file; 
         for (let i = 0; i < res.tempFilePaths.length; i++) {
           wx.uploadFile({
@@ -135,9 +162,13 @@ Page({
               var o = JSON.parse(n.data);
               img_list.push(o.files[0].url);
               file_list.push(o.files[0].filename);
-              if (i == res.tempFilePaths.length-1){
+              if (file_list.length == res.tempFilePaths.length){
                 wx.navigateTo({
                   url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+                })
+                m.setData({
+                  img_url:[],
+                  img_file:[]
                 })
               }
             }
@@ -187,31 +218,35 @@ Page({
 
   onShow: function () {
     var m = this;
-    console.log(m.data.page);
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];
     let json = currPage.data.mydata;
     if (json != undefined) {
       m.data.dataList = [];
+      console.log(json.pageB);
       if (json.pageB == -1) {
+        wx.pageScrollTo({
+          scrollTop: 0,
+        });
         m.setData({
           page:1,
-          pageminus:0
+          pageminus:0,
+          abcShow:false
+        })
+        m.pageData();
+      } else if (json.pageB == 1) {
+        wx.pageScrollTo({
+          scrollTop: 0,
+        });
+        m.setData({
+          page: 1,
+          pageminus: 0,
+          abcShow: false
         })
         m.pageData();
       }
-    }
-    console.log(m.data.updateData);
-    if (m.data.updateData != 0){
-      m.setData({
-        isShow: true
-      })
-      setTimeout(function(){
-        m.setData({
-          isShow: false 
-        })
-      },3000)
-    }
+    } 
+    
     m.data.img_url = [];
   },
 
@@ -242,6 +277,16 @@ Page({
     setTimeout(() => {
       wx.hideLoading()
     }, 1000)
+  },
+
+  onPageScroll: function (e) {
+    if (e.scrollTop > 0){
+      this.setData({
+        cartoon: false,
+        cartoonA:true,
+        cartoonB:false
+      })
+    }
   },
 
   /**

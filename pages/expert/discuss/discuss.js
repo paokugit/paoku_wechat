@@ -3,19 +3,21 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = ""; 
+
+var indexreply = "";
 Page({
 
   data: {
     globalimg: t.globalData.appimg,
     nvabarData: {
       showCapsule: 1,
-      title: '达人圈',
+      title: '达人圈', 
       height: t.globalData.height * 2 + 20,
     },
 
     hShow: '1',
     listId:'', 
-    detailList:{},
+    detailList:{}, 
     page: 1, 
     totalPage: 0,
     newestList:[], 
@@ -24,9 +26,13 @@ Page({
     catid:'',
     discuss:'',
     replyId:'',
-    type_state:1,
+    type_state:1, 
     focus:false,
-    myopenid:''
+    myopenid:'',
+    hot:[],
+ 
+    yi_zan: 'circle_parise@2.png',
+    wei_zan: 'circle_parise@1.png'
   },
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
@@ -40,21 +46,35 @@ Page({
     })
   
     m.detail();
+    m.detailA();
     m.newest();
   },
 
+  // 动态
   detail:function(){
     var m = this;
     a.get("drcircle.index.detail",{
       openid: useropenid,
       ciclre_id: m.data.listId
     },function(e){
-      console.log(e);
       m.setData({
         detailList:e.message
       })
     })
   },
+  //热评
+  detailA: function () {
+    var m = this;
+    a.get("drcircle.index.detail", {
+      openid: useropenid,
+      ciclre_id: m.data.listId
+    }, function (e) {
+      m.setData({
+        hot: e.message.hot
+      })
+    })
+  },
+  // 最新评论
   newest:function(e){
     var m  = this;
     a.get("drcircle.index.comment",{
@@ -63,7 +83,6 @@ Page({
       type:1,
       page:m.data.page
     },function(e){
-      console.log(e) 
       let totalList = e.message.list;
       let totalPage = Math.ceil(e.message.total / 10);
       m.setData({
@@ -77,10 +96,8 @@ Page({
   support: function (e) {
     var m = this;
     var supp = e.currentTarget.dataset.supp;
-    var supportid = e.currentTarget.dataset.supportid;
+    let supportid = e.currentTarget.dataset.supportid;
     var type = e.currentTarget.dataset.type;
-    var reP = e.currentTarget.dataset.rep;
-    console.log(reP);
     if (supp == 0) {
       a.get("drcircle.my.support", {
         openid: useropenid,
@@ -88,14 +105,16 @@ Page({
         type: type
       }, function (e) {
         if (e.error == 0) {
-          if(reP != 1){
+          if (type == 1){
             m.detail();
           }else{
             m.setData({
-              newestList: []
+              hot:[],
+              newestList: [],
+              page:1
             })
-            m.detail();
-            m.newest(); 
+            m.detailA();
+            m.newest();
           }
         }
       })
@@ -106,18 +125,66 @@ Page({
         type: type
       }, function (e) {
         if (e.error == 0) {
-          if (reP != 1) {
+          if (type == 1) {
             m.detail();
           } else {
-            m.setData({
-              newestList:[]
+            m.setData({ 
+              hot: [], 
+              newestList:[],
+              page: 1
             })
-            m.detail();
+            m.detailA();
             m.newest();
           }
         }
       })
     }
+  },
+  supportA: function (e) {
+    var m = this;
+    var index = e.currentTarget.dataset.index;
+    var message = m.data.newestList;
+    let sutId = e.currentTarget.dataset.supportid;
+    for (let i in message) { 
+      if (i == index) {
+        var collectStatus = false
+        if (message[i].support == 0) { 
+          collectStatus = true
+          message[i].support = parseInt(message[i].support) + 1
+          message[i].zan_count = parseInt(message[i].zan_count) + 1
+
+          a.get("drcircle.my.support", {
+            openid: useropenid,
+            content_id: sutId,
+            type: 2
+          }, function (e) {
+            m.setData({
+              hot: []
+            })
+            m.detailA();
+          })
+        } else {
+          collectStatus = false
+          message[i].support = parseInt(message[i].support) - 1
+          message[i].zan_count = parseInt(message[i].zan_count) - 1
+
+          a.get("drcircle.my.del_support", {
+            openid: useropenid,
+            content_id: sutId,
+            type: 2
+          }, function (e) {
+            m.setData({
+              hot: []
+            })
+            m.detailA();
+          })
+
+        }
+      }
+    }
+    m.setData({
+      newestList: message
+    })
   },
 
   dakai:function(e){
@@ -156,22 +223,18 @@ Page({
       content: '确认删除吗？',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
           a.get("drcircle.my.del_drcircle",{
             openid: useropenid,
             circle_id: m.data.listId
           },function(e){
-            console.log(e);
-            m.pagePrice();
             wx.showToast({
               title: '成功',
               icon: 'success',
               duration: 2000
             })
+            m.pagePrice();
           })
-        } else {
-          console.log('用户点击取消')
-        }
+        } 
       }
     })
   },
@@ -180,11 +243,11 @@ Page({
     var prevPage = pages[pages.length - 2];
     prevPage.setData({
       mydata: {
-        pageB: -1
+        pageB: 1
       }
     })
     wx.navigateBack({
-      delta: 1,
+      delta: 1, 
     })
   },
   
@@ -192,6 +255,7 @@ Page({
   shadeCat:function(e){
     var m = this;
     m.data.catid = e.currentTarget.dataset.catid;
+    console.log(m.data.catid)
     var dataOpenid = e.currentTarget.dataset.openid;
     if (dataOpenid == useropenid){
       m.setData({
@@ -205,8 +269,6 @@ Page({
       shadeShow: false
     })
   },
-
-  // 删除动态
   delBTn:function(){
     var m = this;
     console.log(m.data.catid)
@@ -218,53 +280,137 @@ Page({
       if(e.error == 0){
         m.setData({
           shadeShow:false,
+          hot:[],
           newestList: []
         })
-        m.detail();
+        m.detailA();
         m.newest();
+      }else{
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
 
+  // 留言
   formName: function (e) {
     this.setData({
       discuss: e.detail.value,
       focus:true
     })
   }, 
+
   replyBtn:function(e){
+    indexreply = e.currentTarget.dataset.index;
     this.setData({
       focus:true,
       replyId:e.currentTarget.dataset.parentid,
-      type_state:2
+      type_state: e.currentTarget.dataset.type
     })
   },
-  // 留言
   sendBtn:function(){  
     var m = this;
+    wx.showLoading({
+      title: '评论中...',
+      mask: true
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     a.get("drcircle.my.comment",{
       openid: useropenid,
       content: m.data.discuss,
       type: m.data.type_state,
       parent_id: m.data.replyId
     },function(e){
-      console.log(e);
+
       if(e.error == 0){
-        m.setData({
-          newestList: [],
-          discuss:''
+        wx.showToast({
+          title: '评论成功...',
+          icon: 'success',
+          duration: 2000
         })
-        m.detail();
-        m.newest();
+        if (m.data.type_state == 1) {
+
+          m.dynamic();
+
+        } else if (m.data.type_state == 2){
+        
+          m.critic();
+
+        }
+      } else {
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
       }
+    })
+  },
+  // 回复动态
+  dynamic:function(){
+    var m = this;
+    let message = m.data.newestList;
+    a.get("drcircle.index.comment", {
+      openid: useropenid,
+      ciclre_id: m.data.listId,
+      type: 1,
+      page: 1
+    }, function (e) {
+      message = [];
+      message = e.message.list;
+      wx.pageScrollTo({
+        scrollTop: 380,
+      })
+      m.setData({ hot: [] })
+      m.detailA();
+      m.setData({
+        newestList: message,
+        discuss: '',
+        abcShow: false, 
+        page: 1,
+        totalPage: Math.ceil(e.message.total / 10)
+      })
+    })
+  },
+  // 回复评论
+  critic:function(){
+    var m = this;
+    let message = m.data.newestList;
+
+    let page = Math.ceil(indexreply / 10);
+    if (page == 0){
+      page = page+1
+    }
+    a.get("drcircle.index.comment", {
+      openid: useropenid,
+      ciclre_id: m.data.listId,
+      type: 1,
+      page: page
+    }, function (e) {
+      let noew = e.message.list;
+      for (var i = 0; i < noew.length; i++) {
+        if (noew[i].id == m.data.replyId) {
+          message.splice(indexreply, 1, noew[i])
+        }
+      }
+      m.setData({
+        newestList: message,
+        discuss: ""
+      })
     })
   },
 
   // 跳转详情
   commentBtn:function(e){
     let comid = e.currentTarget.dataset.comid;
+    let twoid = e.currentTarget.dataset.twoid;
     wx.navigateTo({
-      url: '/pages/expert/particulars/particulars?comid='+comid,
+      url: '/pages/expert/particulars/particulars?comid=' + comid + '&twoid=' + twoid,
     })
   },
 
@@ -273,16 +419,6 @@ Page({
    */
   onShow: function () {
 
-  },
-
-  onUnload:function(){
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length - 2];
-    prevPage.setData({
-      mydata: {
-        pageB: -1
-      }
-    })
   },
 
   /**

@@ -82,7 +82,7 @@ Page({
   onReachBottom: function () {
     let page = this.data.page;
     let totalpage = this.data.totalPage;
-    if (page <= totalpage) {
+    if (page < totalpage) {
       wx.showLoading({
         title: '加载中...',
       });

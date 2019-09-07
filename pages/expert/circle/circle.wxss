@@ -16,8 +16,8 @@
  
 .listCon{
   background: #fff;
-  margin: 20rpx;
-  padding: 20rpx 10rpx;
+  margin: 24rpx;
+  padding: 24rpx;
   border-radius: 30rpx;
 }
 
@@ -70,10 +70,10 @@
   margin: 0rpx 4.5rpx 9rpx;
 }
 .typeC{
-  margin-bottom: 16rpx !important;
+  margin-bottom: 10rpx !important;
   margin-left: 10rpx;
-  width: 220rpx;
-  height: 220rpx;
+  width: 210rpx;
+  height: 210rpx;
 }
 .typeC:nth-child(1) {
   margin: 0;
@@ -163,7 +163,6 @@
   line-height: 80rpx;
 }
 .ico{
-  margin-top:30rpx; 
   justify-content: space-between;
 }
 .iconImg{
@@ -171,8 +170,8 @@
   height: 36rpx;
   margin-right: 20rpx;
 }
-.iconTxt{
-  font-size: 28rpx;
+.iconTxt{ 
+  font-size: 30rpx;
   color: rgb(102, 102, 102);
 }
 .circle_news{

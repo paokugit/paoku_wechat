@@ -15,8 +15,8 @@ Page({
     showTishi:false, 
     arrayNull: true,
     releaseText: '', 
-    replayMore: false,
-    hidden: true,
+    replayMore: false, 
+    hidden: true, 
     flag: false,
     x: 0,
     y: 0,
@@ -33,7 +33,12 @@ Page({
 
     mydata:'',
     issueShow:false,
-    retain_po:'1'
+    retain_po:'1',
+    btnCss:'background: #01d7a1',
+
+    txtShow:true,
+    vieShow:false,
+    focus:false
   },
 
   onLoad: function (options) {
@@ -44,7 +49,7 @@ Page({
     m.retain();
     m.listBtn();
     m.shop();
-  
+    
     if (options.imgList != undefined) {
       m.setData({
         tempFilePaths: options.imgList.split(','),
@@ -62,6 +67,8 @@ Page({
         })
       }).exec();
     }
+    console.log(m.data.tempFilePaths);
+    console.log(m.data.fileName);
   },
 
   // 是否有上次编辑内容
@@ -135,11 +142,24 @@ Page({
 
   // 内容
   gaysText(e) {
-    this.setData({
+    var that = this;
+
+    console.log(e.detail.value);
+
+    if (e.detail.value.length == 0 && that.data.tempFilePaths.length == 0) {
+      that.setData({
+        btnCss: 'background: #e5e5e5;'
+      })
+    }else{
+      that.setData({
+        btnCss: 'background: #01d7a1;'
+      })
+    }
+
+    that.setData({
       releaseText: e.detail.value
     })
     var query = wx.createSelectorQuery();
-    var that = this;
     query.select('.release_text').boundingClientRect(function (rect) {
       that.setData({
         textHeight: rect.height
@@ -169,7 +189,8 @@ Page({
               tempFilePaths.push(o.files[0].url);
               that.setData({
                 tempFilePaths: tempFilePaths,
-                showBall: false
+                showBall: false,
+                btnCss: 'background: #01d7a1;'
               });
 
               var query = wx.createSelectorQuery();
@@ -181,8 +202,7 @@ Page({
                 that.setData({
                   elements: result
                 })
-              }).exec();
-
+              }).exec();              
             }
           });
         };  
@@ -192,13 +212,21 @@ Page({
 
   // 删除
   deletePic: function (e) {
-    var images = this.data.tempFilePaths;
-    var imgfile = this.data.fileName;
-
+    var m = this;
+    var images = m.data.tempFilePaths;
+    var imgfile = m.data.fileName;
     var index = e.currentTarget.dataset.id;
+    var text = m.data.releaseText;
+
     imgfile.splice(index,1);
     images.splice(index, 1);
-    this.setData({
+
+    if (text.length == 0 && imgfile.length == 0) {
+      m.setData({
+        btnCss: 'background: #e5e5e5;'
+      })
+    }
+    m.setData({
       tempFilePaths: images,
       fileName: imgfile
     })
@@ -247,29 +275,39 @@ Page({
     const y = e.changedTouches[0].pageY
     const list = this.data.elements;
     let data = this.data.tempFilePaths;
+    let fileImg = this.data.fileName;
 
     for (var j = 0; j < list.length; j++) {
       const item = list[j];
       if (x > item.left && x < item.right && y > item.top && y < item.bottom) {
         const endIndex = item.dataset.index;
         const beginIndex = this.data.beginIndex;
-  
+
         if (beginIndex < endIndex) {
           let tem = data[beginIndex];
+          let fel = fileImg[beginIndex]
           for (let i = beginIndex; i < endIndex; i++) {
             data[i] = data[i + 1]
+            fileImg[i] = fileImg[i + 1]
           }
           data[endIndex] = tem;
+          fileImg[endIndex] = fel;
         }
+
         if (beginIndex > endIndex) {
           let tem = data[beginIndex];
+          let fel = fileImg[beginIndex]
+
           for (let i = beginIndex; i > endIndex; i--) {
             data[i] = data[i - 1]
+            fileImg[i] = fileImg[i - 1]
           }
           data[endIndex] = tem;
+          fileImg[endIndex] = fel;
         }
         this.setData({
-          tempFilePaths: data
+          tempFilePaths: data,
+          fileName: fileImg
         })
       }
     }
@@ -302,48 +340,65 @@ Page({
   submit:function(){
     var that = this;
     var text = that.data.releaseText;
-    var pic = that.data.fileName;  
-    a.get("drcircle.my.fabu",{
-      openid: useropenid,
-      content: text,
-      img: pic,
-      goods_id:that.data.btnId
-    },function(e){
-      if(e.error == 0){
+    var pic = that.data.fileName; 
+    if (text.length != 0 || pic != 0){
+      a.get("drcircle.my.fabu",{
+        openid: useropenid,
+        content: text,
+        img: pic,
+        goods_id:that.data.btnId
+      },function(e){
         
-        that.setData({
-          tempFilePaths:[],
-          fileName:[]
-        })
+        console.log(e);
 
+        if(e.error == 0){
+          that.setData({
+            tempFilePaths:[],
+            fileName:[]
+          })
+          var pages = getCurrentPages();
+          var prevPage = pages[pages.length - 2];
+          prevPage.setData({
+            mydata: {
+              pageB: -1
+            }
+          })
+          wx.navigateBack({
+            delta: 1,
+          })
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 2000
+          })
+          that.data.retain_po = '2';
+        } else if (e.error == 1){
+          wx.showToast({
+            title: e.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
 
-        var pages = getCurrentPages();
-        var prevPage = pages[pages.length - 2];
-        prevPage.setData({
-          mydata: {
-            pageB: -1
-          }
-        })
-        wx.navigateBack({
-          delta: 1,
-        })
+      })
+    }
+  },
 
-        wx.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
-        })
-        
-        that.data.retain_po = '2';
-      }
+  // 文本框聚焦
+  replyBtn: function (e) {
+    wx.pageScrollTo({
+      scrollTop: 0,
+    });
+    this.setData({
+      focus: true,
+      vieShow:false,
+      txtShow:true
     })
   },
 
 
   onShow: function () {
     var m = this;
-    console.log(m.data.tempFilePaths);
-    console.log(m.data.fileName)
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];
     let json = currPage.data.mydata;
@@ -353,32 +408,65 @@ Page({
 
   onUnload:function(){
     var m = this;
+
     var text = m.data.releaseText;
     var pic = m.data.fileName;
-    if (m.data.retain_po == 1){
-      wx.showModal({
-        title: '是否保留此次编辑',
-        success: function (res) {
-          if (res.cancel) {
-            a.get("drcircle.my.del_log", {
-              openid: useropenid,
-            }, function (e) {
-              console.log(e);
-            });
-          } else {
-            a.get("drcircle.my.savelog",{
-              openid: useropenid,
-              content: text,
-              img: pic,
-              goods_id: m.data.btnId
-            },function(e){
-              console.log(e);
-            });
-          }
-        },
+    if (text.length == 0 && pic == 0) {
+      m.del_log();
+    }else{
+      if (m.data.retain_po == 1){
+        wx.showModal({
+          title: '是否保留此次编辑',
+          cancelText: '不保留',
+          confirmText: '保留',
+          success: function (res) {
+            if (res.cancel) {
+              m.del_log();
+            } else {
+              m.savilog();
+            }
+          },
+        })
+      }
+    }
+  },
+  // 不保留
+  del_log:function(){
+    a.get("drcircle.my.del_log", {
+      openid: useropenid,
+    }, function (e) {
+      console.log(e);
+    });
+  },
+  // 保留
+  savilog:function(){
+    var m = this;
+    var text = m.data.releaseText;
+    var pic = m.data.fileName;
+    a.get("drcircle.my.savelog", {
+      openid: useropenid,
+      content: text,
+      img: pic,
+      goods_id: m.data.btnId
+    }, function (e) {
+      console.log(e);
+    });
+  },
+
+  onPageScroll: function (e) {
+    var m = this;
+    if(e.scrollTop >0){
+      m.setData({
+        txtShow: false,
+        vieShow:true,
+        focus:false
+      })
+    }else{
+      m.setData({
+        txtShow: true,
+        vieShow:false
       })
     }
-
   },
 
   /**

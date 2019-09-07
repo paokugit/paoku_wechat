@@ -15,7 +15,7 @@ page{
 
  
 .tanchu{
-  padding: 30rpx 24rpx 40rpx;
+  padding: 30rpx 24rpx 40rpx; 
   display: flex;
   align-items: center;
 }
@@ -27,6 +27,7 @@ page{
 .tanchu view{
   font-size: 30rpx;
   color: rgb(51, 51, 51);
+  font-weight: bold;
 }
 
 
@@ -89,12 +90,12 @@ page{
   margin-right: 15rpx;
 }
 .iconTxt{
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: rgb(102, 102, 102);
 }
 .iconImg{
-  width: 36rpx;
-  height: 36rpx;
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
 

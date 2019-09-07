@@ -3,7 +3,7 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = "";
-
+var pageprice = "";
 Page({
   data: {
     globalimg: t.globalData.appimg,
@@ -16,7 +16,7 @@ Page({
     img_url:[],
     img_file:[],
 
-    today:1,
+    today:1, 
     sumList:[],
     page: 1,
     totalPage: 0,
@@ -110,9 +110,13 @@ Page({
               var o = JSON.parse(n.data);
               img_list.push(o.files[0].url);
               file_list.push(o.files[0].filename);
-              if (i == res.tempFilePaths.length - 1) {
+              if (file_list.length == res.tempFilePaths.length) {
                 wx.navigateTo({
                   url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+                })
+                m.setData({
+                  img_url: [],
+                  img_file: []
                 })
               }
             }
@@ -131,8 +135,16 @@ Page({
     var currPage = pages[pages.length - 1];
     let json = currPage.data.mydata;
     if (json != undefined){
-      m.data.sumList = [];
+      pageprice = json.pageB;
       if (json.pageB == -1){
+        m.setData({
+          sumList:[]
+        })
+        m.myList()
+      } else if (json.pageB == 1){
+        m.setData({
+          sumList: []
+        })
         m.myList()
       }  
     }
@@ -142,14 +154,23 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var m = this;
+    if (pageprice == 1 || pageprice == -1){
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        mydata: {
+          pageB: 1
+        }
+      })
+    }
   },
 
   /**
@@ -166,7 +187,7 @@ Page({
     var m = this;
     let page = m.data.page;
     let totalpage = m.data.totalPage;
-    if (page <= totalpage) {
+    if (page < totalpage) {
       wx.showLoading({
         title: '加载中...',
       });
