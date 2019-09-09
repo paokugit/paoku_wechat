@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "pages/member/index/index",
     "pages": [
         "pages/index/index",
         "pages/discount/zkbscancode/zkbscancode",

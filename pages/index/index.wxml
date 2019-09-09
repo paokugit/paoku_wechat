@@ -72,6 +72,18 @@
             </button>
         </form>
         <!-- 礼品的气泡 -->
+        <view class='werun-box' style='display:{{werunDis}}'>
+            <view class='werun-absolute'>
+                <view class='getkllbtn-box'>
+                    <view class='getkllbtn'> 登录后可查看</view>
+                </view>
+                <view class='getcalorie-box'>
+                    <button bindtap='getcaloriebtn' class='getcalorie'></button>
+                </view>
+            </view>
+
+        </view>
+
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
         <!-- <view class='step'>步</view> -->
@@ -154,6 +166,12 @@
         <view class='store-service-title'>
             <view class='storeservice-tit'>门店服务</view>
             <view class='service-circle'></view>
+            <view class='service-abso' bindtap='click'>
+                <view class='service-address'>
+                    <image src='{{globalimg}}/address02.png'></image>
+                </view>
+                <view class='address-text'>获取地理位置</view>
+            </view>
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>

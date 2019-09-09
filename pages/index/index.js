@@ -117,6 +117,7 @@ Page((e = {
             updateDis: 'none',
             // rewarddisp:'none',
             seckillDis: '',
+            werunDis:'block',
             killlist: [],
             sec_end_time: "",
             screenWidth: '',
@@ -364,9 +365,9 @@ Page((e = {
                     });
                 } else {
                     var reurl = '/pages/index/index';
-                    wx.redirectTo({
-                        url: "/pages/message/auth/index?refrom=index&reurl=" + reurl
-                    })
+                    // wx.redirectTo({
+                    //     url: "/pages/message/auth/index?refrom=index&reurl=" + reurl
+                    // })
                 }
             }
         });
@@ -468,15 +469,15 @@ Page((e = {
         });
 
 
-        s.get("userinfo", {}, function(ee) {
-            if (ee.status == 1) {
-                // console.log('更新信息');
-                a.setData({
-                    credit1: ee.result.credit1,
-                    todaystep: ee.result.todaystep
-                });
-            }
-        });
+        // s.get("userinfo", {}, function(ee) {
+        //     if (ee.status == 1) {
+        //         // console.log('更新信息');
+        //         a.setData({
+        //             credit1: ee.result.credit1,
+        //             todaystep: ee.result.todaystep
+        //         });
+        //     }
+        // });
 
         // 今日好友助力步数
         s.get("help/index/helpstep_today", {
@@ -569,15 +570,15 @@ Page((e = {
                     }
 
                 });
-                s.get("userinfo", {}, function(e) {
-                    if (e.status == 1) {
-                        ttt.setData({
-                            credit1: e.result.credit1,
-                            todaystep: e.result.todaystep
-                        });
-                    }
+                // s.get("userinfo", {}, function(e) {
+                //     if (e.status == 1) {
+                //         ttt.setData({
+                //             credit1: e.result.credit1,
+                //             todaystep: e.result.todaystep
+                //         });
+                //     }
 
-                });
+                // });
             });
             sss.autoplay = !0, sss.src = this.data.mp3_url + "/coin.mp3", sss.onPlay(function() {
                 console.log("开始播放");
@@ -618,7 +619,7 @@ Page((e = {
         // 秒杀列表
         s.get("seckill/list", {
             type: 1,
-            page:1
+            page: 1
         }, function(e) {
             console.log(e)
             if (e.status == 1) {
@@ -636,16 +637,42 @@ Page((e = {
             }
 
         });
+        wx.getSetting({
+            success: (res) => {
+                console.log(res)
+                if (!res.authSetting['scope.werun'])
+                    t.setData({
+                        credit1: 0,
+                        todaystep: 0
+                    });
+                else if (res.authSetting['scope.werun']) {
+                    console.log('已经获取运动')
+                    t.setData({
+                        werunDis: 'none',
+                    })
+                    s.get("userinfo", {}, function(e) {
+                        if (e.status == 1) {
+                            t.setData({
+                                credit1: e.result.credit1,
+                                todaystep: e.result.todaystep
+                            });
+                        }
 
-        s.get("userinfo", {}, function(e) {
-            if (e.status == 1) {
-                t.setData({
-                    credit1: e.result.credit1,
-                    todaystep: e.result.todaystep
-                });
+                    });
+
+                }
+
             }
+        })
+        // s.get("userinfo", {}, function(e) {
+        //     if (e.status == 1) {
+        //         t.setData({
+        //             credit1: e.result.credit1,
+        //             todaystep: e.result.todaystep
+        //         });
+        //     }
 
-        });
+        // });
         s.get("changce/merch/draw_rank", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
@@ -708,18 +735,18 @@ Page((e = {
         // 获取本人坐标
         var mypos = i.getCache("mypos");
         if (!mypos) {
-            wx.getLocation({
-                type: 'wgs84',
-                success: function(res) {
-                    i.setCache("mypos", {
-                        lat: res.latitude,
-                        lng: res.longitude,
-                        speed: res.speed,
-                        accuracy: res.accuracy
-                    }, 7200);
-                },
-                fail: function(res) {}
-            })
+            // wx.getLocation({
+            //     type: 'wgs84',
+            //     success: function(res) {
+            //         i.setCache("mypos", {
+            //             lat: res.latitude,
+            //             lng: res.longitude,
+            //             speed: res.speed,
+            //             accuracy: res.accuracy
+            //         }, 7200);
+            //     },
+            //     fail: function(res) {}
+            // })
         }
         t.getList();
         t.getShop(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
@@ -834,17 +861,17 @@ Page((e = {
 
                         })
                     }
-                    wx.getWeRunData({
-                        success(res) {
-                            res.sessionKey = a.session_key;
-                            res.openid = i.openid;
-                            s.post('wxapp/urundata', {
-                                res
-                            }, function(e) {
+                    // wx.getWeRunData({
+                    //     success(res) {
+                    //         res.sessionKey = a.session_key;
+                    //         res.openid = i.openid;
+                    //         s.post('wxapp/urundata', {
+                    //             res
+                    //         }, function(e) {
 
-                            })
-                        }
-                    });
+                    //         })
+                    //     }
+                    // });
                 }) : s.alert("获取用户登录态失败:" + a.errMsg);
             },
             fail: function() {
@@ -887,6 +914,104 @@ Page((e = {
             tt.setData(i)
 
         })
+    },
+    getcaloriebtn: function() {
+        var that = this
+        wx.getWeRunData({
+            success(res) {
+                res.sessionKey = a.session_key;
+                res.openid = i.openid;
+                s.post('wxapp/urundata', {
+                    res
+                }, function(e) {
+                    console.log(e)
+                    if (e.status == 1) {
+                        s.get("userinfo", {}, function(ee) {
+                            if (ee.status == 1) {
+                                console.log('运动步数');
+                                that.setData({
+                                    credit1: ee.result.credit1,
+                                    todaystep: ee.result.todaystep
+                                });
+                            }
+                        });
+                    }
+                })
+            }
+        });
+        //判断是否获得了微信运动
+        wx.getSetting({
+            success: (res) => {
+                if (!res.authSetting['scope.werun'])
+                    that.setData({
+                        credit1: 0,
+                        todaystep: 0
+                    });
+                that.openfirm()
+            }
+        })
+
+    },
+    openfirm: function() {
+        wx.showModal({
+            content: '是否允许跑库获取您的微信运动',
+            confirmText: "确认",
+            cancelText: "取消",
+            success: function(res) {
+                console.log(res);
+                //点击“确认”时打开设置页面
+                if (res.confirm) {
+                    console.log('用户点击确认')
+                    wx.openSetting({
+                        success: (res) => {}
+                    })
+                } else {
+                    console.log('用户点击取消')
+                }
+            }
+        });
+    },
+
+    // 打开地理位置
+    click: function() {
+        var that = this
+        wx.getLocation({
+            type: 'wgs84',
+            success: function(res) {
+                that.setData({
+                    location: {
+                        longitude: res.longitude,
+                        latitude: res.latitude
+                    }
+                })
+            }
+        })
+        //判断是否获得了用户地理位置授权
+        wx.getSetting({
+            success: (res) => {
+                if (!res.authSetting['scope.userLocation'])
+                    that.openConfirm()
+            }
+        })
+    },
+    openConfirm: function() {
+        wx.showModal({
+            content: '检测到您没打开地理位置权限，是否去设置打开？',
+            confirmText: "确认",
+            cancelText: "取消",
+            success: function(res) {
+                console.log(res);
+                //点击“确认”时打开设置页面
+                if (res.confirm) {
+                    console.log('用户点击确认')
+                    wx.openSetting({
+                        success: (res) => {}
+                    })
+                } else {
+                    console.log('用户点击取消')
+                }
+            }
+        });
     },
     getDiypage: function(t) {
         var a = this;

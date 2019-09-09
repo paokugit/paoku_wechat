@@ -1,6 +1,6 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='user_box' style='margin-top:{{nvabarData.height}}px'>
-    <view class='user-info-box'>
+    <view class='user-info-box' style='display:{{userinfodis}}'>
         <view class='info-detail'>
             <view class='avatar-img'>
                 <image src='{{member.avatar}}'></image>
@@ -35,17 +35,31 @@
             <button form-type="submit" class='phone-btn'></button>
         </form>
     </view>
+    <!-- 未登录状态 -->
+    <view class='notlogin-box' style='display:{{notlogindis}}'>
+        <view class='notlogin-left'>
+            <view class='notlogin-text'>登录/注册</view>
+            <view class='notlogin-subtitle'>每一步，都值得鼓励</view>
+        </view>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button'> </button>
+        <view class='notlogin-tubiao'>
+            <image src='{{globalimg}}/jixiangwu@2x.png'></image>
+        </view>
+    </view>
+    <!-- 未登录状态 -->
 
     <!-- 个人收入 -->
     <view class='income-box'>
         <navigator url='/pages/member/balance/balance' class='reward-img'>
             <image src='{{globalimg}}/bggreen@2x.png'></image>
-            <view class='reward-num'>{{member.come_total}}</view>
+            <!-- <view class='reward-num'>{{member.come_total}}</view> -->
+            <view class='reward-num'>{{cometotal}}</view>
             <view class='reward-text'>可用余额</view>
         </navigator>
         <navigator url='/pages/member/log/bushu' class='calorie-img'>
             <image src='{{globalimg}}/bgyellow@2x.png'></image>
-            <view class='calorie-num'>{{member.calorie_total}}</view>
+            <!-- <view class='calorie-num'>{{member.calorie_total}}</view> -->
+            <view class='calorie-num'>{{calorietotal}}</view>
             <view class='calorie-text'>可用卡路里</view>
         </navigator>
     </view>
