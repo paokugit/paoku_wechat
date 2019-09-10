@@ -11,7 +11,7 @@ Page({
     nvabarData: {
       showCapsule: 1,
       title: '评论详情',
-      height: t.globalData.height * 2 + 20,
+      height: t.globalData.height * 2 + 20, 
     },
 
     page: 1,
@@ -30,7 +30,9 @@ Page({
 
     yi_zan: 'circle_parise@2.png',
     wei_zan: 'circle_parise@1.png',
-    twoid:''
+    twoid:'',
+    btncss:'background:#f8f8f8;',
+    perch:'我也说几句...'
   }, 
 
   onLoad: function (options) {
@@ -56,16 +58,25 @@ Page({
     a.get("drcircle.index.comment_detail",{
       openid: useropenid,
       comment_id: m.data.comid,
-      type:1,
+      type:2,
       page: m.data.page
     },function(e){
       console.log(e);
-      let totalList = e.message.comment;
-      let totalPage = Math.ceil(e.message.comment_total / 10);
-      m.setData({
-        list: m.data.list.concat(totalList),
-        totalPage: totalPage
-      })
+      if(e.error == 0){
+        let totalList = e.message.comment;
+        let totalPage = Math.ceil(e.message.comment_total / 10);
+
+        m.setData({
+          list: m.data.list.concat(totalList),
+          totalPage: totalPage
+        })
+      }else{
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   detailA: function () {
@@ -151,9 +162,12 @@ Page({
 
   // 留言
   showBtn:function(e){
+    console.log(e.currentTarget.dataset.name);
     this.setData({
       sendShow:true,
-      sendId: e.currentTarget.dataset.supportid
+      sendId: e.currentTarget.dataset.supportid,
+      btncss:' ',
+      perch: '回复：' + e.currentTarget.dataset.name
     })
   },
   formName: function (e) {
@@ -179,14 +193,18 @@ Page({
       parent_id: m.data.sendId
     }, function (e) {
       if(e.error == 0){
+        wx.showToast({
+          title: '评论成功',
+          icon: 'success',
+          duration: 2000
+        })
         a.get("drcircle.index.comment_detail", {
           openid: useropenid,
           comment_id: m.data.comid,
           type: 1,
           page: 1
         }, function (e) {
-          message = [];
-          message = e.message.comment        
+          message.unshift(e.message.comment[0]);      
           m.detailA();
           wx.pageScrollTo({
             scrollTop: 0,
@@ -236,6 +254,11 @@ Page({
       comment_id: m.data.catid
     }, function (e) {
       if(e.error == 0){
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success',
+          duration: 2000
+        })
         message.splice(del_index, 1);
         m.detailA();
         m.setData({
@@ -245,9 +268,8 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
+
+
   onShow: function () {
 
   },

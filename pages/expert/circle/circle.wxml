@@ -13,7 +13,7 @@
     </view>
     
     <!-- 动态内容 --> 
-    <navigator url="/pages/expert/discuss/discuss?listId={{item.id}}" class="circleCon circleCss">{{item.content}}</navigator>
+    <view url="/pages/expert/discuss/discuss?listId={{item.id}}" class="circleCon circleCss">{{item.content}}</view>
     
     <!-- 动态图片 --> 
     <view class="circleImg" >  

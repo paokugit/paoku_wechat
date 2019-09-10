@@ -17,7 +17,7 @@ Page({
           height: i.globalData.height * 2 + 20,
       },
     color: '#01d7a1',
-    underline: 0,
+    underline: 0, 
     color1: '#333333',
     informtitle: '',
     informlist: [],
@@ -33,7 +33,8 @@ Page({
     abcShow: false,
     itemid:'',
     discuss: '',
-    focus: false
+    focus: false,
+    perch:'我也说几句...'
   },
 
   /**
@@ -222,7 +223,8 @@ Page({
     var itemid = e.currentTarget.dataset.itemid;
     this.setData({
       itemid: itemid,
-      focus: true
+      focus: true,
+      perch: '回复：' + e.currentTarget.dataset.name
     })
   },
   // 回复内容

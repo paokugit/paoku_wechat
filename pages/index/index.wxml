@@ -89,34 +89,41 @@
                 </view>
             </view>
 
-            <view class='activity-nav'>
-                <block wx:for="{{home_icon}}" wx:key="{{index}}">
-                    <view>
-                        <view class='activity-img'>
 
-                            <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
-                                <image src='{{item.icon}}'></image>
-                            </view>
-
-                            <image src='{{item.img}}'></image>
+            <view class="forcsss">
+              <swiper current="{{slideshow}}">
+                <block wx:for="{{lbSellerCatsLen}}" wx:for-index="i" wx:key="key">
+                  <swiper-item class="iconcs">
+                    <view wx:key="key" wx:for="{{home_icon}}" wx:for-index="j" wx:if="{{ ( j >= ( i-0 )*4 ) && ( j < (i+1) * 4 ) }}" style="margin-left:60rpx;">
+                      <view class='activity-img'>
+                        <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
+                            <image src='{{item.icon}}'></image>
                         </view>
-                        <view class='activity-con'>{{item.title}}</view>
+
+                        <image src='{{item.img}}'></image>
+                      </view>
+                      <view class='activity-con'>{{item.title}}</view>
                     </view>
-                </block>
+                  </swiper-item>
+                </block> 
+              </swiper>
             </view>
             <!-- form -->
-            <view class='formNav'>
-                <block wx:for="{{home_icon}}" wx:key="{{index}}">
-
-                    <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn'>
+            <view class="forcsss">
+              <swiper indicator-dots="true" indicator-color="#e5fff9" indicator-active-color="#01d7a1" bindchange='onSlideChangeEnd'>
+                <block wx:for="{{lbSellerCatsLen}}" wx:for-index="i" wx:key="key">
+                  <swiper-item class="iconcs">
+                    <form bindsubmit="form_submit" report-submit='true' class='navForm' catchtap='helpbtn' wx:key="key" wx:for="{{home_icon}}" wx:for-index="j" wx:if="{{ ( j >= ( i-0 )*4 ) && ( j < (i+1) * 4 ) }}" style="margin-left:60rpx;">
                         <navigator url="{{item.url}}">
                             <button form-type="submit" class='navBtn'></button>
                         </navigator>
                     </form>
-
+                  </swiper-item>
                 </block>
-            </view>
-            <!-- form -->
+              </swiper>
+            </view> 
+            <!-- form-->
+
         </view>
     </view>
     <!-- 快报 -->

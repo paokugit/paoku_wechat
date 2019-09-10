@@ -67,8 +67,6 @@ Page({
         })
       }).exec();
     }
-    console.log(m.data.tempFilePaths);
-    console.log(m.data.fileName);
   },
 
   // 是否有上次编辑内容
@@ -143,9 +141,6 @@ Page({
   // 内容
   gaysText(e) {
     var that = this;
-
-    console.log(e.detail.value);
-
     if (e.detail.value.length == 0 && that.data.tempFilePaths.length == 0) {
       that.setData({
         btnCss: 'background: #e5e5e5;'
@@ -348,29 +343,22 @@ Page({
         img: pic,
         goods_id:that.data.btnId
       },function(e){
-        
-        console.log(e);
-
         if(e.error == 0){
           that.setData({
             tempFilePaths:[],
             fileName:[]
-          })
-          var pages = getCurrentPages();
-          var prevPage = pages[pages.length - 2];
-          prevPage.setData({
-            mydata: {
-              pageB: -1
-            }
-          })
-          wx.navigateBack({
-            delta: 1,
           })
           wx.showToast({
             title: '发布成功',
             icon: 'success',
             duration: 2000
           })
+          
+          wx.setStorageSync('pageA', 1);
+          wx.navigateBack({
+            delta: 1,
+          })
+
           that.data.retain_po = '2';
         } else if (e.error == 1){
           wx.showToast({

@@ -285,7 +285,7 @@
 .headRight{
   width: 100rpx;
   height: 44rpx;
-  font-size:20rpx;
+  font-size:24rpx;
   line-height: 44rpx;
   text-align: center;
   border-radius: 50rpx;
@@ -308,6 +308,8 @@
 }
 .nickname{
   color: rgb(1, 215, 161);
+  /* font-weight: bold; */
+  font-weight: bolder;
 }
 
 .replyX{

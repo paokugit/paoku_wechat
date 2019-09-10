@@ -24,11 +24,11 @@
         </view>
 
     </view>
-    <!-- 没有数据 -->
+    <!-- 没有数据 --> 
     <view class="no-inform" wx:if="{{mask==1}}">
         <image class="ibform-img" src="{{globalimg}}/zwxx@2x.png"></image>
     </view>
-    <view class="inform-push" style='margin-top:{{nvabarData.height}}px' wx:if="{{mask==0}}">
+    <view class="inform-push" style='margin-top:50px' wx:if="{{mask==0}}">
         <!-- 多条数据，系统通知 -->
         <view class="inform-all">
             <view class="inform-ul" wx:for="{{informlist}}" wx:for-index="key" wx:key="{{key}}">
@@ -76,7 +76,7 @@
 
 
     <!-- 评论 -->
-    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}" style='margin-top:{{nvabarData.height}}px'>  
+    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}" style='margin-top:50px'>  
       <view class="reviewList" wx:for="{{listCritic}}" wx:key="{{index}}">
         <view class="reviewHead">
           <view class="headLeft">
@@ -86,12 +86,12 @@
               <view class="leftTime">{{item.create_time}}</view>
             </view>
           </view>
-          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}">回复</view>
+          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}">回复</view>
           <view class="headRight headRightA" wx:if="{{item.reply == 0?fasle:true}}">已回复</view>
         </view>
  
         <view class="details" wx:if="{{item.is_del == 0?true:false}}">
-          回复<text class="nickname">{{item.bcommnet_openid}}</text>：{{item.content}}
+          回复 <text class="nickname">{{item.bcommnet_openid}}</text>：{{item.content}}
         </view>
         <view class="details" wx:if="{{item.is_del == 0?false:true}}">该评论已被删除</view>
 
@@ -101,7 +101,7 @@
           <view class="tiezi" bindtap="dynamicBtn" data-isdel="{{item.circle.is_del}}" data-circleid="{{item.circle.circle_id}}">
             <image class="tieziImg" src="{{item.circle.img}}"></image>
             <view class="tieziRight">
-              <view class="tieziName huifuN">{{item.circle.nickname}}</view>
+              <view class="tieziName huifuN">@{{item.circle.nickname}}</view>
               <view class="tieziTxt">{{item.circle.content}}</view>
             </view>
           </view>
@@ -116,7 +116,7 @@
       </view> -->
 
       <view class="comInt" wx:if="{{focus}}">
-        <input class='solid-bottom' value="{{discuss}}" placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
+        <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
         <text bindtap="sendBtn">发送</text>
       </view> 
 

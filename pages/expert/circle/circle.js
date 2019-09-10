@@ -3,9 +3,10 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = "";
+
 Page({
   data: { 
-    globalimg: t.globalData.appimg,
+    globalimg: t.globalData.appimg, 
     nvabarData: {
       showCapsule: 1,
       title: '达人圈',
@@ -24,8 +25,6 @@ Page({
     dataList:[],
     isShow:false,
     abcShow:false,
-
-    pageminus:'',
 
     yi_zan:'circle_parise@2.png',
     wei_zan:'circle_parise@1.png'
@@ -78,18 +77,14 @@ Page({
   support:function(e){
     var m = this;
 
-    // 获取当前点击下标
     var index = e.currentTarget.dataset.index;
-    // data中获取列表
     var message = this.data.dataList;
-
-    // 当前点击动态的id
     var supportId = e.currentTarget.dataset.supportid;
 
-    for (let i in message) { //遍历列表数据
-      if (i == index) { //根据下标找到目标
+    for (let i in message) { 
+      if (i == index) { 
         var collectStatus = false
-        if (message[i].support == 0) { //如果是没点赞+1
+        if (message[i].support == 0) { 
           collectStatus = true
           message[i].support = parseInt(message[i].support) + 1
           message[i].zan_count = parseInt(message[i].zan_count) + 1
@@ -218,35 +213,47 @@ Page({
 
   onShow: function () {
     var m = this;
-    var pages = getCurrentPages();
-    var currPage = pages[pages.length - 1];
-    let json = currPage.data.mydata;
-    if (json != undefined) {
-      m.data.dataList = [];
-      console.log(json.pageB);
-      if (json.pageB == -1) {
-        wx.pageScrollTo({
-          scrollTop: 0,
-        });
-        m.setData({
-          page:1,
-          pageminus:0,
-          abcShow:false
-        })
-        m.pageData();
-      } else if (json.pageB == 1) {
-        wx.pageScrollTo({
-          scrollTop: 0,
-        });
-        m.setData({
-          page: 1,
-          pageminus: 0,
-          abcShow: false
-        })
-        m.pageData();
-      }
-    } 
-    
+
+    let pageA = wx.getStorageSync('pageA');
+    let pageB = wx.getStorageSync('pageB');
+    console.log(pageA);
+    if(pageA == 1 || pageB == 2){
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+
+      wx.removeStorage({
+        key: 'pageA',
+        success: function (res) {
+          console.log(res);
+        }
+      });
+      wx.removeStorage({
+        key: 'pageB',
+        success: function (res) {
+          console.log(res);
+        }
+      });
+      m.setData({
+        dataList: [],
+        page: 1,
+        abcShow: false
+      })
+      m.pageData();
+    }
+
+    m.setData({
+      cartoon: false,
+      cartoonA: true,
+      cartoonB: false
+    })
     m.data.img_url = [];
   },
 
@@ -254,29 +261,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var m = this;
-    let page = m.data.pageminus;
-    console.log(page);
-    if (page > 1) {
-      wx.showLoading({
-        title: '加载中...',
-      });
-      m.setData({
-        pageminus: page-1
-      }) 
-      a.get("drcircle.index.index", {
-        openid: useropenid, 
-        page: m.data.pageminus
-      }, function (e) {
-        let totalList = e.message.list;
-        m.setData({
-          dataList: totalList.concat(m.data.dataList)
-        })  
-      })
-    }
-    setTimeout(() => {
-      wx.hideLoading()
-    }, 1000)
+
   },
 
   onPageScroll: function (e) {
@@ -300,8 +285,7 @@ Page({
         title: '加载中...',
       });
       this.setData({
-        page: page + 1,
-        pageminus:page+1
+        page: page + 1
       })
       this.pageData();
     } else {

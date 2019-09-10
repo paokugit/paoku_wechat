@@ -5,9 +5,11 @@ var f = getApp();
 var useropenid = ""; 
 
 var indexreply = "";
+
+var del_index = "";
 Page({
 
-  data: {
+  data: { 
     globalimg: t.globalData.appimg,
     nvabarData: {
       showCapsule: 1,
@@ -32,7 +34,8 @@ Page({
     hot:[],
  
     yi_zan: 'circle_parise@2.png',
-    wei_zan: 'circle_parise@1.png'
+    wei_zan: 'circle_parise@1.png',
+    perch:'我也说几句...'
   },
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
@@ -44,7 +47,14 @@ Page({
       replyId: options.listId,
       myopenid: useropenid
     })
-  
+
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     m.detail();
     m.detailA();
     m.newest();
@@ -57,18 +67,35 @@ Page({
       openid: useropenid,
       ciclre_id: m.data.listId
     },function(e){
-      m.setData({
-        detailList:e.message
-      })
+      if(e.error == 0){
+        m.setData({
+          detailList: e.message
+        })
+      }else if(e.error == 1){
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+              m.pagePrice();
+            } else {
+              console.log('用户点击取消')
+              m.pagePrice();
+            }
+          }
+        })
+      }
     })
   },
   //热评
   detailA: function () {
     var m = this;
-    a.get("drcircle.index.detail", {
+    a.get("drcircle.index.hot_comment", {
       openid: useropenid,
       ciclre_id: m.data.listId
     }, function (e) {
+      console.log(e);
       m.setData({
         hot: e.message.hot
       })
@@ -108,6 +135,13 @@ Page({
           if (type == 1){
             m.detail();
           }else{
+            wx.showLoading({
+              title: '评论中...',
+              mask: true
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 2000)
             m.setData({
               hot:[],
               newestList: [],
@@ -128,6 +162,13 @@ Page({
           if (type == 1) {
             m.detail();
           } else {
+            wx.showLoading({
+              title: '评论中...',
+              mask: true
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 2000)
             m.setData({ 
               hot: [], 
               newestList:[],
@@ -239,13 +280,7 @@ Page({
     })
   },
   pagePrice:function(){
-    var pages = getCurrentPages();
-    var prevPage = pages[pages.length - 2];
-    prevPage.setData({
-      mydata: {
-        pageB: 1
-      }
-    })
+    wx.setStorageSync('pageA', 1);
     wx.navigateBack({
       delta: 1, 
     })
@@ -254,8 +289,8 @@ Page({
   // 删除评论
   shadeCat:function(e){
     var m = this;
+    del_index = e.currentTarget.dataset.index;
     m.data.catid = e.currentTarget.dataset.catid;
-    console.log(m.data.catid)
     var dataOpenid = e.currentTarget.dataset.openid;
     if (dataOpenid == useropenid){
       m.setData({
@@ -271,21 +306,25 @@ Page({
   },
   delBTn:function(){
     var m = this;
-    console.log(m.data.catid)
+    let message = m.data.newestList;
+
     a.get("drcircle.my.del_comment",{
       openid: useropenid,
       comment_id: m.data.catid
     },function(e){
-      console.log(e);
       if(e.error == 0){
-        m.setData({
-          shadeShow:false,
-          hot:[],
-          newestList: []
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success',
+          duration: 2000
         })
+        message.splice(del_index, 1);
         m.detailA();
-        m.newest();
-      }else{
+        m.setData({
+          shadeShow: false,
+          newestList: message
+        })
+      } else {
         wx.showToast({
           title: e.message,
           icon: 'none',
@@ -308,7 +347,8 @@ Page({
     this.setData({
       focus:true,
       replyId:e.currentTarget.dataset.parentid,
-      type_state: e.currentTarget.dataset.type
+      type_state: e.currentTarget.dataset.type,
+      perch: '回复：' + e.currentTarget.dataset.name
     })
   },
   sendBtn:function(){  
@@ -329,7 +369,7 @@ Page({
 
       if(e.error == 0){
         wx.showToast({
-          title: '评论成功...',
+          title: '评论成功',
           icon: 'success',
           duration: 2000
         })
@@ -343,6 +383,7 @@ Page({
 
         }
       } else {
+        m.setData({ content:''});
         wx.showToast({
           title: e.message,
           icon: 'none',
@@ -414,11 +455,13 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  
+  onUnload(){
+  
+  },
 
+  onShow: function () {
+  
   },
 
   /**

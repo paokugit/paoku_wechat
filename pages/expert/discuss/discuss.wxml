@@ -2,7 +2,7 @@
 <view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
   <view class="area">
 
-    <view catchtap="replyBtn" data-parentid="{{detailList.id}}" data-type="1">
+    <view catchtap="replyBtn" data-parentid="{{detailList.id}}" data-type="1" data-name="{{detailList.nickname}}">
       <view class="dingBu">
         <view class="dingLeft">
           <image src="{{detailList.avatar}}"></image>
@@ -47,7 +47,7 @@
         </view>
       </view>
       
-      <view class="remove" bindtap="deleteBtn" wx:if="{{myopenid == detailList.openid}}">删除此条动态</view>
+      <view class="remove" catchtap="deleteBtn" wx:if="{{myopenid == detailList.openid}}">删除此条动态</view>
     </view>
 
     <view class="head-portrait" style="{{hShow == '2'?'' : 'max-height:245rpx'}}" wx:if="{{detailList.zan_list.length == 0?false:true}}">
@@ -69,7 +69,7 @@
       </view>
     </view> 
   
-    <view class="reList" wx:for="{{hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" bindlongpress="shadeCat" data-catid="{{listHot.id}}" data-openid="{{listHot.openid}}" catchtap="commentBtn" data-comid="{{listHot.id}}">
+    <view class="reList" wx:for="{{hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" catchtap="commentBtn" data-comid="{{listHot.id}}">
       <view class="fleCss topRe">
         <view class="img-name fleCss">
           <image src="{{listHot.avatar}}"></image>
@@ -84,7 +84,7 @@
             <text class="iconTxt">{{listHot.comment_count}}</text>
           </view>
 
-          <view class="circle_read" bindtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" >
+          <view class="circle_read" catchtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" >
             <image class="iconImg" src="{{globalimg}}/{{listHot.support == 0?wei_zan:yi_zan}}"></image>
             <text class="iconTxt">{{listHot.zan_count}}</text>
           </view>
@@ -100,7 +100,7 @@
     </view>
 
     <block  wx:for="{{newestList}}" wx:key="{{index}}">
-      <view class="reList" data-parentid="{{item.id}}" catchtap="replyBtn" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}" data-index="{{index}}" data-type="2">
+      <view class="reList" data-parentid="{{item.id}}" catchtap="replyBtn" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}" data-index="{{index}}" data-type="2"  data-name="{{item.nickname}}">
         <view class="fleCss topRe">
           <view class="img-name fleCss">
             <image src="{{item.avatar}}"></image>
@@ -125,7 +125,7 @@
       </view>
       <view class="twoReply" wx:if="{{item.comment.length == 0?false:true}}">
         
-        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" bindlongpress="shadeCat" data-catid="{{replyIt.id}}"  data-openid="{{replyIt.openid}}" data-comid="{{item.id}}" data-twoid="{{replyIt.id}}" catchtap="commentBtn">
+        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" data-comid="{{item.id}}" data-twoid="{{replyIt.id}}" catchtap="commentBtn">
           <text class="replyName">{{replyIt.nickname}}</text> 回复 <text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
         </view>
 
@@ -137,7 +137,7 @@
   </view>
 
   <view class="comInt">
-    <input class='solid-bottom' value="{{discuss}}" placeholder='我也说几句...' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
+    <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
     <text bindtap="sendBtn">发送</text>
   </view> 
 

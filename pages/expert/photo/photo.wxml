@@ -7,7 +7,7 @@
   </view>
   
   <view class="itmeList" wx:for="{{sumList}}" wx:key="index">
-    <view class="today" wx:if="{{item.type == 0?true:false}}">今天</view>
+    <view class="today todayA" wx:if="{{item.type == 0?true:false}}">今天</view>
     <view class="today" wx:elif="{{item.type == 1?true:false}}">昨天</view>
     <view class="today" wx:else>{{item.time}}</view>
     

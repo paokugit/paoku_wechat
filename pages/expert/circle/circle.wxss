@@ -1,3 +1,7 @@
+
+.expedite-box{
+  padding-bottom: 50rpx;
+}
 /* 动态提醒 */
 .tiXing{
   width: 238rpx;

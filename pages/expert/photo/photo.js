@@ -131,45 +131,33 @@ Page({
   
   onShow: function () {
     var m = this;
-    var pages = getCurrentPages();
-    var currPage = pages[pages.length - 1];
-    let json = currPage.data.mydata;
-    if (json != undefined){
-      pageprice = json.pageB;
-      if (json.pageB == -1){
-        m.setData({
-          sumList:[]
-        })
-        m.myList()
-      } else if (json.pageB == 1){
-        m.setData({
-          sumList: []
-        })
-        m.myList()
-      }  
-    }
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    var m = this;
-    if (pageprice == 1 || pageprice == -1){
-      var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2];
-      prevPage.setData({
-        mydata: {
-          pageB: 1
-        }
+    let pageA = wx.getStorageSync('pageA');
+    console.log(pageA);
+    if (pageA == 1) {
+      wx.pageScrollTo({
+        scrollTop: 0
       })
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+
+      wx.removeStorage({
+        key: 'pageA',
+        success: function (res) {
+          console.log(res);
+        }
+      });
+
+      wx.setStorageSync('pageB', 2);
+      m.setData({
+        sumList: [],
+        page: 1
+      })
+      m.myList()
     }
   },
 
