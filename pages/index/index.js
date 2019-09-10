@@ -26,6 +26,8 @@ var currency_step = ''
 var merchphone = ""
 var secend_time = ""
 var timestampcount = ""
+var longitude = ""
+var latitude = ""
 const app = getApp()
 var interval = new Object();
 var util = require('../../utils/util.js');
@@ -111,13 +113,15 @@ Page((e = {
             circleDis: 'none',
             condisp: 'block',
             merchdisp: 'block',
-            storedisp: 'block',
+            storedisp: 'none',
             bindDis: 'none',
             giftDis: 'none',
             updateDis: 'none',
             // rewarddisp:'none',
             seckillDis: '',
-            werunDis:'block',
+            werunDis: 'block',
+            addressDis: 'none',
+            merchantDis: 'none',
             killlist: [],
             sec_end_time: "",
             screenWidth: '',
@@ -661,18 +665,53 @@ Page((e = {
                     });
 
                 }
-
+                if (!res.authSetting['scope.userLocation']) {
+                    console.log('未获取地理位置')
+                    t.setData({
+                        addressDis: 'block',
+                        merchantDis: 'none',
+                    })
+                    // 门店服务
+                    s.get("changce/merch/get_from_store", {
+                        page: 1,
+                        lat: latitude,
+                        lng: longitude,
+                    }, function(e) {
+                        console.log(e)
+                        var i = {
+                            loading: false,
+                            result: e.result,
+                            merchInfo: e.result.merchInfo,
+                            goodlist: e.result.goodList.list.slice(0, 3)
+                        }
+                        t.setData(i)
+                    })
+                } else if (res.authSetting['scope.userLocation']) {
+                    t.setData({
+                        merchantDis: 'block',
+                        addressDis: 'none',
+                    })
+                    console.log('已经获取地理位置')
+                    console.log(res)
+                    console.log(longitude, latitude)
+                    // 门店服务
+                    s.get("changce/merch/get_from_store", {
+                        page: 1,
+                        lat: latitude,
+                        lng: longitude,
+                    }, function(e) {
+                        console.log(e)
+                        var i = {
+                            loading: false,
+                            result: e.result,
+                            merchInfo: e.result.merchInfo,
+                            goodlist: e.result.goodList.list.slice(0, 3)
+                        }
+                        t.setData(i)
+                    })
+                }
             }
         })
-        // s.get("userinfo", {}, function(e) {
-        //     if (e.status == 1) {
-        //         t.setData({
-        //             credit1: e.result.credit1,
-        //             todaystep: e.result.todaystep
-        //         });
-        //     }
-
-        // });
         s.get("changce/merch/draw_rank", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
@@ -732,22 +771,22 @@ Page((e = {
                 avamessage: e.result.message
             })
         });
-        // 获取本人坐标
-        var mypos = i.getCache("mypos");
-        if (!mypos) {
-            // wx.getLocation({
-            //     type: 'wgs84',
-            //     success: function(res) {
-            //         i.setCache("mypos", {
-            //             lat: res.latitude,
-            //             lng: res.longitude,
-            //             speed: res.speed,
-            //             accuracy: res.accuracy
-            //         }, 7200);
-            //     },
-            //     fail: function(res) {}
-            // })
-        }
+        // // 获取本人坐标
+        // var mypos = i.getCache("mypos");
+        // if (!mypos) {
+        //     wx.getLocation({
+        //         type: 'wgs84',
+        //         success: function(res) {
+        //             i.setCache("mypos", {
+        //                 lat: res.latitude,
+        //                 lng: res.longitude,
+        //                 speed: res.speed,
+        //                 accuracy: res.accuracy
+        //             }, 7200);
+        //         },
+        //         fail: function(res) {}
+        //     })
+        // }
         t.getList();
         t.getShop(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
             success: function(a) {
@@ -880,21 +919,22 @@ Page((e = {
         })
         // console.log('获取附近商家')
         var newpos = i.getCache("mypos");
-        // 门店服务
-        s.get("changce/merch/get_from_store", {
-            page: 1,
-            lat: newpos.lat,
-            lng: newpos.lng,
-        }, function(e) {
-            console.log(e)
-            var i = {
-                loading: false,
-                result: e.result,
-                merchInfo: e.result.merchInfo,
-                goodlist: e.result.goodList.list.slice(0, 3)
-            }
-            tt.setData(i)
-        })
+        // console.log(newpos)
+        // // 门店服务
+        // s.get("changce/merch/get_from_store", {
+        //     page: 1,
+        //     lat: newpos.lat,
+        //     lng: newpos.lng,
+        // }, function(e) {
+        //     console.log(e)
+        //     var i = {
+        //         loading: false,
+        //         result: e.result,
+        //         merchInfo: e.result.merchInfo,
+        //         goodlist: e.result.goodList.list.slice(0, 3)
+        //     }
+        //     tt.setData(i)
+        // })
         // 首页附近异业商家
         s.get("changce/merch/get_list", {
             page: 1,
@@ -978,11 +1018,23 @@ Page((e = {
         wx.getLocation({
             type: 'wgs84',
             success: function(res) {
-                that.setData({
-                    location: {
-                        longitude: res.longitude,
-                        latitude: res.latitude
+                console.log(res)
+                longitude = res.longitude
+                latitude = res.latitude
+                // 门店服务
+                s.get("changce/merch/get_from_store", {
+                    page: 1,
+                    lat: res.latitude,
+                    lng: res.longitude,
+                }, function(e) {
+                    console.log(e)
+                    var i = {
+                        loading: false,
+                        result: e.result,
+                        merchInfo: e.result.merchInfo,
+                        goodlist: e.result.goodList.list.slice(0, 3)
                     }
+                    that.setData(i)
                 })
             }
         })

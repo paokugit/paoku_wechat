@@ -88,8 +88,8 @@
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
                 <view class='dingdan-img service-img'>
                     <block>
-                        <block wx:if="{{member.statics.order_0>0}}">
-                            <view class="count-img">{{member.statics.order_0}}</view>
+                        <block wx:if="{{fu_order>0}}">
+                            <view class="count-img">{{fu_order}}</view>
                         </block>
                     </block>
                     <image src='{{order.payment}}'></image>
@@ -99,8 +99,8 @@
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
                 <view class='dingdan-img service-img'>
                     <block>
-                        <block wx:if="{{member.statics.order_1>0}}">
-                            <view class="count-img">{{member.statics.order_1}}</view>
+                        <block wx:if="{{fa_order>0}}">
+                            <view class="count-img">{{fa_order}}</view>
                         </block>
                     </block>
                     <image src='{{order.send}}'></image>
@@ -110,8 +110,8 @@
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
                 <view class='dingdan-img service-img'>
                     <block>
-                        <block wx:if="{{member.statics.order_2>0}}">
-                            <view class="count-img">{{member.statics.order_2}}</view>
+                        <block wx:if="{{shou_order>0}}">
+                            <view class="count-img">{{shou_order}}</view>
                         </block>
                     </block>
                     <image src='{{order.received}}'></image>
@@ -121,8 +121,8 @@
             <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
                 <view class='dingdan-img service-img'>
                     <block>
-                        <block wx:if="{{member.statics.order_4>0}}">
-                            <view class="count-img">{{member.statics.order_4}}</view>
+                        <block wx:if="{{tui_order>0}}">
+                            <view class="count-img">{{tui_order}}</view>
                         </block>
                     </block>
                     <image src='{{order.evaluated}}'></image>

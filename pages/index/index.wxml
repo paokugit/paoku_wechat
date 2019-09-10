@@ -166,11 +166,21 @@
         <view class='store-service-title'>
             <view class='storeservice-tit'>门店服务</view>
             <view class='service-circle'></view>
-            <view class='service-abso' bindtap='click'>
-                <view class='service-address'>
-                    <image src='{{globalimg}}/address02.png'></image>
+            <view class='service-abso-dis' bindtap='click' style='display:{{addressDis}}'>
+                <view class='service-abso'>
+                    <view class='service-address floating'>
+                        <image src='{{globalimg}}/address02.png'></image>
+                    </view>
+                    <view class='address-text'>获取地理位置</view>
                 </view>
-                <view class='address-text'>获取地理位置</view>
+            </view>
+            <view class='service-absolute-dis' bindtap='click' style='display:{{merchantDis}}'>
+                <view class='service-absolute'>
+                    <view class='service-address floating'>
+                        <image src='{{globalimg}}/address02.png'></image>
+                    </view>
+                    <view class='address-text'>获取附近商家</view>
+                </view>
             </view>
         </view>
         <view class='store-service-box'>

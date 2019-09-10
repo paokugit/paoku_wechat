@@ -597,27 +597,56 @@ image {
     padding: 0 3%;
     display: flex;
     align-items: center;
-    position: relative
+    position: relative;
 }
-.service-abso{
+
+.service-absolute-dis {
     width: 200rpx;
     height: 80rpx;
-    /* background: #00f; */
+    /* background: #0ff; */
     position: absolute;
     top: 0;
-    right: 0;
-    display: flex;
-    align-items: center
+    right: 10rpx;
 }
-.service-address{
+
+.service-absolute {
+    width: 200rpx;
+    height: 80rpx;
+    /* background: #0ff; */
+    display: flex;
+    align-items: center;
+}
+
+.service-abso-dis {
+    width: 200rpx;
+    height: 80rpx;
+    /* background: #0f0; */
+    position: absolute;
+    top: 0;
+    right: 10rpx;
+}
+
+.service-abso {
+    width: 200rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+}
+
+.service-address {
     width: 26rpx;
     height: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
-.address-text{
+
+.address-text {
     color: #333;
     font-size: 26rpx;
-    margin-left: 10rpx
+    margin-left: 10rpx;
 }
+
 .storeservice-tit {
     font-size: 40rpx;
     color: #333;

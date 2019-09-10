@@ -48,6 +48,10 @@ Page({
         credit4: '',
         cometotal: 0,
         calorietotal: 0,
+        fu_order: 0,
+        fa_order: 0,
+        shou_order: 0,
+        tui_order: 0,
         textList: [{
             txt: '领1年产品'
         }, {
@@ -198,7 +202,11 @@ Page({
                         notlogindis: 'block',
                         cometotal: 0.00,
                         calorietotal: 0.00,
-                        credit4:0
+                        conbind: 0,
+                        fu_order: 0,
+                        fa_order: 0,
+                        shou_order: 0,
+                        tui_order: 0,
                     });
                 else if (res.authSetting['scope.userInfo']) {
                     console.log('已经获取个人信息')
@@ -212,14 +220,19 @@ Page({
                                 member: a,
                                 cometotal: a.come_total,
                                 calorietotal: a.calorie_total,
+                                fu_order: a.statics.order_0,
+                                fa_order: a.statics.order_1,
+                                shou_order: a.statics.order_2,
+                                tui_order: a.statics.order_4,
                             })
                     });
                     a.get("myown/devote/msg", {
                         openid: userinfo.openid,
-                    }, function (eve) {
+                    }, function(eve) {
                         console.log(eve)
                         if (e.error == 0) {
                             e.setData({
+                                conbind: 1,
                                 credit4: eve.message.credit4
                             })
                         }
@@ -258,6 +271,14 @@ Page({
                         userinfodis: 'block',
                         notlogindis: 'none',
                     })
+                    a.get("member", {}, function(a) {
+                        console.log(a),
+                            that.setData({
+                                member: a,
+                                cometotal: a.come_total,
+                                calorietotal: a.calorie_total,
+                            })
+                    });
                     // that.getInfo();
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                     wx.getUserInfo({
@@ -295,10 +316,6 @@ Page({
                                 wx.getUserInfo({
                                     success: function(res) {
                                         var userInfo = res.userInfo;
-                                        // that.setData({
-                                        //     nickName: userInfo.nickName,
-                                        //     avatarUrl: userInfo.avatarUrl,
-                                        // })
                                     }
                                 })
                             }
@@ -314,7 +331,6 @@ Page({
         })
     },
     onShareAppMessage: function(res) {
-        // return s.onShareAppMessage();
         var that = this;
         return {
             title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
