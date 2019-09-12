@@ -131,12 +131,9 @@ Page({
                     windowWidth: e.windowWidth,
                     windowHeight: e.windowHeight,
                     swiperheight: a
-
                 });
             }
-        }), i.get(this, "member", function(e) {}), "" == e.getCache("userinfo") && wx.redirectTo({
-            //   url: "/pages/message/auth/index"
-        });
+        })
 
         useropenid = e.getCache("userinfo").openid;
         t.paoku_card();
@@ -191,13 +188,11 @@ Page({
     },
     onShow: function() {
         var e = this;
-        e.getInfo();
         wx.getSetting({
             success: (res) => {
                 console.log(res)
                 if (!res.authSetting['scope.userInfo'])
                     e.setData({
-                        // member:{},
                         userinfodis: 'none',
                         notlogindis: 'block',
                         cometotal: 0.00,
@@ -258,13 +253,44 @@ Page({
                 })
             }
         });
-
+        e.getInfo();
         this.paoku_card();
     },
     getUserInfo: function(e) {
         let that = this;
         wx.getSetting({
             success(res) {
+                console.log(res)
+                var userinfo = f.getCache('userinfo');
+                console.log(userinfo)
+                if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
+                    wx.login({
+                        success: function(a) {
+                            a.code ? p.post("wxapp.login", {
+                                code: a.code
+                            }, function(a) {
+                                console.log(a)
+                                wx.getUserInfo({
+                                    success: function(info) {
+                                        console.log(info);
+                                        console.log(a.session_key);
+                                        p.get("wxapp/auth", {
+                                            data: info.encryptedData,
+                                            iv: info.iv,
+                                            sessionKey: a.session_key
+                                        },function(eve){
+                                            console.log(eve)
+                                            that.getInfo();
+                                        }
+                                        )
+                                    }
+                                });
+                            }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+                        }
+                    })
+
+                }
                 if (res.authSetting['scope.userInfo']) {
                     console.log("已授权=====")
                     that.setData({
@@ -279,19 +305,6 @@ Page({
                                 calorietotal: a.calorie_total,
                             })
                     });
-                    // that.getInfo();
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                    wx.getUserInfo({
-                        success(res) {
-                            console.log("获取用户信息成功", res)
-                            that.setData({
-                                name: res.userInfo.nickName
-                            })
-                        },
-                        fail(res) {
-                            console.log("获取用户信息失败", res)
-                        }
-                    })
                 } else {
                     console.log("未授权=====")
                     that.showSettingToast("请授权")

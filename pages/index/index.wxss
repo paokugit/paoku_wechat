@@ -45,20 +45,20 @@ button::after {
 
 .werun-box {
     width: 100%;
-    height: 80rpx;
+    height: 60rpx;
     position: absolute;
     top: 66%;
 }
 
 .werun-absolute {
     width: 100%;
-    height: 80rpx;
+    height: 60rpx;
     position: relative;
 }
 
 .getkllbtn-box {
     width: 100%;
-    height: 80rpx;
+    height: 60rpx;
     /* background: #f0f; */
     position: absolute;
     top: 0;
@@ -69,8 +69,7 @@ button::after {
 
 .getcalorie-box {
     width: 100%;
-    height: 80rpx;
-    background: #f0f;
+    height: 60rpx;
     opacity: 0;
     position: absolute;
     top: 0;
@@ -87,14 +86,14 @@ button::after {
 
 .getkllbtn {
     width: 300rpx;
-    height: 80rpx;
+    height: 60rpx;
     background: #fff;
     border-radius: 45rpx;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #01d7a1;
-    font-size: 34rpx;
+    font-size: 30rpx;
 }
 
 .first-entry-box {

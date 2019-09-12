@@ -5,10 +5,11 @@ page {
     background: #a00000;
     overflow-y: hidden;
 }
+
 .gift_box {
     width: 100%;
     height: 100%;
-    position: relative
+    position: relative;
 }
 
 image {
@@ -41,7 +42,8 @@ image {
 
 .gift-bottomcon {
     width: 100%;
-    height: 1000rpx;
+    height: auto;
+    padding-bottom: 100rpx;
     background: #a00000;
     display: flex;
     flex-direction: column;
@@ -322,7 +324,8 @@ image {
 
 .gift-bottom-box {
     width: 100%;
-    height: 900rpx;
+    height: auto;
+    padding-bottom: 100rpx;
     background: #a00000;
     display: flex;
     flex-direction: column;
@@ -383,32 +386,25 @@ image {
 
 .primary-box, .middle-box, .high-box {
     width: 90%;
-    height: 400rpx;
-    padding: 0 5%;
+    height: auto;
+    padding: 0 5% 140rpx;
     margin-top: 20rpx;
 }
 
-.primary-box {
+.primary-wrap {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around
 }
-
 .middle-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.high-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .primary-con {
     width: 50%;
     height: 100%;
+    margin-bottom: 30rpx;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -432,7 +428,7 @@ image {
     bottom: 5%;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .good-absolute {
@@ -752,9 +748,10 @@ button::after {
     margin: auto;
     overflow-y: scroll;
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
-.activity-position{
+
+.activity-position {
     width: 100%;
     height: 540rpx;
     padding: 0 4% 30rpx;
@@ -766,16 +763,18 @@ button::after {
     position: relative;
     /* box-shadow: 0 0 0 20rpx #fff inset */
 }
-.activity-black{
+
+.activity-black {
     width: 100%;
     height: 20rpx;
     background: #f66;
     border-radius: 0 0 30rpx 30rpx;
     position: fixed;
     left: 0;
-    bottom: 0
+    bottom: 0;
 }
-.eventtit{
+
+.eventtit {
     width: 100%;
     height: 60rpx;
     /* background: #f89; */
@@ -784,20 +783,22 @@ button::after {
     font-size: 34rpx;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
-.eventcon-bold{
+
+.eventcon-bold {
     /* width: 100%;
     height: auto; */
     color: #333;
     font-size: 32rpx;
-    font-weight: bold
-
+    font-weight: bold;
 }
-.eventcon{
+
+.eventcon {
     color: #666;
     font-size: 32rpx;
 }
+
 .activity-conbox::-webkit-scrollbar {
     display: none; /* 隐藏滚动条 */
 }

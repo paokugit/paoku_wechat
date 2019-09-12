@@ -574,15 +574,6 @@ Page((e = {
                     }
 
                 });
-                // s.get("userinfo", {}, function(e) {
-                //     if (e.status == 1) {
-                //         ttt.setData({
-                //             credit1: e.result.credit1,
-                //             todaystep: e.result.todaystep
-                //         });
-                //     }
-
-                // });
             });
             sss.autoplay = !0, sss.src = this.data.mp3_url + "/coin.mp3", sss.onPlay(function() {
                 console.log("开始播放");
@@ -644,16 +635,19 @@ Page((e = {
         wx.getSetting({
             success: (res) => {
                 console.log(res)
-                if (!res.authSetting['scope.werun'])
+                if (!res.authSetting['scope.werun']){
+                    console.log('未获取微信运动')
                     t.setData({
                         credit1: 0,
                         todaystep: 0
                     });
+                }
+
                 else if (res.authSetting['scope.werun']) {
                     console.log('已经获取运动')
-                    t.setData({
-                        werunDis: 'none',
-                    })
+                    // t.setData({
+                    //     werunDis: 'none',
+                    // })
                     s.get("userinfo", {}, function(e) {
                         if (e.status == 1) {
                             t.setData({
@@ -860,6 +854,7 @@ Page((e = {
         var tt = this;
         wx.login({
             success: function(a) {
+                console.log(a)
                 a.code ? s.post("wxapp.login", {
                     code: a.code
                 }, function(a) {
@@ -959,35 +954,71 @@ Page((e = {
         var that = this
         wx.getWeRunData({
             success(res) {
-                res.sessionKey = a.session_key;
-                res.openid = i.openid;
-                s.post('wxapp/urundata', {
-                    res
-                }, function(e) {
-                    console.log(e)
-                    if (e.status == 1) {
-                        s.get("userinfo", {}, function(ee) {
-                            if (ee.status == 1) {
-                                console.log('运动步数');
-                                that.setData({
-                                    credit1: ee.result.credit1,
-                                    todaystep: ee.result.todaystep
-                                });
-                            }
-                        });
-                    }
-                })
+                console.log(res)
+                if (res.openid == undefined || res.sessionKey == undefined) {
+                    wx.login({
+                        success: function(a) {
+                            a.code ? s.post("wxapp.login", {
+                                code: a.code
+                            }, function(a) {
+                                console.log(a)
+                                openid = "sns_wa_" + a.openid
+                                res.sessionKey = a.session_key;
+                                res.openid = openid;
+                                s.post('wxapp/urundata', {
+                                    res
+                                }, function(e) {
+                                    console.log(e)
+                                    if (e.status == 1) {
+                                        s.get("userinfo", {}, function(ee) {
+                                            if (ee.status == 1) {
+                                                console.log('运动步数');
+                                                that.setData({
+                                                    credit1: ee.result.credit1,
+                                                    todaystep: ee.result.todaystep
+                                                });
+                                            }
+                                        });
+                                        // 今日好友助力步数
+                                        s.get("help/index/helpstep_today", {
+                                            openid: userinfo.openid
+                                        }, function(aaa) {
+                                            // console.log(aaa)
+                                            that.setData({
+                                                helpstep: aaa.result.step
+                                            })
+                                        });
+
+                                    }
+                                })
+                            }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+                        }
+                    })
+                }
             }
         });
         //判断是否获得了微信运动
         wx.getSetting({
             success: (res) => {
-                if (!res.authSetting['scope.werun'])
+                if (!res.authSetting['scope.werun']) {
                     that.setData({
                         credit1: 0,
                         todaystep: 0
                     });
-                that.openfirm()
+                    that.openfirm()
+                } else if (res.authSetting['scope.werun']) {
+                    s.get("userinfo", {}, function (e) {
+                        console.log(e)
+                        if (e.status == 1) {
+                            that.setData({
+                                credit1: e.result.credit1,
+                                todaystep: e.result.todaystep
+                            });
+                        }
+
+                    });
+                }
             }
         })
 

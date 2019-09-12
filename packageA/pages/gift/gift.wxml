@@ -108,17 +108,19 @@
         <view class="{{type==1 ?'show':'hidden'}}">
             <scroll-view>
                 <view class='primary-box'>
-                    <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
-                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
-                            <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'>
-                                <image src='{{item.thumb}}'></image>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>普通、健康达人享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img'>
-                                <image src='{{globalimg}}/oqg02@2x.png'></image>
-                            </view>
-                            <view class='exclusive-box'>普通、健康达人享有</view>
-                            <!-- <view class='lingqu'>可领</view> -->
                         </view>
                     </view>
                 </view>
@@ -127,17 +129,19 @@
         <view class="{{type==2 ?'show':'hidden'}}">
             <scroll-view>
                 <view class='middle-box'>
-                    <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
-                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
-                            <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'>
-                                <image src='{{item.thumb}}'></image>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>星选达人享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img'>
-                                <image src='{{globalimg}}/oqg02@2x.png'></image>
-                            </view>
-                            <view class='exclusive-box'>星选达人享有</view>
-                            <!-- <view class='lingqu'>可领</view> -->
                         </view>
                     </view>
                 </view>
@@ -146,17 +150,19 @@
         <view class="{{type==3 ?'show':'hidden'}}">
             <scroll-view>
                 <view class='high-box'>
-                    <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
-                        <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='{{item.is_get}}'>
-                            <image src='{{globalimg}}/01@2x.png'></image>
-                            <view class='good-absolute'>
-                                <image src='{{item.thumb}}'></image>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='{{item.is_get}}'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>店主享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img'>
-                                <image src='{{globalimg}}/oqg02@2x.png'></image>
-                            </view>
-                            <view class='exclusive-box'>店主享有</view>
-                            <!-- <view class='lingqu'>可领</view> -->
                         </view>
                     </view>
                 </view>
@@ -237,8 +243,8 @@
                 </view>
                 <view class='eventcon'>以上每个级别权益奖励每7天每个礼包只能各领1次。</view>
                 <view class='eventcon'>普通/健康达人，每7天可免费领取1个初级礼包；7天成功邀请10人，可免费领取1个礼包。</view>
-                 <view class='eventcon'>星选达人，每7天可免费领取1个中级礼包、1个初级礼包；7天成功邀请20人，可免费领取2个礼包。</view>
-                 <view class='eventcon'>店主，每7天可免费领取1个高级礼包、1个中级礼包，1个初级礼包；7天成功邀请30人，即可领取3个礼包各一件。</view>
+                <view class='eventcon'>星选达人，每7天可免费领取1个中级礼包、1个初级礼包；7天成功邀请20人，可免费领取2个礼包。</view>
+                <view class='eventcon'>店主，每7天可免费领取1个高级礼包、1个中级礼包，1个初级礼包；7天成功邀请30人，即可领取3个礼包各一件。</view>
                 <!-- <view class='activity-black'></view> -->
             </view>
 

@@ -75,7 +75,7 @@
         <view class='werun-box' style='display:{{werunDis}}'>
             <view class='werun-absolute'>
                 <view class='getkllbtn-box'>
-                    <view class='getkllbtn'> 登录后可查看</view>
+                    <view class='getkllbtn'> 点击获取运动步数</view>
                 </view>
                 <view class='getcalorie-box'>
                     <button bindtap='getcaloriebtn' class='getcalorie'></button>
