@@ -473,15 +473,15 @@ Page((e = {
         });
 
 
-        // s.get("userinfo", {}, function(ee) {
-        //     if (ee.status == 1) {
-        //         // console.log('更新信息');
-        //         a.setData({
-        //             credit1: ee.result.credit1,
-        //             todaystep: ee.result.todaystep
-        //         });
-        //     }
-        // });
+        s.get("userinfo", {}, function(ee) {
+            if (ee.status == 1) {
+                // console.log('更新信息');
+                a.setData({
+                    credit1: ee.result.credit1,
+                    todaystep: ee.result.todaystep
+                });
+            }
+        });
 
         // 今日好友助力步数
         s.get("help/index/helpstep_today", {
@@ -645,18 +645,50 @@ Page((e = {
 
                 else if (res.authSetting['scope.werun']) {
                     console.log('已经获取运动')
-                    // t.setData({
-                    //     werunDis: 'none',
-                    // })
-                    s.get("userinfo", {}, function(e) {
-                        if (e.status == 1) {
-                            t.setData({
-                                credit1: e.result.credit1,
-                                todaystep: e.result.todaystep
-                            });
-                        }
+                  wx.getWeRunData({
+                    success(res) {
+                      console.log(res)
+                      wx.login({
+                        success: function (a) {
+                          a.code ? s.post("wxapp.login", {
+                            code: a.code
+                          }, function (a) {
+                            console.log(a)
+                            openid = "sns_wa_" + a.openid
+                            res.sessionKey = a.session_key;
+                            res.openid = openid;
+                            s.post('wxapp/urundata', {
+                              res
+                            }, function (e) {
+                              console.log(e)
+                              if (e.status == 1) {
+                                s.get("userinfo", {}, function (ee) {
+                                  if (ee.status == 1) {
+                                    console.log('运动步数', ee);
+                                    t.setData({
+                                      credit1: ee.result.credit1,
+                                      todaystep: ee.result.todaystep
+                                    });
+                                  }
+                                });
+                                // 今日好友助力步数
+                                s.get("help/index/helpstep_today", {
+                                  openid: userinfo.openid
+                                }, function (aaa) {
+                                  // console.log(aaa)
+                                  t.setData({
+                                    helpstep: aaa.result.step
+                                  })
+                                });
 
-                    });
+                              }
+                            })
+                          }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+                        }
+                      })
+                    }
+                  });
 
                 }
                 if (!res.authSetting['scope.userLocation']) {
@@ -1008,6 +1040,12 @@ Page((e = {
                     });
                     that.openfirm()
                 } else if (res.authSetting['scope.werun']) {
+                  console.log('已经获取')
+                  
+                wx.showToast({
+                  title: '今日步数已更新',
+                  duration:1000
+                })
                     s.get("userinfo", {}, function (e) {
                         console.log(e)
                         if (e.status == 1) {
