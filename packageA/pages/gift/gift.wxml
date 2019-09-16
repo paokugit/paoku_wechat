@@ -1,5 +1,5 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='gift_box' style='margin-top:{{nvabarData.height}}px'>
+<scroll-view class='gift_box' style='margin-top:{{nvabarData.height}}px' scroll-y="{{isScroll}}">
     <view class='gift-topbg'>
         <image src='{{globalimg}}/pic01@2x.png'></image>
         <view class='time-box'>
@@ -8,16 +8,18 @@
         </view>
         <!-- 快报 -->
         <view class='index-news-box'>
-            <view class='notice-img'>
-                <!-- <image mode="aspectFit"></image> -->
-            </view>
+
             <view class='swiper-box'>
+
                 <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
                     <block wx:for="{{noticelist}}" wx:key="{{index}}">
                         <swiper-item class="notice-box">
+                            <view class='notice-img'>
+                                <image src='{{item.avatar}}'></image>
+                            </view>
                             <view class='notice-name'>{{item.nickname}}</view>
                             <view class='notice-desc'>成功领取</view>
-                            <view class='notice-money'>xxx礼包</view>
+                            <view class='notice-money'>{{item.gift}}</view>
                         </swiper-item>
                     </block>
                 </swiper>
@@ -32,30 +34,22 @@
             <view class='title-rule-con'>
                 <text class='title-limit'>每周可领3个免费礼包</text>
                 <text class='title-remark'>(最多)</text>
-                <view class='rule-btn'>规则说明</view>
+                <view class='rule-btn' bindtap='rulebtn'>规则说明</view>
             </view>
         </view>
         <view class='grade-position-box'>
             <view class='grade-con-box'>
                 <view class='grade-con-left'>
                     <view class='grade-tit'>当前级别:</view>
-                    <!-- <view class='grade-level'>{{gradelevel}}</view> -->
-                    <view class='grade-level'>健康达人</view>
+                    <view class='grade-level'>{{gradelevel}}</view>
                 </view>
-
-                <view class='grade-con-right' wx:if="{{is_get==0 && agent_level==5}}" bindtap='getbtn'>不符合要求
-                    <view class='jiantou-img'>
-                        <image src='{{globalimg}}/shixinjiantou (1).png'></image>
-                    </view>
-                </view>
-                <!-- <view class='grade-con-right' wx:else>享受{{gradegift}}</view> -->
-                <view class='grade-con-right' wx:else>免费享受xx个礼包</view>
+                <view class='grade-con-right'>免费享受{{getall}}个礼包</view>
             </view>
         </view>
         <view class='title-record-box'>
             <view class='title-rule-con'>
-                <text class='title-libao'>本周已获得：xx个礼包</text>
-                <view class='rule-btn'>领取记录</view>
+                <text class='title-libao'>本周已获得：{{gets}}个礼包</text>
+                <view class='rule-btn' bindtap='receivebtn'>领取记录</view>
             </view>
         </view>
         <view class='help-position-box'>
@@ -63,34 +57,30 @@
                 <view class='help-total-box'>
                     <view class='help-total-tit'>累计邀请</view>
                     <view class='help-total-count-box'>
-                        <text class='help-total-count'>50</text>
+                        <text class='help-total-count'>{{goal}}</text>
                         <text class='help-total-remark'>人</text>
                     </view>
                 </view>
                 <view class='help-line-box'>
                     <view class='help-total-tit'>本周已邀请</view>
-                    <view class='invite-time'>8.30-9.5</view>
+                    <view class='invite-time'>{{weekstart}}-{{weekend}}</view>
                     <view class='help-total-count-box'>
-                        <text class='help-total-count'>50</text>
+                        <text class='help-total-count'>{{help_count}}</text>
                         <text class='help-total-remark'>人</text>
                     </view>
                 </view>
                 <view class='help-total-box'>
                     <view class='help-total-tit'>最高目标还差</view>
-                    <view class='invite-time'>8.30-9.5</view>
+                    <view class='invite-time'>{{weekstart}}-{{weekend}}</view>
                     <view class='help-total-count-box'>
-                        <text class='help-total-count'>50</text>
+                        <text class='help-total-count'>{{remain}}</text>
                         <text class='help-total-remark'>人</text>
                     </view>
                 </view>
-                <!-- <view class=' help-count goal '>{{goal}}</view>
-                <view class='help-count success '>{{help_count}}</view>
-                <view class='help-count fail '>{{remain}}</view> -->
             </view>
         </view>
-        <!-- <navigator url='/packageA/pages/gift/record ' class='record-position-box '>助力记录</navigator> -->
         <view class='record-position-box'>
-            <view class='record-con'>
+            <view class='record-con' bindtap='helpbtn'>
                 <view class='record-title'>助力名单</view>
                 <view class='record-img-box'>
                     <view class='record-text'>记录</view>
@@ -98,131 +88,171 @@
                 </view>
             </view>
         </view>
-        <view class='list-position-box '>
-            <view class='list-con-box '>
-                <view class='list-item ' wx:for="{{helplist}}">
-                    <image src='{{item.avatar}} '></image>
+        <view class='list-position-box'>
+            <view class='list-con-box'>
+                <view class='list-item' wx:for="{{helplist}}">
+                    <image src='{{item.avatar}}'></image>
                 </view>
             </view>
         </view>
     </view>
-    <view class='gift-bottom-box '>
-        <view class='invite-img '>
-            <image src='{{globalimg}}/pic05@2x.png '></image>
+    <view class='gift-bottom-box'>
+        <view class='invite-img'>
+            <image src='{{globalimg}}/pic05@2x.png'></image>
         </view>
         <view class="swiper-tab">
-            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active ':' '}}" data-type="1">初级礼包</view>
-            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active ':' '}}" data-type="2">中级礼包</view>
-            <view bindtap="myTab" class="swiper-tab-item {{type==3?'active ':' '}}" data-type="3">高级礼包</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">初级礼包</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">中级礼包</view>
+            <view bindtap="myTab" class="swiper-tab-item {{type==3?'active':''}}" data-type="3">高级礼包</view>
         </view>
-        <view class="{{type==1 ? 'show ':'hidden '}}">
+        <view class="{{type==1 ?'show':'hidden'}}">
             <scroll-view>
-                <view class='primary-box '>
-                    <view class='primary-con ' wx:for="{{primarylist}}" wx:key="{{index}}">
-                        <view class='primary-img ' data-id='{{item.id}} ' bindtap='getgiftbtn '>
-                            <image src='{{globalimg}}/01@2x.png '></image>
-                            <view class='good-absolute '>
-                                <image src='{{item.thumb}} '></image>
+                <view class='primary-box'>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{primarylist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>普通、健康达人享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img '>
-                                <image src='{{globalimg}}/oqg02@2x.png '></image>
-                            </view>
-                            <view class='exclusive-box '>普通、健康达人享有</view>
                         </view>
                     </view>
                 </view>
             </scroll-view>
         </view>
-        <view class="{{type==2 ? 'show ':'hidden '}}">
+        <view class="{{type==2 ?'show':'hidden'}}">
             <scroll-view>
-                <view class='middle-box '>
-                    <view class='primary-con ' wx:for="{{middlelist}}" wx:key="{{index}}">
-                        <view class='primary-img ' data-id='{{item.id}} ' bindtap='getgiftbtn '>
-                            <image src='{{globalimg}}/01@2x.png '></image>
-                            <view class='good-absolute '>
-                                <image src='{{item.thumb}} '></image>
+                <view class='middle-box'>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{middlelist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='item.is_get'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>星选达人享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img '>
-                                <image src='{{globalimg}}/oqg02@2x.png '></image>
-                            </view>
-                            <view class='exclusive-box '>星选达人享有</view>
                         </view>
                     </view>
                 </view>
             </scroll-view>
         </view>
-        <view class="{{type==3 ? 'show ':'hidden '}}">
+        <view class="{{type==3 ?'show':'hidden'}}">
             <scroll-view>
-                <view class='high-box '>
-                    <view class='primary-con ' wx:for="{{highlist}}" wx:key="{{index}}">
-                        <view class='primary-img ' data-id='{{item.id}} ' bindtap='getgiftbtn '>
-                            <image src='{{globalimg}}/01@2x.png '></image>
-                            <view class='good-absolute '>
-                                <image src='{{item.thumb}} '></image>
+                <view class='high-box'>
+                    <view class='primary-wrap'>
+                        <view class='primary-con' wx:for="{{highlist}}" wx:key="{{index}}">
+                            <view class='primary-img' data-id='{{item.id}}' bindtap='getgiftbtn' data-get='{{item.is_get}}'>
+                                <image src='{{globalimg}}/01@2x.png'></image>
+                                <view class='good-absolute'>
+                                    <image src='{{item.thumb}}'></image>
+                                </view>
+                                <view class='free-img'>
+                                    <image src='{{globalimg}}/oqg02@2x.png'></image>
+                                </view>
+                                <view class='exclusive-box'>店主享有</view>
+                                <!-- <view class='lingqu'>可领</view> -->
                             </view>
-                            <view class='free-img '>
-                                <image src='{{globalimg}}/oqg02@2x.png '></image>
-                            </view>
-                            <view class='exclusive-box '>店主享有</view>
                         </view>
                     </view>
                 </view>
             </scroll-view>
         </view>
     </view>
-</view>
+</scroll-view>
 <!-- 继续邀请赚更多-开始 -->
-<form bindsubmit='form_submit ' report-submit='true ' class='inviteform '>
-    <button form-type='submit ' style="background:rgba(0,0,0,0)" class='invitebtn ' open-type='share '>
-        <view class='invite-friend-box '>
-            <view class='gift-invite ballon '>
-                <image src='{{globalimg}}/buttun@2x.png '></image>
+<form bindsubmit='form_submit' report-submit='true' class='inviteform'>
+    <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn' open-type='share'>
+        <view class='invite-friend-box'>
+            <view class='gift-invite ballon'>
+                <image src='{{globalimg}}/buttun@2x.png'></image>
             </view>
         </view>
     </button>
 </form>
-<!-- <view class='invite-box '></view> -->
+<!-- <view class='invite-box'></view> -->
 <!-- 继续邀请赚更多-结束 -->
 <!-- 助力成功 -->
-<view class='help_mask ' style='display:{{helpDis}} '>
-    <view class='help-mask-relative '>
-        <view class='light-img '>
-            <image src='{{globalimg}}/caisi@2x.png '></image>
+<view class='help_mask' style='display:{{helpDis}}'>
+    <view class='help-mask-relative'>
+        <view class='light-img'>
+            <image src='{{globalimg}}/caisi@2x.png'></image>
         </view>
-        <view class='light02-img '>
-            <image class='float ' src='{{globalimg}}/light02.png '></image>
+        <view class='light02-img'>
+            <image class='float' src='{{globalimg}}/light02.png'></image>
         </view>
-        <view class='help-success-bg '>
-            <view class='help-success-relative '>
-                <view class='avatar-img '>
-                    <image src='{{friendavatar}} '></image>
+        <view class='help-success-bg'>
+            <view class='help-success-relative'>
+                <view class='avatar-img'>
+                    <image src='{{friendavatar}}'></image>
                 </view>
-                <view class='zlcg-img '>
-                    <image src='{{globalimg}}/zlcg@2x.png '></image>
+                <view class='zlcg-img'>
+                    <image src='{{globalimg}}/zlcg@2x.png'></image>
                 </view>
-                <view class='help-success-text '>谢谢你，为我助力!</view>
-                <view class='gift-btn ' bindtap='participantbtn '>
-                    <image src='{{globalimg}}/buttun01@2x.png '></image>
+                <view class='help-success-text'>谢谢你，为我助力!</view>
+                <view class='gift-btn' bindtap='participantbtn'>
+                    <image src='{{globalimg}}/buttun01@2x.png'></image>
                 </view>
             </view>
         </view>
     </view>
 </view>
 <!-- 说明 -->
-<view class='explain_mask ' style='display:{{explainDis}} '>
-    <view class='help-mask-relative '>
-        <view class='help-success-bg '>
-            <view class='help-success-relative '>
-                <view class='explain-text '>说明</view>
-                <view class='explain-con '>此活动限还未使用兑换券的店主，您的券已使用，不在活动范围内。</view>
-                <view class='explain-btn ' bindtap='explainbtn '>知道了</view>
+<view class='explain_mask' style='display:{{explainDis}}'>
+    <view class='help-mask-relative'>
+        <view class='help-success-bg'>
+            <view class='help-success-relative'>
+                <view class='explain-text'>说明</view>
+                <view class='explain-con'>此活动限还未使用兑换券的店主，您的券已使用，不在活动范围内。</view>
+                <view class='explain-btn' bindtap='explainbtn'>知道了</view>
             </view>
         </view>
     </view>
 </view>
 <!-- 活动说明 -->
-<view class='activity-explain-box'>
+<view class='activity-explain-box' style='display:{{activityDis}}'>
     <view class='activity-relative'>
-        <view class='activity-conbox'></view>
+        <view class='activity-conbox'>
+            <view class='activity-position'>
+                <view class='eventtit'>活动说明</view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>1、活动时间：</text>
+                    <text class='eventcon'>每7天一个活动，每周最多可免费领取3个礼包，根据会员级别，数量不同；</text>
+                </view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>2、活动对象：</text>
+                    <text class='eventcon'>所有用户可参与免费得礼包</text>
+                </view>
+                <view>
+                    <text style='font-size:32rpx;font-weight:bold;'>3、活动奖励：</text>
+                    <text class='eventcon'>受邀人须为新用户（特指从未进过跑库小程序的用户），每邀请10人，获得一个领取礼包权益，每个礼包每周最多领取1次；</text>
+                </view>
+                <view>
+                    <view class='eventcon'>例如：</view>
+                    <text class='eventcon'>小明当前是普通用户，成功邀请10人，获得1个初级礼包权益；如果小明开通了星选达人，则再邀请10人，可再获得1个中级礼包；如果小明是普通用户，一次性邀请了20人，不获得礼包，如果开通星选达人，则再获得1个中级礼包（无须再邀请10人）</text>
+                </view>
+                <view class='eventcon'>以上每个级别权益奖励每7天每个礼包只能各领1次。</view>
+                <view class='eventcon'>普通/健康达人，每7天可免费领取1个初级礼包；7天成功邀请10人，可免费领取1个礼包。</view>
+                <view class='eventcon'>星选达人，每7天可免费领取1个中级礼包、1个初级礼包；7天成功邀请20人，可免费领取2个礼包。</view>
+                <view class='eventcon'>店主，每7天可免费领取1个高级礼包、1个中级礼包，1个初级礼包；7天成功邀请30人，即可领取3个礼包各一件。</view>
+                <!-- <view class='activity-black'></view> -->
+            </view>
+
+        </view>
+        <view class='close-flex' bindtap='closebtn'>
+            <view class='close-btn'>
+                <image src='{{globalimg}}/guanbi.png'></image>
+            </view>
+        </view>
     </view>
 </view>

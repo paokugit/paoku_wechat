@@ -61,7 +61,7 @@
         </form>
         <!-- 绑定手机号的气泡 -->
         <!-- 礼品的气泡 -->
-        <!-- <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
+        <form bindsubmit='form_submit' report-submit='true' class='circle giftbox floating' bindtap='bindgift'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view style='display:{{giftDis}}'>
                     <view class='paopao-box'>
@@ -70,8 +70,20 @@
                     <view class='circle-explain '>未领礼品</view>
                 </view>
             </button>
-        </form> -->
+        </form>
         <!-- 礼品的气泡 -->
+        <view class='werun-box' style='display:{{werunDis}}'>
+            <view class='werun-absolute'>
+                <view class='getkllbtn-box'>
+                    <view class='getkllbtn'> 点击获取运动步数</view>
+                </view>
+                <view class='getcalorie-box'>
+                    <button bindtap='getcaloriebtn' class='getcalorie'></button>
+                </view>
+            </view>
+
+        </view>
+
         <view class='today-step'>今日步数</view>
         <view class='today-step-con'>{{todaystep}}</view>
         <!-- <view class='step'>步</view> -->
@@ -154,6 +166,22 @@
         <view class='store-service-title'>
             <view class='storeservice-tit'>门店服务</view>
             <view class='service-circle'></view>
+            <view class='service-abso-dis' bindtap='click' style='display:{{addressDis}}'>
+                <view class='service-abso'>
+                    <view class='service-address floating'>
+                        <image src='{{globalimg}}/address02.png'></image>
+                    </view>
+                    <view class='address-text'>获取地理位置</view>
+                </view>
+            </view>
+            <view class='service-absolute-dis' bindtap='click' style='display:{{merchantDis}}'>
+                <view class='service-absolute'>
+                    <view class='service-address floating'>
+                        <image src='{{globalimg}}/address02.png'></image>
+                    </view>
+                    <view class='address-text'>获取附近商家</view>
+                </view>
+            </view>
         </view>
         <view class='store-service-box'>
             <view class='store-service-box-top flex_center'>

@@ -1,6 +1,8 @@
 // pages/contribute/record/record.js
 var a, e, i = getApp(),
     s = i.requirejs("core");
+var t = getApp(),
+    a = t.requirejs("wxParse/wxParse");
 //   当前登录人的openid
 var f = getApp();
 // var userinfo = f.getCache('userinfo');
@@ -11,6 +13,10 @@ var invitedid = ''
 var agentid = ""
 // 被助力人的openid
 var bopenid = ""
+var giftImg = ""
+var giftTitle = ""
+var newopenid = ""
+var reurl = ""
 Page({
 
     /**
@@ -23,6 +29,7 @@ Page({
         type: 1,
         helpDis: 'none',
         explainDis: "none",
+        activityDis: 'none',
         goal: '',
         help_count: '',
         remain: '',
@@ -34,13 +41,20 @@ Page({
         primarylist: [],
         middlelist: [],
         highlist: [],
-        noticelist:[],
-        autoplay: !0,
-        interval: 2000,
+        noticelist: [],
+        autoplay: true,
+        interval: 3000,
         duration: 500,
+        circular: true,
         friendavatar: '',
         agent_level: '',
         is_get: '',
+        getall: '',
+        gets: '',
+        weekstart: '',
+        weekend: '',
+        isDialogShow: false,
+        isScroll: true,
         // 组件所需的参数
         nvabarData: {
             showCapsule: 1,
@@ -58,10 +72,30 @@ Page({
             explainDis: 'none'
         })
     },
-    participantbtn:function(){
-        this.setData({
+    participantbtn: function() {
+        var aa = this
+        var userinfo = f.getCache('userinfo');
+        bopenid = userinfo.openid
+        newopenid = ""
+        aa.setData({
             helpDis: 'none'
         })
+        wx.getSetting({
+            success: function (res) {
+                if (res.authSetting['scope.userInfo']) {
+                    console.log("已授权=====")
+                    aa.getList()
+                } else {
+                    console.log("未授权====")
+                    reurl = '/packageA/pages/gift/gift'
+                    wx.redirectTo({
+                        url: "/pages/message/auth/index?refrom=gift&reurl=" + reurl
+                    })
+                }
+
+            }
+        });
+       
     },
     form_submit: function(e) {
         console.log(e.detail.formId);
@@ -86,22 +120,52 @@ Page({
         if (a.invitedid != undefined && a.invitedid != "") {
             console.log('通过分享进入')
             bopenid = a.invitedid
-            tt.setData({
-                helpDis: 'block',
-                // friendavatar: userinfo.avatarUrl
-            })
+            newopenid = userinfo.openid
+            if (bopenid == userinfo.openid) {
+                wx.showModal({
+                    title: '提示',
+                    content: '自己不能给自己助力哦',
+                })
+            } else {
+                tt.setData({
+                    helpDis: 'block',
+                })
+            }
+
         } else {
             console.log('非')
             bopenid = useropenid
+            newopenid = ""
             tt.setData({
                 helpDis: 'none'
             })
+            wx.getSetting({
+                success: function (res) {
+                    if (res.authSetting['scope.userInfo']) {
+                        console.log("已授权=====")
+                    } else {
+                        console.log("未授权====")
+                        reurl = '/packageA/pages/gift/gift'
+                        wx.redirectTo({
+                            url: "/pages/message/auth/index?refrom=gift&reurl=" + reurl
+                        })
+                    }
+
+                }
+            });
         }
+        s.get("game/share", {}, function(eve) {
+            console.log(eve)
+            giftImg = eve.result.share.thumb
+            giftTitle = eve.result.share.title
+        })
     },
     getgiftbtn: function(event) {
         console.log(event)
+        console.log(event.currentTarget.dataset.id)
         s.get("game/index/getgift", {
             openid: useropenid,
+            goodsid: event.currentTarget.dataset.id
         }, function(e) {
             console.log(e)
             if (e.status == 0) {
@@ -128,13 +192,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        console.log('bopenid')
-        console.log(bopenid)
+        var t = this
+        t.getList()
+        console.log(bopenid, newopenid)
+    },
+    getList: function() {
+        console.log('bopenid', 'newopenid')
+        console.log(bopenid, newopenid)
         var t = this
         s.get("game/index/free", {
-            help_openid: bopenid
+            help_openid: bopenid,
+            new_openid: newopenid
         }, function(e) {
             console.log(e)
+            a.wxParse("wxParseData", "html", e.result.desc, t, "5")
             agentid = e.result.agent_level
             if (e.status == 1) {
                 t.setData({
@@ -149,6 +220,10 @@ Page({
                     helplist: e.result.new_member,
                     starttime: e.result.start,
                     endtime: e.result.end,
+                    getall: e.result.get_all,
+                    gets: e.result.gets,
+                    weekstart: e.result.week_start,
+                    weekend: e.result.week_end,
                     primarylist: e.result.goods[0].thumbs,
                     middlelist: e.result.goods[1].thumbs,
                     highlist: e.result.goods[2].thumbs
@@ -175,14 +250,34 @@ Page({
             }
 
         });
-        s.get("changce/merch/draw_rank", {}, function (e) {
+        s.get("game/notice", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
                 t.setData({
-                    noticelist: e.result.log
+                    noticelist: e.result.list
                 })
             }
         });
+    },
+    receivebtn: function() {
+        wx.navigateTo({
+            url: '/packageA/pages/gift/getrecord',
+        })
+    },
+    helpbtn: function() {
+        wx.navigateTo({
+            url: '/packageA/pages/gift/helprecord',
+        })
+    },
+    rulebtn: function() {
+        this.setData({
+            activityDis: 'block'
+        })
+    },
+    closebtn: function() {
+        this.setData({
+            activityDis: 'none'
+        })
     },
 
     /**
@@ -202,11 +297,11 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function(res) {
-        // return s.onShareAppMessage();
         var that = this;
         return {
-            title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
+            title: giftTitle,
             path: '/packageA/pages/gift/gift?invitedid=' + useropenid,
+            imageUrl: giftImg,
             success: function(res) {
                 // 转发成功
 

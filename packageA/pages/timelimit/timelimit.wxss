@@ -59,7 +59,9 @@ page {
     flex-direction: column;
     align-items: center;
 }
-
+.hotrob-box{
+    padding-bottom: 30rpx;
+}
 .hot-container {
     width: 92%;
     height: auto;

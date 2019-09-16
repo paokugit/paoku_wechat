@@ -12,7 +12,8 @@
                 </view>
             </view>
             <view class='help-right'>
-                <view class='friend-step'>+{{item.step}}步</view>
+                <view class='friend-step' wx:if="{{item.is_valid==1}}">新用户</view>
+                <view class='friend-step' wx:if="{{item.is_valid==0}}">老用户</view>
                 <view class='condition' wx:if="{{item.is_valid==1}}">符合</view>
                 <view class='condition-none' wx:if="{{item.is_valid==0}}">不符合</view>
             </view>

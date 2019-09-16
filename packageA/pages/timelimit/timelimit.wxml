@@ -103,10 +103,3 @@
         </view>
     </block>
 </block>
-<block>
-    <block wx:if="{{loaded&&list.length>0}}">
-        <view class="fui-loading empty">
-            <view class="text">没有更多了</view>
-        </view>
-    </block>
-</block>

@@ -52,6 +52,14 @@
                     <view bindtap="showvideo" class="video_btn" wx:if="{{goods.video}}">视频</view>
                     <view bindtap="showpic" class="pic_btn active" wx:if="{{goods.video}}">图片</view>
                 </view>
+                <!-- 售完 -->
+                <!-- <view class='saleout-absolute' wx:if="{{goods.total<=0}}" style="display:block">
+                    <view class='sale-flex'>
+                        <view class='saleout-img'>
+                            <image src='https://paokucoin.com/img/backgroup/saleout-2.png'></image>
+                        </view>
+                    </view>
+                </view> -->
             </view>
             <!-- 秒杀 -->
             <view class='sec-box' style='display:{{seckillDis}}'>

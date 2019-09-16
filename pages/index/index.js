@@ -26,6 +26,8 @@ var currency_step = ''
 var merchphone = ""
 var secend_time = ""
 var timestampcount = ""
+var longitude = ""
+var latitude = ""
 const app = getApp()
 var interval = new Object();
 var util = require('../../utils/util.js');
@@ -111,12 +113,15 @@ Page((e = {
             circleDis: 'none',
             condisp: 'block',
             merchdisp: 'block',
-            storedisp: 'block',
+            storedisp: 'none',
             bindDis: 'none',
             giftDis: 'none',
             updateDis: 'none',
             // rewarddisp:'none',
             seckillDis: '',
+            werunDis: 'block',
+            addressDis: 'none',
+            merchantDis: 'none',
             killlist: [],
             sec_end_time: "",
             screenWidth: '',
@@ -364,9 +369,9 @@ Page((e = {
                     });
                 } else {
                     var reurl = '/pages/index/index';
-                    wx.redirectTo({
-                        url: "/pages/message/auth/index?refrom=index&reurl=" + reurl
-                    })
+                    // wx.redirectTo({
+                    //     url: "/pages/message/auth/index?refrom=index&reurl=" + reurl
+                    // })
                 }
             }
         });
@@ -468,15 +473,15 @@ Page((e = {
         });
 
 
-        s.get("userinfo", {}, function(ee) {
-            if (ee.status == 1) {
-                // console.log('更新信息');
-                a.setData({
-                    credit1: ee.result.credit1,
-                    todaystep: ee.result.todaystep
-                });
-            }
-        });
+        // s.get("userinfo", {}, function(ee) {
+        //     if (ee.status == 1) {
+        //         // console.log('更新信息');
+        //         a.setData({
+        //             credit1: ee.result.credit1,
+        //             todaystep: ee.result.todaystep
+        //         });
+        //     }
+        // });
 
         // 今日好友助力步数
         s.get("help/index/helpstep_today", {
@@ -569,15 +574,6 @@ Page((e = {
                     }
 
                 });
-                s.get("userinfo", {}, function(e) {
-                    if (e.status == 1) {
-                        ttt.setData({
-                            credit1: e.result.credit1,
-                            todaystep: e.result.todaystep
-                        });
-                    }
-
-                });
             });
             sss.autoplay = !0, sss.src = this.data.mp3_url + "/coin.mp3", sss.onPlay(function() {
                 console.log("开始播放");
@@ -596,7 +592,7 @@ Page((e = {
             if (e.status == 1) {
                 if (e.result.is_show == 1) {
                     t.setData({
-                        giftDis: 'none'
+                        giftDis: 'block'
                     })
                 } else if (e.result.is_show == 0) {
                     t.setData({
@@ -618,7 +614,7 @@ Page((e = {
         // 秒杀列表
         s.get("seckill/list", {
             type: 1,
-            page:1
+            page: 1
         }, function(e) {
             console.log(e)
             if (e.status == 1) {
@@ -636,16 +632,80 @@ Page((e = {
             }
 
         });
+        wx.getSetting({
+            success: (res) => {
+                console.log(res)
+                if (!res.authSetting['scope.werun']){
+                    console.log('未获取微信运动')
+                    t.setData({
+                        credit1: 0,
+                        todaystep: 0
+                    });
+                }
 
-        s.get("userinfo", {}, function(e) {
-            if (e.status == 1) {
-                t.setData({
-                    credit1: e.result.credit1,
-                    todaystep: e.result.todaystep
-                });
+                else if (res.authSetting['scope.werun']) {
+                    console.log('已经获取运动')
+                    // t.setData({
+                    //     werunDis: 'none',
+                    // })
+                    s.get("userinfo", {}, function(e) {
+                        if (e.status == 1) {
+                            t.setData({
+                                credit1: e.result.credit1,
+                                todaystep: e.result.todaystep
+                            });
+                        }
+
+                    });
+
+                }
+                if (!res.authSetting['scope.userLocation']) {
+                    console.log('未获取地理位置')
+                    t.setData({
+                        addressDis: 'block',
+                        merchantDis: 'none',
+                    })
+                    // 门店服务
+                    s.get("changce/merch/get_from_store", {
+                        page: 1,
+                        lat: latitude,
+                        lng: longitude,
+                    }, function(e) {
+                        console.log(e)
+                        var i = {
+                            loading: false,
+                            result: e.result,
+                            merchInfo: e.result.merchInfo,
+                            goodlist: e.result.goodList.list.slice(0, 3)
+                        }
+                        t.setData(i)
+                    })
+                } else if (res.authSetting['scope.userLocation']) {
+                    t.setData({
+                        merchantDis: 'block',
+                        addressDis: 'none',
+                    })
+                    console.log('已经获取地理位置')
+                    console.log(res)
+                    console.log(longitude, latitude)
+                    // 门店服务
+                    s.get("changce/merch/get_from_store", {
+                        page: 1,
+                        lat: latitude,
+                        lng: longitude,
+                    }, function(e) {
+                        console.log(e)
+                        var i = {
+                            loading: false,
+                            result: e.result,
+                            merchInfo: e.result.merchInfo,
+                            goodlist: e.result.goodList.list.slice(0, 3)
+                        }
+                        t.setData(i)
+                    })
+                }
             }
-
-        });
+        })
         s.get("changce/merch/draw_rank", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
@@ -705,22 +765,22 @@ Page((e = {
                 avamessage: e.result.message
             })
         });
-        // 获取本人坐标
-        var mypos = i.getCache("mypos");
-        if (!mypos) {
-            wx.getLocation({
-                type: 'wgs84',
-                success: function(res) {
-                    i.setCache("mypos", {
-                        lat: res.latitude,
-                        lng: res.longitude,
-                        speed: res.speed,
-                        accuracy: res.accuracy
-                    }, 7200);
-                },
-                fail: function(res) {}
-            })
-        }
+        // // 获取本人坐标
+        // var mypos = i.getCache("mypos");
+        // if (!mypos) {
+        //     wx.getLocation({
+        //         type: 'wgs84',
+        //         success: function(res) {
+        //             i.setCache("mypos", {
+        //                 lat: res.latitude,
+        //                 lng: res.longitude,
+        //                 speed: res.speed,
+        //                 accuracy: res.accuracy
+        //             }, 7200);
+        //         },
+        //         fail: function(res) {}
+        //     })
+        // }
         t.getList();
         t.getShop(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
             success: function(a) {
@@ -794,6 +854,7 @@ Page((e = {
         var tt = this;
         wx.login({
             success: function(a) {
+                console.log(a)
                 a.code ? s.post("wxapp.login", {
                     code: a.code
                 }, function(a) {
@@ -834,17 +895,17 @@ Page((e = {
 
                         })
                     }
-                    wx.getWeRunData({
-                        success(res) {
-                            res.sessionKey = a.session_key;
-                            res.openid = i.openid;
-                            s.post('wxapp/urundata', {
-                                res
-                            }, function(e) {
+                    // wx.getWeRunData({
+                    //     success(res) {
+                    //         res.sessionKey = a.session_key;
+                    //         res.openid = i.openid;
+                    //         s.post('wxapp/urundata', {
+                    //             res
+                    //         }, function(e) {
 
-                            })
-                        }
-                    });
+                    //         })
+                    //     }
+                    // });
                 }) : s.alert("获取用户登录态失败:" + a.errMsg);
             },
             fail: function() {
@@ -853,21 +914,22 @@ Page((e = {
         })
         // console.log('获取附近商家')
         var newpos = i.getCache("mypos");
-        // 门店服务
-        s.get("changce/merch/get_from_store", {
-            page: 1,
-            lat: newpos.lat,
-            lng: newpos.lng,
-        }, function(e) {
-            console.log(e)
-            var i = {
-                loading: false,
-                result: e.result,
-                merchInfo: e.result.merchInfo,
-                goodlist: e.result.goodList.list.slice(0, 3)
-            }
-            tt.setData(i)
-        })
+        // console.log(newpos)
+        // // 门店服务
+        // s.get("changce/merch/get_from_store", {
+        //     page: 1,
+        //     lat: newpos.lat,
+        //     lng: newpos.lng,
+        // }, function(e) {
+        //     console.log(e)
+        //     var i = {
+        //         loading: false,
+        //         result: e.result,
+        //         merchInfo: e.result.merchInfo,
+        //         goodlist: e.result.goodList.list.slice(0, 3)
+        //     }
+        //     tt.setData(i)
+        // })
         // 首页附近异业商家
         s.get("changce/merch/get_list", {
             page: 1,
@@ -887,6 +949,152 @@ Page((e = {
             tt.setData(i)
 
         })
+    },
+    getcaloriebtn: function() {
+        var that = this
+        wx.getWeRunData({
+            success(res) {
+                console.log(res)
+                // if (res.openid == undefined || res.sessionKey == undefined) {
+                    wx.login({
+                        success: function(a) {
+                            a.code ? s.post("wxapp.login", {
+                                code: a.code
+                            }, function(a) {
+                                console.log(a)
+                                openid = "sns_wa_" + a.openid
+                                res.sessionKey = a.session_key;
+                                res.openid = openid;
+                                s.post('wxapp/urundata', {
+                                    res
+                                }, function(e) {
+                                    console.log(e)
+                                    if (e.status == 1) {
+                                        s.get("userinfo", {}, function(ee) {
+                                            if (ee.status == 1) {
+                                                console.log('运动步数');
+                                                that.setData({
+                                                    credit1: ee.result.credit1,
+                                                    todaystep: ee.result.todaystep
+                                                });
+                                            }
+                                        });
+                                        // 今日好友助力步数
+                                        s.get("help/index/helpstep_today", {
+                                            openid: userinfo.openid
+                                        }, function(aaa) {
+                                            // console.log(aaa)
+                                            that.setData({
+                                                helpstep: aaa.result.step
+                                            })
+                                        });
+
+                                    }
+                                })
+                            }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+                        }
+                    })
+                // }
+            }
+        });
+        //判断是否获得了微信运动
+        wx.getSetting({
+            success: (res) => {
+                if (!res.authSetting['scope.werun']) {
+                    that.setData({
+                        credit1: 0,
+                        todaystep: 0
+                    });
+                    that.openfirm()
+                } else if (res.authSetting['scope.werun']) {
+                    s.get("userinfo", {}, function (e) {
+                        console.log(e)
+                        if (e.status == 1) {
+                            that.setData({
+                                credit1: e.result.credit1,
+                                todaystep: e.result.todaystep
+                            });
+                        }
+
+                    });
+                }
+            }
+        })
+
+    },
+    openfirm: function() {
+        wx.showModal({
+            content: '是否允许跑库获取您的微信运动',
+            confirmText: "确认",
+            cancelText: "取消",
+            success: function(res) {
+                console.log(res);
+                //点击“确认”时打开设置页面
+                if (res.confirm) {
+                    console.log('用户点击确认')
+                    wx.openSetting({
+                        success: (res) => {}
+                    })
+                } else {
+                    console.log('用户点击取消')
+                }
+            }
+        });
+    },
+
+    // 打开地理位置
+    click: function() {
+        var that = this
+        wx.getLocation({
+            type: 'wgs84',
+            success: function(res) {
+                console.log(res)
+                longitude = res.longitude
+                latitude = res.latitude
+                // 门店服务
+                s.get("changce/merch/get_from_store", {
+                    page: 1,
+                    lat: res.latitude,
+                    lng: res.longitude,
+                }, function(e) {
+                    console.log(e)
+                    var i = {
+                        loading: false,
+                        result: e.result,
+                        merchInfo: e.result.merchInfo,
+                        goodlist: e.result.goodList.list.slice(0, 3)
+                    }
+                    that.setData(i)
+                })
+            }
+        })
+        //判断是否获得了用户地理位置授权
+        wx.getSetting({
+            success: (res) => {
+                if (!res.authSetting['scope.userLocation'])
+                    that.openConfirm()
+            }
+        })
+    },
+    openConfirm: function() {
+        wx.showModal({
+            content: '检测到您没打开地理位置权限，是否去设置打开？',
+            confirmText: "确认",
+            cancelText: "取消",
+            success: function(res) {
+                console.log(res);
+                //点击“确认”时打开设置页面
+                if (res.confirm) {
+                    console.log('用户点击确认')
+                    wx.openSetting({
+                        success: (res) => {}
+                    })
+                } else {
+                    console.log('用户点击取消')
+                }
+            }
+        });
     },
     getDiypage: function(t) {
         var a = this;

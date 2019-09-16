@@ -16,6 +16,7 @@ var goldid = ""
 var invitemsg = ""
 var kllcount = ""
 var zkbcount = ""
+var isgift = ""
 Page({
     data: {
         globalimg: app.globalData.appimg,
@@ -96,18 +97,28 @@ Page({
             console.log(t)
             kllcount = t.deductcredit
             zkbcount = t.discount
-            if (kllcount > 0) {
+            isgift = t.is_gift
+            console.log(t.is_gift)
+            if (isgift == 1) {
                 i.setData({
-                    kllDis: 'block',
+                    kllDis: 'none',
                     zkbDis: 'none'
                 })
+            } else if (isgift == 0) {
+                if (kllcount > 0) {
+                    i.setData({
+                        kllDis: 'block',
+                        zkbDis: 'none'
+                    })
+                }
+                if (zkbcount > 0) {
+                    i.setData({
+                        zkbDis: 'block',
+                        kllDis: 'none'
+                    })
+                }
             }
-            if (zkbcount > 0) {
-                i.setData({
-                    zkbDis: 'block',
-                    kllDis: 'none'
-                })
-            }
+
             if (t.isdispatcharea == 1) {
                 i.setData({
                     fardis: 'block',
@@ -197,19 +208,28 @@ Page({
     },
     onShow: function() {
         console.log(goldid, inviteid)
+        console.log(kllcount, zkbcount, isgift)
         var g = this
         console.log('onshow')
-        if (kllcount > 0) {
+        console.log(isgift)
+        if (isgift == 1) {
             g.setData({
-                kllDis: 'block',
+                kllDis: 'none',
                 zkbDis: 'none'
             })
-        }
-        if(zkbcount>0){
-            g.setData({
-                zkbDis:'block',
-                kllDis:'none'
-            })
+        }else if(isgift==0){
+            if (kllcount > 0) {
+                g.setData({
+                    kllDis: 'block',
+                    zkbDis: 'none'
+                })
+            }
+            if (zkbcount > 0) {
+                g.setData({
+                    zkbDis: 'block',
+                    kllDis: 'none'
+                })
+            }
         }
 
         if (goldid == 1467) {
