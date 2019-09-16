@@ -25,8 +25,9 @@ Page({
       console.log('options')
         console.log(options)
         var t=this
-        var u = {}; u.mid = userinfo.id;
-        i.url(u),
+        // 路径
+        // var u = {}; u.mid = userinfo.id;
+        // i.url(u),
         s.get("goods/poster/gethelpimage", {
             openid: userinfo.openid,
             mid: userinfo.id,

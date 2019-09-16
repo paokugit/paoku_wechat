@@ -1,0 +1,59 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.conBox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.bannerbox {
+  width: 604rpx;
+  height: 968rpx;
+  border-radius: 20rpx;
+}
+
+.bannerbox-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.imgbtn {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-img {
+  width: 81rpx;
+  height: 80rpx;
+}
+
+.save-text {
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.imgBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 1000rpx;
+}

@@ -1,0 +1,14 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
+
+    <view class='bannerbox'>
+        <image class="bannerbox-img" src="{{url}}"></image>
+    </view>
+    <view class='imgBox'>
+        <view class='imgbtn' bindtap='onSavePicClick' data-img="{{url}}">
+            <image class="save-img" src='{{globalimg}}/download@2x.png'></image>
+            <view class="save-text">保存到相册</view>
+        </view>
+        
+    </view>
+</view>

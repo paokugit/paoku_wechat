@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "packageA/pages/gift/gift",
     "pages": [
         "pages/index/index",
         "pages/discount/zkbscancode/zkbscancode",
@@ -100,6 +100,7 @@
                 "pages/gift/gift",
                 "pages/gift/helprecord",
                 "pages/gift/getrecord",
+                "pages/gift/gifthaibao",
                 "pages/personalcode/account",
                 "pages/personalcode/withdrawrecord",
                 "pages/personalcode/code",
