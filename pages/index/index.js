@@ -955,7 +955,7 @@ Page((e = {
         wx.getWeRunData({
             success(res) {
                 console.log(res)
-                if (res.openid == undefined || res.sessionKey == undefined) {
+                // if (res.openid == undefined || res.sessionKey == undefined) {
                     wx.login({
                         success: function(a) {
                             a.code ? s.post("wxapp.login", {
@@ -995,7 +995,7 @@ Page((e = {
 
                         }
                     })
-                }
+                // }
             }
         });
         //判断是否获得了微信运动
