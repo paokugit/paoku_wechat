@@ -111,7 +111,7 @@
                 <view class='weixinBox'>
                     <button class='wxbtn' open-type='share'>
                         <view class='share-weixin'>
-                            <image src='https://paoku.xingrunshidai.com/img/backgroup/weixin.png'></image>
+                            <image src='{{globalimg}}/weixin.png'></image>
                         </view>
                         <view class='tofriend'>分享给朋友</view>
                     </button>
@@ -119,7 +119,7 @@
                 <view class='haibaoBox'>
                     <button class='hbbtn' bindtap='createHbao'>
                         <view class='haibao'>
-                            <image src='https://paoku.xingrunshidai.com/img/backgroup/shengchenghaibao.png'></image>
+                            <image src="{{globalimg}}/shengchenghaibao.png"></image>
                         </view>
                         <view class='tohb'>生成专属海报</view>
                     </button>
