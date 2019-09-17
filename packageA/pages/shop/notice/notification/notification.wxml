@@ -17,7 +17,7 @@
             <view class="underline2" wx:if="{{underline==1}}"></view>
         </view>
 
-
+ 
         <view class="discuss" bindtap="discuss">
           <view class="discuss-text fontcss" style="color:{{color2}};font-size:{{fontcss2}}">评论</view>
           <view class="underline3" wx:if="{{underline==2}}"></view>
@@ -110,10 +110,10 @@
 
       <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
 
-      <!-- <view class="KongNull">
+      <view class="KongNull" wx:if="{{listCritic.length == 0?true:false}}">
         <image src="{{globalimg}}/tongzhi-null.png"></image>
         <view>你暂未有评论</view>
-      </view> -->
+      </view>
 
       <view class="comInt" wx:if="{{focus}}" style='bottom:{{inputBottom}}px'>
         <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>

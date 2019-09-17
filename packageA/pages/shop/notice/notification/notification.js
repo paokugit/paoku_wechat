@@ -58,7 +58,7 @@ Page({
       mask: 2,
       listCritic: [],
       criticPage: 1,
-      discuss: '',
+      discuss: '', 
       focus: false
     })
   },
