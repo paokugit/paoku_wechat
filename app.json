@@ -1,7 +1,8 @@
 {
     "entryPagePath": "pages/index/index",
     "pages": [
-        "pages/index/index",
+ 
+        "pages/index/index", 
         "pages/discount/zkbscancode/zkbscancode",
         "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
@@ -68,7 +69,14 @@
         "pages/annual_card/member_card/index",
         "pages/annual_card/giftBag/index",
         "pages/annual_card/record_page/record_page",
-        "pages/annual_card/equity/equity"
+        "pages/annual_card/equity/equity" ,
+
+        "pages/expert/circle/circle",
+        "pages/expert/issue/issue",
+        "pages/expert/tuijian/recommend",
+        "pages/expert/photo/photo",
+        "pages/expert/discuss/discuss",
+        "pages/expert/particulars/particulars"
     ],
     "subPackages": [
         {

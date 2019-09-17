@@ -1,0 +1,86 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+  <!-- 动态提醒 -->
+  <view class="tiXing" wx:if="{{isShow}}">为你更新{{updateData}}条动态</view>
+  <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}" data-pagecount="{{pagecount}}">
+    <!-- 头像、昵称、发布时间 -->
+    <view class="circleMes flexCss">
+      <view class="nameMes flexCss">
+        <image src="{{item.avatar}}"></image> 
+        <view class="circleCss nickname">{{item.nickname}}</view> 
+      </view> 
+      <view class="timeMes">{{item.create_day}}</view>
+    </view>
+     
+    <!-- 动态内容 --> 
+    <view class="circleCon circleCss">{{item.content}}</view>
+    
+    <!-- 动态图片 --> 
+    <view class="circleImg" >  
+      <view class="{{item.img_len == 1 ? 'typeA' : item.img_len == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}" catchtap="previewImage">
+        <image class="typeImage" mode='aspectFill' src="{{itemImg}}" ></image>
+      </view>
+    </view>  
+  
+    <!-- 商品推荐 -->
+    <view data-tuijianid="{{item.good.goods_id}}" catchtap="tuijianBtn" class="tuijian" wx:if="{{item.goods_id == 0?false:true}}">
+      <image class="goodsImg" src="{{item.good.img}}"></image>
+      <view class="goodsRight">
+        <view class="tuiTa">{{item.good.title}}</view>
+        <view class="tuiTb">{{item.good.subtitle}}</view>
+        <view class="jiaGe">
+          <view>
+            <text class="xianJia">{{item.good.marketprice}}</text>
+            <text class="yuanJia">￥{{item.good.productprice}}</text>
+          </view>
+          <view class="xiaoL">销量{{item.good.sales}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 图标 -->
+    <view class="ico flexCss">
+      <view style="display: flex;" class="circle_parise">
+        <view class="circle_read" catchtap="lookOver">
+          <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
+          <text class="iconTxt">{{item.view_count}}</text>
+        </view>
+
+        <view class="circle_news">
+          <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+          <text class="iconTxt">{{item.comment_count}}</text>
+        </view> 
+      </view>
+
+      <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
+        <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
+        <text class="iconTxt">{{item.zan_count}}</text>
+      </view>
+    </view>
+  </navigator> 
+  <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
+
+  <!-- 功能选择 -->
+  <view class="publish">
+    <view class="fabu fixedCss" catchtap="imgBall" wx:if="{{cartoon}}">
+      <image src="{{globalimg}}/icon-shouye-xiangji@2x.png"></image>
+    </view>
+    <navigator url="/pages/expert/photo/photo" class="xiangce fixedCss" catchtap="xiangce" wx:if="{{cartoon}}">
+      <image src="{{globalimg}}/xiangce.png"></image>
+    </navigator>
+    <view class="fixedCss" catchtap="dakai">
+      <image src="{{globalimg}}/{{'dakai.png'}}" hidden="{{cartoonA}}" ></image>
+      <image src="{{globalimg}}/{{'gengduo.png'}}" hidden="{{cartoonB}}"></image>
+    </view>
+  </view>
+ 
+
+  <!-- 选择图片路径弹窗 -->
+  <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
+    <view class="imgBallC">
+      <view class="cssBall paizhao" catchtap="chooseimage" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" catchtap="chooseimage" data-select="album">从相册选择</view>
+    </view>
+  </view>
+
+</view>

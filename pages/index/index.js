@@ -139,6 +139,8 @@ Page((e = {
             intervalA: 3000,
             durationA: 1000,
             circularA: true,
+
+            slideshow:'0'
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
         t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1),
@@ -158,6 +160,14 @@ Page((e = {
             url: '/pages/member/bind/index?param=' + 1,
 
         })
+    },
+
+    // 好友捐赠轮播动画
+    onSlideChangeEnd: function (e) {
+      var that = this;
+      that.setData({
+        slideshow: e.detail.current
+      })
     },
     // 进入商城
     entrystore: function() {
@@ -510,14 +520,21 @@ Page((e = {
 
             }
         });
+
         s.get("myown.index.opt", {
-            id: 1
-        }, function(e) {
-            console.log(e);
-            a.setData({
-                home_icon: e.result.icon,
-                backgroundimg: e.result.backgroup
-            })
+          id: 1
+        }, function (e) {
+          console.log(e);
+          let totalPage = Math.ceil(e.result.icon.length / 4);
+          console.log(totalPage);
+          a.setData({
+            backgroundimg: e.result.backgroup
+          })
+          var dt = {
+            home_icon: e.result.icon,               
+            lbSellerCatsLen: totalPage,                             
+          }
+          a.setData(dt)
         })
 
         l.openPage();

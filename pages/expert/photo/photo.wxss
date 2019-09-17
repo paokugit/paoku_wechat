@@ -1,0 +1,153 @@
+page{
+  background: rgb(252, 252, 252);
+}
+
+.today{
+  height: 88rpx;
+  line-height: 88rpx;
+  color: rgb(51, 51, 51);
+  font-size: 30rpx;
+  padding: 0 24rpx;
+  font-weight: bold;
+}
+.todayA{
+  border-top: 1px solid rgb(248, 248, 248);
+  border-bottom: 1px solid rgb(248, 248, 248);
+}
+
+ 
+.tanchu{
+  padding: 30rpx 24rpx 40rpx; 
+  display: flex;
+  align-items: center;
+}
+.tanchu image{
+  width: 116rpx;
+  height: 116rpx;
+  margin-right: 20rpx;
+}
+.tanchu view{
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+}
+
+
+.details{
+  margin-bottom: 30rpx;
+  padding: 30rpx 0rpx 0rpx 50rpx;
+  display: flex;
+  align-items: center;
+}
+.itemDet{
+  font-size: 24rpx;
+  color: rgb(102, 102, 102);
+  margin-right: 60rpx;
+  width: 100rpx;
+}
+.rightDet{
+  display: flex;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border-radius: 10rpx;
+}
+.rightImg{
+  width: 172rpx;
+  height: 172rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+}
+.character{
+  height: 200rpx;
+  position: relative;
+}
+.rightTxt{
+  width: 340rpx;
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  top: 34rpx;
+}
+.iconPosi{
+  width: 300rpx;
+  position: absolute;
+  left: 0;
+  bottom: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.iconCsss{
+  display: inline-block;
+}
+.circle_news{
+  margin-left: 15rpx;
+}
+.circle_read{
+  margin-right: 15rpx;
+}
+.iconTxt{
+  font-size: 30rpx;
+  color: rgb(102, 102, 102);
+}
+.iconImg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}
+
+/* 选择图片路径弹窗 */
+.imgBall{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(50, 50, 50,0.5);
+}
+.imgBallC{
+  width: 558rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.cssBall{
+  height: 105rpx;
+  line-height: 105rpx;
+  padding-left: 24rpx;
+  font-size: 34rpx;
+  color: rgb(51, 51, 51)
+}
+.paizhao{
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.default{
+  margin-top: 160rpx;
+  text-align: center;
+}
+.default image{
+  width: 374rpx;
+  height: 308rpx;
+}
+.default view{
+  font-size: 34rpx;
+  margin-top: 40rpx;
+  color: rgb(153, 153, 153);
+}

@@ -10,7 +10,7 @@
             <view class="picker">
                 <text style='display:{{dateDis}}' class='time-text'>请选择</text> {{date}}
             </view>
-        </picker>
+        </picker> 
     </view>
     <!-- 上传图片 -->
     <view class='upload_box'>

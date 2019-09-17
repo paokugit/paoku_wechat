@@ -1,0 +1,22 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+  <view class="title colorCss">店铺内商品任选一件</view>
+
+  <block wx:for="{{message}}" wx:key="{{index}}">
+    <view class="product">
+      <image class="productImg" src="{{item.thumb}}"></image>  
+      <view>
+        <view class="conTit colorCss">{{item.title}}</view>
+        <view class="conMoney">
+          <view class="jinE">
+            <text class="conMoneyA">￥{{item.marketprice}}</text>
+            <text class="conMoneyB">￥{{item.productprice}}</text>
+          </view>
+          <view class="btnGet {{btnId == item.id? 'btnB' : 'btnA'}}" bindtap="btnA" data-id="{{item.id}}">选择</view>
+        </view>
+      </view>
+    </view> 
+  </block>
+  <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
+
+</view>

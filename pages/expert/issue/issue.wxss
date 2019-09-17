@@ -1,0 +1,241 @@
+page {
+  background: #fff;
+}
+
+.outer {
+  width: 100%;
+  height: 100%;
+}
+
+.release_text {
+  height: 250rpx;
+  padding: 30rpx;
+  overflow: scroll;
+}
+
+.release_text textarea,.release_text view{
+  width: 100%;
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+}
+
+.littleHint{
+  width: 280rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 22rpx;
+  color: rgb(102, 102, 101);
+  background: #f8f8f8;
+  margin: 0 0 30rpx 80rpx;
+  text-align: center;
+  border-radius: 15rpx;
+}
+
+.inner {
+  padding: 0 30rpx;
+}
+
+movable-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.deleteImg {
+  width: 36rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+
+.deleteImg image {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.pic_box {
+  margin-bottom: 16rpx !important;
+  margin-left: 10rpx;
+  width: 220rpx;
+  height: 220rpx;
+  position: relative;
+}
+
+.pic_box:nth-child(1) {
+  margin: 0;
+}
+
+.pic_box:nth-child(4) {
+  margin: 0;
+}
+
+.pic_box:nth-child(7) {
+  margin: 0;
+}
+
+.gays_pic_C {
+  border-radius: 10rpx;
+}
+
+.item-move {
+  width: 230rpx;
+  height: 230rpx;
+}
+
+.nullPic {
+  width: 220rpx;
+  height: 220rpx;
+  text-align: center;
+  line-height: 220rpx;
+  float: left;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  border: 1px dashed #929292;
+}
+
+.nullPic image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.shangpin {
+  margin-top: 30rpx;
+  display: flex;
+  background: rgb(248, 248, 248);
+  border-radius: 10rpx;
+}
+
+.tuiImg {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+
+.tuiTa {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+  margin: 16rpx 0rpx 20rpx;
+  width: 430rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tuiTb, .yuanJia, .xiaoL {
+  font-size: 22rpx;
+  color: rgb(146, 146, 146);
+}
+
+.tuiTb {
+  width: 430rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jiaGe {
+  width: 430rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.xianJia {
+  font-size: 34rpx;
+  color: rgb(224, 18, 18);
+  margin-right: 10rpx;
+}
+
+.yuanJia {
+  text-decoration: line-through;
+}
+
+.fabuC {
+  width: 100%;
+  margin: 160rpx 0 120rpx;
+}
+
+.sendBtn {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  color: rgb(255, 255, 255);
+  margin: 0 auto;
+}
+
+.tuijianS {
+  color: rgb(39, 214, 170);
+  font-size: 28rpx;
+  float: right;
+  margin: 30rpx 60rpx 0 0;
+}
+
+.imgBall {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(50, 50, 50, 0.5);
+}
+
+.imgBallC {
+  width: 558rpx;
+  height: 210rpx;
+}
+
+.tishi {
+  width: 560rpx;
+}
+
+.details{
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+  margin: 45rpx 30rpx 60rpx;
+}
+.knowBtn{
+  font-size: 34rpx;
+  color: rgb(1, 215, 161);
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 1px solid rgb(230, 230, 230);
+}
+
+.tanCss {
+  border-radius: 20rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cssBall {
+  height: 105rpx;
+  line-height: 105rpx;
+  padding-left: 24rpx;
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+}
+
+.paizhao {
+  border-bottom: 1px solid rgb(229, 229, 229);
+}

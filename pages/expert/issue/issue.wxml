@@ -1,0 +1,74 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+  <view class='outer'>
+    <view class="release_text" catchtap="replyBtn">
+      <textarea wx:if="{{txtShow}}" bindinput='gaysText' auto-focus="{{focus}}" value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true' focus="{{focus}}"/>
+      <view wx:if="{{vieShow}}">{{releaseText}}</view>
+    </view>
+
+    <view class="littleHint">按住照片拖拽可以调整顺序</view>
+    <view class='inner' catchtouchmove='true'>
+      <movable-area> 
+        <block wx:for="{{tempFilePaths}}" wx:key="{{index}}">
+          <view class='pic_box item' id="{{item.index}}" data-index='{{index}}' bindlongpress='_longtap' bindtouchstart='touchs' bindtouchend='touchend' bindtouchmove='touchm'  data-img='{{item}}'>
+            <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" mode='aspectFill' data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
+ 
+            <view class="deleteImg" data-id="{{index}}" bindtap='deletePic'>
+              <image src="{{globalimg}}/imgGuanBi.png"></image>
+            </view>
+          
+          </view> 
+        </block>
+        
+        <movable-view x="{{x}}" y="{{y}}" direction="all" damping="{{5000}}" friction="{{1}}" disabled="{{disabled}}">
+          <view class='item-move' hidden='{{hidden}}'>
+            <image src="{{maskImg}}"></image>
+          </view>
+        </movable-view>
+
+
+        <view class="nullPic" bindtap='imgBall' wx:if="{{tempFilePaths.length < 9}}">
+          <image src="{{globalimg}}/imgAdd.png"></image>
+        </view>
+      </movable-area>
+
+      <view class="shangpin" wx:if="{{btnId == 0?false:true}}">
+        <image class="tuiImg" src="{{message.thumb}}"></image>
+        <view>
+          <view class="tuiTa">{{message.title}}</view>
+          <view class="tuiTb">{{message.subtitle}}</view>
+          <view class="jiaGe">
+            <view>
+              <text class="xianJia">￥{{message.marketprice}}</text>
+              <text class="yuanJia">￥{{message.productprice}}</text>
+            </view>
+            <view class="xiaoL">销量{{message.sales}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="fabuC">
+      <view bindtap='submit'  class="sendBtn" style="{{btnCss}}">发布</view>
+      <view class="tuijianS" bindtap="{{shopErr== 1? 'tiShiBtn' : 'shopBtn'}}">商品推荐</view>
+    </view>
+
+  </view>
+
+
+  <!-- 选择图片路径弹窗 -->
+  <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">
+    <view class="imgBallC tanCss">
+      <view class="cssBall paizhao" bindtap="choose" data-select="camera">拍摄</view>
+      <view class="cssBall xiangce" bindtap="choose" data-select="album">从相册选择</view>
+    </view>
+  </view>
+
+  <!-- 温馨提示弹窗 -->
+  <view class="imgBall" wx:if="{{showTishi}}">
+    <view class="tanCss tishi">
+      <view class="details">{{hintT}}</view>
+      <view class="knowBtn" bindtap="showBall">我知道了</view>
+    </view>
+  </view>
+</view>
