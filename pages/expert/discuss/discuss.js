@@ -11,7 +11,7 @@ Page({
 
   data: { 
     globalimg: t.globalData.appimg,
-    nvabarData: {
+    nvabarData: { 
       showCapsule: 1,
       title: '达人圈', 
       height: t.globalData.height * 2 + 20,
@@ -52,9 +52,6 @@ Page({
       title: '加载中...',
       mask: true
     })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000)
     m.detail();
     m.detailA();
     m.newest();
@@ -67,6 +64,10 @@ Page({
       openid: useropenid,
       ciclre_id: m.data.listId
     },function(e){
+      console.log(e);
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       if(e.error == 0){
         m.setData({
           detailList: e.message
@@ -122,74 +123,54 @@ Page({
   // 点赞和取消
   support: function (e) {
     var m = this;
+    wx.showLoading({
+      mask: true
+    });
+
+    let message = m.data.detailList;
+    let headmig = e.currentTarget.dataset.headimg;
+
     var supp = e.currentTarget.dataset.supp;
     let supportid = e.currentTarget.dataset.supportid;
-    var type = e.currentTarget.dataset.type;
     if (supp == 0) {
       a.get("drcircle.my.support", {
         openid: useropenid,
         content_id: supportid,
-        type: type
+        type: 1
       }, function (e) {
-        if (e.error == 0) {
-          if (type == 1){
-            m.detail();
-          }else{
-            wx.showLoading({
-              title: '评论中...',
-              mask: true
-            })
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 2000)
-            m.setData({
-              hot:[],
-              newestList: [],
-              page:1
-            })
-            m.detailA();
-            m.newest();
-          }
-        }
+        wx.hideLoading();
+        message.support = parseInt(message.support + 1);
+        message.zan_count = parseInt(message.zan_count) + 1;
+        message.zan_list.unshift(e.message.avatar);
+        m.setData({
+          detailList: message
+        })
       })
     } else {
       a.get("drcircle.my.del_support", {
         openid: useropenid,
         content_id: supportid,
-        type: type
+        type: 1
       }, function (e) {
-        if (e.error == 0) {
-          if (type == 1) {
-            m.detail();
-          } else {
-            wx.showLoading({
-              title: '评论中...',
-              mask: true
-            })
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 2000)
-            m.setData({ 
-              hot: [], 
-              newestList:[],
-              page: 1
-            })
-            m.detailA();
-            m.newest();
-          }
-        }
+        wx.hideLoading();
+        message.support = parseInt(message.support - 1);
+        message.zan_count = parseInt(message.zan_count) - 1;
+        message.zan_list.shift();
+        m.setData({
+          detailList:message
+        })
       })
     }
   },
-  supportA: function (e) {
+  supportA:function(e){
     var m = this;
     var index = e.currentTarget.dataset.index;
-    var message = m.data.newestList;
+    let message = m.data.hot;
     let sutId = e.currentTarget.dataset.supportid;
-    for (let i in message) { 
+    for (let i in message) {
       if (i == index) {
         var collectStatus = false
-        if (message[i].support == 0) { 
+        if (message[i].support == 0) {
           collectStatus = true
           message[i].support = parseInt(message[i].support) + 1
           message[i].zan_count = parseInt(message[i].zan_count) + 1
@@ -199,10 +180,7 @@ Page({
             content_id: sutId,
             type: 2
           }, function (e) {
-            m.setData({
-              hot: []
-            })
-            m.detailA();
+            console.log(e);
           })
         } else {
           collectStatus = false
@@ -214,10 +192,46 @@ Page({
             content_id: sutId,
             type: 2
           }, function (e) {
-            m.setData({
-              hot: []
-            })
-            m.detailA();
+            console.log(e);
+          })
+        }
+      }
+    }
+    m.setData({
+      hot: message
+    })
+  },
+  supportB: function (e) {
+    var m = this;
+    var index = e.currentTarget.dataset.index; 
+    let message = m.data.newestList;
+    let sutId = e.currentTarget.dataset.supportid;
+    for (let i in message) { 
+      if (i == index) {
+        var collectStatus = false
+        if (message[i].support == 0) { 
+          collectStatus = true
+          message[i].support = parseInt(message[i].support) + 1;
+          message[i].zan_count = parseInt(message[i].zan_count) + 1;
+
+          a.get("drcircle.my.support", {
+            openid: useropenid,
+            content_id: sutId,
+            type: 2
+          }, function (e) {
+            console.log(e);
+          })
+        } else {
+          collectStatus = false
+          message[i].support = parseInt(message[i].support) - 1;
+          message[i].zan_count = parseInt(message[i].zan_count) - 1;
+
+          a.get("drcircle.my.del_support", {
+            openid: useropenid,
+            content_id: sutId,
+            type: 2
+          }, function (e) {
+            console.log(e);
           })
 
         }
@@ -341,6 +355,22 @@ Page({
       focus:true
     })
   }, 
+ 
+  //输入聚焦
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: e.detail.height
+    })
+  },
+
+  //失去聚焦
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: 0
+    })
+  },
 
   replyBtn:function(e){
     indexreply = e.currentTarget.dataset.index;

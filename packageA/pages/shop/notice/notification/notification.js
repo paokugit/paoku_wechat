@@ -229,13 +229,35 @@ Page({
   },
   // 回复内容
   formName: function (e) {
+  
     this.setData({
-      discuss: e.detail.value,
+      discuss: e.detail.value
     })
-  }, 
+  },  
+  //输入聚焦
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: e.detail.height
+    })
+  },
+
+  //失去聚焦
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: 0
+    })
+  },
   // 留言
   sendBtn: function () {
     var m = this;
+
+    var message = m.data.listCritic;
+    let sutid = m.data.itemid;
+    console.log(message);
+    console.log(m.data.itemid);
+
     wx.showLoading({
       title: '评论中...',
       mask: true
@@ -251,15 +273,24 @@ Page({
         wx.hideLoading()
       }, 2000)
       if (e.error == 0) {
-        m.setData({
-          discuss: '',
-          focus:false
-        })
         wx.showToast({
           title: '回复成功',
           icon: 'none',
           duration: 2000
         })
+        
+        for(var i = 0; i< message.length; i++){
+          if (message[i].id == sutid){
+            message[i].reply = parseInt(message[i].reply) + 1
+          }
+        }
+
+        m.setData({
+          discuss: '',
+          focus: false,
+          listCritic:message
+        })
+
       }else{
         wx.showToast({
           title: e.message,

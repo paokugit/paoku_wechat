@@ -27,6 +27,10 @@ Page({
     m.setData({
       btnId: options.btnId
     })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     m.list();
   },
 
@@ -36,6 +40,9 @@ Page({
       openid: useropenid,
       page: m.data.page,
     }, function (e) {
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       let totalList = e.message.list;
       let totalPage = Math.ceil(e.message.total / 10);
       m.setData({

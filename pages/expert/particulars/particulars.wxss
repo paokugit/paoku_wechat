@@ -23,6 +23,12 @@ page{
   margin-right: 40rpx;
 }
 
+.supportCss{
+  width: 100rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
 .left-head image{
   border-radius: 50rpx;
   width: 80rpx;

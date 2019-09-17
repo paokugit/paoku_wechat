@@ -12,9 +12,9 @@
       </view> 
   
       <view class="circleCssA">{{detailList.content}}</view> 
-    
-      <view class="imgQu"> 
-        <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_le == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   bindtap="previewImage">
+     
+      <view class="imgQu">  
+        <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_len == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   catchtap="previewImage">
           <image class="typeImage" mode='aspectFill' src="{{itemImg}}"></image>
         </view>
       </view>    
@@ -37,11 +37,11 @@
 
     <view class="icon">
       <view class="cha-dian">
-        <view class="circle_read">
+        <view>
           <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
           <text class="iconTxt">{{detailList.view_count}}</text>
         </view>
-        <view class="circle_parise" bindtap="support" data-type="1" data-supp="{{detailList.support}}" data-supportid="{{listId}}">
+        <view class="circle_parise" bindtap="support" data-supp="{{detailList.support}}" data-supportid="{{listId}}">
           <image class="iconImg" src="{{globalimg}}/{{detailList.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
           <text class="iconTxt">{{detailList.zan_count}}</text>
         </view>
@@ -79,12 +79,12 @@
           </view>
         </view>
         <view class="fleCss">
-          <view catchtap="commentBtn" data-comid="{{listHot.id}}" class="circle_news circle_read">
+          <view catchtap="commentBtn" data-comid="{{listHot.id}}" class="circle_news">
             <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
             <text class="iconTxt">{{listHot.comment_count}}</text>
           </view>
 
-          <view class="circle_read" catchtap="support" data-type="2" data-supp="{{listHot.support}}" data-supportid="{{listHot.id}}" >
+          <view class="circle_read" catchtap="supportA" data-supportid="{{listHot.id}}" data-index="{{index}}">
             <image class="iconImg" src="{{globalimg}}/{{listHot.support == 0?wei_zan:yi_zan}}"></image>
             <text class="iconTxt">{{listHot.zan_count}}</text>
           </view>
@@ -115,7 +115,7 @@
               <text class="iconTxt">{{item.comment_count}}</text>
             </view>
 
-            <view class="circle_read" catchtap="supportA" data-supportid="{{item.id}}" data-index="{{index}}">
+            <view class="circle_read" catchtap="supportB" data-supportid="{{item.id}}" data-index="{{index}}">
               <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
               <text class="iconTxt">{{item.zan_count}}</text>
             </view>
@@ -136,8 +136,8 @@
     <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
   </view>
 
-  <view class="comInt">
-    <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
+  <view class="comInt" style='bottom:{{inputBottom}}px'>
+    <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>
     <text bindtap="sendBtn">发送</text>
   </view> 
 

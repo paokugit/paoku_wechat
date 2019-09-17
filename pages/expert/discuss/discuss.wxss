@@ -123,7 +123,7 @@ page{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30rpx 0 20rpx;
+  margin-bottom: 10rpx;
 }
 .cha-dian{
   display: flex;
@@ -140,6 +140,9 @@ page{
 }
 .circle_parise{
   margin-left: 40rpx;
+  width: 100rpx;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 .remove{
   font-size: 28rpx;
@@ -186,7 +189,11 @@ page{
 }
 
 
-
+.circle_read{
+  width: 100rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
 .rePing{
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='padding-top:{{nvabarData.height}}px' wx:if="{{list.length == 0?false:true}}">
+<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
 
   <view class="particulars head" bindtap="showBtn" data-supportid="{{details.id}}" data-name="{{details.nickname}}">
     <view class="head-img flexCss"> 
@@ -15,11 +15,11 @@
           <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
           <text class="iconTxt">{{details.comment_count}}</text>
         </view>
-        <view catchtap="supportA" data-supp="{{details.support}}" data-supportid="{{details.id}}">
+        <view class="supportCss" catchtap="supportA" data-supp="{{details.support}}" data-supportid="{{details.id}}">
           <image class="iconImg" src="{{globalimg}}/{{details.support == 0?'circle_parise@1.png':'circle_parise@2.png'}}"></image>
           <text class="iconTxt">{{details.zan_count}}</text>
         </view>
-      </view>
+      </view> 
     </view> 
 
     <view class="textA">{{details.content}}</view>
@@ -35,7 +35,7 @@
         </view>
       </view>
       <view class="icon flexCss">
-        <view catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
+        <view class="supportCss" catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
           <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
           <text class="iconTxt">{{item.zan_count}}</text>
         </view>
@@ -48,8 +48,8 @@
   <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
 
 
-  <view class="comInt">
-    <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{sendShow}}" bindinput ='formName' ></input>
+  <view class="comInt" style='bottom:{{inputBottom}}px'>
+    <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{sendShow}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>
     <text bindtap="sendBtn">发送</text>
   </view> 
 

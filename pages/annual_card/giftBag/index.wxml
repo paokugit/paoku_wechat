@@ -3,7 +3,7 @@
   <view class="listHead">以下产品任选一件</view>
  
   <block wx:for="{{goods_list}}" wx:key="{{index}}">
-    <view class="product">
+    <navigator class="product" url="/pages/goods/detail/index?id={{item.id}}">
       <image class="productImg" src="{{item.thumb}}"></image>  
       <view class="productCon">
         <view class="conTit">{{item.title}}</view>
@@ -12,10 +12,10 @@
             <text class="conMoneyA">￥{{item.marketprice}}</text>
             <text class="conMoneyB">￥{{item.productprice}}</text>
           </view>
-          <view class="btnGet" style="{{item.is_get == 1?'background:#929292':''}}" bindtap="{{item.is_get == 0?'btnGet':''}}" data-productid="{{item.id}}" wx:if="{{item.is_get == 2?false:true}}">{{levelStatus}}</view>
+          <view class="btnGet" style="{{item.is_get == 1?'background:#929292':''}}" catchtap="{{item.is_get == 0?'btnGet':''}}" data-productid="{{item.id}}" wx:if="{{item.is_get == 2?false:true}}">{{levelStatus}}</view>
         </view>
       </view>
-    </view>
+    </navigator>
   </block>
 
   <!-- 地址领取弹窗 -->

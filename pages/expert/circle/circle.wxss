@@ -69,7 +69,7 @@
   height: 450rpx;
 }
 .typeB{
-  width: 319rpx;
+  width: 319rpx; 
   height: 326rpx;
   margin: 0rpx 4.5rpx 9rpx;
 }

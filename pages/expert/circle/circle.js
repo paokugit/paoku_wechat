@@ -16,7 +16,7 @@ Page({
     img_url:[],
     img_file:[],
     cartoon: false,  
-    cartoonA: true,
+    cartoonA: true, 
     cartoonB: false,
 
     page: 1,
@@ -27,7 +27,8 @@ Page({
     abcShow:false,
 
     yi_zan:'circle_parise@2.png',
-    wei_zan:'circle_parise@1.png'
+    wei_zan:'circle_parise@1.png',
+    pagecount:''
   }, 
 
   
@@ -35,6 +36,11 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
     var m = this;
+
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     m.pageData();
   },
 
@@ -46,6 +52,9 @@ Page({
       page:m.data.page
     },function(e){
       console.log(e);  
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       let totalList = e.message.list;
       let totalPage = Math.ceil(e.message.total / 10);
 
@@ -61,7 +70,8 @@ Page({
       m.setData({
         updateData:e.message.count,
         dataList: m.data.dataList.concat(totalList),
-        totalPage: totalPage
+        totalPage: totalPage,
+        pagecount:m.data.page
       })
     })
   },
@@ -148,24 +158,35 @@ Page({
       success: function (res) {
         let file_list = m.data.img_file; 
         for (let i = 0; i < res.tempFilePaths.length; i++) {
+          wx.showLoading({
+            title: '上传中...',
+            mask: true
+          })
           wx.uploadFile({
             url: 'https://paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
             filePath: res.tempFilePaths[i],
             name: "file",
             header: { 'content-type': 'multipart/form-data' },
             success: function (n) {
+              
               var o = JSON.parse(n.data);
               img_list.push(o.files[0].url);
               file_list.push(o.files[0].filename);
+
               if (file_list.length == res.tempFilePaths.length){
+                setTimeout(function () {
+                  wx.hideLoading()
+                }, 2000);
+                m.setData({
+                  img_url: [],
+                  img_file: []
+                });
+                wx.hideLoading();
                 wx.navigateTo({
                   url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
                 })
-                m.setData({
-                  img_url:[],
-                  img_file:[]
-                })
               }
+
             }
           })
         };
@@ -218,17 +239,11 @@ Page({
     let pageB = wx.getStorageSync('pageB');
     console.log(pageA);
     if(pageA == 1 || pageB == 2){
-      wx.pageScrollTo({
-        scrollTop: 0
-      })
       wx.showLoading({
         title: '加载中...',
         mask: true
       })
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 2000)
-
+      
       wx.removeStorage({
         key: 'pageA',
         success: function (res) {
@@ -247,6 +262,10 @@ Page({
         abcShow: false
       })
       m.pageData();
+      
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
     }
 
     m.setData({

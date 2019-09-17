@@ -6,7 +6,7 @@ var useropenid = "";
 Page({
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
+    nvabarData: { 
       showCapsule: 1,
       title: '发布',
       height: t.globalData.height * 2 + 20,
@@ -45,7 +45,16 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
 
+    console.log('123');
+
     var m = this;
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     m.retain();
     m.listBtn();
     m.shop();
@@ -141,16 +150,6 @@ Page({
   // 内容
   gaysText(e) {
     var that = this;
-    if (e.detail.value.length == 0 && that.data.tempFilePaths.length == 0) {
-      that.setData({
-        btnCss: 'background: #e5e5e5;'
-      })
-    }else{
-      that.setData({
-        btnCss: 'background: #01d7a1;'
-      })
-    }
-
     that.setData({
       releaseText: e.detail.value
     })
@@ -173,12 +172,18 @@ Page({
       sourceType: [select],
       success: function (res) {
         for (let i = 0; i < res.tempFilePaths.length; i++) {
+          wx.showLoading({
+            title: '上传中...',
+            mask: true
+          })
           wx.uploadFile({
             url: 'https://paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
             filePath: res.tempFilePaths[i],
             name: "file",
             header: {'content-type': 'multipart/form-data'},
             success: function (n) {
+              wx.hideLoading();
+
               var o = JSON.parse(n.data);
               that.data.fileName.push(o.files[0].filename);
               tempFilePaths.push(o.files[0].url);
@@ -211,12 +216,12 @@ Page({
     var images = m.data.tempFilePaths;
     var imgfile = m.data.fileName;
     var index = e.currentTarget.dataset.id;
-    var text = m.data.releaseText;
+
 
     imgfile.splice(index,1);
     images.splice(index, 1);
 
-    if (text.length == 0 && imgfile.length == 0) {
+    if (imgfile.length == 0) {
       m.setData({
         btnCss: 'background: #e5e5e5;'
       })
@@ -317,6 +322,10 @@ Page({
     if (this.data.flag) {
       const x = e.touches[0].pageX;
       const y = e.touches[0].pageY;
+
+      console.log(this.data.textHeight);
+      console.log(y);
+
       if (this.data.textHeight > 70) {
         this.setData({
           x: x - 75, 
@@ -336,7 +345,7 @@ Page({
     var that = this;
     var text = that.data.releaseText;
     var pic = that.data.fileName; 
-    if (text.length != 0 || pic != 0){
+    if (pic != 0){
       a.get("drcircle.my.fabu",{
         openid: useropenid,
         content: text,
@@ -374,13 +383,15 @@ Page({
 
   // 文本框聚焦
   replyBtn: function (e) {
+    var m = this;
     wx.pageScrollTo({
       scrollTop: 0,
     });
-    this.setData({
+    m.setData({
       focus: true,
       vieShow:false,
-      txtShow:true
+      txtShow:true,
+      
     })
   },
 

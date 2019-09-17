@@ -16,11 +16,11 @@ Page({
     img_url:[],
     img_file:[],
 
-    today:1, 
+    today:1,  
     sumList:[],
     page: 1,
     totalPage: 0,
-    
+    amount:""
   },
 
   onLoad: function (options) {
@@ -28,6 +28,10 @@ Page({
     useropenid = userinfo.openid;
     var m = this;
 
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     m.myList();
   },
 
@@ -38,6 +42,9 @@ Page({
       page: m.data.page
     },function(e){
       console.log(e);
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       let totalList = e.message.list;
       var arr = m.data.sumList.concat(totalList);
       if (m.data.sumList.length != 0){  
@@ -60,7 +67,8 @@ Page({
       let totalPage = Math.ceil(e.message.total / 10);
       m.setData({
         sumList: arr,
-        totalPage: totalPage
+        totalPage: totalPage,
+        amount:e.message.total
       })
     })
     
@@ -101,6 +109,10 @@ Page({
       success: function (res) {
         let file_list = m.data.img_file;
         for (let i = 0; i < res.tempFilePaths.length; i++) {
+          wx.showLoading({
+            title: '上传中...',
+            mask: true
+          })
           wx.uploadFile({
             url: 'https://paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
             filePath: res.tempFilePaths[i],
@@ -111,12 +123,13 @@ Page({
               img_list.push(o.files[0].url);
               file_list.push(o.files[0].filename);
               if (file_list.length == res.tempFilePaths.length) {
-                wx.navigateTo({
-                  url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
-                })
                 m.setData({
                   img_url: [],
                   img_file: []
+                });
+                wx.hideLoading();
+                wx.navigateTo({
+                  url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
                 })
               }
             }

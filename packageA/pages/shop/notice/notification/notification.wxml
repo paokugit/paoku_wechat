@@ -86,7 +86,7 @@
               <view class="leftTime">{{item.create_time}}</view>
             </view>
           </view>
-          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}">回复</view>
+          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}" data-index="{{index}}">回复</view>
           <view class="headRight headRightA" wx:if="{{item.reply == 0?fasle:true}}">已回复</view>
         </view>
  
@@ -115,8 +115,8 @@
         <view>你暂未有评论</view>
       </view> -->
 
-      <view class="comInt" wx:if="{{focus}}">
-        <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' ></input>
+      <view class="comInt" wx:if="{{focus}}" style='bottom:{{inputBottom}}px'>
+        <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>
         <text bindtap="sendBtn">发送</text>
       </view> 
 

@@ -48,13 +48,16 @@ Page({
     })
     console.log(options.twoid);
 
-
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     m.detail();
     m.detailA();
   },
 
   detail:function(){
-    var m = this;
+    var m = this; 
     a.get("drcircle.index.comment_detail",{
       openid: useropenid,
       comment_id: m.data.comid,
@@ -62,6 +65,9 @@ Page({
       page: m.data.page
     },function(e){
       console.log(e);
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
       if(e.error == 0){
         let totalList = e.message.comment;
         let totalPage = Math.ceil(e.message.comment_total / 10);
@@ -176,6 +182,18 @@ Page({
       focus: true
     })
   }, 
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: e.detail.height
+    })
+  },
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: 0
+    })
+  },
   sendBtn:function (e) {
     var m = this;
     let message = m.data.list;

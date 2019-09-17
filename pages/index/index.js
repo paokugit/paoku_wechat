@@ -515,21 +515,16 @@ Page((e = {
 
             }
         });
-        // s.get("myown.index.opt", {
-        //     id: 1
-        // }, function(e) {
-        //     console.log(e);
-        //     a.setData({
-        //         home_icon: e.result.icon,
-        //         backgroundimg: e.result.backgroup
-        //     })
-        // })
-      s.get("myown.index.opt", {
+
+        s.get("myown.index.opt", {
           id: 1
         }, function (e) {
           console.log(e);
           let totalPage = Math.ceil(e.result.icon.length / 4);
           console.log(totalPage);
+          a.setData({
+            backgroundimg: e.result.backgroup
+          })
           var dt = {
             home_icon: e.result.icon,               
             lbSellerCatsLen: totalPage,                             

@@ -42,7 +42,15 @@
       </view>
     </navigator>
   </view>
-  <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
+  
+  <view class="default" wx:if="{{amount == 0?true:false}}">
+    <image src="{{globalimg}}/daren_none.png"></image> 
+    <view>空空如也，快发条动态吧！</view>
+  </view>
+
+  <view wx:if="{{amount == 0?false:true}}">
+    <view class="finish_inquire" wx:if="{{isShow == 1?true:false}}">查询完了哦</view>
+  </view>
 
   <!-- 选择图片路径弹窗 -->
   <view class="imgBall" wx:if="{{showBall}}" bindtap="showBall">

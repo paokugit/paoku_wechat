@@ -94,7 +94,7 @@
               <swiper current="{{slideshow}}">
                 <block wx:for="{{lbSellerCatsLen}}" wx:for-index="i" wx:key="key">
                   <swiper-item class="iconcs">
-                    <view wx:key="key" wx:for="{{home_icon}}" wx:for-index="j" wx:if="{{ ( j >= ( i-0 )*4 ) && ( j < (i+1) * 4 ) }}" style="margin-left:60rpx;">
+                    <view wx:key="key" wx:for="{{home_icon}}" wx:for-index="j" wx:if="{{ ( j >= ( i-0 )*4 ) && ( j < (i+1) * 4 ) }}" style="margin-left:60rpx;text-align: center;">
                       <view class='activity-img'>
                         <view class='earnings-speed' wx:if="{{item.icon == ' '?false:true}}">
                             <image src='{{item.icon}}'></image>
