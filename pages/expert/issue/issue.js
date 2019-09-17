@@ -44,9 +44,6 @@ Page({
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
-
-    console.log('123');
-
     var m = this;
     wx.showLoading({
       title: '加载中...',
@@ -84,17 +81,30 @@ Page({
     a.get("drcircle.my.log",{
       openid: useropenid
     },function(e){
+      console.log(e);
       if(e.error == 0){
         for (var i = 0; i < e.message.img.length; i++) {
           m.data.tempFilePaths.push(e.message.img[i].url);
           m.data.fileName.push(e.message.img[i].filename)
         }
+      
         m.setData({
           releaseText: e.message.content,
           tempFilePaths: m.data.tempFilePaths,
+          fileName:m.data.fileName,
           btnId: e.message.goods_id
         })
         m.listBtn();
+        var query = wx.createSelectorQuery();
+        var nodesRef = query.selectAll(".item");
+        nodesRef.fields({
+          dataset: true,
+          rect: true
+        }, (result) => {
+          m.setData({
+            elements: result
+          })
+        }).exec();
       }
     })
   },
@@ -322,10 +332,6 @@ Page({
     if (this.data.flag) {
       const x = e.touches[0].pageX;
       const y = e.touches[0].pageY;
-
-      console.log(this.data.textHeight);
-      console.log(y);
-
       if (this.data.textHeight > 70) {
         this.setData({
           x: x - 75, 

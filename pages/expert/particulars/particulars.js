@@ -194,7 +194,7 @@ Page({
       inputBottom: 0
     })
   },
-  sendBtn:function (e) {
+  sendBtn:function (e) { 
     var m = this;
     let message = m.data.list;
     wx.showLoading({
@@ -271,6 +271,7 @@ Page({
       openid: useropenid,
       comment_id: m.data.catid
     }, function (e) {
+      console.log(e);
       if(e.error == 0){
         wx.showToast({
           title: '删除成功',
@@ -278,6 +279,11 @@ Page({
           duration: 2000
         })
         message.splice(del_index, 1);
+        for(var i = 0; i < message.length; i++ ){
+          if (message[i].id == m.data.catid){
+            message.splice(i, 1);
+          }
+        }
         m.detailA();
         m.setData({
           shadeShow: false,
