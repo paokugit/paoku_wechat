@@ -67,7 +67,7 @@ Page({
         bargainid: "",
         selectcard: "",
         fardis: 'none',
-        condisp: 'block',
+        condisp: 'none',
         caloriedisp: 'none',
         zkbDis: 'none',
         kllDis: 'none',
@@ -134,7 +134,8 @@ Page({
                 var s = (i.data.originalprice - t.goodsprice).toFixed(2);
                 if (t.goodsdeduct == t.goodsprice && t.deductcredit < t.goodsdeduct) {
                     i.setData({
-                        condisp: 'none'
+                      kllDis: 'none',
+                      zkbDis: 'none'
                     })
                 }
                 if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice) {

@@ -12,7 +12,7 @@
                     <view class="fui-tab fixed fui-tab-danger" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
                         <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">全部</view>
                         <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">步数兑换</view>
-                        <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">好友捐赠</view>
+                        <!-- <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">好友捐赠</view> -->
                         <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">签到</view>
                         <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">订单消费</view>
                     </view>
