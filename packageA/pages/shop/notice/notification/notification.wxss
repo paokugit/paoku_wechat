@@ -10,6 +10,7 @@
     height: 0;
     color: transparent;
 }
+
 .head-box {
   width: 100%;
   height: 90rpx;
@@ -22,39 +23,26 @@
   left: 0;
   z-index: 100;
 }
-.inform {
+
+.discuss,.inform,.assistant{
   width: 200rpx;
   height: 100%;
   display: flex;
   align-items: center;
   position: relative;
-  margin-left: 75rpx;
 }
-.assistant {
-  width: 200rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-right: 25rpx;
+
+.inform-text,.assistant-text,.discuss-text{
+  margin: 0 auto;
 }
-.inform-text {
-  width: 140rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin-left: 15rpx;
+
+.fontcss{
+  font-size: 28rpx;
 }
-.assistant-text {
-  width: 140rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin-left: 15rpx
-}
+
 .inform-num {
-  width: 40rpx;
-  height: 40rpx;
+  width: 35rpx;
+  height: 35rpx;
   font-size: 20rpx;
   border-radius: 50%;
   background: red;
@@ -64,7 +52,7 @@
   color: #fff;
   position: absolute;
   top: 10rpx;
-  right: 15rpx;
+  right: 0rpx;
 }
 
 .assistant-num {
@@ -82,23 +70,21 @@
   right: 15rpx;
 }
 
-.underline {
-  width: 160rpx;
-  height: 8rpx;
+.underline,.underline2,.underline3 {
   background: #01d7a1;
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: 0;
   border-radius: 10rpx;
+  transform: translate(-50%,0);
 }
-
-.underline2 {
+.underline,.underline2{
   width: 160rpx;
   height: 8rpx;
-  background: #01d7a1;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+}
+.underline3{
+  width: 100rpx;
+  height: 8rpx;
 }
 
 .no-inform {
@@ -118,13 +104,14 @@
   height: auto;
 }
 .inform-ul{
-  width: 100%;
   height: auto;
+  margin: 24rpx;
+  border-radius: 15rpx;
 }
 .inform-li{
   width: 96%;
   height: auto;
-  padding: 0 2% 0 2%;
+  padding: 0 24rpx;
   background: #fff;
   display: flex;
   border-bottom: 1px solid rgb(243, 243, 243);
@@ -259,3 +246,163 @@
   justify-content: center;
 }
 
+
+
+.criticTter{
+  height: 100%;
+}
+.reviewList{
+  background: #fff;
+  margin: 20rpx 24rpx;
+  border-radius: 10rpx;
+}
+
+.reviewHead{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 24rpx;
+}
+.headLeft{
+  display: flex;
+  align-items: center;
+}
+.leftImg{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 15rpx;
+  border-radius: 50rpx;
+}
+.leftName{
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+}
+.leftTime{
+  font-size: 22rpx;
+  color: rgb(189, 189, 189);
+}
+.headRight{
+  width: 100rpx;
+  height: 44rpx;
+  font-size:24rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 50rpx;
+}
+.headRightA{
+  background: #fff;
+  color: rgb(102, 102, 102);
+  border: 1px solid rgb(237, 237, 237); 
+}
+
+
+.details{
+  color: rgb(51, 51, 51);
+  font-size: 30rpx;
+  margin: 0 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.nickname{
+  color: rgb(1, 215, 161);
+  /* font-weight: bold; */
+  font-weight: bolder;
+}
+
+.replyX{
+  background: rgb(248, 248, 248);
+  border-radius: 10rpx;
+  padding: 24rpx;
+  margin: 40rpx 20rpx;
+}
+.huifu{
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.huifuN{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.tiezi{
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.tieziImg{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+.tieziRight{
+  width: 400rpx; 
+}
+.tieziTxt{
+  font-size: 24rpx;
+  color: rgb(102, 102, 102);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-top: 10rpx;
+}
+
+.KongNull{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.KongNull image{
+  width: 298rpx;
+  height: 338rpx;
+}
+.KongNull view{
+  font-size: 34rpx;
+  color: rgb(146, 146, 146);
+  margin-top: 30rpx;
+}
+
+.palClass{
+  color: rgb(153, 153, 153);
+  font-size: 28rpx;
+}
+.comInt{
+  width: 100%;
+  height: 120rpx;
+  border-top: 1rpx solid #f8f8f8;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.solid-bottom{
+  width: 70%;
+  margin-left: 48rpx;
+  border-radius: 50rpx;
+  background: rgb(248, 248, 248);
+  padding: 20rpx 30rpx;
+}
+.palClass{
+  color: rgb(153, 153, 153);
+  font-size: 28rpx;
+}
+.comInt text{
+  font-size: 34rpx;
+  color: rgb(1, 215, 161);
+  margin-right: 24rpx;
+}
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}

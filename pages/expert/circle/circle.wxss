@@ -1,0 +1,253 @@
+
+.expedite-box{
+  padding-bottom: 50rpx;
+}
+/* 动态提醒 */
+.tiXing{
+  width: 238rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: rgb(255, 255, 255);
+  border-radius: 50rpx;
+  background: rgb(76, 76, 76);
+  position: absolute;
+  left: 35%;
+  top: 13%;
+}
+ 
+ 
+.listCon{
+  background: #fff;
+  margin: 24rpx;
+  padding: 24rpx;
+  border-radius: 30rpx;
+}
+
+/* 头像、昵称、发布时间 */
+.circleMes{
+  justify-content: space-between;
+}
+
+.nameMes image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin-right: 20rpx;
+} 
+
+.nameMes view{
+  width: 150rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.timeMes{
+  font-size: 24rpx;
+  color: rgb(146, 146, 146);
+}
+
+/* 动态内容 */
+.circleCon{
+  margin: 20rpx 0; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* 动态图片 */
+.circleImg{
+  display: flex;
+  flex-wrap: wrap;
+}
+.typeA{
+  width: 338rpx;
+  height: 450rpx;
+}
+.typeB{
+  width: 319rpx; 
+  height: 326rpx;
+  margin: 0rpx 4.5rpx 9rpx;
+}
+.typeC{
+  margin-bottom: 10rpx !important;
+  margin-left: 10rpx;
+  width: 210rpx;
+  height: 210rpx;
+}
+.typeC:nth-child(1) {
+  margin: 0;
+}
+
+.typeC:nth-child(4) {
+  margin: 0;
+}
+
+.typeC:nth-child(7) {
+  margin: 0;
+}
+.typeImage{
+  border-radius: 10rpx;
+}
+
+/* 商品推荐 */
+.tuijian{
+  display: flex;
+  border-radius: 15rpx;
+  background: rgb(248, 248, 248);
+  margin-top: 30rpx;
+}
+.goodsImg{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 15rpx;
+}
+
+
+.tuiTa {
+  font-size: 34rpx;
+  color: rgb(51, 51, 51);
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  left: 15rpx;
+  top: 16rpx;
+  font-weight: bold;
+}
+.tuiTb{
+  width: 400rpx;
+  height: 65rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  position: relative;
+  left: 15rpx;
+  top: 20rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.jiaGe{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  left: 15rpx;
+  top: 50rpx;
+}
+.xianJia{
+  font-size: 40rpx;
+  color: #e01212;
+}
+.xianJia::before{
+  content: "￥";
+  font-size:28rpx
+}
+.yuanJia{
+  font-size: 28rpx;
+  color: #999999;
+  margin-left: 15rpx;
+  text-decoration:line-through;
+}
+.xiaoL {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+
+/* 图标 */
+.circle_parise{
+  height: 80rpx; 
+  line-height: 80rpx;
+}
+.ico{
+  justify-content: space-between;
+}
+.iconImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+.iconTxt{ 
+  font-size: 30rpx;
+  color: rgb(102, 102, 102);
+}
+.circle_news{
+  margin-left: 40rpx;
+}
+
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}
+
+/* 功能选择 */
+.publish{
+  position: fixed;
+  right: 24rpx;
+  bottom: 156rpx;
+}
+.fixedCss{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom:20rpx; 
+}
+
+
+/* 选择图片路径弹窗 */
+.imgBall{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(50, 50, 50,0.5);
+}
+.imgBallC{
+  width: 558rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.cssBall{
+  height: 105rpx;
+  line-height: 105rpx;
+  padding-left: 24rpx;
+  font-size: 34rpx;
+  color: rgb(51, 51, 51)
+}
+.paizhao{
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+
+.notlogin-button{
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+} 
+
+
+.flexCss{
+  display: flex;
+  align-items: center;
+}
+.circleCss{
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+}

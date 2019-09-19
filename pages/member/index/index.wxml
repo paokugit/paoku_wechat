@@ -24,7 +24,7 @@
                         <image src="{{globalimg}}/yearcard@2x.png"></image>
                     </view>
                 </view>
-            </view>
+            </view> 
         </view>
 
         <view class='bind-phone'>奖励+10卡路里</view>

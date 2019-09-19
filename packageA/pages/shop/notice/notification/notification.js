@@ -8,16 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mask: 1,
+    mask: 0,
     globalimg: i.globalData.appimg,
       // 组件所需的参数
       nvabarData: {
-          showCapsule: 1, 
+          showCapsule: 1,   
           title: '消息中心', 
           height: i.globalData.height * 2 + 20,
       },
     color: '#01d7a1',
-    underline: 0,
+    underline: 0, 
     color1: '#333333',
     informtitle: '',
     informlist: [],
@@ -26,6 +26,15 @@ Page({
     sixinw: 0,
     siback: 'none',
     xiback: 'none',
+
+    criticPage:1,
+    totalPage:0,
+    listCritic:[],
+    abcShow: false,
+    itemid:'',
+    discuss: '',
+    focus: false,
+    perch:'我也说几句...'
   },
 
   /**
@@ -41,10 +50,38 @@ Page({
     _that.setData({
       color: '#333333',
       color1: '#01d7a1',
+      color2: '#333333',
+      fontcss: '28rpx',
+      fontcss1: '33rpx',
+      fontcss2: '28rpx',
       underline: 1,
-      mask: 2
+      mask: 2,
+      listCritic: [],
+      criticPage: 1,
+      discuss: '', 
+      focus: false
     })
   },
+
+  discuss:function(){
+    var _that = this
+    _that.setData({
+      color: '#333333',
+      color1: '#333333',
+      color2: '#01d7a1',
+      fontcss: '28rpx',
+      fontcss1: '28rpx',
+      fontcss2: '33rpx',
+      underline: 2,
+      mask: 3,
+      listCritic: [],
+      criticPage:1,
+      discuss: '',
+      focus: false
+    });
+    _that.critic();
+  },
+
   zan_tap: function (e) {
     var d = e.currentTarget.dataset.id
     var _that = this
@@ -75,8 +112,16 @@ Page({
     _that.setData({
       color: '#01d7a1',
       color1: '#333333',
+      color2: '#333333',
+      fontcss: '33rpx',
+      fontcss1: '28rpx',
+      fontcss2: '28rpx',
       underline: 0,
-      mask: 0
+      mask: 0,
+      listCritic:[],
+      criticPage: 1,
+      discuss: '',
+      focus: false
     })
   },
   tiaozhuan: function (e) {
@@ -123,20 +168,160 @@ Page({
       hh = e.list
       if (e.notice > 0) {
         a.setData({
-          mask: 0,
+          // mask: 0,
           informlist: e.list,
           weidux: e.notice,
           xiback: 'block',
         })
       }else{
         a.setData({
-          mask: 0,
+          // mask: 0,
           informlist: e.list,
           weidux: e.notice,
           xiback: 'none',
         })
       }
     })
+  },
+
+  // 评论
+  critic:function(){
+    var m = this;
+    s.get("drcircle.my.mycomment",{
+      openid: useropenid,
+      page: m.data.criticPage
+    },function(e){
+      console.log(e);
+      let totalList = e.message.list;
+      let totalPage = Math.ceil(e.message.total / 8);
+      m.setData({
+        mask: 3,
+        listCritic: m.data.listCritic.concat(totalList),
+        totalPage: totalPage
+      })
+    })
+  },
+  // 跳转详情
+  dynamicBtn:function(e){
+    var isdel = e.currentTarget.dataset.isdel;
+    var circleid = e.currentTarget.dataset.circleid;
+    if(isdel == 0){
+      wx.navigateTo({
+        url: '/pages/expert/discuss/discuss?listId=' + circleid,
+      })
+    }else{
+      wx.showToast({
+        icon: 'none',
+        title: '此动态已被删除...',
+        duration: 2000
+      })
+    }
+  },
+
+  // 回复按钮
+  replyBtn:function(e){
+    var itemid = e.currentTarget.dataset.itemid;
+    this.setData({
+      itemid: itemid,
+      focus: true,
+      perch: '回复：' + e.currentTarget.dataset.name
+    })
+  },
+  // 回复内容
+  formName: function (e) {
+  
+    this.setData({
+      discuss: e.detail.value
+    })
+  },  
+  //输入聚焦
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: e.detail.height
+    })
+  },
+
+  //失去聚焦
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: 0
+    })
+  },
+  // 留言
+  sendBtn: function () {
+    var m = this;
+
+    var message = m.data.listCritic;
+    let sutid = m.data.itemid;
+    console.log(message);
+    console.log(m.data.itemid);
+
+    wx.showLoading({
+      title: '评论中...',
+      mask: true
+    })
+    s.get("drcircle.my.comment", {
+      openid: useropenid,
+      content: m.data.discuss,
+      type: 2,
+      parent_id: m.data.itemid
+    }, function (e) {
+      console.log(e);
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+      if (e.error == 0) {
+        wx.showToast({
+          title: '回复成功',
+          icon: 'none',
+          duration: 2000
+        })
+        
+        for(var i = 0; i< message.length; i++){
+          if (message[i].id == sutid){
+            message[i].reply = parseInt(message[i].reply) + 1
+          }
+        }
+
+        m.setData({
+          discuss: '',
+          focus: false,
+          listCritic:message
+        })
+
+      }else{
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
+
+  // 上拉加载
+  lower: function (e) {
+    let page = this.data.criticPage;
+    let totalpage = this.data.totalPage;
+    if (page < totalpage) {
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      })
+      this.setData({
+        criticPage: page + 1
+      })
+      this.critic();
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+    } else {
+      this.setData({
+        abcShow: true
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -149,7 +334,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+  
   },
 
   /**
@@ -163,7 +348,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
   /**
    * 用户点击右上角分享

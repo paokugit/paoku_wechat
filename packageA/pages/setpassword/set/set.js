@@ -4,31 +4,114 @@ var a, e, i = getApp(),
 var f = getApp();
 var userinfo = f.getCache('userinfo');
 console.log(userinfo)
+
+var useropenid = ""; 
+
+
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        globalimg: i.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1,
-            title: '设置',
-            height: i.globalData.height * 2 + 20,
-        },
+      globalimg: i.globalData.appimg,
+      nvabarData: {
+          showCapsule: 1,
+          title: '设置',
+          height: i.globalData.height * 2 + 20,
+      },
+      list:[],
+      speedId:'',
+      isSelect:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+      var userinfo = f.getCache('userinfo');
+      useropenid = userinfo.openid
 
+      var m = this;
+      m.list();
     },
-    setbtn: function() {
-        wx.navigateTo({
-            url: '/packageA/pages/setpassword/setpassword/setpassword',
+
+    list:function(){
+      var m = this;
+      s.get("payment.limit",{},function(e){
+        console.log(e);
+        m.setData({
+          list: e.result.list
         })
+      })
     },
+
+    // 列表点击事件
+    list_btn: function (e) {
+      this.setData({
+        isSelect: e.currentTarget.dataset.id,
+        speedId:e.currentTarget.dataset.id
+      })
+    },
+
+    pay_btn: function (e) {
+      var m = this;
+      
+      console.log(m.data.speedId);
+
+      s.get("payment.limit_order", {
+        openid: useropenid,
+        id: m.data.speedId
+      }, function (e) {
+        console.log(e);
+        if(e.status == 1){
+          wx.requestPayment({
+            timeStamp: e.result.timeStamp,
+            nonceStr: e.result.nonceStr,
+            package: e.result.package,
+            signType: 'MD5',
+            paySign: e.result.paySign,
+            success(res) {
+              console.log(res);
+              wx.showToast({
+                title: '购买成功',
+                icon: 'success',
+                duration: 3000
+              })
+
+              m.setData({
+                isSelect: '',
+                speedId: ''
+              })
+            },
+            fail(res) {
+              console.log(res);
+            }
+          })
+        }else if(e.status == 0){
+          wx.showModal({
+            title: '提示',
+            content: '请选择要购买的额度',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+      })
+    },
+
+
+    // setbtn: function() {
+    //     wx.navigateTo({
+    //         url: '/packageA/pages/setpassword/setpassword/setpassword',
+    //     })
+    // },
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

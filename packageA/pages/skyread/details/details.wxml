@@ -1,0 +1,81 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+
+  <view class="headcon">
+    <view class="headimg">
+      <image src="https://paokucoin.com/attachment/images/1/2019/09/JSgQcfHgzPyC66vqtmVcCCuCgPVsSu.png"></image>
+    </view>
+
+    <view class="essay">
+      <view class="mainTitle">凡事都有定数，不能强求。</view>
+      <view class="writer"><text class="writerA">跑库</text> <text class="writerB">2019-07-05</text></view>
+
+      <view class="music">
+        <image class="musicimg" src="{{globalimg}}/music.png"></image>
+        <view>
+          <view>
+            <text class="musictit">早上醒来</text>
+            <!-- <image src="{{globalimg}}/"></image> -->
+          </view>
+          <view class="musictitA">来自跑库</view>
+        </view>
+      </view>
+
+      <view class="article">
+        一切有为法，尽是因缘合和，缘起时起，缘尽还无,不外如是。凡事都是有定数的,不能强求。朋友,没有必要强求意气相投就真心相处,看不惯我的你想走就走,话不投机的聊一分钟都嫌多,情投意合的畅谈一夜都不够。道不同不相为谋,志不同不相为友。真正的朋友,愿你我都能风雨同到最后。
+      </view>
+    </view>
+
+    <view class="transpond">
+      <image src="{{globalimg}}/read-zhuanfa.png"></image>
+      <view>转发</view>
+    </view>
+  </view>
+
+  <view class="comment">
+    <view class="comment-head">
+      <view class="all-comment">全部评论</view>
+      <view class="write-comment" catchtap="writebtn">写评论</view>
+    </view>
+
+    <view class="comment-list">
+      
+      <image class="left-img" src="https://paokucoin.com/attachment/videos/img/1546f45e329fd94a9fc942e0fbccef72.png"></image>
+      <view>
+        <view class="name-zan">
+          <view class="right-name">生无可恋</view>
+          <view class="img-zan">
+            <image src="{{globalimg}}/circle_parise@1.png"></image>
+            <text>0</text>
+          </view>
+        </view>
+        <view class="right-txt">坚持运动,行走兑换,打卡记录第五天,有要小伙伴吗?</view>
+
+        <view>
+          <view class="author-name">
+            <view class="left-author"></view>
+            <view class="right-author">作者</view>
+          </view>
+          <view class="right-txt">谢谢，希望每一个人都喜欢</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="base">
+    <view class="bordercss"></view>
+    <view class="yuancss"></view>
+    <view class="bordercss"></view>
+  </view>
+
+</view>
+
+<view class="publish" wx:if="{{publish}}" catchtap="publishbtn">
+  <view class="txt-btn" style='bottom:{{inputBottom}}px'>
+    <view class="release_text" catchtap="focusbtn">
+      <textarea bindinput='gaysText' placeholder='请输入你的看法...' cursor-spacing="100" placeholder-class="placss" maxlength="-1" focus="{{focus}}" auto-height='true' class='every' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"/>
+    </view>
+    <view class="publishbtn" style="{{background}}">发布</view>
+  </view>
+</view>
