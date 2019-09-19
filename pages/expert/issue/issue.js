@@ -29,8 +29,6 @@ Page({
     btnId:0,
     message:{},
     shopErr:1, 
-    hintT:'',
-
     mydata:'',
     issueShow:false,
     retain_po:'1',
@@ -54,7 +52,6 @@ Page({
     }, 2000)
     m.retain();
     m.listBtn();
-    m.shop();
     
     if (options.imgList != undefined) {
       m.setData({
@@ -126,32 +123,29 @@ Page({
   },
 
   // 推荐跳转提示
-  shop:function(){
+  shopErr:function(){
     var m = this;
     a.get("drcircle.my.shop",{
       openid: useropenid
     },function(e){
+      console.log(e);
       if(e.error == 0){
-        m.setData({
-          shopErr: e.error,
-          hintT: e.message
+        wx.navigateTo({
+          url: '/pages/expert/tuijian/recommend?btnId=' + m.data.btnId,
         })
-      }else if(e.error == 1){
-        wx.showToast({
-          title: e.message,
-          duration: 2000
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else {
+              console.log('用户点击取消')
+            }
+          }
         })
       }
-    })
-  },
-  shopBtn:function(){
-    wx.navigateTo({
-      url: '/pages/expert/tuijian/recommend?btnId='+this.data.btnId,
-    })
-  },
-  tiShiBtn:function(){
-    this.setData({
-      showTishi:true
     })
   },
 
