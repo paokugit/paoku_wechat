@@ -162,6 +162,7 @@ module.exports = {
     //   当前登录人的openid
     var n = getApp();
     var userinfo = n.getCache('userinfo');
+    console.log(userinfo)
     if (userinfo.nickName == undefined) {
       var bnickname = userinfo.nickname
     } else {

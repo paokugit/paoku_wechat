@@ -15,12 +15,15 @@ Page({
     mid = t.mid
     if (t.refrom == 'goods') {
       reurl = t.reurl + '?id=' + t.id + '&mid=' + mid;
-    } else if (t.refrom) {
+    } else if (t.refrom =='helpshare') {
       refrom = t.refrom;
       hlpid = t.hlpid;
       mid = t.mid;
       reurl = t.reurl + '?hlpid=' + hlpid + '&mid=' + mid;
 
+    } else if (t.refrom=="gift"){
+      refrom = t.refrom;
+      reurl = t.reurl + '?mid=' + mid;
     }
 
     console.log('yaya')

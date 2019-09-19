@@ -26,11 +26,10 @@ Page({
         console.log(options)
         var t=this
         // 路径
-        // var u = {}; u.mid = userinfo.id;
-        // i.url(u),
-        s.get("goods/poster/gethelpimage", {
+        var u = {}; u.mid = userinfo.id;
+        i.url(u),
+      s.get("game/gift_share", {
             openid: userinfo.openid,
-            mid: userinfo.id,
             mids: userinfo.id,
        }, function (e) {
             console.log(e)

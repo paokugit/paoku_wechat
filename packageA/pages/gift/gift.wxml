@@ -171,8 +171,8 @@
     </view>
 </scroll-view>
 <!-- 继续邀请赚更多-开始 -->
-<form bindsubmit='form_submit' report-submit='true' class='inviteform'>
-    <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn' open-type='share'>
+<form bindsubmit='form_submit' report-submit='true' class='inviteform' bindtap='maskshow'>
+    <button form-type='submit' style="background:rgba(0,0,0,0)" class='invitebtn'>
         <view class='invite-friend-box'>
             <view class='gift-invite ballon'>
                 <image src='{{globalimg}}/buttun@2x.png'></image>
@@ -256,3 +256,31 @@
         </view>
     </view>
 </view>
+<view style='display:{{maskDis}}' class='share-mask-box'>
+    <view class='share-con-box'>
+        <view class='share-con'>
+            <view class='share-con-top'>
+                <view class='weixinBox'>
+                    <button class='wxbtn' open-type='share'>
+                        <view class='share-weixin'>
+                            <image src='{{globalimg}}/weixin.png'></image>
+                        </view>
+                        <view class='tofriend'>分享给朋友</view>
+                    </button>
+                </view>
+                <view class='haibaoBox'>
+                    <button class='hbbtn' bindtap='createHbao'>
+                        <view class='haibao'>
+                            <image src="{{globalimg}}/shengchenghaibao.png"></image>
+                        </view>
+                        <view class='tohb'>生成专属海报</view>
+                    </button>
+                </view>
+            </view>
+            <!-- 取消 -->
+            <view bindtap='hidemask' class='share-con-bottom'>取消</view>
+        </view>
+
+    </view>
+</view>
+<!-- 点击邀请好友赚钱花之后的遮罩-结束 -->

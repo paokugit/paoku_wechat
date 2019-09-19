@@ -818,3 +818,113 @@ button::after {
     width: 50rpx;
     height: 50rpx;
 }
+/* 遮罩-开始 */
+
+.share-mask-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.share-con-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.share-con {
+    width: 100%;
+    height: 280rpx;
+    background: #f0f;
+    position: fixed;
+    bottom: 0;
+    left: 0
+   
+}
+
+.share-con-top {
+    width: 100%;
+    height: 200rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weixinBox {
+    width: 160rpx;
+    height: 150rpx;
+}
+
+.wxbtn {
+    width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+
+button::after {
+    border: none;
+}
+
+.haibaoBox {
+    width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hbbtn {
+    width: 160rpx;
+    height: 150rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.share-weixin {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.tofriend {
+    color: #333;
+    font-size: 24rpx;
+    width: 160rpx;
+}
+
+.tohb {
+    color: #333;
+    font-size: 24rpx;
+    width: 160rpx;
+    text-align: center;
+}
+
+.haibao {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.share-con-bottom {
+    width: 100%;
+    height: 80rpx;
+    font-size: 24rpx;
+    color: #333;
+    background: #f7f3ff;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+/* 遮罩-结束 */
