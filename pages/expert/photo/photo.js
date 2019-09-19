@@ -42,34 +42,42 @@ Page({
       page: m.data.page
     },function(e){
       console.log(e);
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 2000)
-      let totalList = e.message.list;
-      var arr = m.data.sumList.concat(totalList);
-      if (m.data.sumList.length != 0){  
-        var res = [];
-        var narr = [];
-        for (var i = 0; i < arr.length; i++) {
-          var n = res.indexOf(arr[i].type);
-          if (n == -1) {
-            res.push(arr[i].type);
-            narr.push({ type: arr[i].type,time:arr[i].time, dt: arr[i].dt })
-          } else {
-            for (var j = 0; j < arr[i].dt.length; j++) {
-              narr[n].dt.push(arr[i].dt[j])   
+      if(e.error == 0){
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+        let totalList = e.message.list;
+        var arr = m.data.sumList.concat(totalList);
+        if (m.data.sumList.length != 0) {
+          var res = [];
+          var narr = [];
+          for (var i = 0; i < arr.length; i++) {
+            var n = res.indexOf(arr[i].type);
+            if (n == -1) {
+              res.push(arr[i].type);
+              narr.push({ type: arr[i].type, time: arr[i].time, dt: arr[i].dt })
+            } else {
+              for (var j = 0; j < arr[i].dt.length; j++) {
+                narr[n].dt.push(arr[i].dt[j])
+              }
             }
           }
+          arr = narr;
         }
-        arr = narr;
+
+        let totalPage = Math.ceil(e.message.total / 10);
+        m.setData({
+          sumList: arr,
+          totalPage: totalPage,
+          amount: e.message.total
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          duration: 2000
+        })
       }
       
-      let totalPage = Math.ceil(e.message.total / 10);
-      m.setData({
-        sumList: arr,
-        totalPage: totalPage,
-        amount:e.message.total
-      })
     })
     
   },
@@ -178,7 +186,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh();
   },
 
   /**

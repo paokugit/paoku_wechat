@@ -358,3 +358,20 @@ page{
   bottom: 40rpx;
   transform: translate(-50%, -50%);
 }
+
+.notlogin-button{
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+} 
+.notlogin-buttonA{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

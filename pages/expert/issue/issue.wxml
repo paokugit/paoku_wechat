@@ -16,7 +16,7 @@
             <view class="deleteImg" data-id="{{index}}" bindtap='deletePic'>
               <image src="{{globalimg}}/imgGuanBi.png"></image>
             </view>
-          
+      
           </view> 
         </block>
         
@@ -32,7 +32,7 @@
         </view>
       </movable-area>
 
-      <view class="shangpin" wx:if="{{btnId == 0?false:true}}">
+      <navigator class="shangpin" wx:if="{{btnId == 0?false:true}}" url="/pages/goods/detail/index?id={{message.id}}">
         <image class="tuiImg" src="{{message.thumb}}"></image>
         <view>
           <view class="tuiTa">{{message.title}}</view>
@@ -45,7 +45,7 @@
             <view class="xiaoL">销量{{message.sales}}</view>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
 
     <view class="fabuC">

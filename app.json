@@ -136,7 +136,10 @@
           "pages/shop/caregory/index",
           "pages/setpassword/set/set",
           "pages/setpassword/setpassword/setpassword",
-          "pages/timelimit/timelimit"
+          "pages/timelimit/timelimit",
+
+          "pages/skyread/read/read",
+          "pages/skyread/details/details"
         ]
       }
     ],

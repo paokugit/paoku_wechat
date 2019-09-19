@@ -87,7 +87,7 @@
             </view>
             <view class='type-text'>转账</view>
         </view>
-        <view class='type-item' bindtap='setbtn'>
+        <view class='type-item' bindtap='setbtn'> 
             <view class='type-img'>
                 <image src='{{globalimg}}/shezhi01.png'></image>
             </view>

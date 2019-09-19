@@ -48,7 +48,7 @@ button::after {
     position: absolute;
     top: 10%;
     left: 10%
-}
+} 
 .notlogin-text{
     color: #333;
     font-size: 44rpx;

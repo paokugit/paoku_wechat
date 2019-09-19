@@ -1,5 +1,5 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'> 
   <view class="area">
 
     <view catchtap="replyBtn" data-parentid="{{detailList.id}}" data-type="1" data-name="{{detailList.nickname}}">
@@ -35,7 +35,8 @@
       </view>
     </navigator>
 
-    <view class="icon">
+    <view class="icon" style="position: relative;">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-buttonA' style='display:{{notlogindis}}'> </button>
       <view class="cha-dian">
         <view>
           <image class="iconImg" src="{{globalimg}}/circle_read.png"></image>
@@ -68,29 +69,33 @@
         <view>热评</view>
       </view>
     </view> 
-  
-    <view class="reList" wx:for="{{hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" catchtap="commentBtn" data-comid="{{listHot.id}}">
-      <view class="fleCss topRe">
-        <view class="img-name fleCss">
-          <image src="{{listHot.avatar}}"></image>
-          <view>
-            <view class="reName">{{listHot.nickname}}</view>
-            <view class="reTime">{{listHot.create_time}}</view> 
-          </view>
-        </view>
-        <view class="fleCss">
-          <view catchtap="commentBtn" data-comid="{{listHot.id}}" class="circle_news">
-            <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-            <text class="iconTxt">{{listHot.comment_count}}</text>
-          </view>
 
-          <view class="circle_read" catchtap="supportA" data-supportid="{{listHot.id}}" data-index="{{index}}">
-            <image class="iconImg" src="{{globalimg}}/{{listHot.support == 0?wei_zan:yi_zan}}"></image>
-            <text class="iconTxt">{{listHot.zan_count}}</text>
+    
+    <view style="position: relative;">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-buttonA' style='display:{{notlogindis}}'> </button>
+      <view class="reList" wx:for="{{hot}}" wx:for-item="listHot" wx:key="{{indexHot}}" catchtap="commentBtn" data-comid="{{listHot.id}}" >
+        <view class="fleCss topRe">
+          <view class="img-name fleCss">
+            <image src="{{listHot.avatar}}"></image>
+            <view>
+              <view class="reName">{{listHot.nickname}}</view>
+              <view class="reTime">{{listHot.create_time}}</view> 
+            </view>
+          </view>
+          <view class="fleCss">
+            <view catchtap="commentBtn" data-comid="{{listHot.id}}" class="circle_news">
+              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+              <text class="iconTxt">{{listHot.comment_count}}</text>
+            </view>
+
+            <view class="circle_read" catchtap="supportA" data-supportid="{{listHot.id}}" data-index="{{index}}">
+              <image class="iconImg" src="{{globalimg}}/{{listHot.support == 0?wei_zan:yi_zan}}"></image>
+              <text class="iconTxt">{{listHot.zan_count}}</text>
+            </view>
           </view>
         </view>
+        <view class="circleCssB">{{listHot.content}}</view>
       </view>
-      <view class="circleCssB">{{listHot.content}}</view>
     </view>
 
     <view class="rePing" wx:if="{{newestList.length == 0?false:true}}">
@@ -99,48 +104,52 @@
       </view>
     </view>
 
-    <block  wx:for="{{newestList}}" wx:key="{{index}}">
-      <view class="reList" data-parentid="{{item.id}}" catchtap="replyBtn" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}" data-index="{{index}}" data-type="2"  data-name="{{item.nickname}}">
-        <view class="fleCss topRe">
-          <view class="img-name fleCss">
-            <image src="{{item.avatar}}"></image>
-            <view>
-              <view class="reName">{{item.nickname}}</view>
-              <view class="reTime">{{item.create_time}}</view>
+    <view style="position: relative;">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-buttonA' style='display:{{notlogindis}}'> </button>
+      <block  wx:for="{{newestList}}" wx:key="{{index}}">
+        <view class="reList" data-parentid="{{item.id}}" catchtap="replyBtn" bindlongpress="shadeCat" data-catid="{{item.id}}" data-openid="{{item.openid}}" data-index="{{index}}" data-type="2"  data-name="{{item.nickname}}">
+          <view class="fleCss topRe">
+            <view class="img-name fleCss">
+              <image src="{{item.avatar}}"></image>
+              <view>
+                <view class="reName">{{item.nickname}}</view>
+                <view class="reTime">{{item.create_time}}</view>
+              </view>
             </view>
-          </view>
-          <view class="fleCss"> 
-            <view catchtap="commentBtn" data-comid="{{item.id}}" class="circle_news">
-              <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
-              <text class="iconTxt">{{item.comment_count}}</text>
-            </view>
+            <view class="fleCss"> 
+              <view catchtap="commentBtn" data-comid="{{item.id}}" class="circle_news">
+                <image class="iconImg" src="{{globalimg}}/circle_news.png"></image>
+                <text class="iconTxt">{{item.comment_count}}</text>
+              </view>
 
-            <view class="circle_read" catchtap="supportB" data-supportid="{{item.id}}" data-index="{{index}}">
-              <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
-              <text class="iconTxt">{{item.zan_count}}</text>
+              <view class="circle_read" catchtap="supportB" data-supportid="{{item.id}}" data-index="{{index}}">
+                <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
+                <text class="iconTxt">{{item.zan_count}}</text>
+              </view>
             </view>
-          </view>
-        </view> 
-        <view class="circleCssB">{{item.content}}</view>
-      </view>
-      <view class="twoReply" wx:if="{{item.comment.length == 0?false:true}}">
-        
-        <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" data-comid="{{item.id}}" data-twoid="{{replyIt.id}}" catchtap="commentBtn">
-          <text class="replyName">{{replyIt.nickname}}</text> 回复 <text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
+          </view> 
+          <view class="circleCssB">{{item.content}}</view>
         </view>
+        <view class="twoReply" wx:if="{{item.comment.length == 0?false:true}}">
+          
+          <view wx:for="{{item.comment}}" wx:for-item="replyIt" wx:key="{{replyInde}}" data-comid="{{item.id}}" data-twoid="{{replyIt.id}}" catchtap="commentBtn">
+            <text class="replyName">{{replyIt.nickname}}</text> 回复 <text class="replyName">{{replyIt.bnickname}}</text>：{{replyIt.content}}
+          </view>
 
-        <view class="allReply" wx:if="{{item.comment.length <2?false:true}}" data-comid="{{item.id}}" catchtap="commentBtn" >查看全部评论＞</view>
+          <view class="allReply" wx:if="{{item.comment.length <2?false:true}}" data-comid="{{item.id}}" catchtap="commentBtn" >查看全部评论＞</view>
 
-      </view>
-    </block> 
+        </view>
+      </block> 
+    </view>
     <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
   </view>
 
   <view class="comInt" style='bottom:{{inputBottom}}px'>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
     <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>
     <text bindtap="sendBtn">发送</text>
   </view> 
-
+ 
   <view class="shade" wx:if="{{shadeShow}}" catchtap="shadeShow">
     <image class="shadeImg" src="{{globalimg}}/shanchu@2x.png" catchtap="delBTn"></image>
     <view class="icoDel icox icox-close" catchtap="shadeShow"></view>

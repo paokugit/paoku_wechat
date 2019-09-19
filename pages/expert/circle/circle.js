@@ -28,7 +28,9 @@ Page({
 
     yi_zan:'circle_parise@2.png',
     wei_zan:'circle_parise@1.png',
-    pagecount:''
+    pagecount:'',
+
+    notlogindis: 'block'
   }, 
 
   
@@ -51,28 +53,35 @@ Page({
       openid: useropenid,
       page:m.data.page
     },function(e){
-      console.log(e);  
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 2000)
-      let totalList = e.message.list;
-      let totalPage = Math.ceil(e.message.total / 10);
-
-      if (e.message.count > 0) {
-        m.setData({
-          isShow: true
-        })
+      console.log(e);
+      if(e.error == 0){ 
         setTimeout(function () {
-          m.setData({ isShow: false })
-        }, 5000)
-      }
+          wx.hideLoading()
+        }, 2000)
+        let totalList = e.message.list;
+        let totalPage = Math.ceil(e.message.total / 10);
 
-      m.setData({
-        updateData:e.message.count,
-        dataList: m.data.dataList.concat(totalList),
-        totalPage: totalPage,
-        pagecount:m.data.page
-      })
+        if (e.message.count > 0) {
+          m.setData({
+            isShow: true
+          })
+          setTimeout(function () {
+            m.setData({ isShow: false })
+          }, 5000)
+        }
+        m.setData({
+          updateData:e.message.count,
+          dataList: m.data.dataList.concat(totalList),
+          totalPage: totalPage,
+          pagecount:m.data.page
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      } 
     })
   },
 
@@ -105,6 +114,13 @@ Page({
             type: 1  
           }, function (e) {
             console.log(e);
+            if(e.error == 2){
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
 
         } else {
@@ -118,6 +134,13 @@ Page({
             type: 1
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
           
         }
@@ -142,6 +165,59 @@ Page({
         m.setData({
           showBall: true
         })
+      }
+    })
+  },
+
+  getUserInfo: function (e) {
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        var userinfo = f.getCache('userinfo');
+        console.log(userinfo)
+        if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
+          wx.login({
+            success: function (a) {
+              a.code ? p.post("wxapp.login", {
+                code: a.code
+              }, function (a) {
+                console.log(a)
+                wx.getUserInfo({
+                  success: function (info) {
+                    console.log(info);
+                    console.log(a.session_key);
+                    p.get("wxapp/auth", {
+                      data: info.encryptedData,
+                      iv: info.iv,
+                      sessionKey: a.session_key
+                    }, function (eve) {
+                      console.log(eve)
+                      that.getInfo();
+                    }
+                    )
+                  }
+                });
+              }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+            }
+          })
+
+        }
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权=====")
+          that.setData({
+            notlogindis: 'none'
+          })
+          a.get("member", {}, function (a) {
+            console.log(a),
+              that.setData({
+                member: a,
+                cometotal: a.come_total,
+                calorietotal: a.calorie_total,
+              })
+          });
+        }
       }
     })
   },
@@ -274,13 +350,15 @@ Page({
       cartoonB: false
     })
     m.data.img_url = [];
+
+    m.getUserInfo();
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh();
   },
 
   onPageScroll: function (e) {

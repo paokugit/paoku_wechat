@@ -76,7 +76,7 @@ Page({
           list: m.data.list.concat(totalList),
           totalPage: totalPage
         })
-      }else{
+      }else if(e.error == 1){
         wx.showToast({
           title: e.message,
           icon: 'none',
@@ -94,9 +94,17 @@ Page({
       page: m.data.page
     }, function (e) {
       console.log(e);
-      m.setData({
-        details: e.message
-      })
+      if(e.error == 0){
+        m.setData({
+          details: e.message
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -121,6 +129,12 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                duration: 2000
+              })
+            }
           })
         } else {
           collectStatus = false
@@ -133,6 +147,12 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                duration: 2000
+              })
+            }
           })
         }
       }
@@ -152,7 +172,16 @@ Page({
         type: 2
       }, function (e) {
         console.log(e)
-        m.detailA();
+        if (e.error == 2) {
+          wx.showToast({
+            title: e.message,
+            duration: 2000
+          })
+        }
+        if(e.error == 0){
+          m.detailA();
+        }
+        
       })
     } else {
       a.get("drcircle.my.del_support", {
@@ -161,7 +190,15 @@ Page({
         type: 2
       }, function (e) {
         console.log(e)
-        m.detailA();
+        if (e.error == 2) {
+          wx.showToast({
+            title: e.message,
+            duration: 2000
+          })
+        }
+        if (e.error == 0) {
+          m.detailA();
+        }
       })
     }
   },
@@ -235,7 +272,7 @@ Page({
             totalPage : Math.ceil(e.message.comment_total / 10)
           })
         })
-      } else {
+      } else if(e.error == 1){
         wx.showToast({
           title: e.message,
           icon: 'none',
@@ -289,6 +326,12 @@ Page({
           shadeShow: false,
           list: message
         })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
@@ -303,7 +346,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh();
   },
 
   /**

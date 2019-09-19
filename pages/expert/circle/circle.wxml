@@ -52,9 +52,12 @@
         </view> 
       </view>
 
-      <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
-        <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
-        <text class="iconTxt">{{item.zan_count}}</text>
+      <view style="position: relative;" catchtap="abc">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
+        <view class="circle_parise" catchtap="support" data-supportid="{{item.id}}" data-index="{{index}}">
+          <image class="iconImg" src="{{globalimg}}/{{item.support == 0?wei_zan:yi_zan}}"></image>
+          <text class="iconTxt">{{item.zan_count}}</text>
+        </view>
       </view>
     </view>
   </navigator> 
@@ -62,15 +65,18 @@
 
   <!-- 功能选择 -->
   <view class="publish">
-    <view class="fabu fixedCss" catchtap="imgBall" wx:if="{{cartoon}}">
+    <view class="fabu fixedCss" catchtap="imgBall" wx:if="{{cartoon}}"> 
       <image src="{{globalimg}}/icon-shouye-xiangji@2x.png"></image>
     </view>
     <navigator url="/pages/expert/photo/photo" class="xiangce fixedCss" catchtap="xiangce" wx:if="{{cartoon}}">
       <image src="{{globalimg}}/xiangce.png"></image>
     </navigator>
-    <view class="fixedCss" catchtap="dakai">
-      <image src="{{globalimg}}/{{'dakai.png'}}" hidden="{{cartoonA}}" ></image>
-      <image src="{{globalimg}}/{{'gengduo.png'}}" hidden="{{cartoonB}}"></image>
+    <view>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
+      <view class="fixedCss" catchtap="dakai">
+        <image src="{{globalimg}}/{{'dakai.png'}}" hidden="{{cartoonA}}" ></image>
+        <image src="{{globalimg}}/{{'gengduo.png'}}" hidden="{{cartoonB}}"></image>
+      </view>
     </view>
   </view>
  

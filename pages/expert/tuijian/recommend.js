@@ -40,15 +40,22 @@ Page({
       openid: useropenid,
       page: m.data.page,
     }, function (e) {
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 2000)
-      let totalList = e.message.list;
-      let totalPage = Math.ceil(e.message.total / 10);
-      m.setData({
-        message: m.data.message.concat(totalList),
-        totalPage: totalPage
-      })
+      if (e.error == 0){
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+        let totalList = e.message.list;
+        let totalPage = Math.ceil(e.message.total / 10);
+        m.setData({
+          message: m.data.message.concat(totalList),
+          totalPage: totalPage
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -80,8 +87,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
+    wx.stopPullDownRefresh();
+  },  
 
   /**
    * 页面上拉触底事件的处理函数

@@ -3,7 +3,7 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = ""; 
-Page({
+Page({ 
   data: {
     globalimg: t.globalData.appimg,
     nvabarData: { 
@@ -115,10 +115,13 @@ Page({
     a.get("drcircle.my.good", {
       goods_id: m.data.btnId
     }, function (e) {
-      m.setData({
-        message: e.message,
-        btnId: m.data.btnId
-      })
+      console.log(e);
+      if(e.error == 0){
+        m.setData({
+          message: e.message,
+          btnId: m.data.btnId
+        })
+      }
     })
   },
 
@@ -128,10 +131,17 @@ Page({
     a.get("drcircle.my.shop",{
       openid: useropenid
     },function(e){
-      m.setData({
-        shopErr:e.error,
-        hintT:e.message
-      })
+      if(e.error == 0){
+        m.setData({
+          shopErr: e.error,
+          hintT: e.message
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          duration: 2000
+        })
+      }
     })
   },
   shopBtn:function(){
@@ -401,7 +411,6 @@ Page({
     })
   },
 
-
   onShow: function () {
     var m = this;
     var pages = getCurrentPages();
@@ -441,6 +450,12 @@ Page({
       openid: useropenid,
     }, function (e) {
       console.log(e);
+      if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          duration: 2000
+        })
+      }
     });
   },
   // 保留
@@ -455,6 +470,12 @@ Page({
       goods_id: m.data.btnId
     }, function (e) {
       console.log(e);
+      if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          duration: 2000
+        })
+      }
     });
   },
 
@@ -474,6 +495,9 @@ Page({
     }
   },
 
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

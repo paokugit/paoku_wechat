@@ -14,7 +14,7 @@ Page({
     nvabarData: { 
       showCapsule: 1,
       title: '达人圈', 
-      height: t.globalData.height * 2 + 20,
+      height: t.globalData.height * 2 + 20, 
     },
 
     hShow: '1',
@@ -35,7 +35,9 @@ Page({
  
     yi_zan: 'circle_parise@2.png',
     wei_zan: 'circle_parise@1.png',
-    perch:'我也说几句...'
+    perch:'我也说几句...',
+
+    notlogindis: 'block'
   },
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
@@ -49,7 +51,7 @@ Page({
     })
 
     wx.showLoading({
-      title: '加载中...',
+      title: '加载中...', 
       mask: true
     })
     m.detail();
@@ -97,9 +99,17 @@ Page({
       ciclre_id: m.data.listId
     }, function (e) {
       console.log(e);
-      m.setData({
-        hot: e.message.hot
-      })
+      if(e.error == 0){
+        m.setData({
+          hot: e.message.hot
+        })
+      } else if (e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   // 最新评论
@@ -111,12 +121,21 @@ Page({
       type:1,
       page:m.data.page
     },function(e){
-      let totalList = e.message.list;
-      let totalPage = Math.ceil(e.message.total / 10);
-      m.setData({
-        newestList: m.data.newestList.concat(totalList),
-        totalPage: totalPage
-      })
+      console.log(e);
+      if(e.error == 0){
+        let totalList = e.message.list;
+        let totalPage = Math.ceil(e.message.total / 10);
+        m.setData({
+          newestList: m.data.newestList.concat(totalList),
+          totalPage: totalPage
+        })
+      } else if (e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -138,13 +157,23 @@ Page({
         content_id: supportid,
         type: 1
       }, function (e) {
-        wx.hideLoading();
-        message.support = parseInt(message.support + 1);
-        message.zan_count = parseInt(message.zan_count) + 1;
-        message.zan_list.unshift(e.message.avatar);
-        m.setData({
-          detailList: message
-        })
+
+        if(e.error == 0){
+          wx.hideLoading();
+          message.support = parseInt(message.support + 1);
+          message.zan_count = parseInt(message.zan_count) + 1;
+          message.zan_list.unshift(e.message.avatar);
+          m.setData({
+            detailList: message
+          })
+        }
+        if (e.error == 2) {
+          wx.showToast({
+            title: e.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
     } else {
       a.get("drcircle.my.del_support", {
@@ -152,13 +181,22 @@ Page({
         content_id: supportid,
         type: 1
       }, function (e) {
-        wx.hideLoading();
-        message.support = parseInt(message.support - 1);
-        message.zan_count = parseInt(message.zan_count) - 1;
-        message.zan_list.shift();
-        m.setData({
-          detailList:message
-        })
+        if(e.error == 0){
+          wx.hideLoading();
+          message.support = parseInt(message.support - 1);
+          message.zan_count = parseInt(message.zan_count) - 1;
+          message.zan_list.shift();
+          m.setData({
+            detailList: message
+          })
+        }
+        if (e.error == 2) {
+          wx.showToast({
+            title: e.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
     }
   },
@@ -181,6 +219,13 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
         } else {
           collectStatus = false
@@ -193,6 +238,13 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
         }
       }
@@ -220,6 +272,13 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
         } else {
           collectStatus = false
@@ -232,6 +291,13 @@ Page({
             type: 2
           }, function (e) {
             console.log(e);
+            if (e.error == 2) {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
 
         }
@@ -282,12 +348,21 @@ Page({
             openid: useropenid,
             circle_id: m.data.listId
           },function(e){
-            wx.showToast({
-              title: '成功',
-              icon: 'success',
-              duration: 2000
-            })
-            m.pagePrice();
+            console.log(e);
+            if(e.error == 0){
+              wx.showToast({
+                title: e.message,
+                icon: 'success',
+                duration: 2000
+              })
+              m.pagePrice();
+            } else if (e.error == 1){
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
         } 
       }
@@ -338,7 +413,7 @@ Page({
           shadeShow: false,
           newestList: message
         })
-      } else {
+      } else if(e.error == 1){
         wx.showToast({
           title: e.message,
           icon: 'none',
@@ -412,7 +487,7 @@ Page({
           m.critic();
 
         }
-      } else {
+      } else if(e.error == 1){
         m.setData({ content:''});
         wx.showToast({
           title: e.message,
@@ -432,20 +507,28 @@ Page({
       type: 1,
       page: 1
     }, function (e) {
-      message = [];
-      message = e.message.list;
-      wx.pageScrollTo({
-        scrollTop: 380,
-      })
-      m.setData({ hot: [] })
-      m.detailA();
-      m.setData({
-        newestList: message,
-        discuss: '',
-        abcShow: false, 
-        page: 1,
-        totalPage: Math.ceil(e.message.total / 10)
-      })
+      if(e.error == 0){
+        message = [];
+        message = e.message.list;
+        wx.pageScrollTo({
+          scrollTop: 380,
+        })
+        m.setData({ hot: [] })
+        m.detailA();
+        m.setData({
+          newestList: message,
+          discuss: '',
+          abcShow: false,
+          page: 1,
+          totalPage: Math.ceil(e.message.total / 10)
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   // 回复评论
@@ -463,16 +546,24 @@ Page({
       type: 1,
       page: page
     }, function (e) {
-      let noew = e.message.list;
-      for (var i = 0; i < noew.length; i++) {
-        if (noew[i].id == m.data.replyId) {
-          message.splice(indexreply, 1, noew[i])
+      if(e.error == 0){
+        let noew = e.message.list;
+        for (var i = 0; i < noew.length; i++) {
+          if (noew[i].id == m.data.replyId) {
+            message.splice(indexreply, 1, noew[i])
+          }
         }
+        m.setData({
+          newestList: message,
+          discuss: ""
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'none',
+          duration: 2000
+        })
       }
-      m.setData({
-        newestList: message,
-        discuss: ""
-      })
     })
   },
 
@@ -490,15 +581,69 @@ Page({
   
   },
 
+  getUserInfo: function (e) {
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        var userinfo = f.getCache('userinfo');
+        console.log(userinfo)
+        if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
+          wx.login({
+            success: function (a) {
+              a.code ? p.post("wxapp.login", {
+                code: a.code
+              }, function (a) {
+                console.log(a)
+                wx.getUserInfo({
+                  success: function (info) {
+                    console.log(info);
+                    console.log(a.session_key);
+                    p.get("wxapp/auth", {
+                      data: info.encryptedData,
+                      iv: info.iv,
+                      sessionKey: a.session_key
+                    }, function (eve) {
+                      console.log(eve)
+                      that.getInfo();
+                    }
+                    )
+                  }
+                });
+              }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+            }
+          })
+
+        }
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权=====")
+          that.setData({
+            notlogindis: 'none'
+          })
+          a.get("member", {}, function (a) {
+            console.log(a),
+              that.setData({
+                member: a,
+                cometotal: a.come_total,
+                calorietotal: a.calorie_total,
+              })
+          });
+        }
+      }
+    })
+  },
+
   onShow: function () {
-  
+    var m = this;
+    m.getUserInfo();
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh();
   },
 
   /**
