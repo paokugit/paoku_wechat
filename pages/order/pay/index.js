@@ -130,7 +130,7 @@ Page({
 //    查看奖励
     rewardBtn: function() {
         wx.navigateTo({
-            url: '/pages/member/log/bushu' ,
+          url: '/packageA/pages/discount/zkbaccount/zkbaccount' ,
         })
     },
     shop: function(t) {
