@@ -24,6 +24,8 @@ Page({
     } else if (t.refrom=="gift"){
       refrom = t.refrom;
       reurl = t.reurl + '?mid=' + mid;
+    } else if (t.refrom == "sportdiary"){
+      reurl = t.reurl
     }
 
     console.log('yaya')
