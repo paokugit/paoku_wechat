@@ -1,6 +1,7 @@
 var t = getApp(),
-  a = t.requirejs("core");
-var f = getApp();
+  a = t.requirejs("core"),
+  s = t.requirejs("jquery");
+var f = getApp(); 
 
 var useropenid = "";
 
@@ -16,7 +17,7 @@ Page({
     img_url:[],
     img_file:[],
     cartoon: false,  
-    cartoonA: true, 
+    cartoonA: true,  
     cartoonB: false,
 
     page: 1,
@@ -54,10 +55,8 @@ Page({
       page:m.data.page
     },function(e){
       console.log(e);
+      wx.hideLoading()
       if(e.error == 0){ 
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
         let totalList = e.message.list;
         let totalPage = Math.ceil(e.message.total / 10);
 
@@ -179,7 +178,7 @@ Page({
         if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
           wx.login({
             success: function (a) {
-              a.code ? p.post("wxapp.login", {
+              a.code ? a.post("wxapp.login", {
                 code: a.code
               }, function (a) {
                 console.log(a)
@@ -187,7 +186,7 @@ Page({
                   success: function (info) {
                     console.log(info);
                     console.log(a.session_key);
-                    p.get("wxapp/auth", {
+                    a.get("wxapp/auth", {
                       data: info.encryptedData,
                       iv: info.iv,
                       sessionKey: a.session_key
@@ -209,14 +208,6 @@ Page({
           that.setData({
             notlogindis: 'none'
           })
-          a.get("member", {}, function (a) {
-            console.log(a),
-              that.setData({
-                member: a,
-                cometotal: a.come_total,
-                calorietotal: a.calorie_total,
-              })
-          });
         }
       }
     })

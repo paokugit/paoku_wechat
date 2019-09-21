@@ -1,5 +1,5 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
 
   <view class="particulars head" bindtap="showBtn" data-supportid="{{details.id}}" data-name="{{details.nickname}}">
     <view class="head-img flexCss"> 

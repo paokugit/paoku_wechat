@@ -1,5 +1,6 @@
 var t = getApp(),
-  a = t.requirejs("core");
+  a = t.requirejs("core"),
+  s = t.requirejs("jquery");
 var f = getApp();
 
 var useropenid = ""; 
@@ -591,7 +592,7 @@ Page({
         if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
           wx.login({
             success: function (a) {
-              a.code ? p.post("wxapp.login", {
+              a.code ? a.post("wxapp.login", {
                 code: a.code
               }, function (a) {
                 console.log(a)
@@ -599,7 +600,7 @@ Page({
                   success: function (info) {
                     console.log(info);
                     console.log(a.session_key);
-                    p.get("wxapp/auth", {
+                    a.get("wxapp/auth", {
                       data: info.encryptedData,
                       iv: info.iv,
                       sessionKey: a.session_key
@@ -621,14 +622,6 @@ Page({
           that.setData({
             notlogindis: 'none'
           })
-          a.get("member", {}, function (a) {
-            console.log(a),
-              that.setData({
-                member: a,
-                cometotal: a.come_total,
-                calorietotal: a.calorie_total,
-              })
-          });
         }
       }
     })
