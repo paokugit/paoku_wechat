@@ -3,31 +3,32 @@
 
   <view class="headcon">
     <view class="headimg">
-      <image src="https://paokucoin.com/attachment/images/1/2019/09/JSgQcfHgzPyC66vqtmVcCCuCgPVsSu.png"></image>
+      <image src="{{articleImg}}"></image>
     </view>
-
+ 
     <view class="essay">
-      <view class="mainTitle">凡事都有定数，不能强求。</view>
-      <view class="writer"><text class="writerA">跑库</text> <text class="writerB">2019-07-05</text></view>
-
-      <view class="music">
+      <view class="mainTitle">{{articleTit}}</view>
+      <view class="writer"><text class="writerA">跑库</text> <text class="writerB">{{articleTime}}</text></view>
+ 
+      <view class="music" catchtap="bindback">
         <image class="musicimg" src="{{globalimg}}/music.png"></image>
         <view>
           <view>
-            <text class="musictit">早上醒来</text>
-            <!-- <image src="{{globalimg}}/"></image> -->
-          </view>
+            <text class="musictit">{{music_title}}</text>
+            <!-- <image class="musicgif" src="{{globalimg}}/musicgif.gif"></image> -->
+          </view> 
           <view class="musictitA">来自跑库</view>
         </view>
       </view>
 
-      <view class="article">
-        一切有为法，尽是因缘合和，缘起时起，缘尽还无,不外如是。凡事都是有定数的,不能强求。朋友,没有必要强求意气相投就真心相处,看不惯我的你想走就走,话不投机的聊一分钟都嫌多,情投意合的畅谈一夜都不够。道不同不相为谋,志不同不相为友。真正的朋友,愿你我都能风雨同到最后。
+      <import src="../../../../utils/wxParse/wxParse.wxml" />
+      <view class="wxParse article">
+        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}" />
       </view>
     </view>
 
     <view class="transpond">
-      <image src="{{globalimg}}/read-zhuanfa.png"></image>
+      <image src="{{globalimg}}/read-zhuanfa.gif"></image>
       <view>转发</view>
     </view>
   </view>

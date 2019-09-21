@@ -4,7 +4,7 @@ var f = getApp();
 
 var useropenid = "";
 
-Page({  
+Page({   
 
   data: {
     globalimg: t.globalData.appimg,
@@ -18,7 +18,7 @@ Page({
     list:[],
     totalPage:0
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -40,13 +40,27 @@ Page({
       page: m.data.page
     },function(e){
       console.log(e);
-      let totalPage = Math.ceil(e.message.count / 10);
-      let totalList = e.message.list
-      m.setData({
-        totalPage: totalPage,
-        list: m.data.list.concat(totalList)
-      })
-      wx.hideLoading()
+      if(e.error == 0){
+        let totalPage = Math.ceil(e.message.count / 10);
+        let totalList = e.message.list
+        m.setData({
+          totalPage: totalPage,
+          list: m.data.list.concat(totalList)
+        })
+        wx.hideLoading()
+      } else if (e.error == 1){
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
     })
   },
 

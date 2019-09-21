@@ -5,7 +5,7 @@
   <block wx:for="{{message}}" wx:key="{{index}}">
     <navigator class="product" url="/pages/goods/detail/index?id={{item.id}}">
       <image class="productImg" src="{{item.thumb}}"></image>  
-      <view>
+      <view> 
         <view class="conTit colorCss">{{item.title}}</view>
         <view class="conMoney">
           <view class="jinE">
