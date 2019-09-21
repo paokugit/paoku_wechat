@@ -134,7 +134,7 @@ button::after {
 
 .lottary_bg02 {
   width: 750rpx;
-  height: 350rpx;
+  height: 400rpx;
   position: absolute;
   left: 0rpx;
   top: 1210rpx;

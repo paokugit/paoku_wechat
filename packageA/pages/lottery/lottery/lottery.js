@@ -16,12 +16,12 @@ Page({
    */
   data: {
     globalimg: t.globalData.appimg,
-      // 组件所需的参数
-      nvabarData: {
-          showCapsule: 1,
-          title: '幸运抽奖',
-          height: t.globalData.height * 2 + 25,
-      },
+    // 组件所需的参数
+    nvabarData: {
+      showCapsule: 1,
+      title: '幸运抽奖',
+      height: t.globalData.height * 2 + 25,
+    },
     mask: 0,
     images: [
       'http://paokucoin.com/img/backgroup/kongquan.png',
@@ -32,7 +32,7 @@ Page({
       'http://paokucoin.com/img/backgroup/kongquan.png',
       'http://paokucoin.com/img/backgroup/kongquan.png',
       'http://paokucoin.com/img/backgroup/kongquan.png',
-    ],//奖品图片数组
+    ], //奖品图片数组
     gratis: 0,
     zhekounum: '',
     shownum: '',
@@ -49,14 +49,14 @@ Page({
     luckPosition: 0,
     blocknum: [],
     kaluliyu: 0,
-    lsdas:0,
+    lsdas: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-      console.log("页面加载")
+  onLoad: function(options) {
+    console.log("页面加载")
     this.loadAnimation();
     var _that = this
     var userinfo = f.getCache('userinfo');
@@ -67,17 +67,17 @@ Page({
     a.get("game.reward", {
       openid: useropenid,
       type: 2
-    }, function (e) {
+    }, function(e) {
       _that.setData({
-        gratis: e.result.num,//免费抽
-        msgList: e.result.log,//头部交替悬浮文字
-        blocknum: e.result.list,//图片上显示得折扣
+        gratis: e.result.num, //免费抽
+        msgList: e.result.log, //头部交替悬浮文字
+        blocknum: e.result.list, //图片上显示得折扣
         kaluliyu: e.result.credit1
       })
     })
   },
   //点击抽奖按钮
-  clickLuck: function (h) {
+  clickLuck: function(h) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
     var _that = this
@@ -89,24 +89,24 @@ Page({
           money: 5,
           openid: useropenid,
           type: 0,
-        }, function (e) {
+        }, function(e) {
           loc = e.result.location
-          if (e.result.remain>0){
+          if (e.result.remain > 0) {
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
               kaluliyu: e.result.credit1,
-              lsdas:1,
-              mask:2,
+              lsdas: 1,
+              mask: 2,
             })
-          }else{
+          } else {
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
               kaluliyu: e.result.credit1,
             })
           }
-          
+
         })
       } else {
         wx: wx.showModal({
@@ -114,12 +114,12 @@ Page({
           content: '小主的卡路里不足啦，赶快邀请好友助力获取卡路里吧',
           showCancel: true,
           confirmText: '去助力',
-          success: function (res) {
+          success: function(res) {
             if (res.cancel) {
 
             } else if (res.confirm) {
               wx.navigateTo({
-                  url: '/packageA/pages/helphand/friendhelp/friendhelp',
+                url: '/packageA/pages/helphand/friendhelp/friendhelp',
               })
             }
           },
@@ -130,7 +130,7 @@ Page({
         money: 0,
         openid: useropenid,
         type: 2,
-      }, function (e) {
+      }, function(e) {
         loc = e.result.location
         _that.setData({
           zhekounum: e.result.num,
@@ -159,7 +159,7 @@ Page({
     var index = 0;
     console.log(e.data.color[0]);
     //循环设置每一项的透明度
-    interval = setInterval(function () {
+    interval = setInterval(function() {
       if (index > 7) {
         index = 0;
         e.data.color[7] = 0.5
@@ -175,11 +175,11 @@ Page({
 
     //模拟网络请求时间  设为两秒
     var stoptime = 2000;
-    setTimeout(function () {
+    setTimeout(function() {
       e.stop(loc);
     }, stoptime)
   },
-  stop: function (which) {
+  stop: function(which) {
     var e = this;
     //清空计数器
     clearInterval(interval);
@@ -198,11 +198,11 @@ Page({
   },
 
 
-  stopLuck: function (which, index, time, splittime) {
+  stopLuck: function(which, index, time, splittime) {
     var e = this;
     //值越大出现中奖结果后减速时间越长
     var color = e.data.color;
-    setTimeout(function () {
+    setTimeout(function() {
       //重置前一个位置
       if (index > 7) {
         index = 0;
@@ -226,7 +226,7 @@ Page({
         e.stopLuck(which, index, time, splittime);
       } else {
         //1秒后显示弹窗
-        setTimeout(function () {
+        setTimeout(function() {
           e.setData({
             mask: 1,
             clickLuck: 'clickLuck'
@@ -237,11 +237,11 @@ Page({
     }, time);
   },
   //进入页面时缓慢切换
-  loadAnimation: function () {
+  loadAnimation: function() {
     var e = this;
     var index = 0;
     // if (interval == null){
-    interval = setInterval(function () {
+    interval = setInterval(function() {
       if (index > 7) {
         index = 0;
         e.data.color[7] = 0.5
@@ -256,65 +256,65 @@ Page({
     }, 1000);
   },
 
-  closemask: function () {
+  closemask: function() {
     this.setData({
       mask: 0,
     })
   },
-  buttonmask:function(){
+  buttonmask: function() {
     this.setData({
-      mask:'0',
-      lsdas:'0'
+      mask: '0',
+      lsdas: '0'
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
-  rulemask: function () {
+  rulemask: function() {
 
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     // return s.onShareAppMessage();
     var that = this;
     that.setData({
@@ -324,14 +324,13 @@ Page({
       title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
       path: '/pages/index/index?scene=' + userid,
       imageUrl: "https://paokucoin.com/img/backgroup/lottary.png",
-      success: function (res) {
+      success: function(res) {
         // 转发成功
         that.shareClick();
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
   }
-},
-)
+}, )

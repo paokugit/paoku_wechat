@@ -39,6 +39,7 @@ App({
         var e = this;
         wx.getSystemInfo({
             success: function(t) {
+              console.log(t)
                 "0" == t.model.indexOf("iPhone X") ? e.setCache("isIpx", t.model) : e.setCache("isIpx", "");
             }
         });
@@ -48,6 +49,8 @@ App({
                 // console.log(e)
                 t.globalData.height = e.statusBarHeight
                 // console.log(t.globalData.height)
+              // "0" == e.model.indexOf("iPhone X") ? t.globalData.height = 20 : t.globalData.height = e.statusBarHeight;
+              // console.log(t.globalData.height)
                 wx.setStorageSync("systemInfo", e);
                 var i = e.windowWidth,
                     n = e.windowHeight;
