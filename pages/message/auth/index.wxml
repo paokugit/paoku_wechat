@@ -5,7 +5,7 @@
         </view>
         <block>
             <block wx:if="{{!close}}">
-                <button bindtap="bind" class="btn" openType="getUserInfo"></button>
+                <button bindgetuserinfo="getUserInfo" class="btn" open-type="getUserInfo"></button>
             </block>
         </block>
         <block>
