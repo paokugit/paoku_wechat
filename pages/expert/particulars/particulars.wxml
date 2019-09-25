@@ -4,7 +4,7 @@
   <view class="particulars head" bindtap="showBtn" data-supportid="{{details.id}}" data-name="{{details.nickname}}">
     <view class="head-img flexCss"> 
       <view class="left-head flexCss">
-        <image src="{{details.avatar}}"></image>
+        <image src="{{details.avatar}}"></image> 
         <view>
           <view class="reName">{{details.nickname}}</view>
           <view class="reTimeA">{{details.create_time}}</view>

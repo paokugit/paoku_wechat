@@ -182,7 +182,7 @@ Page({
     tempFilePaths = this.data.tempFilePaths;
     wx.chooseImage({
       count: 9 - tempFilePaths.length, 
-      sizeType: ['original', 'compressed'], 
+      sizeType: ['compressed'], 
       sourceType: [select],
       success: function (res) {
         for (let i = 0; i < res.tempFilePaths.length; i++) {

@@ -29,7 +29,6 @@ Page({
 
     yi_zan:'circle_parise@2.png',
     wei_zan:'circle_parise@1.png',
-    pagecount:'',
 
     notlogindis: 'block'
   }, 
@@ -40,16 +39,16 @@ Page({
     useropenid = userinfo.openid;
     var m = this;
 
+    m.pageData();
+  },
+
+  // 数据请求
+  pageData:function(){
+    var m = this;
     wx.showLoading({
       title: '加载中...',
       mask: true
     })
-    m.pageData();
-  },
-
-
-  pageData:function(){
-    var m = this;
     a.get("drcircle.index.index",{
       openid: useropenid,
       page:m.data.page
@@ -59,21 +58,27 @@ Page({
       if(e.error == 0){ 
         let totalList = e.message.list;
         let totalPage = Math.ceil(e.message.total / 10);
-
+      
         if (e.message.count > 0) {
           m.setData({
-            isShow: true
+            isShow: true,
+            updateData: e.message.count,
           })
           setTimeout(function () {
             m.setData({ isShow: false })
-          }, 5000)
+          }, 3000)
         }
-        m.setData({
-          updateData:e.message.count,
-          dataList: m.data.dataList.concat(totalList),
-          totalPage: totalPage,
-          pagecount:m.data.page
-        })
+        if (e.message.list.length == 0){
+          m.setData({
+            abcShow:true
+          })
+        }else{
+          m.setData({
+            dataList: m.data.dataList.concat(totalList),
+            totalPage: totalPage,
+            page: m.data.page + 1
+          })
+        }
       }else if(e.error == 1){
         wx.showToast({
           title: e.message,
@@ -84,6 +89,7 @@ Page({
     })
   },
 
+  // 进入商品详情
   tuijianBtn:function(e){
     let id = e.currentTarget.dataset.tuijianid;
     wx.navigateTo({
@@ -94,7 +100,6 @@ Page({
   // 点赞与取消
   support:function(e){
     var m = this;
-
     var index = e.currentTarget.dataset.index;
     var message = this.data.dataList;
     var supportId = e.currentTarget.dataset.supportid;
@@ -103,10 +108,9 @@ Page({
       if (i == index) { 
         var collectStatus = false
         if (message[i].support == 0) { 
-          collectStatus = true
-          message[i].support = parseInt(message[i].support) + 1
-          message[i].zan_count = parseInt(message[i].zan_count) + 1
-          
+          collectStatus = true;
+          message[i].support = parseInt(message[i].support) + 1;
+          message[i].zan_count = parseInt(message[i].zan_count) + 1;
           a.get("drcircle.my.support", {
             openid: useropenid,
             content_id: supportId,
@@ -121,12 +125,10 @@ Page({
               })
             }
           })
-
         } else {
-          collectStatus = false
-          message[i].support = parseInt(message[i].support) - 1
-          message[i].zan_count = parseInt(message[i].zan_count) - 1
-
+          collectStatus = false;
+          message[i].support = parseInt(message[i].support) - 1;
+          message[i].zan_count = parseInt(message[i].zan_count) - 1;
           a.get("drcircle.my.del_support", {
             openid: useropenid,
             content_id: supportId,
@@ -140,8 +142,7 @@ Page({
                 duration: 2000
               })
             }
-          })
-          
+          }) 
         }
       }
     }
@@ -168,6 +169,7 @@ Page({
     })
   },
 
+  // 授权昵称头像
   getUserInfo: function (e) {
     let that = this;
     wx.getSetting({
@@ -220,7 +222,7 @@ Page({
     let img_list = m.data.img_url;
     wx.chooseImage({
       count: 9 - img_list.length, 
-      sizeType: ['original', 'compressed'], 
+      sizeType: ['compressed'], 
       sourceType: [select], 
       success: function (res) {
         let file_list = m.data.img_file; 
@@ -287,8 +289,12 @@ Page({
 
   // 图片预览
   previewImage: function (event) {
+    var s = this;
     var src = event.currentTarget.dataset.src;
     var imgList = event.currentTarget.dataset.list;
+    var listId = event.currentTarget.dataset.listid;
+    let message = s.data.dataList;
+
     var imgArr = [];
     for (var i = 0; i < imgList.length; i++) {
       imgArr.push(imgList[i]);
@@ -297,11 +303,26 @@ Page({
       current: src,
       urls: imgArr
     })
+    a.get("drcircle.index.detail", {
+      openid: useropenid,
+      ciclre_id: listId
+    }, function (e) {
+      if(e.error == 0){
+        for(let i in message){
+          if(message[i].id == listId){
+            message[i].view_count = parseInt(message[i].view_count) + 1
+          }
+        }
+        s.setData({
+          dataList: message
+        })
+      }
+    })
+
   },
 
   onShow: function () {
     var m = this;
-
     let pageA = wx.getStorageSync('pageA');
     let pageB = wx.getStorageSync('pageB');
     console.log(pageA);
@@ -310,7 +331,6 @@ Page({
         title: '加载中...',
         mask: true
       })
-      
       wx.removeStorage({
         key: 'pageA',
         success: function (res) {
@@ -366,23 +386,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    let page = this.data.page;
-    let totalpage = this.data.totalPage;
-    if (page < totalpage) {
-      wx.showLoading({
-        title: '加载中...',
-      });
-      this.setData({
-        page: page + 1
-      })
-      this.pageData();
-    } else {
-      this.setData({
-        abcShow: true
-      })
-    }
-    setTimeout(() => {
-      wx.hideLoading()
-    }, 1000)
+    this.pageData();
   },
 })

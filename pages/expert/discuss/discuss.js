@@ -143,13 +143,7 @@ Page({
   // 点赞和取消
   support: function (e) {
     var m = this;
-    wx.showLoading({
-      mask: true
-    });
-
     let message = m.data.detailList;
-    let headmig = e.currentTarget.dataset.headimg;
-
     var supp = e.currentTarget.dataset.supp;
     let supportid = e.currentTarget.dataset.supportid;
     if (supp == 0) {
@@ -160,7 +154,6 @@ Page({
       }, function (e) {
 
         if(e.error == 0){
-          wx.hideLoading();
           message.support = parseInt(message.support + 1);
           message.zan_count = parseInt(message.zan_count) + 1;
           message.zan_list.unshift(e.message.avatar);
@@ -183,7 +176,6 @@ Page({
         type: 1
       }, function (e) {
         if(e.error == 0){
-          wx.hideLoading();
           message.support = parseInt(message.support - 1);
           message.zan_count = parseInt(message.zan_count) - 1;
           message.zan_list.shift();
@@ -210,10 +202,9 @@ Page({
       if (i == index) {
         var collectStatus = false
         if (message[i].support == 0) {
-          collectStatus = true
-          message[i].support = parseInt(message[i].support) + 1
-          message[i].zan_count = parseInt(message[i].zan_count) + 1
-
+          collectStatus = true;
+          message[i].support = parseInt(message[i].support) + 1;
+          message[i].zan_count = parseInt(message[i].zan_count) + 1;
           a.get("drcircle.my.support", {
             openid: useropenid,
             content_id: sutId,
@@ -229,10 +220,9 @@ Page({
             }
           })
         } else {
-          collectStatus = false
-          message[i].support = parseInt(message[i].support) - 1
-          message[i].zan_count = parseInt(message[i].zan_count) - 1
-
+          collectStatus = false;
+          message[i].support = parseInt(message[i].support) - 1;
+          message[i].zan_count = parseInt(message[i].zan_count) - 1;
           a.get("drcircle.my.del_support", {
             openid: useropenid,
             content_id: sutId,
@@ -263,10 +253,9 @@ Page({
       if (i == index) {
         var collectStatus = false
         if (message[i].support == 0) { 
-          collectStatus = true
+          collectStatus = true;
           message[i].support = parseInt(message[i].support) + 1;
           message[i].zan_count = parseInt(message[i].zan_count) + 1;
-
           a.get("drcircle.my.support", {
             openid: useropenid,
             content_id: sutId,
@@ -282,10 +271,9 @@ Page({
             }
           })
         } else {
-          collectStatus = false
+          collectStatus = false;
           message[i].support = parseInt(message[i].support) - 1;
           message[i].zan_count = parseInt(message[i].zan_count) - 1;
-
           a.get("drcircle.my.del_support", {
             openid: useropenid,
             content_id: sutId,
@@ -300,7 +288,6 @@ Page({
               })
             }
           })
-
         }
       }
     }
@@ -463,16 +450,13 @@ Page({
       title: '评论中...',
       mask: true
     })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000)
     a.get("drcircle.my.comment",{
       openid: useropenid,
       content: m.data.discuss,
       type: m.data.type_state,
       parent_id: m.data.replyId
     },function(e){
-
+      wx.hideLoading()
       if(e.error == 0){
         wx.showToast({
           title: '评论成功',

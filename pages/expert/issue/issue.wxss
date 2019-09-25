@@ -86,6 +86,8 @@ movable-area {
 }
 
 .gays_pic_C {
+  width: 100%;
+  height: 100%;
   border-radius: 10rpx;
 }
 

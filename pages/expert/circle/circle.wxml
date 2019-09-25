@@ -3,7 +3,7 @@
   <view style="padding-top:10px">
     <!-- 动态提醒 -->
     <view class="tiXing" wx:if="{{isShow}}">为你更新{{updateData}}条动态</view>
-    <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}" data-pagecount="{{pagecount}}">
+    <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}">
       <!-- 头像、昵称、发布时间 -->
       <view class="circleMes flexCss"> 
         <view class="nameMes flexCss">
@@ -18,8 +18,7 @@
       
       <!-- 动态图片 --> 
       <view class="circleImg" >  
-        <view class="{{item.img_len == 1 ? 'typeA' : item.img_len == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}" catchtap="previewImage">
-          <!-- <image class="typeImage" mode='aspectFill' src="{{itemImg}}" ></image> -->
+        <view class="{{item.img_len == 1 ? 'typeA' : item.img_len == 2 ? 'typeB' : 'typeC'}} imgQu" wx:for="{{item.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{item.img}}" catchtap="previewImage" data-listid="{{item.id}}">
           <image class="typeImage" src="{{itemImg}}" ></image>
         </view>
       </view>  

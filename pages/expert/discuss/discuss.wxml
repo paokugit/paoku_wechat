@@ -10,12 +10,12 @@
         </view> 
         <view class="dingRight">{{detailList.create_day}}</view> 
       </view> 
-  
+   
       <view class="circleCssA">{{detailList.content}}</view> 
      
       <view class="imgQu">  
         <view class="{{detailList.img_len == 1 ? 'typeA' : detailList.img_len == 2 ? 'typeB' : 'typeC'}}" wx:for="{{detailList.img}}" wx:for-item="itemImg" wx:key="indexImg" data-src="{{itemImg}}" data-list="{{detailList.img}}"   catchtap="previewImage">
-          <image class="typeImage" mode='aspectFill' src="{{itemImg}}"></image>
+          <image class="typeImage" src="{{itemImg}}"></image>
         </view>
       </view>    
     </view>

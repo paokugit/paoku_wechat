@@ -3,7 +3,7 @@
   
   <view class="tanchu" bindtap="imgBall"> 
     <image src="{{globalimg}}/icon-xiangji.png"></image>
-    <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view> 
+    <view>每一天都是惊喜，晒晒今天的喜悦心情吧</view>  
   </view>
   
   <view class="itmeList" wx:for="{{sumList}}" wx:key="index">
