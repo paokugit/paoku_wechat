@@ -21,7 +21,7 @@
 </template>
 <include src="adver.wxml"></include>
 <!-- <loading wx:if="{{loading}}">加载中...</loading> -->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝优选"></navigation>
 <view class="page" style="background:{{diypages.page.background}}">
     <include src="coupontips.wxml"></include>
 

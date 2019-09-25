@@ -13,13 +13,8 @@ Page({
         disabled: !0,
         info: {},
         realInfo: {},
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '余额提现', 
-            height: app.globalData.height * 2 + 20,
-        },
         globalimg: app.globalData.appimg,
+      showIcon: true,
     },
     onShow: function(e) {
         a.url(e), this.getInfo(), this.setData({

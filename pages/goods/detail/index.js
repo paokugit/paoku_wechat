@@ -36,12 +36,8 @@ var util = require('../../../utils/util.js');
 Page((a = {
     data: (e = {
         globalimg: f.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '商品详情',
-            height: f.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: f.globalData.gloheight,
         countDownHour: 10,
         countDownMinute: 10,
         countDownSecond: 10,

@@ -23,11 +23,7 @@ Page({
         second: 60,
         seconddisp:'none',
         codedisp: 'block',
-        nvabarData: {
-          showCapsule: 1, 
-          title: '绑定手机号', 
-          height: i.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         country:'',
         index:0
     },

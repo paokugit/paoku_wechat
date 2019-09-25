@@ -12,12 +12,8 @@ var formid = ''
 Page({
   data: {
     globalimg: i.globalData.appimg,
-    // 组件所需的参数
-    nvabarData: {
-      showCapsule: 1,
-      title: '好友捐赠',
-      height: i.globalData.height * 2 + 20,
-    },
+    showIcon: true,
+    gloheight: i.globalData.gloheight,
     notadaDis: 'none',
     listDis: 'block',
     maskDis: 'none',

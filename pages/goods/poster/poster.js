@@ -6,12 +6,8 @@ Page({
         accredit: "",
         errMsg: "",
         Image: "",
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '商品图片',
-            height: e.globalData.height * 2 + 30
-        },
+      showIcon: true,
+      gloheight: e.globalData.gloheight
     },
     onLoad: function(e) {
         (e = e || {}).id ? this.getImage(e.id) : wx.redirectTo({

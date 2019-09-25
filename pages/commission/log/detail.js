@@ -4,12 +4,7 @@ Page({
     data: {
         page: 1,
         list: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '详情', 
-            height: app.globalData.height * 2 + 20,
-        },
+        showIcon: true,
     },
     onLoad: function(t) {
         t.id > 0 && this.setData({

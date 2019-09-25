@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="评论详情"></navigation>
+<view class="expedite-box">
 
   <view class="particulars head" bindtap="showBtn" data-supportid="{{details.id}}" data-name="{{details.nickname}}">
     <view class="head-img flexCss"> 

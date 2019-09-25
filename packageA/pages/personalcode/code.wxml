@@ -1,5 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#01d7a1" frontColor="#fff"></nav-bar>
-<view class='code-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="收付款" backgroundColor="#01d7a1" frontColor="#fff">
+</navigation>
+<view class='code-box'>
     <view class='code-content'>
         <view class='code-tit'>微信扫一扫，向我付钱</view>
         <view class='code-img'>

@@ -16,12 +16,7 @@ Page({
    */
   data: {
     globalimg: t.globalData.appimg,
-    // 组件所需的参数
-    nvabarData: {
-      showCapsule: 1,
-      title: '幸运抽奖',
-      height: t.globalData.height * 2 + 25,
-    },
+    showIcon: true,
     mask: 0,
     images: [
       'http://paokucoin.com/img/backgroup/kongquan.png',

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'> 
+<navigation id='Navigation' show-icon='{{showIcon}}' title="达人圈"></navigation>
+<view class="expedite-box"> 
   <view class="area">
 
     <view catchtap="replyBtn" data-parentid="{{detailList.id}}" data-type="1" data-name="{{detailList.nickname}}">

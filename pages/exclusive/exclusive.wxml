@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='exclusive-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="新人见面礼"></navigation>
+<view class='exclusive-box'>
     <view class='exclusive-bg'>
         <image src='{{globalimg}}/newperson.png'></image>
     </view>

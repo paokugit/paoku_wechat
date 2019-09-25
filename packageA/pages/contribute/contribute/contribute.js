@@ -14,11 +14,8 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1,
-            title: '贡献值',
-            height: i.globalData.height * 2 + 25,
-        },
+      showIcon: true,
+      gloheight: i.globalData.gloheight,
         maskDis: 'none',
         statedisp01: 'none',
         statedisp02: 'none',

@@ -176,9 +176,9 @@
     </view>
   </block>
 </block>
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="page header-sort navbar goodslist" style='margin-top:{{nvabarData.height}}px'>
-  <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品列表"></navigation>
+<view class="page header-sort navbar goodslist">
+  <view class="fui-header">
     <view class="searchbar">
       <icon size="18" type="search"></icon>
       <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>
@@ -196,7 +196,7 @@
       </block>
     </block>
   </view>
-  <view class="sort" style='margin-top:{{nvabarData.height}}px'>
+  <view class="sort" style='margin-top:{{gloheight}}px'>
     <view bindtap="bindSort" class="item {{params.order==''||!params.order?'on':''}}" data-order="">
       <view class="text">综合</view>
     </view>
@@ -243,7 +243,7 @@
   </block>
   <block>
     <block wx:if="{{fromsearch}}">
-      <view class="records" style='margin-top:{{nvabarData.height}}px'>
+      <view class="records" style='margin-top:{{gloheight}}px'>
         <block>
           <block wx:if="{{searchRecords.length>0}}">
             <view class="records-title">

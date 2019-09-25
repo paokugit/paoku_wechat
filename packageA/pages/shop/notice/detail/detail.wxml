@@ -6,8 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="fui-page page-shop-notice-detail" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="系统公告"></navigation>
+        <view class="fui-page page-shop-notice-detail">
             <view class="fui-content">
                 <view class="fui-article">
                     <view class="title">{{title}}</view>

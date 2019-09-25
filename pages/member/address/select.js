@@ -4,12 +4,7 @@ Page({
     data: {
         loaded: !1,
         list: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '选择地址', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
     onLoad: function(a) {
         t.url(a);

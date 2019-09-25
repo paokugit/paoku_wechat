@@ -57,14 +57,9 @@ Page((e = {
     },
 
     data: (a = {
+            showIcon: false,
             topdisp: 'none',
             globalimg: i.globalData.appimg,
-            // 组件所需的参数
-            nvabarData: {
-                showCapsule: 0,
-                title: '跑库',
-                height: i.globalData.height * 2 + 20
-            },
             countDownHour: 0,
             countDownMinute: 0,
             countDownSecond: 0,
@@ -340,6 +335,7 @@ Page((e = {
         }
     },
     onLoad: function(t) {
+      console.log(i.globalData)
         console.log('运动日记')
         console.log(t)
         var k = this

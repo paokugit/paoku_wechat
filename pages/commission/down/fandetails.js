@@ -7,12 +7,7 @@ Page({
    */
   data: {
     globalimg: ii.globalData.appimg,
-      // 组件所需的参数
-      nvabarData: {
-          showCapsule: 1, 
-          title: '好友主页', 
-          height: ii.globalData.height * 2 + 30,
-      },
+    showIcon: true,
     nickname: '',
     levelname: '',
     createtime: '',

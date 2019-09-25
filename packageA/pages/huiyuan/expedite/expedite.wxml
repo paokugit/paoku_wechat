@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="加速宝"></navigation>
+<view class="expedite-box">
   <!-- 购买加速宝标题 -->
   <view class="speed_up_tit">
     <view class="divLine"></view>

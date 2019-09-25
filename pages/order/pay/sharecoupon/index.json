@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "nav-bar": "/commpents/navbar/index"
+      "navigation": "/components/navigation/navigation"
     },
-    "navigationBarTitleText": "我不知道这里应该是什么"
+    "navigationBarTitleText": ""
 }

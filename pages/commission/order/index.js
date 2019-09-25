@@ -5,12 +5,8 @@ Page({
         status: "",
         page: 1,
         list: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '', 
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: app.globalData.gloheight,
     },
     onLoad: function() {
         this.getList();

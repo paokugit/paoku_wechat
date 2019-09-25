@@ -9,12 +9,7 @@ Page({
         list: !1,
         edit_list: [],
         modelShow: !1,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '购物车', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true
     },
     onLoad: function(i) {
         var a = this;

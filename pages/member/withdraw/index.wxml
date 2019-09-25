@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="余额提现"></navigation>
+        <view class="page">
         <!-- <view class='withdraw-explain'>提现收取3%支付通道手续费,实际到账金额减去3%</view> -->
         <view class="marquee">
         <view class="content">

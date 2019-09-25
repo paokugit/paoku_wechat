@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='padding-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="达人圈"></navigation>
+<view class="expedite-box">
   <!-- 动态提醒 -->
   <view class="tiXing" wx:if="{{isShow}}">为你更新{{updateData}}条动态</view>
   <navigator class="listCon" wx:for="{{dataList}}" wx:key="idnex" url="/pages/expert/discuss/discuss?listId={{item.id}}" data-pagecount="{{pagecount}}">

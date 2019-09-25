@@ -19,12 +19,7 @@ Page({
         street: [],
         streetIndex: 0,
         noArea: !1,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true
     },
     onLoad: function(e) {
         this.setData({

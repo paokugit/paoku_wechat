@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="相关套餐"></navigation>
+        <view class="page">
             <block wx:for="{{list}}">
                 <view class="fui-list-group">
                     <navigator class="fui-list goods-item" openType="redirect" url="/pages/goods/package/detail/index?id={{item.id}}">

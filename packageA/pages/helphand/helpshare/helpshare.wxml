@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
-<view class='outerbox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="跟我跑，送你钱"></navigation>
+<view class='outerbox'>
   <view class='sharebox share_center'>
     <view class='bg-box'>
       <image src='{{globalimg}}/sharebg.png'></image>

@@ -16,12 +16,7 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 0,
-            title: '达人中心',
-            height: i.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         color: 'green',
         nickName: '',
         avatarUrl: '',

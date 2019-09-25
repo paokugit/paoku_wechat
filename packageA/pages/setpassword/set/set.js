@@ -16,11 +16,7 @@ Page({
      */
     data: {
       globalimg: i.globalData.appimg,
-      nvabarData: {
-          showCapsule: 1,
-          title: '设置',
-          height: i.globalData.height * 2 + 20,
-      },
+      showIcon: true,
       list:[],
       speedId:'',
       isSelect:''

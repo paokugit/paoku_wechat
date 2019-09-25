@@ -6,8 +6,8 @@
 </block>
 <block>
   <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-    <view class="page {{paddingb}}" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="选择地址"></navigation>
+    <view class="page {{paddingb}}">
       <block>
         <block wx:if="{{list.length>0}}">
           <block wx:for="{{list}}">

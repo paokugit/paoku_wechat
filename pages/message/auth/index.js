@@ -7,6 +7,7 @@ var reurl = '/pages/index/index', mid = '', hlpid = '';
 Page({
   data: {
     globalimg: t.globalData.appimg,
+    showIcon: true,
     close: 0,
     text: ""
   },

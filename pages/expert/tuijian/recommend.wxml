@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品推荐"></navigation>
+<view class="expedite-box">
   <view class="title colorCss">店铺内商品任选一件</view>
 
   <block wx:for="{{message}}" wx:key="{{index}}">

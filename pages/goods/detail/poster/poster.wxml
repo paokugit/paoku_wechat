@@ -1,3 +1,4 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title=""></navigation>
 <view class="page">
     <view bindtap="previewImage" class="fui-picture">
         <image src="{{Image}}"></image>

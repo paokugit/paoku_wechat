@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page navbar" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="会员资料"></navigation>
+        <view class="page navbar">
             <block>
                 <block wx:if="{{openbind}}">
                     <view class="fui-cell-group">

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='conBox'  style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="跟我跑，送你钱"></navigation>
+<view class='conBox'>
 <view class='friend-box'>
     <view class='power-finish'>捐赠成功！</view>
      <view class='friend-goword'>每天助人一点点，生活真美好</view>

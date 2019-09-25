@@ -24,12 +24,7 @@ Page({
     data: {
         globalimg: app.globalData.appimg,
         icons: e.requirejs("icons"),
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '确认订单',
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         list: {},
         inviteavatar: '',
         invitename: '',

@@ -17,12 +17,7 @@ Page({
      */
     data: {
         globalimg: t.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '加速宝',
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         list: [], //列表数据
         isShow: false, //弹出层判断
         payDay: '', //加速天数内容

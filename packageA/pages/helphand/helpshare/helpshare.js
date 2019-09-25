@@ -33,11 +33,8 @@ Page({
     myid: '',
     count: '',
     steptoday: '',
-    nvabarData: {
-      showCapsule: 1,
-      title: '跟我跑，送你钱',
-      height: i.globalData.height * 2 + 20,
-    },
+    showIcon: true,
+    gloheight: i.globalData.gloheight
   },
 
   /**

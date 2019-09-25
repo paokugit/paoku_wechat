@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="跑库年卡"></navigation>
+<view class="expedite-box">
   <view class="equity_img">
     <image class="mai_01" src="{{globalimg}}/mai_01.jpg"></image>
     <image class="mai_02" src="{{globalimg}}/mai_02.jpg"></image>

@@ -18,11 +18,7 @@ Page({
     data: {
         moneytext: '',
         calorietext: '',
-        nvabarData: {
-            showCapsule: 1, 
-            title: '折扣宝折扣',
-            height: i.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
 
     /**

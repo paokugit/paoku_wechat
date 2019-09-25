@@ -15,12 +15,7 @@ Page({
         list: [],
         helplist: [],
         play: 0,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '新手攻略',
-            height: t.globalData.height * 2 + 25,
-        },
+      showIcon: true,
     },
 
     /**

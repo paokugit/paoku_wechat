@@ -52,12 +52,8 @@ Page({
         limits: !0,
         modelShow: !1,
         textinfo:'',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '商品列表', 
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: app.globalData.gloheight
 
     },
     onLoad: function(e) {

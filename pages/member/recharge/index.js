@@ -6,12 +6,7 @@ Page({
         coupon: {
             count: 0
         },
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '账户充值', 
-            height: e.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
     onLoad: function(t) {
         e.url(t), this.get_list();

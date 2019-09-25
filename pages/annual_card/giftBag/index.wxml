@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="每月礼包"></navigation>
+<view class="expedite-box">
   <view class="listHead">以下产品任选一件</view>
  
   <block wx:for="{{goods_list}}" wx:key="{{index}}">

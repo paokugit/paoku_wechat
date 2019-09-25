@@ -308,7 +308,7 @@ image {
 .attendance {
     position: absolute;
     top: 80rpx;
-    right: 20rpx;
+    right: 40rpx;
 }
 
 .lottery {

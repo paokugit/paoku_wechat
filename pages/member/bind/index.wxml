@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='bind_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="绑定手机号"></navigation>
+<view class='bind_box'>
     <view class='bind-con'>
         <view class='bind-phone'>
             <view class='phone-left'>

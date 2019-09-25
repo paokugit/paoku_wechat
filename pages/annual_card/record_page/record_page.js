@@ -7,11 +7,8 @@ var useropenid = "";
 Page({
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
-      showCapsule: 2,
-      title: '领取记录',
-      height: t.globalData.height * 2 + 20,
-    },
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
     page: 1,
     recordList: [],
     totalPage: 0,

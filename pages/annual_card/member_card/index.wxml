@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="年卡中心"></navigation>
+<view>
   <view style="margin-bottom:150rpx;">
     <view wx:if="{{nowPage=='firstPage'?true:false}}">
       <view class="header_outer">

@@ -1,5 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#2bbe78" frontColor="#fff"></nav-bar>
-<view class='indexBox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="跑库" backgroundColor="#2bbe78" frontColor="#fff">
+</navigation>
+<view class='indexBox'>
     <view class="index-banner-box">
         <image src='{{ backgroundimg}}'></image>
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>

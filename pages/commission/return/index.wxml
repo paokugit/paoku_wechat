@@ -5,9 +5,9 @@
 </block>
 <block>
     <block wx:if="true">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page com-log" style='margin-top:{{nvabarData.height}}px'>
-            <view class="fui-tab fui-tab-danger" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="全返记录"></navigation>
+        <view class="page com-log">
+            <view class="fui-tab fui-tab-danger" style='position:fixed;top:{{gloheight}}px;left:0'>
                 <view bindtap="myTab" class="item {{type==0?'active':''}}" data-type="0">未完成</view>
                 <view bindtap="myTab" class="item {{type==1?'active':''}}" data-type="1">已完成</view>
             </view>

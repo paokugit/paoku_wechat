@@ -6,12 +6,7 @@ Page({
         merchid: 0,
         markers: [],
         store: {},
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '地图', 
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
     onLoad: function(t) {
         this.setData({

@@ -13,12 +13,8 @@ Page({
         cancelindex: 0,
         diyshow: {},
         city_express_state: 0,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '订单详情',
-            height: a.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: a.globalData.gloheight
     },
     onLoad: function(t) {
         this.setData({

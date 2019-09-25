@@ -5,9 +5,9 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page navbar" style='margin-top:{{nvabarData.height}}px'>
-            <view class="category-search" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="全部分类"></navigation>
+        <view class="page navbar">
+            <view class="category-search" style='margin-top:{{gloheight}}px'>
                 <view class="weui-flex">
                     <view class="weui-flex__item category-search-form">
                         <view class="flex-head-search" id="searchBar">

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>邀请海报
+<view class='conBox'>
 
     <view class='bannerbox'>
         <image src="{{url}}"></image>

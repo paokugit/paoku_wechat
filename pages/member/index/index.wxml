@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='user_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="个人中心"></navigation>
+<view class='user_box'>
     <view class='user-info-box' style='display:{{userinfodis}}'>
         <view class='info-detail'>
             <view class='avatar-img'>

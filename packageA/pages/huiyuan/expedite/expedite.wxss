@@ -12,6 +12,10 @@
   padding-top: 20rpx;
   margin-bottom: 40rpx;
 }
+image{
+  width: 100%;
+  height: 100%
+}
 .tit_content{
   color: rgb(161, 161, 161);
   font-size: 25rpx;

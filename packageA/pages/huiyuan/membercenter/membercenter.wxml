@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='centerBox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="达人中心"></navigation>
+<view class='centerBox'>
   <view class='mcbanner-box'>
     <image src='{{backgroundimg}}'></image>
     <view class='member-intro'>

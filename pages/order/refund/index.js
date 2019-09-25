@@ -11,12 +11,7 @@ Page({
         reasonArr: [ "不想要了", "卖家缺货", "拍错了/订单信息错误", "其它" ],
         reasonIndex: 0,
         images: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '申请退款', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
     onLoad: function(e) {
         this.setData({

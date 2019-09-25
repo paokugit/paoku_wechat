@@ -9,11 +9,8 @@ Page({
         loaded: !1,
         loading: !0,
         list: [],
-        nvabarData: {
-            showCapsule: 1, 
-            title: '卡路里明细',
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: app.globalData.gloheight
     },
     onLoad: function(a) {
         a.type > 0 && this.setData({

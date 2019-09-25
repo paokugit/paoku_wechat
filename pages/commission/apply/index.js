@@ -3,12 +3,7 @@ var a = getApp(), t = a.requirejs("core"), e = a.requirejs("jquery"), n = a.requ
 Page({
     data: {
         globalimg: a.globalData.appimg,
-        // 组件所需的参数
-      nvabarData: {
-          showCapsule: 1, 
-          title: '申请提现', 
-          height: a.globalData.height * 2 + 20, 
-      },
+      showIcon: true,
     },
     onShow: function() {
         this.getData();
