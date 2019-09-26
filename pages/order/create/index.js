@@ -377,12 +377,13 @@ Page({
                     fardis: 'none'
                 })
             }
+
             console.error(a), t.dispatch_price = a.price, t.enoughdeduct = a.deductenough_money,
                 t.enoughmoney = a.deductenough_enough, t.taskdiscountprice = a.taskdiscountprice,
                 t.discountprice = a.discountprice, t.isdiscountprice = a.isdiscountprice, t.seckill_price = a.seckill_price,
                 t.deductcredit2 = a.deductcredit2, t.deductmoney = a.deductmoney, t.deductcredit = a.deductcredit,
                 t.discount = a.discount,
-                e.data.data.deduct && (a.realprice -= a.deductmoney), e.data.data.deduct2 && (a.realprice -= a.deductcredit2),
+              e.data.data.deduct && (a.realprice -= a.deductmoney), e.data.data.discount && (a.realprice -= a.discount), e.data.data.deduct2 && (a.realprice -= a.deductcredit2),
                 e.data.coupon && void 0 !== e.data.coupon.deductprice && (e.setData({
                     "coupon.deductprice": a.coupon_deductprice
                 }), a.realprice -= a.coupon_deductprice), a.card_info && (t.card_free_dispatch = a.card_free_dispatch),
@@ -465,6 +466,8 @@ Page({
     dataChange: function(t) {
         var e = this.data.data,
             a = this.data.list;
+            console.log(e)
+            console.log(t)
         switch (t.target.id) {
             case "remark":
                 e.remark = t.detail.value;
@@ -473,6 +476,7 @@ Page({
             case "deduct":
                 if (e.deduct = t.detail.value, e.deduct2) return;
                 i = parseFloat(a.realprice);
+                console.log(i)
                 i += e.deduct ? -parseFloat(a.deductmoney) : parseFloat(a.deductmoney), a.realprice = i;
                 break;
 
@@ -480,6 +484,7 @@ Page({
             case "discount":
                 if (e.discount = t.detail.value, e.deduct2) return;
                 i = parseFloat(a.realprice);
+                console.log(i)
                 i += e.discount ? -parseFloat(a.discount) : parseFloat(a.discount), a.realprice = i;
                 break;
 
