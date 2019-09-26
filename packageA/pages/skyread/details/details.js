@@ -48,21 +48,21 @@ Page({
     useropenid = userinfo.openid;
     readid = options.id;
 
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1000
+    });
     var b = this;
     b.details();
     b.comment();
 
-    console.log(isPlayingMusic);
+    
   },
 
   // 文本
   details:function(e){
     var m = this;
-    wx.showToast({ 
-      title: '加载中', 
-      icon: 'loading', 
-      duration: 1000 
-    });
     a.get("myown.reading.detail",{
       readid: readid
     },function(e){
@@ -442,7 +442,7 @@ Page({
         page: page + 1
       })
       this.comment();
-      wx.hideLoading()
+      // wx.hideLoading()
     } else {
       this.setData({
         isshow: true

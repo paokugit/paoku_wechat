@@ -47,7 +47,8 @@ button::after {
     width: 100%;
     height: 60rpx;
     position: absolute;
-    top: 66%;
+    /* top: 66%; */
+    top: 75%;
 }
 
 .werun-absolute {
@@ -152,7 +153,8 @@ button::after {
 
 .index-banner-box {
     width: 100%;
-    height: 478rpx;
+    /* height: 478rpx; */
+    height: 608rpx;
     position: relative;
 }
 
@@ -163,7 +165,8 @@ image {
 
 .update-box {
     position: absolute;
-    top: 15rpx;
+    /* top: 15rpx; */
+    top: 145rpx;
     right: 0rpx;
 }
 
@@ -191,9 +194,10 @@ image {
     width: auto;
     height: 50rpx;
     line-height: 50rpx;
-    background: #1daf69;
+    background: #01d7a1;
     position: absolute;
-    top: 5rpx;
+    /* top: 5rpx; */
+    top: 135rpx;
     left: 0rpx;
     border-radius: 0 30rpx 30rpx 0;
 }
@@ -263,19 +267,21 @@ image {
 .stepExchange {
     position: absolute;
     left: 40rpx;
-    top: 100rpx;
+    /* top: 100rpx; */
+    top: 230rpx;
 }
 
 .giftbox {
     position: absolute;
     left: 160rpx;
-    top: 210rpx;
+    /* top: 210rpx; */
+    top: 340rpx;
 }
 
 .phonereward {
     position: absolute;
     right: 190rpx;
-    top: 185rpx;
+    top: 285rpx;
 }
 
 .circle {
@@ -307,7 +313,8 @@ image {
 
 .attendance {
     position: absolute;
-    top: 80rpx;
+    /* top: 80rpx; */
+    top: 210rpx;
     right: 40rpx;
 }
 
@@ -320,6 +327,9 @@ image {
 .paopao-box {
     width: 88rpx;
     height: 88rpx;
+    
+    margin: 0 auto;
+
     margin-bottom: 8rpx;
 }
 
@@ -328,7 +338,7 @@ image {
     height: 30rpx;
     color: #fff;
     font-size: 18rpx;
-    background: #27b974;
+    background: #01d7a1;
     border-radius: 10rpx;
     text-align: center;
     line-height: 30rpx;
@@ -363,11 +373,12 @@ image {
     width: auto;
     height: auto;
     position: absolute;
-    top: 90rpx;
+    /* top: 90rpx; */
+    top: 220rpx;
     left: 320rpx;
     color: #fff;
     font-size: 24rpx;
-    text-shadow: #32c17d 1rpx 5rpx;
+    /* text-shadow: #32c17d 1rpx 5rpx; */
 }
 
 .today-step-con {
@@ -377,11 +388,12 @@ image {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 140rpx;
+    /* top: 140rpx; */
+    top: 270rpx;
     left: 250rpx;
     color: #fff;
     font-size: 70rpx;
-    text-shadow: #32c17d 1rpx 5rpx;
+    /* text-shadow: #32c17d 1rpx 5rpx; */
     font-family: 'DIN Next LT Pro';
 }
 
@@ -403,7 +415,8 @@ image {
     line-height: 40rpx;
     text-align: center;
     position: absolute;
-    top: 250rpx;
+    /* top: 250rpx; */
+    top: 380rpx;
     left: 280rpx;
     color: #fff;
     font-size: 24rpx;
@@ -1239,8 +1252,8 @@ image {
     position: fixed;
     bottom: 10%;
     right: 5%;
-    width: 50rpx;
-    height: 50rpx;
+    width: 80rpx;
+    height: 80rpx;
 }
 
 .first-entry-close {

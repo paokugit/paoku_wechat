@@ -91,9 +91,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log('123');
     var m = this;
     let page = m.data.page;
     let totalpage = m.data.totalPage;
+
+    console.log(page, totalpage);
 
     if (page < totalpage) {
       m.setData({
