@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="收款记录"></navigation>
 <view class='record-box' style='margin-top:{{nvabarData.height}}px'>
     <view class='record-header'>共查询到{{recordlist.total}}笔收款,累计{{totalmoney}}元</view>
     <view class='listBox' wx:for='{{recordlist.list}}' wx:key='{{index}}'>

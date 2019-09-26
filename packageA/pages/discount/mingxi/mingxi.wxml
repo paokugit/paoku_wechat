@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='mingxi-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="扫码付款明细"></navigation>
+<view class='mingxi-box'>
     <view class='mingxi-con'>
         <view class='mingxi-item'>
             <view class='item-top'>

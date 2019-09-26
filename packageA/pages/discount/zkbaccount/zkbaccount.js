@@ -14,12 +14,9 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '收支明细',
-            height: i.globalData.height * 2 + 20,
-        },
+        showIcon: true,
+        gloheight: i.globalData.gloheight ,
+
         type: 1,
         isopen: !1,
         page: 1,

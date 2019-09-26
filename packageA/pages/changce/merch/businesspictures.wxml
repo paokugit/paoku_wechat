@@ -1,6 +1,6 @@
 <!--pages/store/tupian.wxml-->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='all-box' wx:if="{{shopimg !=''&& shopimg !=null}}" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="店铺图片"></navigation>
+<view class='all-box' wx:if="{{shopimg !=''&& shopimg !=null}}">
   <view class='waterfall'>
     <view class='total-view' wx:for="{{shopimg}}" wx:for-index="childid" wx:for-item="childitem">
       <image bindtap='previewImage' data-imglist='{{shopimg}}' data-src='{{childitem}}' src='{{childitem}}'></image>

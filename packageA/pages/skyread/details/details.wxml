@@ -1,7 +1,7 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="每日必读"></navigation>
+<view class="expedite-box">
   <scroll-view scroll-y style="height:91vh" bindscrolltolower="lower">
-    <view class="headcon">
+    <view class="headcon"> 
       <view class="headimg">
         <image src="{{articleImg}}"></image>
       </view>
@@ -11,12 +11,9 @@
         <view class="writer"><text class="writerA">跑库</text> <text class="writerB">{{articleTime}}</text></view>
   
         <view class="music" catchtap="bindback">
-          <image class="musicimg" src="{{globalimg}}/music.png"></image>
+          <image class="musicimg" src="{{globalimg}}/music.png" style="{{status}}"></image>
           <view> 
-            <view>
-              <text class="musictit">{{music_title}}</text>
-              <image class="musicgif" src="{{globalimg}}/musicgif.gif" wx:if="{{musicShow}}"></image>
-            </view> 
+            <view class="musictit">{{music_title}}</view> 
             <view class="musictitA">来自跑库</view>
           </view>
         </view>

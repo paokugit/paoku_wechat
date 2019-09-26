@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='record_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="变动记录"></navigation>
+<view class='record_box'>
     <view class='record-con'>
         <view class='record-item' wx:for="{{list}}" wx:key="{{index}}">
             <view class='item-left'>

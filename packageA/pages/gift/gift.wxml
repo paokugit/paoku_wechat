@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="助力免费领礼品"></navigation>
 <scroll-view class='gift_box' style='margin-top:{{nvabarData.height}}px' scroll-y="{{isScroll}}">
     <view class='gift-topbg'>
         <image src='{{globalimg}}/pic01@2x.png'></image>

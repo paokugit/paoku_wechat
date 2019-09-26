@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='setklldiscount-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝折扣"></navigation>
+<view class='setklldiscount-box'>
     <view class='set-box'>
         <view class='list-box'>
             <view class='list-top'>

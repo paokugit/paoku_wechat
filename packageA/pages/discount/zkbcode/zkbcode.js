@@ -14,12 +14,9 @@ Page({
         globalimg: i.globalData.appimg,
         rebatecode:'',
         rebateurl:'',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '收付款', 
-            height: i.globalData.height * 2 + 25,
-        },
+        
+        showIcon: true,
+        gloheight: i.globalData.gloheight
         
     },
 

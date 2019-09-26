@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#fff" frontColor="#333"></nav-bar>
-<view class='merchcode-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="收款码"></navigation>
+<view class='merchcode-box'>
     <view class='zkb-box' bindtap='zkbbtn'>
         <image src='{{globalimg}}/kalulibg@2x.png'></image>
         <view class='zkb-text-box'>

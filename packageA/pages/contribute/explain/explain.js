@@ -13,12 +13,9 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         content:'',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '贡献值', 
-            height: i.globalData.height * 2 + 30,
-        },
+        
+        showIcon: true,
+        gloheight: i.globalData.gloheight 
 
     },
 

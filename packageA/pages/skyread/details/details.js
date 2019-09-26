@@ -18,18 +18,15 @@ var back = wx.getBackgroundAudioManager();
 Page({
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
-      showCapsule: 1, 
-      title: "每日必读",
-      height: t.globalData.height * 2 + 20, 
-    },
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
+
     publish:false,
     focus:false,
     releaseText:'',
     background:'background: #99efd9;',
     isshow:false,
     shadeShow:false,
-    musicShow:true,
 
     articleTit:"",
     articleImg:'',
@@ -40,7 +37,9 @@ Page({
     commentList:[],
     yi_zan: 'circle_parise@2.png',
     wei_zan: 'circle_parise@1.png',
-    notlogindis: 'block'
+    notlogindis: 'block',
+
+    status:'animation-play-state: running;'
   },
 
 
@@ -72,14 +71,6 @@ Page({
         readmusic = e.message.music;
         music_title = e.message.music_title;
 
-        // back.src = readmusic;
-        // back.title = music_title;
-        // back.play();
-        // back.onEnded(() => {
-        //   console.log("音乐播放结束");
-        //   back.play();
-        // })
-        // isPlayingMusic = false
         player();
         function player() {
           back.title = music_title;
@@ -144,7 +135,7 @@ Page({
       back.pause();
       isPlayingMusic = false;
       that.setData({
-        musicShow:false
+        status:'animation-play-state: paused;' 
       })
     }else{
       player();
@@ -154,11 +145,11 @@ Page({
         back.onEnded(() => {
           player();
         })
+        that.setData({
+          status: 'animation-play-state: running;'
+        })
       }
       isPlayingMusic = true;
-      that.setData({
-        musicShow: true
-      })
     }
   },
 
@@ -411,7 +402,7 @@ Page({
   },
 
   onShow: function () {
-  
+    this.getUserInfo();
   },
   
   /**

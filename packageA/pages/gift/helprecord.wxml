@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='help-record-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="助力记录"></navigation>
+<view class='help-record-box'>
     <view class='help_con'>
         <view class='help_item' wx:for="{{list}}" wx:key="{{index}}">
             <view class='help-left'>

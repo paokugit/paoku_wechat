@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='contribute_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="贡献值"></navigation>
+<view class='contribute_box'>
     <view class='contribute-top'>
         <image src='{{globalimg}}/gx-bg@2x.png'></image>
         <view class='open-state'  wx:if="{{bind==0}}">暂未开通</view>

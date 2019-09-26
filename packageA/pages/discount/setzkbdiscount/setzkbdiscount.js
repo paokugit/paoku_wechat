@@ -18,13 +18,9 @@ Page({
     data: {
         moneytext: '',
         calorietext: '',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-            title: '折扣宝折扣', //导航栏 中间的标题
-            // 此页面 页面内容距最顶部的距离
-            height: i.globalData.height * 2 + 20,
-        },
+        
+        showIcon: true,
+        gloheight: i.globalData.gloheight 
     },
 
     /**

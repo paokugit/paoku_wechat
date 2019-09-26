@@ -14,11 +14,9 @@ Page({
         exchangeDis:'none',
         url: '',
         globalimg: i.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1, 
-            title: '运动日记', 
-            height: i.globalData.height * 2 + 20,
-        },
+        showIcon: true,
+        gloheight: i.globalData.gloheight,
+
         num:'',
         exurl:''
     },

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='allview' wx:if="{{play==0}}" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="店铺主页"></navigation>
+<view class='allview' wx:if="{{play==0}}">
   <view class='zhuyehead'>
     <view class='headimg'>
       <image wx:if="{{logo !=''&&logo != null}}" class='imghh' src="{{logo}}"></image>

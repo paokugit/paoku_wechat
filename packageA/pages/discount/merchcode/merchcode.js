@@ -10,11 +10,8 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1, 
-            title: '收款码', 
-            height: i.globalData.height * 2 + 20,
-        },
+        showIcon: true,
+        gloheight: i.globalData.gloheight 
     },
 
     /**

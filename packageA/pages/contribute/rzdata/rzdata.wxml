@@ -1,6 +1,6 @@
 <!--pages/contribute/rzdata/rzdata.wxml-->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='rzdata_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="认证资料"></navigation>
+<view class='rzdata_box'>
     <view class='data-con'>
         <view class='mobile-box' bindtap='gobindbtn'>
             <view class='mobile-text'>手机号码</view>

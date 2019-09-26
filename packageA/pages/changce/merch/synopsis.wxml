@@ -1,7 +1,7 @@
 <!--pages/changce/merch/synopsis.wxml-->
 <!-- 总的 -->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='all-box'  style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="店铺简介"></navigation>
+<view class='all-box'>
   <!-- 两个 -->
   <view class='nameandxie'>
     <!-- 上边 -->
