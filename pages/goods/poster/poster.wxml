@@ -5,7 +5,7 @@
 </block>
 <navigation id='Navigation' show-icon='{{showIcon}}' title="商品图片"></navigation>
 <view class="page">
-    <view bindtap="previewImage" class="fui-picture" style='margin-top:{{nvabarData.height}}px'>
+    <view bindtap="previewImage" class="fui-picture" style='margin-top:{{gloheight}}px'>
         <block>
             <block wx:if="{{Image.length>0}}">
                 <image bindload="loadImg" src="{{Image}}"></image>

@@ -56,7 +56,7 @@
         </view>
     </view>
     <!-- 私信助手 -->
-    <view class="privateletter" style='margin-top:{{nvabarData.height}}px' wx:if="{{mask==2}}">
+    <view class="privateletter" style='margin-top:{{gloheight}}px' wx:if="{{mask==2}}">
         <!-- 自动推送 -->
         <!-- <view class="self-motion">
             <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>

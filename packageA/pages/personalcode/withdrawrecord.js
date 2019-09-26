@@ -11,6 +11,7 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+      gloheight: i.globalData.height,
         page: 1,
         list: [],
         maskDis: 'none',
