@@ -92,7 +92,8 @@ input {
 }
 
 .heard-tag {
-    top: 62rpx;
+    /* top: 62rpx; */
+    top: 210rpx;
     width: 100%;
     height: 400rpx;
     font-size: 22rpx;
