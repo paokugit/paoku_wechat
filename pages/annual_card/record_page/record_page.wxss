@@ -1,4 +1,8 @@
-.tierCss{ background: #fff;}
+page{ background: #fff;}
+image{
+  width: 100%;
+  height: 100%;
+}
 .time_year{
   color: #929292;
   font-size: 30rpx;

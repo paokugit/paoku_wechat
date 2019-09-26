@@ -19,7 +19,7 @@
               <image class='img_box' wx:if="{{item.agentlevel == 1?true:false}}" src='{{globalimg}}/jiankang-star.png'></image>
               <image class='img_box' wx:if="{{item.agentlevel == 2?true:false}}" src='{{globalimg}}/xingxuan-star.png'></image>
               <image class='img_box' wx:if="{{item.agentlevel == 5?true:false}}" src='{{globalimg}}/dianzhu-star.png'></image>
-
+ 
               <view class="friend_vip">{{item.agentname}}</view>
             </view>
             <view class="subtitle">{{item.createtime}}</view>

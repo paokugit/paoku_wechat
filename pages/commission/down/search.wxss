@@ -1,6 +1,7 @@
 .fandetails_all {
   background: #fff;
   height:100%;
+  padding-top: 30rpx;
 }
 
 .header_search {
