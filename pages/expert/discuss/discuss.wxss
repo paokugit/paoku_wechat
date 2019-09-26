@@ -69,6 +69,8 @@ image{
   margin: 0;
 }
 .typeImage{
+  width: 100%;
+  height: 100%;
   border-radius: 10rpx;
 }
 
@@ -173,6 +175,8 @@ image{
   margin: 20rpx 10rpx;
 }
 .headImage image{
+  width: 100%;
+  height: 100%;
   border-radius: 50rpx;
 }
 .dakai{

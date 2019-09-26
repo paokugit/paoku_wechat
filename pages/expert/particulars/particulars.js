@@ -116,17 +116,20 @@ Page({
       if (i == index) { 
         var collectStatus = false
         if (message[i].support == 0) { 
-          collectStatus = true
-          message[i].support = parseInt(message[i].support) + 1
-          message[i].zan_count = parseInt(message[i].zan_count) + 1
-
+          collectStatus = true;
           a.get("drcircle.my.support", {
             openid: useropenid,
             content_id: sutId,
             type: 2
           }, function (e) {
             console.log(e);
-            if (e.error == 2) {
+            if(e.error == 0){
+              message[i].support = parseInt(message[i].support) + 1;
+              message[i].zan_count = parseInt(message[i].zan_count) + 1;
+              m.setData({
+                list: message
+              })
+            }else if (e.error == 2) {
               wx.showToast({
                 title: e.message,
                 duration: 2000
@@ -134,17 +137,20 @@ Page({
             }
           })
         } else {
-          collectStatus = false
-          message[i].support = parseInt(message[i].support) - 1
-          message[i].zan_count = parseInt(message[i].zan_count) - 1
-
+          collectStatus = false;
           a.get("drcircle.my.del_support", {
             openid: useropenid,
             content_id: sutId,
             type: 2
           }, function (e) {
             console.log(e);
-            if (e.error == 2) {
+            if(e.error == 0){
+              message[i].support = parseInt(message[i].support) - 1;
+              message[i].zan_count = parseInt(message[i].zan_count) - 1;
+              m.setData({
+                list: message
+              })
+            }else if (e.error == 2) {
               wx.showToast({
                 title: e.message,
                 duration: 2000
@@ -154,9 +160,6 @@ Page({
         }
       }
     }
-    m.setData({
-      list: message
-    })
   },
   supportA: function (e) {
     var m = this;
@@ -235,15 +238,13 @@ Page({
       title:'评论中...',
       mask:true
     })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000)
     a.get("drcircle.my.comment", {
       openid: useropenid,
       content: m.data.discuss,
       type:2,
       parent_id: m.data.sendId
     }, function (e) {
+      wx.hideLoading()
       if(e.error == 0){
         wx.showToast({
           title: '评论成功',

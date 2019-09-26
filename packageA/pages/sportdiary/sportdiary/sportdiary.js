@@ -6,22 +6,20 @@ var reurl = ""
 var useropenid = ""
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    sportDis: 'block',
-    exchangeDis: 'none',
-    url: '',
-    globalimg: i.globalData.appimg,
-    nvabarData: {
-      showCapsule: 1,
-      title: '运动日记',
-      height: i.globalData.height * 2 + 20,
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        sportDis:'block',
+        exchangeDis:'none',
+        url: '',
+        globalimg: i.globalData.appimg,
+        showIcon: true,
+        gloheight: i.globalData.gloheight,
+
+        num:'',
+        exurl:''
     },
-    num: '',
-    exurl: ''
-  },
 
   /**
    * 生命周期函数--监听页面加载

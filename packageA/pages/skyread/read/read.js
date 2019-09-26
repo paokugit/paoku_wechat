@@ -8,11 +8,9 @@ Page({
 
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
-      showCapsule: 1,
-      title: '每日必读',
-      height: t.globalData.height * 2 + 20,
-    },
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
+    
     isShow:0,
     page:1,
     list:[],
@@ -40,6 +38,7 @@ Page({
       page: m.data.page
     },function(e){
       console.log(e);
+      wx.hideLoading()
       if(e.error == 0){
         let totalPage = Math.ceil(e.message.count / 10);
         let totalList = e.message.list
@@ -47,7 +46,6 @@ Page({
           totalPage: totalPage,
           list: m.data.list.concat(totalList)
         })
-        wx.hideLoading()
       } else if (e.error == 1){
         wx.showModal({
           title: '提示',
@@ -98,9 +96,6 @@ Page({
     let totalpage = m.data.totalPage;
 
     if (page < totalpage) {
-      wx.showLoading({
-        title: '加载中...',
-      });
       m.setData({
         page: page + 1
       })
@@ -110,9 +105,6 @@ Page({
         isShow: 1
       })
     }
-    setTimeout(() => {
-      wx.hideLoading()
-    }, 1000)
   },
 
   /**

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='account-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="收支明细"></navigation>
+<view class='account-box'>
     <!-- tab -->
     <block>
         <block wx:if="{{!show}}">

@@ -4,6 +4,10 @@ page{
 }
 
 .expedite-box{
+  padding-top: 30rpx;
+}
+
+.expedite-box{
   margin-bottom: 100rpx;
 }
 image{
@@ -12,7 +16,6 @@ height: 100%;
 }
 .head{
   background: #ffffff;
-  margin: 30rpx 0;
 }
 .cont{
   background: #fcfcfc;

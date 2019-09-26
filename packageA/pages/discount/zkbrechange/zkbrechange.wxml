@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='rechange_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝充值"></navigation>
+<view class='rechange_box'>
     <view class='rechange-con'>
         <view class='kll-balance-box'>
             <view class='kll-img'>

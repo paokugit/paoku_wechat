@@ -14,8 +14,10 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
+
       showIcon: true,
       gloheight: i.globalData.gloheight,
+
         maskDis: 'none',
         statedisp01: 'none',
         statedisp02: 'none',

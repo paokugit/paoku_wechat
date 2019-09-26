@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='success-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝充值"></navigation>
+<view class='success-box'>
     <view class='success-bg'>
         <image src='{{globalimg}}/success-green@2x.png'></image>
     </view>

@@ -1,7 +1,3 @@
-
-.expedite-box{
-  padding-bottom: 50rpx;
-}
 /* 动态提醒 */
 .tiXing{
   width: 238rpx;
@@ -95,6 +91,8 @@ image{
   margin: 0;
 }
 .typeImage{
+  width: 100%;
+  height: 100%;
   border-radius: 10rpx;
 }
 
@@ -189,7 +187,7 @@ image{
 .finish_inquire{
   font-size: 28rpx;
   color: #8A8A8A;
-  padding: 60rpx 0;
+  margin-bottom: 24rpx;
   text-align: center;
 }
 

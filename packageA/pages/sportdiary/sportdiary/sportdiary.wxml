@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='sportBox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="运动日记"></navigation>
+<view class='sportBox'>
 <view class='sportBanner' style='display:{{sportDis}}'>
     <image src="{{url}}"></image>
 </view>

@@ -17,12 +17,9 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '限时秒杀',
-            height: i.globalData.height * 2 + 20,
-        },
+        showIcon: true,
+        gloheight: i.globalData.gloheight  ,
+
         countDownHour: 0,
         countDownMinute: 0,
         countDownSecond: 0,

@@ -14,12 +14,9 @@ Page({
         page:1,
         list:[],
         maskDis:'none',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '变动记录', 
-            height: i.globalData.height * 2 + 30,
-        },
+        
+      showIcon: true,
+      gloheight: i.globalData.gloheight
     },
 
     /**

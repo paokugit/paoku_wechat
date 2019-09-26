@@ -1,82 +1,88 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="每日必读"></navigation>
+<view class="expedite-box">
+  <scroll-view scroll-y style="height:91vh" bindscrolltolower="lower">
+    <view class="headcon"> 
+      <view class="headimg">
+        <image src="{{articleImg}}"></image>
+      </view>
+  
+      <view class="essay">
+        <view class="mainTitle">{{articleTit}}</view>
+        <view class="writer"><text class="writerA">跑库</text> <text class="writerB">{{articleTime}}</text></view>
+  
+        <view class="music" catchtap="bindback">
+          <image class="musicimg" src="{{globalimg}}/music.png" style="{{status}}"></image>
+          <view> 
+            <view class="musictit">{{music_title}}</view> 
+            <view class="musictitA">来自跑库</view>
+          </view>
+        </view>
 
-  <view class="headcon">
-    <view class="headimg">
-      <image src="{{articleImg}}"></image>
+        <import src="../../../../utils/wxParse/wxParse.wxml" />
+        <view class="wxParse article">
+          <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"/>
+        </view>
+      </view>
+
+      <view class="transpond" >
+        <button class='inviteBtn' open-type='share'></button>
+        <image src="{{globalimg}}/read-zhuanfa.gif"></image>
+        <view>转发</view>
+      </view>
     </view>
- 
-    <view class="essay">
-      <view class="mainTitle">{{articleTit}}</view>
-      <view class="writer"><text class="writerA">跑库</text> <text class="writerB">{{articleTime}}</text></view>
- 
-      <view class="music" catchtap="bindback">
-        <image class="musicimg" src="{{globalimg}}/music.png"></image>
-        <view>
+
+    <view class="comment">
+      <view class="comment-head">
+        <view class="all-comment">全部评论</view>
+        <view class="write-comment" catchtap="writebtn">写评论</view>
+      </view>
+
+      <block wx:for="{{commentList}}" wx:key="{{index}}">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
+        <view class="comment-list" bindlongpress="shadeCat" data-openid="{{item.openid}}" data-commentid="{{item.id}}" data-index="{{index}}">
+          <image class="left-img" src="{{item.avatar}}"></image>
           <view>
-            <text class="musictit">{{music_title}}</text>
-            <!-- <image class="musicgif" src="{{globalimg}}/musicgif.gif"></image> -->
-          </view> 
-          <view class="musictitA">来自跑库</view>
-        </view>
-      </view>
+            <view class="name-zan">
+              <view class="right-name">{{item.nickname}}</view>
+              <view class="img-zan" catchtap="imgZan" data-commentid="{{item.id}}" data-index="{{index}}">
+                <image src="{{globalimg}}/{{item.myzan == 0?wei_zan:yi_zan}}"></image>
+                <text>{{item.zan}}</text>
+              </view>
+            </view>
+            <view class="right-txt">{{item.comment}}</view>
 
-      <import src="../../../../utils/wxParse/wxParse.wxml" />
-      <view class="wxParse article">
-        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}" />
-      </view>
-    </view>
+            <view wx:if="{{item.reply.length>0?true:false}}">
+              <view class="author-name">
+                <view class="left-author"></view>
+                <view class="right-author">作者</view>
+              </view>
+              <view class="right-txt" wx:for="{{item.reply}}"  wx:for-item="itemdt" wx:key="indexdt">{{itemdt.reply}}</view>
+            </view>
 
-    <view class="transpond">
-      <image src="{{globalimg}}/read-zhuanfa.gif"></image>
-      <view>转发</view>
-    </view>
-  </view>
-
-  <view class="comment">
-    <view class="comment-head">
-      <view class="all-comment">全部评论</view>
-      <view class="write-comment" catchtap="writebtn">写评论</view>
-    </view>
-
-    <view class="comment-list">
-      
-      <image class="left-img" src="https://paokucoin.com/attachment/videos/img/1546f45e329fd94a9fc942e0fbccef72.png"></image>
-      <view>
-        <view class="name-zan">
-          <view class="right-name">生无可恋</view>
-          <view class="img-zan">
-            <image src="{{globalimg}}/circle_parise@1.png"></image>
-            <text>0</text>
           </view>
         </view>
-        <view class="right-txt">坚持运动,行走兑换,打卡记录第五天,有要小伙伴吗?</view>
-
-        <view>
-          <view class="author-name">
-            <view class="left-author"></view>
-            <view class="right-author">作者</view>
-          </view>
-          <view class="right-txt">谢谢，希望每一个人都喜欢</view>
-        </view>
-      </view>
+      </block>
     </view>
 
-  </view>
-
-  <view class="base">
-    <view class="bordercss"></view>
-    <view class="yuancss"></view>
-    <view class="bordercss"></view>
-  </view>
+    <view class="base" wx:if="{{isshow}}">
+      <view class="bordercss"></view>
+      <view class="yuancss"></view>
+      <view class="bordercss"></view>
+    </view>
+  </scroll-view>
 
 </view>
 
-<view class="publish" wx:if="{{publish}}" catchtap="publishbtn">
+<view class="publish" wx:if="{{publish}}" catchtap="publishbtn" catchtouchmove="preventdefault">
   <view class="txt-btn" style='bottom:{{inputBottom}}px'>
     <view class="release_text" catchtap="focusbtn">
       <textarea bindinput='gaysText' placeholder='请输入你的看法...' cursor-spacing="100" placeholder-class="placss" maxlength="-1" focus="{{focus}}" auto-height='true' class='every' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"/>
     </view>
-    <view class="publishbtn" style="{{background}}">发布</view>
+    <view class="publishbtn" style="{{background}}" catchtap="issuebtn">发布</view>
   </view>
+</view>
+
+<view class="shade" wx:if="{{shadeShow}}" catchtap="shadeShow">
+  <image class="shadeImg" src="{{globalimg}}/shanchu@2x.png" catchtap="delBTn"></image>
+  <view class="icoDel icox icox-close" catchtap="shadeShow"></view>
 </view>

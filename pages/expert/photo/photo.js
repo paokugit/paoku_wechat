@@ -109,7 +109,7 @@ Page({
     let img_list = m.data.img_url;
     wx.chooseImage({
       count: 9 - img_list.length,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: [select],
       success: function (res) {
         let file_list = m.data.img_file;

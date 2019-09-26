@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='timelimit-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="限时秒杀"></navigation>
+<view class='timelimit-box'>
     <!-- tab -->
     <view class="swiper-tab">
         <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">正在热抢</view>

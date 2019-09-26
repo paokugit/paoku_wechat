@@ -15,12 +15,9 @@ Page({
         globalimg: i.globalData.appimg,
         hintDis: 'none',
         credit4:'',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '折扣宝提现', 
-            height: i.globalData.height * 2 + 22,
-        },
+        
+        showIcon: true,
+        gloheight: i.globalData.gloheight 
     },
 
     /**

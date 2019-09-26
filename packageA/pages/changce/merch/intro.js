@@ -8,12 +8,9 @@ Page({
     loaded: false,
     merch: [],
     approot: t.globalData.approot,
-      // 组件所需的参数
-      nvabarData: {
-          showCapsule: 1, 
-          title: '店铺简介',
-          height: t.globalData.height * 2 + 20,
-      },
+    
+    showIcon: true,
+    gloheight: t.globalData.gloheight
   },
   onLoad: function (t) {
     this.setData({

@@ -19,12 +19,9 @@ Page({
         credit5: '',
         orderprice: '',
         realpricerate: '',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '资金账户',
-            height: i.globalData.height * 2 + 22,
-        },
+        
+      showIcon: true,
+      gloheight: i.globalData.gloheight  
     },
 
     /**

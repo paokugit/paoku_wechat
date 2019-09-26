@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="邀请海报"></navigation>
+<view class='conBox'>
 
     <view class='bannerbox'>
         <image class="bannerbox-img" src="{{url}}"></image>

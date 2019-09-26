@@ -16,11 +16,9 @@ Page({
         globalimg: i.globalData.appimg,
         hintDis: 'none',
         usercredit: '',
-        nvabarData: {
-            showCapsule: 1,
-            title: '折扣宝转账',
-            height: i.globalData.height * 2 + 20,
-        }
+        
+        showIcon: true,
+        gloheight: i.globalData.gloheight
     },
 
     /**

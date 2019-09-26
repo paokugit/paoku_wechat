@@ -1,3 +1,7 @@
+image{
+  width: 100%;
+  height: 100%;
+}
 .headcon{
   background: #fff;
   padding-bottom: 60rpx;
@@ -44,7 +48,14 @@
   width: 70rpx;
   height: 70rpx;
   margin: 0  20rpx;
+  animation: headRotate 4s linear infinite
 }
+@keyframes headRotate{
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
 .musictit{
   font-size: 30rpx;
   color: #333333;
@@ -64,12 +75,25 @@
 }
 
 .transpond{
+  width: 150rpx;
+  margin: 0 auto;
   margin-top: 100rpx;
   text-align: center;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.inviteBtn{
+  width: 160rpx;
+  height: 200rpx;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .transpond image{
-  width: 116rpx;
-  height: 118rpx;
+  width: 160rpx;
+  height: 160rpx;
 }
 .transpond view{
   font-size: 30rpx;
@@ -79,12 +103,23 @@
 .comment{
   padding: 60rpx 24rpx; 
   background: #f8f8f8;
+  position: relative;
+  left: 0;
+  top: 0;
 }
+.notlogin-button{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+} 
 .comment-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
 }
 .all-comment{
   font-size: 30rpx;
@@ -93,6 +128,8 @@
 .write-comment{
   font-size: 30rpx;
   color: #0eb8ef;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 
 .comment-list{
@@ -126,6 +163,7 @@
   color: #929292;
 }
 .right-txt{
+  width: 600rpx;
   font-size: 30rpx;
   color: #333333;
   margin-top: 20rpx;
@@ -196,11 +234,35 @@
   font-size: 34rpx;
   line-height: 120rpx;
   text-align: center;
-  border-bottom-left-radius: 15rpx;
-  border-bottom-right-radius: 15rpx;
 }
 
 .placss{
   color:#999999;
   font-size: 30rpx;
+}
+
+.shade{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(50, 50, 50, 0.5);
+}
+.shadeImg{
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 50%;
+  bottom: 80rpx;
+  transform: translate(-50%, -50%);
+}
+.icoDel{
+  color: #fff;
+  font-size: 45rpx; 
+  position: absolute;
+  left: 50%;
+  bottom: 40rpx;
+  transform: translate(-50%, -50%);
 }
