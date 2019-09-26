@@ -23,10 +23,10 @@
     <navigator url="/pages/goods/detail/index?id={{detailList.goods_id}}" class="shangpin" wx:if="{{detailList.goods_id == 0?false:true}}">
       <image class="tuiImg" src="{{detailList.good.img}}"></image>
       <view>
-        <view class="tuiTa">{{detailList.good.marketprice}}</view>
+        <view class="tuiTa">{{detailList.good.title}}</view>
         <view class="tuiTb">{{detailList.good.subtitle}}</view>
         <view class="jiaGe">
-          <view>
+          <view> 
             <text class="xianJia">￥{{detailList.good.marketprice}}</text>
             <text class="yuanJia">￥{{detailList.good.productprice}}</text>
           </view>

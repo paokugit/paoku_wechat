@@ -48,6 +48,10 @@ image{
   width: 70rpx;
   height: 70rpx;
   margin: 0  20rpx;
+  border-radius: 50rpx;
+  border: 3rpx solid #01d7a1;
+}
+.musicimg image{
   animation: headRotate 4s linear infinite
 }
 @keyframes headRotate{
