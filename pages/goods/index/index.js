@@ -93,6 +93,9 @@ Page({
         }
       })
     },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
     onReachBottom: function() {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
     },

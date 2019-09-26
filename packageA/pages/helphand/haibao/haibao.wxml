@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>邀请海报
+<navigation id='Navigation' show-icon='{{showIcon}}' title="邀请海报"></navigation>
 <view class='conBox'>
 
     <view class='bannerbox'>

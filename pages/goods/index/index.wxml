@@ -272,7 +272,7 @@
   <include src="/pages/common/goods-picker.wxml"></include>
   <include src="/pages/common/menu.wxml"></include>
   <include src="/pages/common/city-picker.wxml"></include>
-  <view class="screen {{isFilterShow?'in':''}}">
+  <view class="screen {{isFilterShow?'in':''}}" style="position: fixed;top:{{gloheight+80}}px;left:0px">
     <view class="attribute">
       <view class="item on">
         <view bindtap="btnFilterBtns" class="btn btn-default-o block {{filterBtns.isrecommand?'btn-danger-o':''}}" data-type="isrecommand">

@@ -117,7 +117,7 @@
 </view>
 <view style='display:{{maskDis}}' class='share-mask-box'>
   <view class='share-con-box'>
-    <view class='share-con' style='position: absolute;bottom: {{nvabarData.height}}px'>
+    <view class='share-con' style='position: absolute;bottom: {{gloheight}}px'>
       <view class='share-con-top'>
         <view class='weixinBox'>
           <button class='wxbtn' open-type='share'>

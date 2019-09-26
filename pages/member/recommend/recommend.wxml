@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>推荐码
+<navigation id='Navigation' show-icon='{{showIcon}}' title="推荐码"></navigation>
 <view class='conBox'>
 <view class='con_bg'><image src='{{url}}'></image></view>
 <!-- <view class='wx_code'>打开微信扫一扫</view> -->

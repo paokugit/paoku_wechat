@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="">新手攻略</navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="新手攻略"></navigation>
 <view class='play-box'>
     <view class='play-nav-box'>
         <view class="swiper-tab">
