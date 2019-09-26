@@ -178,7 +178,7 @@
 </block>
 <navigation id='Navigation' show-icon='{{showIcon}}' title="商品列表"></navigation>
 <view class="page header-sort navbar goodslist">
-  <view class="fui-header">
+  <view class="fui-header" style='margin-top:{{gloheight}}px'>
     <view class="searchbar">
       <icon size="18" type="search"></icon>
       <input bindconfirm="bindSearch" bindfocus="bindFocus" bindinput="bindInput" focus="{{focusin}}" name="search" placeholder="输入关键字进行搜索" value="{{params.keywords}}"></input>

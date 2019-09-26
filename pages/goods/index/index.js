@@ -57,6 +57,7 @@ Page({
 
     },
     onLoad: function(e) {
+      console.log(app.globalData)
         var s = this;
         if (setTimeout(function() {
             s.setData({
