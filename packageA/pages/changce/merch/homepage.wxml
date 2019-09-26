@@ -80,7 +80,7 @@
     </view>
   </view>
 </view>
-<view class='mask' wx:if="{{play==1}}" style='margin-top:{{nvabarData.height}}px'>
+<view class='mask' wx:if="{{play==1}}" style='margin-top:{{gloheight}}px'>
   <video class='maskvideo' src='{{shopvideo}}'></video>
   <view class='returnvideo' bindtap='nonemask'>返回</view>
 </view>

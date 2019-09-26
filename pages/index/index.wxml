@@ -2,12 +2,12 @@
 </navigation>
 <view class='indexBox'>
     <view class="index-banner-box">
-        <image src='{{ backgroundimg}}'></image>
+        <image src='{{backgroundimg}}'></image>
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view class='kll'>
                     <view class='balance-left flex_center'>
-                        <image src='{{ globalimg}}/kaluli.png'></image>
+                        <image src='{{globalimg}}/kaluli.png'></image>
                     </view>
                     <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
                 </view>
@@ -473,40 +473,6 @@
     <block wx:if="{{list.length==total&&total>0}}">
         <view class="fui-loading empty">
             <view class="text">没有更多了</view>
-        </view>
-    </block>
-</block>
-<block>
-    <block wx:if="{{modelShow}}">
-        <view class="model">
-            <view class="inner">
-                <view class="title">用户未授权</view>
-                <view class="image">
-                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
-                </view>
-                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
-                <view class="model-btns">
-                    <view bindtap="cancelclick" class="cancel">取消</view>
-                    <view bindtap="confirmclick" class="confirm">去设置</view>
-                </view>
-            </view>
-        </view>
-    </block>
-</block>
-<block>
-    <block wx:if="{{modelShow2}}">
-        <view class="model">
-            <view class="inner">
-                <view class="title">用户未授权</view>
-                <view class="image">
-                    <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
-                </view>
-                <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
-                <view class="model-btns">
-                    <view bindtap="cancelclick" class="cancel">取消</view>
-                    <view bindtap="confirmclick" class="confirm">去设置</view>
-                </view>
-            </view>
         </view>
     </block>
 </block>
