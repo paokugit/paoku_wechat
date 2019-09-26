@@ -51,6 +51,8 @@ Page({
     var b = this;
     b.details();
     b.comment();
+
+    console.log(isPlayingMusic);
   },
 
   // 文本
@@ -132,12 +134,14 @@ Page({
   bindback: function () {
     var that = this;
     if (isPlayingMusic == true){
+      console.log('123');
       back.pause();
       isPlayingMusic = false;
       that.setData({
         status:'animation-play-state: paused;' 
       })
     }else{
+      console.log('456');
       player();
       function player() {
         back.title = music_title;
@@ -417,6 +421,7 @@ Page({
    */
   onUnload: function () {
     back.stop();
+    isPlayingMusic = true;
   },
 
   /**

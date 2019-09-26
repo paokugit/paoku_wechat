@@ -11,7 +11,9 @@
         <view class="writer"><text class="writerA">跑库</text> <text class="writerB">{{articleTime}}</text></view>
   
         <view class="music" catchtap="bindback">
-          <image class="musicimg" src="{{globalimg}}/music.png" style="{{status}}"></image>
+          <view class="musicimg">
+            <image src="{{globalimg}}/music.png" style="{{status}}"></image>
+          </view>
           <view> 
             <view class="musictit">{{music_title}}</view> 
             <view class="musictitA">来自跑库</view>

@@ -116,7 +116,12 @@ image{
   justify-content: space-between;
   position: relative;
   left: 15rpx;
-  top: 40rpx;
+  top: 30rpx;
+}
+
+.xianJia{
+  font-size: 40rpx;
+  color: #e01212;
 }
 
 .tuiTb, .yuanJia, .xiaoL {

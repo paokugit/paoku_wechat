@@ -30,7 +30,7 @@
         <view class="goodsRight">
           <view class="tuiTa">{{item.good.title}}</view>
           <view class="tuiTb">{{item.good.subtitle}}</view>
-          <view class="jiaGe">
+          <view class="jiaGe"> 
             <view>
               <text class="xianJia">{{item.good.marketprice}}</text>
               <text class="yuanJia">￥{{item.good.productprice}}</text>

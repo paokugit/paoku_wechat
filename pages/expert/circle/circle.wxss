@@ -100,7 +100,7 @@ image{
 .tuijian{
   display: flex;
   border-radius: 15rpx;
-  background: rgb(148, 56, 56);
+  background: rgb(248, 248, 248);
   margin-top: 30rpx;
 }
 .goodsImg{
