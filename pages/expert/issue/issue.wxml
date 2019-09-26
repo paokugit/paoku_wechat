@@ -3,7 +3,7 @@
   <view class='outer'>
     <view class="release_text" catchtap="replyBtn">
       <textarea wx:if="{{txtShow}}" bindinput='gaysText' auto-focus="{{focus}}" value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true' focus="{{focus}}"/>
-      <view wx:if="{{vieShow}}">{{releaseText}}</view>
+      <view wx:if="{{vieShow}}">{{releaseText}}</view> 
     </view>
  
     <view class="littleHint">按住照片拖拽可以调整顺序</view>

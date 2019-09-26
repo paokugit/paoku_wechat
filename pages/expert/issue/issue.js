@@ -11,7 +11,7 @@ Page({
     showBall: false,
     showTishi:false, 
     arrayNull: true,
-    releaseText: '', 
+    releaseText: '',  
     replayMore: false, 
     hidden: true, 
     flag: false,

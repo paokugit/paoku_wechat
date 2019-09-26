@@ -24,6 +24,7 @@
 .writerA{
   font-size: 28rpx;
   color: #666666;
+  margin-right: 15rpx;
 }
 .writerB{
   font-size: 30rpx;
@@ -47,6 +48,11 @@
 .musictit{
   font-size: 30rpx;
   color: #333333;
+  margin-right: 15rpx;
+}
+.musicgif{
+  width: 22rpx;
+  height: 24rpx;
 }
 .musictitA{
   font-size: 24rpx;
