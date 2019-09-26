@@ -518,7 +518,7 @@ Page((e = {
         });
 
 
-      s.get("myown.index.optt", {
+      s.get("myown.index.optindex", {
           id: 1
         }, function (e) {
           console.log(e);
