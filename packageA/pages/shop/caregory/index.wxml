@@ -24,7 +24,7 @@
                     </view>
                 </view>
             </view>
-            <view class="category-content category-search-bar weui-flex" style='margin-top:{{nvabarData.height}}px'>
+            <view class="category-content category-search-bar weui-flex" style='margin-top:{{gloheight}}px'>
                 <block>
                     <block wx:if="{{set.level>1}}">
                         <view class="category-content-left">

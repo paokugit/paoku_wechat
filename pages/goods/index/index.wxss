@@ -136,9 +136,9 @@ page {
 .screen {
     background: #fff;
     width: 100%;
-    position: fixed;
+    /* position: fixed;
     top: 150rpx;
-    left: 0;
+    left: 0; */
     z-index: 9998;
     opacity: 0;
     transition-property: height, opacity, -webkit-transform;

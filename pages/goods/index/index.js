@@ -57,6 +57,7 @@ Page({
 
     },
     onLoad: function(e) {
+      console.log(app.globalData)
         var s = this;
         if (setTimeout(function() {
             s.setData({
@@ -92,6 +93,9 @@ Page({
         }
       })
     },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
     onReachBottom: function() {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
     },

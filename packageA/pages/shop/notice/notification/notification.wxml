@@ -28,7 +28,7 @@
     <view class="no-inform" wx:if="{{mask==1}}">
         <image class="ibform-img" src="{{globalimg}}/zwxx@2x.png"></image>
     </view>
-    <view class="inform-push" style='margin-top:50px' wx:if="{{mask==0}}">
+    <view class="inform-push" wx:if="{{mask==0}}">
         <!-- 多条数据，系统通知 -->
         <view class="inform-all">
             <view class="inform-ul" wx:for="{{informlist}}" wx:for-index="key" wx:key="{{key}}">
@@ -76,7 +76,7 @@
 
 
     <!-- 评论 -->
-    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}" style='margin-top:50px'>  
+    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}">  
       <view class="reviewList" wx:for="{{listCritic}}" wx:key="{{index}}">
         <view class="reviewHead">
           <view class="headLeft">

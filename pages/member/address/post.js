@@ -19,7 +19,8 @@ Page({
         street: [],
         streetIndex: 0,
         noArea: !1,
-      showIcon: true
+      showIcon: true,
+      dztitle:'shouhuodizhi'
     },
     onLoad: function(e) {
         this.setData({
@@ -27,7 +28,7 @@ Page({
         }), t.url(e), this.getDetail(), e.id || wx.setNavigationBarTitle({
             title: "添加收货地址"
         }),this.setData({
-            "nvabarData.title": "添加收货地址",
+            "dztitle": "添加收货地址",
             areas: t.getCache("cacheset").areas,
             type: e.type
         });
@@ -46,7 +47,7 @@ Page({
                 //     title: "编辑收货地址"
                 // });
                 t.setData({
-                    "nvabarData.title": "编辑收货地址"
+                    "dztitle": "编辑收货地址"
                 });
                 var r = e.detail.province + " " + e.detail.city + " " + e.detail.area, s = t.getIndex(r, t.data.areas);
                 a.pval = s, a.pvalOld = s, a.detail = e.detail;
