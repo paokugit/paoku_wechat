@@ -6,12 +6,7 @@ Page({
         loaded: !1,
         loading: !1,
         list: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '系统公告', 
-            height: t.globalData.height * 2 + 25,
-        },
+      showIcon: true
     },
     getList: function() {
         var t = this;

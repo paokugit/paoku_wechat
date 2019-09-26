@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='rechange_box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="资金账户"></navigation>
+<view class='rechange_box'>
     <!-- <view class='withdraw-explain'>提现收取3%支付通道手续费,实际到账金额减去3%</view> -->
     <view class="marquee">
         <view class="content">

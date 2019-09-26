@@ -14,12 +14,7 @@ Page({
      */
     data: {
         globalimg: t.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '支付成功',
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         pay_money: "", //加速宝金额
         pay_time: "", //加速宝日期
     },

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="page" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="我的优惠券"></navigation>
+<view class="page">
     <view class="coupon-headblock">
         <view class="top-layer"></view>
         <view class="line-layer"></view>

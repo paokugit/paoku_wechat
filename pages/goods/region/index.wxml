@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="fui-cell-group fui-sale-group" style="min-height:100%;margin-top:{{nvabarData.height}}px">
+<navigation id='Navigation' show-icon='{{showIcon}}' title=""></navigation>
+<view class="fui-cell-group fui-sale-group" style="min-height:100%;">
     <view class="fui-cell">
         <view class="fui-cell-text dispatching" style="width:100%;">
             {{onlysent==0?'不':'只'}}配送区域:

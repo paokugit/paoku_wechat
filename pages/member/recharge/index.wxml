@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="账户充值"></navigation>
+        <view class="page">
             <block>
                 <block wx:if="{{acts.length}}">
                     <view class="fui-cell-group {{toggleStore?'toggleSend-group':''}}">

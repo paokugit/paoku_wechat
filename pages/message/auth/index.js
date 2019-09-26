@@ -7,6 +7,7 @@ var reurl = '/pages/index/index', mid = '', hlpid = '';
 Page({
   data: {
     globalimg: t.globalData.appimg,
+    showIcon: true,
     close: 0,
     text: ""
   },
@@ -24,6 +25,8 @@ Page({
     } else if (t.refrom=="gift"){
       refrom = t.refrom;
       reurl = t.reurl + '?mid=' + mid;
+    } else if (t.refrom == "sportdiary"){
+      reurl = t.reurl
     }
 
     console.log('yaya')
@@ -39,9 +42,26 @@ Page({
     wx.setNavigationBarTitle({
       title: e || "提示"
     });
+    var that=this
+    wx.getSetting({
+      success: (res) => {
+        console.log(res)
+        if (!res.authSetting['scope.userInfo']) {
+          console.log('未获取个人信息')
+          
+        } else if (res.authSetting['scope.userInfo']) {
+          console.log('已经获取个人信息')
+           wx.reLaunch({
+            url: reurl
+          })
+
+        }
+      }
+    });
+
   },
-  bind: function () {
-    var t = this, e = setInterval(function () {
+  getUserInfo: function () {
+    var t = this
       console.log(reurl);
       wx.getSetting({
         success: function (n) {
@@ -76,12 +96,19 @@ Page({
             })
 
           }
-          //lihanwen
-          a && (wx.reLaunch({
-            url: reurl
-          }), clearInterval(e), t.setData({
-            userInfo: a
-          }));
+          console.log(a)
+          if (n.authSetting['scope.userInfo']) {
+            console.log("已授权=====")
+            //lihanwen
+            a && (wx.reLaunch({
+              url: reurl
+            }));
+
+          } else {
+            console.log("未授权=====")
+            t.showSettingToast("获取您的头像和昵称更方便了解跑库哦")
+          }
+         
 
 
 
@@ -90,7 +117,42 @@ Page({
 
         }
       });
-    }, 1e3);
-  }
+  },
+  // 打开权限设置页提示框
+  showSettingToast: function (e) {
+    wx.showModal({
+      title: '提示',
+      cancelText: "取消",
+      cancelColor: "#000",
+      confirmText: "去设置",
+      confirmColor: "#01d7a1",
+      content: e,
+      success: function (res) {
+        if (res.confirm) {
+          wx.openSetting({
+            success: (res) => {
+              if (res.authSetting["scope.userInfo"]) { ////如果用户重新同意了授权登录
+                wx.getUserInfo({
+                  success: function (res) {
+                    var userInfo = res.userInfo;
+                  }
+                })
+                console.log('tongyi')
+              }
+            },
+            fail: function (res) {
+              
+            }
+          })
+        } else {
+          // 取消
+          console.log('取消')
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }
+      }
+    })
+  },
 
 });

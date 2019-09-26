@@ -17,11 +17,8 @@ var useropenid = "";
 Page({
     data: {
         globalimg: e.globalData.appimg,
-        nvabarData: {
-            showCapsule: 0,
-            title: '个人中心',
-            height: e.globalData.height * 2 + 20,
-        },
+      showIcon: false,
+      gloheight: e.globalData.gloheight,
         imgUrls: [],
         imgUrls: [],
         indicatorDots: false,

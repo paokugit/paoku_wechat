@@ -1,5 +1,6 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
-      "nav-bar": "/commpents/navbar/index"
+    "navigation": "/components/navigation/navigation"
   }
 }

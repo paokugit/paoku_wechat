@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="发布"></navigation>
+<view class="expedite-box">
   <view class='outer'>
     <view class="release_text" catchtap="replyBtn">
       <textarea wx:if="{{txtShow}}" bindinput='gaysText' auto-focus="{{focus}}" value="{{releaseText}}" placeholder='这一刻的想法~' maxlength='140' auto-height='true' focus="{{focus}}"/>

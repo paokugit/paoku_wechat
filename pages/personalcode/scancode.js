@@ -27,12 +27,7 @@ Page({
         usercredit: '',
         caloriecount: '',
         actualcount: '',
-         // 组件所需的参数
-      nvabarData: {
-          showCapsule: 1, 
-          title: ' 扫码买单', 
-          height: i.globalData.height * 2 + 25, 
-      },
+      showIcon: true,
     },
 
     /**

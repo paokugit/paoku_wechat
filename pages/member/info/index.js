@@ -14,12 +14,8 @@ Page({
         pval: [ 0, 0, 0 ],
         areas: [],
         noArea: !0,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '会员资料', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: t.globalData.gloheight
     },
     onLoad: function(e) {
         t.url(e);

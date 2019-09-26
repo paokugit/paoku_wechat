@@ -1,10 +1,10 @@
 {
     "usingComponents": {
-        "nav-bar": "/commpents/navbar/index"
+      "navigation": "/components/navigation/navigation"
     },
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "变动记录",
+    "navigationBarTitleText": "提现记录",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true

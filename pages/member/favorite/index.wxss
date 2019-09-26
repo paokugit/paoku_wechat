@@ -13,7 +13,6 @@
     font-size: 26rpx;
     color: #666;
 }
-
 .fui-list-media image {
     width: 160rpx;
     height: 160rpx;

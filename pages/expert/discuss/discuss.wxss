@@ -5,7 +5,10 @@ page{
 .area{
   padding: 30rpx 30rpx 100rpx;
 }
-
+image{
+  width: 100%;
+  height: 100%;
+}
 .dingBu{
   display: flex;
   justify-content: space-between; 

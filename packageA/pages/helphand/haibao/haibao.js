@@ -11,11 +11,8 @@ Page({
     data: {
       url: '',
         globalimg: i.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1, 
-            title: '邀请海报',
-            height: i.globalData.height * 2 + 30,
-        },
+      showIcon: true,
+      gloheight: i.globalData.gloheight
     },
 
     /**

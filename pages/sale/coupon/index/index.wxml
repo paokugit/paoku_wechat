@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="page" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="优惠券"></navigation>
+<view class="page">
     <scroll-view class="fui-tab-scroll" scrollX="true">
         <text bindtap="bindTab" class="item {{cateid==0?'active':''}}" data-cateid="0">全部优惠券</text>
         <block wx:for="{{cates}}">

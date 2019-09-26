@@ -9,12 +9,8 @@ var productId = '';
 Page({
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
-      showCapsule: 1,
-      title: '每月礼包',
-      height: t.globalData.height * 2 + 20,
-    }, 
-
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
     goods_list:[],
     isShow: false,
     titMessage: '',

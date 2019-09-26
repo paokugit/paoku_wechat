@@ -5,8 +5,8 @@
 </block>
 <block>
   <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-    <view class="page navbar com-down" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="我的好友"></navigation>
+    <view class="page navbar com-down">
       <view class='bg_box'>
         <view class='greenbg'>
           <image src='{{globalimg}}/cen-greenbg.png'></image>

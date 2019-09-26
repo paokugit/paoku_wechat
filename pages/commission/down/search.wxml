@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='fandetails_all' style='padding-top:{{nvabarData.height}}px;'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="搜索"></navigation>
+<view class='fandetails_all'>
   <view class="header_search">
     <image src="{{globalimg}}/search@2x.png"></image>
     <input class="header_css" type="text" placeholder="请输入微信昵称、姓名、手机号" bindinput="bindInput" placeholder-style="color:#9a9a9a;"></input>

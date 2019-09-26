@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='play-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="">新手攻略</navigation>
+<view class='play-box'>
     <view class='play-nav-box'>
         <view class="swiper-tab">
             <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">热点关注</view>

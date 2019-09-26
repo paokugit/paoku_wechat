@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="balanceBox" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="余额账户"></navigation>
+<view class="balanceBox">
     <view class='balance-header'>
         <image src='{{globalimg}}/yue1.png'></image>
         <view class='balance-header-top'>

@@ -7,12 +7,8 @@ var useropenid = "";
 Page({
   data: {
     globalimg: t.globalData.appimg,
-    nvabarData: {
-      showCapsule: 1, 
-      title: '跑库年卡',
-      height: t.globalData.height * 2 + 20,
-    },
-
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
     goodGift:'' ,
     goods_list:[],
 

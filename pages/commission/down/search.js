@@ -8,11 +8,7 @@ Page({
 
     data: {
         globalimg: ii.globalData.appimg,
-        nvabarData: {
-            showCapsule: 1,
-            title: '搜索',
-            height: ii.globalData.height * 2 + 40,
-        },
+      showIcon: true,
         list_friend: [],
         total: 'abc',
         page: 1,

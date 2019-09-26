@@ -19,12 +19,7 @@ Page({
         images: [],
         imgs: [],
         globalimg: t.globalData.appimg,
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '反馈问题',
-            height: t.globalData.height * 2 + 30,
-        },
+      showIcon: true,
         index: 0,
         date: '',
         dateDis: 'block',

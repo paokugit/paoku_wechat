@@ -3,7 +3,7 @@
         <loading>加载中...</loading>
     </block>
 </block>
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品图片"></navigation>
 <view class="page">
     <view bindtap="previewImage" class="fui-picture" style='margin-top:{{nvabarData.height}}px'>
         <block>

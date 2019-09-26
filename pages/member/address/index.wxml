@@ -6,8 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page footer {{paddingb}}" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="收货地址"></navigation>
+        <view class="page footer {{paddingb}}">
             <block>
                 <block wx:if="{{list.length>0}}">
                     <block wx:for="{{list}}">

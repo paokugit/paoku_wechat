@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page navbar {{isopen==1?'header':false}}" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="余额明细"></navigation>
+        <view class="page navbar {{isopen==1?'header':false}}">
             <view style="margin-top:20rpx">
                 <block wx:for="{{list}}">
                     <block>

@@ -17,12 +17,7 @@ Page({
         downdis: 'block',
         topdis: 'none',
         reasondis: 'none',
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '提现记录',
-            height: i.globalData.height * 2 + 30,
-        },
+      showIcon: true,
     },
 
     /**

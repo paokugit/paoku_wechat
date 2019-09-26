@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "nav-bar": "/commpents/navbar/index"
+      "navigation": "/components/navigation/navigation"
     },
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "收付款",

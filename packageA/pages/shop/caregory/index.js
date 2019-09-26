@@ -13,11 +13,8 @@ Page({
         back: 0,
         child: {},
         parent: {},
-        nvabarData: {
-            showCapsule: 1, 
-            title: '全部分类', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: t.globalData.gloheight
     },
     tabCategory: function(t) {
         this.setData({

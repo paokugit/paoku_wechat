@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='feedback-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="反馈问题"></navigation>
+<view class='feedback-box'>
     <view class='problem-desc'>
         <view class='pro-text'>请描述具体问题</view>
         <textarea placeholder='订单问题、奖励问题、好友数量等' bindinput='inputchange' value='{{inputtext}}'></textarea>

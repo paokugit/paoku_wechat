@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "nav-bar": "/commpents/navbar/index"
+      "navigation": "/components/navigation/navigation"
     },
     "navigationBarBackgroundColor": "#ebceb0",
     "navigationBarTextStyle": "black",

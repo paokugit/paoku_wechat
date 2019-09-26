@@ -1,6 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="page header {{type<2?'footer':''}}" style='margin-top:{{nvabarData.height}}px'>
-    <view class="fui-header" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="选择优惠券"></navigation>
+<view class="page header {{type<2?'footer':''}}">
+    <view class="fui-header" style='margin-top:{{gloheight}}px'>
         <view class="searchbar">
             <icon size="18" type="search"></icon>
             <input bindfocus="bindSearch" bindinput="search" name="search" placeholder="输入关键字进行搜索"></input>

@@ -12,8 +12,8 @@
 <!-- 收银台模块-开始 -->
 <block>
     <block wx:if="{{!success&&show&&couponid!=2}}">
-        <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page {{successData.seckill_color}}" style='margin-top:{{nvabarData.height}}px'>
+        <navigation id='Navigation' show-icon='{{showIcon}}' title="收银台"></navigation>
+        <view class="page {{successData.seckill_color}}">
             <view class="fui-cell-group">
                 <view class="fui-cell">
                     <view class="fui-cell-label">订单编号</view>
@@ -100,8 +100,8 @@
 <!-- 支付成功-开始 -->
 <block>
     <block wx:if="{{success}}">
-        <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page {{successData.seckill_color}}" style='margin-top:{{nvabarData.height}}px'>
+        <navigation id='Navigation' show-icon='{{showIcon}}' title="收银台"></navigation>
+        <view class="page {{successData.seckill_color}}">
             <view class="fui-list success">
                 <view class="row">
                     <view class="">{{successData.order.status}}</view>
@@ -292,7 +292,7 @@
             <view class='order-mask' style='display:{{jiankangDis}}'>
                 <view class='order-mask-relative'>
                     <view class='jiankang-maskimg'>
-                        <image src='https://paokucoin.com/img/backgroup/jiankang02.png'></image>
+                        <image src='https://paokucoin.com/img/backgroup/jiankang03.png'></image>
                     </view>
                     <view class='jiankang-btn' bindtap='rewardBtn'></view>
                 </view>
@@ -302,7 +302,7 @@
             <view class='order-mask' style='display:{{xingxuanDis}}'>
                 <view class='order-mask-relative'>
                     <view class='xingxuan-maskimg'>
-                        <image src='https://paokucoin.com/img/backgroup/xingxuan02.png'></image>
+                        <image src='https://paokucoin.com/img/backgroup/xingxuan03.png'></image>
                     </view>
                     <view class='jiankang-btn' bindtap='rewardBtn'></view>
                 </view>

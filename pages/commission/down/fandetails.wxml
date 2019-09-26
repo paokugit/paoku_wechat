@@ -1,6 +1,6 @@
 <!--pages/commission/down/fandetails.wxml-->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='fandetails_all' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="好友主页"></navigation>
+<view class='fandetails_all'>
   <view class='fans_img'>
     <image class='img_head' wx:if="{{avatar!=''}}" src='{{avatar}}'></image>
     <view class='fans_name_daren_date'>

@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="">地图</navigation>
+        <view class="page">
             <map class="map" controls="{{controls}}" latitude="{{store.lat}}" longitude="{{store.lng}}" markers="{{markers}}" scale="16"></map>
             <view class="fui-footer map-item">
                 <view class="media">

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>推荐码
+<view class='conBox'>
 <view class='con_bg'><image src='{{url}}'></image></view>
 <!-- <view class='wx_code'>打开微信扫一扫</view> -->
 <view class='saveBox'>

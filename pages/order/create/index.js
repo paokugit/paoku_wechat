@@ -17,16 +17,14 @@ var invitemsg = ""
 var kllcount = ""
 var zkbcount = ""
 var isgift = ""
+var kllgoodsdeduct=""
+var kllgoodsprice=""
+var klldeductcredit=""
 Page({
     data: {
         globalimg: app.globalData.appimg,
         icons: e.requirejs("icons"),
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1,
-            title: '确认订单',
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
         list: {},
         inviteavatar: '',
         invitename: '',
@@ -98,6 +96,9 @@ Page({
             kllcount = t.deductcredit
             zkbcount = t.discount
             isgift = t.is_gift
+          kllgoodsdeduct = t.goodsdeduct
+          kllgoodsprice = t.goodsprice
+          klldeductcredit = t.deductcredit
             console.log(t.is_gift)
             if (isgift == 1) {
                 i.setData({
@@ -209,7 +210,7 @@ Page({
     },
     onShow: function() {
         console.log(goldid, inviteid)
-        console.log(kllcount, zkbcount, isgift)
+      console.log(kllcount, zkbcount, isgift, kllgoodsdeduct, kllgoodsprice, klldeductcredit)
         var g = this
         console.log('onshow')
         console.log(isgift)
@@ -232,6 +233,11 @@ Page({
                 })
             }
         }
+      if (kllgoodsdeduct == kllgoodsprice && klldeductcredit < kllgoodsdeduct) {
+        g.setData({
+          kllDis: 'none'
+        })
+      }
 
         if (goldid == 1467) {
             g.setData({

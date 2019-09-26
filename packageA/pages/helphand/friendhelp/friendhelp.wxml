@@ -1,5 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}' backgroundColor="#29c8bc" frontColor="#fff"></nav-bar>
-<view class='conBox' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="好友捐赠" backgroundColor="#29c8bc" frontColor="#fff">
+</navigation>
+<view class='conBox'>
   <view class='outerBox'>
     <view class='helplist help_center'>
       <view>捐赠榜</view>

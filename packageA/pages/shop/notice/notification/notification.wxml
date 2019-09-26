@@ -1,7 +1,7 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="all-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="消息中心"></navigation>
+<view class="all-box">
     <!-- 头部的显示 -->
-    <view class="head-box" style='position:fixed;top:{{nvabarData.height}}px;left:0'>
+    <view class="head-box" style='position:fixed;top:{{gloheight}}px;left:0'>
         <view class="inform" bindtap="inform">
             <view class="inform-text" style="color:{{color}};font-size:{{fontcss}}">系统通知</view>
             <view class="inform-num" style="display:{{xiback}}">

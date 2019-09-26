@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='set-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="设置"></navigation>
+<view class='set-box'>
   <view class="speed_up_tit">
     <view class="divLine"></view>
     <text class="tit_content">购买限额</text>

@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box tierCss" style='padding-top:{{nvabarData.height}}px;height: 100%;'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="领取记录"></navigation>
+<view class="expedite-box tierCss" style='height: 100%;'>
   <view class="tierCss">
     <view class="getList" wx:for="{{recordList}}" wx:key="{{index}}" wx:if="{{recordList == ''?false:true}}">
       <view class="leftImg">

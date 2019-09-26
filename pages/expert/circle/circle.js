@@ -8,11 +8,7 @@ var useropenid = "";
 Page({
   data: { 
     globalimg: t.globalData.appimg, 
-    nvabarData: {
-      showCapsule: 1,
-      title: '达人圈',
-      height: t.globalData.height * 2 + 20,
-    },
+    showIcon: true,
     showBall:false,
     img_url:[],
     img_file:[],

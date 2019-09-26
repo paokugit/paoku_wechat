@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="share_main" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="待领取优惠券"></navigation>
+<view class="share_main">
     <view class="share_head_img">
         <image alt="" mode="widthFix" src="{{globalimg}}/bg7s.png"></image>
     </view>

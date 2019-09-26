@@ -11,11 +11,7 @@ Page({
     agentcount: '',
     dianzhu: '',
     fans: '', 
-    nvabarData: {
-      showCapsule: 1,
-      title: '我的好友',
-      height: f.globalData.height * 2 + 20,
-    },
+    showIcon: true,
 
   },
   onLoad: function() {

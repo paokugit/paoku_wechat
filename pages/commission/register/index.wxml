@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page register" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title=""></navigation>
+        <view class="page register">
             <view class="fui-content">
                 <image mode="widthFix" src="{{set['regbg']}}"></image>
             </view>

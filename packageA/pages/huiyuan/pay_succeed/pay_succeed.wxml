@@ -1,5 +1,6 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="支付成功"></navigation>
+
+<view class="expedite-box">
   <view class="pay_succeedImgy">
     <image src="{{globalimg}}/jiasu02@2x.png"></image>
   </view>

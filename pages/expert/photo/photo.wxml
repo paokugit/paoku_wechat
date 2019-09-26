@@ -1,5 +1,5 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="expedite-box" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="相册"></navigation>
+<view class="expedite-box">
   
   <view class="tanchu" bindtap="imgBall"> 
     <image src="{{globalimg}}/icon-xiangji.png"></image>

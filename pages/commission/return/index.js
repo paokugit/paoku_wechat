@@ -5,11 +5,8 @@ Page({
         type: 0,
         page: 1,
         list: [],
-        nvabarData: {
-            showCapsule: 1,
-            title: '全返记录', 
-            height: app.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: app.globalData.gloheight,
     },
     onLoad: function() {
         this.getList();

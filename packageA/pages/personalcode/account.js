@@ -15,11 +15,7 @@ Page({
         globalimg: i.globalData.appimg,
         hintDis: 'none',
         credit5:'',
-        nvabarData: {
-            showCapsule: 1, 
-            title: '资金账户', 
-            height: i.globalData.height * 2 + 22,
-        },
+      showIcon: true,
     },
 
     /**

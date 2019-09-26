@@ -1,6 +1,6 @@
 <import src="/utils/wxParse/wxParse.wxml"></import>
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="allbox" style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="消息详情"></navigation>
+<view class="allbox">
   <view class="circle">
       <view class="borderbottom"></view>
   </view>

@@ -6,8 +6,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page navbar" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="套餐"></navigation>
+        <view class="page navbar">
             <view class="fui-list-group" id="container">
                 <block wx:for="{{packgoods}}">
                     <view class="fui-list goods-item align-start" data-goodsid="{{item.goodsid}}">

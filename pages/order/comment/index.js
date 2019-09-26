@@ -10,12 +10,8 @@ Page({
         content: "",
         images: [],
         imgs: [],
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '评价', 
-            height: t.globalData.height * 2 + 20,
-        },
+      showIcon: true,
+      gloheight: t.globalData.gloheight
     },
     onLoad: function(a) {
         this.setData({

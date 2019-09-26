@@ -6,6 +6,8 @@ Page({
     data: {
         verifygoods: [],
         globalimg: e.globalData.appimg,
+      showIcon: true,
+      gloheight: e.globalData.gloheight
     },
     onLoad: function(o) {
         this.setData({

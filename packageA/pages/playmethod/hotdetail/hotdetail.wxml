@@ -1,6 +1,6 @@
 <!--pages/playmethod/hotdetail/hotdetail.wxml-->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class='hotdetail-box' style='margin-top:{{nvabarData.height}}px'>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="文章详情"></navigation>
+<view class='hotdetail-box'>
     <view class='detail-tit'>{{title}}</view>
     <view class='detail-time'>{{createtime}}</view>
     <import src="../../../../utils/wxParse/wxParse.wxml" />

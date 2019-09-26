@@ -5,8 +5,8 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-        <view class="page log-detail" style='margin-top:{{nvabarData.height}}px'>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="详情"></navigation>
+        <view class="page log-detail">
             <block wx:for="{{list}}">
                 <view class="fui-list-group">
                     <view class="fui-list" style="font-size: 24rpx;color: #000;">

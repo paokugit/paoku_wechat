@@ -1,12 +1,7 @@
 var e = getApp(), a = e.requirejs("core"), t = e.requirejs("wxParse/wxParse");
 Page({
     data: {
-        // 组件所需的参数
-        nvabarData: {
-            showCapsule: 1, 
-            title: '优惠券',
-            height: e.globalData.height * 2 + 20,
-        },
+      showIcon: true,
     },
     onLoad: function(e) {
         this.setData({
