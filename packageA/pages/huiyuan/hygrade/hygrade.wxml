@@ -1,4 +1,4 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>会员等级
+<navigation id='Navigation' show-icon='{{showIcon}}' title="会员等级"></navigation>
   <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
     <view id="tiyan" class="scroll-view-item_H">
     <view class='bc-huiyuan'>

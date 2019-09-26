@@ -20,7 +20,7 @@ Page({
      */
     data: {
         globalimg: i.globalData.appimg,
-      showIcon: true,
+      showIcon: false,
         credit: '',
         conbind: '',
         credit4: '',
