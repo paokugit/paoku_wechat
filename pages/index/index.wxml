@@ -1,8 +1,8 @@
 <!-- <navigation id='Navigation' show-icon='{{showIcon}}' title="跑库" backgroundColor="#2bbe78" frontColor="#fff"></navigation> -->
 <view class='indexBox'>
     <view class="index-banner-box">
-        <!-- <image src='{{backgroundimg}}'></image> -->
-        <image src='{{globalimg}}/101.png'></image>
+        <image src='{{backgroundimg}}'></image>
+        <!-- <image src='{{globalimg}}/101.png'></image> -->
         <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
             <button form-type='submit' style="background:rgba(0,0,0,0)">
                 <view class='kll'>

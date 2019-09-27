@@ -352,6 +352,12 @@ Page({
     var that = this;
     var text = that.data.releaseText;
     var pic = that.data.fileName; 
+    wx.showToast({
+      title: '发布中',
+      icon: 'loading',
+      duration: 1000,
+      mask: true
+    });
     if (pic != 0){
       a.get("drcircle.my.fabu",{
         openid: useropenid,
@@ -359,6 +365,7 @@ Page({
         img: pic,
         goods_id:that.data.btnId
       },function(e){
+        wx.hideLoading();
         if(e.error == 0){
           that.setData({
             tempFilePaths:[],

@@ -134,14 +134,12 @@ Page({
   bindback: function () {
     var that = this;
     if (isPlayingMusic == true){
-      console.log('123');
       back.pause();
       isPlayingMusic = false;
       that.setData({
         status:'animation-play-state: paused;' 
       })
     }else{
-      console.log('456');
       player();
       function player() {
         back.title = music_title;
@@ -213,7 +211,8 @@ Page({
     wx.showToast({
       title: '发布中',
       icon: 'loading',
-      duration: 1000
+      duration: 1000,
+      mask: true
     });
     a.get("myown.reading.com", {
       openid: useropenid,
@@ -251,9 +250,11 @@ Page({
       readid: readid
     }, function (e) {
       if (e.error == 0) {
+        let totalCount = Math.ceil(e.message.count / 10);
         s.setData({
           commentList: e.message.list,
           page:1,
+          totalPage: totalCount,
           isshow: false
         })
       }
@@ -442,7 +443,7 @@ Page({
         page: page + 1
       })
       this.comment();
-      // wx.hideLoading()
+      wx.hideLoading()
     } else {
       this.setData({
         isshow: true
@@ -461,10 +462,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (ops) {
-    console.log(ops);
     if (ops.from === 'button') {
       // 来自页面内转发按钮
-      console.log('123');
       return {
         title: artTit,
         path: '/packageA/pages/skyread/details/details?id=' + readid,
