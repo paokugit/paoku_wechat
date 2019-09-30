@@ -249,7 +249,7 @@
 
 
 .criticTter{
-  height: 100%;
+  height: 100vh;
 }
 .reviewList{
   background: #fff;
@@ -289,6 +289,7 @@
   line-height: 44rpx;
   text-align: center;
   border-radius: 50rpx;
+  position: relative;
 }
 .headRightA{
   background: #fff;
@@ -406,3 +407,12 @@
   padding: 60rpx 0;
   text-align: center;
 }
+
+.notlogin-button{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+} 

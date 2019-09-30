@@ -135,7 +135,11 @@ Page((e = {
             durationA: 1000,
             circularA: true,
 
-            slideshow:'0'
+            slideshow:'0',
+
+            lookBuy:[],
+            looklDis:'',
+            currentItemId:''
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
         t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1),
@@ -646,6 +650,19 @@ Page((e = {
             }
 
         });
+
+      // 边看边买列表
+      s.get("seckill.list.index_sale", {}, function (e) {
+        console.log(e)
+        if(e.status == 1){
+          t.setData({
+            lookBuy: e.result.list
+          })
+        }else if(e.status){
+          looklDis:'none'
+        }
+      });
+
         wx.getSetting({
             success: (res) => {
                 console.log(res)
@@ -849,6 +866,14 @@ Page((e = {
 
         t.openPage();
     },
+
+    // 边看边买轮播
+    bindchange:function(e){
+      this.setData({
+        currentItemId: e.detail.current
+      })
+    },
+
     goodsicon: function(t) {
         this.setData({
             iconheight: t.detail.height,

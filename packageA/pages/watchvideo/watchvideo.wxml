@@ -1,0 +1,62 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title=""></navigation>
+<view>
+  
+  <view class="middle" bindtouchstart="touchstart" bindtouchend="touchend">
+
+    <view class="videotit">{{myvideo.title}}</view>
+
+    <view class="amount">
+      <view class="volume">已拍{{myvideo.sales}}+件</view>
+      <view class="money">
+        <view class="original-price">{{myvideo.productprice}}</view>
+        <view class="going-price">
+          <image src="{{globalimg}}/hot.png"></image>
+          <view>{{myvideo.marketprice}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="myvideo">
+      <video class="videoplay" object-fit="cover" autoplay="true" src="{{myvideo.video}}" bindended="bindended"></video>
+      <view class="iconvideo">
+        <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.id}}">
+          <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
+          <image class="videoimg" src="{{globalimg}}/{{myvideo.fav == 0 ?'nozan.png':'hotzan.png'}}"></image>
+          <view class="videotxt">{{myvideo.fav_count}}</view>
+        </view>
+        <view class="zhuanfa iconcss">
+          <button class='inviteBtn' open-type='share'></button>
+          <image class="videoimg" src="{{globalimg}}/share.png"></image>
+          <view class="videotxt">转发</view>
+        </view>
+        
+      </view>
+    </view>
+
+    <view class="critic"> 
+      <view style="padding-top:54rpx;" wx:if="{{criticList.length == 0?false:true}}">
+        <view class="criticList" wx:for="{{criticList}}" wx:key="{{index}}">
+          <text class="nickname">{{item.nickname}}:</text><text class="content">{{item.content}}</text>
+        </view>
+
+        <view class="finish">
+          <view class="finish-quan"></view>
+          <view class="finish-txt">敬请期待,更多点评等你来</view>
+        </view>
+      </view>
+
+      <image class="nocom" wx:if="{{criticList.length == 0?true:false}}" src="{{globalimg}}/nocom.png"></image>
+
+      <view class="criticright" catchtap="criticbtn" data-id="{{myvideo.id}}" animation="{{ani1}}">
+        <image src="{{myvideo.thumb}}"></image>
+        <view>查看详情</view>
+      </view>
+
+      <view class="hint" wx:if="{{hintshow}}" animation="{{ani}}">
+        <image src="{{globalimg}}/6second.png"></image>
+        <view>请尽快购买，还有{{hinttime}}秒播放下个视频</view>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -30,7 +30,8 @@ Page({
     itemid:'',
     discuss: '',
     focus: false,
-    perch:'我也说几句...'
+    perch:'我也说几句...',
+    notlogindis: 'block'
   },
 
   /**
@@ -126,6 +127,52 @@ Page({
         url: '/packageA/pages/shop/notice/notification/detail?id=' + ss,
     })
   },
+
+  // 授权昵称头像
+  getUserInfo: function (e) {
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        var userinfo = f.getCache('userinfo');
+        console.log(userinfo)
+        if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
+          wx.login({
+            success: function (a) {
+              a.code ? a.post("wxapp.login", {
+                code: a.code
+              }, function (a) {
+                console.log(a)
+                wx.getUserInfo({
+                  success: function (info) {
+                    console.log(info);
+                    console.log(a.session_key);
+                    a.get("wxapp/auth", {
+                      data: info.encryptedData,
+                      iv: info.iv,
+                      sessionKey: a.session_key
+                    }, function (eve) {
+                      console.log(eve)
+                      that.getInfo();
+                    }
+                    )
+                  }
+                });
+              }) : s.alert("获取用户登录态失败:" + a.errMsg);
+
+            }
+          })
+
+        }
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权=====")
+          that.setData({
+            notlogindis: 'none'
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -178,6 +225,7 @@ Page({
         })
       }
     })
+    a.getUserInfo();
   },
 
   // 评论
