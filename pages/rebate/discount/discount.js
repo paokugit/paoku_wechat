@@ -76,13 +76,13 @@ Page({
         })
     },
     setbtn:function(){
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-        // wx.navigateTo({
-        //     url: '/packageA/pages/setpassword/set/set',
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂未开放',
         // })
+        wx.navigateTo({
+            url: '/packageA/pages/setpassword/set/set',
+        })
     },
     getScancode: function() {
         var _this = this;

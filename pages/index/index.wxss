@@ -8,7 +8,7 @@ page {
   overflow-x: hidden;
   background: #f8f8f8;
 }
-
+ 
 .indexBox {
   width: 100%;
   height: auto;
@@ -1533,7 +1533,6 @@ image {
   width: 330rpx;
   height: 100rpx;
 }
-
 .libao-bottom-box {
   width: 100%;
   height: auto;
@@ -1635,6 +1634,128 @@ image {
   width: 300rpx;
   height: 146rpx;
 }
+/* 边看 */
+.look-buy{
+  width: 100%;
+  height: auto;
+  background: #f8f8f8;
+  margin-top: 40rpx;
+}
+.look-buy-tit{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3% 30rpx;
+}
+.buy-tit-left view{
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.left-img{
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 12rpx;
+  background: #f8f8f8;
+  border: 8rpx solid red;
+  border-radius: 50%;
+}
+.buy-tit-right view{
+  font-size: 24rpx;
+  color: #666666;
+  margin-right: 10rpx;
+}
+.buy-tit-left,.buy-tit-right{
+  display: flex;
+  align-items: center;
+}
 
 
+scroll-view{
+  width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.buy-video{
+  width: 654rpx;
+  height:480rpx;
+  margin: 0 12rpx;
+  box-sizing: border-box;
+  display: inline-block;
+  background: #fff;
+  border-radius: 30rpx;
+}
 
+.list-img{
+  width: 100%;
+  height: 380rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin-bottom: 25rpx;
+}
+.myVideo{
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.myzan{
+  width: 116rpx;
+  height: 116rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 100;
+}
+.videptit{
+  width: 100%;
+  font-size: 34rpx;
+  color: #fff;
+  font-weight: bold;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  top: 24rpx;
+  margin: 0 24rpx;
+}
+
+.list-base{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4%;
+}
+.list-base,.list-base-left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-base-sum{
+  font-size: 40rpx;
+  color: #ff0000;
+  margin-right: 15rpx;
+  font-weight: bold;
+}
+.list-base-sum::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+.list-base-piece{
+  color: #929292;
+  font-size: 28rpx;
+}
+.list-base-deduction{
+  width: 124rpx;
+  height: 40rpx;
+  border-radius: 50rpx;
+  border: 1rpx solid #01d7a1;
+  color: #01d7a1;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 40rpx;
+}

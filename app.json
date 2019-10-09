@@ -138,7 +138,10 @@
           "pages/timelimit/timelimit",
 
           "pages/skyread/read/read",
-          "pages/skyread/details/details"
+          "pages/skyread/details/details",
+
+          "pages/watchvideo/watchvideo"
+
         ]
       }
     ],

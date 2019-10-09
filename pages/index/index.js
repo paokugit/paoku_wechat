@@ -25,6 +25,8 @@ var latitude = ""
 const app = getApp()
 var interval = new Object();
 var util = require('../../utils/util.js');
+
+var swiperError = 0;
 Page((e = {
   onPullDownRefresh: function () {
     wx.showToast({
@@ -42,11 +44,14 @@ Page((e = {
         });
       }
 
+
     });
       wx.stopPullDownRefresh();
     console.log(secend_time - timestampcount)
     t.startTimer(secend_time - timestampcount);
   },
+
+           
 
   data: (a = {
     showIcon: false,
@@ -483,22 +488,36 @@ Page((e = {
       }
       a.setData(dt)
     })
+        l.openPage();
+        l.buylist();
+    },
 
-    l.openPage();
-  },
-
-  openPage: function () {
-    var a = this;
-    s.get("myown.index.adsense", {
-      type: 1,
-      openid: userinfo.openid
-    }, function (e) {
-      console.log(e);
-      a.setData({
-        bannerList: e.result.list
-      })
-    })
-  },
+    openPage: function() {
+        var a = this;
+        s.get("myown.index.adsense", {
+            type: 1,
+            openid: userinfo.openid
+        }, function(e) {
+            console.log(e);
+            a.setData({
+              bannerList: e.result.list
+            })
+        })
+    },
+    // 边看边买列表
+    buylist:function(){
+      let t = this;
+      s.get("seckill.list.index_sale", {}, function (e) {
+        console.log(e)
+        if (e.status == 1) {
+          t.setData({
+            lookBuy: e.result.list
+          })
+        } else if (e.status) {
+          looklDis: 'none'
+        }
+      });
+    },
 
   onHide: function () {
     this.setData({
@@ -719,6 +738,7 @@ Page((e = {
               merchInfo: e.result.merchInfo,
               goodlist: e.result.goodList.list.slice(0, 3)
             }
+
             t.setData(i)
           })
         }
@@ -759,6 +779,8 @@ Page((e = {
         }
       }
 
+       
+
     });
     // 测试
     s.get("index/ceshi", {
@@ -785,6 +807,7 @@ Page((e = {
     });
     t.getList();
     t.openPage();
+    t.buylist();
   },
   getList: function () {
     var tt = this;

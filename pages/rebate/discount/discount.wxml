@@ -91,7 +91,7 @@
             <view class='type-img'>
                 <image src='{{globalimg}}/shezhi01.png'></image>
             </view>
-            <view class='type-text'>设置</view>
+            <view class='type-text'>额度</view>
         </view>
     </view>
     <!-- 领取贡献值 -->

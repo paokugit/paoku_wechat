@@ -86,7 +86,10 @@
               <view class="leftTime">{{item.create_time}}</view>
             </view>
           </view>
-          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}" data-index="{{index}}">回复</view>
+          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}" data-index="{{index}}">
+            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
+            回复
+          </view>
           <view class="headRight headRightA" wx:if="{{item.reply == 0?fasle:true}}">已回复</view>
         </view>
  
