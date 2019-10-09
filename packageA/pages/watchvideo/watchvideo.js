@@ -26,7 +26,50 @@ Page({
     criticList:[],
     hinttime:6,
     hintshow:false,
-    notlogindis: 'block'
+    notlogindis: 'block',
+
+    aa: [
+      {
+        nickname: "wang1",
+        content: "东西很好，我很喜欢"
+      },
+      {
+        nickname: "wang2",
+        content: "还行吧"
+      },
+      {
+        nickname: "wang3",
+        content: "东西不好，是坏的"
+      },
+      {
+        nickname: "wang4",
+        content: "这个很好用"
+      },
+      {
+        nickname: "wang5",
+        content: "用这很不方便"
+      },
+      {
+        nickname: "wang6",
+        content: "很棒很好"
+      },
+      {
+        nickname: "wang7",
+        content: "嗯嗯"
+      },
+      {
+        nickname: "wang8",
+        content: "支持"
+      },
+      {
+        nickname: "wang9",
+        content: "+1"
+      },
+      {
+        nickname: "wang10",
+        content: "好评一波"
+      },
+    ]
   },
 
   /**
@@ -59,7 +102,7 @@ Page({
       }
     })
   },
-
+ 
   //触摸开始事件
   touchstart: function (e) {
     touchstartY = e.touches[0].clientY;
@@ -96,14 +139,15 @@ Page({
         m.uplist();
         clearInterval(countdown);
         clearInterval(move);
+        animation1.scale(1).step();
         m.setData({
           hintshow: false,
           hinttime: 6,
+          ani1: animation1.export()
         });
       }else if(second > 0){
         m.setData({
-          hinttime: second,
-          ani1: animation1.export()
+          hinttime: second
         });
       }
     },1000)
@@ -112,11 +156,11 @@ Page({
     let move = setInterval(function(){
       if (cartoon == 1){
         animation.translate(-8, 0).step();
-        animation1.scale(1).step();
+        animation1.scale(1.1).step();
         cartoon = 2;
       } else if (cartoon == 2){
         animation.translate(0, 0).step();
-        animation1.scale(0.9).step();
+        animation1.scale(1).step();
         cartoon = 1;
       }
       m.setData({
@@ -239,6 +283,7 @@ Page({
       }
     })
   },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -253,6 +298,8 @@ Page({
   onShow: function () {
     this.getUserInfo();
   },
+
+  
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,9 +1,8 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="设置"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="购买限额"></navigation>
 <view class='set-box'>
   <view class="speed_up_tit">
-    <view class="divLine"></view>
-    <text class="tit_content">购买限额</text>
-    <view class="divLine"></view>
+    <image src="{{globalimg}}/limit.png"></image>
+    <text class="tit_content">RV可用交易额度：{{remain}}</text>
   </view>
 
   <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="{{index}}" bindtap="list_btn" data-id="{{item.id}}">

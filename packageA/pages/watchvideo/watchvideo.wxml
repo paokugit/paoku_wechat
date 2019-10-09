@@ -17,7 +17,7 @@
     </view>
 
     <view class="myvideo">
-      <video class="videoplay" object-fit="cover" autoplay="true" src="{{myvideo.video}}" bindended="bindended"></video>
+      <video class="videoplay" object-fit="contain" autoplay="true" controls="true" src="{{myvideo.video}}" bindended="bindended"></video>
       <view class="iconvideo">
         <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.id}}">
           <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
@@ -34,7 +34,7 @@
     </view>
 
     <view class="critic"> 
-      <view style="padding-top:54rpx;" wx:if="{{criticList.length == 0?false:true}}">
+      <!-- <view wx:if="{{criticList.length == 0?false:true}}">
         <view class="criticList" wx:for="{{criticList}}" wx:key="{{index}}">
           <text class="nickname">{{item.nickname}}:</text><text class="content">{{item.content}}</text>
         </view>
@@ -43,6 +43,25 @@
           <view class="finish-quan"></view>
           <view class="finish-txt">敬请期待,更多点评等你来</view>
         </view>
+      </view> -->
+
+      <view wx:if="{{criticList.length == 0?false:true}}">
+        <swiper class="tab-right" style="height:{{aa.length == 1 ? '106rpx' : aa.length == 2 ? '160rpx;' : '298rpx;'}}" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='{{aa.length <= 2? aa.length+1:"4"}}'>
+          <block wx:for="{{aa}}" wx:key="{{index}}">
+            <swiper-item>
+              <view class="criticList">
+                <text class="nickname">{{item.nickname}}：</text>
+                <text class="content">{{item.content}}</text>
+              </view>
+            </swiper-item>
+          </block>
+          <swiper-item wx:if="{{aa.length>4?false:true}}">
+            <view class="finish">
+              <view class="finish-quan"></view>
+              <view class="finish-txt">敬请期待,更多点评等你来</view>
+            </view>
+          </swiper-item>
+        </swiper>
       </view>
 
       <image class="nocom" wx:if="{{criticList.length == 0?true:false}}" src="{{globalimg}}/nocom.png"></image>

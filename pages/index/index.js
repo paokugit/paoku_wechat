@@ -31,6 +31,8 @@ var latitude = ""
 const app = getApp()
 var interval = new Object();
 var util = require('../../utils/util.js');
+
+var swiperError = 0;
 Page((e = {
     onPullDownRefresh: function() {
         wx.showToast({
@@ -138,8 +140,7 @@ Page((e = {
             slideshow:'0',
 
             lookBuy:[],
-            looklDis:'',
-            currentItemId:''
+            looklDis:''
         }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""),
         t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0),
         t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1),
@@ -539,6 +540,7 @@ Page((e = {
         })
 
         l.openPage();
+        l.buylist();
     },
 
     openPage: function() {
@@ -549,9 +551,23 @@ Page((e = {
         }, function(e) {
             console.log(e);
             a.setData({
-                bannerList: e.result.list
+              bannerList: e.result.list
             })
         })
+    },
+    // 边看边买列表
+    buylist:function(){
+      let t = this;
+      s.get("seckill.list.index_sale", {}, function (e) {
+        console.log(e)
+        if (e.status == 1) {
+          t.setData({
+            lookBuy: e.result.list
+          })
+        } else if (e.status) {
+          looklDis: 'none'
+        }
+      });
     },
 
     onHide: function() {
@@ -650,19 +666,6 @@ Page((e = {
             }
 
         });
-
-      // 边看边买列表
-      s.get("seckill.list.index_sale", {}, function (e) {
-        console.log(e)
-        if(e.status == 1){
-          t.setData({
-            lookBuy: e.result.list
-          })
-        }else if(e.status){
-          looklDis:'none'
-        }
-      });
-
         wx.getSetting({
             success: (res) => {
                 console.log(res)
@@ -865,13 +868,7 @@ Page((e = {
         });
 
         t.openPage();
-    },
-
-    // 边看边买轮播
-    bindchange:function(e){
-      this.setData({
-        currentItemId: e.detail.current
-      })
+        t.buylist();
     },
 
     goodsicon: function(t) {

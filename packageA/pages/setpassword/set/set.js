@@ -19,7 +19,8 @@ Page({
       showIcon: true,
       list:[],
       speedId:'',
-      isSelect:''
+      isSelect:1,
+      remain:0
     },
 
     /**
@@ -37,9 +38,13 @@ Page({
       var m = this;
       s.get("payment.limit",{},function(e){
         console.log(e);
-        m.setData({
-          list: e.result.list
-        })
+        if (e.status == 1){
+          m.setData({
+            list: e.result.list,
+            remain: e.result.remain,
+            speedId: e.result.list[0].id
+          })
+        }
       })
     },
 
@@ -75,10 +80,10 @@ Page({
                 icon: 'success',
                 duration: 3000
               })
-
+              m.list();
+              
               m.setData({
-                isSelect: '',
-                speedId: ''
+                isSelect: 1
               })
             },
             fail(res) {
