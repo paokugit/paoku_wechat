@@ -217,7 +217,7 @@
                                 <view bindtap="url" class="fui-list-media" data-url="/pages/goods/detail/index?id={{val.goodsid}}">
                                     <image class=" goods_img" src="{{val.thumb}}"></image>
                                 </view>
-                                <view bindtap="url" class="fui-list-inner" data-url="/pages/goods/detail/index?id={{val.goodsid}}">
+                                <view bindtap="url" class="fui-list-inner" style="position:relative" data-url="/pages/goods/detail/index?id={{val.goodsid}}">
                                     <view class="text">
                                         <block>
                                             <block wx:if="{{val.hasdiscount}}">
@@ -231,6 +231,12 @@
                                             </view>
                                         </block>
                                     </block>
+                                    <!-- <block>
+                                        <block wx:if="{{val.is_remote==0}}">
+                                            <view class="support-text" >偏远地区不支持发货</view>
+                                        </block>
+                                    </block> -->
+                                    
                                 </view>
                                 <view class="fui-list-angle">
                                     <block>
@@ -711,13 +717,19 @@
             </view>
             <view class="fui-footer {{iphonexnavbar}}">
                 <view class="tool nopadding">
-                    <view class="text">
+                    <view class="text" style="display:{{zhifuDis}}">
                         <view class="title text-right">需付：
                             <text class="text-danger">{{list.realprice}}元</text>
                         </view>
                     </view>
-                    <view class="btns">
+                    <view class="text" style="display:{{notzhifuDis}}">
+                        <view class="title text-right">偏远地区不支持发货</view>
+                    </view>
+                    <view class="btns" style="display:{{zhifuDis}}">
                         <text bindtap="submit" class="btn btn-danger {{submit&&'disabled'}}">立即支付</text>
+                    </view>
+                    <view class="btns" style="display:{{notzhifuDis}}">
+                        <text class="btn btn-not">立即支付</text>
                     </view>
                 </view>
             </view>

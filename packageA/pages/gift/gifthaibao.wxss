@@ -21,6 +21,7 @@ image {
   width: 604rpx;
   height: 968rpx;
   border-radius: 20rpx;
+  margin-top: 20rpx
 }
 
 .bannerbox-img {

@@ -69,6 +69,8 @@ Page({
         caloriedisp: 'none',
         zkbDis: 'none',
         kllDis: 'none',
+      zhifuDis: 'block',
+      notzhifuDis: 'none',
         calorienum: '',
         remote_dispatchprice: ''
     },
@@ -108,14 +110,14 @@ Page({
             } else if (isgift == 0) {
                 if (kllcount > 0) {
                     i.setData({
-                        kllDis: 'block',
-                        zkbDis: 'none'
+                        kllDis: 'block'
+                        // zkbDis: 'none'
                     })
                 }
                 if (zkbcount > 0) {
                     i.setData({
-                        zkbDis: 'block',
-                        kllDis: 'none'
+                        zkbDis: 'block'
+                        // kllDis: 'none'
                     })
                 }
             }
@@ -130,6 +132,17 @@ Page({
                     fardis: 'none'
                 })
             }
+          if (t.is_remote == 0) {
+            i.setData({
+              zhifuDis: 'none',
+              notzhifuDis:'block'
+            })
+          } else if (t.is_remote == 1) {
+            i.setData({
+              zhifuDis: 'block',
+              notzhifuDis: 'none'
+            })
+          }
             if (console.log(t), 0 == t.error) {
                 console.log(t), r = i.getGoodsList(t.goods);
                 var s = (i.data.originalprice - t.goodsprice).toFixed(2);
@@ -222,14 +235,14 @@ Page({
         }else if(isgift==0){
             if (kllcount > 0) {
                 g.setData({
-                    kllDis: 'block',
-                    zkbDis: 'none'
+                    kllDis: 'block'
+                    // zkbDis: 'none'
                 })
             }
             if (zkbcount > 0) {
                 g.setData({
-                    zkbDis: 'block',
-                    kllDis: 'none'
+                    zkbDis: 'block'
+                    // kllDis: 'none'
                 })
             }
         }
@@ -355,7 +368,7 @@ Page({
     caculate: function(t) {
         var e = this,
             i = 0;
-        e.data.data && 0 != e.data.data.couponid && (i = e.data.data.couponid), a.post("order/create/caculate", {
+      e.data.data && 0 != e.data.data.couponid && (i = e.data.data.couponid), a.post("order/create/caculate", {
             goods: this.data.goodslist,
             dflag: this.data.data.dispatchtype,
             addressid: this.data.list.address ? this.data.list.address.id : 0,
@@ -376,6 +389,17 @@ Page({
                 e.setData({
                     fardis: 'none'
                 })
+            }
+            if(a.is_remote==0){
+              e.setData({
+                zhifuDis:'none',
+                notzhifuDis: 'block'
+              })
+            } else if (a.is_remote == 1){
+              e.setData({
+                zhifuDis: 'block',
+                notzhifuDis: 'none'
+              })
             }
 
             console.error(a), t.dispatch_price = a.price, t.enoughdeduct = a.deductenough_money,
