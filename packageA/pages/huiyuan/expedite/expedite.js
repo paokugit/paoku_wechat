@@ -13,7 +13,7 @@ var order_id = ""; //订单ID
 Page({
 
     /**
-     * 页面的初始数据
+     * 页面的初始数据 
      */
     data: {
         globalimg: t.globalData.appimg,
@@ -58,6 +58,10 @@ Page({
     // 立即支付点击事件
     pay_btn: function(e) {
         var t = this;
+        wx.showLoading({
+          // title: '',
+          mask: true
+        });
         a.get("myown.acceleration.order", {
             openid: useropenid,
             id: speedId
@@ -75,7 +79,7 @@ Page({
                     paySign: e.message.wx.paySign,
                     success(res) {
                         console.log(res);
-
+                        wx.hideLoading();
                         // 支付成功后的接口请求
                         a.get("myown.acceleration.wx_back", {
                             order_id: order_id
@@ -91,6 +95,7 @@ Page({
                     },
                     fail(res) {
                         console.log(res);
+                        wx.hideLoading();
                     }
                 })
             };
@@ -101,6 +106,7 @@ Page({
                     isShow: true,
                     tit_one: '请选择加速天数'
                 })
+                wx.hideLoading();
             };
 
             // 加速期内判断
@@ -110,6 +116,7 @@ Page({
                     payDay: e.message.day + '天后结束',
                     tit_one: '已经在加速期，请结束后再买哦'
                 })
+                wx.hideLoading();
             };
 
         });

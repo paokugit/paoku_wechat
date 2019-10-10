@@ -1627,3 +1627,9 @@ scroll-view{
   text-align: center;
   line-height: 40rpx;
 }
+
+.videoimg{
+  width: 654rpx;
+  height:480rpx;
+
+}

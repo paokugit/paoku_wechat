@@ -167,7 +167,6 @@
     </swiper>
   </view>
 
-
   <view class='store-service'>
     <view class='store-service-title'>
       <view class='storeservice-tit'>门店服务</view>
@@ -407,6 +406,11 @@
           </view>
         </navigator>
       </block>
+      <navigator url="/packageA/pages/watchvideo/watchvideo" class="buy-video">
+        <view class="videoimg">
+          <image style="width:100%;height:100%;" src="{{globalimg}}/novideo.png"></image>
+        </view>
+      </navigator>
     </scroll-view>
   </view> -->
   <!-- 边看变买结束 -->

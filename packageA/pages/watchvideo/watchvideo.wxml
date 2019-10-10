@@ -9,7 +9,7 @@
       <view class="volume">已拍{{myvideo.sales}}+件</view>
       <view class="money">
         <view class="original-price">{{myvideo.productprice}}</view>
-        <view class="going-price">
+        <view class="going-price"> 
           <image src="{{globalimg}}/hot.png"></image>
           <view>{{myvideo.marketprice}}</view>
         </view>
@@ -46,7 +46,7 @@
       </view> -->
 
       <view wx:if="{{criticList.length == 0?false:true}}">
-        <swiper class="tab-right" style="height:{{aa.length == 1 ? '106rpx' : aa.length == 2 ? '160rpx;' : '298rpx;'}}" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='{{aa.length <= 2? aa.length+1:"4"}}'>
+        <swiper class="tab-right" style="height:{{aa.length == 1 ? '106rpx' : aa.length == 2 ? '160rpx;' : '298rpx;'}}" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='{{aa.length <= 2? aa.length+1:"6"}}'>
           <block wx:for="{{aa}}" wx:key="{{index}}">
             <swiper-item>
               <view class="criticList">
