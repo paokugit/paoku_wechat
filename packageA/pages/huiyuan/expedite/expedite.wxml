@@ -2,7 +2,7 @@
 <view class="expedite-box">
   <!-- 购买加速宝标题 -->
   <view class="speed_up_tit">
-    <view class="divLine"></view>
+    <view class="divLine"></view> 
     <text class="tit_content">购买加速宝</text>
     <view class="divLine"></view>
   </view>

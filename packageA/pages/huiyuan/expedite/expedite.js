@@ -3,16 +3,13 @@ var t = getApp(),
     a = t.requirejs("core");
 var f = getApp();
 
-var speedId = ""; //加速宝id
 var useropenid = ""; //用户openid
-
-var isSelect = ""; //点击显示的判断条件
 
 var order_id = ""; //订单ID
 
 Page({
 
-    /**
+    /** 
      * 页面的初始数据 
      */
     data: {
@@ -22,6 +19,7 @@ Page({
         isShow: false, //弹出层判断
         payDay: '', //加速天数内容
         tit_one: '', //标题提示内容
+        isSelect : "" //加速宝id
     },
 
     /**
@@ -32,8 +30,10 @@ Page({
         useropenid = userinfo.openid
         var b = this;
         a.get("myown/acceleration/index", {}, function(e) {
+          console.log(e);
             b.setData({
                 list: e.message,
+                isSelect: e.message[0].id
             })
         });
     },
@@ -48,7 +48,7 @@ Page({
 
     // 列表点击事件
     list_btn: function(e) {
-        speedId = e.currentTarget.dataset.id;
+        let speedId = e.currentTarget.dataset.id;
 
         this.setData({
             isSelect: speedId,
@@ -58,19 +58,19 @@ Page({
     // 立即支付点击事件
     pay_btn: function(e) {
         var t = this;
-        wx.showLoading({
-          // title: '',
-          mask: true
-        });
         a.get("myown.acceleration.order", {
             openid: useropenid,
-            id: speedId
+            id: t.data.isSelect
         }, function(e) {
             console.log(e);
+            wx.showLoading({
+              mask: true
+            });
             order_id = e.message.order_id;
 
             // 支付成功判断
             if (e.error == '0') {
+                wx.hideLoading();
                 wx.requestPayment({
                     timeStamp: e.message.wx.timeStamp,
                     nonceStr: e.message.wx.nonceStr,
@@ -79,7 +79,6 @@ Page({
                     paySign: e.message.wx.paySign,
                     success(res) {
                         console.log(res);
-                        wx.hideLoading();
                         // 支付成功后的接口请求
                         a.get("myown.acceleration.wx_back", {
                             order_id: order_id
@@ -95,7 +94,6 @@ Page({
                     },
                     fail(res) {
                         console.log(res);
-                        wx.hideLoading();
                     }
                 })
             };
@@ -104,7 +102,7 @@ Page({
             if (e.error == '1') {
                 t.setData({
                     isShow: true,
-                    tit_one: '请选择加速天数'
+                    tit_one: e.message
                 })
                 wx.hideLoading();
             };
@@ -118,7 +116,10 @@ Page({
                 })
                 wx.hideLoading();
             };
-
+            // 禁止3秒内重复点击
+            if (e.error == '3') {
+              wx.hideLoading();
+            };
         });
     },
 
