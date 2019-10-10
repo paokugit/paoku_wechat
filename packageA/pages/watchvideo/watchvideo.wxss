@@ -119,7 +119,7 @@ page{
 
 .criticList{
   width: 540rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

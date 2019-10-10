@@ -52,9 +52,13 @@ Page({
 
     // 支付成功返回一级页面
     pay_btn: function() {
-        wx.navigateTo({
-            url: '/packageA/pages/huiyuan/membercenter/membercenter'
-        })
+        // wx.navigateTo({
+        //     url: '/packageA/pages/huiyuan/membercenter/membercenter'
+        // })
+
+      wx.navigateBack({
+        delta: 1
+      })
     },
 
     /**

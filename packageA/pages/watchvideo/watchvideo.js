@@ -40,7 +40,7 @@ Page({
       {
         nickname: "wang3",
         content: "东西不好，是坏的"
-      },
+      }, 
       {
         nickname: "wang4",
         content: "这个很好用"
