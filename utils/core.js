@@ -172,15 +172,16 @@ module.exports = {
     var useropenid = userinfo.openid
     useropenid = useropenid.replace(/sns_wa_/g, "");
     useropenid = "sns_wa_" + useropenid;
-
+    var shareparam = n.getCache("shareparam")
+    console.log(shareparam)
     var o = n.getCache("sysset"), i = o.share || {}, a = n.getCache("userinfo_id"),
-        s = title || '哇，这里竟然可以用微信步数免费拿商品，每天走走，就是赚钱!', r = o.description || "";
+      s = title || shareparam.title, r = o.description || "";
       return i.title && (s = i.title), e && (s = e), i.desc && (r = i.desc), t = t || "/packageA/pages/helphand/helpshare/helpshare?hlpid=" + useropenid + '&nickname=' + bnickname,
       t = -1 != t.indexOf("?") ? t + "&" : t + "?", {
         title: s,
         desc: r,
         path: t + "mid=" + userinfo.id,
-          imageUrl: 'https://paokucoin.com/attachment/images/1/2019/08/X8Hh9FwohHwA8Na8llAWH9oLalWH5p.jpg',
+        imageUrl: shareparam.image,
         success: function () {
         },
         fail: function () {

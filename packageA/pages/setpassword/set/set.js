@@ -56,55 +56,46 @@ Page({
       })
     },
 
-    pay_btn: function (e) {
-      var m = this;
-      
-      console.log(m.data.speedId);
+  pay_btn: function (e) {
+    var m = this;
+    console.log(m.data.speedId);
 
-      s.get("payment.limit_order", {
-        openid: useropenid,
-        id: m.data.speedId
-      }, function (e) {
-        console.log(e);
-        if(e.status == 1){
-          wx.requestPayment({
-            timeStamp: e.result.timeStamp,
-            nonceStr: e.result.nonceStr,
-            package: e.result.package,
-            signType: 'MD5',
-            paySign: e.result.paySign,
-            success(res) {
-              console.log(res);
-              wx.showToast({
-                title: '购买成功',
-                icon: 'success',
-                duration: 3000
-              })
-              m.list();
-              
-              m.setData({
-                isSelect: 1
-              })
-            },
-            fail(res) {
-              console.log(res);
-            }
-          })
-        }else if(e.status == 0){
-          wx.showModal({
-            title: '提示',
-            content: '请选择要购买的额度',
-            success: function (res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-              } else {
-                console.log('用户点击取消')
-              }
-            }
-          })
-        }
-      })
-    },
+    s.get("payment.limit_order", {
+      openid: useropenid,
+      id: m.data.speedId
+    }, function (e) {
+      console.log(e);
+      if (e.status == 1) {
+        wx.showLoading({
+          mask: true
+        });
+        wx.requestPayment({
+          timeStamp: e.result.timeStamp,
+          nonceStr: e.result.nonceStr,
+          package: e.result.package,
+          signType: 'MD5',
+          paySign: e.result.paySign,
+          success(res) {
+            console.log(res);
+            wx.showToast({
+              title: '购买成功',
+              icon: 'success',
+              duration: 3000
+            })
+            wx.hideLoading();
+            m.list();
+            m.setData({
+              isSelect: 1
+            })
+          },
+          fail(res) {
+            console.log(res);
+            wx.hideLoading();
+          }
+        })
+      }
+    })
+  },
 
 
     // setbtn: function() {
