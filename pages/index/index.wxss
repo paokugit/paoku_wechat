@@ -1528,7 +1528,31 @@ image {
   position: absolute;
   top: 50%;
 }
+.jump {
+    width: 330rpx;
+    height: 100rpx;
+    background: url("https://paokucoin.com/img/backgroup/cyhd@2x.png");
+    background-size: 330rpx 100rpx;
+    -webkit-animation-name: scaleDraw;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+}
 
+@keyframes scaleDraw {
+    0% {
+        transform: scale(1); 
+    }
+    25% {
+        transform: scale(1.1); 
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
 .cyhd-img {
   width: 330rpx;
   height: 100rpx;

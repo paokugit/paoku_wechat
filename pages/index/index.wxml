@@ -174,7 +174,7 @@
     <view class="libao-bgimg">
       <image src="{{globalimg}}/huodong01@2x.png"></image>
       <view class="cyhd-img-flex" bindtap="skipgift">
-        <view class="cyhd-img">
+        <view class="cyhd-img jump">
           <image src="{{globalimg}}/cyhd@2x.png"></image>
         </view>
       </view>
