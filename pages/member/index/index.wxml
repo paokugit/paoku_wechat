@@ -211,7 +211,7 @@
                 </view>
                 <view class='service-text'>领券中心</view>
             </navigator>
-            <navigator url='/pages/member/cart/index' class='service-item'>
+            <view class='service-item' bindtap="cartbtn">
                 <view class='dingdan-img service-img'>
                     <block>
                         <block wx:if="{{member.statics.cart>0}}">
@@ -221,7 +221,7 @@
                     <image src='{{server.cart}}'></image>
                 </view>
                 <view class='service-text'>购物车</view>
-            </navigator>
+            </view>
             <navigator url='/pages/member/favorite/index' class='service-item'>
                 <view class='dingdan-img service-img'>
                     <block>
