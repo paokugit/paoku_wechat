@@ -58,7 +58,8 @@ Page({
         console.log(thumbs)
     },
     inputchange: function(event) {
-        var that = this
+      var that = this
+      console.log(event)
         that.setData({
             inputtext: event.detail.value
         })
@@ -78,7 +79,9 @@ Page({
         phonenum = eve.detail.value
     },
     submitbtn: function() {
+      console.log(this.data.inputtext, this.data.date)
         console.log(problem, faulttime, thumbs, phonenum)
+      
         if (problem == "") {
             wx.showModal({
                 title: '提示',
@@ -91,28 +94,36 @@ Page({
                     content: '请输入故障时间',
                 })
             } else {
+              if (this.data.inputtext != "" && this.data.date != "") {
                 a.get("myown/novice/question", {
-                    openid: useropenid,
-                    content: problem,
-                    mobile: phonenum,
-                    time: faulttime,
-                    img: thumbs
-                }, function(e) {
-                    console.log(e)
-                    if (e.error == 0) {
-                        wx.showModal({
-                            title: '提示',
-                            content: e.message,
-                            success: function(res) {
-                                if (res.cancel) {
-                                    // 取消
-                                }else{
-                                    wx.navigateBack();
-                                }
-                            }
-                        })
-                    }
+                  openid: useropenid,
+                  content: problem,
+                  mobile: phonenum,
+                  time: faulttime,
+                  img: thumbs
+                }, function (e) {
+                  console.log(e)
+                  if (e.error == 0) {
+                    wx.showModal({
+                      title: '提示',
+                      content: e.message,
+                      success: function (res) {
+                        if (res.cancel) {
+                          // 取消
+                        } else {
+                          wx.navigateBack();
+                        }
+                      }
+                    })
+                  }
                 });
+              }else{
+                wx.showModal({
+                  title: '提示',
+                  content: '请重新输入',
+                })
+              }
+                
             }
         }
 

@@ -1,6 +1,7 @@
 <view class='indexBox'>
   <view class="index-banner-box">
     <image src='{{backgroundimg}}'></image>
+
     <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view class='kll'>
@@ -48,6 +49,7 @@
       </button>
     </form>
     <!-- 绑定手机号的气泡 -->
+
     <form bindsubmit='form_submit' report-submit='true' class='circle phonereward floating' bindtap='bindPhone'>
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view style='display:{{bindDis}}'>
@@ -166,6 +168,53 @@
       </block>
     </swiper>
   </view>
+
+  <!-- 十人礼包 -->
+  <view class="libao-box" style="display:{{libaoDis}}">
+    <view class="libao-bgimg">
+      <image src="{{globalimg}}/huodong01@2x.png"></image>
+      <view class="cyhd-img-flex" bindtap="skipgift">
+        <view class="cyhd-img">
+          <image src="{{globalimg}}/cyhd@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="libao-bottom-box">
+      <view class="libao-bottom-center">
+        <view class="gift-get-img">
+          <image src="{{globalimg}}/bt01@2x.png"></image>
+        </view>
+        <view class="libao-goods-con">
+          <swiper indicator-dots="true" indicator-color="#dd6b4c" indicator-active-color="#ffb965" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+            <block wx:for="{{libaolist}}" wx:key="{{index}}">
+              <swiper-item>
+                <view class="libao-goods">
+                  <view class="libao-goods-item" wx:for="{{item}}">
+                    <navigator url="/packageA/pages/gift/gift" class="libao-goods-bg">
+                      <image src='{{globalimg}}/01@2x.png'></image>
+                      <view class="product-img">
+                        <image src="{{item.thumb}}"></image>
+                      </view>
+                      <view class="free-take-img">
+                        <image src='{{globalimg}}/oqg02@2x.png'></image>
+                      </view>
+                      <view class="exclusive-flex"><view class="exclusive-box">{{item.levels}}享有</view></view>
+                    </navigator>
+                  </view>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="cksp-img-flex" bindtap="skipgift">
+          <view class="cksp-img">
+            <image src="{{globalimg}}/ckbt@2x.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 十人礼包 -->
 
   <view class='store-service'>
     <view class='store-service-title'>
@@ -490,6 +539,7 @@
   <view class='first-entry-box position_absolute'>
     <view class='first-entry position_absolute'>
       <image src='{{ globalimg}}/jiangli.png'></image>
+
     </view>
     <view class='first-entry-close' bindtap='firstclosebtn'>
       <image src='{{ globalimg}}/guanbi.png' class='symbol'></image>

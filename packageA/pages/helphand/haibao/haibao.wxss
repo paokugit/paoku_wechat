@@ -15,6 +15,7 @@ page {
 .bannerbox {
     width: 550rpx;
     height: 978rpx;
+    margin-top: 20rpx
 }
 
 image {
