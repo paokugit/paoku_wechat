@@ -62,6 +62,7 @@ Page({
       })
     },
 
+
     pay_btn: function (e) {
       var m = this;
       s.get("payment.limit_order", {
@@ -106,7 +107,6 @@ Page({
         }
       })
     },
-
 
     // setbtn: function() {
     //     wx.navigateTo({

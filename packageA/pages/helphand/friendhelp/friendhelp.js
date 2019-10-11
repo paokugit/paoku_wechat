@@ -185,6 +185,7 @@ Page({
     });
     a.get("index/share_help", {}, function (e) {
       console.log(e)
+      n.setCache("shareparam", e.result)
       t.setData({
         bannerUrl: e.result.thumb
       })
