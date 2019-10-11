@@ -89,6 +89,12 @@ Page({
           articleTime: e.message.create_time,
           music_title: e.message.music_title
         })
+      } else if (e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'success',
+          duration: 2000
+        })
       }
     })
   },
@@ -256,6 +262,12 @@ Page({
           page:1,
           totalPage: totalCount,
           isshow: false
+        })
+      }else if(e.error == 1){
+        wx.showToast({
+          title: e.message,
+          icon: 'success',
+          duration: 2000
         })
       }
     }) 

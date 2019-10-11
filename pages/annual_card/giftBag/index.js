@@ -38,10 +38,18 @@ Page({
       level_id: 5
     }, function (e) {
       console.log(e);
-      b.setData({
-        levelStatus:e.result.get == 1?'已领取':'免费领取',
-        goods_list: e.result.goods
-      })
+      if(e.status == 1){
+        b.setData({
+          levelStatus: e.result.get == 1 ? '已领取' : '免费领取',
+          goods_list: e.result.goods
+        })
+      }else if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -52,14 +60,13 @@ Page({
     a.get("member.level.address_list", {
       openid: useropenid
     }, function (e) {
-      console.log(e);
       if (e.status == -1) {
         m.setData({
           titMessage: e.result.message,
           isShow: true,
           siteList: []
         })
-      } else {
+      } else if(e.status == 1){
         let price = e.result.data.price;
         addressId = e.result.list[0].id;
         m.setData({
@@ -68,6 +75,12 @@ Page({
           rental: price,
           isShow: true,
           titMessage: ''
+        })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
         })
       }
     })
@@ -89,12 +102,21 @@ Page({
       openid: useropenid,
       address_id: addressId
     }, function (e) {
-      let price = e.result.data.price;
-      m.setData({
-        btnNum: btnNum,
-        postage: e.result.data.is_remote == 0 ? price : price + '(偏远)',
-        rental: price
-      })
+      console.log(e);
+      if (e.status == 1){
+        let price = e.result.data.price;
+        m.setData({
+          btnNum: btnNum,
+          postage: e.result.data.is_remote == 0 ? price : price + '(偏远)',
+          rental: price
+        })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 

@@ -31,10 +31,18 @@ Page({
         var b = this;
         a.get("myown/acceleration/index", {}, function(e) {
           console.log(e);
-            b.setData({
+            if(e.error == 0){
+              b.setData({
                 list: e.message,
                 isSelect: e.message[0].id
-            })
+              })
+            }else if(e.error == 1){
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
         });
     },
 
@@ -88,6 +96,12 @@ Page({
                                 wx.navigateTo({
                                     url: '/packageA/pages/huiyuan/pay_succeed/pay_succeed?order_id=' + order_id,
                                 })
+                            }else if(e.error == 1){
+                              wx.showToast({
+                                title: e.message,
+                                icon: 'none',
+                                duration: 2000
+                              }) 
                             }
                         })
 

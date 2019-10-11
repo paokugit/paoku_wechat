@@ -106,14 +106,23 @@ Page({
     a.get("member.level.my", {
       openid: b.data.useropenid
     }, function (e) {
-      b.setData({
-        cardName: e.result.member.nickname,
-        cardOpen: e.result.member.is_open,
-        is_expire: e.result.member.is_expire,
-        cardExpire: e.result.member.expire,
-        cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
-        headImg: e.result.member.avatar
-      })
+      if(e.status == 1){
+        b.setData({
+          cardName: e.result.member.nickname,
+          cardOpen: e.result.member.is_open,
+          is_expire: e.result.member.is_expire,
+          cardExpire: e.result.member.expire,
+          cardTit: e.result.member.is_open == 0 ? '已到期' : '年卡到期',
+          headImg: e.result.member.avatar
+        })
+      }else if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      
     })
   },
 
@@ -122,27 +131,32 @@ Page({
     a.get("member.level", {
       openid: b.data.useropenid,
     }, function (e) {
-      recordId = e.result.level.id;
+      if(e.status == 1){
+        recordId = e.result.level.id;
+        var timeExpire = e.result.member.expire.substring(0, 11);
+        var level_month = e.result.level.month;
+        b.setData({
+          nickname: e.result.member.nickname,
+          memberTit: e.result.member.is_open == 0 ? '未享受4大权益' : '已享受4大权益',
+          timeExpire: timeExpire,
+          goodsList: e.result.goods,
 
-      var timeExpire = e.result.member.expire.substring(0, 11); 
-
-      var level_month = e.result.level.month;
-
-      b.setData({
-        nickname: e.result.member.nickname,
-        memberTit: e.result.member.is_open == 0 ? '未享受4大权益' : '已享受4大权益',
-        timeExpire: timeExpire,
-        goodsList: e.result.goods,
-
-        levelCode:e.result.level.status,
-        levelStatus: e.result.level.status == 0 ? '免费领取' : e.result.level.status == 1 ? '已领取' : '礼包失效',
-        levelList:e.result.level,
-        levelImg: e.result.level.thumb,
-        levelPrice: e.result.level.price,
-        levelMonth: level_month.substring(5, 7),
-        levelTime: e.result.level.month,
-        couponList: e.result.coupon
-      })
+          levelCode: e.result.level.status,
+          levelStatus: e.result.level.status == 0 ? '免费领取' : e.result.level.status == 1 ? '已领取' : '礼包失效',
+          levelList: e.result.level,
+          levelImg: e.result.level.thumb,
+          levelPrice: e.result.level.price,
+          levelMonth: level_month.substring(5, 7),
+          levelTime: e.result.level.month,
+          couponList: e.result.coupon
+        })
+      }else if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     }); 
   },
 

@@ -131,7 +131,9 @@ Page((e = {
     intervalA: 3000,
     durationA: 1000,
     circularA: true,
-    slideshow: '0'
+    slideshow: '0',
+
+    aa:['1','2','3','4']
   }, t(a, "total", 1), a),
   
   bindPhone: function () {
@@ -489,7 +491,6 @@ Page((e = {
       a.setData(dt)
     })
         l.openPage();
-        l.buylist();
     },
 
     openPage: function() {
@@ -499,24 +500,18 @@ Page((e = {
             openid: userinfo.openid
         }, function(e) {
             console.log(e);
-            a.setData({
-              bannerList: e.result.list
-            })
+            if (e.status == 1){
+              a.setData({
+                bannerList: e.result.list
+              })
+            } else if (e.status == 0){
+              wx.showToast({
+                title: e.result.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
         })
-    },
-    // 边看边买列表
-    buylist:function(){
-      let t = this;
-      s.get("seckill.list.index_sale", {}, function (e) {
-        console.log(e)
-        if (e.status == 1) {
-          t.setData({
-            lookBuy: e.result.list
-          })
-        } else if (e.status) {
-          looklDis: 'none'
-        }
-      });
     },
 
   onHide: function () {
@@ -615,6 +610,21 @@ Page((e = {
       }
 
     });
+    
+    // 边看边买列表
+    s.get("seckill.list.index_sale", {}, function (e) {
+      console.log(e)
+      if (e.status == 1) {
+        t.setData({
+          lookBuy: e.result.list
+        })
+      } else if (e.status == 0) {
+        t.setData({
+          looklDis: 'none'
+        })
+      }
+    });
+
     // 礼包
     s.get("help/gift", {
       openid: userinfo.openid
@@ -807,7 +817,6 @@ Page((e = {
     });
     t.getList();
     t.openPage();
-    t.buylist();
   },
   getList: function () {
     var tt = this;

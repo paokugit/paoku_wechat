@@ -180,10 +180,18 @@ Page({
       openid: t.data.useropenid
     }, function(e) {
       console.log(e);
-      t.setData({
-        is_open: e.result.is_open,
-        expire_time: e.result.expire_time + '到期'
-      })
+      if(e.status == 1){
+        t.setData({
+          is_open: e.result.is_open,
+          expire_time: e.result.expire_time + '到期'
+        })
+      }else if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 

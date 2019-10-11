@@ -19,12 +19,14 @@
     <view class="myvideo">
       <video class="videoplay" object-fit="contain" autoplay="true" controls="true" src="{{myvideo.video}}" bindended="bindended"></video>
       <view class="iconvideo">
-        <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.id}}">
+        <view style="position: relative;">
           <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
-          <image class="videoimg" src="{{globalimg}}/{{myvideo.fav == 0 ?'nozan.png':'hotzan.png'}}"></image>
-          <view class="videotxt">{{myvideo.fav_count}}</view>
+          <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.id}}">
+            <image class="videoimg" src="{{globalimg}}/{{myvideo.fav == 0 ?'nozan.png':'hotzan.png'}}"></image>
+            <view class="videotxt">{{myvideo.fav_count}}</view>
+          </view>
         </view>
-        <view class="zhuanfa iconcss">
+        <view class="zhuanfa iconcss" bindtap="videobtn">
           <button class='inviteBtn' open-type='share'></button>
           <image class="videoimg" src="{{globalimg}}/share.png"></image>
           <view class="videotxt">转发</view>
@@ -34,20 +36,9 @@
     </view>
 
     <view class="critic"> 
-      <!-- <view wx:if="{{criticList.length == 0?false:true}}">
-        <view class="criticList" wx:for="{{criticList}}" wx:key="{{index}}">
-          <text class="nickname">{{item.nickname}}:</text><text class="content">{{item.content}}</text>
-        </view>
-
-        <view class="finish">
-          <view class="finish-quan"></view>
-          <view class="finish-txt">敬请期待,更多点评等你来</view>
-        </view>
-      </view> -->
-
       <view wx:if="{{criticList.length == 0?false:true}}">
-        <swiper class="tab-right" style="height:{{aa.length == 1 ? '106rpx' : aa.length == 2 ? '160rpx;' : '298rpx;'}}" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='{{aa.length <= 2? aa.length+1:"6"}}'>
-          <block wx:for="{{aa}}" wx:key="{{index}}">
+        <swiper class="tab-right" style="height:{{criticList.length == 1 ? '98rpx' : criticList.length == 2 ? '147rpx;' : criticList.length == 3 ? '196rpx' : criticList.length == 4 ?'245rpx':'298rpx'}}" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='{{criticList.length <= 5? criticList.length+1:"6"}}'>
+          <block wx:for="{{criticList}}" wx:key="{{index}}">
             <swiper-item>
               <view class="criticList">
                 <text class="nickname">{{item.nickname}}：</text>
@@ -55,7 +46,7 @@
               </view>
             </swiper-item>
           </block>
-          <swiper-item wx:if="{{aa.length>4?false:true}}">
+          <swiper-item wx:if="{{criticList.length>6?false:true}}">
             <view class="finish">
               <view class="finish-quan"></view>
               <view class="finish-txt">敬请期待,更多点评等你来</view>

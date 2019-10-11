@@ -426,7 +426,7 @@
   <!-- 限时秒杀部分 -->
 
   <!-- 边看边买开始 -->
-  <!-- <view class="look-buy" style="display:{{looklDis}}">
+  <view class="look-buy" style="display:{{looklDis}}">
     <view class="look-buy-tit">
       <view class="buy-tit-left">
         <view>边看边买</view>
@@ -437,31 +437,32 @@
       </navigator>
     </view>
 
-    
-    <scroll-view scroll-x="true">
-      <block wx:for="{{lookBuy}}" wx:key="{{index}}">
-        <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video ">
-          <view class="list-img">
-            <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
-            <image class="myzan" src="{{globalimg}}/zanting.png"></image>
-            <view class="videptit">{{item.title}}</view>
-          </view>
-          <view class="list-base">
-            <view class="list-base-left">
-              <view class="list-base-sum">{{item.marketprice}}</view>
-              <view class="list-base-piece">已抢购{{item.sales}}件</view>
+    <view class='out'>
+      <scroll-view scroll-x="true">
+        <block wx:for="{{lookBuy}}" wx:key="{{index}}">
+          <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video" style="position: relative;">
+            <view class="list-img">
+              <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
+              <image class="myzan" src="{{globalimg}}/zanting.png"></image>
+              <view class="shade">
+                <view class="videptit">{{item.title}}</view>
+              </view>
             </view>
-            <view class="list-base-deduction">折扣宝抵扣</view>
-          </view>
+            <view class="list-base">
+              <view class="list-base-left">
+                <view class="list-base-sum">{{item.marketprice}}</view>
+                <view class="list-base-piece">已抢购{{item.sales}}件</view>
+              </view>
+              <view class="list-base-deduction">折扣宝抵扣</view>
+            </view>
+          </navigator>
+        </block>
+        <navigator url="/packageA/pages/watchvideo/watchvideo" class='buy-video itemimg'>
+          <image src="{{globalimg}}/novideo.png"></image>
         </navigator>
-      </block>
-      <navigator url="/packageA/pages/watchvideo/watchvideo" class="buy-video">
-        <view class="videoimg">
-          <image style="width:100%;height:100%;" src="{{globalimg}}/novideo.png"></image>
-        </view>
-      </navigator>
-    </scroll-view>
-  </view> -->
+      </scroll-view>
+    </view> 
+  </view>
   <!-- 边看变买结束 -->
 
   <!-- 超值兑换部分-开始 -->

@@ -12,6 +12,7 @@ var upvideoid = "";
 
 var touchstartY = "";
 var cartoon = 1;
+var imgurl = "";
 Page({
 
   /**
@@ -26,50 +27,7 @@ Page({
     criticList:[],
     hinttime:6,
     hintshow:false,
-    notlogindis: 'block',
-
-    aa: [
-      {
-        nickname: "wang1",
-        content: "东西很好，我很喜欢"
-      },
-      {
-        nickname: "wang2",
-        content: "还行吧"
-      },
-      {
-        nickname: "wang3",
-        content: "东西不好，是坏的"
-      }, 
-      {
-        nickname: "wang4",
-        content: "这个很好用"
-      },
-      {
-        nickname: "wang5",
-        content: "用这很不方便"
-      },
-      {
-        nickname: "wang6",
-        content: "很棒很好"
-      },
-      {
-        nickname: "wang7",
-        content: "嗯嗯"
-      },
-      {
-        nickname: "wang8",
-        content: "支持"
-      },
-      {
-        nickname: "wang9",
-        content: "+1"
-      },
-      {
-        nickname: "wang10",
-        content: "好评一波"
-      },
-    ]
+    notlogindis: 'block'
   },
 
   /**
@@ -91,16 +49,28 @@ Page({
       id: videoid,
     },function(e){
       console.log(e);
-      videotit = e.result.detail.title;
-      viderimg = e.result.detail.thumb;
-      upvideoid = e.result.detail.id;
       if(e.status == 1){
+        videotit = e.result.detail.title;
+        viderimg = e.result.detail.thumb;
+        upvideoid = e.result.detail.id;
+
+        a.get("goods/poster/sharegoodsimg", {
+          id: upvideoid,
+        }, function (e) {
+          imgurl = e.url
+        });
         m.setData({
           myvideo: e.result.detail,
           criticList: e.result.comment
         })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
       }
-    })
+    });
   },
  
   //触摸开始事件
@@ -113,11 +83,9 @@ Page({
     let b = this;
     let touchendY = e.changedTouches[0].pageY;
     if (touchendY - touchstartY < -80) {
-      console.log("下拉");
       b.uplist();
     }
     if (touchendY - touchstartY > 80) {
-      console.log("上拉");
       b.downlist();
     }
   },
@@ -184,6 +152,18 @@ Page({
           myvideo: e.result.detail,
           criticList: e.result.comment
         })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      } else if (e.status == 2) {
+        wx.showToast({
+          title: '我是有底线的>_<',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
@@ -202,7 +182,19 @@ Page({
           myvideo: e.result.detail,
           criticList: e.result.comment
         })
-      } 
+      } else if (e.status == 0) {
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      } else if (e.status == 2) {
+        wx.showToast({
+          title: '我是第一个o_o',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   
@@ -217,14 +209,22 @@ Page({
       console.log(e);
       if (e.status == 1){
         if (e.result.status == 0){
-          message.fav = 0;
+          message.fav = message.fav - 1;
           message.fav_count = message.fav_count-1;
+          console.log('123');
         } else if (e.result.status == 1){
-          message.fav = 1;
+          message.fav = message.fav + 1;
           message.fav_count = message.fav_count + 1;
+          console.log('456');
         } 
         m.setData({
-          myvideo:message
+          myvideo: message
+        })
+      } else if (e.status == 0) {
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
         })
       }
     })
@@ -335,10 +335,11 @@ Page({
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
       // 来自页面内转发按钮
+      console.log('456');
       return {
         title: videotit,
         path: '/packageA/pages/watchvideo/watchvideo?id=' + videoid,
-        imageUrl: viderimg
+        imageUrl: imgurl
       }
     }
   }

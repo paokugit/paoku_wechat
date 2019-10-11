@@ -23,9 +23,18 @@ Page({
     useropenid = userinfo.openid;
     var m = this;
     a.get("member.level.detail",{},function(e){
-      m.setData({
-        goodGift: e.result.goods_id
-      })
+      if (e.status == 1){
+        m.setData({
+          goodGift: e.result.goods_id
+        })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      
     });
 
     
@@ -33,10 +42,18 @@ Page({
       openid: m.data.useropenid,
       level_id: 5
     }, function (e) {
-      console.log(e.result.goods);
-      m.setData({
-        goods_list: e.result.goods
-      })
+      console.log(e);
+      if (e.status == 1){
+        m.setData({
+          goods_list: e.result.goods
+        })
+      }else if(e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
     
   },

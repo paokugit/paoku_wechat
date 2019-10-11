@@ -44,6 +44,12 @@ Page({
             remain: e.result.remain,
             speedId: e.result.list[0].id
           })
+        } else if (e.status == 0){
+          wx.showToast({
+            title: e.result.message,
+            icon: 'none',
+            duration: 2000
+          })
         }
       })
     },
@@ -58,15 +64,15 @@ Page({
 
     pay_btn: function (e) {
       var m = this;
-      
-      console.log(m.data.speedId);
-
       s.get("payment.limit_order", {
         openid: useropenid,
         id: m.data.speedId
       }, function (e) {
         console.log(e);
         if(e.status == 1){
+          wx.showLoading({
+            mask: true
+          });
           wx.requestPayment({
             timeStamp: e.result.timeStamp,
             nonceStr: e.result.nonceStr,
@@ -80,27 +86,22 @@ Page({
                 icon: 'success',
                 duration: 3000
               })
+              wx.hideLoading();
               m.list();
-              
               m.setData({
                 isSelect: 1
               })
             },
             fail(res) {
               console.log(res);
+              wx.hideLoading();
             }
           })
-        }else if(e.status == 0){
-          wx.showModal({
-            title: '提示',
-            content: '请选择要购买的额度',
-            success: function (res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-              } else {
-                console.log('用户点击取消')
-              }
-            }
+        } else if (e.status == 0){
+          wx.showToast({
+            title: e.result.message,
+            icon: 'none',
+            duration: 2000
           })
         }
       })

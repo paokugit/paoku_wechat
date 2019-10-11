@@ -46,13 +46,15 @@ Page({
                 page: m.data.page
             }, function(e) {
                 console.log(e);
-                let totalPage = Math.ceil(e.result.total / e.result.pageSize);
-                let totalList = e.result.list;
-                m.setData({
+                if (e.status == 0){
+                  let totalPage = Math.ceil(e.result.total / e.result.pageSize);
+                  let totalList = e.result.list;
+                  m.setData({
                     list_friend: m.data.list_friend.concat(totalList),
                     total: e.result.total,
                     totalPage: totalPage
-                })
+                  })
+                }
             })
         }
     },

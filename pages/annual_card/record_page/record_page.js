@@ -28,12 +28,20 @@ Page({
       page: b.data.page
     }, function (e) {
       console.log(e);
-      let totalPage = Math.ceil(e.result.total / e.result.pageSize);
-      let totalList = e.result.record
-      b.setData({
-        totalPage: totalPage,
-        recordList: b.data.recordList.concat(totalList)
-      })
+      if (e.status == 1){
+        let totalPage = Math.ceil(e.result.total / e.result.pageSize);
+        let totalList = e.result.record
+        b.setData({
+          totalPage: totalPage,
+          recordList: b.data.recordList.concat(totalList)
+        })
+      } else if (e.status == 0){
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
