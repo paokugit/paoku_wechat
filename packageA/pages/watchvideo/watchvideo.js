@@ -8,7 +8,7 @@ var videoid = "";
 var videotit = "";
 var viderimg = "";
 
-var upvideoid = "";
+var vgoodsid = "";
 
 var touchstartY = "";
 var cartoon = 1;
@@ -27,7 +27,8 @@ Page({
     criticList:[],
     hinttime:6,
     hintshow:false,
-    notlogindis: 'block'
+    notlogindis: 'block',
+    cssno:'display:none'
   },
 
   /**
@@ -36,32 +37,35 @@ Page({
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
+
+    console.log(options.id);
     videoid = options.id;
     let m = this;
-
     m.videoList();
   },
 
   videoList:function(){
     let m = this;
+    wx.showLoading({
+      title: '加载中...'
+    })
     a.get("seckill.list.sale_detail",{
       openid: useropenid,
       id: videoid,
     },function(e){
       console.log(e);
+      wx.hideLoading();
       if(e.status == 1){
         videotit = e.result.detail.title;
         viderimg = e.result.detail.thumb;
-        upvideoid = e.result.detail.id;
+        vgoodsid = e.result.detail.goods_id;
+        videoid =  e.result.detail.id;
 
-        a.get("goods/poster/sharegoodsimg", {
-          id: upvideoid,
-        }, function (e) {
-          imgurl = e.url
-        });
+        m.imagurl();
         m.setData({
           myvideo: e.result.detail,
-          criticList: e.result.comment
+          criticList: e.result.comment,
+          cssno: 'display:block'
         })
       } else if (e.status == 0){
         wx.showToast({
@@ -139,15 +143,18 @@ Page({
   },
   
   uplist:function(op){
+    console.log(videoid);
     let m = this;
     a.get("seckill.list.sale_detail",{
       openid:useropenid,
-      id: upvideoid,
+      id: videoid,
       type:'up'
     },function(e){
       console.log(e);
       if (e.status == 1) {
-        upvideoid = e.result.detail.id;
+        vgoodsid = e.result.detail.goods_id;
+        videoid = e.result.detail.id;
+        m.imagurl();
         m.setData({
           myvideo: e.result.detail,
           criticList: e.result.comment
@@ -168,16 +175,18 @@ Page({
     })
   },
   downlist:function(op){
-    console.log(upvideoid);
     let m = this;
+    console.log(videoid);
     a.get("seckill.list.sale_detail", {
       openid: useropenid,
-      id: upvideoid,
+      id: videoid,
       type: 'down'
     }, function (e) {
       console.log(e);
       if (e.status == 1) {
-        upvideoid = e.result.detail.id;
+        vgoodsid = e.result.detail.goods_id;
+        videoid = e.result.detail.id;
+        m.imagurl();
         m.setData({
           myvideo: e.result.detail,
           criticList: e.result.comment
@@ -236,6 +245,15 @@ Page({
     wx.navigateTo({
       url: '/pages/goods/detail/index?id=' + e.currentTarget.dataset.id,
     })
+  },
+
+  // 获得分享图片
+  imagurl:function(){
+    a.get("goods/poster/sharegoodsimg", {
+      id: vgoodsid,
+    }, function (e) {
+      imgurl = e.url
+    });
   },
 
   // 授权昵称头像

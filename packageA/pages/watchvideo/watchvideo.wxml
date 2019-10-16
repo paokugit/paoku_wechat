@@ -1,7 +1,7 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title=""></navigation>
 <view>
   
-  <view class="middle" bindtouchstart="touchstart" bindtouchend="touchend">
+  <view class="middle" bindtouchstart="touchstart" bindtouchend="touchend" style="{{cssno}}">
 
     <view class="videotit">{{myvideo.title}}</view>
 
@@ -14,14 +14,14 @@
           <view>{{myvideo.marketprice}}</view>
         </view>
       </view>
-    </view>
+    </view> 
 
     <view class="myvideo">
       <video class="videoplay" object-fit="contain" autoplay="true" controls="true" src="{{myvideo.video}}" bindended="bindended"></video>
       <view class="iconvideo">
         <view style="position: relative;">
           <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
-          <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.id}}">
+          <view class="iconcss" catchtap="videozan" data-zanid="{{myvideo.goods_id}}">
             <image class="videoimg" src="{{globalimg}}/{{myvideo.fav == 0 ?'nozan.png':'hotzan.png'}}"></image>
             <view class="videotxt">{{myvideo.fav_count}}</view>
           </view>
@@ -57,7 +57,7 @@
 
       <image class="nocom" wx:if="{{criticList.length == 0?true:false}}" src="{{globalimg}}/nocom.png"></image>
 
-      <view class="criticright" catchtap="criticbtn" data-id="{{myvideo.id}}" animation="{{ani1}}">
+      <view class="criticright" catchtap="criticbtn" data-id="{{myvideo.goods_id}}" animation="{{ani1}}">
         <image src="{{myvideo.thumb}}"></image>
         <view>查看详情</view>
       </view>

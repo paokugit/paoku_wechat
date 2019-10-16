@@ -453,7 +453,8 @@
                 <view class="list-base-sum">{{item.marketprice}}</view>
                 <view class="list-base-piece">已抢购{{item.sales}}件</view>
               </view>
-              <view class="list-base-deduction">折扣宝抵扣</view>
+              <view class="list-base-deduction" wx:if="{{item.deduct == 1?true:false}}">卡路里抵扣</view>
+              <view class="list-base-deduction" wx:if="{{item.deduct == 2?true:false}}">折扣宝抵扣</view>
             </view>
           </navigator>
         </block>
