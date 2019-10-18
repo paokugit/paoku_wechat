@@ -504,7 +504,7 @@
                             <view class='calorie-left'>卡路里还差
                                 <text class='calorie-count'>{{calorienum}}</text>,不能享受免费兑,快去挣更多哦</view>
                             <view class='ckgd-img'>
-                                <image src='http://paokucoin.com/img/backgroup/chakangengduo.png'></image>
+                                <image src='{{globalimg}}/chakangengduo.png'></image>
                             </view>
                         </view>
                     </view>
@@ -818,7 +818,7 @@
                 <i class="iconbg icox icox-huiyuan"></i>
                 <view class="content">
                     <view class="title">
-                        <image src="https://paokucoin.com/img/backgroup/icon-white.png"></image>{{item.name}}</view>
+                        <image src="{{globalimg}}/icon-white.png"></image>{{item.name}}</view>
                     <view class="date">{{item.validate}}</view>
                     <view class="tip">
                         <block>

@@ -11,14 +11,14 @@
         <image class='img-image' src='{{logo}}'></image>
       </view>
       <view class='img-none' wx:if="{{logo ==''}}">
-        <image class='img-image' src='http://paokucoin.com/img/backgroup/moreuser@2x.png'></image>
+        <image class='img-image' src="{{globalimg}}/moreuser@2x.png"></image>
       </view>
       <view wx:if="{{merchname !=''}}" class="mingcheng-none-text">{{merchname}}</view>
       <view wx:if="{{merchname ==''}}" class="mingcheng-none-text">名字还没有哦</view>
     </view>
     <view class='lan-view' wx:if="{{desc==''}}">
       <view class='img-lan'>
-        <image class='img-image-er' src='http://paokucoin.com/img/backgroup/mnr@2x.png'></image>
+        <image class='img-image-er' src='{{globalimg}}/mnr@2x.png'></image>
       </view>
       <view class='lan-text'>店主有点懒，还没填写</view>
     </view>

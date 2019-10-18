@@ -37,7 +37,7 @@
             <!-- 图片和文字 -->
             <view class='kaluliandimg'>
               <view class="liebiao" style='display:flex;align-items:center'>
-                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/calorie02.png'></image>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='https://www.paokucoin.com/img/backgroup/calorie02.png'></image>
               </view>
               <view class='jianhao'>
                 <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
@@ -56,7 +56,7 @@
           <view wx:if="{{item.deduct-item.minprice>=0||item.deduct==0&&item.minprice==0}}" style="position:relative;">
             <view class='kaluliandimg'>
               <view class="liebiao" style='display:flex;align-items:center'>
-                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/calorie02.png'></image>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='https://www.paokucoin.com/img/backgroup/calorie02.png'></image>
               </view>
               <view class='jianhao'>
                 <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
@@ -85,7 +85,7 @@
             <!-- 图片和价格显示 -->
             <view class="imgandprice">
               <view style='display:flex;align-items:center'>
-                <image style='width:74rpx;height:34rpx;' src='http://paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+                <image style='width:74rpx;height:34rpx;' src='https://www.paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
               </view>
               <!-- 文字 -->
               <view style='display:flex;align-items:center;'>
@@ -108,7 +108,7 @@
           <view wx:if="{{item.showprice==0}}" style="position:relative;">
             <view class='kaluliandimg' style="border: 1rpx solid #f84900;">
               <view class="liebiao" style='display:flex;align-items:center'>
-                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='http://paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+                <image class="liebiaoimg" style='width:74rpx;height:34rpx;margin-left:-1rpx' src='https://www.paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
               </view>
               <view class='jianhao'>
                 <view style='font-size:18rpx;color:#ffae00;display:flex;align-items:center'>-{{item.deduct}}</view>
@@ -165,7 +165,7 @@
       <view class="inner1">
         <view class="title">用户未授权</view>
         <view class="image">
-          <image src="https://paokucoin.com/img/backgroup/shouquan-b.png"></image>
+          <image src="https://www.paokucoin.com/img/backgroup/shouquan-b.png"></image>
         </view>
         <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
         <view class="model-btns">

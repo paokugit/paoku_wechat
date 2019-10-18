@@ -46,7 +46,7 @@ Page((e = {
         type:'',
         select:0,
         list:[],
-        hotimg: "https://paokucoin.com/img/backgroup/hotdot.jpg",
+        hotimg: "https://www.paokucoin.com/img/backgroup/hotdot.jpg",
         notification: "/static/images/notification.png",
         saleout1: "/static/images/saleout-1.png",
         saleout2: "/static/images/saleout-2.png",

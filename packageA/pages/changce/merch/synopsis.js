@@ -16,7 +16,6 @@ Page({
     logo: "",
     merchid: '',
     desc:'',
-
     showIcon: true,
     gloheight: i.globalData.gloheight 
   },
@@ -48,7 +47,7 @@ Page({
       }
       //判断店铺头像
       if (e.message.logo == '') {
-        headimg = 'http://paokucoin.com/img/backgroup/heart-n@2x.png'
+        headimg = 'http://www.paokucoin.com/img/backgroup/heart-n@2x.png'
       } else {
         headimg = e.message.logo
       }

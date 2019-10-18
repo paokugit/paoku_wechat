@@ -34,7 +34,7 @@
     </view>
   </view>
   <view class='tel_none'>
-    <image class='tel_img' src='http://paokucoin.com/img/backgroup/phone-s.png'></image>
+    <image class='tel_img' src="{{globalimg}}/phone-s.png"></image>
     <view class='tel_text'>{{mobile}}</view>
   </view>
   <view class='dial_view'>

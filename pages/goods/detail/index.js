@@ -90,7 +90,6 @@ Page((a = {
         shareDis: 'block',
         listDis: 'block',
         seckillDis:'none',
-        notseckillDis:'block',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -121,7 +120,6 @@ Page((a = {
         limits: !0,
         phonetype: '',
         modelShow: !1,
-      isFold: true,
         showgoods: !0
     }, t(e, "timer", 0), t(e, "lasttime", 0), t(e, "hour", "-"), t(e, "min", "-"), t(e, "sec", "-"),
         t(e, "currentDate", ""), t(e, "dayList", ""), t(e, "currentDayList", ""), t(e, "currentObj", ""),
@@ -147,13 +145,6 @@ Page((a = {
             modelShow: !0
         });
     },
-    // 郝艳萍
-  showAll: function (e) {
-    this.setData({
-      isFold: !this.data.isFold,
-    })
-  },
-  // 郝艳萍
     goodsTab: function (t) {
         var e = this, a = t.currentTarget.dataset.tap;
         if ("info" == a) this.setData({
@@ -811,8 +802,7 @@ Page((a = {
            if(e.status==2){
             //    2为秒杀中
                t.setData({
-                   seckillDis:'block',
-                   notseckillDis:'none'
+                   seckillDis:'block'
                })
                second_time = e.result.end
                console.log(second_time)
@@ -821,15 +811,13 @@ Page((a = {
            else if(e.status==1){
             //1为秒杀未开始
                t.setData({
-                   seckillDis: 'block',
-                 notseckillDis: 'none'
+                   seckillDis: 'block'
                })
                second_time = e.result.start
                t.startTimer(second_time - timestampcount);
            }else if(e.status==4){
                t.setData({
-                   seckillDis: 'none',
-                 notseckillDis: 'block'
+                   seckillDis: 'none'
                })
            }
         });  

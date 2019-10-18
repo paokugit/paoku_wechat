@@ -119,7 +119,7 @@ Page({
             mask: true
           })
           wx.uploadFile({
-            url: 'https://paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
+            url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
             filePath: res.tempFilePaths[i],
             name: "file",
             header: { 'content-type': 'multipart/form-data' },
