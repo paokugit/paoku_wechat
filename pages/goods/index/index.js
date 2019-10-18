@@ -57,13 +57,14 @@ Page({
 
     },
     onLoad: function(e) {
-      console.log(app.globalData)
+      console.log(this.data.params)
         var s = this;
         if (setTimeout(function() {
             s.setData({
                 areas: t.getCache("cacheset").areas
             });
         }, 3e3), !a.isEmptyObject(e)) {
+          console.log(e)
             var i = e.isrecommand || e.isnew || e.ishot || e.isdiscount || e.issendfree || e.istime ? 1 : 0;
             this.setData({
                 params: e,
@@ -71,6 +72,7 @@ Page({
                 filterBtns: e,
                 fromsearch: e.fromsearch || !1
             });
+            console.log(params)
         }
         this.initCategory(), e.fromsearch || this.getList(), this.getRecord();
     },
@@ -132,6 +134,7 @@ Page({
   },
     getList: function() {
         var t = this;
+      console.log(t.data.params)
         t.setData({
             loading: !0
         }), t.data.params.page = t.data.page, e.get("goods/get_list", t.data.params, function(e) {
@@ -153,6 +156,8 @@ Page({
         });
     },
     bindSort: function(t) {
+      console.log(t)
+      console.log(this.data.params)
         var e = t.currentTarget.dataset.order, a = this.data.params;
         if ("" == e) {
             if (a.order == e) return;

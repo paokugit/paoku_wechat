@@ -1,7 +1,8 @@
 {
     "entryPagePath": "pages/index/index",
     "pages": [
-        "pages/index/index", 
+        "pages/index/index",
+        "pages/store/store",
         "pages/discount/zkbscancode/zkbscancode",
         "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
