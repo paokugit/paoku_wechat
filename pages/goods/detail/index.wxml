@@ -515,15 +515,43 @@
             <view class="scroll-view-item_H"></view>
             <view class="scroll-view-item_H"></view>
             <view class="appraise-readmore">
-              
-              <text>更多评论</text>
-              
+              <view class="appraise-readmore-flex">
+                <view class="more-comment">更多评论</view>
+                <view class="more-line"></view>
+                <view class="more-eng">See more</view>
+              </view>
             </view>
           </scroll-view>
         </view>
       </view>
       <!-- 商品评价-郝艳萍 -->
-      <view class="fui-cell-group fui-comment-group" wx:if="{{packagegoods}}">
+      <!-- 店铺-郝艳萍 -->
+      <view class="shopBox">
+        <view class="shopbox-titlebox">
+          <view class="titlebox-left">
+            <view class="shopImg"></view>
+            <view class="shopName">三只松鼠郑州旗舰店</view>
+            <view class="onsale-box">在售商品
+              <text class="onsale-num">30</text>件
+            </view>
+          </view>
+          <view class="titlebox-right">
+            <view class="favorable-rate">进店逛逛</view>
+            <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+          </view>
+        </view>
+        <view class="showcaseBox">
+          <view class="showcase-item">
+            <view class="showcaseImg"></view>
+            <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
+            <view class="showcase-price">￥36.6</view>
+          </view>
+          <view class="showcase-item"></view>
+          <view class="showcase-item"></view>
+        </view>
+      </view>
+      <!-- 店铺-郝艳萍 -->
+      <!-- <view class="fui-cell-group fui-comment-group" wx:if="{{packagegoods}}">
         <navigator url="/pages/goods/package/index?id={{packagegoodsid}}">
           <view class="fui-cell fui-cell-click">
             <view class="fui-cell-text desc">{{packageList.title}}</view>
@@ -542,7 +570,6 @@
         </view>
       </view>
       <view class="fui-cell-group fui-shop-group">
-        <!-- 隐藏 -->
         <view class='hiddenbox' style='display:{{listDis}}'>
           <view class="fui-list">
             <view class="fui-list-media">
@@ -556,8 +583,7 @@
             </view>
           </view>
         </view>
-        <!-- 隐藏 -->
-      </view>
+      </view> -->
       <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">
         <view class="fui-cell" style="display: block;">
           <template is="wxParse" data="{{wxParseData:wxParseData_buycontent.nodes}}"></template>

@@ -2242,10 +2242,12 @@ image {
   color: #333;
   font-size: 30rpx;
 }
-.appraise-right{
+
+.appraise-right {
   display: flex;
-  align-items: center
+  align-items: center;
 }
+
 .favorable-rate {
   color: #01d7a1;
   font-size: 26rpx;
@@ -2300,6 +2302,7 @@ image {
   position: relative;
   box-shadow: 0px 0px 10rpx #e5e5e5;
 }
+
 .scroll-view-flex {
   width: 100%;
   height: 100%;
@@ -2354,26 +2357,30 @@ image {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-.appraise-standard{
+
+.appraise-standard {
   color: #999;
   font-size: 24rpx;
   position: absolute;
   left: 22rpx;
   bottom: 15rpx;
-  background: #f88
+  background: #f88;
 }
+
 .appraise-item-right {
   width: 272rpx;
   height: 272rpx;
   background: #fff;
-  position: relative
+  position: relative;
 }
-.appraise-img{
+
+.appraise-img {
   width: 272rpx;
   height: 272rpx;
-  background: #f99
+  background: #f99;
 }
-.appraise-img-num{
+
+.appraise-img-num {
   width: 68rpx;
   height: 30rpx;
   border-radius: 30rpx;
@@ -2385,44 +2392,165 @@ image {
   font-size: 24rpx;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.appraise-readmore{
+
+.appraise-readmore {
   width: 272rpx;
   height: 272rpx;
   background: #f8f8f8;
   display: inline-block;
   border-radius: 20rpx;
   margin-left: 24rpx;
-  position: relative;
+  /* position: relative; */
 }
-.appraise-readmore-flex{
+
+.appraise-readmore-flex {
   width: 272rpx;
   height: 272rpx;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.more-comment{
-  width: 120rpx;
-  height: 30rpx;
-  background: #f00;
+
+.more-comment {
+  width: auto;
+  height: auto;
   color: #999;
   font-size: 26rpx;
+  position: absolute;
+  top: 30%;
 }
-.more-line{
+
+.more-line {
   width: 100rpx;
   height: 2rpx;
   background: #e6e6e6;
   margin-top: 6rpx;
   margin-bottom: 6rpx;
+  position: absolute;
+  top: 45%;
 }
-.more-eng{
+
+.more-eng {
   width: 120rpx;
   height: 30rpx;
-  background: #f00;
- color: #999;
+  color: #999;
   font-size: 26rpx;
+  position: absolute;
+  top: 55%;
 }
+
+.shopBox {
+  width: 94%;
+  height: 430rpx;
+  padding: 24rpx 3%;
+  background: pink;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+.shopbox-titlebox {
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titlebox-left {
+  width: 500rpx;
+  height: 110rpx;
+  position: relative;
+}
+
+.shopImg {
+  width: 100rpx;
+  height: 100rpx;
+  background: #f00;
+  border-radius: 50%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.shopName {
+  width: 400rpx;
+  font-size: 26rpx;
+  color: #333;
+  position: absolute;
+  top: 20rpx;
+  left: 115rpx;
+}
+
+.onsale-box {
+  color: #999;
+  font-size: 24rpx;
+  position: absolute;
+  top: 60rpx;
+  left: 115rpx;
+}
+
+.onsale-num {
+  color: #333;
+  font-size: 26rpx;
+  margin-left: 4rpx;
+  margin-right: 4rpx;
+}
+
+.titlebox-right {
+  display: flex;
+  align-items: center;
+}
+
+.showcaseBox {
+  width: 98%;
+  height: 320rpx;
+  padding: 0 1%;
+  background: #ff6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.showcase-item {
+  width: 200rpx;
+  height: 310rpx;
+  background: #f99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.showcaseImg {
+  width: 200rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+  background: #0f0;
+}
+
+.showcase-title {
+  width: 200rpx;
+  height: 70rpx;
+  background: #99f;
+  line-height: 35rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #333;
+  font-size: 24rpx;
+}
+
+.showcase-price {
+  width: 100%;
+  color: #f00;
+  font-size: 24rpx;
+}
+
 /* 郝艳萍 */
