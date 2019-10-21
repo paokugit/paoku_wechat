@@ -1,0 +1,27 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品评价"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="commentBox" wx:if="{{show}}">
+  <view class="totalcomment-box">
+    <view class="total-top">
+      <view class="total-left">总评
+        <image class="xingImg" src="{{globalimg}}/pj_inco_xing@2x.png"></image>
+      </view>
+      <view class="total-right">好评度 98.8%</view>
+    </view>
+    <block>
+      <block>
+        <view class="labelBox">
+          <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">全部</view>
+          <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">最新评价</view>
+          <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">味道不错(266)</view>
+          <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">特价</view>
+          <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">评价</view>
+          <view bindtap="myTab" class="item {{type==5?'activeA':''}}" data-type="5">追加评价(6)</view>
+        </view>
+      </block>
+    </block>
+  </view>
+  <view class="comment-tab-con">
+    <view class="comment-item"></view>
+  </view>
+</view>

@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "packageA/pages/product/evaluate/evaluate",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -82,6 +82,7 @@
       {
         "root": "packageA",
         "pages": [
+          "pages/product/evaluate/evaluate",
           "pages/lottery/lottery/lottery",
           "pages/playmethod/playmethod/playmethod",
           "pages/playmethod/hotdetail/hotdetail",
