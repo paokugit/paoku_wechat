@@ -22,6 +22,19 @@
     </block>
   </view>
   <view class="comment-tab-con">
-    <view class="comment-item"></view>
+    <view class="comment-item">
+      <view class="commentator-info">
+        <image class="commentator-avatar"></image>
+        <view class="commentator-name">糖果</view>
+      </view>
+      <view class="star-time">
+        <view class="starsBox">
+          <image class="starsImg" src="{{globalimg}}/pj_inco_xing1@2x.png"></image>
+          <image class="starsImg" src="{{globalimg}}/pj_inco_xing1@2x.png"></image>
+          <image class="starsImg" src="{{globalimg}}/pj_inco_xing1@2x.png"></image>
+        </view>
+        <view class="commenttime">2019-10-21</view>
+      </view>
+    </view>
   </view>
 </view>
