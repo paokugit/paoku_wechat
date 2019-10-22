@@ -81,6 +81,7 @@
       {
         "root": "packageA",
         "pages": [
+          "pages/product/promotion/promotion",
           "pages/lottery/lottery/lottery",
           "pages/playmethod/playmethod/playmethod",
           "pages/playmethod/hotdetail/hotdetail",

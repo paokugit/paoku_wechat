@@ -120,7 +120,13 @@ Page((a = {
         limits: !0,
         phonetype: '',
         modelShow: !1,
-        showgoods: !0
+        showgoods: !0,
+
+        // xph
+        csshide: "display: none;",
+        coupons: "display: none;",
+        mobile: "display: none;",
+        insidetit:''
     }, t(e, "timer", 0), t(e, "lasttime", 0), t(e, "hour", "-"), t(e, "min", "-"), t(e, "sec", "-"),
         t(e, "currentDate", ""), t(e, "dayList", ""), t(e, "currentDayList", ""), t(e, "currentObj", ""),
         t(e, "currentDay", ""), t(e, "checkedDate", ""), t(e, "showDate", ""), t(e, "scope", ""),
@@ -537,6 +543,46 @@ Page((a = {
             modelShow: !0
         });
     },
+
+
+    // xph开始
+    ticketbtn:function(e){
+      let m = this;
+      let stateid = e.currentTarget.dataset.stateid;
+      console.log(stateid);
+      if (stateid == 1){
+        m.setData({
+          coupons:"display: block;",
+          csshide: "display: block;",
+          insidetit:"优惠"
+        })
+      } else if (stateid == 2){
+        m.setData({
+          mobile: "display: block;",
+          csshide: "display: block;",
+          insidetit: "活动"
+        })
+      }
+    },
+    closebtnA:function(){
+      this.setData({
+        coupons: "display: none;",
+        mobile:"display: none;",
+        csshide: "display: none;"
+      })
+    },
+    cuactivity:function(){
+      this.setData({
+        coupons: "display: none;",
+        mobile: "display: none;",
+        csshide: "display: none;"
+      })
+      wx.navigateTo({
+        url: '/packageA/pages/product/promotion/promotion',
+      })
+    },
+    // xph结束
+
     specsTap: function (t) {
         var e = this;
         c.specsTap(t, e);

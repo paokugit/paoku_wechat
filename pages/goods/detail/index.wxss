@@ -1986,3 +1986,416 @@ image {
     right: 20rpx;
     top: 36%
 }
+/* 郝艳萍 */
+.productInfo01{
+  width: 100%;
+  height: 335rpx;
+  background: #fff;
+  border-radius: 0 0 20rpx 20rpx
+}
+.priceBox{
+  width: 96%;
+  height: 100rpx;
+  padding: 0 2%;
+  background: #ff7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.priceBox-left{
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center
+}
+.goodsPrice{
+  display: flex;
+  align-items: center;
+}
+.money-symbol{
+  color: #f00;
+  font-size: 44rpx;
+}
+.money-count{
+  color: #f00;
+  font-size: 60rpx;
+}
+.goods-original-price{
+  color: #999;
+  font-size: 34rpx;
+  margin-left: 15rpx;
+  text-decoration: line-through
+}
+.sharebtn-box{
+  width: 120rpx;
+  height: 40rpx;
+  background: #f00;
+}
+.productTit{
+  width: 96%;
+  height: 90rpx;
+  background: #fff;
+  padding: 0 2%;
+  color: #1c1c1c;
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx
+}
+.subhead-box{
+  width: 96%;
+  height: 40rpx;
+  padding: 0 2%;
+  background: #f00;
+
+}
+/* 郝艳萍 */
+
+
+
+/* xph优惠券、活动 开始*/
+.special-offer{
+  width: 100%;
+  height: 300rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.specialpiece{
+  height: 180rpx;
+  
+}
+.offerpiece{
+  height: 120rpx;
+}
+.specialpiece,.offerpiece{
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pieceleft{
+  width: 100%;
+  display: flex;
+}
+.without{
+  font-size: 28rpx;
+  color: #999999;
+  margin-right: 30rpx;
+}
+.piecetxt{
+  font-size: 30rpx;
+  color: #333333;
+  margin-right: 30rpx;
+}
+.piecetit{
+  font-size: 26rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+}
+.distance{
+  margin-bottom: 30rpx;
+}
+.biaoti{
+  font-size: 22rpx;
+  color: #ff0000;
+  padding: 5rpx 10rpx;
+  background: #fff0f0;
+  border-radius: 2rpx;
+}
+.youhui{
+  width: 400rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;    
+  overflow: hidden;
+  margin-left: 15rpx;
+}
+
+.specialimg{
+  width: 15rpx;
+  height: 24rpx;
+}
+
+/* 弹出层 */
+.frame{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.frame-inside{
+  width: 100%;
+  height: 70%;
+  background: #ffffff;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* 标题 */
+.insidetit{
+  font-size: 40rpx;
+  color: #333333;
+  text-align: center;
+  margin: 40rpx 0;
+}
+.closebtn{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 55rpx;
+}
+
+/* 促销 */
+.insidetwo{
+  padding: 0 24rpx 50rpx;
+}
+.cuxiao{
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 30rpx;
+}
+.cuactivity{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cucss{
+  width: 58rpx;
+  height: 30rpx;
+  font-size: 22rpx;
+  color: #01d7a1;
+  background: #f0fffb;
+  margin-right: 15rpx;
+  text-align: center;
+}
+.cuxiaotxt{
+  width: 500rpx;
+  font-size: 26rpx;
+  color: #333;
+  white-space: nowrap;
+  text-overflow:ellipsis;    
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.cuxiaoitem{
+  font-size: 22rpx;
+  color: #999;
+}
+.cuxiaoimg{
+  width: 15rpx;
+  height: 24rpx;
+}
+
+/* 领券 */
+.ticket-card{
+  padding: 0 24rpx;
+}
+
+.cardcss{
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 540rpx;
+  overflow: scroll;
+}
+.backdropimg{
+  width: 655rpx;
+  height: 241rpx;
+  margin: 0 auto 30rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.backdropimg image{
+  width: 100%;
+  height: 100%;
+}
+
+.backdropleft{
+  width: 213rpx;
+  height: 220rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.leftmoney{
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.leftquota{
+  font-size: 70rpx;
+  color: #fff;
+  margin-bottom: 15rpx;
+}
+.leftquota::before{
+  content: "￥";
+  font-size: 40px;
+  color: #fff;
+}
+.condition{
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.backdropright{
+  width: 440rpx;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.astrict{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  margin: 45rpx 30rpx 30rpx;
+}
+.time-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20rpx;
+}
+.right-time{
+  font-size: 22rpx;
+  color: #333;
+}
+.right-btn{
+  width: 140rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.stateA{
+  background: #ff0000;
+}
+.achieveA{
+  background: #fff;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+.stateB{
+  background: #ffaa33;
+}
+.achieveC{
+  background: #fff;
+  border: 1px solid #ffaa33;
+  color: #ffaa33;
+}
+.stateC{
+  background: #4c97ff;
+}
+.achieveC{
+  background: #fff;
+  border: 1px solid #4c97ff;
+  color: #4c97ff;
+}
+
+.cardimg{
+  width: 100%;
+  height: 100%;
+}
+
+/* 活动 */
+.kinetic{
+  padding: 0 24rpx;
+}
+.deduction{
+  margin-bottom: 50rpx;
+  
+}
+.deduction,.deduction-left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.deduction-tit{
+  width: 70rpx;
+  height: 30rpx;
+  background: #f0fdf9;
+  color: #01d7a1;
+  font-size: 22rpx;
+  text-align:center;
+  line-height: 30rpx;
+}
+.deduction-sum{
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 15rpx;
+}
+
+.refuse{
+  font-size: 26rpx;
+  color: #333;
+}
+
+.radio{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+radio{
+    width: 40rpx;
+}
+radio .wx-radio-input{
+    border-radius: 50%; 
+    width: 30rpx;
+    height: 30rpx;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+    border-radius: 50%;
+    width: 55rpx; 
+    height: 55rpx; 
+    line-height: 55rpx;
+    text-align: center;
+    font-size: 30rpx; 
+    color:#fff; 
+    background: #01d7a1;
+    border-color: #01d7a1;
+}
+
+.outerbtn{
+  width: 100%;
+  border-top: 1px solid #e6e6e6;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
+.corebtn{
+  width: 700rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  color: #fff;
+  font-size: 34rpx;
+  margin: 10rpx auto;
+  background: #01d7a1;
+}
+/* xph结束 */
