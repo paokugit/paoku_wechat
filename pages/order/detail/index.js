@@ -14,6 +14,7 @@ Page({
         diyshow: {},
         city_express_state: 0,
       showIcon: true,
+      globalimg: a.globalData.appimg,
       gloheight: a.globalData.gloheight
     },
     onLoad: function(t) {
