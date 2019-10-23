@@ -11,7 +11,11 @@ Page({
     loading: !0,
     type: 0,
     page: 1,
-    list:[]
+    list: [],
+    isFold: true,
+    isOpen: false,
+    isFold: false, // 是否显示'展开' 默认不显示显示
+    img_len:3
   },
 
   /**
@@ -21,8 +25,40 @@ Page({
     this.setData({
       show: !0,
     })
-  },
+    let _that = this; // 一定要先存this，避免在回调中设置data时报错
 
+    setTimeout(function () {
+      let query = wx.createSelectorQuery();
+      query.select('.content').boundingClientRect();
+      query.exec(function (rect) {
+        if (rect[0] === null) {
+          return
+        } else if (rect[0].height > 100) { // 自定义一个边界高度
+          _that.setData({
+            isFold: true
+          })
+        }
+      })
+    }, 100)
+  },
+  open() {
+    this.setData({
+      isOpen: this.data.isOpen ? false : true
+    })
+  },
+  change: function () {
+    var hid = this.data.hidden;
+    if (hid == true) {
+      hid = false;
+    }
+    else {
+      hid = true;
+    }
+    this.setData({
+      hidden: hid // 改变状态
+    })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
