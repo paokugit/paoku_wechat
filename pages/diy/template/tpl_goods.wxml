@@ -24,14 +24,15 @@
                   <view class='zkb-box'>
                       <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                       <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>+{{item.showprice}}</view>
                       <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
                   </view>
               </view>
               <view class='price-box'>
                   <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
                   <view class='discountprice-box'>
-                      <view class='dis-text'>折后</view>
+                      <view class='dis-text'>价格</view>
                       <view class='dis-price'>￥{{item.showprice}}</view>
                   </view>
                   <view class='originalprice'>{{item.productprice}}元</view>

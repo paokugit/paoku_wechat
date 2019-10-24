@@ -73,7 +73,7 @@
             <view class='type-img'>
                 <image src='{{globalimg}}/recharge01.png'></image>
             </view>
-            <view class='type-text'>充值</view>
+            <view class='type-text'>兑换</view>
         </view>
         <view class='type-item' bindtap='withdrawbtn'>
             <view class='type-img'>
