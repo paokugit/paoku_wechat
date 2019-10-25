@@ -20,7 +20,7 @@
       <view class="detail-bg">
         <view class="bg-left">
           <view class="buy-state">{{order.statusstr}}{{order.refundstate>0?'('+order.refundtext+')':''}}</view>
-          <view class="buy-sub">时间结束后订单将会被取消</view>
+          <!-- <view class="buy-sub">时间结束后订单将会被取消</view> -->
         </view>
         <view class="bg-right">
           <image class="timeImg" src="{{globalimg}}/dd_img_shij@2x.png"></image>
@@ -133,8 +133,11 @@
               <block wx:if="{{order.status>1}}">
                 <navigator class="fui-list" url="/pages/order/express/index?id={{order.id}}">
                   <view class="fui-list-media">
-                    <view class="fui-list-icon">
+                    <!-- <view class="fui-list-icon">
                       <text class="icox icox-icon049"></text>
+                    </view> -->
+                    <view>
+                      <image class="wuliuImg" src="{{globalimg}}/dd_inco_wl@2x.png"></image>
                     </view>
                   </view>
                   <view class="fui-list-inner">
@@ -155,10 +158,28 @@
                 </navigator>
               </block>
             </block>
+            <!-- 仅状态为退款中的显示 -->
+            <block>
+              <block>
+                <view class="refund-inform">
+                  <view class="refund-box">
+                    <image class="refundImg" src="{{globalimg}}/dd_inco_tkcg@2x.png"></image>
+                  </view>
+                  <view class="inform-box">
+                    <!-- <text style="color:rgb(51,51,51);font-size:28rpx">你已成功发起退款申请,请耐心等待商家处理</text> -->
+                    <text style="color:rgb(51,51,51);font-size:28rpx">退款成功</text>
+                    <image class="fanhui-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+                  </view>
+                </view>
+              </block>
+            </block>
             <navigator class="fui-list" hoverClass="none">
               <view class="fui-list-media">
-                <view class="fui-list-icon">
+                <!-- <view class="fui-list-icon">
                   <text class="icox icox-dingwei1"></text>
+                </view> -->
+                <view>
+                  <image class="dizhiImg" src="{{globalimg}}/dd_icon_dz@2x.png"></image>
                 </view>
               </view>
               <view class="fui-list-inner">
@@ -218,13 +239,30 @@
           </view>
         </block>
       </block>
+      <!-- 退款金额 -->
+      <block>
+        <block>
+          <view class="refundInfo">
+            <view class="refundInfo-top">
+              <text style="color:rgb(51,51,51);font-size:28rpx">退款总金额</text>
+              <text style="color:rgb(1,215,161);font-size:28rpx">￥999</text>
+            </view>
+            <view class="refundInfo-bottom">
+              <text style="color:rgb(51,51,51);font-size:28rpx">退回到账</text>
+              <text style="color:rgb(51,51,51);font-size:28rpx">￥999</text>
+            </view>
+          </view>
+        </block>
+      </block>
       <!-- 店铺 -->
       <view class="fui-list-store" style="padding-bottom:20rpx;">
         <view class="fui-list-group-title">
-          <view class="fui-list-icon">
+          <!-- <view class="fui-list-icon">
             <text class="icox icox-dianpu1"></text>
+          </view> -->
+          <view>
+            <image class="storeImg" src="{{globalimg}}/dd_inco_dp@2x.png"></image>
           </view>
-          <!-- <view><image class="storeImg" src="{{globalimg}}/dd_inco_dp@2x.png"></image></view> -->
           <text class="shop" style="margin-left:20rpx;font-size:32rpx">{{shop.name=='null'?'':shop.name}}</text>
         </view>
         <block wx:for="{{nogift}}">
@@ -233,7 +271,7 @@
               <image class="goods_img" src="{{item.thumb}}"></image>
             </view>
             <view class="fui-list-inner" style="height:140rpx">
-              <view class="text">{{item.title}}</view>
+              <view class="titletext">{{item.title}}</view>
               <view class="subtitle">{{item.optionname}}</view>
               <view class="priceBox">
                 <view class="price-num">¥
@@ -329,17 +367,6 @@
             </view>
           </block>
         </block>
-        <!-- 联系客服 -->
-        <view class="kefu-box">
-          <block>
-            <block wx:if="{{customer==1}}">
-              <button class="kefubtn" openType="contact" sessionFrom="weapp" showMessageCard="true">
-                <image class="kefuImg" src="{{globalimg}}/dd_inco_lxkf@2x.png"></image>
-                <text class="kefu-text">联系客服</text>
-              </button>
-            </block>
-          </block>
-        </view>
       </view>
       <block>
         <block wx:if="{{order.virtual>0&&order.virtual_str!=''&&order.status==3}}">
@@ -472,7 +499,7 @@
             <view class="fui-cell">
               <view class="fui-cell-label">会员卡优惠</view>
               <view class="fui-cell-info"></view>
-              <view class="fui-cell-remark noremark">-¥ {{membercard_info.card_dec_price}}</view>
+              <view class="fui-cell-remark noremark">- ¥ {{membercard_info.card_dec_price}}</view>
             </view>
           </block>
         </block>
@@ -584,52 +611,67 @@
             </text>
           </view>
         </view> -->
+        <!-- 实付款 -->
         <view class="paymentBox">
-          <text class="payment-text">实付款(含运费):</text>
+          <text class="payment-text">实付款(含运费)：</text>
           <text class="payment-count">¥ {{order.price}}</text>
         </view>
       </view>
-      <!-- 实付款 -->
-      <!-- <view class="fui-cell">
-        <view class="fui-cell-label" style="width:auto;">实付费(含运费)</view>
-        <view class="fui-cell-info"></view>
-        <view class="fui-cell-remark noremark">
-          <text class="text-danger">
-              <text style="font-size:30rpx">¥ {{order.price}}</text>
-          </text>
-        </view>
-      </view> -->
-      <view class="fui-cell-group">
+      <!-- 订单编号 -->
+      <view class="fui-cell-group" style="border-radius: 20rpx">
         <view class="order-info">
-          <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-            <text class="fui-cell-label" selectable="true">订单编号：{{order.ordersn}}</text>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153);position:relative">订单编号：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.ordersn}}</text>
+            <text class="copyBox" bindtap='copyText' data-text="{{order.ordersn}}">复制</text>
           </view>
-          <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-            <text class="fui-cell-label" selectable="true">创建时间：{{order.createtime}}</text>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">创建时间：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.createtime}}</text>
           </view>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付方式：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">支付宝支付</text>
+          </view>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">配送方式：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">普通配送</text>
+          </view>
+
           <block>
             <block wx:if="{{order.paytime}}">
-              <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-                <text class="fui-cell-label" selectable="true">支付时间：{{order.paytime}}</text>
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.paytime}}</text>
               </view>
             </block>
           </block>
           <block>
             <block wx:if="{{order.sendtime}}">
-              <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-                <text class="fui-cell-label" selectable="true">发货时间：{{order.sendtime}}</text>
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">发货时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.sendtime}}</text>
               </view>
             </block>
           </block>
           <block>
             <block wx:if="{{order.finishtime}}">
-              <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-                <text class="fui-cell-label" selectable="true">完成时间：{{order.finishtime}}</text>
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">完成时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.finishtime}}</text>
               </view>
             </block>
           </block>
+          <!-- 联系客服 -->
+          <view class="kefu-box">
+            <block>
+              <block wx:if="{{customer==1}}">
+                <button class="kefubtn" openType="contact" sessionFrom="weapp" showMessageCard="true">
+                  <image class="kefuImg" src="{{globalimg}}/dd_inco_lxkf@2x.png"></image>
+                  <text class="kefu-text">联系客服</text>
+                </button>
+              </block>
+            </block>
+          </view>
         </view>
       </view>
+
+
+
+      
       <block>
         <block wx:if="{{order.diyformfields.length>0}}">
           <view>
@@ -661,10 +703,11 @@
           </view>
         </block>
       </block>
+
       <view class="fui-footer aa {{iphonexnavbar}}">
         <!-- <block>
           <block wx:if="{{customer==1}}">
-            <button class="btn btn-default btn-default-o pull-left" openType="contact" sessionFrom="weapp" showMessageCard="true">
+            <button class="btn btn-default btn-default-hlp pull-left" openType="contact" sessionFrom="weapp" showMessageCard="true">
               <text class="icox icox-customerservice"></text>客服
             </button>
           </block>
@@ -673,14 +716,14 @@
           <block wx:if="{{!order.canrestore}}">
             <block>
               <block wx:if="{{order.cancancel}}">
-                <view class="btn btn-default btn-default-o btn-sm">
+                <view class="btn btn-default btn-default-hlp btn-sm">
                   <picker bindchange="cancel" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
                 </view>
               </block>
             </block>
             <block>
               <block wx:if="{{order.canpay}}">
-                <navigator class="btn btn-danger-o btn-sm" url="/pages/order/pay/index?id={{order.id}}">支付订单</navigator>
+                <navigator class="btn btn-danger-hlp btn-sm" url="/pages/order/pay/index?id={{order.id}}">支付订单</navigator>
               </block>
             </block>
             <block>
@@ -695,7 +738,7 @@
             </block>
             <block>
               <block wx:if="{{order.candelete}}">
-                <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
+                <view bindtap="delete" class="btn btn-default btn-default-hlp btn-sm" data-type="1">删除订单</view>
               </block>
             </block>
             <block>
@@ -705,17 +748,17 @@
             </block>
             <block>
               <block wx:if="{{order.cancomment}}">
-                <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}">评价</navigator>
+                <navigator class="btn btn-default btn-default-affirm btn-sm" url="/pages/order/comment/index?id={{order.id}}">评价</navigator>
               </block>
             </block>
             <block>
               <block wx:if="{{order.cancomplete&&order.iscycelbuy==0&&!order.isonlyverifygoods}}">
-                <view bindtap="finish" class="btn btn-default btn-default-o btn-sm">确认收货</view>
+                <view bindtap="finish" class="btn btn-default btn-default-affirm btn-sm">确认收货</view>
               </block>
             </block>
             <block>
               <block wx:if="{{order.canrefund&&order.iscycelbuy==0}}">
-                <view class="btn btn-default btn-sm" bindtap='refundbtn'>{{order.refundtext}}</view>
+                <view class="btn btn-default btn-default-hlp btn-sm" bindtap='refundbtn'>{{order.refundtext}}</view>
               </block>
             </block>
             <block>
@@ -726,7 +769,7 @@
 
             <block>
               <block wx:if="{{order.cancancelrefund}}">
-                <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-cancel">取消申请</view>
+                <view bindtap="refundcancel" class="btn btn-default-hlp btn-sm btn-cancel">取消申请</view>
               </block>
             </block>
           </block>

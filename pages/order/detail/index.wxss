@@ -99,7 +99,6 @@
 .price-num .goods-num {
   width: auto;
   height: auto;
-  
 }
 
 .fui-list-inner .subtitle {
@@ -350,25 +349,34 @@ image {
   border-radius: 20rpx;
 }
 
+.fui-list-media .wuliuImg {
+  width: 30rpx;
+  height: 26rpx;
+}
+
+.fui-list-media .dizhiImg {
+  width: 26rpx;
+  height: 30rpx;
+}
+
 .storeImg {
   width: 36rpx;
   height: 33rpx;
 }
 
 .kefu-box {
-  width: 100%;
-  height: 70rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   border-top: 1rpx solid rgb(248, 248, 248);
-  margin-top: 10rpx
+  background: #fff;
+  margin-top: 20rpx;
 }
 
 .kefuImg {
   width: 34rpx;
   height: 36rpx;
-  margin-right: 12rpx;
+  margin-right: 5rpx;
 }
 
 .kefu-text {
@@ -388,21 +396,128 @@ button::after {
   padding: 0;
   font-size: 30rpx;
   display: flex;
-  align-items: center
+  align-items: center;
 }
-.paymentBox{
-  height: 100rpx;
-  padding: 0 24rpx;
+
+.paymentBox {
+  padding: 24rpx;
   text-align: right;
-  line-height: 100rpx;
   border-top: 1rpx solid rgb(248, 248, 248);
 }
-.payment-text{
+
+.payment-text {
   color: rgb(51, 51, 51);
-  font-size: 28rpx
+  font-size: 28rpx;
 }
-.payment-count{
+
+.payment-count {
   color: rgb(1, 215, 161);
   font-size: 32rpx;
-  margin-left: 10rpx
+  margin-left: 10rpx;
+}
+
+.btn-default-hlp {
+  background: transparent;
+  color: rgb(153, 153, 153);
+  border: 1px solid rgb(233, 233, 233);
+}
+
+.copyBox {
+  width: auto;
+  height: 100%;
+  color: rgb(1, 215, 161);
+  font-size: 28rpx;
+  position: absolute;
+  top: 0;
+  right: 18%;
+  display: flex;
+  align-items: center;
+}
+
+.btn.btn-default-hlp {
+  background: transparent;
+  color: #999;
+  border: 1px solid #e9e9e9;
+}
+
+.btn.btn-danger-hlp {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #01d7a1;
+  background: #01d7a1;
+}
+
+.fui-list-inner .titletext {
+  width: 100%;
+  color: #000;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.btn.btn-default-affirm {
+  background: transparent;
+  color: #01d7a1;
+  border: 1px solid #01d7a1;
+}
+
+.refund-inform {
+  position: relative;
+  display: flex;
+  padding: 16rpx 24rpx;
+  transition-duration: 300ms;
+  align-items: center;
+  overflow: hidden;
+}
+
+.refund-box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin-right: 20rpx;
+  position: relative;
+}
+
+.refundImg {
+  width: 28rpx;
+  height: 30rpx;
+}
+
+.inform-box {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fanhui-img {
+  width: 15rpx;
+  height: 24rpx;
+}
+
+.refundInfo {
+  height: auto;
+  background-color: #fff;
+  position: relative;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  padding: 0 24rpx;
+}
+
+.refundInfo-top, .refundInfo-bottom {
+  padding: 24rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refundInfo-top {
+  border-top: 1rpx solid rgb(248, 248, 248); 
 }
