@@ -488,6 +488,60 @@
           </view>
         </block>
       </block>
+
+      <!-- 订单编号 -->
+      <view class="fui-cell-group" style="border-radius: 20rpx">
+        <view class="order-info">
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153);position:relative">订单编号：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.ordersn}}</text>
+            <text class="copyBox" bindtap='copyText' data-text="{{order.ordersn}}">复制</text>
+          </view>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">创建时间：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.createtime}}</text>
+          </view>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付方式：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">支付宝支付</text>
+          </view>
+          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">配送方式：
+            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">普通配送</text>
+          </view>
+
+          <block>
+            <block wx:if="{{order.paytime}}">
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.paytime}}</text>
+              </view>
+            </block>
+          </block>
+          <block>
+            <block wx:if="{{order.sendtime}}">
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">发货时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.sendtime}}</text>
+              </view>
+            </block>
+          </block>
+          <block>
+            <block wx:if="{{order.finishtime}}">
+              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">完成时间：
+                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.finishtime}}</text>
+              </view>
+            </block>
+          </block>
+          <!-- 联系客服 -->
+          <!-- <view class="kefu-box">
+            <block>
+              <block wx:if="{{customer==1}}">
+                <button class="kefubtn" openType="contact" sessionFrom="weapp" showMessageCard="true">
+                  <image class="kefuImg" src="{{globalimg}}/dd_inco_lxkf@2x.png"></image>
+                  <text class="kefu-text">联系客服</text>
+                </button>
+              </block>
+            </block>
+          </view> -->
+        </view>
+      </view>
+
+
       <view class="fui-cell-group price-cell-group" style="border-radius: 20rpx">
         <view class="fui-cell">
           <view class="fui-cell-label">商品小计{{order.cycelComboPeriods}}</view>
@@ -617,57 +671,7 @@
           <text class="payment-count">¥ {{order.price}}</text>
         </view>
       </view>
-      <!-- 订单编号 -->
-      <view class="fui-cell-group" style="border-radius: 20rpx">
-        <view class="order-info">
-          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153);position:relative">订单编号：
-            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.ordersn}}</text>
-            <text class="copyBox" bindtap='copyText' data-text="{{order.ordersn}}">复制</text>
-          </view>
-          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">创建时间：
-            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.createtime}}</text>
-          </view>
-          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付方式：
-            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">支付宝支付</text>
-          </view>
-          <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">配送方式：
-            <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">普通配送</text>
-          </view>
 
-          <block>
-            <block wx:if="{{order.paytime}}">
-              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">支付时间：
-                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.paytime}}</text>
-              </view>
-            </block>
-          </block>
-          <block>
-            <block wx:if="{{order.sendtime}}">
-              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">发货时间：
-                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.sendtime}}</text>
-              </view>
-            </block>
-          </block>
-          <block>
-            <block wx:if="{{order.finishtime}}">
-              <view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">完成时间：
-                <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{order.finishtime}}</text>
-              </view>
-            </block>
-          </block>
-          <!-- 联系客服 -->
-          <view class="kefu-box">
-            <block>
-              <block wx:if="{{customer==1}}">
-                <button class="kefubtn" openType="contact" sessionFrom="weapp" showMessageCard="true">
-                  <image class="kefuImg" src="{{globalimg}}/dd_inco_lxkf@2x.png"></image>
-                  <text class="kefu-text">联系客服</text>
-                </button>
-              </block>
-            </block>
-          </view>
-        </view>
-      </view>
 
 
 
@@ -705,13 +709,13 @@
       </block>
 
       <view class="fui-footer aa {{iphonexnavbar}}">
-        <!-- <block>
+        <block>
           <block wx:if="{{customer==1}}">
             <button class="btn btn-default btn-default-hlp pull-left" openType="contact" sessionFrom="weapp" showMessageCard="true">
               <text class="icox icox-customerservice"></text>客服
             </button>
           </block>
-        </block> -->
+        </block>
         <block>
           <block wx:if="{{!order.canrestore}}">
             <block>
@@ -756,6 +760,11 @@
                 <view bindtap="finish" class="btn btn-default btn-default-affirm btn-sm">确认收货</view>
               </block>
             </block>
+            <!-- <block>
+              <block wx:if="{{order.canrefund&&order.iscycelbuy==0}}">
+                <view class="btn btn-default btn-default-hlp btn-sm" bindtap='remindbtn'>提醒发货</view>
+              </block>
+            </block> -->
             <block>
               <block wx:if="{{order.canrefund&&order.iscycelbuy==0}}">
                 <view class="btn btn-default btn-default-hlp btn-sm" bindtap='refundbtn'>{{order.refundtext}}</view>
