@@ -7,13 +7,13 @@
     </view>
   </view>
   <view class='store-img-text' style='margin-top:50rpx' bindtap='returnstore'>
-    <image class='store-img' src='http://paokucoin.com/img/backgroup/store02@2x.png'></image>
+    <image class='store-img' src='https://www.paokucoin.com/img/backgroup/store02@2x.png'></image>
     <view class='store-text'>店铺首页</view>
   </view>
 </view>
 <view class='none-img' wx:if="{{shopimg==''||shopimg==null}}">
   <view class='none-img-view'>
-    <image class='none-image' src='http://paokucoin.com/img/backgroup/wuneirong560.480px@2x.png'></image>
+    <image class='none-image' src='https://www.paokucoin.com/img/backgroup/wuneirong560.480px@2x.png'></image>
   </view>
   <view class='lazy'>这个店主有点懒哦</view>
   <view class='nopic'>没有查找到任何图片</view>
@@ -22,7 +22,7 @@
   </view>
   <view class='bottom'>
   <view class='store-img-text' bindtap='returnstore'>
-    <image class='store-img' src='http://paokucoin.com/img/backgroup/store02@2x.png'></image>
+    <image class='store-img' src='https://www.paokucoin.com/img/backgroup/store02@2x.png'></image>
     <view class='store-text'>店铺首页</view>
   </view>
   </view>

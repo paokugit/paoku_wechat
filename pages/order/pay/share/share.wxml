@@ -21,7 +21,7 @@
                 </li>
             </ul>
             <view class="share_button">
-                <view bindtap="transmit" class="button_c text-center" style="background: url(https://paokucoin.com/img/backgroup/sbtn.png); background-size: 100% 100%;">立即传递</view>
+                <view bindtap="transmit" class="button_c text-center" style="background: url(https://www.paokucoin.com/img/backgroup/sbtn.png); background-size: 100% 100%;">立即传递</view>
             </view>
         </view>
     </view>

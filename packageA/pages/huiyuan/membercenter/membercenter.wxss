@@ -13,7 +13,7 @@ page{
 .float {
     width: 680rpx;
     height: 160rpx;
-    background: url("https://paokucoin.com/img/backgroup/button_yaoqing.png");
+    background: url("https://www.paokucoin.com/img/backgroup/button_yaoqing.png");
     background-size: 680rpx 160rpx;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;

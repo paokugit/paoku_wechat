@@ -605,7 +605,7 @@ image {
 .ballon {
     width: 600rpx;
     height: 150rpx;
-    background: url("https://paokucoin.com/img/backgroup/buttun@2x.png");
+    background: url("https://www.paokucoin.com/img/backgroup/buttun@2x.png");
     background-size: 600rpx 150rpx;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;

@@ -2,7 +2,7 @@
   <view class="header" style="height:{{titleBarHeight}}px;padding-top:{{statusBarHeight}}px;background-color:{{backgroundColor}}" >
     <view wx:if="{{showIcon}}" class="title-bar">
       <view class="back" bindtap="headerBack">
-        <image src="http://paokucoin.com/img/backgroup/nav-fanhui.png"></image>
+        <image src="https://www.paokucoin.com/img/backgroup/nav-fanhui.png"></image>
       </view>
       <view class="line"></view>
       <view class="home" bindtap="headerHome">

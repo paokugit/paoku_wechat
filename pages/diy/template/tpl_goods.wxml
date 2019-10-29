@@ -25,7 +25,7 @@
                       <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                       <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
                       <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
-                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>+{{item.showprice}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'><text decode="{{true}}">赠&nbsp;&nbsp;{{item.showprice}}</text></view>
                       <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
                   </view>
               </view>
@@ -79,7 +79,8 @@
                   <view class='zkb-box'>
                       <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                       <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'><text decode="{{true}}">赠&nbsp;&nbsp;{{item.showprice}}</text></view>
                       <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
                   </view>
               </view>
@@ -132,7 +133,8 @@
                   <view class='zkb-box'>
                       <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                       <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                     <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'><text decode="{{true}}">赠&nbsp;&nbsp;{{item.showprice}}</text></view>
                       <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
                   </view>
               </view>

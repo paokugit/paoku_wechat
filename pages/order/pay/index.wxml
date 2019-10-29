@@ -280,7 +280,7 @@
             <view class='order-mask' style='display:{{popupDis}}' bindtap='vipBtn'>
                 <view class='order-mask-relative'>
                     <view class='order-maskimg'>
-                        <image src='https://paokucoin.com/img/backgroup/gxtc.png'></image>
+                        <image src='https://www.paokucoin.com/img/backgroup/gxtc.png'></image>
                     </view>
                     <view class='order-mask-btn'>
                         <view class='gobackhome' bindtap='backbtn'>回到首页</view>
@@ -292,7 +292,7 @@
             <view class='order-mask' style='display:{{jiankangDis}}'>
                 <view class='order-mask-relative'>
                     <view class='jiankang-maskimg'>
-                        <image src='https://paokucoin.com/img/backgroup/jiankang03.png'></image>
+                        <image src='https://www.paokucoin.com/img/backgroup/jiankang03.png'></image>
                     </view>
                     <view class='jiankang-btn' bindtap='rewardBtn'></view>
                 </view>
@@ -302,7 +302,7 @@
             <view class='order-mask' style='display:{{xingxuanDis}}'>
                 <view class='order-mask-relative'>
                     <view class='xingxuan-maskimg'>
-                        <image src='https://paokucoin.com/img/backgroup/xingxuan03.png'></image>
+                        <image src='https://www.paokucoin.com/img/backgroup/xingxuan03.png'></image>
                     </view>
                     <view class='jiankang-btn' bindtap='rewardBtn'></view>
                 </view>
