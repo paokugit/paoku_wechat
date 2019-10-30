@@ -12,7 +12,8 @@ Page({
     cancel: e.cancelArray,
     cancelindex: 0,
     showIcon: true,
-    gloheight: t.globalData.gloheight
+    gloheight: t.globalData.gloheight,
+    globalimg: t.globalData.appimg,
   },
   onLoad: function(a) {
     console.log(t.globalData)
@@ -44,6 +45,15 @@ Page({
         loaded: !0
       })) : a.toast(e.message, "loading");
     }, this.data.show);
+  },
+  contactbtn: function() {
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '已成功提醒卖家发货',
+    // })
+    wx.showToast({
+      title: '已成功提醒卖家发货',
+    })
   },
   selected: function(t) {
     var e = a.data(t).type;
@@ -88,12 +98,12 @@ Page({
     var s = a.data(t).orderid;
     e.finish(s, "/pages/order/index");
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showToast({
       icon: 'loading',
       title: '加载中'
     })
-  wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
     return a.onShareAppMessage();
