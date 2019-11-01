@@ -22,7 +22,7 @@ page {
 }
 
 .order .empty {
-  padding: 260rpx 150rpx;
+  padding: 260rpx 100rpx;
   font-size: 34rpx;
 }
 
@@ -37,8 +37,8 @@ page {
 }
 
 .order .light {
-  height: 240rpx;
-  width: 240rpx;
+  width: 382rpx;
+  height: 294rpx;
 }
 
 .order .text-cancel {
@@ -64,7 +64,7 @@ page {
   line-height: 1.5;
 }
 
-.fui-list-inner.text-right:empty {
+.fui-list-inner.text-right:empty  {
   display: none;
 }
 

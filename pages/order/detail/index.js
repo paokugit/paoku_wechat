@@ -96,8 +96,11 @@ Page({
           content: hintmessage,
         })
       } else {
+        // wx.navigateTo({
+        //   url: '/pages/order/refund/index?id=' + ee.options.id,
+        // })
         wx.navigateTo({
-          url: '/pages/order/refund/index?id=' + ee.options.id,
+          url: '/pages/order/exchange/index?id=' + ee.options.id,
         })
       }
     })

@@ -2,6 +2,8 @@ var t = getApp(), a = (t.requirejs("jquery"), t.requirejs("core")), o = t.requir
 
 module.exports = {
     number: function(t, e) {
+      console.log(t)
+      console.log(e)
         var s = a.pdata(t), d = o.number(e, t), i = (s.id, s.optionid, s.min);
         s.max;
         1 == d && 1 == s.value && "minus" == t.target.dataset.action || d < i && "minus" == t.target.dataset.action ? o.toast(e, "单次最少购买" + s.value + "件") : s.value == s.max && "plus" == t.target.dataset.action || (parseInt(e.data.stock) < parseInt(d) ? o.toast(e, "库存不足") : e.setData({
@@ -9,6 +11,8 @@ module.exports = {
         }));
     },
     inputNumber: function(t, a) {
+      console.log(t)
+      console.log(a)
         var e = a.data.goods.maxbuy, s = a.data.goods.minbuy, d = t.detail.value;
         if (d > 0) {
             if (e > 0 && e <= parseInt(t.detail.value) && (d = e, o.toast(a, "单次最多购买" + e + "件")), 

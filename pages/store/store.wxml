@@ -170,7 +170,9 @@
           <view class="tab-item">
             <view class="productImg">
               <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
-              <view class="rec-box"><image src="{{globalimg}}/recommend01.png"></image></view>
+              <view class="rec-box">
+                <image src="{{globalimg}}/recommend01.png"></image>
+              </view>
             </view>
             <view class="productName">啦啦啦啦啦啦啦啦啦啊啊啦啦啦啦啦啦阿拉蕾</view>
             <view class="productLabel">

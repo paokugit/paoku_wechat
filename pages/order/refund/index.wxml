@@ -117,8 +117,8 @@
         <view class="thumb-box">
           <view class="productImg"></view>
           <view class="productdesc">
-          <text class="productname">茶杯套装</text>
-          <text class="productstandard">颜色分类</text>
+            <text class="productname">茶杯套装</text>
+            <text class="productstandard">颜色分类</text>
           </view>
         </view>
         <view class="fui-cell" hoverClass="none">
