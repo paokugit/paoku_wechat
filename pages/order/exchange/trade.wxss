@@ -18,7 +18,7 @@ page {
   padding: 24rpx;
   display: flex;
   position: relative;
-  align-items: center
+  align-items: center;
 }
 
 .proState-radius {
@@ -200,8 +200,8 @@ page {
 }
 
 .standard {
-  width: 94%;
-  padding: 0 3%;
+  width: 92%;
+  padding: 0 4%;
   color: #333;
   font-size: 34rpx;
   font-weight: bold;
@@ -233,13 +233,15 @@ page {
 }
 
 .dis {
+  width: 92%;
+  padding: 0 4%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .quantity-box {
-  width: 94%;
-  padding: 0 3%;
+  width: 92%;
+  padding: 0 4%;
   height: 120rpx;
   margin-top: 60rpx;
   display: flex;
@@ -248,8 +250,8 @@ page {
 }
 
 .confirmbox {
-  width: 94%;
-  padding: 0 3%;
+  width: 92%;
+  padding: 0 4%;
   height: 118rpx;
   border-top: 1rpx solid #e6e6e6;
   display: flex;
@@ -276,8 +278,66 @@ button::after {
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
 }
-.explainIpt{
+
+.explainIpt {
   width: 100%;
-  color:#333;
-  font-size:28rpx
+  color: #333;
+  font-size: 28rpx;
+}
+
+textarea {
+  width: 92%;
+  height: auto;
+  resize: none;
+  color: #333;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+
+.address-box {
+  width: 90%;
+  height: auto;
+  /* background: #ff6; */
+}
+
+.prostate-address {
+  /* background: pink; */
+  display: flex;
+  position: relative;
+  padding: 10rpx 24rpx;
+}
+
+.address-title {
+  position: relative;
+  font-size: 26rpx;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.realname {
+  display: inline-block;
+  max-width: 450rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 48rpx;
+}
+
+.mobile {
+  display: inline-block;
+  max-width: 450rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.address-text {
+  position: relative;
+  font-size: 26rpx;
+  color: #333;
+  margin-top: 10rpx
 }

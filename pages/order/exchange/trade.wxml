@@ -18,7 +18,7 @@
         <view class="state-remark">换货原因:</view>
         <view class="statepicker">
           <picker bindchange="bindReasonChange" value="{{index}}" range="{{reasonarr}}" style="width:100%">
-            <text style="color:#999;font-size:28rpx">{{reason}}</text>
+            <text style="color:#333;font-size:28rpx">{{reason}}</text>
           </picker>
           <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
         </view>
@@ -26,15 +26,22 @@
       <view class="proState">
         <view class="state-remark">换货商品:</view>
         <view class="statepicker" bindtap="showModal">
-          <view class="tradebtn" style="width:100%;color:#999;font-size:28rpx">{{num}}件{{guige[gindex].name}}:{{color[cindex].name}}</view>
+          <view class="tradebtn" style="width:100%;color:#333;font-size:28rpx">{{num}}件{{guige[gindex].name}}:{{color[cindex].name}}</view>
           <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
         </view>
       </view>
-      <view class="proState">
+      <view class="prostate-address">
         <view class="state-remark">收货地址:</view>
-        <view class="statepicker">
-          <text style="color:#333;font-size:28rpx">糖果</text>
-        </view>
+        <navigator class="statepicker" url="/pages/member/address/index" >
+          <view class="address-box">
+            <view class="address-title">
+              <view class="realname">糖果</view>
+              <view class="mobile">18236962763</view>
+            </view>
+            <view class="address-text">河南省郑州市新郑市龙湖镇</view>
+          </view>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </navigator>
       </view>
       <view class="proState-radius">
         <view class="state-remark">换货说明:</view>
