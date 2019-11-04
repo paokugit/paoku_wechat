@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/order/exchange/trade",
+    "entryPagePath": "pages/order/exchange/list",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -37,6 +37,7 @@
         "pages/order/exchange/index",
         "pages/order/exchange/retreat",
         "pages/order/exchange/trade",
+        "pages/order/exchange/list",
         "pages/order/refund/index",
         "pages/order/create/index",
         "pages/order/store/index",

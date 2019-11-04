@@ -7,6 +7,21 @@
   <block wx:if="{{show}}">
     <navigation id='Navigation' show-icon='{{showIcon}}' title="退款申请"></navigation>
     <view class="productInfo">
+      <!-- 多订单商品的添加编辑显示 -->
+      <view class="add-edit-box">
+        <view style="color:#333;font-size:28rpx">退款商品</view>
+        <view class="editbtn">添加和编辑</view>
+      </view>
+      <!-- 多订单商品的添加编辑显示 -->
+      <!-- 多商品的图片显示 -->
+      <view class="moreThumb">
+        <view class="moreImg">
+        <view class="morePrice">￥999.98</view>
+        </view>
+        <view class="moreImg"></view>
+        <view class="moreImg"></view>
+      </view>
+      <!-- 多商品的图片显示 -->
       <view class="thumb-box ">
         <view class="productImg "></view>
         <view class="productdesc ">

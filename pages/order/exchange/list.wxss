@@ -1,0 +1,92 @@
+/* pages/order/exchange/list.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+
+.list-box {
+  width: 100%;
+  height: auto;
+  border-top: 1rpx solid #f8f8f8;
+}
+
+.list-item {
+  width: 94%;
+  height: 250rpx;
+  padding: 0 3%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.iconbox {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.item-info {
+  width: 90%;
+  height: 100%;
+  background: pink;
+  display: flex;
+  align-items: center;
+}
+
+.cart-thumb {
+  width: 190rpx;
+  height: 190rpx;
+}
+
+.info-right {
+  width: 400rpx;
+  height: 190rpx;
+  margin-left: 20rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: relative;
+}
+
+.protitle {
+  width: 400rpx;
+  font-size: 34rpx;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pro-subtitle {
+  font-size: 24rpx;
+  color: #999;
+  position: absolute;
+  top: 50rpx;
+  left: 0;
+}
+
+.pricebox {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prostate{
+  position: absolute;
+  top: 160rpx;
+  left: 0;
+  color: #01d7a1;
+  font-size: 24rpx
+}

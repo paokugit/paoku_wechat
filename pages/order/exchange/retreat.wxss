@@ -12,7 +12,47 @@ page {
   height: auto;
   padding: 20rpx 3% 0;
 }
-
+.add-edit-box{
+  width: 100%;
+  height: auto;
+  padding: 5rpx 0;
+  background: pink;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.editbtn{
+  padding: 6rpx 12rpx;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 10rpx;
+  color: #999;
+  font-size: 24rpx
+}
+.moreThumb{
+  width: 100%;
+  height: auto;
+  background: #ff6;
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moreImg{
+  width: 160rpx;
+  height: 160rpx;
+  background: #0f0;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative
+}
+.morePrice{
+  padding: 8rpx 5rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0
+}
 .proState, .proState-radius {
   background: #fff;
   padding: 24rpx;
