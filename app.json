@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/order/exchange/list",
+    "entryPagePath": "pages/order/comment/index",
     "pages": [
         "pages/index/index",
         "pages/store/store",

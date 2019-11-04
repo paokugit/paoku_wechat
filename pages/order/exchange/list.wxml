@@ -10,8 +10,8 @@
       <view wx:for="{{carts}}" class="list-item">
         <view class="iconbox">
           <!-- wx:if 是否选择显示不同图标 -->
-          <icon wx:if="{{item.selected}}" type="success" color="red" bindtap="selectList" data-index="{{index}}" />
-          <icon wx:else type="circle" color="#6a6a6a" bindtap="selectList" data-index="{{index}}" />
+          <icon wx:if="{{item.selected}}" type="success" color="red" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}"/>
+          <icon wx:else type="circle" color="#6a6a6a" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}"/>
         </view>
         <!-- 点击商品图片可跳转到商品详情 -->
         <view class="item-info">
@@ -30,12 +30,16 @@
     </view>
     <!-- 底部操作栏 -->
     <view class="fui-footer">
-      <!-- wx:if 是否全选显示不同图标 -->
-      <icon wx:if="{{selectAllStatus}}" type="success" color="#f00" bindtap="selectAll" />
-      <icon wx:else type="circle" color="#6a6a6a" bindtap="selectAll" />
-      <text>全选</text>
-      <!-- 总价 -->
-      <text>￥{{totalPrice}}</text>
+      <view class="footer-con">
+        <view class="con-left">
+          <!-- wx:if 是否全选显示不同图标 -->
+          <icon wx:if="{{selectAllStatus}}" type="success" color="#f00" bindtap="selectAll" data-id="{{item.id}}"/>
+          <icon wx:else type="circle" color="#6a6a6a" bindtap="selectAll" data-id="{{item.id}}"/>
+          <text style="margin-left:10rpx;color:#333;font-size:30rpx">全选</text>
+          <!-- <text>￥{{totalPrice}}</text> -->
+        </view>
+        <view class="con-right" bindtap="confirmbtn">确定</view>
+      </view>
     </view>
   </block>
 </block>
