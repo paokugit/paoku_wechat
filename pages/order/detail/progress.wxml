@@ -1,0 +1,17 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="退款进度"></navigation>
+
+<view class="progress">
+      <view class="radius rad_1 radius_active">1</view>
+      <view class="radius rad_2 radius_active">2</view>
+      <view class="radius rad_3">3</view>
+      <progress percent="50" activeColor="#F86221" backgroundColor="#E0E2E7" stroke-width="4" class="pro_border"/>
+    </view>
+  </block>
+</block>

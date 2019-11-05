@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/order/comment/index",
+    "entryPagePath": "pages/order/detail/progress",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -32,6 +32,7 @@
         "pages/goods/package/index",
         "pages/goods/package/detail/index",
         "pages/goods/poster/poster",
+        "pages/order/detail/progress",
         "pages/order/detail/index",
         "pages/order/comment/index",
         "pages/order/exchange/index",

@@ -1,0 +1,38 @@
+/* pages/order/detail/progress.wxss */
+.progress{
+  width:494rpx;
+  height: 60rpx;
+  margin:auto;
+  position: relative;
+  display: -webkit-flex;
+  align-items: center;
+}
+.progress .pro_border{
+  width:100%;
+}
+.progress .radius{
+  position: absolute;
+  width:60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 50%;
+  background: #E0E2E7;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #737586;
+  text-align:center;
+  top:0;
+}
+.progress .radius_active{
+  background: #F86221;
+  color:#fff;
+}
+.progress .rad_1{
+  left:0;
+}
+.progress .rad_2{
+  left:217rpx;
+}
+.progress .rad_3{
+  right:0;
+}

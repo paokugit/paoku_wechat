@@ -4,7 +4,7 @@ var t = getApp(),
 Page({
   data: {
     stars_class: ["text-default", "text-primary", "text-success", "text-warning", "text-danger"],
-    stars_text: ["差评", "一般", "挺好", "满意", "非常满意"],
+    stars_text: ["非常差", "差", "一般", "好", "非常"],
     normalSrc: "icox icox-star",
     selectedSrc: "icox icox-xing selected",
     key: -1,
@@ -13,11 +13,16 @@ Page({
     imgs: [],
     showIcon: true,
     gloheight: t.globalData.gloheight,
+    globalimg: t.globalData.appimg,
+    loading: !0,
+    type: 0,
+    page: 1,
+    isOpen: false,
   },
   onLoad: function(a) {
     console.log(a)
     var a = {
-      id: "40804"
+      id: "40803"
     }
     this.setData({
       options: a
@@ -26,8 +31,9 @@ Page({
   get_list: function() {
     var t = this;
     a.get("order/comment", t.data.options, function(e) {
+      console.log(e)
       0 == e.error ? (e.show = !0, t.setData(e)) : (a.toast(e.message, "loading"), wx.navigateBack());
-    }, !0);
+    }, !1);
   },
   select: function(t) {
     var a = t.currentTarget.dataset.key;
@@ -59,6 +65,7 @@ Page({
     }, !0);
   },
   upload: function(t) {
+    console.log(t)
     var e = this,
       s = a.data(t),
       i = s.type,
@@ -77,5 +84,20 @@ Page({
       current: n[r],
       urls: n
     });
-  }
+  },
+  myTab: function (t) {
+    console.log(t)
+    var e = this,
+      i = a.pdata(t).type;
+    e.setData({
+      type: i,
+      page: 1,
+      loading: !0
+    });
+  },
+  open() {
+    this.setData({
+      isOpen: this.data.isOpen ? false : true
+    })
+  },
 });
