@@ -1,38 +1,90 @@
 /* pages/order/detail/progress.wxss */
-.progress{
-  width:494rpx;
-  height: 60rpx;
-  margin:auto;
+
+.fui-list-groups {
+  background-color: #fff;
   position: relative;
-  display: -webkit-flex;
-  align-items: center;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
 }
-.progress .pro_border{
-  width:100%;
-}
-.progress .radius{
+
+.fui-list-groups.express-list .fui-lists .fui-list-inner:before {
+  content: " ";
+  width: 0;
+  height: 100%;
   position: absolute;
-  width:60rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  border-left: 2rpx solid #999;
+  top: 0;
+  left: 40rpx;
+  z-index: 9999;
+}
+
+.express-list .fui-lists:first-child .fui-list-inner:before {
+  top: 40rpx;
+}
+
+.express-list .fui-lists:last-child .fui-list-inner:before {
+  height: 40rpx;
+}
+
+.express-list .fui-lists .fui-list-inner {
+  padding: 30rpx 70rpx;
+}
+
+.express-list .fui-lists.current .fui-list-inner .text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.express-list .fui-lists .fui-list-inner .text.step:before {
+  content: " ";
+  height: 12rpx;
+  width: 12rpx;
+  background: #999;
+  border: 2rpx solid #999;
   border-radius: 50%;
-  background: #E0E2E7;
-  font-family: PingFangSC-Semibold;
-  font-size: 30rpx;
-  color: #737586;
-  text-align:center;
-  top:0;
+  position: absolute;
+  z-index: 9999;
+  top: 10rpx;
+  left: -37rpx;
 }
-.progress .radius_active{
-  background: #F86221;
-  color:#fff;
+
+.express-list .fui-lists.current .fui-list-inner .text.step:before {
+  height: 18rpx;
+  width: 18rpx;
+  background: #01d7a1;
+  border: 0.1rem solid #b2f3e3;
+  position: absolute;
+  top: 10rpx;
+  left: -42rpx;
 }
-.progress .rad_1{
-  left:0;
+
+.express-list .fui-lists {
+  padding: 0;
 }
-.progress .rad_2{
-  left:217rpx;
+
+.fui-list-inner .text {
+  position: relative;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  color: #999;
 }
-.progress .rad_3{
-  right:0;
+
+.fui-lists {
+  position: relative;
+  display: flex;
+  padding: 16rpx 24rpx;
+  transition-duration: 300ms;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fui-lists:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  height: 0;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  left: 20rpx;
 }
