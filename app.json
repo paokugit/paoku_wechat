@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "pages/member/bind/index",
     "pages": [
         "pages/index/index",
         "pages/store/store",

@@ -1,44 +1,24 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="绑定手机号"></navigation>
 <view class='bind_box'>
-    <view class='bind-con'>
-        <view class='bind-phone'>
-            <view class='phone-left'>
-                <view class='phone-text'>手机号</view>
-                <view class='symbol'>
-                    <image src='{{globalimg}}/asterisk.png'></image>
-                </view>
-            </view>
-            <view class='phone-right'>
-                <picker bindchange="bindPickerChange" value="{{country[index].id}}" range="{{country}}" range-key="{{'name_zh'}}">
-                <view>{{country[index].name_zh}}</view>
-                </picker>
-            </view>
+  <view class='bind-con'>
+    <view class='bind-phone'>
+      <view class='phone-right'>
+          <picker bindchange="bindPickerChange" value="{{country[index].id}}" range="{{country}}" range-key="{{'name_zh'}}">
+            <text style="color:#9b9b9b;font-size:28rpx">{{country[index].name_zh}}</text>
+            <image class="trigonImg" src="{{globalimg}}/trigon.png"></image>
+          </picker>
+        <view class='phonebox'>
+          <input class='phoneipt' bindinput="inputChange" data-type="mobile" maxlength="11" placeholder="请输入您的手机号" type="number"></input>
         </view>
-        <view class='bind-phone'>
-            <view class='phone-left'>
-                <view class='phone-text'>手机号</view>
-                <view class='symbol'>
-                    <image src='{{globalimg}}/asterisk.png'></image>
-                </view>
-            </view>
-            <view class='phone-right'>
-                <input class='phoneipt' bindinput="inputChange" data-type="mobile" maxlength="11" placeholder="请输入您的手机号" type="number"></input>
-            </view>
-        </view>
-
-        <view class='bind-code'>
-            <view class='code-left'>
-                <view class='code-text'>验证码</view>
-                <view class='symbol'>
-                    <image src='{{globalimg}}/asterisk.png'></image>
-                </view>
-            </view>
-            <view class='code-right'>
-                <input class='codeipt' bindinput="codeChange" data-type="mobile" maxlength="6" placeholder="6位验证码" type="number"></input>
-                <button class='getcode' bindtap='getCode' style='display:{{codedisp}}'>获取验证码</button>
-                <button class='get_code' style='display:{{seconddisp}}'>{{second}}s后重新获取</button>
-            </view>
-        </view>
+      </view>
     </view>
-    <button class='binding' bindtap='bindPhone'>立即绑定</button>
+    <view class='bind-code'>
+      <view class='code-right'>
+        <input class='codeipt' bindinput="codeChange" data-type="mobile" maxlength="6" placeholder="请输入验证码" type="number"></input>
+        <button class='getcode' bindtap='getCode' style='display:{{codedisp}}'>获取验证码</button>
+        <button class='get_code' style='display:{{seconddisp}}'>{{second}}s后重新获取</button>
+      </view>
+    </view>
+  </view>
+  <button class='binding' bindtap='bindPhone'>立即绑定</button>
 </view>
