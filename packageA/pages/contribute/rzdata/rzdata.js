@@ -8,6 +8,8 @@ var userwechat = ''
 var message = ''
 var rzbind = ''
 var mobilecount = ''
+var phonenum = ""
+var wechatnum=""
 Page({
 
   /**
@@ -25,21 +27,17 @@ Page({
     gloheight: i.globalData.gloheight
 
   },
-  gobindbtn: function () {
-    wx.navigateTo({
-      url: '/pages/member/bind/index?param=' + 3,
-    })
-  },
-  wechatbtn: function () {
-    this.setData({
-      maskDis: 'block'
-    })
-  },
-  inputChange: function (event) {
+  // gobindbtn: function () {
+  //   wx.navigateTo({
+  //     url: '/pages/member/bind/index?param=' + 3,
+  //   })
+  // },
+
+  inputChange: function(event) {
     userwechat = event.detail.value
     console.log(userwechat)
   },
-  confirmbtn: function () {
+  confirmbtn: function() {
     var a = this
     a.setData({
       maskDis: 'none',
@@ -48,7 +46,7 @@ Page({
     s.get("myown/devote/wx", {
       openid: userinfo.openid,
       weixin: userwechat
-    }, function (e) {
+    }, function(e) {
       console.log(e)
       if (e.message == '成功') {
         message = e.message
@@ -59,7 +57,7 @@ Page({
       }
     })
   },
-  backBtn: function () {
+  backBtn: function() {
     wx.navigateTo({
       url: '/packageA/pages/contribute/contribute/contribute',
     })
@@ -67,9 +65,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // 修改资料传过来的参数
     console.log(options)
+    phonenum = options.mobile
+    wechatnum = options.weixin
     rzbind = options.bindcount
     var t = this
     if (options.mobile == '') {
@@ -83,53 +83,66 @@ Page({
       userweixin: options.weixin
     })
   },
+  bindbtn: function() {
+    wx.navigateTo({
+      url: '/packageA/pages/contribute/rzdata/phone?number=' + phonenum,
+    })
+  },
+  wechatbtn: function () {
+    // this.setData({
+    //   maskDis: 'block'
+    // })
+    wx.navigateTo({
+      url: '/packageA/pages/contribute/rzdata/wechat?wechatnum=' + wechatnum,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/member/bind/index",
+    "entryPagePath": "packageA/pages/contribute/rzdata/wechat",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -125,6 +125,9 @@
           "pages/contribute/record/record",
           "pages/contribute/withdraw/withdraw",
           "pages/contribute/rzdata/rzdata",
+          "pages/contribute/rzdata/phone",
+          "pages/contribute/rzdata/wechat",
+          "pages/contribute/rzdata/bindwechat",
           "pages/changce/merch/homepage",
           "pages/changce/merch/businesspictures",
           "pages/changce/merch/synopsis",
