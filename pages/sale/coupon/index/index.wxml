@@ -82,11 +82,25 @@
 </view> -->
 <view class="coupon-page">
   <view class="coupon-con">
-    <view class="coupon-item">
+    <view class="coupon-items">
       <image class="coupon-bg" src="{{globalimg}}/yhj_img_bg_hs1@2x.png"></image>
-      <view class="bg-left"></view>
+      <view class="bg-left">
+        <view class="leftcon">
+          <text style="color:#fff;font-size:40rpx;font-weight:bold">￥</text>
+          <text style="color:#fff;font-size:70rpx;font-weight:bold">20</text>
+        </view>
+        <view style="color:#fff;font-size:26rpx;font-weight:bold;margin-top:25rpx">满50元可使用</view>
+      </view>
+      <view class="bg-right">
+        <view class="coupon-tit">领券中心专享满50减20</view>
+        <view class="coupon-time">2019.11.10-2019.11.11</view>
+      </view>
+      <!-- 礼品券 -->
+      <view class="coupons-type">
+        <image src="{{globalimg}}/yhj_img_lpj@2x.png"></image>
+      </view>
+      <view class="useBtn" style="border: 1rpx solid {{borderbackground}};color:{{borderbackground}}">立即使用</view>
     </view>
-    <view class="coupon-item"></view>
-    <view class="coupon-item"></view>
   </view>
+  <view class="coupon-desc">跑库里所有的优惠券展示与此</view>
 </view>
