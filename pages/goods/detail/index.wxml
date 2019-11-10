@@ -44,7 +44,7 @@
             </view>
             <view class="goods-advs {{showpic||goods.video==''?'block':'none'}}" style="width:{{advWidth}}px;height:auto;position:relative">
                 <swiper circular="{{circular}}" class="index-adcs-sqiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="width:{{advWidth}}px;height:{{advHeight}}px;">
-                    <swiper-item style="background-image:url('{{item}}');width:100%;height:100%" wx:for="{{goods.thumbs}}" wx:for-index="idx">
+                    <swiper-item style="background-image:url('{{item}}');width:100%;height:100%" wx:for="{{goods.thumbs}}" wx:for-index="idx" wx:key="index">
                         <image class="goodsadvimg" mode="aspectFit" src="{{item}}"></image>
                     </swiper-item>
                 </swiper>
@@ -195,7 +195,7 @@
                 <view class="row row-time" wx:if="{{goods.ispresell==1&&goods.preselltimeend!=0}}">
                     <view id="time-container">
                         <text class="label">{{goods.preselltitle?goods.preselltitle:'距离预售开始'}}</text>
-                        <span class="number" style="{{index==0?'margin-left:20rpx':''}}" wx:for="{{time}}">{{item}}{{index==0?' 天 ':''}}{{index==1?' 时 ':''}}{{index==2?' 分 ':''}}{{index==3?' 秒 ':''}}</span>
+                        <span class="number" style="{{index==0?'margin-left:20rpx':''}}" wx:for="{{time}}" wx:key="index">{{item}}{{index==0?' 天 ':''}}{{index==1?' 时 ':''}}{{index==2?' 分 ':''}}{{index==3?' 秒 ':''}}</span>
                     </view>
                 </view>
                 <!-- <view class="row row-time" id="discount" wx:if="{{goods.isdiscount!=0&&goods.isdiscount_time>=now}}">
@@ -270,7 +270,7 @@
                     <view class="fui-cell">
                         <view class="fui-cell-text coupon-selector">
                             <span style="margin-right: 0.25rem">优惠券</span>
-                            <span class="coupon-mini" wx:if="{{index<5}}" wx:for="{{coupon}}">
+                            <span class="coupon-mini" wx:if="{{index<5}}" wx:for="{{coupon}}" wx:key="index">
                                 <span class="subtitle" wx:if="{{item.backpre}}">￥</span>{{item.backmoney}}
                                 <span class="subtitle" wx:if="{{item.backtype==1}}">折</span>
                             </span>
@@ -362,7 +362,7 @@
             <view bindtap="cityPicker" class="fui-cell-group fui-cell-click  fui-sale-group" data-class="city-picker" data-tap="{{active}}" id="city-picker" style="margin-top:0" wx:if="{{goods.citys.citys.length>0}}">
                 <view class="fui-cell">
                     <view class="fui-cell-text">{{goods.citys.onlysent==0?'不':'只'}}配送区域:
-                        <block wx:for="{{goods.citys.citys}}" wx:for-index="idx">{{item}}</block>
+                        <block wx:for="{{goods.citys.citys}}" wx:for-index="idx" wx:key="index">{{item}}</block>
                     </view>
                     <view class="fui-cell-remark"></view>
                 </view>
@@ -370,7 +370,7 @@
             <view class="fui-cell-group fui-option-group" style="margin-top:0" wx:if="{{goods.hasServices||goods.labelname}}">
                 <view class="goods-label-demo">
                     <view class="goods-label-list goods-label-style{{labels.style+1}}" style="background:#fafafa">
-                        <span wx:for="{{labels.list}}">
+                        <span wx:for="{{labels.list}}" wx:key="index">
                             <icon class="icox icox-duihao1" wx:if="{{labels.style<2}}"></icon>
                             <text>{{item}}</text>
                         </span>
@@ -456,7 +456,7 @@
                 </navigator>
                 <view id="package">
                     <navigator hoverClass="none" id="package_list" style="width:{{packageList.goods.length*220-20}}rpx" url="/pages/goods/package/detail/index?id={{packageList.id}}">
-                        <view class="package-goods package-goods3" wx:for="{{packageList.goods}}">
+                        <view class="package-goods package-goods3" wx:for="{{packageList.goods}}" wx:key="index">
                             <image class="package-goods-img" src="{{item.thumb}}"></image>
                             <p>{{item.title}}</p>
                             <text class="icox icox-tianjiazhuanhuan"></text>
@@ -508,7 +508,7 @@
         </view>
         <view class="goods-detail-comment {{comment}}">
             <view class="fui-icon-group col-5 ">
-                <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
+                <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}" wx:key="index">
                     <view class="{{commentObjTab==index+1?'text-danger':''}}">{{index==0?'全部':''}}{{index==1?'好评':''}}{{index==2?'中评':''}}{{index==3?'差评':''}}{{index==4?'晒图':''}}
                         <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
                     </view>
@@ -520,7 +520,7 @@
             </view>
             <view class="container" id="comments-all">
                 <view class="fui-cell-group fui-comment-group">
-                    <view class="fui-cell" wx:for="{{commentList}}" wx:for-index="idx">
+                    <view class="fui-cell" wx:for="{{commentList}}" wx:for-index="idx" wx:key="index">
                         <view class="fui-cell-text comment ">
                             <view class="info head">
                                 <view class="img">
@@ -529,19 +529,19 @@
                                 <view class="nickname">{{item.nickname}}</view>
                                 <view class="date">{{item.createtime}}</view>
                                 <view class="star star1">
-                                    <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2">★</text>
+                                    <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2" wx:key="index">★</text>
                                 </view>
                             </view>
                             <view class="remark">{{item.content}}</view>
                             <view class="remark img">
-                                <view class="img" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image">
+                                <view class="img" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image" wx:key="index">
                                     <image bindtap="preview" data-src="{{image}}" data-urls="{{item.images}}" src="{{image}}"></image>
                                 </view>
                             </view>
                             <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.reply_content}}">
                                 掌柜回复：{{item.reply_content}}
                                 <view class="remark img">
-                                    <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage">
+                                    <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage" wx:key="index">
                                         <image src="{{replyImage}}"></image>
                                     </view>
                                 </view>
@@ -553,7 +553,7 @@
                             <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.append_reply_content}}">
                                 掌柜回复：{{item.append_reply_content}}
                                 <view class="remark img">
-                                    <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage">
+                                    <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage" wx:key="index">
                                         <image src="{{appendReplyImage}}"></image>
                                     </view>
                                 </view>
@@ -569,7 +569,7 @@
         <view wx:if="{{usediypage==false}}">
             <view class="goods-detail-comment {{comment}}">
                 <view class="fui-icon-group col-5 ">
-                    <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
+                    <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}" wx:key="index">
                         <view class="{{commentObjTab==index+1?'text-danger':''}}">{{index==0?'全部':''}}{{index==1?'好评':''}}{{index==2?'中评':''}}{{index==3?'差评':''}}{{index==4?'晒图':''}}
                             <view class="count {{commentObjTab==index+1?'text-danger':''}}">{{commentObj.count[item]}}</view>
                         </view>
@@ -581,7 +581,7 @@
                 </view>
                 <view class="container" id="comments-all">
                     <view class="fui-cell-group fui-comment-group">
-                        <view class="fui-cell" wx:for="{{commentList}}" wx:for-index="idx">
+                        <view class="fui-cell" wx:for="{{commentList}}" wx:for-index="idx" wx:key="index">
                             <view class="fui-cell-text comment ">
                                 <view class="info head">
                                     <view class="img">
@@ -590,19 +590,19 @@
                                     <view class="nickname">{{item.nickname}}</view>
                                     <view class="date">{{item.createtime}}</view>
                                     <view class="star star1">
-                                        <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2">★</text>
+                                        <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2" wx:key="index">★</text>
                                     </view>
                                 </view>
                                 <view class="remark">{{item.content}}</view>
                                 <view class="remark img">
-                                    <view class="img" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image">
+                                    <view class="img" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image" wx:key="index">
                                         <image bindtap="preview" data-src="{{image}}" data-urls="{{item.images}}" src="{{image}}"></image>
                                     </view>
                                 </view>
                                 <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.reply_content}}">
                                     掌柜回复：{{item.reply_content}}
                                     <view class="remark img">
-                                        <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage">
+                                        <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage" wx:key="index">
                                             <image src="{{replyImage}}"></image>
                                         </view>
                                     </view>
@@ -614,7 +614,7 @@
                                 <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.append_reply_content}}">
                                     掌柜回复：{{item.append_reply_content}}
                                     <view class="remark img">
-                                        <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage">
+                                        <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage" wx:key="index">
                                             <image src="{{appendReplyImage}}"></image>
                                         </view>
                                     </view>
@@ -629,7 +629,7 @@
         </view>
         <view class="goods-detail-para {{para}}">
             <view class="fui-cell-group">
-                <view class="fui-cell" wx:for="{{goods.params}}" wx:for-index="idx">
+                <view class="fui-cell" wx:for="{{goods.params}}" wx:for-index="idx" wx:key="index">
                     <view class="fui-cell-label">{{item.title}}</view>
                     <view class="fui-cell-info overflow">{{item.value}}</view>
                 </view>
@@ -643,7 +643,7 @@
                         <view class="fui-cell-text dispatching">
                             不配送区域:
                             <view class="dispatching-info">
-                                <i wx:for="{{goods.citys}}" wx:for-index="idx">{{item}}</i>
+                                <i wx:for="{{goods.citys}}" wx:for-index="idx" wx:key="index">{{item}}</i>
                             </view>
                         </view>
                     </view>

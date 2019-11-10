@@ -32,7 +32,7 @@
         <include src="/pages/custom/index.wxml" wx:if="{{diypages.page.type==20}}"></include>
     </view>
     <view wx:else>
-        <block wx:if="{{item.visible==1}}" wx:for="{{shop.sorts}}" wx:key="{{index}}" wx:for-index="idx">
+        <block wx:if="{{item.visible==1}}" wx:for="{{shop.sorts}}" wx:key="index" wx:for-index="idx">
             <include src="adv.wxml" wx:if="{{item.type=='adv'}}"></include>
             <include src="search.wxml" wx:if="{{item.type=='search'}}"></include>
             <include src="notice.wxml" wx:if="{{item.type=='notice'}}"></include>
@@ -47,7 +47,7 @@
                     <text class="icox icox-hotfill"></text> 店铺推荐</view>
             </view> -->
             <view class="fui-goods-group block border">
-                <template is="tpl_list" data="{{item:item}}" wx:for="{{storeRecommand}}" wx:for-index="idx" wx:key="{{index}}"></template>
+                <template is="tpl_list" data="{{item:item}}" wx:for="{{storeRecommand}}" wx:for-index="idx" wx:key="index"></template>
             </view>
         </view>
         <view class="fui-loading" wx:if="{{loading}}">
@@ -68,7 +68,7 @@
             <view class="unpaid-title">您有一个订单待支付</view>
             <view class="unpaid-subtitle">未支付的订单将在不久之后自动关闭，请尽快支付哦！</view>
             <view class="unpaid-content fui-list-group">
-                <navigator class="fui-list" openType="navigate" url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{nopaygoods}}" wx:key="{{index}}">
+                <navigator class="fui-list" openType="navigate" url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{nopaygoods}}" wx:key="index">
                     <view class="fui-list-media img-media">
                         <view id="btn-pay">
                             <image class="" src="{{item.thumb}}"></image>

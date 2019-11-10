@@ -43,8 +43,6 @@ Page((e = {
           jindu: e.result.jindu
         });
       }
-
-
     });
       wx.stopPullDownRefresh();
     console.log(secend_time - timestampcount)
@@ -131,9 +129,7 @@ Page((e = {
     intervalA: 3000,
     durationA: 1000,
     circularA: true,
-    slideshow: '0',
-
-    aa:['1','2','3','4']
+    slideshow: '0'
   }, t(a, "total", 1), a),
   
   bindPhone: function () {
@@ -266,18 +262,22 @@ Page((e = {
           topdisp: 'block'
         })
       }
-      0 == e.error ? (t.setData({
-        loading: !1,
-        show: !0,
-        total: e.total,
-        empty: !0
-      }), e.list.length > 0 && t.setData({
-        page: t.data.page + 1,
-        list: t.data.list.concat(e.list)
-      }), e.list.length < e.pagesize && t.setData({
-        loaded: !0
-      })) : a.toast(e.message, "loading");
-    }, this.data.show);
+
+        let record = t.data.page - 1;
+        0 == e.error ? (t.setData({
+          loading: !1,
+          show: !0,
+          total: e.total,
+          empty: !0
+        }), e.list.length > 0 && t.setData({
+          page: t.data.page + 1,
+          ['list[' + record + ']']: e.list
+        }), e.list.length < e.pagesize && t.setData({
+          loaded: !0
+        })) : a.toast(e.message, "loading");
+        
+        console.log(t.data.list[record]);
+      }, this.data.show);
   },
   updatebtn: function () {
     // 用户版本更新
@@ -480,7 +480,7 @@ Page((e = {
     }, function (e) {
       console.log(e);
       let totalPage = Math.ceil(e.result.icon.length / 4);
-      console.log(totalPage);
+
       a.setData({
         backgroundimg: e.result.backgroup
       })
@@ -515,6 +515,8 @@ Page((e = {
     },
 
   onHide: function () {
+    clearInterval(interval);//跳转页面关闭限时抢购的时间函数
+
     this.setData({
       adveradmin: !1,
       unpaid: !1
@@ -566,17 +568,18 @@ Page((e = {
     s.get("game/index/icon", {
       openid: userinfo.openid
     }, function (e) {
-      console.log(e)
       if (e.status == 1) {
+        let sincss;
         if (e.result.is_show == 1) {
-          t.setData({
-            giftDis: 'block'
-          })
+
+          sincss = 'block';
         } else if (e.result.is_show == 0) {
-          t.setData({
-            giftDis: 'none'
-          })
+
+          sincss = 'none';
         }
+        t.setData({
+          giftDis: sincss
+        })
       }
 
     });
@@ -778,15 +781,15 @@ Page((e = {
     }, function (e) {
       console.log(e)
       if (e.error == 0) {
+        let essence;
         if (e.message.bind == 0) {
-          t.setData({
-            bindDis: 'block'
-          })
+          essence = 'block';
         } else if (e.message.bind == 1) {
-          t.setData({
-            bindDis: 'none'
-          })
+          essence = 'none';
         }
+        t.setData({
+            bindDis: essence
+        })
       }
 
        
@@ -891,6 +894,7 @@ Page((e = {
 
     })
   },
+
   startTimer: function (currentstartTimer) {
     clearInterval(interval);
     interval = setInterval(function () {

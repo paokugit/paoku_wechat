@@ -145,7 +145,7 @@
         <view class="card_entranceTit">跑库年卡</view>
         <view class='swiper-card'>
           <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" wx:if="{{is_open == 0?true:false}}">
-            <block wx:for="{{textList}}" wx:key="{{index}}">
+            <block wx:for="{{textList}}" wx:key="index">
               <swiper-item>
                 <view class='card_entranceT'>{{item.txt}}</view>
               </swiper-item>
@@ -159,7 +159,7 @@
 
     <view class='swiper-box'>
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
-        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <block wx:for="{{imgUrls}}" wx:key="index">
           <swiper-item>
             <image src="{{item.thumb}}" class="slide-image" bindtap="swipclick" data-url='{{item.url}}' />
           </swiper-item>

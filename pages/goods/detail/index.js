@@ -1108,6 +1108,10 @@ Page((a = {
     this.pauseOther();
 }), t(a, "onUnload", function () {
     this.pauseOther();
+    
+    clearInterval(interval);
+    console.log('asc');
+
 }), t(a, "navigate", function (t) {
     var e = t.currentTarget.dataset.url, a = t.currentTarget.dataset.phone, o = t.currentTarget.dataset.appid, s = t.currentTarget.dataset.appurl;
     e && wx.navigateTo({

@@ -8,7 +8,7 @@
   </view>
 
   <!-- 购买加速宝详情 -->
-  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="{{index}}" bindtap="list_btn" data-id="{{item.id}}">
+  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="index" bindtap="list_btn" data-id="{{item.id}}">
     <view class="limit_img">
       <image src="{{globalimg}}/xianliang@2x.png"></image>
     </view>

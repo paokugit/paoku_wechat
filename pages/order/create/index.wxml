@@ -810,7 +810,7 @@
         </view>
     </view>
     <view class="card-list-content">
-        <block wx:for="{{card_info.all_mycardlist}}">
+        <block wx:for="{{card_info.all_mycardlist}}" wx:key="index">
             <view bindtap="changecard" class="item {{item.card_style}}" data-id="{{item.id}}">
                 <view bindtap="cancalCard" class="iconselect {{cardid==item.id?'activeselect':''}}">
                     <i class="icox icox-duihao2"></i>

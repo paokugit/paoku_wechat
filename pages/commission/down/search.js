@@ -40,19 +40,30 @@ Page({
                 duration: 2000,
             })
         } else {
+            wx.showLoading({
+              title: '加载中...',
+              mask: true
+            })
             t.get("commission.down.search", {
                 openid: useropenid,
                 keywords: goodname,
                 page: m.data.page
             }, function(e) {
                 console.log(e);
-                if (e.status == 0){
+                wx.hideLoading();
+                if (e.status == 1){
                   let totalPage = Math.ceil(e.result.total / e.result.pageSize);
                   let totalList = e.result.list;
                   m.setData({
                     list_friend: m.data.list_friend.concat(totalList),
                     total: e.result.total,
                     totalPage: totalPage
+                  })
+                } else if (e.status == 0){
+                  wx.showToast({
+                    title: e.result.message,
+                    icon: 'none',
+                    duration: 2000
                   })
                 }
             })

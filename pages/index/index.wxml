@@ -19,7 +19,7 @@
       </view>
     </view>
     <view class="heard-tag absolute">
-      <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
+      <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="index">
         <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;font-family: 'DIN Next LT Pro'">
           <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
           <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
@@ -146,7 +146,7 @@
     </view>
     <view class='swiper-box'>
       <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
-        <block wx:for="{{noticelist}}" wx:key="{{index}}">
+        <block wx:for="{{noticelist}}" wx:key="index">
           <swiper-item class="notice-box">
             <view class='notice-tit'>恭喜用户</view>
             <view class='notice-name'>{{item.nickname}}</view>
@@ -159,7 +159,7 @@
   </view>
   <view class='swiper-card'>
     <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
-      <block wx:for="{{bannerList}}" wx:key="{{index}}">
+      <block wx:for="{{bannerList}}" wx:key="index">
         <swiper-item>
           <navigator url="{{item.url}}">
             <image class="bannerGif" src="{{item.thumb}}"></image>
@@ -186,10 +186,10 @@
         </view>
         <view class="libao-goods-con">
           <swiper indicator-dots="true" indicator-color="#dd6b4c" indicator-active-color="#ffb965" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-            <block wx:for="{{libaolist}}" wx:key="{{index}}">
+            <block wx:for="{{libaolist}}" wx:key="index">
               <swiper-item>
                 <view class="libao-goods">
-                  <view class="libao-goods-item" wx:for="{{item}}">
+                  <view class="libao-goods-item" wx:for="{{item}}" wx:key="index">
                     <navigator url="/packageA/pages/gift/gift" class="libao-goods-bg">
                       <image src='{{globalimg}}/01@2x.png'></image>
                       <view class="product-img">
@@ -266,7 +266,7 @@
       </view>
 
       <view class='store-service-box-bottom'>
-        <view class='club-card-box' wx:for="{{goodlist}}" wx:key="{{index}}">
+        <view class='club-card-box' wx:for="{{goodlist}}" wx:key="index">
           <view class='store-reward' style='display:{{storedisp}}'>
             <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
             <view class='rewardBox' wx:if="{{item.isreward==1}}" style='display:block'>赏金任务</view>
@@ -319,7 +319,7 @@
       </view>
     </view>
     <view class='nearbyshops-box'>
-      <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
+      <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="index">
         <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
           <view class='callphone-img'>
             <image src='{{ globalimg}}/callphone.png'></image>
@@ -385,7 +385,7 @@
     </view>
 
     <view class='seckill-continer'>
-      <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="{{index}}">
+      <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="index">
         <view class='sec-item-img'>
           <image src='{{item. thumb}}'></image>
           <view class='sec-saleout-img' wx:if="{{item.total==0}}">
@@ -439,7 +439,7 @@
 
     <view class='out'>
       <scroll-view scroll-x="true">
-        <block wx:for="{{lookBuy}}" wx:key="{{index}}">
+        <block wx:for="{{lookBuy}}" wx:key="index">
           <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video" style="position: relative;">
             <view class="list-img">
               <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
@@ -477,50 +477,54 @@
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
       <view class='exchange-products-box'>
-        <view class='exchange-product' wx:for="{{list}}" wx:key="{{index}}">
-          <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-            <image class='ex-proimg' src='{{item.thumb}}'></image>
-            <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-              <image src='{{globalimg}}/saleout-2.png'></image>
+
+        <block wx:for="{{list}}" wx:for-item="listItem" wx:key="listItem">
+          <view class='exchange-product' wx:for="{{listItem}}" wx:key="index">
+            <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+              <image class='ex-proimg' src='{{item.thumb}}'></image>
+              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                <image src='{{globalimg}}/saleout-2.png'></image>
+              </view>
+            </navigator>
+            <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
+            <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
+              <view class='postage-free'>包邮</view>
             </view>
-          </navigator>
-          <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-          <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-            <view class='postage-free'>包邮</view>
-          </view>
-          <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-            <view class='postage-free'>包邮</view>
-          </view>
-          <view class='ex-procalorie-box'>
-            <!-- 显示卡路里加价格 -->
-            <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-              <view class='calorieimgBox'>
-                <view class='calorie-img flex_center'>
-                  <image src='{{ globalimg}}/kaluli02.png'></image>
+            <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
+              <view class='postage-free'>包邮</view>
+            </view>
+            <view class='ex-procalorie-box'>
+              <!-- 显示卡路里加价格 -->
+              <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
+                <view class='calorieimgBox'>
+                  <view class='calorie-img flex_center'>
+                    <image src='{{ globalimg}}/kaluli02.png'></image>
+                  </view>
+                  <view class='calorie-num02 flex_center'>
+                    {{item.deduct}}+￥{{item.showprice}}
+                  </view>
                 </view>
-                <view class='calorie-num02 flex_center'>
-                  {{item.deduct}}+￥{{item.showprice}}
+                <view class='calorie-price '>{{item.productprice}}元</view>
+              </view>
+              <!-- 显示免费兑 -->
+              <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
+                <view class='calorie-num '>
+                  免费兑
                 </view>
+                <view class='calorie-person '>{{item.sales}}人已0元拿</view>
               </view>
-              <view class='calorie-price '>{{item.productprice}}元</view>
-            </view>
-            <!-- 显示免费兑 -->
-            <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-              <view class='calorie-num '>
-                免费兑
+              <!-- 只显示价格 -->
+              <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
+                <view class='calorie-num flex_center'>
+                  ￥{{item.minprice}}
+                </view>
+                <view class='calorie-price '>{{item.productprice}}元</view>
               </view>
-              <view class='calorie-person '>{{item.sales}}人已0元拿</view>
+              <!-- <view class='calorie-free flex_center'>免费拿</view> -->
             </view>
-            <!-- 只显示价格 -->
-            <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-              <view class='calorie-num flex_center'>
-                ￥{{item.minprice}}
-              </view>
-              <view class='calorie-price '>{{item.productprice}}元</view>
-            </view>
-            <!-- <view class='calorie-free flex_center'>免费拿</view> -->
           </view>
-        </view>
+        </block>
+
       </view>
       <!-- 查看更多-商品-开始 -->
       <view class='readmore-pro-box flex_center'>

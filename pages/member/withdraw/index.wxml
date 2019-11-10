@@ -40,7 +40,7 @@
                         <span class="re-g">提现方式</span>
                     </view>
                 </view>
-                <block wx:for="{{info.type_array}}">
+                <block wx:for="{{info.type_array}}" wx:key="index">
                     <radio-group>
                         <block>
                             <block wx:if="{{item.type=='0'}}">

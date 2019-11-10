@@ -5,7 +5,7 @@
     <text class="tit_content">RV可用交易额度：{{remain}}</text>
   </view>
 
-  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="{{index}}" bindtap="list_btn" data-id="{{item.id}}">
+  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="index" bindtap="list_btn" data-id="{{item.id}}">
 
     <text class="content_lefts {{isSelect==item.id?'content_leftsBtn' : ''}}">{{item.money}}</text>
     <text class="content_rights">{{item.limit}}额度</text>

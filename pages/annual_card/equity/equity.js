@@ -9,7 +9,7 @@ Page({
     globalimg: t.globalData.appimg,
     showIcon: true,
     gloheight: t.globalData.gloheight,
-    goodGift:'' ,
+
     goods_list:[],
 
     autoplayA: true,
@@ -22,21 +22,6 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
     var m = this;
-    a.get("member.level.detail",{},function(e){
-      if (e.status == 1){
-        m.setData({
-          goodGift: e.result.goods_id
-        })
-      } else if (e.status == 0){
-        wx.showToast({
-          title: e.result.message,
-          icon: 'none',
-          duration: 2000
-        })
-      }
-      
-    });
-
     
     a.get("member.level.goods_list", {
       openid: m.data.useropenid,

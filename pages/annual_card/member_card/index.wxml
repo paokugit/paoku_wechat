@@ -28,7 +28,7 @@
           <image class="leftImg" src="{{globalimg}}/libaoImg.png"></image>
           <view>
             <view class="titleA">{{levelMonth}}月产品礼包</view>
-            <view class="titleB">{{levelTime}}前领取（过期失效）</view>
+            <view class="titleB">每月10号到20号可领取（过期失效）</view>
             <view class="btnGet" style="{{levelCode == 0?'':'background:#929292'}}" bindtap="btnList">{{levelStatus}}</view>
           </view>
         </view>
@@ -41,7 +41,7 @@
 
         <view wx:if="{{couponList == ''?false:true}}" class="product_head_left">优惠券</view>
         <view class="discountList flexCss">
-          <view class="discountA" wx:for="{{couponList}}" wx:key="{{index}}" bindtap="{{item.used == 0?'ticketBtn':''}}">
+          <view class="discountA" wx:for="{{couponList}}" wx:key="index" bindtap="{{item.used == 0?'ticketBtn':''}}">
             <image wx:if="{{index == 0?true:false}}" src="{{globalimg}}/134360@2x.png"></image>
             <image wx:if="{{index == 1?true:false}}" src="{{globalimg}}/13436001@2x.png"></image>
             <view class="discount_details locationCss">
@@ -62,7 +62,7 @@
       </view>
 
       <view class="product_area flexCss">
-        <navigator class="product_details" wx:for="{{goodsList}}" wx:key="{{index}}" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+        <navigator class="product_details" wx:for="{{goodsList}}" wx:key="index" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
           <image  class="commodity_img" src="{{item.thumb}}"></image>
 
           <view class="titWai">
