@@ -8,6 +8,7 @@ Page({
         loading: !1,
         loaded: !1,
         list: [],
+      globalimg: t.globalData.appimg,
         approot: t.globalData.approot,
       showIcon: true,
     },
