@@ -5,7 +5,8 @@ Page({
         loaded: !1,
         list: [],
       showIcon: true,
-      gloheight: t.globalData.gloheight
+      gloheight: t.globalData.gloheight,
+      globalimg: t.globalData.appimg,
     },
     onLoad: function(e) {
         t.url(e);
