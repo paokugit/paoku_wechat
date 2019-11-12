@@ -1,93 +1,560 @@
-.detail-hard{
+/* 推荐 */
+.header{
   width: 100%;
-  height:6rem;
-  background-size: 100%;
+  height: 230rpx;
+  position: relative;
+  left: 0;
+  top: 0;
 }
-.detail-hard .fui-list{
-  padding-top:1.7rem;
-}
-.detail-hard .fui-list .subtitle,.detail-hard .fui-list .text{
-  color: #ffffff !important;
-}
-.detail-tab{
-  display: flex;
-  flex-direction: row;
+
+.header-setting{
   width: 100%;
-  padding:0.4rem 0;
+  height: 100%;
 }
-.detail-tab navigator{
+
+.header-lid{
+  width: 90%;
   display: flex;
-  flex-direction:column;
-  width: 25%;
-  font-size:28rpx;
-  color: #666666;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%,0);
 }
-.detail-tab .on{
-  color: #cfb898;
+
+.header-left{
+  display: flex;
+  align-items: center;
 }
-.detail-tab image{
-  width: 1rem;
-  height: 1rem;
-  text-align: center;
+
+.shopimg{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 21rpx;
+  border-radius: 15rpx;
+}
+
+.header-name{
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+}
+.header-distance{
+  display: flex;
+  align-items: center;
+}
+.header-distance image{
+  width: 20rpx;
+  height: 23rpx;
+  margin-right: 10rpx;
+}
+.header-distance view{
+  font-size: 24rpx;
+}
+
+
+.header-attention{
+  display: flex;
+  align-items: center;
+  background: #01d7a1;
+  margin-bottom: 20rpx;
+  padding: 13rpx 20rpx;
+  border-radius: 30rpx;
+}
+
+.header-attention image{
+  width: 26rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+
+.header-attention view{
+  font-size: 24rpx;
+}
+
+.header-collect{
+  font-size: 24rpx;
+}
+
+.switchover{
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+}
+.switchover-box{
+  padding-bottom: 15rpx;
+}
+
+.tab-txt{
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.tab-bor{
+  width: 54rpx;
+  height: 6rpx;
+  background: #ffffff;
+  border-radius: 3rpx;
   margin: 0 auto;
 }
-.detail-tab text{
+
+
+.details-top{
+  width: 100%;
+  background: #ffffff;
+}
+
+.inform{
+  padding: 0 48rpx;
+  height: 97rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.inform-icon{
+  width: 32rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+
+.marquee_box{
+  width: 580rpx;
+  height: 38rpx;
+  position:relative;
+  color:#333333;
+  display:block;
+  overflow:hidden;
+} 
+ .marquee_text{
+  height: 38rpx;
+  line-height: 38rpx;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  font-size: 30rpx;
+}
+
+.coupon{
+  padding: 28rpx 46rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.couponList{
+  width: 304rpx;
+  height: 146rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.coupon-image{
+  width: 100%;
+  height: 100%;
+}
+
+.coupon-txt{
+  width:100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.figure::before{
+  content: "￥";
+  font-size:24rpx;
+}
+.figure{
+  font-size: 80rpx;
+}
+.condition{
+  font-size: 22rpx;
+}
+.coupon-getBtn{
+  width: 24rpx;
+  height: 100%;
+  font-size: 24rpx;
+  margin: 0 auto;
+}
+.header-name,.header-distance view,.header-attention view,.header-collect,.tab-txt,.figure,.condition,.coupon-getBtn{
+  color: #ffffff;
+}
+
+
+/* 商品列表---推荐 */
+.referral-business{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap:wrap; 
+  padding: 20rpx 20rpx 20rpx;
+}
+
+.businessList{
+  width: 345rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.business-img{
+  background: red;
+  width: 100%;
+  height: 320rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.business-txt{
+  font-size: 30rpx;
+  color: #323232;
+  margin: 20rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.business-figure{
+  margin: 0 20rpx ;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number{
+  display: flex;
+  align-items: center;
+}
+
+.number-money::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+.number-money{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 11rpx;
+}
+.number-people{
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.shopping-car{
+  width: 37rpx;
+  height: 34rpx;
+}
+.shopping-car image{
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 活动 */
+.deseno{
+  background: #ffffff;
+}
+.deseno-tit{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 45rpx 230rpx;
+}
+
+.deseno-img-tit{
+  width: 31rpx;
+  height: 21rpx;  
+}
+
+.deseno-txt-tit{
+  font-size: 34rpx;
+  color: #333333;
+}
+
+.swiperItem{
+  border-radius: 10rpx;
+}
+
+.swiper-item{
+  margin: 10rpx 24rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10rpx 0rpx #e6e6e6;
+  border-radius: 10rpx;
+}
+
+.deseno-image{
+  width: 212rpx;
+  height: 212rpx;
+  border-radius: 10rpx;
+  background: red;
+}
+
+.deseno-right{
+  width: 70%;
+  margin-left: 20rpx;
+}
+
+.deseno-txt{
+  font-size: 34rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.deseno-amount{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0 30rpx;
+}
+
+.submitted{
+  width: 239rpx;
+  margin-right: 8rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.submitted-txt{
+  font-size: 22rpx;
+  color: #ffffff;
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+}
+
+.submitted-astrict{
+  color: #333333;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.deseno-price{
+  justify-content: space-between;
+}
+
+.deseno-price,.deseno-money{
+  display: flex;
+  align-items: center;
+}
+
+.deseno-current::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+
+.deseno-current{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.deseno-original::before{
+  content: "￥";
+  font-size: 24rpx;
+  color: #929292;
+}
+.deseno-original{
+  color: #929292;
+  font-size: 24rpx;
+  text-decoration:line-through;
+}
+
+.robBtn{
+  width: 117rpx;
+  height: 52rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  line-height: 52rpx;
   text-align: center;
-}
-.reward_box{
-    width: 120rpx;
-    height: 40rpx;
-    background: #e01212;
-    border-radius: 20rpx;
-    position: absolute;
-    top: 12rpx;
-    left: 10rpx;
-    color: #fff;
-    font-size: 24rpx;
-    line-height: 40rpx;
-    text-align: center
+  background: #ff0000;
+  border-radius: 26rpx;
 }
 
-  .bottombar{
-    width: 100%;
-    height: 100rpx;
-    background: #fff;
-    position: fixed;
-    bottom: 0rpx;
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #fff;
-    font-size: 30rpx
+.deseno-more{
+  height: 88rpx;
+  line-height: 88rpx;
+  margin: 20rpx 24rpx 40rpx;
+  background: #ffffff;
 }
-.mapbtn, .homebtn, .sancode{
-    width: 30%;
-    height: 100rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-}
-.flex_center{
-width: 32rpx;
-height: 100%;
-display: flex;
-align-items: center;
 
+.deseno-more-bor{
+  width: 130rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
 }
-.calorie_img{
-width: 28rpx;
-height: 28rpx;
+
+.deseno-more-bor view{
+  font-size: 28rpx;
+  color: #666666;
+  border-radius: 20rpx;
+  margin-right: 8rpx;
 }
-.price{
-width: auto;
-height: 30rpx;
-display: flex;
-align-items: center;
+
+.deseno-more-bor image{
+  width: 11rpx;
+  height: 18rpx;
 }
-.text_gratis{
-color: #e01212;
-font-size: 28rpx;
-margin-left: 10rpx;
+
+
+.spell-regiment{
+  padding-bottom: 200rpx;
+}
+
+.spell-regiment-list{
+  padding: 24rpx;
+  background: #ffffff;
+}
+
+.regiment-list-img{
+  width: 294rpx;
+  height: 294rpx;
+  border-radius: 10rpx;
+  background: red;
+  margin-right: 25rpx;
+}
+
+.regiment-list-right{
+  width:380rpx;
+}
+
+.regiment-list-tit{
+  font-size: 34rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.regiment-list-count{
+  margin: 40rpx 0 20rpx;
+}
+.regiment-list-money{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.regiment-list-money::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+.regiment-list-people{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.regiment-list-base{
+  justify-content: space-between;
+}
+
+.regiment-list-spell{
+  width: 102rpx;
+  height: 30rpx;
+  border: 1px solid #ff0000;
+  border-radius: 6rpx;
+}
+
+.regiment-list-image{
+  width: 30rpx;
+  height: 30rpx;
+  background: #ff0000;
+  text-align: center;
+  line-height: 30rpx;
+}
+.regiment-list-image image{
+  width: 22rpx;
+  height: 18rpx;
+}
+
+.regiment-list-text{
+  width: 72rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  color: #ff0000;
+}
+
+.bag-mail{
+  width: 60rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  border-radius: 6rpx;
+  border: 1px solid #e5e5e5;
+  font-size: 20rpx;
+  color: #cccccc;
+  margin-left: 9rpx;
+}
+
+.regiment-list-mail{
+  width: 116rpx;
+  height: 52rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+  background: #ff0000;
+  border-radius: 26rpx;
+}
+
+.spell-regiment-list,.regiment-list-count,.regiment-list-base,.regiment-list-details,.regiment-list-spell{
+  display: flex;
+  align-items: center;
+}
+
+/* 上新 */
+
+
+
+.on-earth{
+  font-size: 26rpx;
+  color: #9b9b9b;
+  text-align: center;
+  margin-top: 45rpx;
+}
+
+/* 底部tab */
+.base{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.base view{
+  font-size: 30rpx;
+  color: #1c1c1c;
+  padding: 0 60rpx;
+}
+.dynamic{
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
 }

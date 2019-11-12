@@ -1,0 +1,117 @@
+.time_limit{
+  background: #ffffff;
+  padding:25rpx 24rpx;
+  margin: 20rpx 24rpx;
+  border-radius: 10rpx; 
+  display: flex;
+  align-items: center;
+}
+
+.time_limit_img{
+  width: 212rpx;
+  height: 212rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  background: red;
+}
+
+.time_limit_tit{
+  font-size: 34rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.deseno-amount{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0 30rpx;
+}
+
+.submitted{
+  width: 239rpx;
+  margin-right: 8rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.submitted-txt{
+  font-size: 22rpx;
+  color: #ffffff;
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+}
+
+.submitted-astrict{
+  color: #333333;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.deseno-price{
+  justify-content: space-between;
+}
+
+.deseno-price,.deseno-money{
+  display: flex;
+  align-items: center;
+}
+
+.deseno-current::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+
+.deseno-current{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.deseno-original::before{
+  content: "￥";
+  font-size: 24rpx;
+  color: #929292;
+}
+.deseno-original{
+  color: #929292;
+  font-size: 24rpx;
+  text-decoration:line-through;
+}
+
+.robBtn{
+  width: 117rpx;
+  height: 52rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  line-height: 52rpx;
+  text-align: center;
+  background: #ff0000;
+  border-radius: 26rpx;
+}
+
+/* 底部tab */
+.base{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.base view{
+  font-size: 30rpx;
+  color: #1c1c1c;
+  padding: 0 60rpx;
+}
+.dynamic{
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}

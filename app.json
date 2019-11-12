@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "packageA/pages/changce/merch/detail",
     "pages": [
         "pages/index/index", 
         "pages/discount/zkbscancode/zkbscancode",
@@ -125,6 +125,9 @@
           "pages/changce/merch/apply",
           "pages/changce/merch/detail",
           "pages/changce/merch/intro",
+
+          "pages/changce/merch/time_limit",
+
           "pages/huiyuan/membercenter/membercenter",
           "pages/huiyuan/hygrade/hygrade",
           "pages/huiyuan/expedite/expedite",

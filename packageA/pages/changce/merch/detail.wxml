@@ -1,73 +1,209 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺详情"></navigation>
 <view class="page">
-  <view class='detail-hard' style="{{merch.storebg?'background-image:url('+merch.storebg+')':'background:#333333'}}">
-    <view class="fui-list noclick">
-      <view class="fui-list-media">
-          <image wx:if="{{merch.logo}}" class="round" src="{{merch.logo}}"></image>
-          <image wx:else class="round" src="/static/images/noface.png"></image>
-      </view>
-      <view class="fui-list-inner">
-          <view class="subtitle">{{merch.merchname}}</view>
-          <view class="text cart-option">
-            <view wx:if="{{merch.salecate}}" class="choose-option">主营：{{merch.salecate}}</view>
+
+  <view class="header">
+    <image class="header-setting" src="{{globalimg}}/dbxq_bg@2x.png"></image>
+
+    <view class="header-lid">
+      <view class="header-left">
+        <image class="shopimg" src="/static/images/noface.png"></image>
+        <view class="name-distance">
+          <view class="header-name">三只松鼠旗舰店</view>
+          <view class="header-distance">
+            <image src="{{globalimg}}/dz_icon_dz@2x.png"></image>
+            <view>距我100m</view>
           </view>
-      </view>
-    </view>
-  </view>
-  <view class='detail-tab'>
-    <navigator class="{{isnew == 0 && isrecommand==0 ? 'on' : ''}}" bindtap="clickall">
-      <text>{{merch.allgoodsnum}}</text>
-      <text>全部商品</text>
-    </navigator>
-    <navigator class="{{isrecommand==1 ? 'on' : ''}}" bindtap="clickrec">
-      <text>{{merch.recgoodsnum}}</text>
-      <text>推荐</text>
-    </navigator>
-    <navigator class="{{isnew == 1 ? 'on' : ''}}" bindtap="clicknew">
-      <text>{{merch.newgoodsnum}}</text>
-      <text>新上</text>
-    </navigator>
-    <navigator url="/packageA/pages/changce/merch/intro?id={{merchid}}">
-      <image src="{{globalimg}}/shop.png"></image>
-      <text>导航到店</text>
-    </navigator>
-  </view>
-  <view class="fui-goods-group block">
-    <view class="fui-goods-item" wx:for="{{list}}">
-      <navigator hover-class="none" url="/pages/goods/detail/index?id={{item.id}}"style="position:relative">
-<view class="image" style="background-image:url({{item.thumb}})"></view>
-<view class='reward_box' wx:if="{{item.reward==0}}" style='display:none'>赏金任务</view>
-<view class='reward_box' wx:if="{{item.reward==1}}" style='display:block'>赏金任务</view>
-</navigator>
-      <view class="detail">
-        <navigator hover-class="none" url="/pages/goods/detail/index?id={{item.id}}">
-          <view class="name"> {{item.title}} </view>
-        </navigator>
-        <!-- 卡路里加金额 -->
-        <view class="price" wx:if="{{item.deduct!=0&&item.deduct-item.minprice<0}}">
-        <view class='calorie-img flex_center'>
-        <image class='calorie_img' src='{{globalimg}}/kaluli02.png'></image>
-        </view>
-        <view class="text">{{item.deduct}}+￥{{item.minprice-item.deduct}}</view>
-        </view>
-        <!-- 全金额 -->
-        <view class="price" wx:if="{{item.deduct==0}}">
-        <view class="text">￥{{item.minprice}}</view>
-        </view>
-        <!-- 免费 -->
-        <view class="price" wx:if="{{item.deduct-item.minprice>0||item.deduct-item.minprice==0}}">
-        <view wx:if='{{item.deduct!=0}}'>
-        <view class="text_gratis">免费兑</view>
-        </view>
         </view>
       </view>
+
+      <view class="header-right">
+        <view class="header-attention">
+          <image src="{{globalimg}}/dbxq_icon_gz_per@2x.png"></image>
+          <!-- dbxq_icon_gz_per@2x --> 
+          <view>关注</view>
+        </view>
+        <view class="header-collect">2.1万人收藏</view>
+      </view>
     </view>
+
+    <view class="switchover">
+      <view class="switchover-box" data-current = "0" bindtap='checkCurrent'>
+        <view class="tab-txt">推荐</view>
+        <view class="{{currentData == 0 ? 'tab-bor' : ''}}"></view>
+      </view>
+      <view class="switchover-box" data-current = "1" bindtap='checkCurrent'>
+        <view class="tab-txt ">活动</view>
+        <view class="{{currentData == 1 ? 'tab-bor' : ''}}"></view>
+      </view>
+      <view class="switchover-box" data-current = "2" bindtap='checkCurrent'>
+        <view class="tab-txt">上新</view>
+        <view class="{{currentData == 2 ? 'tab-bor' : ''}}"></view>
+      </view>
+      <view class="switchover-box" data-current = "3" bindtap='checkCurrent'>
+        <view class="tab-txt">全部商品</view>
+        <view class="{{currentData == 3 ? 'tab-bor' : ''}}"></view>
+      </view>
+    </view>
+
   </view>
-  <!--include src='/pages/common/menu.wxml' /-->
-<!-- <view class='bottombar' bindtap='scancodebtn'>扫码买单</view> -->
-<view class='bottombar'>
- <navigator url="/packageA/pages/changce/merch/intro?id={{merchid}}" class='mapbtn'>地图导航</navigator>
- <navigator url='/packageA/pages/changce/merch/homepage?id={{merchid}}' class='homebtn'>店铺主页</navigator>
-<view class='sancode' bindtap='scancodebtn'>扫码买单</view>
-</view>
+
+  <!-- 推荐内容 -->
+  <view style="{{currentData == 0 ? '' : 'display:none'}}">
+    
+    <view class="details-top">
+      <view class="inform">
+        <image class="inform-icon" src="{{globalimg}}/dbxq_icon_tz@2x.png"></image>
+        <view class="marquee_box">
+          <text class="marquee_text"  style="transform: translateX(-{{marqueeDistance}}rpx)" >{{informTxt}}</text>  
+        </view>
+      </view>
+
+      <view class="coupon">
+        <view class="couponList">
+          <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>
+          <view class="coupon-txt">  
+            <view style="padding-left:12rpx;">
+              <view class="figure">1000</view>
+              <view class="condition">订单满8888元使用</view>
+            </view>
+            <view style="width:74rpx">
+              <view class="coupon-getBtn">点击领取</view>
+            </view>
+          </view>
+        </view> 
+
+        <view class="couponList">
+          <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>
+          <view class="coupon-txt">  
+            <view style="padding-left:12rpx;">
+              <view class="figure">1000</view>
+              <view class="condition">订单满8888元使用</view>
+            </view>
+            <view style="width:74rpx">
+              <view class="coupon-getBtn">点击领取</view>
+            </view>
+          </view>
+        </view>  
+
+      </view>
+    </view>
+
+    <view class="referral-business">
+      <view class="businessList">
+        <view class="business-img"></view>
+        <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+        <view class="business-figure">
+          <view class="number">
+            <view class="number-money">99</view>
+            <view class="number-people">999人付款</view>
+          </view>
+          <view class="shopping-car">
+            <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+    <view class="on-earth" style="margin-bottom:150rpx;">到底了哦</view>
+  </view>
+
+  <!-- 活动内容 -->
+  <view style="{{currentData == 1 ? '' : 'display:none'}}">
+    <view class="deseno">
+      <view class="deseno-tit">
+        <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
+        <view class="deseno-txt-tit">限时抢购</view>
+        <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
+      </view>
+
+      <view>
+        <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" style="height:350rpx" indicator-color="#e6e6e6" indicator-active-color="#ff0000">
+          <!-- <block wx:for="{{background}}" wx:key="index"> -->
+            <swiper-item class="swiperItem">
+              <view class="swiper-item">
+                <view class="deseno-image"></view>
+                <view class="deseno-right">
+                  <view class="deseno-txt">Apple/苹果iPhone XR 256GB</view>
+                  <view class="deseno-amount">
+                    <view class="submitted">
+                      <progress percent="30" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" border-radius="20rpx" />
+                      <view class="submitted-txt">已抢购50件</view>
+                    </view>
+                    <view class="submitted-astrict">限抢购100件</view>
+                  </view>
+
+                  <view class="deseno-price">
+                    <view class="deseno-money">
+                      <view class="deseno-current">999</view>
+                      <view class="deseno-original">1500</view>
+                    </view>
+                    <view class="robBtn">马上抢</view>
+                  </view>
+                </view>
+              </view>
+            </swiper-item>
+          <!-- </block> -->
+        </swiper>
+
+      </view>
+    </view>
+
+    <navigator url="/packageA/pages/changce/merch/time_limit" class="deseno-more">
+      <view class="deseno-more-bor">
+        <view>查看更多</view>
+        <image src="{{globalimg}}/open10.18@2x.png"></image>
+      </view>
+    </navigator> 
+
+    <view class="spell-regiment">
+      <view class="deseno-tit">
+        <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
+        <view class="deseno-txt-tit">拼团</view>
+        <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
+      </view>
+
+      <view class="spell-regiment-list">
+        <view class="regiment-list-img"></view>
+        <view class="regiment-list-right">
+          <view class="regiment-list-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼瞅瞅瞅瞅尺寸时擦按时SaaS</view>
+          <view class="regiment-list-count">
+            <view class="regiment-list-money">99</view>
+            <view class="regiment-list-people">100人已参团</view>
+          </view>
+          <view class="regiment-list-base">
+            <view class="regiment-list-details">
+              <view class="regiment-list-spell">
+                <view class="regiment-list-image">
+                  <image src="{{globalimg}}/icon-pt@2x.png"></image>
+                </view>
+                <view class="regiment-list-text">2人拼</view>
+              </view>
+              <view class="bag-mail">包邮</view>
+            </view>
+
+            <view class="regiment-list-mail">拼团</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="on-earth">到底了哦</view>
+      
+    </view>
+    
+  </view>
+
+  <!-- 上新内容 -->
+  <view style="{{currentData == 2 ? '' : 'display:none'}}">
+  
+  </view>
+  <!-- 全部商品内容 -->
+  <view style="{{currentData == 3 ? '' : 'display:none'}}">全部商品</view>
+
+
+  <view class="base">
+    <view>联系客服</view>
+    <view class="dynamic">店铺动态</view>
+    <view>扫码买单</view>
+  </view>
+
 </view>

@@ -1,0 +1,31 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="限时抢购"></navigation>
+<view>
+  <view class="time_limit">
+    <view class="time_limit_img"></view>
+    <view class="time_limit_detail">
+      <view class="time_limit_tit">Apple/苹果iPhone XR 256GB</view>
+      
+      <view class="deseno-amount">
+        <view class="submitted">
+          <progress percent="30" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" border-radius="20rpx" />
+          <view class="submitted-txt">已抢购50件</view>
+        </view>
+        <view class="submitted-astrict">限抢购100件</view>
+      </view>
+
+      <view class="deseno-price">
+        <view class="deseno-money">
+          <view class="deseno-current">999</view>
+          <view class="deseno-original">1500</view>
+        </view>
+        <view class="robBtn">马上抢</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="base">
+    <view>联系客服</view>
+    <view class="dynamic">店铺动态</view>
+    <view>扫码买单</view>
+  </view>
+</view>

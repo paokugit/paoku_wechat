@@ -1,6 +1,6 @@
 var t = getApp(),
   a = t.requirejs("core"),
-  e = t.requirejs("jquery");;
+  e = t.requirejs("jquery");
 Page({
   data: {
     merchid: 0,
@@ -16,7 +16,16 @@ Page({
     globalimg: t.globalData.appimg,
 
     showIcon: true,
-    gloheight: t.globalData.gloheight
+    gloheight: t.globalData.gloheight,
+
+
+    // -----修改添加
+    currentData: 2,
+    marqueePace: 1,//滚动速度
+    marqueeDistance: 0,//初始滚动距离
+    size: 30,
+    interval: 20, // 时间间隔
+    informTxt: "服务器升级通知，将于今晚23:00至24:00进行停机更新。"
   },
   onLoad: function (t) {
       var b = decodeURIComponent(t.scene);
@@ -34,6 +43,52 @@ Page({
       this.getMerch(),
       this.getList()
   },
+
+
+
+  // -----修改添加
+  //获取当前滑块的index
+  checkCurrent: function (e) {
+    const that = this;
+    that.setData({
+      currentData: e.currentTarget.dataset.current
+    })
+  },
+
+  onShow:function(){
+    var that = this;
+    var length = that.data.informTxt.length * that.data.size;//文字长度
+    var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
+    that.setData({
+      length: length,
+      windowWidth: windowWidth
+    });
+    that.scrollFn();
+  },
+  scrollFn: function () {
+    var that = this;
+    var length = that.data.length;
+    var windowWidth = that.data.windowWidth;
+    if (length > windowWidth) {
+      var interval = setInterval(function () {
+        var crentleft = that.data.marqueeDistance;
+        if (crentleft < length-400) {
+          that.setData({
+            marqueeDistance: crentleft + that.data.marqueePace
+          })
+        }else {
+          that.setData({
+            marqueeDistance: 0 
+          });
+          clearInterval(interval);
+          that.scrollFn();
+        }
+      }, that.data.interval);
+    }
+  },
+  //----------
+
+
   getMerch: function () {
     var t = this;
     a.get("changce/merch/get_detail", { id: t.data.merchid}, function (a) {
