@@ -41,8 +41,8 @@
                                     </view>
                                     <view class="item-right-box">
                                         <view>
-                                            <view style="font-size: 40rpx;color: #08c261;" wx:if="{{item.num>=0}}">{{item.money}}</view>
-                                            <view style="font-size: 40rpx;color: #08c261;" wx:else>{{item.money}}</view>
+                                            <view style="font-size: 40rpx;color: #01d7a1;" wx:if="{{item.num>=0}}">{{item.money}}</view>
+                                            <view style="font-size: 40rpx;color: #01d7a1;" wx:else>{{item.money}}</view>
                                         </view>
                                         <view class='apply-state-box' wx:if="{{item.type==1}}">
                                             <view class='state-refuse' wx:if="{{item.status==-1}}">拒绝</view>

@@ -12,32 +12,42 @@ Page({
     page: 1,
     recordList: [],
     totalPage: 0,
-    isShow:0
+    isShow: 0
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
     var b = this;
-    b.setData({ useropenid: useropenid });                                                        
+    b.setData({
+      useropenid: useropenid
+    });
     b.reqDatalist();
   },
-  reqDatalist: function () {
+  reqDatalist: function() {
     var b = this
     a.get("member.level.record", {
       openid: b.data.useropenid,
       page: b.data.page
-    }, function (e) {
+    }, function(e) {
       console.log(e);
-      let totalPage = Math.ceil(e.result.total / e.result.pageSize);
-      let totalList = e.result.record
-      b.setData({
-        totalPage: totalPage,
-        recordList: b.data.recordList.concat(totalList)
-      })
+      if (e.status == 1) {
+        let totalPage = Math.ceil(e.result.total / e.result.pageSize);
+        let totalList = e.result.record
+        b.setData({
+          totalPage: totalPage,
+          recordList: b.data.recordList.concat(totalList)
+        })
+      } else if (e.status == 0) {
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
-  onReachBottom: function () {
+  onReachBottom: function() {
     let page = this.data.page;
     let totalpage = this.data.totalPage;
     if (page <= totalpage) {
@@ -48,16 +58,16 @@ Page({
         page: page + 1
       })
       this.reqDatalist();
-    }else{
+    } else {
       this.setData({
-        isShow:1
+        isShow: 1
       })
     }
     setTimeout(() => {
       wx.hideLoading()
     }, 1000)
-    
+
   },
 
- 
+
 })
