@@ -16,7 +16,7 @@ page {
 .ballon {
     width: 650rpx;
     height: 110rpx;
-    background: url("https://paokucoin.com/img/backgroup/button_yaoqing.png");
+    background: url("https://www.paokucoin.com/img/backgroup/button_yaoqing.png");
     background-size: 650rpx 110rpx;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;

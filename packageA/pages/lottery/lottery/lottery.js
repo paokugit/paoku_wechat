@@ -19,14 +19,14 @@ Page({
     showIcon: true,
     mask: 0,
     images: [
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
-      'http://paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
+      'https://www.paokucoin.com/img/backgroup/kongquan.png',
     ], //奖品图片数组
     gratis: 0,
     zhekounum: '',
@@ -37,7 +37,7 @@ Page({
     datanum: '',
     shuzhi: '',
     color: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
-    btnconfirm: 'http://paokucoin.com/img/backgroup/start.png',
+    btnconfirm: 'http://www.paokucoin.com/img/backgroup/start.png',
     //点击事件
     clickLuck: 'clickLuck',
     //中奖位置
@@ -146,7 +146,7 @@ Page({
     }
     //设置按钮不可点击
     e.setData({
-      btnconfirm: 'http://paokucoin.com/img/backgroup/start.png',
+      btnconfirm: 'http://www.paokucoin.com/img/backgroup/start.png',
       clickLuck: '',
     })
     //清空计时器
@@ -318,7 +318,7 @@ Page({
     return {
       title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
       path: '/pages/index/index?scene=' + userid,
-      imageUrl: "https://paokucoin.com/img/backgroup/lottary.png",
+      imageUrl: "https://www.paokucoin.com/img/backgroup/lottary.png",
       success: function(res) {
         // 转发成功
         that.shareClick();

@@ -218,30 +218,36 @@ Page({
             mask: true
           })
           wx.uploadFile({
-            url: 'https://paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
+            url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=util.uploader.upload&file=file',
             filePath: res.tempFilePaths[i],
             name: "file",
             header: { 'content-type': 'multipart/form-data' },
             success: function (n) {
-              
               var o = JSON.parse(n.data);
-              img_list.push(o.files[0].url);
-              file_list.push(o.files[0].filename);
-
-              if (file_list.length == res.tempFilePaths.length){
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000);
-                m.setData({
-                  img_url: [],
-                  img_file: []
-                });
-                wx.hideLoading();
-                wx.navigateTo({
-                  url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+              console.log(o);
+              if(o.error == 0){
+                  img_list.push(o.files[0].url);
+                  file_list.push(o.files[0].filename);
+                  if (file_list.length == res.tempFilePaths.length) {
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 2000);
+                    m.setData({
+                      img_url: [],
+                      img_file: []
+                    });
+                    wx.hideLoading();
+                    wx.navigateTo({
+                      url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+                    })
+                  }
+              }else{
+                wx.showToast({
+                  title: o.message,
+                  icon: 'none',
+                  duration: 2000
                 })
               }
-
             }
           })
         };

@@ -52,6 +52,7 @@ Page({
                 console.log(e);
                 wx.hideLoading();
                 if (e.status == 1){
+
                   let totalPage = Math.ceil(e.result.total / e.result.pageSize);
                   let totalList = e.result.list;
                   m.setData({

@@ -1531,7 +1531,7 @@ image {
 .jump {
     width: 330rpx;
     height: 100rpx;
-    background: url("https://paokucoin.com/img/backgroup/cyhd@2x.png");
+    background: url("https://www.paokucoin.com/img/backgroup/cyhd@2x.png");
     background-size: 330rpx 100rpx;
     -webkit-animation-name: scaleDraw;
     -webkit-animation-timing-function: ease-in-out;

@@ -108,7 +108,7 @@ Page((e = {
     giftDis: 'none',
     updateDis: 'none',
     // rewarddisp:'none',
-    seckillDis: '',
+    seckillDis: 'none',
     werunDis: 'block',
     addressDis: 'none',
     merchantDis: 'none',
@@ -129,7 +129,9 @@ Page((e = {
     intervalA: 3000,
     durationA: 1000,
     circularA: true,
-    slideshow: '0'
+
+    slideshow: '0',
+    looklDis:'none'
   }, t(a, "total", 1), a),
   
   bindPhone: function () {
@@ -603,6 +605,7 @@ Page((e = {
         console.log(secend_time)
         t.startTimer(secend_time - timestamp / 1000);
         t.setData({
+          seckillDis: 'block',
           killlist: e.result.list,
           sec_end_time: e.result.end_time
         })
@@ -619,6 +622,7 @@ Page((e = {
       console.log(e)
       if (e.status == 1) {
         t.setData({
+          looklDis:'block',
           lookBuy: e.result.list
         })
       } else if (e.status == 0) {
