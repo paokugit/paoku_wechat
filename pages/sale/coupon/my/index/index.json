@@ -2,5 +2,5 @@
     "usingComponents": {
       "navigation": "/components/navigation/navigation"
     },
-    "navigationBarTitleText": "我的优惠券"
+    "navigationBarTitleText": "优惠券"
 }

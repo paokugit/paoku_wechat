@@ -9,7 +9,8 @@ Page({
         list: [],
         approot: t.globalData.approot,
       showIcon: true,
-      gloheight: t.globalData.gloheight
+      gloheight: t.globalData.gloheight,
+      globalimg: t.globalData.appimg,
     },
     onLoad: function(t) {
         this.getList();
