@@ -1,0 +1,20 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="私信助手"></navigation>
+    <view class="helper-box">
+      <view class="demand" wx:for="{{infolist}}" wx:for-index="key" wx:key="{{key}}">
+        <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
+        <view class="textandtime">
+          <view class="robot-text">{{item.content}}</view>
+          <view class="robot-time">{{item.createtime}}</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+</block>

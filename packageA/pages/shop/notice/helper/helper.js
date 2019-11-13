@@ -12,14 +12,14 @@ Page({
     showIcon: true,
     gloheight: t.globalData.gloheight,
     globalimg: t.globalData.appimg,
-    informlist: [],
+    infolist: [],
     page: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
     this.setData({
@@ -30,79 +30,68 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var tt = this
-    //系统通知
-    a.get("shop.notice.get_list", {
-      page: 1,
+    var hh = []
+    // 私信
+    a.get("shop.notice.email", {
       openid: useropenid
-    }, function(e) {
-      console.log(e)
-      // if (e.notice > 0) {
-      if (e.error == 0) {
+    }, function (e) {
+      if (e.result.email > 0) {
         tt.setData({
-          // mask: 0,
-          informlist: e.list,
-          weidux: e.notice,
-          xiback: 'block',
+          infolist: e.result.list,
+          sixinw: e.result.email,
+          siback: 'block',
         })
-      }else{
-        // wx.showModal({
-        //   title: '',
-        //   content: '',
-        // })
+      } else {
+        tt.setData({
+          infolist: e.result.list,
+          sixinw: e.result.email,
+          siback: 'none'
+        })
       }
-
-      // } else {
-      //   tt.setData({
-      //     // mask: 0,
-      //     informlist: e.list,
-      //     weidux: e.notice,
-      //     xiback: 'none',
-      //   })
-      // }
     })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

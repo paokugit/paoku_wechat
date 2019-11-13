@@ -1,18 +1,18 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="消息"></navigation>
 <view class="conbox">
   <view class="head-box">
-    <view class="nav-item">
+    <navigator class="nav-item" url="/packageA/pages/shop/notice/logisticslist/logisticslist">
       <image class="navImg" src="{{globalimg}}/xx_icon_wl@2x.png"></image>
       <text class="navtext">交易物流</text>
-    </view>
-    <view class="nav-item">
+    </navigator>
+    <navigator class="nav-item" url="/packageA/pages/shop/notice/inform/inform">
       <image class="navImg" src="{{globalimg}}/xx_icon_tzzxx@2x.png"></image>
       <text class="navtext">通知消息</text>
-    </view>
-    <view class="nav-item">
+    </navigator>
+    <navigator class="nav-item" url="/packageA/pages/shop/notice/comment/comment">
       <image class="navImgs" src="{{globalimg}}/xx_icon_pj@2x.png"></image>
       <text class="navtext">评论留言</text>
-    </view>
+    </navigator>
   </view>
   <!-- 跑库客服 -->
   <view class="service-box">

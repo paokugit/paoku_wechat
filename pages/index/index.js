@@ -520,6 +520,7 @@ Page((e = {
     },
 
   onHide: function () {
+    clearInterval(interval);
     this.setData({
       adveradmin: !1,
       unpaid: !1

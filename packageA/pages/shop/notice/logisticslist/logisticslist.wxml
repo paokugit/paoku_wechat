@@ -1,6 +1,6 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="交易物流"></navigation>
 <view class="logistics-box">
-  <view class="listItem">
+  <navigator class="listItem" url="/packageA/pages/shop/notice/logisticsdetail/logisticsdetail">
     <view class="title-box">
       <text class="item-title">您的订单已经签收</text>
       <text class="item-time">星期三</text>
@@ -12,31 +12,5 @@
         <view class="info-num">来自123456789876</view>
       </view>
     </view>
-  </view>
-  <view class="listItem">
-    <view class="title-box">
-      <text class="item-title">您的订单已经签收</text>
-      <text class="item-time">星期三</text>
-    </view>
-    <view class="item-con">
-      <image class="itemImg" src="{{globalimg}}/paokulogo.png"></image>
-      <view class="item-info">
-        <view class="info-title">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦；啊啊啊啊啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</view>
-        <view class="info-num">来自123456789876</view>
-      </view>
-    </view>
-  </view>
-  <view class="listItem">
-    <view class="title-box">
-      <text class="item-title">您的订单已经签收</text>
-      <text class="item-time">星期三</text>
-    </view>
-    <view class="item-con">
-      <image class="itemImg" src="{{globalimg}}/paokulogo.png"></image>
-      <view class="item-info">
-        <view class="info-title">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦；啊啊啊啊啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</view>
-        <view class="info-num">来自123456789876</view>
-      </view>
-    </view>
-  </view>
+  </navigator>
 </view>

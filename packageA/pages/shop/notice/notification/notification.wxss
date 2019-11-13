@@ -10,13 +10,14 @@ page {
 .conbox {
   width: 100%;
   height: auto;
+  background: #f8f8f8
 }
 
 .head-box {
   width: 100%;
   height: 156rpx;
   padding: 24rpx 0;
-  background: pink;
+  background: #fff;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,7 +26,6 @@ page {
 .nav-item {
   width: 28%;
   height: 156rpx;
-  background: #ff6;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@ page {
   width: 94%;
   height: 100rpx;
   padding: 0 3%;
-  background: pink;
+  background: #fff;
   margin-top: 20rpx;
   display: flex;
   align-items: center;
@@ -72,14 +72,12 @@ page {
 .listBox {
   width: 100%;
   height: auto;
-  background: #0f0;
 }
 
 .listItem {
   width: 94%;
   height: 99rpx;
   padding: 0 3%;
-  background: #f00;
   border-top: 1rpx solid #f8f8f8;
   display: flex;
   justify-content: space-between;

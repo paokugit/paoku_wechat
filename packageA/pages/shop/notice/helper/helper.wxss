@@ -1,0 +1,52 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+.robot{
+  width: 80rpx;
+  height: 80rpx;
+}
+.robot-text{
+  width: 490rpx;
+  height: auto;
+  background: #fff;
+  padding: 20rpx 3% 20rpx 3%;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #333333;
+  border-radius: 20rpx;
+  border: 1rpx solid #ececec;
+}
+.robot-time{
+  width: 94%;
+  padding-left: 3%;
+  margin-top: 30rpx;
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.demand{
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 24rpx 0
+}
+.helper-box{
+  width: 94%;
+  height: auto;
+  background: #f8f8f8;
+  padding: 0 3%;
+  border-top: 2rpx solid #f8f8f8
+}
+.textandtime{
+  width: 462rpx;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* background: #fff; */
+  margin-left: 20rpx;
+  border-radius: 30rpx;
+}

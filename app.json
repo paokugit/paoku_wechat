@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "packageA/pages/shop/notice/comment/comment",
+    "entryPagePath": "packageA/pages/shop/notice/notification/notification",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -146,6 +146,7 @@
           "pages/shop/notice/logisticsdetail/logisticsdetail",
           "pages/shop/notice/inform/inform",
           "pages/shop/notice/comment/comment",
+          "pages/shop/notice/helper/helper",
           "pages/shop/caregory/index",
           "pages/setpassword/set/set",
           "pages/setpassword/setpassword/setpassword",
