@@ -1,6 +1,11 @@
 var t = getApp(),
   a = t.requirejs("core"),
   e = t.requirejs("jquery");
+
+// 新加
+var pricemark = 0;
+var salesmark = 0;
+
 Page({
   data: {
     merchid: 0,
@@ -20,12 +25,19 @@ Page({
 
 
     // -----修改添加
-    currentData: 2,
+    currentData: 3,
     marqueePace: 1,//滚动速度
     marqueeDistance: 0,//初始滚动距离
     size: 30,
     interval: 20, // 时间间隔
-    informTxt: "服务器升级通知，将于今晚23:00至24:00进行停机更新。"
+    informTxt: "服务器升级通知，将于今晚23:00至24:00进行停机更新。",
+
+    allPrice: 'sc_tj_icon_jg_nor@2x',
+    allSales:'sc_tj_icon_jg_nor@2x',
+    imgA:'icon_sp@2x',
+    imgB:'icon_hp@2x',
+    nowSign:0,
+    sortWay:0,
   },
   onLoad: function (t) {
       var b = decodeURIComponent(t.scene);
@@ -47,11 +59,69 @@ Page({
 
 
   // -----修改添加
-  //获取当前滑块的index
+
   checkCurrent: function (e) {
     const that = this;
     that.setData({
       currentData: e.currentTarget.dataset.current
+    })
+  },
+
+  sortBtn:function(){
+    var m = this;
+    let recordway = m.data.sortWay;
+    let imgrecord;
+    if (recordway == 0){
+      imgrecord = 'icon_hp@2x';
+      recordway = 1;
+    } else if (recordway == 1){
+      imgrecord = 'icon_sp@2x';
+      recordway = 0;
+    }
+    m.setData({
+      imgA: imgrecord,
+      sortWay: recordway
+    })
+  },
+
+  checkAllt: function (e) {
+    const that = this;
+    let mowtxt = e.currentTarget.dataset.now;
+    let priceImg;
+    let salesImg;
+    if (mowtxt == 0){
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+      salesmark = 0;
+    }else if (mowtxt == 1){
+      
+      if (pricemark == 0){
+        priceImg = 'sc_tj_icon_jg_xs@2x';
+        pricemark = 1;
+      } else if (pricemark == 1){
+        priceImg = 'sc_tj_icon_jg_xx@2x';
+        pricemark = 0;
+      }
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      salesmark = 0;
+
+    } else if (mowtxt == 2){
+      if (salesmark == 0){
+        salesImg = 'sc_tj_icon_jg_xs@2x';
+        salesmark = 1;
+      } else if (salesmark == 1){
+        salesImg = 'sc_tj_icon_jg_xx@2x';
+        salesmark = 0;
+      }
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+      
+    }
+    that.setData({
+      nowSign: mowtxt,
+      allPrice: priceImg,
+      allSales: salesImg
     })
   },
 

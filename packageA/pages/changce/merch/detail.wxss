@@ -193,78 +193,6 @@
 }
 
 
-/* 商品列表---推荐 */
-.referral-business{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap:wrap; 
-  padding: 20rpx 20rpx 20rpx;
-}
-
-.businessList{
-  width: 345rpx;
-  background: #ffffff;
-  border-radius: 10rpx;
-  margin-bottom: 20rpx;
-}
-
-.business-img{
-  background: red;
-  width: 100%;
-  height: 320rpx;
-  border-top-left-radius: 10rpx;
-  border-top-right-radius: 10rpx;
-}
-
-.business-txt{
-  font-size: 30rpx;
-  color: #323232;
-  margin: 20rpx;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-
-.business-figure{
-  margin: 0 20rpx ;
-  padding-bottom: 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.number{
-  display: flex;
-  align-items: center;
-}
-
-.number-money::before{
-  content: "￥";
-  font-size: 28rpx;
-  color: #ff0000;
-}
-.number-money{
-  color: #ff0000;
-  font-size: 40rpx;
-  margin-right: 11rpx;
-}
-.number-people{
-  font-size: 22rpx;
-  color: #999999;
-}
-
-.shopping-car{
-  width: 37rpx;
-  height: 34rpx;
-}
-.shopping-car image{
-  width: 100%;
-  height: 100%;
-}
-
-
 /* 活动 */
 .deseno{
   background: #ffffff;
@@ -527,15 +455,243 @@
 }
 
 /* 上新 */
+.update-list{
+  margin: 40rpx 0rpx;
+}
+
+.update-time{
+  margin: 30rpx 0;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.update-time::before,.update-time::after{
+  content: '';                
+  position: absolute;     
+  top: 52%;
+  background: #cccccc;
+  width: 150rpx;
+  height: 2rpx;
+}
+.update-time::before{
+  left: 5%;
+}
+.update-time::after{
+  right: 5%;
+}
+.update-box{
+  width: 280rpx;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+.update-image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 13rpx;
+}
+.update-text{
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 全部商品 */
+.all-filtrate{
+  width: 100%;
+  height: 84rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.all-price,.all-sales{
+  display: flex;
+  align-items: center;
+}
+.all-synthesize,.all-price,.all-sales{
+  width: 100rpx;
+  height: 84rpx;
+  text-align: center;
+  line-height: 84rpx;
+}
+.all-synthesize,.all-price-text,.all-sales-sales{
+  font-size: 28rpx;
+  color: #666666;
+}
+.all-price-img,.all-sales-img{
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+
+.all-switchover{
+  width: 84rpx;
+  height: 84rpx;
+  text-align: center;
+  line-height: 84rpx;
+}
 
 
+.nowActive{
+  color: #01d7a1;
+}
 
+/* 上拉到底提示 */
 .on-earth{
   font-size: 26rpx;
   color: #9b9b9b;
   text-align: center;
   margin-top: 45rpx;
 }
+
+/* 商品列表---推荐,上新,全部产品状态1 */
+.referral-business{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap:wrap; 
+  padding: 20rpx 20rpx 20rpx;
+}
+
+.businessList{
+  width: 345rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.business-img{
+  background: red;
+  width: 100%;
+  height: 320rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.business-txt{
+  font-size: 30rpx;
+  color: #323232;
+  margin: 20rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.business-figure{
+  margin: 0 20rpx ;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number{
+  display: flex;
+  align-items: center;
+}
+
+.number-money::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+.number-money{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 11rpx;
+}
+.number-people{
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.shopping-car{
+  width: 37rpx;
+  height: 34rpx;
+}
+.shopping-car image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 商品列表---全部产品状态2 */
+.state-two{
+  width: 100%;
+  background: #ffffff;
+}
+.stateList{
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.state-image{
+  width: 294rpx;
+  height: 294rpx;
+  border-radius: 10rpx;
+  background: red;
+  margin-right: 28rpx;
+}
+.state-right{
+  width: 382rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.state-right-top{
+  width: 382rpx;
+  height: 95rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 60rpx;
+}
+.state-right-activity{
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 4rpx 9rpx;
+  background: #ff0000;
+  border-radius: 6rpx;
+}
+.state-right-tit{
+  font-size: 34rpx;
+  color: #333333;
+}
+
+
+.freight{
+  font-size: 24rpx;
+  color: #cccccc;
+  margin-bottom: 22rpx;
+}
+.state-right-amount,.state-right-sum{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.state-right-price{
+  font-size: 40rpx;
+  color: #ff0000;
+}
+.state-right-price::before{
+  content: "￥";
+  color: #ff0000;
+  font-size: 28rpx;
+}
+.state-right-payment{
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 21rpx;
+}
+.state-right-vehicle{
+  width: 37rpx;
+  height: 34rpx;
+}
+
 
 /* 底部tab */
 .base{

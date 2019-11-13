@@ -1,0 +1,97 @@
+.shop_discounts{
+  margin: 20rpx 24rpx 60rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.shop_image{
+  width: 702rpx;
+  height: 351rpx;
+}
+
+.discounts_text{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.discounts_tit{
+  font-size: 34rpx;
+  text-align: center;
+  margin: 48rpx 0 30rpx;
+}
+
+.discounts_time{
+  font-size: 26rpx;
+  text-align: center;
+  margin-bottom: 45rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.discounts_time::before,.discounts_time::after{
+  content: '';                
+  position: absolute;     
+  top: 52%;
+  background: #ff9b9b;
+  width: 110rpx;
+  height: 2rpx;
+}
+.discounts_time::before{
+  left: 5%;
+}
+.discounts_time::after{
+  right: 5%;
+}
+
+.discounts_money{
+  font-size: 60rpx;
+  margin: 0 0 10rpx 26rpx;
+}
+.discounts_money::before{
+  font-size: 44rpx;
+  content: "￥";
+}
+.discounts_condition{
+  font-size: 28rpx;
+  margin-left: 26rpx;
+}
+.discounts_tit,.discounts_time,.discounts_money,.discounts_money::before,.discounts_condition{
+  color: #ffffff;
+}
+
+.getBtn{
+  width: 93%;
+  height: 88rpx;
+  margin: 61rpx auto;
+  font-size: 30rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius: 10rpx;
+  background:linear-gradient(to right,#ff4646,#ff1919);
+}
+
+.get_succeed{
+  width: 226rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+.succeed{
+  font-size: 34rpx;
+  color: #333333;
+  margin-bottom: 40rpx;
+}
+
+.examine{
+  width: 226rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align:center;
+  color: #ff0000;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  border: 1px solid #ff0000;
+}

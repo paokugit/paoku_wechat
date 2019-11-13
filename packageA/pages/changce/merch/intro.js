@@ -15,7 +15,7 @@ Page({
   onLoad: function (t) {
     this.setData({
       merchid: t.id
-    }),
+    })
     this.getIntro()
   },
   getIntro: function () {

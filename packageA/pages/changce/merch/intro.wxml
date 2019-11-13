@@ -17,6 +17,9 @@
     </view>
     <map wx:if="{{merch.lat && merch.lng}}" longitude="{{merch.lng}}" latitude="{{merch.lat}}" markers="{{markers}}" covers="{{covers}}" style="width: 100%; height: 300px;margin-top:30px"></map>
 
-    <view bindtap="daohang" class="btn btn-danger block mtop">一键导航</view>
+    <!-- <view bindtap="daohang" class="btn btn-danger block mtop">一键导航</view> -->
+    <view class="fixedBox">
+      <view bindtap="daohang" class="navigation">一键导航</view>
+    </view>
   </view>
 </view>
