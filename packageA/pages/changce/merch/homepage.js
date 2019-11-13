@@ -43,6 +43,7 @@ Page({
             lng: newpos.lng
         }, function (e) {
             console.log(e)
+          console.log(e.message.logo);
             merchphone = e.message.mobile
             merchid = e.message.id
             a.setData({

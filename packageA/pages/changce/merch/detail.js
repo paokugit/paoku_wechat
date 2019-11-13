@@ -25,7 +25,7 @@ Page({
 
 
     // -----修改添加
-    currentData: 3,
+    currentData: 0,
     marqueePace: 1,//滚动速度
     marqueeDistance: 0,//初始滚动距离
     size: 30,
@@ -49,6 +49,7 @@ Page({
           console.log(c)
         })
       }
+    console.log(t.id);
     this.setData({
       merchid: t.id
     }),

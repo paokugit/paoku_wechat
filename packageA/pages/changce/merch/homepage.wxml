@@ -3,7 +3,7 @@
   <view class='zhuyehead'>
     <view class='headimg'>
       <image wx:if="{{logo !=''&&logo != null}}" class='imghh' src="{{logo}}"></image>
-      <image wx:if="{{logo ==''||logo == null}}" class='imghh' src="{{logo}}"></image>
+      <image wx:if="{{logo ==''||logo == null}}" class='imghh' src="/static/images/noface.png"></image>
       <view class='dianname'>
         <view wx:if="{{merchname !=''&&merchname !=null}}" class='diannametext'>{{merchname}}</view>
         <view wx:if="{{merchname ==''||merchname ==null}}" class='diannametext'>名称还没有哦</view>

@@ -6,9 +6,11 @@
 
     <view class="header-lid">
       <view class="header-left">
-        <image class="shopimg" src="/static/images/noface.png"></image>
+        <navigator url='/packageA/pages/changce/merch/homepage?id={{merchid}}' class="shopimg">
+          <image  src="/static/images/noface.png"></image>
+        </navigator>
         <view class="name-distance">
-          <view class="header-name">三只松鼠旗舰店</view>
+          <navigator url='/packageA/pages/changce/merch/homepage?id={{merchid}}'  class="header-name">三只松鼠旗舰店</navigator>
           <navigator url="/packageA/pages/changce/merch/intro?id={{merchid}}" class="header-distance">
             <image src="{{globalimg}}/dz_icon_dz@2x.png"></image>
             <view>距我100m</view>
@@ -397,7 +399,7 @@
   <view class="base">
     <view>联系客服</view>
     <view class="dynamic">店铺动态</view>
-    <view>扫码买单</view>
+    <view  bindtap='scancodebtn'>扫码买单</view>
   </view>
 
 </view>
