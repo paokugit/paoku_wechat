@@ -15,10 +15,10 @@
     </navigator>
   </view>
   <!-- 跑库客服 -->
-  <view class="service-box">
+  <navigator class="service-box" url="/packageA/pages/shop/notice/helper/helper">
     <image class="paokuImg" src="{{globalimg}}/paokulogo.png"></image>
     <text class="paokutext">跑库客服</text>
-  </view>
+  </navigator>
   <!-- 消息列表 -->
   <view class="listBox">
     <view class="listItem">
