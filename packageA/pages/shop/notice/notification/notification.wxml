@@ -1,129 +1,56 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="消息中心"></navigation>
-<view class="all-box">
-    <!-- 头部的显示 -->
-    <view class="head-box" style='position:fixed;top:{{gloheight}}px;left:0'>
-        <view class="inform" bindtap="inform">
-            <view class="inform-text" style="color:{{color}};font-size:{{fontcss}}">系统通知</view>
-            <view class="inform-num" style="display:{{xiback}}">
-                <view class="textdd">{{weidux}}</view>
-            </view>
-            <view class="underline" wx:if="{{underline==0}}"></view>
-        </view>
-        <view class="assistant" bindtap="assistant">
-            <view class="assistant-text fontcss" style="color:{{color1}};font-size:{{fontcss1}}">私信助手</view>
-            <view class="assistant-num" style="display:{{siback}}">
-                <view class="sitextdd">7</view>
-            </view>
-            <view class="underline2" wx:if="{{underline==1}}"></view>
-        </view>
-
- 
-        <view class="discuss" bindtap="discuss">
-          <view class="discuss-text fontcss" style="color:{{color2}};font-size:{{fontcss2}}">评论</view>
-          <view class="underline3" wx:if="{{underline==2}}"></view>
-        </view>
-
+<navigation id='Navigation' show-icon='{{showIcon}}' title="消息"></navigation>
+<view class="conbox">
+  <view class="head-box">
+    <view class="nav-item">
+      <image class="navImg" src="{{globalimg}}/xx_icon_wl@2x.png"></image>
+      <text class="navtext">交易物流</text>
     </view>
-    <!-- 没有数据 --> 
-    <view class="no-inform" wx:if="{{mask==1}}">
-        <image class="ibform-img" src="{{globalimg}}/zwxx@2x.png"></image>
+    <view class="nav-item">
+      <image class="navImg" src="{{globalimg}}/xx_icon_tzzxx@2x.png"></image>
+      <text class="navtext">通知消息</text>
     </view>
-    <view class="inform-push" wx:if="{{mask==0}}">
-        <!-- 多条数据，系统通知 -->
-        <view class="inform-all">
-            <view class="inform-ul" wx:for="{{informlist}}" wx:for-index="key" wx:key="{{key}}">
-                <view class="inform-li">
-                    <image class="smallbell" src="{{globalimg}}/touxiang01@2x.png"></image>
-                    <view class="text_all">
-                        <view class="headtitle" data-id="{{item.id}}" bindtap="tiaozhuan">{{item.title}}</view>
-                        <view style="display:none">
-                            <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
-                        </view>
-                        <view class="inform-img" data-id="{{item.id}}" bindtap="tiaozhuan">
-                            <image class="img-img" src="{{item.thumb}}"></image>
-                        </view>
-                        <view class="particulars-box">
-                            <view class="particulars_distance">
-                                <view class="particulars" data-id="{{item.id}}" bindtap="tiaozhuan">详情</view>
-                                <view class="distance-time">{{item.createtime}}</view>
-                            </view>
-                            <image class="praise" wx:if="{{item.is_zan==1}}" data-id="{{item.id}}" bindtap="zan_tap1" src="{{globalimg}}/zan-s@2x.png"></image>
-                            <image class="praise" wx:if="{{item.is_zan==0}}" data-id="{{item.id}}" bindtap="zan_tap" src="{{globalimg}}/zan-n@2x.png"></image>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
+    <view class="nav-item">
+      <image class="navImgs" src="{{globalimg}}/xx_icon_pj@2x.png"></image>
+      <text class="navtext">评论留言</text>
     </view>
-    <!-- 私信助手 -->
-    <view class="privateletter" style='margin-top:{{gloheight}}px' wx:if="{{mask==2}}">
-        <!-- 自动推送 -->
-        <!-- <view class="self-motion">
-            <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
-            <view class="textandtime">
-                <view class="robot-text">Hi，我是小库私信助手，今后我将推送关于你的个人消息；请多多关照，并及时查看哦~</view>
-                <view class="robot-time">2018年6月1日 12:01</view>
-            </view>
-        </view> -->
-        <view class="demand" wx:for="{{sixilist}}" wx:for-index="key" wx:key="{{key}}">
-            <image class="robot" src="{{globalimg}}/sxzs@2x.png"></image>
-            <view class="textandtime">
-                <view class="robot-text">{{item.content}}</view>
-                <view class="robot-time">{{item.createtime}}</view>
-            </view>
-        </view>
-    </view>
-
-
-    <!-- 评论 -->
-    <scroll-view scroll-y  bindscrolltolower="lower" scroll-with-animation="true"  class="criticTter" wx:if="{{mask==3}}">  
-      <view class="reviewList" wx:for="{{listCritic}}" wx:key="{{index}}">
-        <view class="reviewHead">
-          <view class="headLeft">
-            <image class="leftImg" src="{{item.comment_avatar}}"></image>
-            <view>
-              <view class="leftName">{{item.comment_nickname}}</view>
-              <view class="leftTime">{{item.create_time}}</view>
-            </view>
-          </view>
-          <view class="headRight headRightA" bindtap="replyBtn" data-itemid="{{item.id}}" wx:if="{{item.reply == 0?true:fasle}}" data-name="{{item.comment_nickname}}" data-index="{{index}}">
-            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='notlogin-button' style='display:{{notlogindis}}'> </button>
-            回复
-          </view>
-          <view class="headRight headRightA" wx:if="{{item.reply == 0?fasle:true}}">已回复</view>
-        </view>
- 
-        <view class="details" wx:if="{{item.is_del == 0?true:false}}">
-          回复 <text class="nickname">{{item.bcommnet_openid}}</text>：{{item.content}}
-        </view>
-        <view class="details" wx:if="{{item.is_del == 0?false:true}}">该评论已被删除</view>
-
-        <view class="replyX">
-          <view class="huifu" wx:if="{{item.type == 1?false:true}}"><text class="huifuN">@{{item.comment.comment_nickname}}</text> 回复 <text class="huifuN">@{{item.comment.bcomment_nickname}}</text>：{{item.comment.content}}</view>
-
-          <view class="tiezi" bindtap="dynamicBtn" data-isdel="{{item.circle.is_del}}" data-circleid="{{item.circle.circle_id}}">
-            <image class="tieziImg" src="{{item.circle.img}}"></image>
-            <view class="tieziRight">
-              <view class="tieziName huifuN">@{{item.circle.nickname}}</view>
-              <view class="tieziTxt">{{item.circle.content}}</view>
-            </view>
-          </view>
+  </view>
+  <!-- 跑库客服 -->
+  <view class="service-box">
+    <image class="paokuImg" src="{{globalimg}}/paokulogo.png"></image>
+    <text class="paokutext">跑库客服</text>
+  </view>
+  <!-- 消息列表 -->
+  <view class="listBox">
+    <view class="listItem">
+      <view class="item-left">
+        <image class="itemImg" src="{{globalimg}}/paokulogo.png"></image>
+        <view class="itemcon">
+          <text class="item-title">糖果</text>
+          <text class="item-subtitle">啦啦啦</text>
         </view>
       </view>
-
-      <view class="finish_inquire" wx:if="{{abcShow}}">查询完了哦</view>
-
-      <view class="KongNull" wx:if="{{listCritic.length == 0?true:false}}">
-        <image src="{{globalimg}}/tongzhi-null.png"></image>
-        <view>你暂未有评论</view>
+      <view class="item-right">星期日</view>
+    </view>
+    <view class="listItem">
+      <view class="item-left">
+        <image class="itemImg" src="{{globalimg}}/paokulogo.png"></image>
+        <view class="itemcon">
+          <text class="item-title">糖果</text>
+          <text class="item-subtitle">啦啦啦</text>
+        </view>
       </view>
-
-      <view class="comInt" wx:if="{{focus}}" style='bottom:{{inputBottom}}px'>
-        <input class='solid-bottom' value="{{discuss}}" placeholder='{{perch}}' placeholder-class="palClass" maxlength="140" cursor-spacing="10" focus="{{focus}}" bindinput ='formName' adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"></input>
-        <text bindtap="sendBtn">发送</text>
-      </view> 
-
-    </scroll-view>
-
+      <view class="item-right">星期日</view>
+    </view>
+    <view class="listItem">
+      <view class="item-left">
+        <image class="itemImg" src="{{globalimg}}/paokulogo.png"></image>
+        <view class="itemcon">
+          <text class="item-title">糖果</text>
+          <text class="item-subtitle">啦啦啦</text>
+        </view>
+      </view>
+      <view class="item-right">星期日</view>
+    </view>
+  </view>
 
 </view>

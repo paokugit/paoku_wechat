@@ -1,0 +1,80 @@
+/* packageA/pages/shop/notice/logisticslist/logisticslist.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+
+.logistics-box {
+  width: 94%;
+  height: auto;
+  padding: 0 3%;
+  background: pink;
+}
+
+.listItem {
+  padding: 24rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx
+}
+
+.title-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-title {
+  color: #333;
+  font-size: 34rpx;
+}
+
+.item-time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.item-con {
+  width: 100%;
+  height: 140rpx;
+  background: #f8f8f8;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.itemImg {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.item-info {
+  width: 450rpx;
+  height: 130rpx;
+  padding-left: 20rpx;
+}
+
+.info-title {
+  width: 450rpx;
+  line-height: 45rpx;
+  color: #333;
+  font-size: 30rpx;
+  height: 90rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.info-num{
+  color: #999;
+  font-size: 22rpx
+}

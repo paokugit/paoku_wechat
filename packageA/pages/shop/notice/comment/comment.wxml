@@ -1,0 +1,21 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="所有评论"></navigation>
+
+    <block>
+      <block>
+        <view class="logistics-box">
+
+
+
+        </view>
+      </block>
+    </block>
+
+  </block>
+</block>

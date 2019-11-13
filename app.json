@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/member/balance/balance",
+    "entryPagePath": "packageA/pages/shop/notice/comment/comment",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -142,6 +142,10 @@
           "pages/shop/notice/notification/detail",
           "pages/shop/notice/index/index",
           "pages/shop/notice/detail/detail",
+          "pages/shop/notice/logisticslist/logisticslist",
+          "pages/shop/notice/logisticsdetail/logisticsdetail",
+          "pages/shop/notice/inform/inform",
+          "pages/shop/notice/comment/comment",
           "pages/shop/caregory/index",
           "pages/setpassword/set/set",
           "pages/setpassword/setpassword/setpassword",
