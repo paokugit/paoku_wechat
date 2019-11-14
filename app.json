@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "packageA/pages/shop/notice/notification/notification",
+    "entryPagePath": "packageA/pages/hestore/hestore/hestore",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -87,6 +87,7 @@
       {
         "root": "packageA",
         "pages": [
+          "pages/hestore/hestore/hestore",
           "pages/product/evaluate/evaluate",
           "pages/lottery/lottery/lottery",
           "pages/playmethod/playmethod/playmethod",

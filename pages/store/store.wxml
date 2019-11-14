@@ -97,12 +97,12 @@
           <image src="{{globalimg}}/circle01.png"></image>
         </view>
       </view>
-      <view class="he-tit">
+      <navigator class="he-tit">
         <view class="title-right">10条动态未看</view>
         <view class="title-right-img">
           <image src="{{globalimg}}/icon_view.png"></image>
         </view>
-      </view>
+      </navigator>
 
     </view>
     <view class="store-slide-box">

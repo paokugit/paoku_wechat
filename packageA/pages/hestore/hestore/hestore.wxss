@@ -1,0 +1,107 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+.storeBox{
+  width: 100%;
+  height: auto
+}
+.store-tab {
+  width: 100%;
+  height: 88rpx;
+  background: #f66;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.store-tab .item {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #333;
+  font-size: 32rpx;
+}
+
+.store-tab .activeA {
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #333;
+  font-size: 38rpx;
+  border-bottom: 8rpx solid #01d7a1;
+}
+.item image{
+  width: 167rpx;
+  height: 54rpx;
+}
+.store-itembox{
+  width: 94%;
+  height: 1000rpx;
+  background: pink;
+  margin-top: 20rpx;
+  padding: 0 3%
+}
+.shopItem{
+  width: 96%;
+  height: 565rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 24rpx 2%;
+}
+.shop-titlebox{
+  width: 100%;
+  height: 90rpx;
+  position: relative;
+  background: #f00
+}
+.shopLogo{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+.shoptit{
+  width: 200rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  top: 5;
+  left: 92rpx;
+}
+.indetify{
+  width: 129rpx;
+  height: 30rpx;
+  background: #ff0;
+  position: absolute;
+  bottom: 10rpx;
+  left: 92rpx
+}
+.goshop{
+  width: 132rpx;
+  height: 53rpx;
+  border: 1rpx solid #01d7a1;
+  border-radius: 30rpx;
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.dianpu{
+  width:30rpx;
+  height: 27rpx;
+  background: #01d7a1;
+  margin-right: 8rpx
+}
