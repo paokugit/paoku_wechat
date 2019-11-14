@@ -5,7 +5,7 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-    <navigation id='Navigation' show-icon='{{showIcon}}' title="卡路里明细"></navigation>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="RVC明细"></navigation>
         <view class="page navbar {{isopen==1?'header':false}}">
             <block>
                 <block wx:if="{{isopen==1}}">

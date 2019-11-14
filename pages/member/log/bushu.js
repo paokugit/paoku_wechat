@@ -38,7 +38,7 @@ Page({
             };
             if (1 == t.data.page) {
                 e.isopen = a.isopen;
-                var i = "卡路里明细";
+                var i = "RVC明细";
                  wx.setNavigationBarTitle({
                     title: i
                 });

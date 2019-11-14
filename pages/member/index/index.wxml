@@ -27,7 +27,7 @@
       </view>
     </view>
 
-    <view class='bind-phone'>奖励+10卡路里</view>
+    <view class='bind-phone'>奖励+20折扣宝</view>
     <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
       <button form-type="submit" class='phone-btn'></button>
     </form>
