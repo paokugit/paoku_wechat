@@ -281,7 +281,7 @@
             <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
               <view class='calorieimgBox'>
                 <view class='calorie-img flex_center'>
-                  <image src='{{ globalimg}}/kaluli02.png'></image>
+                  <image src='{{ globalimg}}/zkblogo.png'></image>
                 </view>
                 <view class='calorie-num02'>
                   {{item.deduct}}+￥{{item.showprice}}
@@ -498,7 +498,7 @@
               <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
                 <view class='calorieimgBox'>
                   <view class='calorie-img flex_center'>
-                    <image src='{{ globalimg}}/kaluli02.png'></image>
+                    <image src='{{ globalimg}}/zkblogo.png'></image>
                   </view>
                   <view class='calorie-num02 flex_center'>
                     {{item.deduct}}+￥{{item.showprice}}
