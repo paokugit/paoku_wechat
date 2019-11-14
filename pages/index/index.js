@@ -249,6 +249,7 @@ Page((e = {
     }
   },
   // 超值兑换商品列表
+  // 111111111111
   get_list: function () {
     var t = this;
     t.setData({
