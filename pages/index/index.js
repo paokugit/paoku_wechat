@@ -169,9 +169,9 @@ Page((e = {
     })
   },
   // 卡路里明细
-  kllbtn: function () {
+  zkbbtn: function () {
     wx.navigateTo({
-      url: '/pages/member/log/bushu',
+      url: '/packageA/pages/discount/zkbaccount/zkbaccount',
     })
   },
   pull: function () {

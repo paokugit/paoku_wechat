@@ -110,14 +110,13 @@ Page({
             } else if (isgift == 0) {
                 if (kllcount > 0) {
                     i.setData({
-                        kllDis: 'block'
-                        // zkbDis: 'none'
+                        // kllDis: 'block' //11.14要求去掉卡路里时修改为none
+                      kllDis: 'none'
                     })
                 }
                 if (zkbcount > 0) {
                     i.setData({
                         zkbDis: 'block'
-                        // kllDis: 'none'
                     })
                 }
             }
@@ -235,8 +234,8 @@ Page({
         }else if(isgift==0){
             if (kllcount > 0) {
                 g.setData({
-                    kllDis: 'block'
-                    // zkbDis: 'none'
+                    // kllDis: 'block'  //11.14要求去掉卡路里开关时修改为none
+                  kllDis: 'none'
                 })
             }
             if (zkbcount > 0) {

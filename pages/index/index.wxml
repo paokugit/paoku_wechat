@@ -2,11 +2,11 @@
   <view class="index-banner-box">
     <image src='{{backgroundimg}}'></image>
 
-    <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
+    <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='zkbbtn'>
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view class='kll'>
           <view class='balance-left flex_center'>
-            <image src='{{globalimg}}/kaluli.png'></image>
+            <image src='{{globalimg}}/zkblogo.png'></image>
           </view>
           <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
         </view>
@@ -54,7 +54,7 @@
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view style='display:{{bindDis}}'>
           <view class='paopao-box'>
-            <image src='{{ globalimg}}/bindreward.png'></image>
+            <image src='{{ globalimg}}/bindreward-zkb.png'></image>
           </view>
           <view class='circle-explain '>绑定手机号</view>
         </view>
@@ -471,7 +471,7 @@
     <view class='pro-exchange-box-con'>
       <view class='pro-exchange-tit-box'>
         <view class='pro-exchange-tit'>
-          <view>超值兑换</view>
+          <view>RVC专区</view>
           <view class='service-circle'></view>
         </view>
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
