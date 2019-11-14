@@ -60,7 +60,7 @@
       <image src='{{globalimg}}/bgyellow@2x.png'></image>
       <!-- <view class='calorie-num'>{{member.calorie_total}}</view> -->
       <view class='calorie-num'>{{calorietotal}}</view>
-      <view class='calorie-text'>可用卡路里</view>
+      <view class='calorie-text'>RVC钱包</view>
     </navigator>
   </view>
   <!-- 个人收入 -->

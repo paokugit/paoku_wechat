@@ -67,7 +67,7 @@ Page({
         gratis: e.result.num, //免费抽
         msgList: e.result.log, //头部交替悬浮文字
         blocknum: e.result.list, //图片上显示得折扣
-        kaluliyu: e.result.credit1
+        kaluliyu: e.result.credit1//
       })
     })
   },
@@ -105,8 +105,8 @@ Page({
         })
       } else {
         wx: wx.showModal({
-          title: '卡路里余额不足',
-          content: '小主的卡路里不足啦，赶快邀请好友助力获取卡路里吧',
+          title: '折扣宝余额不足',
+          content: '小主的折扣宝不足啦，赶快邀请好友助力获取折扣宝吧',
           showCancel: true,
           confirmText: '去助力',
           success: function(res) {
