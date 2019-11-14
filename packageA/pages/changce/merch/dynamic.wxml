@@ -1,0 +1,4 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="店铺动态"></navigation>
+<view>
+  <view>123</view>
+</view>

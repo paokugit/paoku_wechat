@@ -157,6 +157,12 @@ Page({
       }, that.data.interval);
     }
   },
+
+  dynamicBtn:function(){
+    wx.navigateTo({
+      url: '/packageA/pages/changce/merch/dynamic'
+    })
+  },
   //----------
 
 

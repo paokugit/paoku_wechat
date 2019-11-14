@@ -714,7 +714,18 @@
   font-size: 30rpx;
   color: #1c1c1c;
   padding: 0 60rpx;
+  height: 100rpx;
+  line-height: 100rpx;
 }
+.contact02 {
+  width: 30%;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
 .dynamic{
   border-left: 1px solid #e6e6e6;
   border-right: 1px solid #e6e6e6;
