@@ -97,7 +97,7 @@
           <image src="{{globalimg}}/circle01.png"></image>
         </view>
       </view>
-      <navigator class="he-tit">
+      <navigator class="he-tit" url="/packageA/pages/hestore/hestore/hestore">
         <view class="title-right">10条动态未看</view>
         <view class="title-right-img">
           <image src="{{globalimg}}/icon_view.png"></image>
