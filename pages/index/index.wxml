@@ -8,7 +8,7 @@
           <view class='balance-left flex_center'>
             <image src='{{globalimg}}/zkblogo.png'></image>
           </view>
-          <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
+          <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit3}}</view>
         </view>
       </button>
     </form>

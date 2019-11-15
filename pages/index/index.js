@@ -38,7 +38,7 @@ Page((e = {
       console.log(e)
       if (e.status == 1) {
         t.setData({
-          credit1: e.result.credit1,
+          credit3: e.result.credit3,
           todaystep: e.result.todaystep,
           jindu: e.result.jindu
         });
@@ -96,7 +96,7 @@ Page((e = {
     disopt: [],
     range: 0,
     todaystep: 0,
-    credit1: 0,
+    credit3: 0,
     mp3_url: '',
     indexdisp: 'none',
     // indexdisp: 'block',
@@ -443,7 +443,7 @@ Page((e = {
       if (ee.status == 1) {
         // console.log('更新信息');
         a.setData({
-          credit1: ee.result.credit1,
+          credit3: ee.result.credit3,
           todaystep: ee.result.todaystep
         });
       }
@@ -458,7 +458,7 @@ Page((e = {
         helpstep: aaa.result.step
       })
     });
-    s.get("bushu", {}, function (tt) {
+    s.get("bushu_discount", {}, function (tt) {
       console.log(tt)
       if (tt.error == 0) {
         // console.log(tt);
@@ -538,7 +538,7 @@ Page((e = {
         aaa = t.currentTarget.dataset.source,
         curstep = t.currentTarget.dataset.step,
         sss = wx.createInnerAudioContext();
-      s.get("getkll", {
+      s.get("getkll_discount", {
         id: eee,
         source: aaa,
         step: curstep
@@ -547,7 +547,7 @@ Page((e = {
         ttt.setData({
           is_receive: 1
         });
-        s.get("bushu", {}, function (t) {
+        s.get("bushu_discount", {}, function (t) {
           if (t.error == 0) {
             // console.log(t.result);
             ttt.setData({
@@ -663,7 +663,7 @@ Page((e = {
         if (!res.authSetting['scope.werun']) {
           console.log('未获取微信运动')
           t.setData({
-            credit1: 0,
+            credit3: 0,
             todaystep: 0
           });
         } else if (res.authSetting['scope.werun']) {
@@ -689,7 +689,7 @@ Page((e = {
                           if (ee.status == 1) {
                             console.log('运动步数', ee);
                             t.setData({
-                              credit1: ee.result.credit1,
+                              credit3: ee.result.credit3,
                               todaystep: ee.result.todaystep
                             });
                           }
@@ -770,7 +770,7 @@ Page((e = {
         })
       }
     });
-    s.get("bushu", {}, function (tttt) {
+    s.get("bushu_discount", {}, function (tttt) {
       if (tttt.error == 0) {
         console.log(tttt.result);
         if (tttt.result.length <= 1) {
@@ -971,7 +971,7 @@ Page((e = {
                     if (ee.status == 1) {
                       console.log('运动步数');
                       that.setData({
-                        credit1: ee.result.credit1,
+                        credit3: ee.result.credit3,
                         todaystep: ee.result.todaystep
                       });
                     }
@@ -1000,7 +1000,7 @@ Page((e = {
       success: (res) => {
         if (!res.authSetting['scope.werun']) {
           that.setData({
-            credit1: 0,
+            credit3: 0,
             todaystep: 0
           });
           that.openfirm()
@@ -1015,7 +1015,7 @@ Page((e = {
             console.log(e)
             if (e.status == 1) {
               that.setData({
-                credit1: e.result.credit1,
+                credit3: e.result.credit3,
                 todaystep: e.result.todaystep
               });
             }
