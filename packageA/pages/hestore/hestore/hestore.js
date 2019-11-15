@@ -29,6 +29,19 @@ Page({
       show: !0,
     })
   },
+  change: function () {
+    var hid = this.data.hidden;
+    if (hid == true) {
+      hid = false;
+    }
+    else {
+      hid = true;
+    }
+    this.setData({
+      hidden: hid // 改变状态
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

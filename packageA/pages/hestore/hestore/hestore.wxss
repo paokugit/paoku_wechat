@@ -8,6 +8,27 @@ page {
 .storeBox {
   width: 100%;
   height: auto;
+  position: relative;
+}
+
+.message {
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 0rpx;
+}
+
+.msg {
+  padding: 10rpx 30rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: #333;
+  opacity: 0.6;
+  border-radius: 30rpx;
 }
 
 .store-tab {
@@ -116,7 +137,7 @@ page {
 
 .signature-box {
   width: 100%;
-  margin-top: 10rpx
+  margin-top: 10rpx;
 }
 
 .signature {
@@ -140,69 +161,79 @@ page {
   border-radius: 30rpx;
   margin-right: 10rpx;
   color: #01d7a1;
-  font-size: 24rpx
+  font-size: 24rpx;
 }
-.Imgbox{
+
+.Imgbox {
   width: 100%;
   height: 273rpx;
   padding: 16rpx 0;
   background: #0f0;
   margin-top: 10rpx;
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
 }
-.imgItem{
+
+.imgItem {
   width: 210rpx;
   height: 270rpx;
   background: #f66;
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
 }
-.productImg{
+
+.productImg {
   width: 200rpx;
   height: 180rpx;
-  border-radius: 5rpx
+  border-radius: 5rpx;
 }
-.productTit{
+
+.productTit {
   width: 180rpx;
   color: #333;
   font-size: 26rpx;
   margin-top: 8rpx;
-  margin-bottom: 8rpx
+  margin-bottom: 8rpx;
 }
-.price-box{
+
+.price-box {
   width: 190rpx;
   height: 40rpx;
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
-.handle-box{
+
+.handle-box {
   width: 100%;
   height: 45rpx;
   background: #f88;
   margin-top: 20rpx;
-  position: relative
+  position: relative;
 }
-.comment-box, .transmit-box, .like-box{
-  width: 100rpx;
+
+.comment-box, .transmit-box, .like-box {
+  width: auto;
   height: auto;
   display: flex;
-  align-items: center
+  align-items: center;
 }
-.comment-box{
+
+.comment-box {
   position: absolute;
   top: 0;
   left: 0;
 }
-.transmit-box{
+
+.transmit-box {
   position: absolute;
   top: 0;
   left: 122rpx;
 }
-.like-box{
+
+.like-box {
   position: absolute;
   top: 0;
-  right: 5rpx
+  right: 5rpx;
 }

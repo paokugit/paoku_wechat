@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "packageA/pages/hestore/hestore/hestore",
     "pages": [
         "pages/index/index",
         "pages/store/store",
