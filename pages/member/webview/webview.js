@@ -1,10 +1,17 @@
-// pages/member/webview/webview.js
+var t = getApp(),
+  a = t.requirejs("core");
+var f = getApp();
+
+var useropenid = "";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    globalimg: t.globalData.appimg,
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
 
   },
 
@@ -13,6 +20,8 @@ Page({
    */
   onLoad: function (options) {
 
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
   },
 
   /**

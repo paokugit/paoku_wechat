@@ -1,18 +1,42 @@
-// pages/member/rvc/rvc.js
+var t = getApp(),
+  a = t.requirejs("core");
+var f = getApp();
+
+var useropenid = "";
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
 
+  data: { 
+    globalimg: t.globalData.appimg,
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
+
+    credit: '',
+    come_total: '',
+    frozen_credit: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
 
+    var t = this
+    a.get('member/log/member_RVC', {
+      openid: userinfo.openid
+    }, function (e) {
+      console.log(e)
+      t.setData({
+        credit: e.info.RVC,
+        come_total: e.info.come_total,
+        frozen_credit: e.info.sale_total
+      })
+    })
   },
 
   /**

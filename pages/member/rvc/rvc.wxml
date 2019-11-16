@@ -1,2 +1,39 @@
-<!--pages/member/rvc/rvc.wxml-->
-<text>pages/member/rvc/rvc.wxml</text>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="RVC账户"></navigation>
+<view class="balanceBox">
+  <view class='balance-header'>
+    <image src='{{globalimg}}/rvc-img.png'></image>
+    <view class='balance-header-top'>
+      <view class='top-text'>可用余额</view>
+      <view class='top-num'>{{credit}}</view>
+    </view>
+    <view class='balance-header-bottom'>
+      <view class='bottom-left'>
+        <view class='income-text'>累计充值</view>
+        <view class='income-num'>{{come_total}}</view>
+      </view>
+
+      <view class='bottom-right'>
+        <view class='income-text'>累计消费</view>
+        <view class='income-num'>{{frozen_credit}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view style="position: relative;">
+    <view class='balance-foot'>
+      <navigator url="/pages/member/rvc/recharge" class='foot-con'>
+        <view class='imgBox'>
+          <image src='{{globalimg}}/rvcimage.png'></image>
+        </view>
+        <view class='imgCon'>充值</view>
+      </navigator>
+      <navigator url="/pages/member/log/bushu" class='foot-con'>
+        <view class='imgBox'>
+          <image src='{{globalimg}}/mingxi.png'></image>
+        </view>
+        <view class='imgCon'>明细</view>
+      </navigator>
+    </view>
+  </view>
+
+</view>

@@ -64,6 +64,9 @@
                         <view class="row">
                             <view class="row-text">RVC支付</view>
                         </view>
+                        <view class="subtitle">当前RVC：
+                            <text class="text-danger"><text>{{list.RVC.current}}</text></text>
+                        </view>
 
                       </view>
                       <view class="angle"></view>

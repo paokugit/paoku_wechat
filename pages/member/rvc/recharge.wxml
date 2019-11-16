@@ -1,2 +1,28 @@
-<!--pages/member/rvc/recharge.wxml-->
-<text>pages/member/rvc/recharge.wxml</text>
+
+<block wx:if="{{!show}}">
+  <loading>加载中...</loading>
+</block>
+
+<navigation id='Navigation' show-icon='{{showIcon}}' title="RVC充值"></navigation>
+<view>
+  
+  <view class="top-up">
+    <view class="top-up-tit">
+      <view class="tit-left"></view>
+      <view class="tit-right">充值RVC数量</view>
+    </view>
+
+    <view class="import-box">
+      <input class="import" bindinput="formName" type="digit" confirm-typ="done" placeholder="请输入数量" placeholder-class="placss" maxlength="{{record}}"></input>
+    </view>
+  </view>
+
+  <view class="paybtn" catchtap="paybtn">充值</view>
+
+  <block wx:if="{{loading}}">
+    <view class="fui-loading">
+      <view class="icon"></view>
+      <view class="text">正在加载</view>
+    </view>
+  </block>
+</view>

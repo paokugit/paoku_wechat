@@ -67,7 +67,7 @@ Page({
         gratis: e.result.num, //免费抽
         msgList: e.result.log, //头部交替悬浮文字
         blocknum: e.result.list, //图片上显示得折扣
-        kaluliyu: e.result.credit1//
+        kaluliyu: e.result.credit3//
       })
     })
   },
@@ -77,20 +77,21 @@ Page({
     useropenid = userinfo.openid
     var _that = this
     var loc = ''
-    console.log()
     if (h.currentTarget.dataset.gratis == 0) {
       if (h.currentTarget.dataset.zhi >= 5) {
         a.get("game.getprize", {
-          money: 5,
+          money: 10,
           openid: useropenid,
           type: 0,
+          credit: 'credit3'
         }, function(e) {
+          console.log(e);
           loc = e.result.location
           if (e.result.remain > 0) {
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
-              kaluliyu: e.result.credit1,
+              kaluliyu: e.result.credit3,
               lsdas: 1,
               mask: 2,
             })
@@ -98,7 +99,7 @@ Page({
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
-              kaluliyu: e.result.credit1,
+              kaluliyu: e.result.credit3,
             })
           }
 

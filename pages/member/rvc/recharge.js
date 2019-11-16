@@ -1,11 +1,21 @@
 // pages/member/rvc/recharge.js
+var t = getApp(),
+  a = t.requirejs("core");
+var f = getApp();
+
+var useropenid = "";
+var str = 0;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    globalimg: t.globalData.appimg,
+    showIcon: true,
+    gloheight: t.globalData.gloheight,
 
+    loading: !0,
   },
 
   /**
@@ -13,6 +23,37 @@ Page({
    */
   onLoad: function (options) {
 
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
+
+    this.setData({
+      show: !0,
+      loading: !1,
+      record:-1
+    })
+  },
+
+  formName: function (e) {
+    var m = this;
+    str = e.detail.value;
+    var num = str.indexOf('.');
+   
+    if(num != -1){
+      var long = str.length;
+      var errand = long-num-1;
+      if (errand >=6){
+        m.setData({
+          record: long
+        })
+      }
+    }
+  },
+
+  paybtn:function(e){
+    console.log(str);
+    wx.navigateTo({
+      url: '/pages/member/webview/webview',
+    })
   },
 
   /**
