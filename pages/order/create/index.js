@@ -151,12 +151,12 @@ Page({
                       zkbDis: 'none'
                     })
                 }
-                if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice) {
-                    i.setData({
-                        caloriedisp: 'block',
-                        calorienum: t.goodsdeduct - t.deductcredit
-                    })
-                }
+                // if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice) {
+                //     i.setData({
+                //         caloriedisp: 'block',
+                //         calorienum: t.goodsdeduct - t.deductcredit
+                //     })
+                // }
                 i.setData({
                     list: t,
                     goods: t,

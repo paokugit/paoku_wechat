@@ -86,7 +86,7 @@ Page({
      */
     onLoad: function(options) {
         var i = this
-        s.get("member", {
+      s.get("member/index/discount", {
             openid: userinfo.openid
         }, function(e) {
             console.log(e)
@@ -157,7 +157,7 @@ Page({
                 })
             }
             ttt.setData({
-                credit: eve.message.credit,
+                credit: eve.message.credit1,
                 surplus_day: eve.message.surplus_day,
                 give_day: eve.message.give_day,
                 accelerate_day: eve.message.accelerate_day,

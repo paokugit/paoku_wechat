@@ -499,7 +499,7 @@
                         </block>
                     </block>
                     <!-- 卡路里 -->
-                    <view class='calorieBox' style='display:{{caloriedisp}}'>
+                    <!-- <view class='calorieBox' style='display:{{caloriedisp}}'>
                         <view class='calorie-box' bindtap='caloriebtn'>
                             <view class='calorie-left'>卡路里还差
                                 <text class='calorie-count'>{{calorienum}}</text>,不能享受免费兑,快去挣更多哦</view>
@@ -507,7 +507,7 @@
                                 <image src='https://www.paokucoin.com/img/backgroup/chakangengduo.png'></image>
                             </view>
                         </view>
-                    </view>
+                    </view> -->
                     <!-- 卡路里 -->
                 </view>
                 <block>
