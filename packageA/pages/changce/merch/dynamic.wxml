@@ -1,4 +1,51 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺动态"></navigation>
 <view>
-  <view>123</view>
+  <view class="header-tit">以下为本店的店铺动态，欢迎浏览哦~</view>
+
+  <navigator class="storeList" url="/packageA/pages/changce/merch/details">
+    <view class="store-time iconcss">
+      <image class="clock-img" src="{{globalimg}}/dpxq_icon_dt@2x.png"></image>
+      <view class="clock-tetx">15小时前</view>
+    </view>
+
+    <view class="commodity-theme iconcss">
+      <view class="theme-tit theme-titA">秒杀</view>
+      <view class="theme-text iconcss">
+        <view class="theme-left">距离结束还差</view>
+        <view class="timecss">03</view>：
+        <view class="timecss">12</view>：
+        <view class="timecss">59</view>
+      </view>
+    </view>
+
+    <view class="details iconcss">
+      <view class="details-img"></view>
+      <view class="details-right">
+        <view class="details-right-top">屈臣氏蔻斯汀花瓣沐浴露乳樱花玫瑰2L深层清洁持久时擦洒出时擦</view>
+        <view class="details-right-botom">1396</view>
+      </view>
+    </view>
+
+    <view class="icon-btn iconcss">
+      <view class="iconcss">
+        <view class="icon-transmit iconcss">
+          <image class="icon-share-img" src="{{globalimg}}/eyes.png"></image>
+          <view class="icon-txt">20</view>
+        </view>
+        
+        <view class="icon-leave iconcss">
+          <image class="icon-language-img" src="{{globalimg}}/drq_inco_xx@2x.png"></image>
+          <view class="icon-txt">10</view>
+        </view>
+      </view>
+      <view class="iconcss">
+        <image class="icon-like-img" src="{{globalimg}}/{{iconA}}.png"></image>
+        <view class="icon-txt">54</view>
+      </view>
+    </view>
+
+  </navigator>
+
+  
+  <view class="on-earth">到底了哦</view>
 </view>

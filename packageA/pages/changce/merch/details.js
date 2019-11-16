@@ -1,6 +1,9 @@
 var t = getApp(),
-  a = t.requirejs("core"),
-  e = t.requirejs("jquery");
+  a = t.requirejs("core");
+var f = getApp();
+
+var useropenid = "";
+
 Page({
 
   /**
@@ -10,9 +13,9 @@ Page({
     globalimg: t.globalData.appimg,
     showIcon: true,
     gloheight: t.globalData.gloheight,
+    attention:0,
 
-    
-    iconA:'drq_inco_dz_per@2x',
+    iconA: 'drq_inco_dz_per@2x',
     iconB: 'drq_inco_dz_nor@2x',
   },
 
@@ -20,7 +23,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
+  },
 
+  noticeWei:function(){
+    var m = this;
+    m.setData({
+      attention:1
+    })
+  },
+  noticeYi: function () {
+    var m = this;
+    m.setData({
+      attention: 0
+    })
   },
 
   /**

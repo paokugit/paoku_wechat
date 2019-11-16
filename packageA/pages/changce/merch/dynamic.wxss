@@ -1,1 +1,127 @@
-/* packageA/pages/changce/merch/dynamic.wxss */
+.header-tit{
+  font-size: 24rpx;
+  color: #999999;
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.storeList{
+  background: #ffffff;
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+}
+
+.commodity-theme{
+  margin: 40rpx 0 30rpx;
+}
+.clock-img{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+}
+
+.theme-tit{
+  width: 77rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 24rpx;
+  border-radius: 18rpx;
+  margin-right: 20rpx;
+}
+.theme-titA{
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+}
+.theme-titB{
+  color: #01d7a1;
+  border: 1px solid #01d7a1; 
+}
+
+.theme-left{
+  font-size: 34rpx;
+  color: #333333;
+  margin-right: 6rpx;
+}
+
+.timecss{
+  width: 30rpx;
+  height: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30rpx;
+  color: #fefefe;
+  font-size: 18rpx;
+  background: #363636;
+  border-radius: 4rpx;
+}
+
+
+.details-img{
+  width: 225rpx;
+  height: 240rpx;
+  margin-right: 24rpx;
+  background: red;
+}
+
+.details-right{
+  width: 400rpx;
+}
+
+.details-right-top{
+  height: 90rpx;
+  color: #999999;
+  font-size: 34rpx;
+  margin-bottom: 60rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.details-right-botom{
+  color: #1a1a1a;
+  font-size: 34rpx;
+}
+.details-right-botom::before{
+  content: "￥";
+  color: #1a1a1a;
+  font-size: 34rpx;
+}
+
+
+.icon-btn{
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.icon-transmit{
+  margin-right: 40rpx;
+}
+.icon-language-img{
+  width: 34rpx;
+  height: 32rpx;
+}
+.icon-share-img{
+  width: 36rpx;
+  height: 36rpx;
+}
+.icon-like-img{
+  width: 38rpx;
+  height: 36rpx;
+}
+.icon-txt{
+  color: #666665;
+  font-size: 30rpx;
+  margin-left: 18rpx;
+}
+
+.iconcss{
+  display: flex;
+  align-items: center;
+}
+
+.on-earth{
+  font-size: 26rpx;
+  color: #9b9b9b;
+  text-align: center;
+  margin-top: 45rpx;
+}
