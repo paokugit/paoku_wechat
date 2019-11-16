@@ -160,16 +160,19 @@ Page({
       console.log(this.data.params)
         var e = t.currentTarget.dataset.order, a = this.data.params;
         if ("" == e) {
+          // 综合
             if (a.order == e) return;
             a.order = "", this.setData({
                 listorder: ""
             });
         } else if ("minprice" == e) this.setData({
+          // 价格
             listorder: ""
         }), a.order == e ? "desc" == a.by ? a.by = "asc" : a.by = "desc" : a.by = "asc", 
         a.order = e, this.setData({
             listorder: a.by
         }); else if ("sales" == e) {
+          // 销量
             if (a.order == e) return;
             this.setData({
                 listorder: ""

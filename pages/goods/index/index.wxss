@@ -94,7 +94,7 @@ page {
 }
 
 .sort .item.on .text {
-    color: #fd5454;
+    color: #01d7a1;
 }
 
 .sort .item image {
@@ -596,4 +596,44 @@ page {
     width: 170rpx;
     height: 34rpx;
     margin-top: 10rpx;
+}
+.subject-box{
+  width: 50%;
+  height: 620rpx;
+  background: #00dba1;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+.subject-tit{
+  width: auto;
+  color: #fff;
+  font-size: 30rpx;
+}
+.subject-subtit{
+   width: auto;
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  margin-bottom: 26rpx
+}
+.subject-img{
+  width: 320rpx;
+  height: 320rpx;
+  border-radius: 5rpx;
+  background: #ff6;
+  margin-bottom: 50rpx
+}
+.chakan{
+  width: 130rpx;
+  height: 50rpx;
+  background: #ffd400;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24rpx
 }

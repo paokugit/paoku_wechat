@@ -201,7 +201,9 @@
       <view class="text">综合</view>
     </view>
     <view bindtap="bindSort" class="item {{params.order=='sales'?'on':''}}" data-order="sales">
-      <view class="text">销量</view>
+      <view class="text">销量
+        <image class="icon" src="/static/images/icon/listsort{{listorder}}.png"></image>
+      </view>
     </view>
     <view bindtap="bindSort" class="item item-price {{params.order=='minprice'?'on':''}}" data-order="minprice">
       <view class="text">价格
@@ -215,6 +217,12 @@
     </view>
   </view>
   <view class="fui-goods-group {{listmode}}">
+    <view class="subject-box">
+      <view class="subject-tit">夏季爽口降暑</view>
+      <view class="subject-subtit">自充电便携榨汁机</view>
+      <image class="subject-img"></image>
+      <view class="chakan">查看</view>
+    </view>
     <block wx:for="{{list}}" wx:key="{{index}}">
       <template is="tpl_list" data="{{item:item}}"></template>
     </block>
