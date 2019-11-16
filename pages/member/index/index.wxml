@@ -56,11 +56,11 @@
       <view class='reward-num'>{{cometotal}}</view>
       <view class='reward-text'>可用余额</view>
     </navigator>
-    <navigator url='/pages/member/log/bushu' class='calorie-img'>
+    <navigator url='/pages/member/rvc/rvc' class='calorie-img'>
       <image src='{{globalimg}}/bgyellow@2x.png'></image>
       <!-- <view class='calorie-num'>{{member.calorie_total}}</view> -->
       <view class='calorie-num'>{{calorietotal}}</view>
-      <view class='calorie-text'>RVC钱包</view>
+      <view class='calorie-text'>RVC账户</view>
     </navigator>
   </view>
   <!-- 个人收入 -->

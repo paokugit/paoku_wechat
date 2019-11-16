@@ -1,0 +1,4 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="RVC充值"></navigation>
+<view>
+  <web-view src="https://mp.weixin.qq.com/"></web-view>
+</view>

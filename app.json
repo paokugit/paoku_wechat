@@ -19,6 +19,14 @@
         "pages/goods/detail/index",
         "pages/member/balance/balance",
         "pages/member/log/bushu",
+
+
+        "pages/member/rvc/rvc",
+        "pages/member/rvc/recharge",
+        "pages/member/webview/webview",
+        
+
+        
         "pages/index/moremerch/moremerch",
         "pages/member/detail/detail",
         "pages/custom/index",
