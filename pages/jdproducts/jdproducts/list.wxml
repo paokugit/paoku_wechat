@@ -1,6 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="精选好物">
-
-</navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="精选好物"></navigation>
 <view class='account-box'>
   <!-- tab -->
   <block>
