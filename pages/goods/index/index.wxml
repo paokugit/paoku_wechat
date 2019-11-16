@@ -217,11 +217,21 @@
     </view>
   </view>
   <view class="fui-goods-group {{listmode}}">
-    <view class="subject-box">
-      <view class="subject-tit">夏季爽口降暑</view>
-      <view class="subject-subtit">自充电便携榨汁机</view>
-      <image class="subject-img"></image>
-      <view class="chakan">查看</view>
+    <view class="productlist">
+      <view class="subject-box">
+        <view class="subject-tit">夏季爽口降暑</view>
+        <view class="subject-subtit">自充电便携榨汁机</view>
+        <image class="subject-img"></image>
+        <view class="chakan">查看</view>
+      </view>
+      <view class="itemBox">
+        <image class="productImg"></image>
+        <view class="productTit">雅诗兰黛小棕瓶眼霜雅诗兰黛小棕瓶眼霜</view>
+        <view class="priceBox"></view>
+        <view class="huodong-box"></view>
+      </view>
+      <view class="itemBox"></view>
+      <view class="itemBox"></view>
     </view>
     <block wx:for="{{list}}" wx:key="{{index}}">
       <template is="tpl_list" data="{{item:item}}"></template>
