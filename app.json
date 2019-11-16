@@ -1,8 +1,8 @@
 {
-  "entryPagePath": "pages/jdproducts/jdproducts/list",
+  "entryPagePath": "pages/index/index",
   "pages": [
-    "pages/jdproducts/jdproducts/list",
     "pages/index/index",
+    "pages/jdproducts/jdproducts/list",
     "pages/discount/zkbscancode/zkbscancode",
     "pages/personalcode/scancode",
     "pages/rebate/discount/discount",
@@ -20,6 +20,9 @@
     "pages/goods/detail/index",
     "pages/member/balance/balance",
     "pages/member/log/bushu",
+    "pages/member/rvc/rvc",
+    "pages/member/rvc/recharge",
+    "pages/member/webview/webview",
     "pages/index/moremerch/moremerch",
     "pages/member/detail/detail",
     "pages/custom/index",
