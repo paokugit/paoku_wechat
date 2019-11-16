@@ -7,173 +7,77 @@ page {
     /* background: #f8f8f8; */
     background: #fff;
 }
-
-.account-box {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative
+.listBox{
+  width: 100%;
+  height: auto;
+  background: pink
+}
+.store-tab {
+  width: 100%;
+  height: 82rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
+.store-tab .item {
+  line-height: 45rpx;
+  color: #666;
+  font-size: 32rpx;
+}
+
+.store-tab .activeA {
+  line-height: 45rpx;
+  color: #01d7a1;
+  font-size: 32rpx;
+  /* border-bottom: 8rpx solid #01d7a1; */
+}
 image {
     width: 100%;
     height: 100%;
 }
-
-.zkb-img {
-    width: 690rpx;
-    height: 200rpx;
-    position: relative;
+.listCon{
+  width: 96%;
+  height: pink;
+  padding: 0 2%;
+  background: #f77;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 30rpx
+  
 }
-.account-tit{
-    color: #a97a3c;
-    font-size: 28rpx;
-    position: absolute;
-     left: 9%;
-     top: 15%
-
+.itemBox{
+  width: 48%;
+  height: auto;
+  background: #ff6;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20rpx
 }
-.account-num-box {
-    width: auto;
-    height: 90rpx;
-    position: absolute;
-    top: 35%;
-    left: 9%;
-    display: flex;
+.proImg{
+  width: 344rpx;
+  height: 351rpx;
+  border-radius: 20rpx
 }
-
-.account-num {
-    color: #323232;
-    font-size: 90rpx;
-}
-
-.account-yuan {
-    width: auto;
-    height: 90rpx;
-    line-height: 120rpx;
-    color: #323232;
-    font-size: 40rpx;
-    margin-left: 6rpx;
-}
-
-.account-btn-box {
-    width: 690rpx;
-    height: 120rpx;
-    position: absolute;
-    bottom: 3%;
-    left: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.codebtn, .rechargebtn {
-    width: 252rpx;
-    height: 132rpx;
-}
-.swiper-tab {
-    width: 80%;
-    height: 100rpx;
-    line-height: 100rpx;
-    padding: 0 10%;
-    text-align: center;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    color: #333;
-    font-size: 40rpx;
-}
-
-.swiper-tab-item {
-    width: 260rpx;
-    color: #434343;
-}
-
-.active {
-    color: #ffce0b;
-    border-bottom: 4rpx solid #ffce0b;
-    font-weight: bold;
-}
-
-.juzhong {
-    margin: 0 auto;
-}
-
-.domain {
-    background-color: #f0f;
-    height: 100%;
-    margin: 0 10px;
-}
-
-.show{
+.proTitle{
+  width: 320rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 10rpx;
+  color: #323232;
+  font-size: 32rpx;
   display: block;
-  position: absolute;
-  top: 100rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
-.hidden {
-    display: none;
-}
-
-.content01 {
-    width: 100%;
-    /* height: 200rpx; */
-    height: 100%;
-}
-
-.content {
-    width: 100%;
-    /* height: 200rpx; */
-    height: 100%;
-}
-
-.scroll {
-    width: 100%;
-    height: auto;
-}
-
-.expend-box, .recharge-box {
-    width: 690rpx;
-    height: auto;
-    margin-top: 20rpx;
-}
-
-.expend-list, .recharge-list {
-    width: 98%;
-    height: 140rpx;
-    padding: 0 1%;
-    border-bottom: 2rpx solid #f1f1f1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.list-left {
-    width: auto;
-    height: 140rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.expend-title {
-    color: #262626;
-    font-size: 28rpx;
-}
-
-.expend-time {
-    color: #9a9a9a;
-    font-size: 26rpx;
-    margin-top: 15rpx;
-}
-
-.list-right {
-    width: auto;
-    height: 140rpx;
-    font-size: 34rpx;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: right;
+.priceBox{
+  width: 320rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center
 }

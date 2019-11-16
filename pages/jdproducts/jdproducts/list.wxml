@@ -1,67 +1,90 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="精选好物">
 
-
-<navigation id='Navigation' show-icon='{{showIcon}}' title="收支明细"></navigation>
+</navigation>
 <view class='account-box'>
-    <!-- tab -->
-    <block>
-        <block wx:if="{{!show}}">
-            <loading>加载中...</loading>
-        </block>
+  <!-- tab -->
+  <block>
+    <block wx:if="{{!show}}">
+      <loading>加载中...</loading>
     </block>
+  </block>
+  <block>
     <block wx:if="{{show}}">
-        <view class="swiper-tab">
-            <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">收入</view>
-            <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">支出</view>
+      <view class="listBox">
+        <view class="store-tab">
+          <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">推荐</view>
+          <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">上新</view>
+          <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">品质</view>
+          <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">特价</view>
+          <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">成都</view>
         </view>
-        <view class="{{type==1 ? 'show':'hidden'}}">
-            <scroll-view>
+        <view class="listCon">
+          <view class="itemBox">
 
-                <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <view class='expend-list'>
-                        <view class='list-left'>
-                            <view class='expend-title'>{{item.remark}}</view>
-                            <view class='expend-time'>{{item.createtime}}</view>
-                        </view>
-                        <view class='list-right'>+{{item.num}}</view>
-                    </view>
-                </view>
-            </scroll-view>
-        </view>
-        <view class="{{type==2 ? 'show':'hidden'}}">
-            <scroll-view>
-                <view class='recharge-box' wx:for="{{list}}" wx:key="{{index}}">
-                    <navigator class='recharge-list' url='/packageA/pages/discount/mingxi/mingxi?id={{item.id}}'>
-                        <view class='list-left'>
-                            <view class='expend-title'>{{item.remark}}</view>
-                            <view class='expend-time'>{{item.createtime}}</view>
-                        </view>
-                        <view class='list-right'>{{item.num}}</view>
-                    </navigator>
-                </view>
-            </scroll-view>
-        </view>
-    </block>
-    <!-- tab -->
-    <block>
-        <block wx:if="{{total<=0&&!loading}}">
-            <view class="fui-loading empty">
-                <view class="text">暂无数据</view>
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
             </view>
-        </block>
+          </view>
+          <view class="itemBox">
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
+            </view>
+          </view>
+          <view class="itemBox">
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
+            </view>
+          </view>
+          <view class="itemBox">
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
+            </view>
+          </view>
+          <view class="itemBox">
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
+            </view>
+          </view>
+          <view class="itemBox">
+            <image class="proImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+            <view class="proTitle">兰蔻小黑瓶精华小黑瓶眼霜</view>
+            <view class="priceBox">
+              <text style="color:#f00;font-size:28rpx">￥</text>
+              <text style="color:#f00;font-size:40rpx">19.9</text>
+              <text style="color:#999;font-size:24rpx;margin-left:25rpx">一万人已付款</text>
+            </view>
+          </view>
+        </view>
+      </view>
     </block>
+  </block>
+  <!-- tab -->
+  <block>
+    <block wx:if="{{total<=0&&!loading}}">
+      <view class="fui-loading empty">
+        <view class="text">暂无数据</view>
+      </view>
+    </block>
+  </block>
 </view>
-<block>
-    <block wx:if="{{loading}}">
-        <view class="fui-loading">
-            <view class="icon"></view>
-            <view class="text">正在加载</view>
-        </view>
-    </block>
-</block>
-<block>
-    <block wx:if="{{loaded&&list.length>0}}">
-        <view class="fui-loading empty">
-            <view class="text">没有更多了</view>
-        </view>
-    </block>
-</block>

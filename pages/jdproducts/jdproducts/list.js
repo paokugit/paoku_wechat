@@ -13,7 +13,7 @@ Page({
     globalimg: f.globalData.appimg,
     showIcon: true,
     gloheight: f.globalData.gloheight,
-    type: 1,
+    type: 0,
     page: 1,
     loaded: !1,
     loading: !0,
