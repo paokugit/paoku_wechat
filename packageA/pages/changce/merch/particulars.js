@@ -13,11 +13,9 @@ Page({
     globalimg: t.globalData.appimg,
     showIcon: true,
     gloheight: t.globalData.gloheight,
-    attention:0,
 
     iconA: 'drq_inco_dz_per@2x',
     iconB: 'drq_inco_dz_nor@2x',
-    boxShow: 0
   },
 
   /**
@@ -26,19 +24,6 @@ Page({
   onLoad: function (options) {
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
-  },
-
-  noticeWei:function(){
-    var m = this;
-    m.setData({
-      attention:1
-    })
-  },
-  noticeYi: function () {
-    var m = this;
-    m.setData({
-      attention: 0
-    })
   },
 
   /**
@@ -73,18 +58,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      boxShow: 0
-    })
+ 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      boxShow: 1,
-    })
+  
   },
 
   /**

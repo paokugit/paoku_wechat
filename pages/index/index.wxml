@@ -189,7 +189,7 @@
             <block wx:for="{{libaolist}}" wx:key="{{index}}">
               <swiper-item>
                 <view class="libao-goods">
-                  <view class="libao-goods-item" wx:for="{{item}}">
+                  <view class="libao-goods-item" wx:for="{{item}}" wx:key="index">
                     <navigator url="/packageA/pages/gift/gift" class="libao-goods-bg">
                       <image src='{{globalimg}}/01@2x.png'></image>
                       <view class="product-img">

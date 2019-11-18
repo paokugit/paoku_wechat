@@ -201,6 +201,9 @@ page{
   color: #333333;
   font-weight: bold;
   margin-bottom: 7rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .review-time{
   font-size: 22rpx;
@@ -224,4 +227,19 @@ page{
   height: 1rpx;
   background: #ebebeb;
   margin: 35rpx 0 0 81rpx;
+}
+
+.state-one{
+  font-size: 28rpx;
+  color: #666665;
+  margin-bottom: 16rpx;
+}
+.replyName{
+  font-size: 28rpx; 
+  color: #01d7a1;
+}
+
+.state-look{
+  font-size: 24rpx;
+  color: #666665;
 }

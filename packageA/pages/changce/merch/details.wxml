@@ -49,10 +49,10 @@
   </view>
   
 
-  <view class="imgBall">
+  <view class="imgBall" style="{{boxShow == 1?'':'display:none'}}">
     <view class="all-comment">全部评论10</view>
 
-    <block wx:for="{{2}}">
+    <block wx:for="{{2}}" wx:key="index">
       <view class="review">
         <view class="review-head headercss">
           <view class="review-left headercss">
@@ -72,15 +72,13 @@
         <view class="review-details">这期化妆品都好实惠，图一和图八必买款呀！</view>
         <view class="review-more">
           <view class="state-one">
-            <text>萌驼旅行家</text>：新的一天，新的开始。
+            <text class="replyName">萌驼旅行家</text>：新的一天，新的开始。
           </view>
 
-          <view>
-            <text class="replyName"></text> 回复<text class="replyName"></text>：
+          <view class="state-one">
+            <text class="replyName">欣欣向荣</text>回复<text class="replyName">萌驼旅行家</text>：未来会更好。
           </view>
-
-          <view class="state-two"></view>
-          <view class="state-look"></view>
+          <navigator url="/packageA/pages/changce/merch/particulars" class="state-look">查看2条评论 ></navigator>
         </view>
         <view class="review-bord"></view>
       </view>

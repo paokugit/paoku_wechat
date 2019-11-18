@@ -49,10 +49,10 @@
 
   </view>
 
-  <!-- 推荐内容 -->
-  <view style="{{currentData == 0 ? '' : 'display:none'}}">
-    
-    <view class="details-top">
+  
+  <view style="{{currentData == 0||currentData == 2 ? '' : 'display:none'}}">
+    <!-- 推荐内容 -->
+    <view class="details-top" style="{{currentData == 0 ? '' : 'display:none'}}">
       <view class="inform">
         <image class="inform-icon" src="{{globalimg}}/dbxq_icon_tz@2x.png"></image>
         <view class="marquee_box">
@@ -86,11 +86,11 @@
             </view>
           </view>
         </navigator>  
-
       </view>
     </view>
 
-    <view class="referral-business">
+    <view class="referral-business" style="{{currentData == 0 ? '' : 'display:none'}}">
+      
       <view class="businessList">
         <view class="business-img"></view><!-- 已售完样式未添加 -->
         <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
@@ -104,8 +104,39 @@
           </view>
         </view>
       </view>
-      
+
     </view>
+
+    <!-- 上新内容 -->
+    <view class="update-list" style="{{currentData == 2? '' : 'display:none'}}">
+      <view class="update-time">
+        <view class="update-box">
+          <image class="update-image" src="{{globalimg}}/dbxq_icon_sx@2x.png"></image>
+          <view class="update-text">10月24日本店上新</view>
+        </view>
+      </view>
+
+      <view class="referral-business">
+
+        <view class="businessList">
+          <view class="business-img"></view>
+          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+          <view class="business-figure">
+            <view class="number">
+              <view class="number-money">99</view>
+              <view class="number-people">999人付款</view>
+            </view>
+            <view class="shopping-car">
+              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+            </view>
+          </view>
+        </view>
+        
+      </view>
+
+    </view>
+
+
     <view class="on-earth" style="margin-bottom:150rpx;">到底了哦</view>
   </view>
 
@@ -194,39 +225,7 @@
     
   </view>
 
-  <!-- 上新内容 -->
-  <view style="{{currentData == 2 ? '' : 'display:none'}}">
-  
-    <view class="update-list">
-      <view class="update-time">
-        <view class="update-box">
-          <image class="update-image" src="{{globalimg}}/dbxq_icon_sx@2x.png"></image>
-          <view class="update-text">10月24日本店上新</view>
-        </view>
-      </view>
-
-      <view class="referral-business">
-
-        <view class="businessList">
-          <view class="business-img"></view>
-          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
-          <view class="business-figure">
-            <view class="number">
-              <view class="number-money">99</view>
-              <view class="number-people">999人付款</view>
-            </view>
-            <view class="shopping-car">
-              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
-            </view>
-          </view>
-        </view>
-        
-      </view>
-
-    </view>
-
-    <view class="on-earth" style="margin-bottom: 120rpx;">到底了哦</view>
-  </view>
+ 
 
   <!-- 全部商品内容 -->
   <view style="{{currentData == 3 ? '' : 'display:none'}}">

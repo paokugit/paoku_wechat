@@ -159,9 +159,13 @@ Page({
   },
 
   dynamicBtn:function(){
-    wx.navigateTo({
-      url: '/packageA/pages/changce/merch/dynamic'
+    wx.showModal({
+      title: '提示',
+      content: '暂未开放',
     })
+    // wx.navigateTo({
+    //   url: '/packageA/pages/changce/merch/dynamic'
+    // })
   },
   //----------
 

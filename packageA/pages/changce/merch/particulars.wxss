@@ -1,0 +1,84 @@
+.header{
+  height: 200rpx;
+  padding: 23rpx 25rpx 40rpx;
+  background: #fff;
+  border-top: 1px solid #f4f4f4;
+}
+
+.head-critic{
+  justify-content: space-between;
+}
+
+.critic-img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin-right: 20rpx;
+  background: red;
+}
+
+.critic-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.critic-time{
+  font-size: 24rpx;
+  color: #929292;
+}
+
+.head-text{
+  font-size: 30rx;
+  color: #333333;
+  margin: 37rpx 0 0 100rpx;
+}
+
+.list{
+  height: 200rpx;
+  padding: 30rpx 25rpx 0rpx 48rpx;
+  background: #fcfcfc;
+}
+.list-img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  margin-right: 15rpx;
+  background: red;
+}
+.list-name{
+  margin-bottom: 7rpx;
+}
+.list-text{
+  font-size: 28rpx;
+  color: #333333;
+  margin: 37rpx 0 0 100rpx;
+  padding-bottom: 37rpx;
+  border-bottom: 1rpx solid #ebebeb;
+}
+
+.list-text text{
+  font-size: 28rpx;
+  color: #01d7a1;
+  
+}
+
+
+.zanimg{
+  width: 38rpx;
+  height: 36rpx;
+}
+.icontxt{
+  font-size: 34rpx;
+  color: #666666;
+  margin-left: 13rpx;
+}
+
+.flexCss{
+  display: flex;
+  align-items: center;
+}
