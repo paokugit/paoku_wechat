@@ -61,90 +61,109 @@
                     </view>
                 </view> -->
       </view>
-      
-      <!-- 秒杀 -->
-      <view class='sec-box' style='display:{{seckillDis}}'>
-        <view class='sec-absolute-box'>
-          <view class='sec-saleprice'>
-            <text class='sec-symbol'>￥</text>
-            <text class='sec-price'>{{goods.showprice}}</text>
+      <!-- 商品信息(秒杀商品) --郝艳萍-->
+      <view class="productInfo02" style='display:{{seckillDis}}'>
+        <!-- 秒杀 -->
+        <view class='sec-box' style='display:{{seckillDis}}'>
+          <view class='sec-absolute-box'>
+            <view class='sec-saleprice'>
+              <text class='sec-symbol'>￥</text>
+              <text class='sec-price'>{{goods.showprice}}</text>
+            </view>
+            <view class='sec-originalprice'>￥{{goods.productprice}}</view>
+            <view class='robbtn'>限时抢购</view>
           </view>
-          <view class='sec-originalprice'>￥{{goods.productprice}}</view>
-          <view class='robbtn'>限时抢购</view>
-        </view>
-        <view class='sec-djs-box'>
-          <view class='sec-text' wx:if="{{goods.istime==1&&goods.timebuy==-1}}">距开始</view>
-          <view class='sec-text' wx:else>距结束</view>
+          <view class='sec-djs-box'>
+            <view class='sec-text' wx:if="{{goods.istime==1&&goods.timebuy==-1}}">距开始</view>
+            <view class='sec-text' wx:else>距结束</view>
 
-          <view class='timeText'>
-            <text class='timebox'>{{countDownHour}}</text>
-            <text class='time-symbol'>:</text>
-            <text class='timebox'>{{countDownMinute}}</text>
-            <text class='time-symbol'>:</text>
-            <text class='timebox'>{{countDownSecond}}</text>
+            <view class='timeText'>
+              <text class='timebox'>{{countDownHour}}</text>
+              <text class='time-symbol'>:</text>
+              <text class='timebox'>{{countDownMinute}}</text>
+              <text class='time-symbol'>:</text>
+              <text class='timebox'>{{countDownSecond}}</text>
+            </view>
           </view>
-        </view>
-        <view class='progressbar'>
-          <progress percent="{{(goods.sales+goods.salesreal)/(goods.sales+goods.salesreal+goods.total)*100}}" color="#fff" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="10" active border-radius="20rpx" />
-        </view>
-        <view class='sec-num'>仅剩{{goods.total}}件</view>
-        <!-- <view class='fanhui-img'>
-                    <image src='{{globalimg}}/fanhui02.png'></image>
-                </view> -->
-      </view>
-      <!-- 秒杀 -->
-      <view class="seckill-container " wx:if="{{goods.seckillinfo}}">
-        <view class="fui-list seckill-list" style="">
-          <view class="fui-list-media seckill-price">
-            ¥
-            <span>{{goods.seckillinfo.price}}</span>
+          <view class='progressbar'>
+            <progress percent="{{(goods.sales+goods.salesreal)/(goods.sales+goods.salesreal+goods.total)*100}}" color="#fff" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="10" active border-radius="20rpx" />
           </view>
-          <view class="fui-list-inner">
-            <view class="text">
-              <span class="oldprice">{{goods.marketprice}}</span>
+          <view class='sec-num'>仅剩{{goods.total}}件</view>
+        </view>
+        <!-- 秒杀 -->
+        <view class="title-share-box">
+          <view class="left-title">{{goods.title}}</view>
+          <view class="right-share">
+            <view class="sharebtn-box">
+              <view class="shareBox" style='display:{{shareDis}}'>
+                <view class='notadd_flex' style='display:{{notaddDis}}'>
+                  <button class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                    <view bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                      <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                      <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                    </view>
+                  </button>
+                </view>
+
+                <view class='add_flex' style='display:{{addDis}}'>
+                  <button class='phone_btn'>
+                    <view bindtap="addshow" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                      <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                      <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                    </view>
+                  </button>
+                </view>
+              </view>
             </view>
           </view>
         </view>
-        <view class="fui-list seckill-list1">
-          <view class="fui-list-inner">
-            <view class="text ">已出售 {{goods.seckillinfo.percent}}%</view>
-            <view class="text ">
-              <span class="process">
-                <view class="process-inner" style="width: {{goods.seckillinfo.percent}}%"></view>
-              </span>
-            </view>
-          </view>
-        </view>
-        <view class="fui-list seckill-list2" style="">
-          <view class="fui-list-inner">
-            <view class="text ">{{goods.seckillinfo.status==1?'距开始':'距结束'}}还有</view>
-            <view class="text timer">
-              <span class="time-hour">{{hour}}</span>
-              :
-              <span class="time-min">{{min}}</span>
-              :
-              <span class="time-sec">{{sec}}</span>
-            </view>
-          </view>
+        <view class="subhead-box">{{goods.subtitle}}</view>
+        <view class="safeguard-box">
+          <image class="safeguard-img" src="{{globalimg}}/sc_tdd_inco_xr@2x.png"></image>
+          <text class="safeguard-text">正品保障</text>
         </view>
       </view>
-      <!-- 价格,title --郝艳萍-->
-      <view class="productInfo01">
+      <!-- 商品信息(秒杀商品) --郝艳萍-->
+      <!-- 商品信息(非秒杀商品) --郝艳萍-->
+      <view class="productInfo01" style='display:{{notseckillDis}}'>
         <view class="priceBox">
           <view class="priceBox-left">
             <view class="goodsPrice">
               <text class='money-symbol'>￥</text>
-              <text class='money-count'>19.9</text>
+              <text class='money-count'>{{goods.showprice}}</text>
             </view>
-            <view class="goods-original-price">￥19.9</view>
+            <view class="goods-original-price">￥{{goods.productprice}}</view>
           </view>
-          <view class="sharebtn-box"></view>
-        </view>
-        <view class="productTit">新品【三只松鼠—曲奇陷阱160gx2】零食烘焙甜品饼干手工爆浆软心曲奇饼</view>
-        <view class="subhead-box"><view></view></view>
-      </view>
-      <!-- 价格,title --郝艳萍-->
+          <view class="sharebtn-box">
+            <view class="shareBox" style='display:{{shareDis}}'>
+              <view class='notadd_flex' style='display:{{notaddDis}}'>
+                <button class='phonebtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                  <view bindtap="showshade" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                    <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                    <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                  </view>
+                </button>
+              </view>
 
+              <view class='add_flex' style='display:{{addDis}}'>
+                <button class='phone_btn'>
+                  <view bindtap="addshow" class="fui-cell-remark showshade" style="width:120rpx;height:60rpx;float:right;background:#fe9402;display:flex;justify-content: center;align-items: center;border-radius:10rpx">
+                    <i class="shareicon icox icox-send" style="font-size:40rpx;color: #fff;"></i>
+                    <view class='sharetext' style="color: #fff;margin-left:10rpx;">分享</view>
+                  </view>
+                </button>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="productTit">{{goods.title}}</view>
+        <view class="subhead-box">{{goods.subtitle}}</view>
+        <view class="safeguard-box">
+          <image class="safeguard-img" src="{{globalimg}}/sc_tdd_inco_xr@2x.png"></image>
+          <text class="safeguard-text">正品保障</text>
+        </view>
+      </view>
+      <!-- 商品信息(非秒杀商品) --郝艳萍-->
 
       <!-- xph,优惠券、活动开始 -->
       <view class="special-offer">
@@ -294,10 +313,7 @@
               <view class="corebtn">完成</view>
             </view>
           </view>
-
         </view>
-
-        
 
       </view>
       <!-- xph,优惠券、活动结束 -->
@@ -389,7 +405,11 @@
           </view>
         </view>
       </view> -->
-      <!-- <view class="fui-cell-group fui-cell-click fui-sale-group" style="margin-top:0" wx:if="{{goods.ispresell==1&&(preselltimeend>now||preselltimeend==0)}}">
+
+
+
+
+      <view class="fui-cell-group fui-cell-click fui-sale-group" style="margin-top:0" wx:if="{{goods.ispresell==1&&(preselltimeend>now||preselltimeend==0)}}">
         <view class="fui-list">
           <view class="fui-list-media">
             <view class="fui-cell-text">
@@ -407,7 +427,8 @@
             </block>
           </view>
         </view>
-      </view> -->
+      </view>
+      <!-- 活动 -->
       <!-- <view class="favourable" wx:if="{{!goods.seckillinfo}}">
         <view class="fui-cell-group fui-sale-group" style="margin-top:0" wx:if="{{goods.buyagain>0}}">
           <view class="fui-cell">
@@ -510,14 +531,15 @@
           </view>
         </view>
       </view> -->
-      <!-- <view bindtap="cityPicker" class="fui-cell-group fui-cell-click  fui-sale-group" data-class="city-picker" data-tap="{{active}}" id="city-picker" style="margin-top:0" wx:if="{{goods.citys.citys.length>0}}">
+      <view bindtap="cityPicker" class="fui-cell-group fui-cell-click  fui-sale-group" data-class="city-picker" data-tap="{{active}}" id="city-picker" style="margin-top:0" wx:if="{{goods.citys.citys.length>0}}">
         <view class="fui-cell">
           <view class="fui-cell-text">{{goods.citys.onlysent==0?'不':'只'}}配送区域:
             <block wx:for="{{goods.citys.citys}}" wx:for-index="idx">{{item}}</block>
           </view>
           <view class="fui-cell-remark"></view>
         </view>
-      </view> -->
+      </view>
+      <!-- 正品保证 -->
       <!-- <view class="fui-cell-group fui-option-group" style="margin-top:0" wx:if="{{goods.hasServices||goods.labelname}}">
         <view class="goods-label-demo">
           <view class="goods-label-list goods-label-style{{labels.style+1}}" style="background:#fafafa">
@@ -560,44 +582,146 @@
         </view>
       </view>
       <!-- 赏金任务-结束 -->
-      <view bindtap="selectPicker" class="fui-cell-group fui-cell-click" data-buytype="select" data-class="select-picker" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canbuy}}">
-        <view class="fui-cell" wx:if="{{!isSelected}}">
-          <view class="fui-cell-text option-selector">请选择
-            <block wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</block>
-            <block wx:else>数量</block>
+      <!-- 规格-邮费-郝艳萍 -->
+      <view class="standard-area-postage">
+
+        <view bindtap="selectPicker" class="standard-box" data-buytype="select" data-class="select-picker" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canbuy}}">
+          <view class="standard-con" wx:if="{{!isSelected}}">
+            <!-- <view class="fui-cell-text option-selector">请选择
+              <block wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</block>
+              <block wx:else>数量</block>
+            </view>
+            <view class="fui-cell-remark"></view> -->
+            <view class="standard-text">选择</view>
+            <view class="standard-right">
+              <view class="standard-type" wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</view>
+              <view class="standard-type" wx:else>规格</view>
+              <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+            </view>
           </view>
-          <view class="fui-cell-remark"></view>
+          <view class="fui-cell" wx:else>
+            <view class="fui-cell-info">已选：数量x{{total}} {{specsTitle}}</view>
+          </view>
         </view>
-        <view class="fui-cell" wx:else>
-          <view class="fui-cell-info">已选：数量x{{total}} {{specsTitle}}</view>
+        <view class="fui-cell-group fui-cell-click" wx:else>
+          <view class="fui-cell">
+            <view class="fui-cell-text" style="display:flex;align-items:center; justify-content: space-between">
+              <block wx:if="{{goods.userbuy==0}}">您已经超出最大{{goods.usermaxbuy}}件购买量</block>
+              <block wx:elif="{{goods.levelbuy==0}}">
+                <view class='goods-detail-box' style='display:flex;align-items:center;'>
+                  <view class='goods-detail-img' style='width:44rpx;height:44rpx;margin-right:10rpx'>
+                    <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/hygrade01.png'></image>
+                  </view>
+                  <text>{{goods.cannotbuy}}</text>
+                </view>
+                <navigator class='goods-detail-box' openType="switchTab" url="/pages/exclusive/exclusive" style='display:flex;align-items:center;'>
+                  <text style='margin-right:10rpx'>去开通</text>
+                  <view class='goods-detail-img' style='width:34rpx;height:34rpx; display:flex;align-items:center; justify-content: center'>
+                    <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/chakangengduo.png'></image>
+                  </view>
+                </navigator>
+              </block>
+              <block wx:elif="{{goods.groupbuy==0}}">您所在的用户组没有购买权限</block>
+              <block wx:elif="{{goods.timebuy==-1}}">未到开始抢购时间!</block>
+              <block wx:elif="{{goods.timebuy==1}}">抢购时间已经结束!</block>
+              <block wx:elif="{{goods.total<=0}}">商品已经售罄!</block>
+            </view>
+          </view>
+        </view>
+        <!-- 运费 -->
+        <view class="postageBox">
+          <view class="standard-text">选择</view>
+          <view class="standard-right">
+            <view class="standard-type">在线支付偏远地区邮费另算</view>
+          </view>
         </view>
       </view>
-      <view class="fui-cell-group fui-cell-click" wx:else>
-        <view class="fui-cell">
-          <view class="fui-cell-text" style="display:flex;align-items:center; justify-content: space-between">
-            <block wx:if="{{goods.userbuy==0}}">您已经超出最大{{goods.usermaxbuy}}件购买量</block>
-            <block wx:elif="{{goods.levelbuy==0}}">
-              <view class='goods-detail-box' style='display:flex;align-items:center;'>
-                <view class='goods-detail-img' style='width:44rpx;height:44rpx;margin-right:10rpx'>
-                  <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/hygrade01.png'></image>
+      <!-- 规格-邮费-郝艳萍 -->
+      <!-- 商品评价-郝艳萍 -->
+      <view class="appraiseBox">
+        <view class="headline-box">
+          <view class="appraise-left">商品评价(8)</view>
+          <view class="appraise-right">
+            <view class="favorable-rate">好评98.9%</view>
+            <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+          </view>
+        </view>
+        <view class="label-box">
+          <view class="label-item">好吃</view>
+          <view class="label-item">好吃</view>
+          <view class="label-item">好吃</view>
+        </view>
+        <view class="store-slide-box">
+          <scroll-view class="scroll-view_H" scroll-x>
+            <view class="scroll-view-item_H">
+              <view class="scroll-view-flex">
+                <view class="appraise-item-left">
+                  <view class="appraiser-avatar"></view>
+                  <view class="appraiser-name">糖果</view>
+                  <view class="appraise-desc">很好吃的零食，大家快来买呀，</view>
+                  <view class="appraise-standard">规格:750g</view>
                 </view>
-                <text>{{goods.cannotbuy}}</text>
+                <view class="appraise-item-right">
+                  <view class="appraise-img"></view>
+                  <view class="appraise-img-num">3张</view>
+                </view>
               </view>
-              <navigator class='goods-detail-box' openType="switchTab" url="/pages/exclusive/exclusive" style='display:flex;align-items:center;'>
-                <text style='margin-right:10rpx'>去开通</text>
-                <view class='goods-detail-img' style='width:34rpx;height:34rpx; display:flex;align-items:center; justify-content: center'>
-                  <image style='width:100%;height:100%' src='https://paokucoin.com/img/backgroup/chakangengduo.png'></image>
-                </view>
-              </navigator>
-            </block>
-            <block wx:elif="{{goods.groupbuy==0}}">您所在的用户组没有购买权限</block>
-            <block wx:elif="{{goods.timebuy==-1}}">未到开始抢购时间!</block>
-            <block wx:elif="{{goods.timebuy==1}}">抢购时间已经结束!</block>
-            <block wx:elif="{{goods.total<=0}}">商品已经售罄!</block>
-          </view>
+            </view>
+            <view class="scroll-view-item_H"></view>
+            <view class="scroll-view-item_H"></view>
+            <view class="scroll-view-item_H"></view>
+            <view class="appraise-readmore">
+              <view class="appraise-readmore-flex">
+                <view class="more-comment">更多评论</view>
+                <view class="more-line"></view>
+                <view class="more-eng">See more</view>
+              </view>
+            </view>
+          </scroll-view>
         </view>
       </view>
-      <view class="fui-cell-group fui-comment-group" wx:if="{{packagegoods}}">
+      <!-- 商品评价-郝艳萍 -->
+      <!-- 店铺-郝艳萍 -->
+      <view class="shopBox">
+        <view class="shopbox-titlebox" bindtap='goStore'>
+          <view class="titlebox-left">
+            <view class="shopImg"></view>
+            <view class="shopName">{{goods.shopdetail.shopname}}</view>
+            <view class="onsale-box">在售商品
+              <text class="onsale-num">30</text>件
+            </view>
+          </view>
+          <view class="titlebox-right">
+            <view class="favorable-rate">进店逛逛</view>
+            <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+          </view>
+        </view>
+        <view class="showcaseBox">
+          <view class="showcase-item">
+            <view class="showcaseImg"></view>
+            <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
+            <view class="showcase-price">￥36.6</view>
+          </view>
+          <view class="showcase-item"></view>
+          <view class="showcase-item"></view>
+        </view>
+      </view>
+      <!-- 店铺-郝艳萍 -->
+      <!-- 商品推荐-郝艳萍 -->
+      <view class="recommendBox">
+        <view class="recommend-headline">相关商品推荐</view>
+        <view class="showcaseBox">
+          <view class="showcase-item">
+            <view class="showcaseImg"></view>
+            <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
+            <view class="showcase-price">￥36.6</view>
+          </view>
+          <view class="showcase-item"></view>
+          <view class="showcase-item"></view>
+        </view>
+      </view>
+      <!-- 商品推荐-郝艳萍 -->
+      <!-- <view class="fui-cell-group fui-comment-group" wx:if="{{packagegoods}}">
         <navigator url="/pages/goods/package/index?id={{packagegoodsid}}">
           <view class="fui-cell fui-cell-click">
             <view class="fui-cell-text desc">{{packageList.title}}</view>
@@ -616,7 +740,6 @@
         </view>
       </view>
       <view class="fui-cell-group fui-shop-group">
-        <!-- 隐藏 -->
         <view class='hiddenbox' style='display:{{listDis}}'>
           <view class="fui-list">
             <view class="fui-list-media">
@@ -630,34 +753,44 @@
             </view>
           </view>
         </view>
-        <!-- 隐藏 -->
-      </view>
-      <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">
+      </view> -->
+      <!-- <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}" style="background:#f00">
         <view class="fui-cell" style="display: block;">
           <template is="wxParse" data="{{wxParseData:wxParseData_buycontent.nodes}}"></template>
         </view>
-      </view>
+      </view> -->
     </view>
-    <view class="fui-cell-group" wx:if="{{goods.params.length>0||goods.getComments&&commentObj.list.length>0}}">
+    <!-- 有详情和参数或评价 -->
+    <!-- <view class="fui-cell-group" wx:if="{{goods.params.length>0||goods.getComments&&commentObj.list.length>0}}" style="background:#0f0">
       <view class="title">
-        <view class="fui-tab fui-tab-danger" id="tab">
+        <view class="fui-tab fui-tab-danger" id="tab" style="background:#0f0">
           <view bindtap="goodsTab" class="item {{info}}" data-tap="info">商品详情</view>
           <view bindtap="goodsTab" class="item {{para}}" data-tap="para" wx:if="{{goods.params.length>0}}">参数</view>
           <view bindtap="goodsTab" class="item {{comment}}" data-tap="comment" wx:if="{{goods.getComments&&commentObj.list.length>0}}">评价</view>
         </view>
       </view>
-    </view>
-    <view class="fui-cell-group" wx:if="{{goods.params.length==0&&!(goods.getComments&&commentObj.list.length>0)}}">
+    </view> -->
+    <!-- 仅有商品详情导航 -->
+    <!-- <view class="fui-cell-group" style="background:#0ff">
       <view class="fui-list">
         <view class="title">商品详情</view>
       </view>
+    </view> -->
+    <!-- 商品详情导航-郝艳萍 -->
+    <view class="detail-headline-box">
+    <view class="detail-line"></view>
+    <view class="detail-headline-text">商品详情</view>
+    <view class="detail-line"></view>
     </view>
+    <!-- 商品详情导航-郝艳萍 -->
+    <!-- 详情内容 -->
     <view class="goods-detail-info {{info}}" style="padding:0 8rpx;box-sizing: border-box;">
       <view class="wxParse" style="overflow: hidden;">
         <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
       </view>
     </view>
-    <view class="goods-detail-comment {{comment}}">
+    <!-- 原有评价 -->
+    <!-- <view class="goods-detail-comment {{comment}}">
       <view class="fui-icon-group col-5 ">
         <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
           <view class="{{commentObjTab==index+1?'text-danger':''}}">{{index==0?'全部':''}}{{index==1?'好评':''}}{{index==2?'中评':''}}{{index==3?'差评':''}}{{index==4?'晒图':''}}
@@ -715,9 +848,10 @@
         <view class="fui-cell-group fui-comment-group"></view>
       </view>
       <view class="content-empty" style="{{commentEmpty?'display:block':'display:none'}}">暂时没有任何评价</view>
-    </view>
+    </view> -->
     <include src="/pages/diy/template/tpl_copyright.wxml" wx:if="{{copyright}}"></include>
-    <view wx:if="{{usediypage==false}}">
+    <!-- 原有评价 -->
+    <!-- <view wx:if="{{usediypage==false}}">
       <view class="goods-detail-comment {{comment}}">
         <view class="fui-icon-group col-5 ">
           <view bindtap="comentTap" class="fui-icon-col" data-level="item" data-type="{{index+1}}" wx:for="{{stararr}}">
@@ -777,7 +911,7 @@
         </view>
         <view class="content-empty" style="{{commentEmpty?'display:block':'display:none'}}">暂时没有任何评价</view>
       </view>
-    </view>
+    </view> -->
     <view class="goods-detail-para {{para}}">
       <view class="fui-cell-group">
         <view class="fui-cell" wx:for="{{goods.params}}" wx:for-index="idx">
@@ -828,17 +962,17 @@
         <view class="label">关注</view>
       </view>
       <button class="nav-item customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true" wx:if="{{goods.customer==1&&limits}}">
-        <view class="icox icox-customerservice"></view>
+        <view><image class="kefuimg" src="{{globalimg}}/xq-inco_kefu@2x.png"></image></view>
         <view class="label">客服</view>
       </button>
       <!-- 进入店铺 -->
       <navigator class="nav-item external" openType="switchTab" url="/pages/index/index?merchid={{goods.merchid}}">
-        <view class="icox icox-shop1"></view>
+        <view><image class="dianpuimg" src="{{globalimg}}/xq-inco_dianbu@2x.png"></image></view>
         <view class="label">店铺</view>
       </navigator>
       <navigator class="nav-item cart-item" id="menucart" open-type="navigate" url="/pages/member/cart/index">
         <view class="badge {{goods.cartount<=0?'out':'in'}}" wx:if="{{goods.cartcount&&limits}}">{{goods.cartcount}}</view>
-        <view class="icox icox-cart1"></view>
+        <view><image class="gouwuimg" src="{{globalimg}}/xq-inco_gouwuc@2x.png"></image></view>
         <view class="label">购物车</view>
       </navigator>
       <view bindtap="selectPicker" class="nav-item btn cartbtn" data-buytype="cart" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canAddCart&&goods.type!=9}}">加入购物车</view>

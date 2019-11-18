@@ -1,0 +1,83 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="他的店"></navigation>
+    <view class="storeBox">
+      <view class="store-tab">
+        <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">推荐</view>
+        <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">关注</view>
+        <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">上新</view>
+        <view class="item">
+          <image src="{{globalimg}}/ta_img_qukaidian@2x.png"></image>
+        </view>
+      </view>
+      <view class="store-itembox">
+        <view class="shopItem">
+          <view class="shop-titlebox">
+            <image class="shopLogo" src="{{globalimg}}/paokulogo.png"></image>
+            <view class="shoptit">萌驼旅行家萌驼旅行家萌驼旅行家萌驼旅行家萌驼旅行家萌驼旅行家</view>
+            <image class="indetify" src="{{globalimg}}/tadd_img_rqdp@2x.png"></image>
+            <view class="goshop">
+              <image class="dianpu" src="{{globalimg}}/dianpu@2x.png"></image>
+              <text style="color:#01d7a1;font-size:28rpx">进店</text>
+            </view>
+          </view>
+          <view class="signature-box">
+            <view class="signature">
+              <text class="label">上新</text> 趁青春,敢闯敢爱敢自由,这里有着不一样的世界,等你来发现Ta的奇迹之夜~趁青春,敢闯敢爱敢自由,这里有着不一样的世界,
+            </view>
+          </view>
+          <view class="Imgbox">
+            <view class="imgItem">
+              <image class="productImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+              <view class="productTit">花庐民宿</view>
+              <view class="price-box">
+                <text style="color:#e01212;font-size:24rpx">￥360</text>
+                <text style="color:#929292;font-size:24rpx;text-decoration: line-through">￥299</text>
+              </view>
+            </view>
+            <view class="imgItem">
+              <image class="productImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+              <view class="productTit">花庐民宿</view>
+              <view class="price-box">
+                <text style="color:#e01212;font-size:24rpx">￥360</text>
+                <text style="color:#929292;font-size:24rpx;text-decoration: line-through">￥299</text>
+              </view>
+            </view>
+            <view class="imgItem">
+              <image class="productImg" src="{{globalimg}}/sc_tj_bg_nor@2x.png"></image>
+              <view class="productTit">花庐民宿</view>
+              <view class="price-box">
+                <text style="color:#e01212;font-size:24rpx">￥360</text>
+                <text style="color:#929292;font-size:24rpx;text-decoration: line-through">￥299</text>
+              </view>
+            </view>
+          </view>
+          <!-- 按钮 -->
+          <view class="handle-box">
+            <view class="comment-box">
+              <image style="width:36rpx;height:36rpx" src="{{globalimg}}/eyes.png"></image>
+              <text style="color:#666;font-size:30rpx;margin-left:10rpx">10</text>
+            </view>
+            <view class="transmit-box">
+              <image style="width:34rpx;height:32rpx" src="{{globalimg}}/drq_inco_xx@2x.png"></image>
+              <text style="color:#666;font-size:30rpx;margin-left:10rpx">20</text>
+            </view>
+            <view class='like-box' bindtap='change'>
+              <image style="width:38rpx;height:36rpx" src="{{hidden ? 'https://www.paokucoin.com/img/backgroup/drq_inco_dz_per@2x.png' : 'https://www.paokucoin.com/img/backgroup/drq_inco_dz_nor@2x.png'}}" mode='aspectFit'></image>
+              <text style="color:#666;font-size:30rpx;margin-left:10rpx">{{hidden ? '点赞' : '1'}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 为你更新10条动态 -->
+        <view class="message">
+          <text class="msg">为你更新10条动态</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>

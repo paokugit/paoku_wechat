@@ -1,0 +1,127 @@
+/* pages/order/detail/progress.wxss */
+
+.fui-list-groups {
+  background-color: #fff;
+  position: relative;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+}
+
+.fui-list-groups.express-list .fui-lists .fui-list-inner:before {
+  content: " ";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  border-left: 2rpx solid #999;
+  top: 0;
+  left: 40rpx;
+  z-index: 9999;
+}
+
+.express-list .fui-lists:first-child .fui-list-inner:before {
+  top: 40rpx;
+}
+
+.express-list .fui-lists:last-child .fui-list-inner:before {
+  height: 40rpx;
+}
+
+.express-list .fui-lists .fui-list-inner {
+  padding: 30rpx 70rpx;
+}
+
+.express-list .fui-lists.current .fui-list-inner .text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.express-list .fui-lists .fui-list-inner .text.step:before {
+  content: " ";
+  height: 10rpx;
+  width: 10rpx;
+  background: #999;
+  border: 2rpx solid #999;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9999;
+  top: 10rpx;
+  left: -37rpx;
+}
+
+.express-list .fui-lists.current .fui-list-inner .text.step:before {
+  height: 18rpx;
+  width: 18rpx;
+  background: #01d7a1;
+  border: 0.1rem solid #b2f3e3;
+  position: absolute;
+  top: 10rpx;
+  left: -42rpx;
+}
+
+.express-list .fui-lists {
+  padding: 0;
+}
+
+.fui-list-inner .text {
+  position: relative;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  color: #999;
+}
+
+.fui-lists {
+  position: relative;
+  display: flex;
+  padding: 16rpx 24rpx;
+  transition-duration: 300ms;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fui-lists:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  height: 0;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  left: 20rpx;
+}
+.goodsBox{
+  width: 94%;
+  height: 166rpx;
+  padding: 24rpx 3%;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center
+}
+.goodsImg{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+}
+.infoCon{
+  width: 400rpx;
+  height: 150rpx;
+  margin-left: 16rpx;
+}
+.goods-state{
+  width: 400rpx;
+  height: auto;
+  color: #333;
+  font-size: 30rpx;
+  font-weight: bold
+}
+.express{
+  color: #333;
+  font-size: 26rpx;
+  margin-top: 14rpx;
+}
+.express-num{
+  color: #333;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}

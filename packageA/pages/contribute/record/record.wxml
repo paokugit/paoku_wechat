@@ -10,5 +10,6 @@
             <view class='item-right01' wx:if="{{item.num-0<0}}">{{item.num}}</view>
         </view>
     </view>
+    <view class="record-footer">查询完了哦</view>
 </view>
 <view class='record_mask' style='display:{{maskDis}}'><view class='nodata'>暂无数据哦</view></view>

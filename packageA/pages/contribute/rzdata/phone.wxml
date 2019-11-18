@@ -1,0 +1,9 @@
+<!--pages/contribute/rzdata/rzdata.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="手机号码"></navigation>
+<view class='phone-box'>
+  <view class="phonenum">
+    <text style="width:250rpx">当前手机号码：</text>
+    <text style="width:200rpx">{{phonenumber}}</text>
+  </view>
+  <button bindtap="gobindbtn" class="phonebtn">更改手机号码</button>
+</view>

@@ -1,0 +1,35 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="通知"></navigation>
+    <block>
+      <block wx:if="{{informlist.length <= 0}}">
+        <view>空</view>
+      </block>
+    </block>
+    <block>
+      <block wx:if="{{informlist.length >0}}">
+        <view class="logistics-box">
+          <view class="listItem" wx:for="{{informlist}}">
+            <view class="title-box">
+              <text class="item-title">跑库签到提醒</text>
+              <text class="item-time">{{item.createtime}}</text>
+            </view>
+            <navigator class="item-con" url='/packageA/pages/shop/notice/notification/detail?id={{item.id}}'>
+              <image class="itemImg" src="{{item.thumb}}"></image>
+              <view class="item-info">
+                <view class="info-title">{{item.title}}</view>
+                <view class="info-num">来自跑库</view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </block>
+    </block>
+
+  </block>
+</block>

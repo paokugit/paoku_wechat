@@ -1,0 +1,9 @@
+<!--pages/contribute/rzdata/rzdata.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="微信号"></navigation>
+<view class='phone-box'>
+  <view class="phonenum">
+    <text style="width:250rpx">当前微信号：</text>
+    <text style="width:200rpx">{{wechatnumber}}</text>
+  </view>
+  <button bindtap="bindwechat" class="phonebtn">更改微信号</button>
+</view>

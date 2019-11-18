@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝充值"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝兑换"></navigation>
 <view class='rechange_box'>
     <view class='rechange-con'>
         <view class='kll-balance-box'>
@@ -11,7 +11,7 @@
             <text class='kll-symbol'>=</text>2折扣宝</view>
         <view class='empty-box'>
             <view class='empty'></view>
-            <view class='empty-text'>充值金额</view>
+            <view class='empty-text'>兑换金额</view>
             <view class='hint-text' style='display:{{hintDis}}'>卡路里余额不足,请重新输入</view>
         </view>
         <view class='ipt-box'>
@@ -19,7 +19,7 @@
             <input bindinput='watchPassWord'  class='rechangeipt' type='text' placeholder='输入金额'></input>
         </view>
         <view class='rechange-btnbox' bindtap='rechargebtn'>
-            <button class='rechangebtn'>充值</button>
+            <button class='rechangebtn'>兑换 </button>
         </view>
     </view>
 </view>

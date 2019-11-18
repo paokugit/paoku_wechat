@@ -1,0 +1,234 @@
+<!--pages/store/store.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="折扣宝优选"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view wx:if="{{show}}" class="storeBox">
+  <view class="day-img">
+    <image mode="widthFix" src="{{globalimg}}/store-day.png"></image>
+  </view>
+  <view class='swipercontent'>
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+  <!-- 活动items-开始 -->
+  <view class="activity-item-box">
+
+    <swiper class='carousel_swiper' indicator-dots="{{dots}}" indicator-color="#e5fff9" indicator-active-color="#01d7a1" autoplay="true" interval='5000' circular='true'>
+      <block>
+        <swiper-item style="background:#f00">
+          <!-- <image class="carouselImg" src="{{item}}" mode='aspectFill'></image> -->
+          <view class="activity-kind">
+            <view class="activity-items">
+              <image class="activity-img" src="{{globalimg}}/sc_jgq_icon_0yd@2x.png"></image>
+              <text class="activity-title">0元购</text>
+            </view>
+            <view class="activity-items">
+              <image class="activity-img" src="{{globalimg}}/sc_jgq_icon_fxz@2x.png"></image>
+              <text class="activity-title">水果美食</text>
+            </view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+            <view class="activity-items"></view>
+          </view>
+        </swiper-item>
+        <!-- <swiper-item style="background:#0f0"></swiper-item> -->
+      </block>
+    </swiper>
+  </view>
+  <!-- 活动items-结束 -->
+  <!-- 推荐 -->
+  <view class="recommend-box">
+    <view class="recommend-items">
+      <image src="{{globalimg}}/sc_lm_img_whbd@2x.png"></image>
+    </view>
+    <view class="recommend-items">
+      <image src="{{globalimg}}/sc_lm_img_xxnc@2x.png"></image>
+    </view>
+    <view class="recommend-items">
+      <image src="{{globalimg}}/sc_lm_img_whbd@2x.png"></image>
+    </view>
+    <view class="recommend-items">
+      <image src="{{globalimg}}/sc_lm_img_xxnc@2x.png"></image>
+    </view>
+  </view>
+  <!-- 推荐 -->
+  <!-- 快报 -->
+  <view class="news-box">
+    <view class="news-left">
+      <image src="{{globalimg}}/sc_img_toutiao@2x.png"></image>
+    </view>
+    <view class="news-right">
+      <swiper autoplay="true" interval="2000" circular="true" vertical="true">
+        <block>
+          <swiper-item>
+            <text class="news-text">啦啦啦</text>
+          </swiper-item>
+          <swiper-item>
+            <text class="news-text">呀呀呀</text>
+          </swiper-item>
+          <swiper-item>
+            <text class="news-text"> 哈哈哈 </text>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!-- 快报 -->
+  <!-- Ta的店 -->
+  <view class="he-store-box">
+    <view class="he-title-box">
+      <view class="he-tit">
+        <view class="title-text">Ta的店</view>
+        <view class="store-circle">
+          <image src="{{globalimg}}/circle01.png"></image>
+        </view>
+      </view>
+      <navigator class="he-tit" url="/packageA/pages/hestore/hestore/hestore">
+        <view class="title-right">10条动态未看</view>
+        <view class="title-right-img">
+          <image src="{{globalimg}}/icon_view.png"></image>
+        </view>
+      </navigator>
+
+    </view>
+    <view class="store-slide-box">
+      <scroll-view class="scroll-view_H" scroll-x>
+        <view class="scroll-view-item_H bc_green">
+          <view class="store-thumb"></view>
+          <view class="store-name">糖果屋</view>
+          <view class="store-focus-yet">
+            <image class="focus-icon" src="{{globalimg}}/sc_ta_icon_wxzf@2x.png"></image>
+            <text class="focus-state">已关注</text>
+          </view>
+          <!-- <view class="store-focus-not">
+            <text class="focus-state-not">未关注</text>
+          </view> -->
+          <view class="stroll-box">逛逛</view>
+          <view class="store-intro">好吃的东西要吃进肚子里，可爱的人要放在心里好吃的东西要吃进肚子里，可爱的人要放在心里好吃的东西要吃进肚子里，可爱的人要放在心里</view>
+          <view class="store-time">2019.10.12</view>
+          <view class="store-hot">热度8.8万</view>
+        </view>
+        <view class="scroll-view-item_H bc_red"></view>
+        <view class="scroll-view-item_H bc_yellow"></view>
+        <view class="scroll-view-item_H bc_blue"></view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- Ta的店 -->
+  <view class="tabBox">
+    <block>
+      <block>
+        <view class="store-tab">
+          <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">推荐</view>
+          <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">上新</view>
+          <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">品质</view>
+          <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">特价</view>
+          <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">成都</view>
+        </view>
+      </block>
+    </block>
+    <view class="store-tab-con">
+      <view class="store-tab-within">
+        <view bindtap="myselect" class="item {{select==0?'activeB':''}}" data-select="0">综合</view>
+        <view bindtap="myselect" class="item {{select==1?'activeB':''}}" data-select="1">
+          <view class="up-down">
+            <text>价格</text>
+            <view class="up-down-box">
+              <image class="up-img" src="{{globalimg}}/sort01.png"></image>
+            </view>
+          </view>
+
+        </view>
+        <view bindtap="myselect" class="item {{select==2?'activeB':''}}" data-select="2">
+          <view class="up-down">
+            <text>销量</text>
+            <view class="up-down-box">
+              <image class="up-img" src="{{globalimg}}/sort01.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class="select-box">
+          <!-- <block wx:for="{{list}}">
+            
+          </block> -->
+          <view class="tab-item">
+            <view class="productImg">
+              <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
+              <view class="rec-box">
+                <image src="{{globalimg}}/recommend01.png"></image>
+              </view>
+            </view>
+            <view class="productName">啦啦啦啦啦啦啦啦啦啊啊啦啦啦啦啦啦阿拉蕾</view>
+            <view class="productLabel">
+              <view class="label-box">
+                <image class="zkblabel" src="{{globalimg}}/zkblabel.png"></image>
+                <text class="zkbtext">折扣宝</text>
+                <text class="zkb-price">-￥260</text>
+              </view>
+              <view class="originalprice">￥399</view>
+            </view>
+            <view class="discountprice-box">
+              <text style="color:#ff0014;font-size:28rpx">抵后</text>
+              <text style="color:#ff0137;font-size:26rpx;margin-left:6rpx">￥</text>
+              <text style="color:#ff0137;font-size:50rpx">139</text>
+            </view>
+          </view>
+          <view class="tab-item-special">
+            <view class="headline">主标题</view>
+            <view class="subhead">副标题</view>
+            <view class="special-img">
+              <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
+            </view>
+            <view class="special-btn">查看</view>
+          </view>
+          <view class="tab-item">
+            <view class="productImg">
+              <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
+            </view>
+            <view class="productName">啦啦啦啦啦啦啦啦啦啊啊啦啦啦啦啦啦阿拉蕾</view>
+            <view class="productLabel">
+              <view class="label-box">
+                <image class="zkblabel" src="{{globalimg}}/zkblabel.png"></image>
+                <text class="zkbtext">折扣宝</text>
+                <text class="zkb-price">-￥260</text>
+              </view>
+              <view class="originalprice">￥399</view>
+            </view>
+            <view class="discountprice-box">
+              <text style="color:#ff0014;font-size:28rpx">抵后</text>
+              <text style="color:#ff0137;font-size:26rpx;margin-left:6rpx">￥</text>
+              <text style="color:#ff0137;font-size:50rpx">139</text>
+            </view>
+          </view>
+          <view class="tab-item-special">
+            <view class="headline">主标题</view>
+            <view class="subhead">副标题</view>
+            <view class="special-img">
+              <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
+            </view>
+            <view class="special-btn">查看</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 查看更多 -->
+  <view class="readMore">查看更多</view>
+  <!-- 查看更多 -->
+</view>

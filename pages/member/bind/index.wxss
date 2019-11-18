@@ -1,116 +1,139 @@
 page {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    /* background: #f8f8f8; */
-    background: #f1f1f1
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+
 }
 
 .bind_box {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  background: #fff;
 }
 
 .bind-con {
-    width: 100%;
-    height: auto;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10rpx;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f8f8f8
 }
 
 .bind-phone, .bind-code {
-    width: 94%;
-    height: 100rpx;
-    border-bottom: 1rpx solid #eee;
-    display: flex;
-    align-items: center;
+  width: 94%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .phone-left, .code-left {
-    width: 20%;
-    height: 50rpx;
-    /* background: #f00; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 20%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .phone-text, .code-text {
-    color: #666;
-    font-size: 28rpx;
+  color: #666;
+  font-size: 28rpx;
 }
 
 image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .symbol {
-    width: 40rpx;
-    height: 40rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .phone-right, .code-right {
-    width: 79%;
-    height: 50rpx;
-    /* background: #0f0; */
-    margin-left: 1%;
+  width: 560rpx;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background: #f8f8f8;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
 }
 
 .phoneipt, .codeipt {
-    width: 100%;
-    height: 50rpx;
-    line-height: 50rpx;
-    border: 0;
-    outline: 0;
-    background-color: transparent;
-    /* font-size: inherit; */
-    color: inherit;
-    font-size: 28rpx;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  color: inherit;
+  font-size: 28rpx;
 }
+
 button::after {
-    border: none;
+  border: none;
 }
-.code-right{
-    position: relative
+
+.code-right {
+  position: relative;
 }
+
 .getcode {
-    width: 200rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    background: transparent;
-    color: #666;
-    border: 1px solid #666;
-    font-size: 26rpx;
-    position: absolute;
-    right: 3%;
-    top: -5rpx;
-    z-index: 2
+  padding: 0 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: transparent;
+  color: #169dc9;
+  font-size: 26rpx;
+  position: absolute;
+  right: 0;
+  z-index: 2;
 }
-.get_code{
-     width: 240rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    background: transparent;
-    color: #666;
-    border: 1px solid #666;
-    font-size: 26rpx;
-    position: absolute;
-    right: 3%;
-    top: -5rpx;
-    z-index: 3
+
+.get_code {
+  padding: 0 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: transparent;
+  color: #666;
+  font-size: 26rpx;
+  position: absolute;
+  right: 0;
+  z-index: 3;
 }
-.binding{
-    width: 90%;
-    height: 80rpx;
-    background: #ff5555;
-    margin-top: 20rpx;
-    color: #fff;
-    font-size: 30rpx
+
+.binding {
+  width: 600rpx;
+  height: 88rpx;
+  background: #01d7a1;
+  margin-top: 70rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 88rpx
+}
+
+.pickerbox {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.trigonImg {
+  width: 26rpx;
+  height: 13rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+}
+
+.phonebox {
+  width: 300rpx;
+  margin-left: 20rpx;
 }

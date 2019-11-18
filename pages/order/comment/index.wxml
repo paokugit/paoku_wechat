@@ -1,74 +1,173 @@
 <block>
-    <block wx:if="{{!show}}">
-        <loading>加载中...</loading>
-    </block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
 </block>
 <block>
-    <block wx:if="{{show}}">
-    <navigation id='Navigation' show-icon='{{showIcon}}' title="评价"></navigation>
-        <view clas="page">
-            <view class="fui-list-group">
-                <view class="fui-list-group-title">
-                    <text class="icox icox-dianpu1"></text>
-                    <text class="shop">{{shopname}}</text>
-                </view>
-                <block wx:for="{{goods}}">
-                    <view class="fui-list">
-                        <view class="fui-list-media">
-                            <image src="{{item.thumb}}"></image>
-                        </view>
-                        <view class="fui-list-inner">
-                            <view class="text">{{item.title}}</view>
-                            <block>
-                                <block wx:if="{{item.optiontitle}}">
-                                    <view class="subtitle">{{item.optiontitle}}</view>
-                                </block>
-                            </block>
-                        </view>
-                        <view class="fui-list-angle">
-                            <view class="text-right">{{item.price}}</view>
-                            <view class="text-right">x{{item.total}}</view>
-                        </view>
-                    </view>
-                </block>
-            </view>
-            <view class="fui-title">
-        整单评价
-    </view>
-            <view class="fui-cell-group evaluate">
-                <view class="fui-cell must">
-                    <view class="fui-cell-label">评分</view>
-                    <block wx:for="{{stars_class}}">
-                        <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}"></text>
-                    </block>
-                    <text class="{{stars_class[key]}}" style="font-size: 28rpx;">{{key!=-1?stars_text[key]:'未评价'}}</text>
-                </view>
-                <block>
-                    <block wx:if="{{order.iscomment==0}}">
-                        <view class="fui-cell">
-                            <view class="fui-cell-label">晒图</view>
-                            <view class="fui-images fui-images-sm">
-                                <block wx:for="{{imgs}}">
-                                    <image catchtap="upload" class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}">
-                                        <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
-                                            <text class="icox icox-close"></text>
-                                        </text>
-                                    </image>
-                                </block>
-                            </view>
-                            <view catchtap="upload" class="fui-uploader fui-uploader-sm" data-type="image"></view>
-                        </view>
-                    </block>
-                </block>
-                <view class="fui-cell must">
-                    <view class="fui-cell-label">评论</view>
-                    <textarea bindinput="change" data-name="content" placeholder="商品满意吗？来分享你的感受吧"></textarea>
-                    <view class="fui-cell-info"></view>
-                </view>
-            </view>
-            <view class="fui-footer">
-                <view bindtap="submit" class="nav-item btn btn-danger block">提交评价</view>
-            </view>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="发表评价"></navigation>
+    <view class="page">
+      <view class="fui-list-group">
+        <view class="fui-list-group-title">
+          <text class="icox icox-dianpu1"></text>
+          <text class="shop">{{shopname}}</text>
         </view>
+        <block wx:for="{{goods}}" wx:key="">
+          <view class="fui-list">
+            <view class="fui-list-media">
+              <image src="{{item.thumb}}"></image>
+            </view>
+            <view class="fui-list-inner">
+              <view class="text">{{item.title}}</view>
+              <block>
+                <block wx:if="{{item.optiontitle}}">
+                  <view class="subtitle">{{item.optiontitle}}</view>
+                </block>
+              </block>
+            </view>
+            <view class="fui-list-angle">
+              <view class="text-right">{{item.price}}</view>
+              <view class="text-right">x{{item.total}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="fui-title">
+        整单评价
+      </view>
+      <view class="fui-cell-group evaluate">
+        <view class="fui-cell must">
+          <view class="fui-cell-label">整体评价</view>
+          <block wx:for="{{stars_class}}" wx:key="">
+            <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}"></text>
+          </block>
+          <text class="{{stars_class[key]}}" style="font-size: 28rpx;margin-left:6rpx">{{key!=-1?stars_text[key]:'未评价'}}</text>
+        </view>
+        <block>
+          <block wx:if="{{order.iscomment==0}}">
+            <view class="fui-cell">
+              <view class="fui-cell-label">晒图</view>
+              <view class="fui-images fui-images-sm">
+                <block wx:for="{{imgs}}" wx:key="">
+                  <image catchtap="upload" class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}">
+                    <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
+                                            <text class="icox icox-close"></text>
+                    </text>
+                  </image>
+                </block>
+              </view>
+              <view catchtap="upload" class="fui-uploader fui-uploader-sm" data-type="image"></view>
+            </view>
+          </block>
+        </block>
+        <view class="fui-cell must">
+          <view class="fui-cell-label">评论</view>
+          <textarea bindinput="change" data-name="content" placeholder="宝贝满足你的期待吗？说说你的使用心得,分享给想买的他们吧!"></textarea>
+          <view class="fui-cell-info"></view>
+        </view>
+      </view>
+      <view class="fui-footer">
+        <view bindtap="submit" class="nav-item btn btn-danger block">提交评价</view>
+      </view>
+    </view>
+    <view class="appraiseBox">
+      <view class="appraise-top">
+        <view class="proInfo" wx:for="{{goods}}" wx:key="">
+          <image class="productImg" src="{{item.thumb}}"></image>
+          <view class="productTit">
+            <view class="title">{{item.title}}</view>
+            <block>
+              <block wx:if="{{item.optiontitle}}">
+                <view class="subtitle">{{item.optiontitle}}</view>
+              </block>
+            </block>
+          </view>
+        </view>
+        <!-- 星星 -->
+        <block>
+          <block wx:if="{{order.iscomment==0}}">
+            <view class="starsBox">
+              <text style="color:#333;font-size:32rpx;margin-right:20rpx">整体评价</text>
+              <block wx:for="{{stars_class}}" wx:key="">
+                <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}"></text>
+              </block>
+              <text class="{{stars_class[key]}}" style="font-size: 28rpx;margin-left:10rpx;color:#999">{{key!=-1?stars_text[key]:'未评价'}}</text>
+            </view>
+          </block>
+        </block>
+      </view>
+      <view class="appraise-bottom">
+        <block>
+          <block wx:if="{{order.iscomment==0}}">
+            <view class="labelBox">
+              <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">全部</view>
+              <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">最新评价</view>
+              <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">味道不错(266)</view>
+              <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">特价</view>
+            </view>
+          </block>
+        </block>
+        <textarea bindinput="change" data-name="content" placeholder="宝贝满足你的期待吗？说说你的使用心得,分享给想买的他们吧!"></textarea>
+        <block>
+          <block wx:if="{{order.iscomment==0}}">
+            <view class="fui-cells">
+              <view class="fui-images fui-images-sm" style="width:auto;height:auto">
+                <block wx:for="{{imgs}}" wx:key="">
+                  <image catchtap="upload" class="image image-sms" data-index="{{index}}" data-type="image-preview" src="{{item}}">
+                    <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
+                      <text class="icox icox-close"></text>
+                    </text>
+                  </image>
+                </block>
+              </view>
+              <view catchtap="upload" class="fui-uploaders" data-type="image">
+              </view>
+            </view>
+          </block>
+        </block>
+        <!-- 匿名 -->
+        <block>
+          <block wx:if="{{order.iscomment==0}}">
+            <view class="anonymity-box">
+              <view class="anonymity-left" bindtap="open">
+                <view class="arrowImg">
+                  <image src="{{isOpen?'https://www.paokucoin.com/img/backgroup/qxdd_inco_xz_per@2x.png':'https://www.paokucoin.com/img/backgroup/qxdd_inco_xz_nor@2x.png'}}"></image>
+                </view>
+                <text style="color:#333;font-size:28rpx;margin-left:10rpx">匿名</text>
+              </view>
+              <view class="anonymity-text">{{ isOpen ? '你写的评价会以匿名的形式展示' : '公开的评价会展示在个人主页呦'}}</view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </view>
+    <!-- 店铺评价 -->
+    <block>
+      <block wx:if="{{order.iscomment==0}}">
+        <view class="evaluate-store">
+          <view class="evaluate-tit">
+            <image class="storeImg" src="{{globalimg}}/dd_inco_dp@2x.png"></image>
+            <text style="color:#333;font-size:32rpx;margin-left:12rpx">店铺评价</text>
+          </view>
+          <view class="starsBox">
+            <text style="color:#333;font-size:32rpx;margin-right:20rpx">送货服务</text>
+            <block wx:for="{{stars_class}}" wx:key="">
+              <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}"></text>
+            </block>
+            <text class="{{stars_class[key]}}" style="font-size: 28rpx;margin-left:10rpx;color:#999">{{key!=-1?stars_text[key]:'未评价'}}</text>
+          </view>
+          <view class="starsBox">
+            <text style="color:#333;font-size:32rpx;margin-right:20rpx">服务态度</text>
+            <block wx:for="{{stars_class}}" wx:key="">
+              <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}"></text>
+            </block>
+            <text class="{{stars_class[key]}}" style="font-size: 28rpx;margin-left:10rpx;color:#999">{{key!=-1?stars_text[key]:'未评价'}}</text>
+          </view>
+        </view>
+      </block>
     </block>
+    <view class="fui-footer">
+      <view bindtap="submit" class="nav-item btn btn-danger block">提交评价</view>
+    </view>
+  </block>
 </block>

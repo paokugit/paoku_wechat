@@ -1,0 +1,182 @@
+/* packageA/pages/shop/notice/comment/comment.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+.comment-box{
+  width: 100%;
+  height: auto;
+  padding-bottom: 40rpx;
+  background: #f8f8f8
+}
+
+
+.reviewList{
+  background: #fff;
+  margin: 20rpx 24rpx;
+  border-radius: 20rpx;
+  padding-bottom:30rpx;
+}
+
+.reviewHead{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 24rpx;
+}
+.headLeft{
+  display: flex;
+  align-items: center;
+}
+.leftImg{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 15rpx;
+  border-radius: 50rpx;
+}
+.leftName{
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+}
+.leftTime{
+  font-size: 22rpx;
+  color: rgb(189, 189, 189);
+}
+.headRight{
+  width: 100rpx;
+  height: 44rpx;
+  font-size:24rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  position: relative;
+}
+.headRightA{
+  background: #fff;
+  color: rgb(102, 102, 102);
+  border: 1px solid rgb(237, 237, 237); 
+}
+
+
+.details{
+  color: rgb(51, 51, 51);
+  font-size: 30rpx;
+  margin: 0 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.nickname{
+  color: rgb(1, 215, 161);
+  /* font-weight: bold; */
+  font-weight: bolder;
+}
+
+.replyX{
+  background: #f8f8f8;
+  border-radius: 10rpx;
+  padding: 24rpx;
+  margin: 40rpx 20rpx 20rpx;
+}
+.huifu{
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.huifuN{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.tiezi{
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.tieziImg{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+.tieziRight{
+  width: 400rpx;
+  height: 140rpx;
+}
+.tieziTxt{
+  font-size: 24rpx;
+  color: rgb(102, 102, 102);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-top: 12rpx;
+}
+
+.KongNull{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.KongNull image{
+  width: 298rpx;
+  height: 338rpx;
+}
+.KongNull view{
+  font-size: 34rpx;
+  color: rgb(146, 146, 146);
+  margin-top: 30rpx;
+}
+
+.palClass{
+  color: rgb(153, 153, 153);
+  font-size: 28rpx;
+}
+.comInt{
+  width: 100%;
+  height: 120rpx;
+  border-top: 1rpx solid #f8f8f8;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.solid-bottom{
+  width: 70%;
+  margin-left: 48rpx;
+  border-radius: 50rpx;
+  background: rgb(248, 248, 248);
+  padding: 20rpx 30rpx;
+}
+.palClass{
+  color: rgb(153, 153, 153);
+  font-size: 28rpx;
+}
+.comInt text{
+  font-size: 34rpx;
+  color: rgb(1, 215, 161);
+  margin-right: 24rpx;
+}
+.finish_inquire{
+  font-size: 28rpx;
+  color: #8A8A8A;
+  padding: 60rpx 0;
+  text-align: center;
+}
+
+.notlogin-button{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

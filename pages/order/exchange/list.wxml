@@ -1,0 +1,45 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="选择商品列表"></navigation>
+    <view class="list-box">
+      <view wx:for="{{carts}}" class="list-item">
+        <view class="iconbox">
+          <!-- wx:if 是否选择显示不同图标 -->
+          <icon wx:if="{{item.selected}}" type="success" color="red" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}"/>
+          <icon wx:else type="circle" color="#6a6a6a" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}"/>
+        </view>
+        <!-- 点击商品图片可跳转到商品详情 -->
+        <view class="item-info">
+          <image class="cart-thumb" src="{{item.image}}"></image>
+          <view class="info-right">
+            <view class="protitle">{{item.title}}{{item.title}}{{item.title}}{{item.title}}</view>
+            <view class="pro-subtitle">颜色分类:蓝色</view>
+            <view class="pricebox">
+              <text style="color:#333;font-size:38rpx"><text style="color:#333;font-size:28rpx">￥</text>{{item.price}}</text>
+              <text style="color:#333;font-size:34rpx">x1</text>
+            </view>
+            <view class="prostate">已发货</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 底部操作栏 -->
+    <view class="fui-footer">
+      <view class="footer-con">
+        <view class="con-left">
+          <!-- wx:if 是否全选显示不同图标 -->
+          <icon wx:if="{{selectAllStatus}}" type="success" color="#f00" bindtap="selectAll" data-id="{{item.id}}"/>
+          <icon wx:else type="circle" color="#6a6a6a" bindtap="selectAll" data-id="{{item.id}}"/>
+          <text style="margin-left:10rpx;color:#333;font-size:30rpx">全选</text>
+          <!-- <text>￥{{totalPrice}}</text> -->
+        </view>
+        <view class="con-right" bindtap="confirmbtn">确定</view>
+      </view>
+    </view>
+  </block>
+</block>

@@ -1,0 +1,146 @@
+/* pages/order/exchange/retreat.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+
+.productInfo {
+  width: 94%;
+  height: auto;
+  padding: 20rpx 3% 0;
+}
+.add-edit-box{
+  width: 100%;
+  height: auto;
+  padding: 5rpx 0;
+  background: pink;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.editbtn{
+  padding: 6rpx 12rpx;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 10rpx;
+  color: #999;
+  font-size: 24rpx
+}
+.moreThumb{
+  width: 100%;
+  height: auto;
+  background: #ff6;
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moreImg{
+  width: 160rpx;
+  height: 160rpx;
+  background: #0f0;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative
+}
+.morePrice{
+  padding: 8rpx 5rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0
+}
+.proState, .proState-radius {
+  background: #fff;
+  padding: 24rpx;
+  display: flex;
+  position: relative;
+}
+
+.proState-radius {
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.statepicker {
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+
+.state-remark {
+  width: 25%;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.jiantou {
+  width: 15rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 24rpx;
+}
+
+.money-restrict {
+  padding: 0 24rpx;
+  height: auto;
+  background: #fff;
+  color: #999;
+  font-size: 28rpx;
+}
+.thumb-box {
+  padding: 24rpx;
+  background: #f66;
+  display: flex;
+  border-radius: 20rpx 20rpx 0 0;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.productImg {
+  width: 160rpx;
+  height: 160rpx;
+  background: pink;
+  border-radius: 20rpx;
+}
+
+.productdesc {
+  width: 500rpx;
+  height: 160rpx;
+  background: pink;
+  margin-left: 15rpx;
+  position: relative;
+}
+
+.productname {
+  font-size: 34rpx;
+  color: #333;
+  position: absolute;
+  top: 20rpx;
+  left: 0rpx;
+}
+
+.productstandard {
+  font-size: 24rpx;
+  color: #999;
+  position: absolute;
+  top: 75rpx;
+  left: 0rpx;
+}
+.btn {
+  margin: 10rpx;
+}
+
+.fui-footer .btn {
+  border-radius: 40rpx;
+  margin-top: 24rpx;
+  width: 164rpx;
+  margin-right: 24rpx;
+}
+
+.btn.btn-danger-hlp {
+  background: transparent;
+  color: #0ad7a1;
+  border: 1px solid #0ad7a1;
+}

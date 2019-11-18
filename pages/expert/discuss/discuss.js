@@ -65,8 +65,11 @@ Page({
       ciclre_id: m.data.listId
     },function(e){
       console.log(e);
+
       wx.hideLoading()
+
       if(e.error == 0){
+        wx.hideLoading()
         m.setData({
           detailList: e.message
         })

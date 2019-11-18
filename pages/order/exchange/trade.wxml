@@ -1,0 +1,105 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="退款申请"></navigation>
+    <view class="productInfo">
+      <view class="thumb-box ">
+        <view class="productImg "></view>
+        <view class="productdesc ">
+          <text class="productname ">茶杯套装</text>
+          <text class="productstandard ">颜色分类</text>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">换货原因:</view>
+        <view class="statepicker">
+          <picker bindchange="bindReasonChange" value="{{index}}" range="{{reasonarr}}" style="width:100%">
+            <text style="color:#333;font-size:28rpx">{{reason}}</text>
+          </picker>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">换货商品:</view>
+        <view class="statepicker" bindtap="showModal">
+          <view class="tradebtn" style="width:100%;color:#333;font-size:28rpx">{{num}}件{{guige[gindex].name}}:{{color[cindex].name}}</view>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </view>
+      </view>
+      <view class="prostate-address">
+        <view class="state-remark">收货地址:</view>
+        <navigator class="statepicker" url="/pages/member/address/index" >
+          <view class="address-box">
+            <view class="address-title">
+              <view class="realname">糖果</view>
+              <view class="mobile">18236962763</view>
+            </view>
+            <view class="address-text">河南省郑州市新郑市龙湖镇</view>
+          </view>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </navigator>
+      </view>
+      <view class="proState-radius">
+        <view class="state-remark">换货说明:</view>
+        <view class="statepicker">
+          <input class="explainIpt" style="width:100%" bindinput="inputChange" placeholder="选填"></input>
+        </view>
+      </view>
+
+    </view>
+    <view class="fui-footer text-right ">
+      <block>
+        <block>
+          <view bindtap="submit" class="btn btn-danger-hlp btn-sm btn-submit ">提交申请</view>
+          <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-default-o back ">取消申请</view>
+        </block>
+      </block>
+    </view>
+
+  </block>
+</block>
+<view class="trademask" hidden="{{hideModal}}">
+  <view class="trademask-con">
+    <view class="productcon bottom-pos" animation="{{animationData}}">
+      <view class="tradeTit">
+        <text>换货商品</text>
+        <image class="closebtn" bindtap="hideModal" src="{{globalimg}}/tck_inco_quxiao@2x.png"></image>
+      </view>
+      <view class="standard">规格</view>
+      <view class="standard-itembox">
+        <view class='dis'>
+          <block wx:for="{{guige}}" wx:key="{{index}}">
+            <view class="{{gindex==index?'color':'guideitem'}}" bindtap='guige' data-index='{{item.id}}' data-current='{{index}}'>{{item.name}}</view>
+          </block>
+        </view>
+        <view class="standard">颜色</view>
+        <view class='dis'>
+          <block wx:for="{{color}}" wx:key="{{index}}">
+            <view class="{{cindex==index?'color':'guideitem'}}" bindtap='color' data-index='{{item.id}}' data-current='{{index}}'>{{item.name}}</view>
+          </block>
+        </view>
+      </view>
+      <!-- 换货数量 -->
+      <view class="quantity-box">
+        <text style="color:#333;font-size:34rpx;font-weight:bold">换货数量</text>
+        <view style="width:200rpx">
+          <view class="stepper">
+            <!-- 减号 -->
+            <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+            <!-- 数值 -->
+            <input type="number" bindchange="bindManual" value="{{num}}" />
+            <!-- 加号 -->
+            <text class="normal" bindtap="bindPlus">+</text>
+          </view>
+        </view>
+      </view>
+      <view class="confirmbox">
+        <button class="confirmbtn" bindtap="confirm">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

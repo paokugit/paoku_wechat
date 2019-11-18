@@ -90,6 +90,7 @@ Page((a = {
         shareDis: 'block',
         listDis: 'block',
         seckillDis:'none',
+        notseckillDis:'block',
         pickerOption: {},
         specsData: [],
         specsTitle: "",
@@ -120,13 +121,16 @@ Page((a = {
         limits: !0,
         phonetype: '',
         modelShow: !1,
+
         showgoods: !0,
 
         // xph
         csshide: "display: none;",
         coupons: "display: none;",
         mobile: "display: none;",
-        insidetit:''
+        insidetit:'',
+
+        isFold: true
     }, t(e, "timer", 0), t(e, "lasttime", 0), t(e, "hour", "-"), t(e, "min", "-"), t(e, "sec", "-"),
         t(e, "currentDate", ""), t(e, "dayList", ""), t(e, "currentDayList", ""), t(e, "currentObj", ""),
         t(e, "currentDay", ""), t(e, "checkedDate", ""), t(e, "showDate", ""), t(e, "scope", ""),
@@ -151,6 +155,13 @@ Page((a = {
             modelShow: !0
         });
     },
+    // 郝艳萍
+  showAll: function (e) {
+    this.setData({
+      isFold: !this.data.isFold,
+    })
+  },
+  // 郝艳萍
     goodsTab: function (t) {
         var e = this, a = t.currentTarget.dataset.tap;
         if ("info" == a) this.setData({
@@ -848,7 +859,8 @@ Page((a = {
            if(e.status==2){
             //    2为秒杀中
                t.setData({
-                   seckillDis:'block'
+                   seckillDis:'block',
+                   notseckillDis:'none'
                })
                second_time = e.result.end
                console.log(second_time)
@@ -857,13 +869,15 @@ Page((a = {
            else if(e.status==1){
             //1为秒杀未开始
                t.setData({
-                   seckillDis: 'block'
+                   seckillDis: 'block',
+                 notseckillDis: 'none'
                })
                second_time = e.result.start
                t.startTimer(second_time - timestampcount);
            }else if(e.status==4){
                t.setData({
-                   seckillDis: 'none'
+                   seckillDis: 'none',
+                 notseckillDis: 'block'
                })
            }
         });  
@@ -1154,7 +1168,9 @@ Page((a = {
     this.pauseOther();
 }), t(a, "onUnload", function () {
     this.pauseOther();
+
     clearInterval(interval);
+
 }), t(a, "navigate", function (t) {
     var e = t.currentTarget.dataset.url, a = t.currentTarget.dataset.phone, o = t.currentTarget.dataset.appid, s = t.currentTarget.dataset.appurl;
     e && wx.navigateTo({

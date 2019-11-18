@@ -53,17 +53,19 @@ Page({
         modelShow: !1,
         textinfo:'',
       showIcon: true,
-      gloheight: app.globalData.gloheight
+      gloheight: app.globalData.gloheight,
+      globalimg: app.globalData.appimg,
 
     },
     onLoad: function(e) {
-      console.log(app.globalData)
+      console.log(this.data.params)
         var s = this;
         if (setTimeout(function() {
             s.setData({
                 areas: t.getCache("cacheset").areas
             });
         }, 3e3), !a.isEmptyObject(e)) {
+          console.log(e)
             var i = e.isrecommand || e.isnew || e.ishot || e.isdiscount || e.issendfree || e.istime ? 1 : 0;
             this.setData({
                 params: e,
@@ -71,6 +73,7 @@ Page({
                 filterBtns: e,
                 fromsearch: e.fromsearch || !1
             });
+            console.log(params)
         }
         this.initCategory(), e.fromsearch || this.getList(), this.getRecord();
     },
@@ -132,6 +135,7 @@ Page({
   },
     getList: function() {
         var t = this;
+      console.log(t.data.params)
         t.setData({
             loading: !0
         }), t.data.params.page = t.data.page, e.get("goods/get_list", t.data.params, function(e) {
@@ -153,18 +157,23 @@ Page({
         });
     },
     bindSort: function(t) {
+      console.log(t)
+      console.log(this.data.params)
         var e = t.currentTarget.dataset.order, a = this.data.params;
         if ("" == e) {
+          // 综合
             if (a.order == e) return;
             a.order = "", this.setData({
                 listorder: ""
             });
         } else if ("minprice" == e) this.setData({
+          // 价格
             listorder: ""
         }), a.order == e ? "desc" == a.by ? a.by = "asc" : a.by = "desc" : a.by = "asc", 
         a.order = e, this.setData({
             listorder: a.by
         }); else if ("sales" == e) {
+          // 销量
             if (a.order == e) return;
             this.setData({
                 listorder: ""

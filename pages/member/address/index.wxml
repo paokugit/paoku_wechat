@@ -1,59 +1,69 @@
 <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
 <block>
-    <block wx:if="{{!show}}">
-        <loading>加载中...</loading>
-    </block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
 </block>
 <block>
-    <block wx:if="{{show}}">
+  <block wx:if="{{show}}">
     <navigation id='Navigation' show-icon='{{showIcon}}' title="收货地址"></navigation>
-        <view class="page footer {{paddingb}}">
-            <block>
-                <block wx:if="{{list.length>0}}">
-                    <block wx:for="{{list}}">
-                        <view class="fui-list-group">
-                            <view class="fui-list address-item noclick">
-                                <view class="fui-list-inner">
-                                    <view class="title">
-                                        <view class="realname">{{item.realname}}</view>
-                                        <view class="mobile">{{item.mobile}}</view>
-                                    </view>
-                                    <view class="text">{{item.province}} {{item.city}} {{item.area}} {{item.address}}</view>
-                                    <view class="bar">
-                                        <view bindtap="deleteItem" class="pull-right btn-del" data-id="{{item.id}}">
-                                            <text class="icox icox-delete"></text>
-                                            <text>删除</text>
-                                        </view>
-                                        <navigator class="pull-right btn-edit" hoverClass="none" openType="navigate" url="/pages/member/address/post?id={{item.id}}&type=member">
-                                            <text class="icox icox-edit"></text>
-                                            <text>编辑</text>
-                                        </navigator>
-                                        <label bindtap="setDefault" data-id="{{item.id}}">
-                                            <radio checked="{{item.isdefault>0?true:false}}" class="zoom-70" color="#fd5454" name="default"></radio>设为默认地址</label>
-                                    </view>
-                                </view>
-                            </view>
-                        </view>
+    <view class="page footer {{paddingb}}">
+      <block>
+        <block wx:if="{{list.length>0}}">
+          <block wx:for="{{list}}">
+            <view class="fui-list-group">
+              <view class="fui-list address-item noclick">
+                <view class="fui-list-inner">
+                  <view class="title">
+                    <view class="realname">{{item.realname}}</view>
+                    <view class="mobile">{{item.mobile}}</view>
+                  </view>
+                  <view class="text">
+                    <block>
+                      <block wx:if="{{item.isdefault==1}}">
+                        <text style="background:#01d7a1;font-size:20rpx;padding:5rpx;color:#fff;border-radius:5rpx">默认</text>
+                      </block>
                     </block>
-                </block>
-            </block>
-            <block>
-                <block wx:if="{{list.length<1&&loaded}}">
-                    <view class="fui-loading empty">
-                        <view class="text">没有数据</view>
+                    <text style="background:#666;font-size:20rpx;padding:5rpx;color:#fff;border-radius:5rpx;margin-left:6rpx">家</text> {{item.province}} {{item.city}} {{item.area}} {{item.address}}</view>
+                  <view class="bar">
+                    <view bindtap="deleteItem" class="pull-right btn-del" data-id="{{item.id}}" style="margin-left:20rpx">
+                      <text class="icox icox-delete"></text>
+                      <text style="margin-left:10rpx">删除</text>
                     </view>
-                </block>
-            </block>
-            <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
-                <view class="text">{{FoxUIToast.text}}</view>
+                    <navigator class="pull-right btn-edit" hoverClass="none" openType="navigate" url="/pages/member/address/post?id={{item.id}}&type=member">
+                      <text class="icox icox-edit"></text>
+                      <text style="margin-left:10rpx">编辑</text>
+                    </navigator>
+                    <label bindtap="setDefault" data-id="{{item.id}}">
+                      <radio checked="{{item.isdefault>0?true:false}}" class="zoom-70" color="#01d7a1" name="default"></radio>设为默认地址</label>
+                  </view>
+                </view>
+              </view>
             </view>
-            <view class="fui-navbar {{iphonexnavbar}}">
-                <navigator class="nav-item btn btn-danger" hoverClass="none" openType="navigate" url="/pages/member/address/post?type=member">
+          </block>
+        </block>
+      </block>
+      <block>
+        <block wx:if="{{list.length<1&&loaded}}">
 
-            +
-            <text>添加收货地址</text>
-                </navigator>
-            </view>
-        </view>
-    </block>
+          <view class="emptyflex">
+            <image class="emptyImg" src="{{globalimg}}/wd_shdz_img_kq@2x.png"></image>
+          </view>
+          <view class="fui-loading empty">
+            <view class="text">你还没有收货地址,添加一个吧</view>
+          </view>
+        </block>
+      </block>
+      <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+        <view class="text">{{FoxUIToast.text}}</view>
+      </view>
+      <view class="fui-navbar {{iphonexnavbar}}">
+        <navigator class="nav-item btn btn-dangers" hoverClass="none" openType="navigate" url="/pages/member/address/post?type=member">
+
+          +
+          <text>添加收货地址</text>
+        </navigator>
+      </view>
+    </view>
+  </block>
 </block>

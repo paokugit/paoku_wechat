@@ -225,9 +225,9 @@ App({
   },
   globalData: {
     appid: "wx4b602a36aa1c67d1",
-    api: "https://paokucoin.com/app/ewei_shopv2_api.php?i=1",
-    approot: "https://paokucoin.com/app/addons/ewei_shopv2/",
-    appimg: "https://paokucoin.com/img/backgroup",
+    api: "https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1",
+    approot: "https://www.paokucoin.com/app/addons/ewei_shopv2/",
+    appimg: "https://www.paokucoin.com/img/backgroup",
     userInfo: null,
     applogin: "",
     applog: "",

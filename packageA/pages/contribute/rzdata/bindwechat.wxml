@@ -1,0 +1,9 @@
+<!--packageA/pages/contribute/rzdata/bindwechat.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="绑定微信号"></navigation>
+<view class="wechatbox">
+  <view class="iptbox">
+    <input class='wechatipt' placeholder='本账户所用微信号' bindinput="inputChange"></input>
+  </view>
+<button class="wechatbtn" bindtap="confirmbtn">确定</button>
+
+</view>

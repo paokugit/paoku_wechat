@@ -1,7 +1,8 @@
 {
     "entryPagePath": "pages/index/index",
     "pages": [
-        "pages/index/index", 
+        "pages/index/index",
+        "pages/store/store",
         "pages/discount/zkbscancode/zkbscancode",
         "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
@@ -31,8 +32,13 @@
         "pages/goods/package/index",
         "pages/goods/package/detail/index",
         "pages/goods/poster/poster",
+        "pages/order/detail/progress",
         "pages/order/detail/index",
         "pages/order/comment/index",
+        "pages/order/exchange/index",
+        "pages/order/exchange/retreat",
+        "pages/order/exchange/trade",
+        "pages/order/exchange/list",
         "pages/order/refund/index",
         "pages/order/create/index",
         "pages/order/store/index",
@@ -81,7 +87,12 @@
       {
         "root": "packageA",
         "pages": [
+
           "pages/product/promotion/promotion",
+
+          "pages/hestore/hestore/hestore",
+          "pages/product/evaluate/evaluate",
+
           "pages/lottery/lottery/lottery",
           "pages/playmethod/playmethod/playmethod",
           "pages/playmethod/hotdetail/hotdetail",
@@ -119,6 +130,9 @@
           "pages/contribute/record/record",
           "pages/contribute/withdraw/withdraw",
           "pages/contribute/rzdata/rzdata",
+          "pages/contribute/rzdata/phone",
+          "pages/contribute/rzdata/wechat",
+          "pages/contribute/rzdata/bindwechat",
           "pages/changce/merch/homepage",
           "pages/changce/merch/businesspictures",
           "pages/changce/merch/synopsis",
@@ -141,6 +155,11 @@
           "pages/shop/notice/notification/detail",
           "pages/shop/notice/index/index",
           "pages/shop/notice/detail/detail",
+          "pages/shop/notice/logisticslist/logisticslist",
+          "pages/shop/notice/logisticsdetail/logisticsdetail",
+          "pages/shop/notice/inform/inform",
+          "pages/shop/notice/comment/comment",
+          "pages/shop/notice/helper/helper",
           "pages/shop/caregory/index",
           "pages/setpassword/set/set",
           "pages/setpassword/setpassword/setpassword",

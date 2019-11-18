@@ -1,63 +1,143 @@
 .fui-list-inner .subtitle {
-    font-size: 28rpx;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-    color: #000;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  color: #000;
 }
 
 .fui-list-angle {
-    font-size: 26rpx;
-    color: #666;
+  font-size: 26rpx;
+  color: #666;
 }
+
 .fui-list-media image {
-    width: 160rpx;
-    height: 160rpx;
+  width: 160rpx;
+  height: 160rpx;
 }
 
 .fui-list-inner {
-    height: 160rpx;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    flex-direction: column;
+  height: 150rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.fui-list-inner-hlp {
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 16rpx;
+  flex: 1;
+  align-items: center
+}
+
+.goodstitle {
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  color: #333;
 }
 
 .fui-list-group-title::after {
-    content: " ";
-    position: absolute;
-    top: 0;
-    right: 20rpx;
-    height: 0;
-    border-top: 2rpx solid #ebebeb;
-    transform-origin: 0 0;
-    transform: scaleY(0.5);
-    left: 20rpx;
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  height: 0;
+  border-top: 2rpx solid #ebebeb;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  left: 20rpx;
 }
 
 .btns {
-    height: 100%;
+  height: 100%;
 }
 
 .btn {
-    border-radius: 0;
-    height: 100%;
-    line-height: 90rpx;
-    font-size: 28rpx;
-    color: #fff;
-    margin: 0;
-    margin-left: 2rpx;
-    width: 160rpx;
-    border: 0;
+  border-radius: 0;
+  height: 100%;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #fff;
+  margin: 0;
+  margin-left: 2rpx;
+  width: 160rpx;
+  border: 0;
 }
 
 .fui-footer .tool {
-    padding-right: 0;
+  padding-right: 0;
+}
+
+.swiper-tab {
+  width: 40%;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 30%;
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  color: #333;
+  font-size: 34rpx;
+  background: #fff;
+  border-top: 1rpx solid #f8f8f8;
+}
+
+.swiper-tab-item {
+  width: 100rpx;
+  color: #333;
+}
+
+.active {
+  color: #01d7a1;
+  border-bottom: 6rpx solid #01d7a1;
+  font-size: 44rpx;
+}
+
+.fui-list-inner .title-hlp {
+  position: relative;
+  font-size: 28rpx;
+  color: #000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.btn.btn-dangers {
+  background: #01d7a1;
+  color: #fff;
+  border: 1px solid #01d7a1;
+}
+
+.btn.btn-warnings {
+  background: #999;
+  color: #fff;
+  border: 1px solid #999;
+}
+
+.btn.btn-warnings.disable {
+  background: #e5e5e5;
+  color: #333;
+  border: 1px solid #e5e5e5;
+}
+.gostore{
+  display: flex;
+  align-items: center
 }

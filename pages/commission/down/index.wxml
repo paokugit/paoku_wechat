@@ -34,14 +34,10 @@
         </view>
       </view>
       <block>
-
-
         <navigator url="/pages/commission/down/search" class="friend_inquire">
           <image src="{{globalimg}}/search@2x.png"></image>
           <text>查询用户推荐人</text>
         </navigator>
-
-
         <block wx:if="{{list.length>0}}">
           <view class="fui-list-group">
             <block wx:for="{{list}}" wx:key="{{index}}">

@@ -44,3 +44,41 @@
     width: 164rpx;
     margin-right: 24rpx;
 }
+
+.btn.btn-danger-hlp{
+background: transparent;
+color: #0ad7a1;
+border: 1px solid #0ad7a1;
+}
+.thumb-box{
+  padding: 24rpx;
+  background: #f00;
+display: flex;
+}
+.productImg{
+  width: 160rpx;
+  height: 160rpx;
+  background: pink;
+  border-radius: 20rpx;
+}
+.productdesc{
+  width: 500rpx;
+  height: 160rpx;
+  background: #0f0;
+  margin-left: 15rpx;
+  position: relative
+}
+.productname{
+  font-size:34rpx;
+  color:#333;
+  position: absolute;          
+  top: 20rpx;
+  left: 0rpx;
+}
+.productstandard{
+  font-size:24rpx;
+  color:#999;
+  position: absolute;
+  top: 75rpx;
+  left: 0rpx;
+}

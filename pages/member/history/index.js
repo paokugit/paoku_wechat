@@ -14,6 +14,7 @@ Page({
         checkNum: 0,
         list: [],
       showIcon: true,
+      globalimg: t.globalData.appimg,
     },
     onLoad: function(a) {
         t.url(a), this.getList();

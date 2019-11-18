@@ -1,0 +1,35 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="物流信息"></navigation>
+    <view class="goodsBox">
+      <image class="goodsImg" src="{{globalimg}}/paokulogo.png"></image>
+      <view class="infoCon">
+        <view class="goods-state">物流状态:
+          <text style="color:#01d7a1">已签收</text>
+        </view>
+        <view class="express">快递公司:中通快递</view>
+        <view class="express-num">快递单号:12345678</view>
+      </view>
+    </view>
+    <block>
+      <block wx:if="{{expresslist}}">
+        <view class="fui-list-groups express-list">
+          <block wx:for="{{expresslist}}">
+            <view class="fui-lists {{index==0?'current':''}}">
+              <view class="fui-list-inner">
+                <view class="text step">{{item.step}}</view>
+                <view class="text time" style="color:#999;font-size:22rpx;margin-top:8rpx">{{item.time}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </block>
+
+  </block>
+</block>
