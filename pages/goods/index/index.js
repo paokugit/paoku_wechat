@@ -53,7 +53,8 @@ Page({
         modelShow: !1,
         textinfo:'',
       showIcon: true,
-      gloheight: app.globalData.gloheight
+      gloheight: app.globalData.gloheight,
+      globalimg: app.globalData.appimg,
 
     },
     onLoad: function(e) {

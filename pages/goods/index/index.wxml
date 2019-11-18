@@ -227,11 +227,23 @@
       <view class="itemBox">
         <image class="productImg"></image>
         <view class="productTit">雅诗兰黛小棕瓶眼霜雅诗兰黛小棕瓶眼霜</view>
-        <view class="priceBox"></view>
-        <view class="huodong-box"></view>
+        <view class="priceBox">
+          <text style="color:#f00;font-size:28rpx">￥</text>
+          <text style="color:#f00;font-size:40rpx">68.8</text>
+          <text style="color:#999;font-size:24rpx;margin-left:20rpx">一万人已付款</text>
+        </view>
+        <view class="huodong-box">
+          <view class="huodong-con">每400减50</view>
+          <view class="huodong-label">新品</view>
+        </view>
+        <view class="intoshop-box">
+          <view style="color:#999;font-size:26rpx;">跑库旗舰店</view>
+          <view class="intoshop">
+            <text style="color:#333;font-size:26rpx;margin-right:10rpx">进店</text>
+            <image style="width:11rpx;height:18rpx;" src="{{globalimg}}/tc_icon_xy@2x.png"></image>
+          </view>
+        </view>
       </view>
-      <view class="itemBox"></view>
-      <view class="itemBox"></view>
     </view>
     <block wx:for="{{list}}" wx:key="{{index}}">
       <template is="tpl_list" data="{{item:item}}"></template>

@@ -686,11 +686,52 @@ page {
 }
 .priceBox{
   width: 310rpx;
-  height: 40rpx;
-  background: #00f
+  height: 50rpx;
+  background: #00f;
+  display: flex;
+  align-items: center
 }
 .huodong-box{
   width: 310rpx;
   height: 50rpx;
   background: #0f0;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx
+}
+.huodong-con{
+  width: 120rpx;
+  height: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #f00;
+  border-radius: 5rpx;
+  font-size: 20rpx;
+  color: #f00
+}
+.huodong-label{
+  width: 60rpx;
+  height: 30rpx;
+  border: 1rpx solid #ffa001;
+  color: #ffa001;
+  font-size: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  border-radius: 5rpx;
+}
+.intoshop-box{
+  width: 310rpx;
+  height: 50rpx;
+  background: #0ff;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx
+}
+.intoshop{
+  margin-left: 12rpx;
+  display: flex;
+  align-items: center
 }
