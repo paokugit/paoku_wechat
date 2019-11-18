@@ -1,53 +1,91 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="动态详情"></navigation>
 <view>
-  <view class="header headercss">
-    <view class="header-details headercss">
-      <view class="header-img"></view>
-      <view class="header-text">
-        <view class="header-name">华为京东自营官方旗舰店</view>
-        <view class="header-people">2003.3万人关注</view>
+  <view style="{{boxShow == 0?'':'display:none'}}">
+    <view class="header headercss">
+      <view class="header-details headercss">
+        <view class="header-img"></view>
+        <view class="header-text">
+          <view class="header-name">华为京东自营官方旗舰店</view>
+          <view class="header-people">2003.3万人关注</view>
+        </view>
+      </view>
+      <view class="header-attention header-wei" catchtap="noticeWei" wx:if="{{attention == 0?true:false}}">关注</view>
+      <view class="header-attention header-yi" catchtap="noticeYi" wx:if="{{attention == 1?true:false}}">已关注</view>
+    </view>
+  
+    <view class="caption">
+      <view class="tit-activity">限时秒杀</view>
+      <view class="tit-tiem headercss">
+        <view class="tit-year">2019-10-15 15:30</view>
+        <view class="tit-look headercss">
+          <image class="lookImg" src="{{globalimg}}/eyes.png"></image>
+          <view class="lookPeople">5480人看过</view>
+        </view>
       </view>
     </view>
-    <view class="header-attention header-wei" catchtap="noticeWei" wx:if="{{attention == 0?true:false}}">关注</view>
-    <view class="header-attention header-yi" catchtap="noticeYi" wx:if="{{attention == 1?true:false}}">已关注</view>
-  </view>
 
-  <view class="caption">
-    <view class="tit-activity">限时秒杀</view>
-    <view class="tit-tiem">
-      <view class="tit-year">2019-10-15 15:30</view>
-      <view class="tit-look">
-        <image class="lookImg" src="{{globalimg}}/eyes.png"></image>
-        <view class="lookPeople">5480人看过</view>
+    <view class="introduce">市面上美妆蛋真的基本都用个便了，BB好用也是真的贵，这种消耗品就还是要选性价比高的~</view>
+
+    <view class="dealer">
+      <view class="dealer-img"></view>
+      <view class="dealer-price">￥272.9</view>
+      <view class="dealer-text">欧莱雅男士火山岩控油抗痘洁面套（洁面膏100ml*2+洁面膏50ml*2）洗面奶男 去角质男 男士洗面奶</view>
+    </view>
+
+    <view class="on-earth">继续上滑查看评论</view>
+
+
+    <view class="discuss headercss">
+      <view class="balltxt">我也说几句...</view>
+      <view class="iconcss headercss">
+        <image class="liuImg" src="{{globalimg}}/drq_inco_xx@2x.png"></image>
+        <view class="icontxt">10</view>
       </view>
-    </view>
-  </view>
-
-  <view class="introduce">市面上美妆蛋真的基本都用个便了，BB好用也是真的贵，这种消耗品就还是要选性价比高的~</view>
-
-  <view class="dealer">
-    <view class="dealer-img"></view>
-    <view class="dealer-price">￥272.9</view>
-    <view class="dealer-text">欧莱雅男士火山岩控油抗痘洁面套（洁面膏100ml*2+洁面膏50ml*2）洗面奶男 去角质男 男士洗面奶</view>
-  </view>
-
-  <view class="on-earth">继续上滑查看评论</view>
-
-
-  <view class="discuss">
-    <view class="balltxt">我也说几句...</view>
-    <view class="iconcss">
-      <image class="liuImg" src="{{globalimg}}/drq_inco_xx@2x.png"></image>
-      <view class="icontxt">10</view>
-    </view>
-    <view class="iconcss">
-      <image class="zanimg" src="{{globalimg}}/{{iconA}}.png"></image>
-      <view class="icontxt">10</view>
+      <view class="iconcss headercss">
+        <image class="zanimg" src="{{globalimg}}/{{iconA}}.png"></image>
+        <view class="icontxt">10</view>
+      </view>
     </view>
   </view>
   
-  <view class="imgBall" >
+
+  <view class="imgBall">
     <view class="all-comment">全部评论10</view>
+
+    <block wx:for="{{2}}">
+      <view class="review">
+        <view class="review-head headercss">
+          <view class="review-left headercss">
+            <view class="review-img"></view>
+            <view>
+              <view class="review-name">苏萌</view>
+              <view class="review-time">今天16：40</view>
+            </view>
+          </view>
+
+          <view class="review-right headercss">
+            <image class="zanimg" src="{{globalimg}}/{{iconA}}.png"></image>
+            <view class="icontxt">54</view>
+          </view>
+        </view>
+
+        <view class="review-details">这期化妆品都好实惠，图一和图八必买款呀！</view>
+        <view class="review-more">
+          <view class="state-one">
+            <text>萌驼旅行家</text>：新的一天，新的开始。
+          </view>
+
+          <view>
+            <text class="replyName"></text> 回复<text class="replyName"></text>：
+          </view>
+
+          <view class="state-two"></view>
+          <view class="state-look"></view>
+        </view>
+        <view class="review-bord"></view>
+      </view>
+    </block>
+    
   </view>
 
 </view>

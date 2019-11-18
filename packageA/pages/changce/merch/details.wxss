@@ -60,8 +60,6 @@ page{
 }
 
 .tit-tiem{
-  display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -70,10 +68,7 @@ page{
   color: #999999;
 }
 
-.tit-look{
-  display: flex;
-  align-items: center;
-}
+
 .lookImg{
   width: 36rpx;
   height: 36rpx;
@@ -140,8 +135,6 @@ page{
   width: 100%;
   height: 100rpx;
   background: #ffffff;
-  display: flex;
-  align-items: center;
   justify-content: space-around;
   position: fixed;
   left: 0;
@@ -157,10 +150,7 @@ page{
   border-radius: 36rpx;
   background: #f8f8f8;
 }
-.iconcss{
-  display: flex;
-  align-items: center;
-}
+
 .liuImg{
   width: 34rpx;
   height: 32rpx;
@@ -177,19 +167,61 @@ page{
 
 
 .imgBall{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
   background: #f8f8f8;
+
 }
 .all-comment{
-  width: 100%;
   height: 100rpx;
   background: #f0f0f0;
   line-height: 100rpx;
   padding-left: 28rpx;
   color: #999999;
   font-size: 28rpx;
+}
+
+.review{
+  padding: 30rpx 20rpx 0;
+  background: #ffffff;
+}
+
+.review-head{
+  justify-content: space-between;
+}
+
+.review-img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  background: red;
+  margin-right: 15rpx;
+}
+
+.review-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 7rpx;
+}
+.review-time{
+  font-size: 22rpx;
+  color: #929292;
+}
+
+.review-details{
+  font-size: 28rpx;
+  color: #333333;
+  padding: 30rpx 0 20rpx 81rpx;
+}
+
+.review-more{
+  background: #f8f8f8;
+  margin-left: 81rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.review-bord{
+  height: 1rpx;
+  background: #ebebeb;
+  margin: 35rpx 0 0 81rpx;
 }

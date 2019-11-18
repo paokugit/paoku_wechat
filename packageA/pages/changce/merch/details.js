@@ -17,6 +17,7 @@ Page({
 
     iconA: 'drq_inco_dz_per@2x',
     iconB: 'drq_inco_dz_nor@2x',
+    boxShow: 1
   },
 
   /**
@@ -72,14 +73,25 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      boxShow: 0
+    })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // var animation = wx.createAnimation({
+    //   duration: 500,
+    //   timingFunction: 'ease',
+    //   delay: 0
+    // });
+    // animation.opacity(1).step();
+    this.setData({
+      boxShow: 1,
+      // ani: animation.export(),
+    })
   },
 
   /**
