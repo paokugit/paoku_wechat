@@ -238,7 +238,7 @@ Page({
               e.setData({
                 member: a,
                 cometotal: a.come_total,
-                calorietotal: a.calorie_total,
+                calorietotal: a.RVC_total,
                 fu_order: a.statics.order_0,
                 fa_order: a.statics.order_1,
                 shou_order: a.statics.order_2,
@@ -325,7 +325,7 @@ Page({
               that.setData({
                 member: a,
                 cometotal: a.come_total,
-                calorietotal: a.calorie_total,
+                calorietotal: a.RVC_total,
               })
           });
         } else {
