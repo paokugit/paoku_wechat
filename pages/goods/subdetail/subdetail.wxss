@@ -1,0 +1,115 @@
+/* @import "../../../utils/wxParse/wxParse.wxss"; */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+.explain-box {
+  width: 100%;
+  height: 100%;
+  margin-top: 20rpx;
+}
+
+.explain-main {
+  width: 94%;
+  height: auto;
+  padding: 0 3%;
+  margin-top: 20rpx;
+}
+
+.explain-item {
+  line-height: 50rpx;
+  color: #282828;
+  font-size: 30rpx;
+}
+
+.goods-box {
+  width: 94%;
+  height: auto;
+  padding: 24rpx 3%;
+  margin-top: 30rpx;
+}
+
+.item-box {
+  width: 652rpx;
+  height: 222rpx;
+  padding: 24rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.goodsImg {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 20rpx;
+}
+
+.goods-con {
+  width: 400rpx;
+  height: 220rpx;
+  margin-left: 20rpx;
+  position: relative
+}
+
+.goods-tit {
+  width: 400rpx;
+  height: 90rpx;
+  line-height: 45rpx;
+  color: #333;
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+.goods-other{
+  width: 400rpx;
+  height: 66rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.buybtn{
+  width: 145rpx;
+  height: 64rpx;
+  background: #f00;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30rpx;
+  
+}
+.countbox{
+  width: 100%;
+  height: 60rpx;
+  margin-top: 20rpx;
+  position: relative
+}
+.goods-count{
+  width: 141rpx;
+  height: 54rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  background: #01d7a1;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0
+}

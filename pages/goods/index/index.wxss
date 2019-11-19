@@ -598,40 +598,6 @@ page {
   margin-top: 10rpx;
 }
 
-.subject-box {
-  width: 48%;
-  float: left;
-  background: #00dba1;
-  border-radius: 12rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20rpx;
-}
-
-.subject-tit {
-  width: auto;
-  color: #fff;
-  font-size: 30rpx;
-}
-
-.subject-subtit {
-  width: auto;
-  color: #fff;
-  font-size: 24rpx;
-  margin-top: 10rpx;
-  margin-bottom: 26rpx;
-}
-
-.subject-img {
-  width: 320rpx;
-  height: 320rpx;
-  border-radius: 12rpx;
-  background: #ff6;
-  margin-bottom: 50rpx;
-}
-
 .chakan {
   width: 130rpx;
   height: 50rpx;
@@ -644,17 +610,6 @@ page {
   font-size: 24rpx;
 }
 
-.itemBox {
-  width: 48%;
-  height: 620rpx;
-  background: pink;
-  border-radius: 12rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20rpx;
-}
-
 .productImg {
   width: 320rpx;
   height: 320rpx;
@@ -663,7 +618,6 @@ page {
 }
 
 .productTit {
-  width: 310rpx;
   height: 40rpx;
   line-height: 40rpx;
   background: #f00;
@@ -674,57 +628,6 @@ page {
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 30rpx 0;
-}
-
-.priceBox {
-  width: 310rpx;
-  height: 50rpx;
-  background: #00f;
-  display: flex;
-  align-items: center;
-}
-
-.huodong-box {
-  width: 310rpx;
-  height: 50rpx;
-  background: #0f0;
-  display: flex;
-  align-items: center;
-  margin-top: 20rpx;
-}
-
-.huodong-con {
-  width: 120rpx;
-  height: 30rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1rpx solid #f00;
-  border-radius: 5rpx;
-  font-size: 20rpx;
-  color: #f00;
-}
-
-.huodong-label {
-  width: 60rpx;
-  height: 30rpx;
-  border: 1rpx solid #ffa001;
-  color: #ffa001;
-  font-size: 20rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 20rpx;
-  border-radius: 5rpx;
-}
-
-.intoshop-box {
-  width: 310rpx;
-  height: 50rpx;
-  background: #0ff;
-  display: flex;
-  align-items: center;
-  margin-top: 10rpx;
 }
 
 .intoshop {
@@ -765,4 +668,212 @@ page {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.fui-goods-group.block .subject-box {
+  width: 50%;
+  float: left;
+  border-bottom: 0;
+  background: none;
+  padding: 10rpx;
+  display: block;
+  background: #00dba1;
+  border-radius: 12rpx;
+}
+
+.subject-box {
+  box-sizing: border-box;
+  position: relative;
+  height: auto;
+  padding: 20rpx;
+  border-bottom: 1px solid #e7e7e7;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  background: #f66;
+}
+
+.subject-box navigator {
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.fui-goods-group.block .subject-box .image {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+}
+
+.subject-box .image {
+  height: 294rpx;
+  width: 294rpx;
+  background: #ff6;
+  float: left;
+  border-radius: 10rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.subject-box .detail {
+  -webkit-box-flex: 1;
+  flex: 1;
+  background: #fff;
+  padding-left: 20rpx;
+}
+
+.fui-goods-group.block .subject-box .detail {
+  padding: 8rpx;
+  overflow: hidden;
+}
+
+.fui-goods-group.block .fui-goods-item .detail .name {
+  height: 68rpx;
+  overflow: hidden;
+}
+
+.fui-goods-item .detail .name {
+  height: 120rpx;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: #262626;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.fui-goods-group.block .subject-box .detail .name {
+  height: 68rpx;
+  overflow: hidden;
+}
+
+.subject-box .detail .name {
+  /* height: 120rpx; */
+  width: 100%;
+  font-size: 28rpx;
+  color: #01d7a1;
+  height: 68rpx;
+  text-align: center;
+  line-height: 68rpx;
+}
+
+.priceBox {
+  height: 50rpx;
+  margin: 20rpx 0;
+  display: flex;
+  align-items: center;
+}
+
+.cross-subtit {
+  width: 100%;
+  height: 50rpx;
+  margin: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.cross-ck-box {
+  width: 100%;
+  height: 60rpx;
+  margin: 60rpx 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cross-ck {
+  width: 170rpx;
+  height: 60rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 30rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.huodong-box {
+  height: 50rpx;
+  background: #0f0;
+  display: flex;
+  align-items: center;
+}
+
+.huodong-con {
+  height: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #f00;
+  border-radius: 5rpx;
+  font-size: 20rpx;
+  color: #f00;
+}
+
+.huodong-label {
+  width: 60rpx;
+  height: 30rpx;
+  border: 1rpx solid #ffa001;
+  color: #ffa001;
+  font-size: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  border-radius: 5rpx;
+}
+
+.intoshop-box {
+  height: 50rpx;
+  background: #0ff;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.subject-tit {
+  width: 100%;
+  height: 68rpx;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25rpx;
+}
+
+.subject-subtit {
+  width: 100%;
+  height: 50rpx;
+  color: #fff;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+
+.chakan-box {
+  width: 100%;
+  height: 50rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 38rpx 0;
 }

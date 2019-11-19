@@ -27,6 +27,7 @@
         "pages/commission/apply/index",
         "pages/commission/order/index",
         "pages/commission/register/index",
+        "pages/goods/subdetail/subdetail",
         "pages/goods/index/index",
         "pages/goods/region/index",
         "pages/goods/package/index",

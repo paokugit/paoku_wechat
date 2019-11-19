@@ -1,0 +1,25 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="咨询详情"></navigation>
+<view class='explain-box'>
+  <import src="../../../utils/wxParse/wxParse.wxml" />
+  <view class="wxParse explain-main">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+  </view>
+  <view class="goods-box">
+    <view class="item-box">
+      <image class="goodsImg" src="{{globalimg}}/b-one.jpg"></image>
+      <view class="goods-con">
+        <view class="goods-tit">屈臣氏蔻斯汀花瓣沐浴露乳樱花玫瑰2L深层清洁持久香氛</view>
+        <view class="goods-other">
+          <view class="price-box">
+            <text style="color:#f00;font-size:34rpx">￥1234</text>
+            <text style="color:#999;font-size:28rpx;text-decoration: line-through;margin-left:12rpx">￥1234</text>
+          </view>
+          <view class="buybtn">去看看</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="countbox">
+    <view class="goods-count">商品99</view>
+  </view>
+</view>
