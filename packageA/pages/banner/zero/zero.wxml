@@ -1,0 +1,15 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="{{zerotit}}"></navigation>
+<view>
+  <view class="carousel">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true">
+      
+      <block wx:for="{{background}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item"></view>
+        </swiper-item>
+      </block>
+
+    </swiper>
+  </view>
+
+</view>
