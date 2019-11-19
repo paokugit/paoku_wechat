@@ -13,6 +13,7 @@ page {
   height: auto;
   background: #f8f8f8;
 }
+
 image {
   width: 100%;
   height: 100%;
@@ -28,6 +29,7 @@ image {
   justify-content: space-around;
   padding-bottom: 30rpx;
 }
+
 .itemBox {
   width: 48%;
   height: auto;
@@ -72,6 +74,47 @@ image {
   background: #0f0;
 }
 
+.swipercontent {
+  width: 100%;
+  height: 370rpx;
+  background: #0f0;
+  position: relative;
+}
+
+swiper {
+  width: 100%;
+  height: 370rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 370rpx;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 8rpx;
+  width: 16rpx;
+  height: 6rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+  opacity: 0.6
+}
+
+.dot.active {
+  width: 26rpx;
+  background: #fff;
+}
+
 .buy-box {
   width: 320rpx;
   height: 60rpx;
@@ -105,7 +148,7 @@ image {
   align-items: center;
   /* justify-content: space-around; */
   border-bottom: 2rpx solid #efefef;
-  margin-bottom: 10rpx
+  margin-bottom: 10rpx;
 }
 
 .all-price, .all-sales {

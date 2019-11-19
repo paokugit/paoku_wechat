@@ -26,6 +26,18 @@ Page({
     imgA: 'icon_sp@2x',
     imgB: 'icon_hp@2x',
     nowSign: 0,
+    imgUrls: [
+      'https://www.paokucoin.com/img/backgroup/b-one.jpg',
+      'https://www.paokucoin.com/img/backgroup/b-two.jpg',
+      'https://www.paokucoin.com/img/backgroup/b-three.jpg',
+      'https://www.paokucoin.com/img/backgroup/b-four.jpg',
+    ],
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    swiperCurrent: 0,
+    dots: true,
+
   },
 
   /**
@@ -59,6 +71,11 @@ Page({
       a.result.list || (a.result.list = []), a.result.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.result.list),
         a.result.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
     });
+  },
+  swiperChange: function (e) {
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
   },
   checkAllt: function(e) {
     const that = this;
