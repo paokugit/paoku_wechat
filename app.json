@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "pages/goods/index/index",
     "pages": [
         "pages/index/index",
         "pages/store/store",

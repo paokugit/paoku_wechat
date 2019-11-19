@@ -598,18 +598,9 @@ page {
   margin-top: 10rpx;
 }
 
-.productlist {
-  width: 98%;
-  height: auto;
-  padding: 0 1%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
 .subject-box {
   width: 48%;
-  height: 620rpx;
+  float: left;
   background: #00dba1;
   border-radius: 12rpx;
   display: flex;
@@ -684,22 +675,25 @@ page {
   text-overflow: ellipsis;
   margin: 30rpx 0;
 }
-.priceBox{
+
+.priceBox {
   width: 310rpx;
   height: 50rpx;
   background: #00f;
   display: flex;
-  align-items: center
+  align-items: center;
 }
-.huodong-box{
+
+.huodong-box {
   width: 310rpx;
   height: 50rpx;
   background: #0f0;
   display: flex;
   align-items: center;
-  margin-top: 20rpx
+  margin-top: 20rpx;
 }
-.huodong-con{
+
+.huodong-con {
   width: 120rpx;
   height: 30rpx;
   display: flex;
@@ -708,9 +702,10 @@ page {
   border: 1rpx solid #f00;
   border-radius: 5rpx;
   font-size: 20rpx;
-  color: #f00
+  color: #f00;
 }
-.huodong-label{
+
+.huodong-label {
   width: 60rpx;
   height: 30rpx;
   border: 1rpx solid #ffa001;
@@ -722,16 +717,52 @@ page {
   margin-left: 20rpx;
   border-radius: 5rpx;
 }
-.intoshop-box{
+
+.intoshop-box {
   width: 310rpx;
   height: 50rpx;
   background: #0ff;
   display: flex;
   align-items: center;
-  margin-top: 10rpx
+  margin-top: 10rpx;
 }
-.intoshop{
+
+.intoshop {
   margin-left: 12rpx;
   display: flex;
-  align-items: center
+  align-items: center;
+}
+
+.fui-goods-item .image {
+  height: 294rpx;
+  width: 294rpx;
+  background: #ff6;
+  float: left;
+  border-radius: 10rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.fui-goods-group.block .fui-goods-item .image {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+}
+
+.fui-goods-item .image {
+  height: 294rpx;
+  width: 294rpx;
+  background: #ff6;
+  float: left;
+  border-radius: 10rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
