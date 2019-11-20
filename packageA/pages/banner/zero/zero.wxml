@@ -51,18 +51,25 @@
 
   <!-- 分享赚 -->
   <view wx:if="{{toggle == 1?true:false}}">
+    
+    <view class="{{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
+      <navigator url="/pages/goods/index/index?fromsearch=1" class="search" style="{{scrollTop >160?'':'display:none'}}">
+        <view class="search-frame">输入关键字进行搜索</view>
+        <image src="{{globalimg}}/search@2x.png"></image>
+      </navigator>
 
-    <view class="all-filtrate flexcss {{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
-      <view class="all-text all-syn {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
-      
-      <view class="all-price flexcss"  data-now = "1" bindtap='checkAllt'>
-        <view class="all-text {{nowSign == 1?'nowActive':''}}">价格</view>
-        <image class="all-img" src="{{globalimg}}/{{allPrice}}.png"></image>
-      </view>
+      <view class="all-filtrate flexcss">
+        <view class="all-text all-syn {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
+        
+        <view class="all-price flexcss"  data-now = "1" bindtap='checkAllt'>
+          <view class="all-text {{nowSign == 1?'nowActive':''}}">价格</view>
+          <image class="all-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+        </view>
 
-      <view class="all-sales flexcss"  data-now = "2" bindtap='checkAllt'>
-        <view class="all-text {{nowSign == 2?'nowActive':''}}">销量</view>
-        <image class="all-img" src="{{globalimg}}/{{allSales}}.png"></image>
+        <view class="all-sales flexcss"  data-now = "2" bindtap='checkAllt'>
+          <view class="all-text {{nowSign == 2?'nowActive':''}}">销量</view>
+          <image class="all-img" src="{{globalimg}}/{{allSales}}.png"></image>
+        </view>
       </view>
     </view>
 

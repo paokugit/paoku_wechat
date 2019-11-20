@@ -138,7 +138,6 @@
 .all-text{
   font-size: 30rpx;
   color: #666666;
-  font-weight: bold;
   text-align: center;
 }
 .nowActive{

@@ -23,6 +23,16 @@ Page({
     allSales: 'sc_tj_icon_jg_nor@2x',
     nowSign: 0,
     sortWay: 0,
+
+
+    list:[
+      { adv: 1 },
+      { adv: 0 },
+      { adv: 0 },
+      { adv: 1 },
+      { adv: 0 },
+      { adv: 1 }
+    ]
   },
 
   /**

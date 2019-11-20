@@ -54,7 +54,7 @@
   background: #fff;
 }
 
-
+/* 选项卡点击 */
 .all-filtrate{
   width: 100%;
   height: 84rpx;
@@ -92,7 +92,219 @@
   line-height: 84rpx;
 }
 
-
 .nowActive{
   color: #01d7a1;
+}
+
+/* 状态1 */
+.referral-business{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap:wrap; 
+  padding: 20rpx 20rpx 20rpx;
+}
+
+.businessList{
+  width: 345rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.business-img{
+  background: red;
+  width: 100%;
+  height: 320rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.business-txt{
+  height: 85rpx;
+  font-size: 30rpx;
+  color: #323232;
+  margin: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.business-figure{
+  margin: 0 20rpx ;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number{
+  display: flex;
+  align-items: center;
+}
+
+.number-money::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+.number-money{
+  color: #ff0000;
+  font-size: 40rpx;
+  margin-right: 11rpx;
+}
+.number-people{
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.shopping-car{
+  width: 37rpx;
+  height: 34rpx;
+}
+.shopping-car image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 置顶的 */
+.main_target{
+  font-size: 30rpx;
+}
+.main_target,.substandard,.checkBtn{
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main_target{
+  font-weight: bold;
+  font-size: 30rpx;
+  margin: 20rpx 0 10rpx 0;
+}
+.substandard{
+  font-size: 26rpx;
+}
+.proImgA{
+  height: 300rpx;
+  margin: 20rpx 12rpx;
+  background: black;
+}
+.checkBtn{
+  width: 35%;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: rgb(255, 212, 1);
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  margin: 10rpx auto;
+}
+
+/* 状态2 */
+.state-two{
+  width: 100%;
+  background: #ffffff;
+}
+.stateList{
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.state-image{
+  width: 294rpx;
+  height: 294rpx;
+  border-radius: 10rpx;
+  background: red;
+  margin-right: 28rpx;
+}
+.state-right{
+  width: 382rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.state-right-top{
+  width: 382rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 60rpx;
+}
+.state-right-activity{
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 4rpx 9rpx;
+  background: #ff0000;
+  border-radius: 6rpx;
+}
+.state-right-tit{
+  font-size: 34rpx;
+  color: #333333;
+}
+
+
+.freight{
+  font-size: 24rpx;
+  color: #cccccc;
+  margin-bottom: 22rpx;
+}
+.state-right-amount,.state-right-sum{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.state-right-price{
+  font-size: 40rpx;
+  color: #ff0000;
+}
+.state-right-price::before{
+  content: "￥";
+  color: #ff0000;
+  font-size: 28rpx;
+}
+.state-right-payment{
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 21rpx;
+}
+.state-right-vehicle{
+  width: 37rpx;
+  height: 34rpx;
+}
+
+/* 置顶的 */
+.main-title{
+  font-size: 28rpx;
+  color: #01d7a1;
+  text-align: center;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.main-title::before,.main-title::after{
+  content: '';                
+  position: absolute;     
+  top: 52%;
+  background: #99ffe5;
+  width: 80rpx;
+  height: 2rpx;
+}
+.main-title::before{
+  left: 5%;
+}
+.main-title::after{
+  right: 5%;
+}
+
+/* 到底提示 */
+.on-earth{
+  font-size: 26rpx;
+  color: #9b9b9b;
+  text-align: center;
+  margin-top: 45rpx;
 }

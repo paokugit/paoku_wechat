@@ -7,7 +7,7 @@
   </navigator>
 
   <view class="carousel">
-    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
+    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange">
       <block wx:for="{{background}}" wx:key="index">
         <swiper-item>
           <view class="swiper-item" style="background:{{item}}"></view>
@@ -22,14 +22,14 @@
   </view>
 
   <view class="all-filtrate">
-    <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
-    
-    <view class="all-price"  data-now = "1" bindtap='checkAllt'>
+    <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+
+    <view class="all-price" data-now="1" bindtap='checkAllt'>
       <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
       <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
     </view>
 
-    <view class="all-sales"  data-now = "2" bindtap='checkAllt'>
+    <view class="all-sales" data-now="2" bindtap='checkAllt'>
       <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
       <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
     </view>
@@ -37,6 +37,83 @@
     <view class="all-switchover" bindtap="sortBtn">
       <text class="icon icox {{sortWay == 1?'icox-viewlist':'icox-app'}}"></text>
     </view>
+  </view>
+
+  <!-- 产品列表 -->
+  <view>
+
+    <!-- 状态1 -->
+    <view class="referral-business" style="{{sortWay == 0?'':'display:none'}}">
+      <block wx:for="{{list}}" wx:key="index">
+
+        <view class="businessList" style="{{item.adv == 0?'background:#fff':'background:#00dba1'}}">
+          <block wx:if="{{item.adv == 0?true:false}}">
+            <view class="business-img"></view>
+            <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+            <view class="business-figure">
+              <view class="number">
+                <view class="number-money">99</view>
+                <view class="number-people">999人付款</view>
+              </view>
+              <view class="shopping-car">
+                <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+              </view>
+            </view>
+          </block>
+
+          <block wx:if="{{item.adv == 1?true:false}}">
+            <view class="main_target">夏季爽口降暑</view>
+            <view class="substandard">自充电便捷榨汁机</view>
+            <view class='proImgA'></view>
+            <view class="checkBtn">查看</view>
+          </block>
+        </view>
+
+      </block>
+
+    </view>
+
+    <!-- 状态2 -->
+    <view class="state-two" style="{{sortWay == 1?'':'display:none'}}">
+      <block wx:for="{{list}}" wx:key="index">
+        <view class="stateList">
+
+        <block wx:if="{{item.adv == 0?true:false}}">  
+          <view class="state-image"></view>
+          <view class="state-right">
+            <view class="state-right-top">
+              <text class="state-right-activity">限时抢购</text>
+              <text class="state-right-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙时擦刹车撒</text>
+            </view>
+            <view>
+              <view class="freight">包邮</view>
+              <view class="state-right-amount">
+                <view class="state-right-sum">
+                  <view class="state-right-price">34.90</view>
+                  <view class="state-right-payment">1万人已付款</view>
+                </view>
+                <image class="state-right-vehicle" src="{{globalimg}}/icon_gwc@2x.png"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{item.adv == 1?true:false}}">
+          <view class="state-image"></view>
+          <view class="state-right">
+            <view class="main-title">水果精选</view>
+            <view></view>
+            <view></view>
+          </view>
+        </block>
+
+        </view>
+      </block>
+
+    </view>
+
+
+    <view class="on-earth" style="margin-bottom: 150rpx;">到底了哦</view>
   </view>
 
 </view>
