@@ -277,7 +277,8 @@ Page((e = {
     that.setData({
       nowSign: mowtxt,
       allPrice: priceImg,
-      allSales: salesImg
+      allSales: salesImg,
+      page:1
     })
     console.log(sortorder, sortby, )
     that.get_list()
@@ -317,7 +318,6 @@ Page((e = {
       loading: !0
     }), s.get("goods/get_list", {
       openid: userinfo.openid,
-      deduct: 1,
       page: t.data.page,
       order: sortorder,
       cate: 171,

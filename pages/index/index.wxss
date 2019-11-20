@@ -1072,8 +1072,7 @@ image {
 
 .exchange-product {
   width: 360rpx;
-  height: 480rpx;
-  /* height: auto; */
+  height: 530rpx;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -1162,11 +1161,10 @@ image {
   height: 100%;
   float: right;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   color: #666;
   font-size: 20rpx;
-  /* margin-left: 50rpx; *//* text-decoration: line-through */
+  text-decoration: line-through
 }
 
 .calorie-img {
@@ -1932,4 +1930,15 @@ image {
 .originalprice {
   color: #707070;
   font-size: 22rpx;
+}
+.zkbox-rvc{
+  width: 320rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.pay-type{
+  color: #666;
+  font-size: 20rpx;
 }
