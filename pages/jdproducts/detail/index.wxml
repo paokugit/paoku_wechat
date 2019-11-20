@@ -1,0 +1,40 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品详情"></navigation>
+<view class='account-box'>
+  <!-- tab -->
+  <block>
+    <block wx:if="{{!show}}">
+      <loading>加载中...</loading>
+    </block>
+  </block>
+  <block>
+    <block wx:if="{{show}}">
+      <view class="listBox">
+        <view class='swipercontent'>
+          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
+            <block wx:for="{{imgUrls}}" wx:key="unique">
+              <swiper-item>
+                <image src="{{item}}" class="slide-image" />
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="dots">
+            <block wx:for="{{imgUrls}}" wx:key="unique">
+              <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+            </block>
+          </view>
+        </view>
+        <!-- <view class="goods-advs {{showpic||goods.video==''?'block':'none'}}" style="width:{{advWidth}}px;height:auto;position:relative">
+          <swiper circular="{{circular}}" class="index-adcs-sqiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="width:{{advWidth}}px;height:{{advHeight}}px;">
+            <swiper-item style="background-image:url('{{item}}');width:100%;height:100%" wx:for="{{goods.thumbs}}" wx:for-index="idx" wx:key="index">
+              <image class="goodsadvimg" mode="aspectFit" src="{{item}}"></image>
+            </swiper-item>
+          </swiper>
+          <view class="mc">
+            <view bindtap="showvideo" class="video_btn" wx:if="{{goods.video}}">视频</view>
+            <view bindtap="showpic" class="pic_btn active" wx:if="{{goods.video}}">图片</view>
+          </view>
+        </view> -->
+      </view>
+    </block>
+  </block>
+</view>

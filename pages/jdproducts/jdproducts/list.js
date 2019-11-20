@@ -4,6 +4,9 @@ var f = getApp();
 var t = getApp(),
   a = t.requirejs("core");
 var useropenid = ''
+// 新加
+var pricemark = 0;
+var salesmark = 0;
 Page({
 
   /**
@@ -18,6 +21,23 @@ Page({
     loaded: !1,
     loading: !0,
     list: [],
+    allPrice: 'sc_tj_icon_jg_nor@2x',
+    allSales: 'sc_tj_icon_jg_nor@2x',
+    imgA: 'icon_sp@2x',
+    imgB: 'icon_hp@2x',
+    nowSign: 0,
+    imgUrls: [
+      'https://www.paokucoin.com/img/backgroup/grapegruit.png',
+      'https://www.paokucoin.com/img/backgroup/guava.png',
+      'https://www.paokucoin.com/img/backgroup/orange.png',
+      'https://www.paokucoin.com/img/backgroup/peach.png',
+    ],
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    swiperCurrent: 0,
+    dots: true,
+
   },
 
   /**
@@ -30,7 +50,7 @@ Page({
       type: 1
     }), t.url(a), this.getList();
   },
-  
+
   getList: function() {
     var t = this;
     t.setData({
@@ -52,17 +72,60 @@ Page({
         a.result.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
     });
   },
-  myTab: function(t) {
-    console.log(t)
-    console.log(a.pdata(t))
-    var e = this,
-      i = a.pdata(t).type;
-    e.setData({
-      type: i,
-      page: 1,
+  swiperChange: function (e) {
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
+  checkAllt: function(e) {
+    const that = this;
+    let mowtxt = e.currentTarget.dataset.now;
+    let priceImg;
+    let salesImg;
+    if (mowtxt == 0) {
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+      salesmark = 0;
+    } else if (mowtxt == 1) {
+
+      if (pricemark == 0) {
+        priceImg = 'sc_tj_icon_jg_xs@2x';
+        pricemark = 1;
+      } else if (pricemark == 1) {
+        priceImg = 'sc_tj_icon_jg_xx@2x';
+        pricemark = 0;
+      }
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      salesmark = 0;
+
+    } else if (mowtxt == 2) {
+      if (salesmark == 0) {
+        salesImg = 'sc_tj_icon_jg_xs@2x';
+        salesmark = 1;
+      } else if (salesmark == 1) {
+        salesImg = 'sc_tj_icon_jg_xx@2x';
+        salesmark = 0;
+      }
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+
+    }
+    that.setData({
+      nowSign: mowtxt,
+      allPrice: priceImg,
+      allSales: salesImg
+    })
+    console.log(that.data.nowSign, pricemark, salesmark, )
+  },
+  selected: function(t) {
+    var e = a.data(t).type;
+    this.setData({
       list: [],
-      loading: !0
-    }), e.getList();
+      page: 1,
+      status: e,
+      empty: !1
+    }), this.getList();
   },
 
   /**
@@ -96,10 +159,10 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.data.loaded || this.data.list.length == this.data.total || this.getList();
   },
 

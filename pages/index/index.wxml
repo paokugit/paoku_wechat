@@ -198,7 +198,9 @@
                       <view class="free-take-img">
                         <image src='{{globalimg}}/oqg02@2x.png'></image>
                       </view>
-                      <view class="exclusive-flex"><view class="exclusive-box">{{item.levels}}享有</view></view>
+                      <view class="exclusive-flex">
+                        <view class="exclusive-box">{{item.levels}}享有</view>
+                      </view>
                     </navigator>
                   </view>
                 </view>
@@ -275,29 +277,17 @@
 
             <image class='club-card-img' src='{{item.thumb}}'></image>
           </navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con flex_center'>{{item.title}}</navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free flex_center'>
-            <!-- 显示卡路里加价格 -->
-            <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-              <view class='calorieimgBox'>
-                <view class='calorie-img flex_center'>
-                  <image src='{{ globalimg}}/zkblogo.png'></image>
-                </view>
-                <view class='calorie-num02'>
-                  {{item.deduct}}+￥{{item.showprice}}
-                </view>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con'>{{item.title}}</navigator>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free'>
+            <view class='zkBox'>
+              <view class='zkb-box'>
+                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
               </view>
-            </view>
-            <!-- 显示免费兑 -->
-            <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-              <view class='calorie-num '>
-                免费兑
-              </view>
-            </view>
-            <!-- 只显示价格 -->
-            <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-              <view class='calorie-num flex_center'>
-                ￥{{item.minprice}}
+              <view class='price-box'>
+                <text style="color:#707070;font-size:24rpx">折后</text>
+                <text class='dis-price'>￥{{item.showprice}}</text>
               </view>
             </view>
           </navigator>
@@ -462,11 +452,14 @@
           <image src="{{globalimg}}/novideo.png"></image>
         </navigator>
       </scroll-view>
-    </view> 
+    </view>
   </view>
   <!-- 边看变买结束 -->
 
   <!-- 超值兑换部分-开始 -->
+  <!-- <block>
+    <block wx:if="{{list.length<0}}"><view>啦啦啦啦</view></block>
+  </block> -->
   <view class='pro-exchange-box flex_center'>
     <view class='pro-exchange-box-con'>
       <view class='pro-exchange-tit-box'>
@@ -475,6 +468,18 @@
           <view class='service-circle'></view>
         </view>
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
+      </view>
+      <!-- 价格销量排序 -->
+      <view class="all-filtrate">
+        <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+        <view class="all-price" data-now="1" bindtap='checkAllt'>
+          <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+          <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+        </view>
+        <view class="all-sales" data-now="2" bindtap='checkAllt'>
+          <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+          <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+        </view>
       </view>
       <view class='exchange-products-box'>
 
@@ -487,44 +492,30 @@
               </view>
             </navigator>
             <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-            <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-              <view class='postage-free'>包邮</view>
-            </view>
-            <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-              <view class='postage-free'>包邮</view>
+            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
+            <view class='postage-free'>包邮</view>
+          </view> -->
+            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
+            <view class='postage-free'>包邮</view>
+          </view> -->
+            <view class='zkbox-rvc' wx:if="{{item.deduct_type==2}}">
+              <view class='zkb-box'>
+                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.minprice}}</view>
+              </view>
+              <view class="pay-type">支持RVC支付</view>
             </view>
             <view class='ex-procalorie-box'>
-              <!-- 显示卡路里加价格 -->
-              <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-                <view class='calorieimgBox'>
-                  <view class='calorie-img flex_center'>
-                    <image src='{{ globalimg}}/zkblogo.png'></image>
-                  </view>
-                  <view class='calorie-num02 flex_center'>
-                    {{item.deduct}}+￥{{item.showprice}}
-                  </view>
-                </view>
-                <view class='calorie-price '>{{item.productprice}}元</view>
-              </view>
-              <!-- 显示免费兑 -->
-              <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-                <view class='calorie-num '>
-                  免费兑
-                </view>
-                <view class='calorie-person '>{{item.sales}}人已0元拿</view>
-              </view>
-              <!-- 只显示价格 -->
-              <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-                <view class='calorie-num flex_center'>
+              <view class='calorie-box'>
+                <view class='calorie-num'>
                   ￥{{item.minprice}}
                 </view>
-                <view class='calorie-price '>{{item.productprice}}元</view>
+                <view class='calorie-price'>{{item.productprice}}元</view>
               </view>
-              <!-- <view class='calorie-free flex_center'>免费拿</view> -->
             </view>
           </view>
         </block>
-
       </view>
       <!-- 查看更多-商品-开始 -->
       <view class='readmore-pro-box flex_center'>
@@ -535,6 +526,7 @@
       </view>
     </view>
   </view>
+  <!-- 超值兑换结束 -->
 </view>
 <!-- 回到顶部 -->
 <view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>

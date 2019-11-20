@@ -8,7 +8,7 @@ page {
   overflow-x: hidden;
   background: #f8f8f8;
 }
- 
+
 .indexBox {
   width: 100%;
   height: auto;
@@ -564,6 +564,7 @@ image {
 .swiper-box swiper {
   height: 60rpx;
 }
+
 .notice-box {
   display: flex;
   align-items: center;
@@ -583,7 +584,7 @@ image {
 
 .store-service {
   width: 100%;
-  height: 630rpx;
+  height: 650rpx;
   /* background: #12bfa3; */
   background: #f8f8f8;
   border-radius: 20rpx;
@@ -605,7 +606,6 @@ image {
 .service-absolute-dis {
   width: 200rpx;
   height: 80rpx;
-  /* background: #0ff; */
   position: absolute;
   top: 0;
   right: 10rpx;
@@ -614,7 +614,6 @@ image {
 .service-absolute {
   width: 200rpx;
   height: 80rpx;
-  /* background: #0ff; */
   display: flex;
   align-items: center;
 }
@@ -622,7 +621,6 @@ image {
 .service-abso-dis {
   width: 200rpx;
   height: 80rpx;
-  /* background: #0f0; */
   position: absolute;
   top: 0;
   right: 10rpx;
@@ -738,7 +736,6 @@ image {
 .store-details-box {
   width: 500rpx;
   height: 150rpx;
-  /* background: #f00; */
   margin-left: 20rpx;
   display: flex;
   flex-direction: column;
@@ -792,7 +789,6 @@ image {
 .store-address {
   width: 60%;
   height: 40rpx;
-  /* background: #00f; */
   color: #666;
   font-size: 22rpx;
   line-height: 40rpx;
@@ -804,7 +800,7 @@ image {
 
 .store-service-box-bottom {
   width: 100%;
-  height: 300rpx;
+  height: 320rpx;
   position: absolute;
   top: 220rpx;
   display: flex;
@@ -839,7 +835,7 @@ image {
 
 .club-card-box {
   width: 220rpx;
-  height: 300rpx;
+  height: 320rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -872,11 +868,12 @@ image {
 }
 
 .club-card-free {
-  width: 200rpx;
-  height: 40rpx;
-  display: flex;
+  width: 100%;
+  height: 100rpx;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+ 
 }
 
 /* 门店服务-结束 */
@@ -1075,8 +1072,7 @@ image {
 
 .exchange-product {
   width: 360rpx;
-  height: 480rpx;
-  /* height: auto; */
+  height: 530rpx;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -1165,11 +1161,10 @@ image {
   height: 100%;
   float: right;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   color: #666;
   font-size: 20rpx;
-  /* margin-left: 50rpx; *//* text-decoration: line-through */
+  text-decoration: line-through
 }
 
 .calorie-img {
@@ -1190,7 +1185,8 @@ image {
   height: 40rpx;
   color: #e01212;
   font-size: 24rpx;
-  margin-left: 10rpx;
+  margin-left: 6rpx;
+  line-height: 40rpx;
 }
 
 .calorie-free {
@@ -1528,35 +1524,41 @@ image {
   position: absolute;
   top: 50%;
 }
+
 .jump {
-    width: 330rpx;
-    height: 100rpx;
-    background: url("https://www.paokucoin.com/img/backgroup/cyhd@2x.png");
-    background-size: 330rpx 100rpx;
-    -webkit-animation-name: scaleDraw;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 5s;
+  width: 330rpx;
+  height: 100rpx;
+  background: url("https://www.paokucoin.com/img/backgroup/cyhd@2x.png");
+  background-size: 330rpx 100rpx;
+  -webkit-animation-name: scaleDraw;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 5s;
 }
 
 @keyframes scaleDraw {
-    0% {
-        transform: scale(1); 
-    }
-    25% {
-        transform: scale(1.1); 
-    }
-    50% {
-        transform: scale(1);
-    }
-    75% {
-        transform: scale(1.1);
-    }
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
 }
+
 .cyhd-img {
   width: 330rpx;
   height: 100rpx;
 }
+
 .libao-bottom-box {
   width: 100%;
   height: auto;
@@ -1590,54 +1592,61 @@ image {
 .libao-goods-con {
   width: 706rpx;
   height: 900rpx;
-  margin-top: 30rpx
+  margin-top: 30rpx;
 }
+
 .libao-goods-con swiper {
   width: 100%;
   height: 900rpx;
   /* background: pink; */
 }
+
 .libao-goods {
   width: 706rpx;
   height: 900rpx;
-   display: flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
- 
 }
-.libao-goods-item{
-   width: 274rpx;
+
+.libao-goods-item {
+  width: 274rpx;
   height: 380rpx;
 }
+
 .libao-goods-bg {
   width: 274rpx;
   height: 380rpx;
-  position: relative
+  position: relative;
 }
-.product-img{
+
+.product-img {
   width: 220rpx;
   height: 220rpx;
   position: absolute;
   top: 4%;
-  left: 10%
+  left: 10%;
 }
-.free-take-img{
+
+.free-take-img {
   width: 88rpx;
   height: 100rpx;
   position: absolute;
   top: 0;
-  left: 10%
+  left: 10%;
 }
-.exclusive-flex{
-  width:274rpx;
-  height:  36rpx;
+
+.exclusive-flex {
+  width: 274rpx;
+  height: 36rpx;
   position: absolute;
   top: 72.6%;
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
+
 .exclusive-box {
   width: 210rpx;
   height: 36rpx;
@@ -1647,37 +1656,44 @@ image {
   justify-content: center;
   align-items: center;
 }
-.cksp-img-flex{
+
+.cksp-img-flex {
   width: 100%;
   height: 186rpx;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.cksp-img{
+
+.cksp-img {
   width: 300rpx;
   height: 146rpx;
 }
+
 /* 边看 */
-.look-buy{
+
+.look-buy {
   width: 100%;
   height: auto;
   background: #f8f8f8;
   margin-top: 40rpx;
 }
-.look-buy-tit{
+
+.look-buy-tit {
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* padding: 0 3% 30rpx; */
   padding: 0 3%;
 }
-.buy-tit-left view{
+
+.buy-tit-left view {
   font-size: 40rpx;
-  color: #333333;
+  color: #333;
   font-weight: bold;
 }
-.left-img{
+
+.left-img {
   width: 26rpx;
   height: 26rpx;
   margin-left: 12rpx;
@@ -1685,14 +1701,16 @@ image {
   border: 8rpx solid red;
   border-radius: 50%;
 }
-.buy-tit-right view{
+
+.buy-tit-right view {
   height: 50rpx;
   line-height: 50rpx;
   font-size: 24rpx;
-  color: #666666;
+  color: #666;
   margin-right: 10rpx;
 }
-.buy-tit-left,.buy-tit-right{
+
+.buy-tit-left, .buy-tit-right {
   display: flex;
   align-items: center;
 }
@@ -1706,9 +1724,9 @@ image {
   top: -10rpx;
 }
 
-.buy-video{
+.buy-video {
   width: 654rpx;
-  height:480rpx;
+  height: 480rpx;
   margin: 0 12rpx;
   box-sizing: border-box;
   display: inline-block;
@@ -1716,43 +1734,47 @@ image {
   border-radius: 30rpx;
 }
 
-.list-img{
+.list-img {
   width: 100%;
   height: 380rpx;
   position: relative;
   left: 0;
   top: 0;
 }
-.myVideo{
+
+.myVideo {
   width: 100%;
   height: 100%;
   border-top-left-radius: 20rpx;
   border-top-right-radius: 20rpx;
 }
-.myzan{
+
+.myzan {
   width: 116rpx;
   height: 116rpx;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: 100;
 }
-.shade{
+
+.shade {
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 60px 0px #888888 inset;
+  box-shadow: 0px 0px 60px 0px #888 inset;
   position: absolute;
   left: 0;
   top: 0;
   border-top-left-radius: 20rpx;
   border-top-right-radius: 20rpx;
 }
-.videptit{
+
+.videptit {
   width: 100%;
   font-size: 34rpx;
   color: #fff;
-  font-weight: bold;  
+  font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1762,33 +1784,38 @@ image {
   margin: 0 24rpx;
 }
 
-.list-base{
+.list-base {
   width: 600rpx;
   position: absolute;
   left: 24rpx;
   bottom: 20rpx;
 }
-.list-base,.list-base-left{
+
+.list-base, .list-base-left {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.list-base-sum{
+
+.list-base-sum {
   font-size: 40rpx;
-  color: #ff0000;
+  color: #f00;
   margin-right: 15rpx;
   font-weight: bold;
 }
-.list-base-sum::before{
+
+.list-base-sum::before {
   content: "￥";
   font-size: 28rpx;
-  color: #ff0000;
+  color: #f00;
 }
-.list-base-piece{
+
+.list-base-piece {
   color: #929292;
   font-size: 28rpx;
 }
-.list-base-deduction{
+
+.list-base-deduction {
   width: 124rpx;
   height: 40rpx;
   border-radius: 50rpx;
@@ -1804,7 +1831,114 @@ image {
   right: 10rpx;
   top: 25px;
 }
-.itemimg image{
+
+.itemimg image {
   width: 100%;
   height: 100%;
+}
+
+/* 全部商品 */
+
+.all-filtrate {
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 12rpx 0;
+}
+
+.all-price, .all-sales {
+  display: flex;
+  align-items: center;
+}
+
+.all-synthesize, .all-price, .all-sales {
+  width: auto;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.all-synthesize, .all-price-text, .all-sales-sales {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.all-price-img, .all-sales-img {
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+
+.all-switchover {
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.nowActive {
+  color: #01d7a1;
+}
+
+.zkBox {
+  width: 96%;
+  padding-left: 4%;
+  height: 92rpx;
+  margin-top: 8rpx
+}
+
+.zkb-box {
+  width: auto;
+  height: 36rpx;
+  /* background: #fff; */
+  display: flex;
+}
+
+.zkbImg {
+  width: 74rpx;
+  height: 34rpx;
+}
+
+.zkb-count {
+  width: auto;
+  height: 30rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border: 2rpx solid #f84900;
+  border-left: none;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color: #f84900;
+}
+
+.price-box {
+  width: 100%;
+  height: 36rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx
+}
+.dis-price {
+  color: #e01212;
+  font-size: 24rpx;
+  margin-left: 5rpx;
+}
+
+.originalprice {
+  color: #707070;
+  font-size: 22rpx;
+}
+.zkbox-rvc{
+  width: 320rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.pay-type{
+  color: #666;
+  font-size: 20rpx;
 }
