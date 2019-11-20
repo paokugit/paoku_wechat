@@ -12,6 +12,8 @@ var navigaterurl = ''
 var bindcount = ''
 // var conbind=''
 
+var is_rvc = '';
+
 var useropenid = "";
 
 Page({
@@ -82,7 +84,7 @@ Page({
     wx.switchTab({
       url: navigaterurl,
     })
-  },
+  }, 
   form_submit: function(e) {
     console.log(e.detail.formId);
     formid = e.detail.formId
@@ -176,17 +178,13 @@ Page({
   },
 
   rvcBtn:function(){
-    var a = 1;
-    if(a == 1){
+    console.log(is_rvc);
+    if (is_rvc == 1){
       wx.navigateTo({
         url: '/pages/member/rvc/rvc',
       })
-    }else{
-      wx.showToast({
-        title: '该功能暂未开放！',
-        icon: 'none',
-        duration: 2000
-      })
+    } else if (is_rvc == 0){
+      console.log('123');
     }
   },
 
@@ -251,7 +249,8 @@ Page({
           })
           a.get("member", {}, function(a) {
             console.log(a),
-              e.setData({
+              is_rvc = a.is_rvc;
+              e.setData({ 
                 member: a,
                 cometotal: a.come_total,
                 calorietotal: a.RVC_total,

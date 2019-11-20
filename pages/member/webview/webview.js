@@ -12,7 +12,7 @@ Page({
     globalimg: t.globalData.appimg,
     showIcon: true,
     gloheight: t.globalData.gloheight,
-
+    payUrl:''
   },
 
   /**
@@ -23,6 +23,9 @@ Page({
     useropenid = userinfo.openid;
 
     console.log(options.str); 
+    this.setData({
+      payUrl: options.str
+    })
   },
 
   /**

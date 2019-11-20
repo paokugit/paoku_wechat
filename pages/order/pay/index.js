@@ -53,12 +53,35 @@ Page({
         var o = e.pdata(t).type, a = this, i = this.data.list.wechat;
         "wechat" == o ? e.pay(i.payinfo, function(t) {
             "requestPayment:ok" == t.errMsg && a.complete(o);
-        }) : "credit" == o ? e.confirm("确认要支付吗?", function() {
+        }) : "credit" == o ? e.confirm("确认要余额支付吗?", function() {
             a.complete(o);
-        }, function() {}) : "cash" == o ? e.confirm("确认要使用货到付款吗?", function() {
+          }, function () { }) : "RVC" == o ? e.confirm("确认要RVC支付吗?", function () {
+            a.complete(o);
+          }, function () { }) : "cash" == o ? e.confirm("确认要使用货到付款吗?", function() {
             a.complete(o);
         }, function() {}) : a.complete(o);
     },
+    // pay:function(e){
+    //   console.log(e.currentTarget.dataset.type);
+    //   let type = e.currentTarget.dataset.type;
+    //   if (type == 'wechat'){
+    //     e.pay(i.payinfo, function (t) {
+    //         "requestPayment:ok" == t.errMsg && a.complete(o);
+    //     })
+    //   } else if (type == 'credit'){
+    //     e.confirm("确认要余额支付吗?", function () {
+    //         a.complete(o);
+    //     }, function () { })
+    //   } else if (type == 'RVC'){
+    //     e.confirm("确认要RVC支付吗?", function () {
+    //       a.complete(o);
+    //     }, function () { })
+    //   }else{
+    //     e.confirm("确认要使用货到付款吗?", function () {
+    //         a.complete(o);
+    //     }, function() {})
+    //   }
+    // },
     complete: function(t) {
         var a = this;
         e.post("order/pay/complete", {

@@ -56,7 +56,7 @@
 
                 <block>
                   <block wx:if="{{list.credit.success&&list.order.price!=0}}">
-                    <view bindtap="pay" class="fui-list" data-type="credit">
+                    <view bindtap="pay" class="fui-list" data-type="RVC">
                       <view class="fui-list-media">
                           <image class="round" src="{{globalimg}}/rvc.png"></image>
                       </view>

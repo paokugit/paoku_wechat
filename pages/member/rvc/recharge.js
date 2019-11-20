@@ -55,9 +55,24 @@ Page({
         duration: 2000
       })
     }else{
-      wx.navigateTo({
-        url: '/pages/member/webview/webview?str='+str,
-      })
+      a.get("game.rvc_pay", {
+        openid: useropenid,
+        amount: str
+      }, function (e) {
+        console.log(e);
+        if(e.error == 0){
+          wx.navigateTo({
+            url: '/pages/member/webview/webview?str='+e.data.payUrl,
+          })
+        }else if(e.error == 1){
+          wx.showToast({
+            title: e.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      });
+      
     }
   },
 
@@ -72,7 +87,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+ 
   },
 
   /**
