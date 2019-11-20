@@ -3,6 +3,7 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = "";
+
 var pricemark = 0;
 var salesmark = 0;
 Page({
@@ -15,15 +16,13 @@ Page({
     showIcon: true,
     gloheight: t.globalData.gloheight,
 
-    zerotit:'0元兑',
-    background: ['red', 'orange','yellow'],
+    background: ['red', 'orange', 'yellow'],
     swiperCurrent:0,
-    loading:!1,
-    toggle:1,
+
     allPrice: 'sc_tj_icon_jg_nor@2x',
     allSales: 'sc_tj_icon_jg_nor@2x',
     nowSign: 0,
-    scrollTop:0,
+    sortWay: 0,
   },
 
   /**
@@ -34,17 +33,11 @@ Page({
     useropenid = userinfo.openid;
 
     var m = this;
-    var text;
-    if (m.data.toggle == 0){
-      text = "0元兑"
-    }else if(m.data.toggle == 1){
-      text = "分享赚"
-    }
     m.setData({
       show: !0,
-      zerotit:text
     })
   },
+
 
   swiperChange: function (e) {
     this.setData({
@@ -93,11 +86,21 @@ Page({
     })
   },
 
-  onPageScroll: function (e) {
-    this.setData({
-      scrollTop: e.scrollTop
+  sortBtn: function () {
+    var m = this;
+    let recordway = m.data.sortWay;
+    let imgrecord;
+    if (recordway == 0) {
+      recordway = 1;
+    } else if (recordway == 1) {
+      recordway = 0;
+    }
+    m.setData({
+      sortWay: recordway
     })
   },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -137,9 +140,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      loading: !0,
-    })
+
   },
 
   /**

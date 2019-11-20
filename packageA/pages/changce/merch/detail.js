@@ -34,8 +34,6 @@ Page({
 
     allPrice: 'sc_tj_icon_jg_nor@2x',
     allSales:'sc_tj_icon_jg_nor@2x',
-    imgA:'icon_sp@2x',
-    imgB:'icon_hp@2x',
     nowSign:0,
     sortWay:0,
   },
@@ -73,14 +71,11 @@ Page({
     let recordway = m.data.sortWay;
     let imgrecord;
     if (recordway == 0){
-      imgrecord = 'icon_hp@2x';
       recordway = 1;
     } else if (recordway == 1){
-      imgrecord = 'icon_sp@2x';
       recordway = 0;
     }
     m.setData({
-      imgA: imgrecord,
       sortWay: recordway
     })
   },

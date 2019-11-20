@@ -1,0 +1,135 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="任务领钱"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view style="position: relative;">
+  <view class="header">
+    <image class="head-img" src="{{globalimg}}/renwu_head.png"></image>
+
+    <view class="explain" catchtap="explain">
+      <view>任务说明</view>
+      <image src="{{globalimg}}/nav_inco_tanh@2x.png"></image>
+    </view>
+
+    <view class="header-tit">
+      <view class="main-title">完成任务 奖励多多</view>
+      <view class="subhead">折扣宝，贡献值轻松赚</view>
+    </view>
+  </view>
+
+  <view class="list-card">
+    <!-- 限时任务 -->
+    <view class="cardBox">
+      <view class="overall-tit">限时任务</view>
+      
+      <!-- 绑定手机号 -->
+      <view style="margin-bottom:34rpx">
+        <view class="only-list">
+          <view class="card-left">
+            <view class="card-img"></view>
+            <view style="width:350rpx;">
+              <view class="card-main">绑定手机号</view>
+              <view class="card-vice">请绑定您的手机号</view>
+              <view class="card-award">折扣宝+10</view>
+            </view>
+          </view>
+          <view class="card-right">
+            <view class="card-proceed">去绑定</view>
+            <view class="card-achieve">0 <text>/1</text></view>
+          </view>
+        </view>
+
+        <view class="introduce"></view>
+      </view>
+    </view>
+
+    <!-- 每日任务 -->
+    <view class="cardBox">
+      <view class="overall-tit">每日任务</view>
+      
+      <!-- 签到 -->
+      <view style="margin-bottom:34rpx">
+        <view class="only-list">
+          <view class="card-left">
+            <view class="card-img"></view>
+            <view style="width:350rpx;">
+              <view class="card-main">签到</view>
+              <view class="card-vice">每日一签</view>
+              <view class="card-award">折扣宝+10</view>
+            </view>
+          </view>
+          <view class="card-right">
+            <view class="card-proceed">去签到</view>
+            <view class="card-achieve">0 <text>/1</text></view>
+          </view>
+        </view>
+
+        <view class="introduce"></view>
+      </view>
+    </view>
+
+    <!-- 广告位 -->
+    <view class="advertising"></view>
+
+    <!-- 邀请有礼  -->
+    <view class="cardBox">
+      <view class="overall-tit">邀请有礼</view>
+      
+      <!-- 邀请有礼 -->
+      <view style="margin-bottom:34rpx">
+        <view class="only-list">
+          <view class="card-left">
+            <view class="card-img"></view>
+            <view style="width:350rpx;">
+              <view class="card-main">邀请新用户注册下载</view>
+              <view class="card-vice">邀请有礼，每一位都有奖励哦~</view>
+              <view class="card-award">折扣宝+10</view>
+            </view>
+          </view>
+          <view class="card-right">
+            <view class="card-proceed">去邀请</view>
+          </view>
+        </view>
+
+        <view class="introduce"></view>
+      </view>
+    </view>
+
+    <!-- 开通任务 -->
+    <view class="time-limit cardBox">
+      <view class="overall-tit">开通任务</view>
+      
+      <!-- 开通年卡 -->
+      <view style="margin-bottom:34rpx">
+        <view class="only-list">
+          <view class="card-left">
+            <view class="card-img"></view>
+            <view style="width:350rpx;">
+              <view class="card-main">开通年卡</view>
+              <view class="card-vice dredge" catchtap="dredgeBtn">
+                <view>每次开通都奖励折扣宝哦~</view>
+                <image src="{{globalimg}}/{{dredgeA}}"></image>
+              </view>
+              <view class="card-award">折扣宝+3600</view>
+            </view>
+          </view>
+          <view class="card-right">
+            <view class="card-proceed">去开通</view>
+          </view>
+        </view>
+
+        <view class="introduce">
+          <view style="display:none">
+            <view>开通年卡，可享跑库年卡四大特权，如下所示：</view>
+            <view>一重礼.价值数千元产品礼免费领一年</view>
+            <view>二重礼.赠送3650折扣宝</view>
+            <view>三重礼.专属产品特权价</view>
+            <view>四重礼.节日购物现金礼券</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>

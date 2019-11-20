@@ -1,0 +1,210 @@
+.search{
+  background: #fff;
+  padding: 12rpx 24rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.search-frame{
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #f7f7f7;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #cccccc; 
+  padding-left: 74rpx;
+}
+.search image{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 8%;
+  top: 30%;
+}
+
+
+.carousel{
+  position: relative;
+}
+
+.swiper-item{
+  height: 370rpx;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 8rpx;
+  width: 16rpx;
+  height: 6rpx;
+  background: #fee6de;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.dot.active {
+  width: 26rpx;
+  background: #fff;
+}
+
+/* 0元兑 */
+.goodsList{
+  padding: 24rpx;
+  background: #fff;
+}
+.listImg{
+  width: 294rpx;
+  height: 294rpx;
+  border-radius: 10rpx;
+  margin-right: 25rpx;
+  background: red;
+}
+.listDetail{
+  width: 382rpx;
+}
+.goods-name{
+  font-size: 34rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.cost{
+  margin: 39rpx 0 19rpx 0;
+}
+.present-price{
+  font-size: 40rpx;
+  color: #ff0000;
+}
+.present-price::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+
+.present-price::after{
+  content: "付款价";
+  font-size: 24rpx;
+  color: #333333;
+  margin-left: 10rpx;
+}
+
+.yi-buy{
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 22rpx;
+}
+
+.original-cost{
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration:line-through;
+}
+
+.postage{
+  font-size: 24rpx;
+  color: #cccccc;
+}
+
+.snapBtn{
+  justify-content: space-between;
+}
+.snap-up{
+  width: 140rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #ffffff;
+  background: #ff0000;
+  border-radius: 26rpx;
+}
+
+
+/* 分享赚 */
+.all-filtrate{
+  background: #fff;
+  padding: 30rpx 49rpx;
+}
+
+.all-text{
+  font-size: 30rpx;
+  color: #666666;
+  font-weight: bold;
+  text-align: center;
+}
+.nowActive{
+  color: #01d7a1;
+}
+.all-img{
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+.all-price{
+  margin: 0 125rpx;
+}
+.all-syn,.all-price,.all-sales{
+  width: 100rpx;
+}
+.topnavFixed{
+  width: 100%;
+  position:fixed; 
+}
+
+.money-people{
+  margin: 70rpx 0 20rpx 0%;
+}
+.money-fen{
+  font-size: 40rpx;
+  color: #333333;
+}
+.money-fen::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.people-fen{
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 11rpx;
+}
+.fen-xiang{
+  width: 176rpx;
+  height: 52rpx;
+  background: #ff0000;
+  border-radius: 26rpx;
+  display: flex;
+  align-items: center;
+}
+.fen-xiang image{
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 18rpx 0 24rpx;
+}
+.fen-xiang text{
+  font-size: 24rpx;
+  color: #ffffff;
+}
+
+/* 共用 */
+.flexcss{
+  display: flex;
+  align-items: center;
+}
+
+.base{
+  margin: 50rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #9b9b9b;
+}

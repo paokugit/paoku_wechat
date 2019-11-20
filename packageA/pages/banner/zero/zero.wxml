@@ -1,15 +1,103 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="{{zerotit}}"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+
 <view>
+  <navigator url="/pages/goods/index/index?fromsearch=1" class="search">
+    <view class="search-frame">输入关键字进行搜索</view>
+    <image src="{{globalimg}}/search@2x.png"></image>
+  </navigator>
+
   <view class="carousel">
-    <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true">
-      
+    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
       <block wx:for="{{background}}" wx:key="index">
         <swiper-item>
-          <view class="swiper-item"></view>
+          <view class="swiper-item" style="background:{{item}}"></view>
         </swiper-item>
       </block>
-
     </swiper>
+    <view class="dots">
+      <block wx:for="{{background}}" wx:key="index">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view> 
+
+  <!-- 0元兑 -->
+  <view wx:if="{{toggle == 0?true:false}}">
+    <block wx:for="{{3}}" wx:key="index">
+      <view class="goodsList flexcss">
+        <view class="listImg"></view>
+
+        <view class="listDetail">
+          <view class="goods-name">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼按时吃撒初三擦</view>
+          
+          <view class="cost">
+            <view class="flexcss">
+              <view class="present-price">0</view>
+              <view class="yi-buy">1万人已付款</view>
+            </view>
+            <view class="original-cost">原价￥55</view>
+          </view>
+
+          <view class="flexcss snapBtn">
+            <view class="postage">包邮</view>
+            <view class="snap-up">立即抢购</view>
+          </view>
+        </view>
+        
+      </view>
+    </block>
   </view>
+
+  <!-- 分享赚 -->
+  <view wx:if="{{toggle == 1?true:false}}">
+
+    <view class="all-filtrate flexcss {{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
+      <view class="all-text all-syn {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
+      
+      <view class="all-price flexcss"  data-now = "1" bindtap='checkAllt'>
+        <view class="all-text {{nowSign == 1?'nowActive':''}}">价格</view>
+        <image class="all-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+      </view>
+
+      <view class="all-sales flexcss"  data-now = "2" bindtap='checkAllt'>
+        <view class="all-text {{nowSign == 2?'nowActive':''}}">销量</view>
+        <image class="all-img" src="{{globalimg}}/{{allSales}}.png"></image>
+      </view>
+    </view>
+
+    <block wx:for="{{6}}" wx:key="index">
+      <view class="goodsList flexcss">
+        <view class="listImg"></view>
+
+        <view class="listDetail">
+          <view class="goods-name">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼按时吃撒初三擦</view>
+          
+          <view class="money-people flexcss">
+            <view class="money-fen">9.9</view>
+            <view class="people-fen">100人已分享</view>
+          </view>
+
+          <view class="flexcss snapBtn">
+            <view class="postage">包邮</view>
+            <view class="fen-xiang">
+              <image src="{{globalimg}}/fxz_icon_zf@2x.png"></image>
+              <text>赚1.8元</text>
+            </view>
+          </view>
+        </view>
+        
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{loading}}">
+    <view class="fui-loading">
+      <view class="icon"></view>
+      <view class="text">正在加载...</view>
+    </view>
+  </block>
+
+  <view class="base">到底了哦</view>
 
 </view>

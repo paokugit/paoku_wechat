@@ -1,0 +1,42 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="水果美食"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view>
+  <navigator url="/pages/goods/index/index?fromsearch=1" class="search">
+    <view class="search-frame">输入关键字进行搜索</view>
+    <image src="{{globalimg}}/search@2x.png"></image>
+  </navigator>
+
+  <view class="carousel">
+    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
+      <block wx:for="{{background}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item" style="background:{{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{background}}" wx:key="index">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="all-filtrate">
+    <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
+    
+    <view class="all-price"  data-now = "1" bindtap='checkAllt'>
+      <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+      <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+    </view>
+
+    <view class="all-sales"  data-now = "2" bindtap='checkAllt'>
+      <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+      <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+    </view>
+
+    <view class="all-switchover" bindtap="sortBtn">
+      <text class="icon icox {{sortWay == 1?'icox-viewlist':'icox-app'}}"></text>
+    </view>
+  </view>
+
+</view>
