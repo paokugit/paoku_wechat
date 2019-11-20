@@ -277,281 +277,272 @@
 
             <image class='club-card-img' src='{{item.thumb}}'></image>
           </navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con flex_center'>{{item.title}}</navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free flex_center'>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con'>{{item.title}}</navigator>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free'>
+            <view class='zkBox'>
+              <view class='zkb-box'>
+                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
+              </view>
+              <view class='price-box'>
+                <text style="color:#707070;font-size:24rpx">折后</text>
+                <text class='dis-price'>￥{{item.showprice}}</text>
+              </view>
+            
+        </view>
+
+
+        </navigator>
+        <!-- 显示 -->
+
+      </view>
+    </view>
+  </view>
+</view>
+<view class='conbox' style='display:{{condisp}}'>
+  <!-- 附近商家-开始 -->
+  <view class='nearby-shops-titlebox'>
+    <view class='nearbyshops-title flex_center'>附近商家</view>
+    <view class='nearbyshops-location'>
+      <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
+        <image src='{{ globalimg}}/weizhi.png'></image>
+      </view>
+      <!-- <view bindtap='position'>{{city}}{{district}}</view> -->
+    </view>
+  </view>
+  <view class='nearbyshops-box'>
+    <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="index">
+      <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
+        <view class='callphone-img'>
+          <image src='{{ globalimg}}/callphone.png'></image>
+        </view>
+      </view>
+      <view class='nearbyshop-distance flex_center'>{{item.disname}}</view>
+      <navigator class='nearbyshop-map-box' url="/packageA/pages/changce/merch/intro?id={{item.id}}">
+        <view>地图/导航</view>
+        <view class='map-img flex_center'>
+          <image src='{{ globalimg}}/chakangengduo.png'></image>
+        </view>
+      </navigator>
+      <navigator class='store-img' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>
+        <image mode="aspectFit" src='{{item.logo}}'></image>
+      </navigator>
+      <view class='store-details-box'>
+        <navigator class='storename' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
+        <view class='merch-reward' style='display:{{merchdisp}}'>
+          <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
+            <text class='reward_text'>赏金任务</text>
+            <text class='reward_money'>赚￥{{item.reward_money}}</text>
+          </view>
+          <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
+            <text class='reward_text'>赏金任务</text>
+            <text class='reward_money'>赚￥{{item.reward_money}}</text>
+          </view>
+        </view>
+        <view class='office-hour'>主营：{{item.salecate}}</view>
+        <view class=' store-address'>{{item.address}}</view>
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
+    <button form-type="submit" class='moreBtn'>
+      <view class='readmore-shops-box flex_center'>
+        <view class='readmore-shops-con'>查看更多</view>
+        <view class='readmore-shops-img flex_center'>
+          <image src='{{ globalimg}}/chakangengduo.png'></image>
+        </view>
+      </view>
+    </button>
+  </form>
+  <view class='advertise-space'>
+    <image src='{{ globalimg}}/advertise.png'></image>
+  </view>
+</view>
+<!-- 限时秒杀部分 -->
+<view class='seckill-box' style='display:{{seckillDis}}'>
+  <view class='seckill-tit-box'>
+    <view class='sec-tit'>
+      <image src='{{globalimg}}/xsqg.png'></image>
+    </view>
+    <view class='sec-djs-box'>
+      <view class='sec-text'>距结束</view>
+      <view class='timeText'>
+        <text class='timebox'>{{countDownHour}}</text>
+        <text class='time-symbol'>:</text>
+        <text class='timebox'>{{countDownMinute}}</text>
+        <text class='time-symbol'>:</text>
+        <text class='timebox'>{{countDownSecond}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='seckill-continer'>
+    <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="index">
+      <view class='sec-item-img'>
+        <image src='{{item. thumb}}'></image>
+        <view class='sec-saleout-img' wx:if="{{item.total==0}}">
+          <image src='{{globalimg}}/qiangwan-s.png'></image>
+        </view>
+      </view>
+      <view class='sec-item-content'>
+        <view class='sec-item-tit'>{{item.title}}</view>
+        <view class='progressbar'>
+          <progress percent="{{(item.sales+item.salesreal)/(item.sales+item.salesreal+item.total)*100}}" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" active border-radius="20rpx" />
+        </view>
+        <view class='progress-text'>已抢{{item.sales+item.salesreal}}件</view>
+        <view class='limit-num'>限抢{{item.sales+item.salesreal+item.total}}件</view>
+        <view class='sec-sale-absolute'>
+          <view class='sec-sale'>
+            <text class='sale-symbol'>￥</text>
+            <text class='sale-text'>{{item.showprice}}</text>
+          </view>
+          <view class='sec-original'>￥{{item.productprice}}</view>
+        </view>
+        <view class='rob-btn' wx:if="{{item.total > 0}}">马上抢</view>
+        <view class='rob-btn-over' wx:if="{{item.total==0}}">马上抢</view>
+      </view>
+    </navigator>
+
+
+  </view>
+  <view class='readmore-flex'>
+    <view class='readmore-sec flex_center'>
+      <view class='readmore-pro-con' bindtap='moresecbtn'>查看更多</view>
+      <view class='readmore-pro-img flex_center'>
+        <image src='{{ globalimg}}/chakangengduo.png'></image>
+      </view>
+    </view>
+  </view>
+
+</view>
+<!-- 限时秒杀部分 -->
+
+<!-- 边看边买开始 -->
+<view class="look-buy" style="display:{{looklDis}}">
+  <view class="look-buy-tit">
+    <view class="buy-tit-left">
+      <view>边看边买</view>
+      <view class="left-img"></view>
+    </view>
+    <navigator class="buy-tit-right" url="/packageA/pages/watchvideo/watchvideo">
+      <view>查看更多</view>
+    </navigator>
+  </view>
+
+  <view class='out'>
+    <scroll-view scroll-x="true">
+      <block wx:for="{{lookBuy}}" wx:key="index">
+        <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video" style="position: relative;">
+          <view class="list-img">
+            <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
+            <image class="myzan" src="{{globalimg}}/zanting.png"></image>
+            <view class="shade">
+              <view class="videptit">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="list-base">
+            <view class="list-base-left">
+              <view class="list-base-sum">{{item.marketprice}}</view>
+              <view class="list-base-piece">已抢购{{item.sales}}件</view>
+            </view>
+            <!-- <view class="list-base-deduction" wx:if="{{item.deduct == 1?true:false}}">卡路里抵扣</view> -->
+            <view class="list-base-deduction" wx:if="{{item.deduct == 2?true:false}}">折扣宝抵扣</view>
+          </view>
+        </navigator>
+      </block>
+      <navigator url="/packageA/pages/watchvideo/watchvideo" class='buy-video itemimg'>
+        <image src="{{globalimg}}/novideo.png"></image>
+      </navigator>
+    </scroll-view>
+  </view>
+</view>
+<!-- 边看变买结束 -->
+
+<!-- 超值兑换部分-开始 -->
+<!-- <block>
+    <block wx:if="{{list.length<0}}"><view>啦啦啦啦</view></block>
+  </block> -->
+<view class='pro-exchange-box flex_center'>
+  <view class='pro-exchange-box-con'>
+    <view class='pro-exchange-tit-box'>
+      <view class='pro-exchange-tit'>
+        <view>RVC专区</view>
+        <view class='service-circle'></view>
+      </view>
+      <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
+    </view>
+    <!-- 价格销量排序 -->
+    <view class="all-filtrate">
+      <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+      <view class="all-price" data-now="1" bindtap='checkAllt'>
+        <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+        <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+      </view>
+      <view class="all-sales" data-now="2" bindtap='checkAllt'>
+        <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+        <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+      </view>
+    </view>
+    <view class='exchange-products-box'>
+
+      <block wx:for="{{list}}" wx:for-item="listItem" wx:key="listItem">
+        <view class='exchange-product' wx:for="{{listItem}}" wx:key="index">
+          <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+            <image class='ex-proimg' src='{{item.thumb}}'></image>
+            <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+              <image src='{{globalimg}}/saleout-2.png'></image>
+            </view>
+          </navigator>
+          <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
+          <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
+            <view class='postage-free'>包邮</view>
+          </view>
+          <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
+            <view class='postage-free'>包邮</view>
+          </view>
+          <view class='ex-procalorie-box'>
             <!-- 显示卡路里加价格 -->
             <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
               <view class='calorieimgBox'>
                 <view class='calorie-img flex_center'>
                   <image src='{{ globalimg}}/zkblogo.png'></image>
                 </view>
-                <view class='calorie-num02'>
+                <view class='calorie-num02 flex_center'>
                   {{item.deduct}}+￥{{item.showprice}}
                 </view>
               </view>
+              <view class='calorie-price '>{{item.productprice}}元</view>
             </view>
             <!-- 显示免费兑 -->
             <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
               <view class='calorie-num'>
                 免费兑
               </view>
+              <view class='calorie-person '>{{item.sales}}人已0元拿</view>
             </view>
             <!-- 只显示价格 -->
             <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
               <view class='calorie-num flex_center'>
                 ￥{{item.minprice}}
               </view>
+              <view class='calorie-price '>{{item.productprice}}元</view>
             </view>
-          </navigator>
-          <!-- 显示 -->
-
+            <!-- <view class='calorie-free flex_center'>免费拿</view> -->
+          </view>
         </view>
+      </block>
+    </view>
+    <!-- 查看更多-商品-开始 -->
+    <view class='readmore-pro-box flex_center'>
+      <view class='readmore-pro-con' bindtap='products'>查看更多</view>
+      <view class='readmore-pro-img flex_center'>
+        <image src='{{ globalimg}}/chakangengduo.png'></image>
       </view>
     </view>
   </view>
-  <view class='conbox' style='display:{{condisp}}'>
-    <!-- 附近商家-开始 -->
-    <view class='nearby-shops-titlebox'>
-      <view class='nearbyshops-title flex_center'>附近商家</view>
-      <view class='nearbyshops-location'>
-        <view class='nearbyshops-weizhi flex_center' bindtap='mapbtn'>
-          <image src='{{ globalimg}}/weizhi.png'></image>
-        </view>
-        <!-- <view bindtap='position'>{{city}}{{district}}</view> -->
-      </view>
-    </view>
-    <view class='nearbyshops-box'>
-      <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="index">
-        <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
-          <view class='callphone-img'>
-            <image src='{{ globalimg}}/callphone.png'></image>
-          </view>
-        </view>
-        <view class='nearbyshop-distance flex_center'>{{item.disname}}</view>
-        <navigator class='nearbyshop-map-box' url="/packageA/pages/changce/merch/intro?id={{item.id}}">
-          <view>地图/导航</view>
-          <view class='map-img flex_center'>
-            <image src='{{ globalimg}}/chakangengduo.png'></image>
-          </view>
-        </navigator>
-        <navigator class='store-img' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>
-          <image mode="aspectFit" src='{{item.logo}}'></image>
-        </navigator>
-        <view class='store-details-box'>
-          <navigator class='storename' url='/packageA/pages/changce/merch/detail?id={{item.id}}'>{{item.merchname}}</navigator>
-          <view class='merch-reward' style='display:{{merchdisp}}'>
-            <view class='reward_box' wx:if="{{item.is_reward==1}}" style='display:block'>
-              <text class='reward_text'>赏金任务</text>
-              <text class='reward_money'>赚￥{{item.reward_money}}</text>
-            </view>
-            <view class='reward_box' wx:if="{{item.is_reward==0}}" style='display:none'>
-              <text class='reward_text'>赏金任务</text>
-              <text class='reward_money'>赚￥{{item.reward_money}}</text>
-            </view>
-          </view>
-          <view class='office-hour'>主营：{{item.salecate}}</view>
-          <view class=' store-address'>{{item.address}}</view>
-        </view>
-      </view>
-    </view>
-    <form bindsubmit="form_submit" report-submit='true' class='moreForm' bindtap='merch'>
-      <button form-type="submit" class='moreBtn'>
-        <view class='readmore-shops-box flex_center'>
-          <view class='readmore-shops-con'>查看更多</view>
-          <view class='readmore-shops-img flex_center'>
-            <image src='{{ globalimg}}/chakangengduo.png'></image>
-          </view>
-        </view>
-      </button>
-    </form>
-    <view class='advertise-space'>
-      <image src='{{ globalimg}}/advertise.png'></image>
-    </view>
-  </view>
-  <!-- 限时秒杀部分 -->
-  <view class='seckill-box' style='display:{{seckillDis}}'>
-    <view class='seckill-tit-box'>
-      <view class='sec-tit'>
-        <image src='{{globalimg}}/xsqg.png'></image>
-      </view>
-      <view class='sec-djs-box'>
-        <view class='sec-text'>距结束</view>
-        <view class='timeText'>
-          <text class='timebox'>{{countDownHour}}</text>
-          <text class='time-symbol'>:</text>
-          <text class='timebox'>{{countDownMinute}}</text>
-          <text class='time-symbol'>:</text>
-          <text class='timebox'>{{countDownSecond}}</text>
-        </view>
-      </view>
-    </view>
-
-    <view class='seckill-continer'>
-      <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="index">
-        <view class='sec-item-img'>
-          <image src='{{item. thumb}}'></image>
-          <view class='sec-saleout-img' wx:if="{{item.total==0}}">
-            <image src='{{globalimg}}/qiangwan-s.png'></image>
-          </view>
-        </view>
-        <view class='sec-item-content'>
-          <view class='sec-item-tit'>{{item.title}}</view>
-          <view class='progressbar'>
-            <progress percent="{{(item.sales+item.salesreal)/(item.sales+item.salesreal+item.total)*100}}" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" active border-radius="20rpx" />
-          </view>
-          <view class='progress-text'>已抢{{item.sales+item.salesreal}}件</view>
-          <view class='limit-num'>限抢{{item.sales+item.salesreal+item.total}}件</view>
-          <view class='sec-sale-absolute'>
-            <view class='sec-sale'>
-              <text class='sale-symbol'>￥</text>
-              <text class='sale-text'>{{item.showprice}}</text>
-            </view>
-            <view class='sec-original'>￥{{item.productprice}}</view>
-          </view>
-          <view class='rob-btn' wx:if="{{item.total > 0}}">马上抢</view>
-          <view class='rob-btn-over' wx:if="{{item.total==0}}">马上抢</view>
-        </view>
-      </navigator>
-
-
-    </view>
-    <view class='readmore-flex'>
-      <view class='readmore-sec flex_center'>
-        <view class='readmore-pro-con' bindtap='moresecbtn'>查看更多</view>
-        <view class='readmore-pro-img flex_center'>
-          <image src='{{ globalimg}}/chakangengduo.png'></image>
-        </view>
-      </view>
-    </view>
-
-  </view>
-  <!-- 限时秒杀部分 -->
-
-  <!-- 边看边买开始 -->
-  <view class="look-buy" style="display:{{looklDis}}">
-    <view class="look-buy-tit">
-      <view class="buy-tit-left">
-        <view>边看边买</view>
-        <view class="left-img"></view>
-      </view>
-      <navigator class="buy-tit-right" url="/packageA/pages/watchvideo/watchvideo">
-        <view>查看更多</view>
-      </navigator>
-    </view>
-
-    <view class='out'>
-      <scroll-view scroll-x="true">
-        <block wx:for="{{lookBuy}}" wx:key="index">
-          <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video" style="position: relative;">
-            <view class="list-img">
-              <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
-              <image class="myzan" src="{{globalimg}}/zanting.png"></image>
-              <view class="shade">
-                <view class="videptit">{{item.title}}</view>
-              </view>
-            </view>
-            <view class="list-base">
-              <view class="list-base-left">
-                <view class="list-base-sum">{{item.marketprice}}</view>
-                <view class="list-base-piece">已抢购{{item.sales}}件</view>
-              </view>
-              <!-- <view class="list-base-deduction" wx:if="{{item.deduct == 1?true:false}}">卡路里抵扣</view> -->
-              <view class="list-base-deduction" wx:if="{{item.deduct == 2?true:false}}">折扣宝抵扣</view>
-            </view>
-          </navigator>
-        </block>
-        <navigator url="/packageA/pages/watchvideo/watchvideo" class='buy-video itemimg'>
-          <image src="{{globalimg}}/novideo.png"></image>
-        </navigator>
-      </scroll-view>
-    </view>
-  </view>
-  <!-- 边看变买结束 -->
-
-  <!-- 超值兑换部分-开始 -->
-  <!-- <block>
-    <block wx:if="{{list.length<0}}"><view>啦啦啦啦</view></block>
-  </block> -->
-  <view class='pro-exchange-box flex_center'>
-    <view class='pro-exchange-box-con'>
-      <view class='pro-exchange-tit-box'>
-        <view class='pro-exchange-tit'>
-          <view>RVC专区</view>
-          <view class='service-circle'></view>
-        </view>
-        <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
-      </view>
-      <!-- 价格销量排序 -->
-      <view class="all-filtrate">
-        <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
-        <view class="all-price" data-now="1" bindtap='checkAllt'>
-          <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
-          <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
-        </view>
-        <view class="all-sales" data-now="2" bindtap='checkAllt'>
-          <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
-          <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
-        </view>
-      </view>
-      <view class='exchange-products-box'>
-
-        <block wx:for="{{list}}" wx:for-item="listItem" wx:key="listItem">
-          <view class='exchange-product' wx:for="{{listItem}}" wx:key="index">
-            <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-              <image class='ex-proimg' src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-            </navigator>
-            <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-            <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-              <view class='postage-free'>包邮</view>
-            </view>
-            <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-              <view class='postage-free'>包邮</view>
-            </view>
-            <view class='ex-procalorie-box'>
-              <!-- 显示卡路里加价格 -->
-              <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-                <view class='calorieimgBox'>
-                  <view class='calorie-img flex_center'>
-                    <image src='{{ globalimg}}/zkblogo.png'></image>
-                  </view>
-                  <view class='calorie-num02 flex_center'>
-                    {{item.deduct}}+￥{{item.showprice}}
-                  </view>
-                </view>
-                <view class='calorie-price '>{{item.productprice}}元</view>
-              </view>
-              <!-- 显示免费兑 -->
-              <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-                <view class='calorie-num'>
-                  免费兑
-                </view>
-                <view class='calorie-person '>{{item.sales}}人已0元拿</view>
-              </view>
-              <!-- 只显示价格 -->
-              <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-                <view class='calorie-num flex_center'>
-                  ￥{{item.minprice}}
-                </view>
-                <view class='calorie-price '>{{item.productprice}}元</view>
-              </view>
-              <!-- <view class='calorie-free flex_center'>免费拿</view> -->
-            </view>
-          </view>
-        </block>
-      </view>
-      <!-- 查看更多-商品-开始 -->
-      <view class='readmore-pro-box flex_center'>
-        <view class='readmore-pro-con' bindtap='products'>查看更多</view>
-        <view class='readmore-pro-img flex_center'>
-          <image src='{{ globalimg}}/chakangengduo.png'></image>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- 超值兑换结束 -->
+</view>
+<!-- 超值兑换结束 -->
 </view>
 <!-- 回到顶部 -->
 <view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>

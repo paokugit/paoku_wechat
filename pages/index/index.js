@@ -786,7 +786,7 @@ Page((e = {
             merchantDis: 'none',
           })
           // 门店服务
-          s.get("changce/merch/get_from_store", {
+          s.get("changce/merch/get_from_storenew", {
             page: 1,
             lat: latitude,
             lng: longitude,
@@ -809,7 +809,7 @@ Page((e = {
           console.log(res)
           console.log(longitude, latitude)
           // 门店服务
-          s.get("changce/merch/get_from_store", {
+          s.get("changce/merch/get_from_storenew", {
             page: 1,
             lat: latitude,
             lng: longitude,
@@ -1121,7 +1121,7 @@ Page((e = {
         longitude = res.longitude
         latitude = res.latitude
         // 门店服务
-        s.get("changce/merch/get_from_store", {
+        s.get("changce/merch/get_from_storenew", {
           page: 1,
           lat: res.latitude,
           lng: res.longitude,
