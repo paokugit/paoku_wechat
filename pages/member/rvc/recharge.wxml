@@ -19,10 +19,4 @@
 
   <view class="paybtn" catchtap="paybtn">充值</view>
 
-  <block wx:if="{{loading}}">
-    <view class="fui-loading">
-      <view class="icon"></view>
-      <view class="text">正在加载</view>
-    </view>
-  </block>
 </view>

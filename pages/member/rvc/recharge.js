@@ -15,7 +15,6 @@ Page({
     showIcon: true,
     gloheight: t.globalData.gloheight,
 
-    loading: !0,
   },
 
   /**
@@ -28,7 +27,6 @@ Page({
 
     this.setData({
       show: !0,
-      loading: !1,
       record:-1
     })
   },
@@ -50,10 +48,17 @@ Page({
   },
 
   paybtn:function(e){
-    console.log(str);
-    wx.navigateTo({
-      url: '/pages/member/webview/webview',
-    })
+    if (str.length == undefined || str == 0 || str < 0.001){
+      wx.showToast({
+        title: '请输入充值数量！',
+        icon: 'none',
+        duration: 2000
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/member/webview/webview?str='+str,
+      })
+    }
   },
 
   /**

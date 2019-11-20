@@ -174,6 +174,22 @@ Page({
       })
     })
   },
+
+  rvcBtn:function(){
+    var a = 1;
+    if(a == 1){
+      wx.navigateTo({
+        url: '/pages/member/rvc/rvc',
+      })
+    }else{
+      wx.showToast({
+        title: '该功能暂未开放！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
   paoku_card: function() {
     var t = this;
     p.get("member.level.mem_level", {

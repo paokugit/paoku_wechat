@@ -19,9 +19,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
+
+    console.log(options.str); 
   },
 
   /**
