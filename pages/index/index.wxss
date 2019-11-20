@@ -1190,7 +1190,8 @@ image {
   height: 40rpx;
   color: #e01212;
   font-size: 24rpx;
-  margin-left: 10rpx;
+  margin-left: 6rpx;
+  line-height: 40rpx
 }
 
 .calorie-free {
@@ -1807,4 +1808,49 @@ image {
 .itemimg image{
   width: 100%;
   height: 100%;
+}
+
+/* 全部商品 */
+
+.all-filtrate {
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* border-bottom: 2rpx solid #efefef; */
+  margin: 12rpx 0;
+}
+
+.all-price, .all-sales {
+  display: flex;
+  align-items: center;
+}
+
+.all-synthesize, .all-price, .all-sales {
+  width: auto;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.all-synthesize, .all-price-text, .all-sales-sales {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.all-price-img, .all-sales-img {
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+
+.all-switchover {
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.nowActive {
+  color: #01d7a1;
 }

@@ -27,14 +27,19 @@ var interval = new Object();
 var util = require('../../utils/util.js');
 
 var swiperError = 0;
+// 新加
+var pricemark = 0;
+var salesmark = 0;
+var sortorder = "";
+var sortby = ""
 Page((e = {
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showToast({
       icon: 'loading',
       title: '加载中'
     })
     var t = this;
-    s.get("userinfo", {}, function (e) {
+    s.get("userinfo", {}, function(e) {
       console.log(e)
       if (e.status == 1) {
         t.setData({
@@ -44,12 +49,12 @@ Page((e = {
         });
       }
     });
-      wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
     console.log(secend_time - timestampcount)
     t.startTimer(secend_time - timestampcount);
   },
 
-           
+
 
   data: (a = {
     showIcon: false,
@@ -129,110 +134,166 @@ Page((e = {
     intervalA: 3000,
     durationA: 1000,
     circularA: true,
-
+    allPrice: 'sc_tj_icon_jg_nor@2x',
+    allSales: 'sc_tj_icon_jg_nor@2x',
+    nowSign: 0,
     slideshow: '0',
-    looklDis:'none'
+    looklDis: 'none'
   }, t(a, "total", 1), a),
-  
-  bindPhone: function () {
+
+  bindPhone: function() {
     wx.navigateTo({
       url: '/pages/member/bind/index?param=' + 1,
 
     })
   },
   // 好友捐赠轮播动画
-  onSlideChangeEnd: function (e) {
+  onSlideChangeEnd: function(e) {
     var that = this;
     that.setData({
       slideshow: e.detail.current
     })
   },
   // 进入商城
-  entrystore: function () {
-    wx.switchTab({
-      url: '/pages/index/huodong',
+  entrystore: function() {
+    wx.navigateTo({
+      url: '/pages/goods/index/index?cate=' + 171,
     })
   },
-  hybtn: function () {
+  hybtn: function() {
     wx.switchTab({
       url: '/pages/exclusive/exclusive',
     })
   },
-  merch: function () {
+  merch: function() {
     wx.navigateTo({
       url: 'moremerch/moremerch',
     })
   },
-  products: function () {
+  products: function() {
     wx.navigateTo({
       url: '/pages/goods/index/index',
     })
   },
   // 卡路里明细
-  zkbbtn: function () {
+  zkbbtn: function() {
     wx.navigateTo({
       url: '/packageA/pages/discount/zkbaccount/zkbaccount',
     })
   },
-  pull: function () {
+  pull: function() {
     wx.switchTab({
       url: '/pages/rebate/discount/discount',
     })
   },
-  firstclosebtn: function () {
+  firstclosebtn: function() {
     var tt = this
     tt.setData({
       indexdisp: 'none'
     })
   },
   // 点击气泡跳转到好友助力页面
-  inviteBtn: function () {
+  inviteBtn: function() {
     wx.navigateTo({
       url: '/packageA/pages/helphand/friendhelp/friendhelp',
     })
   },
-  moresecbtn: function () {
+  moresecbtn: function() {
     wx.navigateTo({
       url: '/packageA/pages/timelimit/timelimit',
     })
   },
-  form_submit: function (e) {
+  form_submit: function(e) {
     console.log(e.detail.formId);
     formid = e.detail.formId
     s.get("message/collect", {
       openid: userinfo.openid,
       formid: formid
-    }, function (event) {
+    }, function(event) {
       console.log(event)
     })
   },
-  openhyBtn: function () {
+  openhyBtn: function() {
     wx.navigateTo({
       url: '/packageA/pages/huiyuan/hygrade/hygrade',
     })
   },
-  bindgift: function () {
+  bindgift: function() {
     wx.navigateTo({
       url: '/packageA/pages/gift/gift',
     })
   },
-  skipgift: function () {
+  skipgift: function() {
     wx.navigateTo({
       url: '/packageA/pages/gift/gift',
     })
+  },
+  checkAllt: function(e) {
+    const that = this;
+    let mowtxt = e.currentTarget.dataset.now;
+    let priceImg;
+    let salesImg;
+    if (mowtxt == 0) {
+      // 综合
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+      salesmark = 0;
+      sortorder = ""
+      sortby = ""
+    } else if (mowtxt == 1) {
+      sortorder = "minprice"
+      if (pricemark == 0) {
+        priceImg = 'sc_tj_icon_jg_xs@2x';
+        pricemark = 1;
+        // 价格升序，由低到高
+        sortby = "asc"
+      } else if (pricemark == 1) {
+        priceImg = 'sc_tj_icon_jg_xx@2x';
+        pricemark = 0;
+        // 价格降序，由高到低
+        sortby = "desc"
+      }
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      salesmark = 0;
+
+    } else if (mowtxt == 2) {
+      sortorder = "sales"
+      if (salesmark == 0) {
+        salesImg = 'sc_tj_icon_jg_xs@2x';
+        salesmark = 1;
+        // 销量升序，由低到高
+        sortby = "asc"
+      } else if (salesmark == 1) {
+        salesImg = 'sc_tj_icon_jg_xx@2x';
+        salesmark = 0;
+        // 销量降序，由高到低
+        sortby = "desc"
+      }
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+
+    }
+    that.setData({
+      nowSign: mowtxt,
+      allPrice: priceImg,
+      allSales: salesImg
+    })
+    console.log(sortorder, sortby, )
+    that.get_list()
   },
   // 拨打电话
-  tel: function (t) {
+  tel: function(t) {
     merchphone = t.currentTarget.dataset.mobile
     wx.makePhoneCall({
       phoneNumber: merchphone,
     })
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.get_list();
   },
   //回到顶部
-  goTop: function (e) { // 一键回到顶部
+  goTop: function(e) { // 一键回到顶部
     var a = this
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
@@ -250,15 +311,18 @@ Page((e = {
   },
   // 超值兑换商品列表
   // 111111111111
-  get_list: function () {
+  get_list: function() {
     var t = this;
     t.setData({
       loading: !0
     }), s.get("goods/get_list", {
       openid: userinfo.openid,
       deduct: 1,
-      page: t.data.page
-    }, function (e) {
+      page: t.data.page,
+      order: sortorder,
+      cate: 171,
+      by: sortby
+    }, function(e) {
       console.log(e)
       if (t.data.page >= 5) {
         t.setData({
@@ -266,23 +330,23 @@ Page((e = {
         })
       }
 
-        let record = t.data.page - 1;
-        0 == e.error ? (t.setData({
-          loading: !1,
-          show: !0,
-          total: e.total,
-          empty: !0
-        }), e.list.length > 0 && t.setData({
-          page: t.data.page + 1,
-          ['list[' + record + ']']: e.list
-        }), e.list.length < e.pagesize && t.setData({
-          loaded: !0
-        })) : a.toast(e.message, "loading");
-        
-        console.log(t.data.list[record]);
-      }, this.data.show);
+      let record = t.data.page - 1;
+      0 == e.error ? (t.setData({
+        loading: !1,
+        show: !0,
+        total: e.total,
+        empty: !0
+      }), e.list.length > 0 && t.setData({
+        page: t.data.page + 1,
+        ['list[' + record + ']']: e.list
+      }), e.list.length < e.pagesize && t.setData({
+        loaded: !0
+      })) : a.toast(e.message, "loading");
+
+      console.log(t.data.list[record]);
+    }, this.data.show);
   },
-  updatebtn: function () {
+  updatebtn: function() {
     // 用户版本更新
     if (wx.canIUse("getUpdateManager")) {
       let updateManager = wx.getUpdateManager();
@@ -327,12 +391,13 @@ Page((e = {
       });
     }
   },
-  onLoad: function (t) {
+  onLoad: function(t) {
     console.log(i.globalData)
     console.log('运动日记')
     console.log(t)
+    console.log(userinfo)
     var k = this
-    s.get("version/appversion", {}, function (eve) {
+    s.get("version/appversion", {}, function(eve) {
       console.log(eve)
       if ((eve.app_version == "devtools" || eve.app_version > 0) && eve.storeshow == 1) { //开发者工具|正式版
         version = 1;
@@ -360,7 +425,7 @@ Page((e = {
 
     var a = this;
     wx.getSetting({
-      success: function (e) {
+      success: function(e) {
         var a2 = e.authSetting["scope.userInfo"];
         if (a2 != undefined && a2 && a2 != '') {
           a.setData({
@@ -382,7 +447,7 @@ Page((e = {
       s.get("myown/index/scene", {
         openid: userinfo.openid,
         scene: scene
-      }, function (eve) {
+      }, function(eve) {
         console.log(eve)
       })
     }
@@ -392,22 +457,22 @@ Page((e = {
     t = t || {};
     "" == i.getCache("userinfo") && i.getUserInfo();
 
-    s.get("black", {}, function (t) {
+    s.get("black", {}, function(t) {
       t.isblack && wx.showModal({
         title: "无法访问",
         content: "您在商城的黑名单中，无权访问！",
-        success: function (t) {
+        success: function(t) {
           t.confirm && a.close(), t.cancel && a.close();
         }
       });
     });
-    s.get("info", {}, function (e) {
+    s.get("info", {}, function(e) {
       a.setData(e.info);
     });
     // 自动签到
     s.get("index.sign_in", {
       openid: userinfo.openid
-    }, function (eve) {
+    }, function(eve) {
       if (eve.error == 0) {
         a.setData({
           signDis: "block",
@@ -422,7 +487,7 @@ Page((e = {
       var n = s.str2Obj(e);
       t.id = n.id, n.mid && (t.mid = n.mid);
     }
-    setTimeout(function () {
+    setTimeout(function() {
       a.setData({
         areas: i.getCache("cacheset").areas
       });
@@ -430,7 +495,7 @@ Page((e = {
       cover: !0,
       showvideo: !1
     }), wx.getSystemInfo({
-      success: function (t) {
+      success: function(t) {
         var e = t.windowWidth / 1.7;
         a.setData({
           swiperheight: e
@@ -439,7 +504,7 @@ Page((e = {
     });
 
 
-    s.get("userinfo", {}, function (ee) {
+    s.get("userinfo", {}, function(ee) {
       if (ee.status == 1) {
         // console.log('更新信息');
         a.setData({
@@ -452,13 +517,13 @@ Page((e = {
     // 今日好友助力步数
     s.get("help/index/helpstep_today", {
       openid: userinfo.openid
-    }, function (aaa) {
+    }, function(aaa) {
       // console.log(aaa)
       a.setData({
         helpstep: aaa.result.step
       })
     });
-    s.get("bushu_discount", {}, function (tt) {
+    s.get("bushu_discount", {}, function(tt) {
       console.log(tt)
       if (tt.error == 0) {
         // console.log(tt);
@@ -480,7 +545,7 @@ Page((e = {
 
     s.get("myown.index.optindex", {
       id: 1
-    }, function (e) {
+    }, function(e) {
       console.log(e);
       let totalPage = Math.ceil(e.result.icon.length / 4);
 
@@ -493,32 +558,32 @@ Page((e = {
       }
       a.setData(dt)
     })
-        l.openPage();
-    },
+    l.openPage();
+  },
 
-    openPage: function() {
-        var a = this;
-        s.get("myown.index.adsense", {
-            type: 1,
-            openid: userinfo.openid
-        }, function(e) {
-            console.log(e);
-            if (e.status == 1){
-              a.setData({
-                bannerList: e.result.list
-              })
-            } else if (e.status == 0){
-              wx.showToast({
-                title: e.result.message,
-                icon: 'none',
-                duration: 2000
-              })
-            }
+  openPage: function() {
+    var a = this;
+    s.get("myown.index.adsense", {
+      type: 1,
+      openid: userinfo.openid
+    }, function(e) {
+      console.log(e);
+      if (e.status == 1) {
+        a.setData({
+          bannerList: e.result.list
         })
-    },
+      } else if (e.status == 0) {
+        wx.showToast({
+          title: e.result.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
 
-  onHide: function () {
-    clearInterval(interval);//跳转页面关闭限时抢购的时间函数
+  onHide: function() {
+    clearInterval(interval); //跳转页面关闭限时抢购的时间函数
 
     this.setData({
       adveradmin: !1,
@@ -526,7 +591,7 @@ Page((e = {
     });
   },
 
-  receive: function (t) {
+  receive: function(t) {
     var ttt = this;
     console.log(t)
     console.log(t.currentTarget.dataset.step)
@@ -542,12 +607,12 @@ Page((e = {
         id: eee,
         source: aaa,
         step: curstep
-      }, function (t) {
+      }, function(t) {
         console.log(t)
         ttt.setData({
           is_receive: 1
         });
-        s.get("bushu_discount", {}, function (t) {
+        s.get("bushu_discount", {}, function(t) {
           if (t.error == 0) {
             // console.log(t.result);
             ttt.setData({
@@ -558,19 +623,19 @@ Page((e = {
 
         });
       });
-      sss.autoplay = !0, sss.src = this.data.mp3_url + "/coin.mp3", sss.onPlay(function () {
+      sss.autoplay = !0, sss.src = this.data.mp3_url + "/coin.mp3", sss.onPlay(function() {
         console.log("开始播放");
 
       });
     }
   },
-  onShow: function () {
+  onShow: function() {
     var t = this,
       a = wx.getSystemInfoSync(),
       e = i.getCache("sysset");
     s.get("game/index/icon", {
       openid: userinfo.openid
-    }, function (e) {
+    }, function(e) {
       if (e.status == 1) {
         let sincss;
         if (e.result.is_show == 1) {
@@ -599,7 +664,7 @@ Page((e = {
     s.get("seckill/list", {
       type: 1,
       page: 1
-    }, function (e) {
+    }, function(e) {
       console.log(e)
       if (e.status == 1) {
         secend_time = e.result.end_time
@@ -617,13 +682,13 @@ Page((e = {
       }
 
     });
-    
+
     // 边看边买列表
-    s.get("seckill.list.index_sale", {}, function (e) {
+    s.get("seckill.list.index_sale", {}, function(e) {
       console.log(e)
       if (e.status == 1) {
         t.setData({
-          looklDis:'block',
+          looklDis: 'block',
           lookBuy: e.result.list
         })
       } else if (e.status == 0) {
@@ -636,7 +701,7 @@ Page((e = {
     // 礼包
     s.get("help/gift", {
       openid: userinfo.openid
-    }, function (e) {
+    }, function(e) {
       console.log(e)
       if (e.status == -1) {
         t.setData({
@@ -672,20 +737,20 @@ Page((e = {
             success(res) {
               console.log(res)
               wx.login({
-                success: function (a) {
+                success: function(a) {
                   a.code ? s.post("wxapp.login", {
                     code: a.code
-                  }, function (a) {
+                  }, function(a) {
                     console.log(a)
                     openid = "sns_wa_" + a.openid
                     res.sessionKey = a.session_key;
                     res.openid = openid;
                     s.post('wxapp/urundata', {
                       res
-                    }, function (e) {
+                    }, function(e) {
                       console.log(e)
                       if (e.status == 1) {
-                        s.get("userinfo", {}, function (ee) {
+                        s.get("userinfo", {}, function(ee) {
                           if (ee.status == 1) {
                             console.log('运动步数', ee);
                             t.setData({
@@ -697,7 +762,7 @@ Page((e = {
                         // 今日好友助力步数
                         s.get("help/index/helpstep_today", {
                           openid: userinfo.openid
-                        }, function (aaa) {
+                        }, function(aaa) {
                           // console.log(aaa)
                           t.setData({
                             helpstep: aaa.result.step
@@ -725,7 +790,7 @@ Page((e = {
             page: 1,
             lat: latitude,
             lng: longitude,
-          }, function (e) {
+          }, function(e) {
             console.log(e)
             var i = {
               loading: false,
@@ -748,7 +813,7 @@ Page((e = {
             page: 1,
             lat: latitude,
             lng: longitude,
-          }, function (e) {
+          }, function(e) {
             console.log(e)
             var i = {
               loading: false,
@@ -762,7 +827,7 @@ Page((e = {
         }
       }
     })
-    s.get("changce/merch/draw_rank", {}, function (e) {
+    s.get("changce/merch/draw_rank", {}, function(e) {
       console.log(e)
       if (e.status == 1) {
         t.setData({
@@ -770,7 +835,7 @@ Page((e = {
         })
       }
     });
-    s.get("bushu_discount", {}, function (tttt) {
+    s.get("bushu_discount", {}, function(tttt) {
       if (tttt.error == 0) {
         console.log(tttt.result);
         if (tttt.result.length <= 1) {
@@ -783,7 +848,7 @@ Page((e = {
     // 是否绑定手机号
     s.get("myown/bindmobile/isbind", {
       openid: userinfo.openid
-    }, function (e) {
+    }, function(e) {
       console.log(e)
       if (e.error == 0) {
         let essence;
@@ -793,17 +858,17 @@ Page((e = {
           essence = 'none';
         }
         t.setData({
-            bindDis: essence
+          bindDis: essence
         })
       }
 
-       
+
 
     });
     // 测试
     s.get("index/ceshi", {
       openid: userinfo.openid
-    }, function (e) {
+    }, function(e) {
       console.log(e)
       if (e.status == 1) {
         t.setData({
@@ -817,7 +882,7 @@ Page((e = {
 
     });
     // 平台活跃人数
-    s.get("help/index/get_member_count", {}, function (e) {
+    s.get("help/index/get_member_count", {}, function(e) {
       console.log(e)
       t.setData({
         avamessage: e.result.message
@@ -826,14 +891,14 @@ Page((e = {
     t.getList();
     t.openPage();
   },
-  getList: function () {
+  getList: function() {
     var tt = this;
     wx.login({
-      success: function (a) {
+      success: function(a) {
         console.log(a)
         a.code ? s.post("wxapp.login", {
           code: a.code
-        }, function (a) {
+        }, function(a) {
           console.log(a);
           // login=a.login
           openid = "sns_wa_" + a.openid
@@ -850,7 +915,7 @@ Page((e = {
             })
             s.get("myown/sport/update_login", {
               openid: openid
-            }, function (event) {
+            }, function(event) {
               console.log(event)
             })
           } else {
@@ -863,7 +928,7 @@ Page((e = {
               openid: openid,
               login: i.globalData.applogin,
               parent_id: i.globalData.bindscene
-            }, function (u) {
+            }, function(u) {
               console.log(u)
               if (u.status == 0) {
                 i.globalData.applogin = 1
@@ -873,7 +938,7 @@ Page((e = {
           }
         }) : s.alert("获取用户登录态失败:" + a.errMsg);
       },
-      fail: function () {
+      fail: function() {
         s.alert("获取用户信息失败!");
       }
     })
@@ -884,7 +949,7 @@ Page((e = {
       page: 1,
       lat: newpos.lat,
       lng: newpos.lng,
-    }, function (eve) {
+    }, function(eve) {
       console.log(eve)
       var i = {
         loading: false,
@@ -900,9 +965,9 @@ Page((e = {
     })
   },
 
-  startTimer: function (currentstartTimer) {
+  startTimer: function(currentstartTimer) {
     clearInterval(interval);
-    interval = setInterval(function () {
+    interval = setInterval(function() {
       var second = currentstartTimer;
       // 天数位
       var day = Math.floor(second / 3600 / 24);
@@ -941,33 +1006,33 @@ Page((e = {
       }
     }.bind(this), 1000);
   },
-  goodsicon: function (t) {
+  goodsicon: function(t) {
     this.setData({
       iconheight: t.detail.height,
       iconwidth: t.detail.width
     });
   },
-  getcaloriebtn: function () {
+  getcaloriebtn: function() {
     var that = this
     wx.getWeRunData({
       success(res) {
         console.log(res)
         // if (res.openid == undefined || res.sessionKey == undefined) {
         wx.login({
-          success: function (a) {
+          success: function(a) {
             a.code ? s.post("wxapp.login", {
               code: a.code
-            }, function (a) {
+            }, function(a) {
               console.log(a)
               openid = "sns_wa_" + a.openid
               res.sessionKey = a.session_key;
               res.openid = openid;
               s.post('wxapp/urundata', {
                 res
-              }, function (e) {
+              }, function(e) {
                 console.log(e)
                 if (e.status == 1) {
-                  s.get("userinfo", {}, function (ee) {
+                  s.get("userinfo", {}, function(ee) {
                     if (ee.status == 1) {
                       console.log('运动步数');
                       that.setData({
@@ -979,7 +1044,7 @@ Page((e = {
                   // 今日好友助力步数
                   s.get("help/index/helpstep_today", {
                     openid: userinfo.openid
-                  }, function (aaa) {
+                  }, function(aaa) {
                     // console.log(aaa)
                     that.setData({
                       helpstep: aaa.result.step
@@ -1011,7 +1076,7 @@ Page((e = {
             title: '今日步数已更新',
             duration: 1000
           })
-          s.get("userinfo", {}, function (e) {
+          s.get("userinfo", {}, function(e) {
             console.log(e)
             if (e.status == 1) {
               that.setData({
@@ -1026,18 +1091,18 @@ Page((e = {
     })
 
   },
-  openfirm: function () {
+  openfirm: function() {
     wx.showModal({
       content: '是否允许跑库获取您的微信运动',
       confirmText: "确认",
       cancelText: "取消",
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         //点击“确认”时打开设置页面
         if (res.confirm) {
           console.log('用户点击确认')
           wx.openSetting({
-            success: (res) => { }
+            success: (res) => {}
           })
         } else {
           console.log('用户点击取消')
@@ -1047,11 +1112,11 @@ Page((e = {
   },
 
   // 打开地理位置
-  click: function () {
+  click: function() {
     var that = this
     wx.getLocation({
       type: 'wgs84',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         longitude = res.longitude
         latitude = res.latitude
@@ -1060,7 +1125,7 @@ Page((e = {
           page: 1,
           lat: res.latitude,
           lng: res.longitude,
-        }, function (e) {
+        }, function(e) {
           console.log(e)
           var i = {
             loading: false,
@@ -1080,18 +1145,18 @@ Page((e = {
       }
     })
   },
-  openConfirm: function () {
+  openConfirm: function() {
     wx.showModal({
       content: '检测到您没打开地理位置权限，是否去设置打开？',
       confirmText: "确认",
       cancelText: "取消",
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         //点击“确认”时打开设置页面
         if (res.confirm) {
           console.log('用户点击确认')
           wx.openSetting({
-            success: (res) => { }
+            success: (res) => {}
           })
         } else {
           console.log('用户点击取消')
@@ -1099,30 +1164,30 @@ Page((e = {
       }
     });
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     var that = this;
     return {
       title: '原来微信步数可以当钱用，快来和我一起薅羊毛',
       path: '/pages/index/index?id=' + that.data.scratchId,
-      success: function (res) {
+      success: function(res) {
         // 转发成功
 
         that.shareClick();
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
   },
   // page(e={})的结束括号
-},  t(e, "userinfo", function (t) {
+}, t(e, "userinfo", function(t) {
   var a = t.detail.iv,
     e = t.detail.encryptedData;
   i.getUserInfo(null, null, {
     iv: a,
     encryptedData: e
   });
-}), t(e, "close", function () {
+}), t(e, "close", function() {
   i.globalData.flag = !0, wx.reLaunch({
     url: "/pages/index/index"
   });

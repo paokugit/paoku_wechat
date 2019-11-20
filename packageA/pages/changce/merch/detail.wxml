@@ -46,7 +46,7 @@
         <!-- 卡路里加金额 -->
         <view class="price" wx:if="{{item.deduct!=0&&item.deduct-item.minprice<0}}">
         <view class='calorie-img flex_center'>
-        <image class='calorie_img' src='{{globalimg}}/kaluli02.png'></image>
+        <image class='calorie_img' src='{{globalimg}}/zkblogo.png'></image>
         </view>
         <view class="text">{{item.deduct}}+￥{{item.minprice-item.deduct}}</view>
         </view>
