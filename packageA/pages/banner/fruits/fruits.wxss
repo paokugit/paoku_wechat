@@ -168,7 +168,7 @@
   height: 100%;
 }
 
-/* 置顶的 */
+/* 置顶的1 */
 .main_target{
   font-size: 30rpx;
 }
@@ -277,7 +277,7 @@
   height: 34rpx;
 }
 
-/* 置顶的 */
+/* 置顶的2 */
 .main-title{
   font-size: 28rpx;
   color: #01d7a1;
@@ -299,6 +299,27 @@
 }
 .main-title::after{
   right: 5%;
+}
+
+.subhead{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+  margin: 40rpx 0 83rpx;
+}
+
+.look-over{
+  width: 170rpx;
+  height: 60rpx;
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60rpx;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 30rpx
 }
 
 /* 到底提示 */

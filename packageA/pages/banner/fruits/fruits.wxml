@@ -102,8 +102,8 @@
           <view class="state-image"></view>
           <view class="state-right">
             <view class="main-title">水果精选</view>
-            <view></view>
-            <view></view>
+            <view class="subhead">水果乐园呦</view>
+            <view class="look-over">查看商品</view>
           </view>
         </block>
 
