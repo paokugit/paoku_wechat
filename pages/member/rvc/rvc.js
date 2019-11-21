@@ -26,9 +26,13 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
 
+    this.rvcindex();
+  },
+
+  rvcindex:function(){
     var t = this
     a.get('member/log/member_RVC', {
-      openid: userinfo.openid
+      openid: useropenid
     }, function (e) {
       console.log(e)
       t.setData({
@@ -50,7 +54,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.rvcindex();
   },
 
   /**
