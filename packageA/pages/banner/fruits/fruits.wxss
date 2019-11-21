@@ -169,11 +169,7 @@
 }
 
 /* 置顶的1 */
-.main_target{
-  font-size: 30rpx;
-}
 .main_target,.substandard,.checkBtn{
-  width: 100%;
   color: #fff;
   text-align: center;
   overflow: hidden;
@@ -184,9 +180,11 @@
   font-weight: bold;
   font-size: 30rpx;
   margin: 20rpx 0 10rpx 0;
+  padding: 0 30rpx;
 }
 .substandard{
   font-size: 26rpx;
+  padding: 0 30rpx;
 }
 .proImgA{
   height: 300rpx;
@@ -279,26 +277,23 @@
 
 /* 置顶的2 */
 .main-title{
+  display: flex;
+  align-items: center;
+}
+.main-title-text{
   font-size: 28rpx;
   color: #01d7a1;
-  text-align: center;
-  position: relative;
-  left: 0;
-  top: 0;
+  font-weight: bold;
+  margin: 0 20rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
-.main-title::before,.main-title::after{
-  content: '';                
-  position: absolute;     
-  top: 52%;
-  background: #99ffe5;
-  width: 80rpx;
+.main-title-bord{
+  width: 60rpx;
   height: 2rpx;
-}
-.main-title::before{
-  left: 5%;
-}
-.main-title::after{
-  right: 5%;
+  background: #01d7a1;
+  margin: 0 auto;
 }
 
 .subhead{
@@ -307,7 +302,11 @@
   font-weight: bold;
   text-align: center;
   margin: 40rpx 0 83rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
+
 
 .look-over{
   width: 170rpx;
@@ -320,6 +319,13 @@
   margin: 0 auto;
   border: 1px solid #e0e0e0;
   border-radius: 30rpx
+}
+
+
+.topnavFixed{
+  width: 100%;
+  position:fixed; 
+  z-index: 10;
 }
 
 /* 到底提示 */

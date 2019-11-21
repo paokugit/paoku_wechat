@@ -23,7 +23,7 @@ Page({
     allSales: 'sc_tj_icon_jg_nor@2x',
     nowSign: 0,
     sortWay: 0,
-
+    scrollTop: 0,
 
     list:[
       { adv: 1 },
@@ -110,7 +110,13 @@ Page({
     })
   },
 
-
+  onPageScroll: function (e) {
+    console.log(e.scrollTop);
+    this.setData({
+      scrollTop: e.scrollTop
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
