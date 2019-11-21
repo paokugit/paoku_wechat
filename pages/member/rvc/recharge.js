@@ -6,7 +6,7 @@ var f = getApp();
 var useropenid = "";
 var str = 0;
 
-var uuid;
+var uuid = null;
 Page({
 
   /**
@@ -50,7 +50,13 @@ Page({
   },
 
   paybtn:function(e){
+    wx.showLoading({
+      title: '请稍等...',
+      mask: true
+    });
+    console.log(str);
     if (str.length == undefined || str == 0 || str < 0.001){
+      wx.hideLoading();
       wx.showToast({
         title: '请输入充值数量！',
         icon: 'none',
@@ -62,11 +68,13 @@ Page({
         amount: str
       }, function (e) {
         console.log(e);
+        wx.hideLoading();
         if(e.error == 0){
           uuid = e.data.uuid;
           wx.showModal({
-            title: '请点击确定按钮复制链接，在浏览器中打开完成支付',
+            title: '请点击按钮复制链接，在浏览器中打开完成支付',
             content: e.data.payUrl,
+            confirmText:'复制',
             success: function (res) {
               if (res.confirm) {
                 
@@ -84,15 +92,13 @@ Page({
                 })
 
               } else {
-                console.log('用户点击取消')
+                console.log('用户点击取消');
+                uuid = null;
               }
 
             }
 
           })
-          // wx.navigateTo({
-          //   url: '/pages/member/webview/webview?str='+e.data.payUrl,
-          // })
         }else if(e.error == 1){
           wx.showToast({
             title: e.message,
@@ -117,7 +123,7 @@ Page({
    */
   onShow: function () {
     console.log(uuid);
-    if (uuid != undefined){
+    if (uuid != null){
       a.get("game.check_rvc",{
         uuid: uuid
       },function(e){
@@ -127,13 +133,14 @@ Page({
           title: '提示',
           content: e.message,
           success: function (res) {
+            uuid = null;
             if (res.confirm) {
               console.log('用户点击确定')
               wx.navigateBack({
                 delta: 1
-              })
+              });
             } else {
-              console.log('用户点击取消')
+              console.log('用户点击取消');
               wx.navigateBack({
                 delta: 1
               })
@@ -149,14 +156,15 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('123');
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('456');
+    str = 0
   },
 
   /**
