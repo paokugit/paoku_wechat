@@ -1,40 +1,158 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="商品详情"></navigation>
-<view class='account-box'>
-  <!-- tab -->
-  <block>
-    <block wx:if="{{!show}}">
-      <loading>加载中...</loading>
-    </block>
-  </block>
-  <block>
-    <block wx:if="{{show}}">
-      <view class="listBox">
-        <view class='swipercontent'>
-          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
-            <block wx:for="{{imgUrls}}" wx:key="unique">
-              <swiper-item>
-                <image src="{{item}}" class="slide-image" />
-              </swiper-item>
-            </block>
-          </swiper>
-          <view class="dots">
-            <block wx:for="{{imgUrls}}" wx:key="unique">
-              <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-            </block>
+<view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+<import src="/utils/wxParse/wxParse.wxml"></import>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view bindtap="closeBtn" class="page-shade" wx:if="{{show&&closeBtn}}">></view>
+<view class="fui-share {{isIpx?'fui-iphonex-share':''}}" wx:if="{{show&&closeBtn}}">
+</view>
+<view class="page comment-block" wx:if="{{show}}">
+  <view class="goods-detail-goods">
+    <view wx:if="{{usediypage==false}}">
+      <view style="height:{{advWidth}}px;position:relative;display:{{showvideo?'block':'none'}}" wx:if="{{goods.video}}">
+        <view wx:if="{{cover}}">
+          <image class="bg" mode="aspectFit" src="{{goods.thumb}}" style="height:100%;width:100%"></image>
+          <image bindtap="startplay" class="play" src="{{play}}" style="width:150rpx;height:140rpx"></image>
+          <view class="mc">
+            <view bindtap="showvideo" class="video_btn active">视频</view>
+            <view bindtap="showpic" class="pic_btn">图片</view>
           </view>
         </view>
-        <!-- <view class="goods-advs {{showpic||goods.video==''?'block':'none'}}" style="width:{{advWidth}}px;height:auto;position:relative">
-          <swiper circular="{{circular}}" class="index-adcs-sqiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="width:{{advWidth}}px;height:{{advHeight}}px;">
-            <swiper-item style="background-image:url('{{item}}');width:100%;height:100%" wx:for="{{goods.thumbs}}" wx:for-index="idx" wx:key="index">
-              <image class="goodsadvimg" mode="aspectFit" src="{{item}}"></image>
-            </swiper-item>
-          </swiper>
-          <view class="mc">
-            <view bindtap="showvideo" class="video_btn" wx:if="{{goods.video}}">视频</view>
-            <view bindtap="showpic" class="pic_btn active" wx:if="{{goods.video}}">图片</view>
-          </view>
-        </view> -->
+        <video controls bindfullscreenchange="bindfullscreenchange" bindpause="bindpause" class="video {{showpic||cover?'none':'block'}}" id="myVideo" muted="{{soundpic}}" src="{{goods.video}}" style="width:{{advWidth}}px;height:{{advWidth}}px;">
+          <cover-image bindtap="changevoice" class="voice" src="{{sound?voice:mute}}"></cover-image>
+          <cover-view class="mc" wx:if="{{success}}">
+            <cover-view class="video_btn active">视频</cover-view>
+            <cover-view bindtap="showpic" class="pic_btn">图片</cover-view>
+          </cover-view>
+        </video>
       </view>
-    </block>
-  </block>
+      <view class="goods-advs {{showpic||goods.video==''?'block':'none'}}" style="width:{{advWidth}}px;height:auto;position:relative">
+        <swiper circular="{{circular}}" class="index-adcs-sqiper" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="width:{{advWidth}}px;height:{{advHeight}}px;">
+          <swiper-item style="background-image:url('{{item}}');width:100%;height:100%" wx:for="{{goods.thumbs}}" wx:for-index="idx" wx:key="index">
+            <image class="goodsadvimg" mode="aspectFit" src="{{item}}"></image>
+          </swiper-item>
+        </swiper>
+        <view class="mc">
+          <view bindtap="showvideo" class="video_btn" wx:if="{{goods.video}}">视频</view>
+          <view bindtap="showpic" class="pic_btn active" wx:if="{{goods.video}}">图片</view>
+        </view>
+      </view>
+      <view class="fui-cell-group fui-detail-group">
+        <view class="fui-cell">
+          <view class="proPricebox">
+            <text style="color:#f00;font-size:32rpx;">￥</text>
+            <text style="color:#f00;font-size:46rpx;">{{goods.showprice}}</text>
+          </view>
+        </view>
+        <view class="fui-cell">
+          <view class="proName">{{goods.title}}</view>
+        </view>
+        <view class="fui-cell" wx:if="{{goods.subtitle}}">
+          <view class="proSub">{{goods.subtitle}}</view>
+        </view>
+      </view>
+      <view bindtap="selectPicker" class="fui-cell-group fui-cell-click" data-buytype="select" data-class="select-picker" data-id="{{goods.id}}" data-tap="{{active}}">
+        <view class="fui-cell" wx:if="{{!isSelected}}">
+          <view class="fui-cell-text option-selector">请选择
+            <block wx:if="{{goods.spec_titles}}">{{goods.spec_titles}}等</block>
+            <block wx:else>数量</block>
+          </view>
+          <view class="fui-cell-remark"></view>
+        </view>
+        <view class="fui-cell" wx:else>
+          <view class="fui-cell-info">已选：数量x{{total}} {{specsTitle}}</view>
+        </view>
+      </view>
+      <!-- 商品规格 -->
+      <view class="standard-box">
+        <view class="standtit-box">
+          <text class="standline"></text>
+          <text class="standTit">商品规格</text>
+          <text class="standline"></text>
+        </view>
+        <view class="standCon">
+          <view class="stand-item">
+            <text style="color:#333;font-size:28rpx">颜色</text>
+            <text style="color:#666;font-size:28rpx">粉色</text>
+          </view>
+          <view class="stand-item">
+            <text style="color:#333;font-size:28rpx">尺码</text>
+            <text style="color:#666;font-size:28rpx">M</text>
+          </view>
+          <view class="stand-item">
+            <text style="color:#333;font-size:28rpx">颜色</text>
+            <text style="color:#666;font-size:28rpx">粉色</text>
+          </view>
+          <view class="stand-item">
+            <text style="color:#333;font-size:28rpx">颜色</text>
+            <text style="color:#666;font-size:28rpx">粉色</text>
+          </view>
+        </view>
+      </view>
+      <!-- 店铺名称 -->
+      <!-- <view class="fui-cell-group fui-shop-group">
+        <view class='hiddenbox' style='display:{{listDis}}'>
+          <view class="fui-list">
+            <view class="fui-list-media">
+              <image src="{{goods.shopdetail.logo}}"></image>
+            </view>
+            <view class="fui-list-inner">
+              <view class="title">{{goods.shopdetail.shopname}}
+                <text class="title-wel" bindtap='goStore'>进店逛逛</text>
+              </view>
+              <view class="subtitle" wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+    </view>
+    <view class="fui-cell-group">
+      <view class="xqtitle">商品详情</view>
+    </view>
+    <view class="goods-detail-info {{info}}" style="padding:0 8rpx;box-sizing: border-box;">
+      <view class="wxParse" style="overflow: hidden;">
+        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+      </view>
+    </view>
+    <view class="goods-detail-para {{para}}">
+      <view class="fui-cell-group">
+        <view class="fui-cell" wx:for="{{goods.params}}" wx:for-index="idx" wx:key="index">
+          <view class="fui-cell-label">{{item.title}}</view>
+          <view class="fui-cell-info overflow">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+    <view bindtap="emptyActive" class="fui-mask {{active}}"></view>
+    <include src="/pages/common/goods-picker.wxml"></include>
+  </view>
+  <view style="position: fixed; bottom: 98rpx;left: 0;right: 0;z-index: 1001;">
+    <include src="/pages/date/date.wxml"></include>
+  </view>
+  <include src="/pages/common/act-picker.wxml"></include>
+  <view class="empty_f"></view>
+  <view class="fui-mask {{showPicker?'show':''}}" style="z-index: 1500"></view>
+  <view>
+    <view class="fui-navbar bottom-buttons {{iphonexnavbar}}" wx:if="{{goods.canbuy}}">
+      <!-- <button class="nav-item customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true" wx:if="{{goods.customer==1&&limits}}">
+        <view class="icox icox-customerservice"></view>
+        <view class="label">客服</view>
+      </button> -->
+      <!-- 进入店铺 -->
+      <!-- <navigator class="nav-item external" openType="switchTab" url="/pages/index/index?merchid={{goods.merchid}}">
+        <view class="icox icox-shop1"></view>
+        <view class="label">店铺</view>
+      </navigator> -->
+      <!-- <navigator class="nav-item cart-item" id="menucart" open-type="navigate" url="/pages/member/cart/index">
+        <view class="badge {{goods.cartount<=0?'out':'in'}}" wx:if="{{goods.cartcount&&limits}}">{{goods.cartcount}}</view>
+        <view class="icox icox-cart1"></view>
+        <view class="label">购物车</view>
+      </navigator> -->
+      <!-- <view bindtap="selectPicker" class="nav-item btn cartbtn" data-buytype="cart" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canAddCart&&goods.type!=9}}">加入购物车</view> -->
+      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{!goods.access_time&&!goods.timeout}}">立刻购买</view>
+      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="access_time" data-timeout="false" wx:if="{{goods.access_time}}">立刻购买</view>
+      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="timeout" data-timeout="false" wx:if="{{goods.timeout}}">立刻购买</view>
+    </view>
+  </view>
+  <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+    <view class="text">{{FoxUIToast.text}}</view>
+  </view>
 </view>

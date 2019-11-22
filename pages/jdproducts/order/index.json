@@ -2,5 +2,5 @@
     "usingComponents": {
       "navigation": "/components/navigation/navigation"
     },
-    "navigationBarTitleText": "商品详情"
+    "navigationBarTitleText": "确认订单"
 }

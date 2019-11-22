@@ -45,7 +45,8 @@ Page((e = {
         t.setData({
           credit3: e.result.credit3,
           todaystep: e.result.todaystep,
-          jindu: e.result.jindu
+          jindu: e.result.jindu,
+          cateList: e.result.cate
         });
       }
     });
@@ -82,6 +83,7 @@ Page((e = {
     circular: !0,
     total: 1,
     page: 1,
+    statues: '',
     loaded: !1,
     loading: !0,
     indicatorDotsHot: !1,
@@ -112,6 +114,7 @@ Page((e = {
     bindDis: 'none',
     giftDis: 'none',
     updateDis: 'none',
+    cateList: [],
     // rewarddisp:'none',
     seckillDis: 'none',
     werunDis: 'block',
@@ -172,7 +175,7 @@ Page((e = {
   },
   products: function() {
     wx.navigateTo({
-      url: '/pages/goods/index/index',
+      url: '/pages/goods/index/index?cate=' + 171,
     })
   },
   // 卡路里明细
@@ -228,7 +231,16 @@ Page((e = {
       url: '/packageA/pages/gift/gift',
     })
   },
+  selected: function(t) {
+    console.log(t)
+    var e = s.data(t).type;
+    this.setData({
+      page: 1,
+      statues: e,
+    }), this.get_list();
+  },
   checkAllt: function(e) {
+    console.log(this.data.statues)
     const that = this;
     let mowtxt = e.currentTarget.dataset.now;
     let priceImg;
@@ -278,7 +290,7 @@ Page((e = {
       nowSign: mowtxt,
       allPrice: priceImg,
       allSales: salesImg,
-      page:1
+      page: 1
     })
     console.log(sortorder, sortby, )
     that.get_list()
@@ -509,7 +521,8 @@ Page((e = {
         // console.log('更新信息');
         a.setData({
           credit3: ee.result.credit3,
-          todaystep: ee.result.todaystep
+          todaystep: ee.result.todaystep,
+          cateList: ee.result.cate
         });
       }
     });
@@ -755,7 +768,8 @@ Page((e = {
                             console.log('运动步数', ee);
                             t.setData({
                               credit3: ee.result.credit3,
-                              todaystep: ee.result.todaystep
+                              todaystep: ee.result.todaystep,
+                              cateList: ee.result.cate
                             });
                           }
                         });
@@ -1037,7 +1051,8 @@ Page((e = {
                       console.log('运动步数');
                       that.setData({
                         credit3: ee.result.credit3,
-                        todaystep: ee.result.todaystep
+                        todaystep: ee.result.todaystep,
+                        cateList: ee.result.cate
                       });
                     }
                   });

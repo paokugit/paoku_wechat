@@ -455,11 +455,7 @@
     </view>
   </view>
   <!-- 边看变买结束 -->
-
   <!-- 超值兑换部分-开始 -->
-  <!-- <block>
-    <block wx:if="{{list.length<0}}"><view>啦啦啦啦</view></block>
-  </block> -->
   <view class='pro-exchange-box flex_center'>
     <view class='pro-exchange-box-con'>
       <view class='pro-exchange-tit-box'>
@@ -469,6 +465,15 @@
         </view>
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
+      <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
+        <view bindtap="selected" class="item {{statues=='{{item.id}}'?'actived':''}}" wx:for="{{cateList}}" data-type="{{item.id}}">{{item.name}}</view>
+        <!-- <view bindtap="selected" class="item {{statues=='0'?'actived':''}}" data-type="0">特卖</view>
+        <view bindtap="selected" class="item {{statues=='1'?'actived':''}}" data-type="1">精选</view>
+        <view bindtap="selected" class="item {{statues=='2'?'actived':''}}" data-type="2">优质</view>
+        <view bindtap="selected" class="item {{statues=='3'?'actived':''}}" data-type="3">母婴</view>
+        <view bindtap="selected" class="item {{statues=='4'?'actived':''}}" data-type="4">男士</view>
+        <view bindtap="selected" class="item {{statues=='5'?'actived':''}}" data-type="5">女士</view> -->
+      </scroll-view>
       <!-- 价格销量排序 -->
       <view class="all-filtrate">
         <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
@@ -492,19 +497,13 @@
               </view>
             </navigator>
             <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-            <view class='postage-free'>包邮</view>
-          </view> -->
-            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-            <view class='postage-free'>包邮</view>
-          </view> -->
             <view class='zkbox-rvc' wx:if="{{item.deduct_type==2}}">
               <view class='zkb-box'>
                 <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                 <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
                 <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.minprice}}</view>
               </view>
-              <view class="pay-type">支持RVC支付</view>
+              <view class="pay-type">支持RVC</view>
             </view>
             <view class='ex-procalorie-box'>
               <view class='calorie-box'>
