@@ -576,14 +576,26 @@
 }
 
 .business-txt{
-  font-size: 30rpx;
-  color: #323232;
+  width: 300rpx;
   margin: 20rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+.reminder{
+  font-size: 24rpx;
+  color: #ffffff;
+  padding: 3rpx 10rpx;
+  background: #ff0000;
+  border-radius: 6rpx;
+}
+.article-name{
+  font-size: 30rpx;
+  color: #323232;
+  margin-left: 10rpx;
+}
+
 
 .business-figure{
   margin: 0 20rpx ;

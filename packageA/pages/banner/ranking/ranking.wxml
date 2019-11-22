@@ -1,0 +1,37 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="网红榜单"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view class="outer">
+  <image class="settingCss" src="{{globalimg}}/whbd_bg@2x2.png"></image>
+  <view class="ranking">
+
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="particular flexcss">
+        <view class="netImg">
+          <view class="net-image"></view>
+          <image class="rankingImg" style="{{item.id < 4 ? '' :'display:none' }}" src="{{globalimg}}/{{item.id == 1 ? rankingA : item.id == 2 ? rankingB : rankingC}}.png"></image>
+        </view>
+        <view class="introduce">
+          <view class="article-name">Apple/苹果iPhone XR 256GB</view>
+          <view class="price-vehicle flexcss">
+            <view class="flexcss">
+              <view class="current-price">9.9</view>
+              <view class="original-price">￥599</view>
+            </view>
+            <image class="card" src="{{globalimg}}/icon_gwc@2x.png"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{!loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载...</view>
+      </view>
+    </block>
+
+    <view class="base">到底了哦</view>
+  </view>
+
+</view>

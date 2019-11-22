@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "packageA/pages/banner/fruits/fruits",
+    "entryPagePath": "packageA/pages/banner/ranking/ranking",
     "pages": [
         "pages/index/index",
         "pages/store/store",
@@ -173,7 +173,9 @@
 
           "pages/banner/zero/zero",
           "pages/banner/task/task",
-          "pages/banner/fruits/fruits"
+          "pages/banner/fruits/fruits",
+          "pages/banner/local/local",
+          "pages/banner/ranking/ranking"
 
         ]
       }

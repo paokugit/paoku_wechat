@@ -93,7 +93,10 @@
       
       <view class="businessList">
         <view class="business-img"></view><!-- 已售完样式未添加 -->
-        <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+        <view class="business-txt">
+          <text class="reminder">热销</text>
+          <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
+        </view>
         <view class="business-figure">
           <view class="number">
             <view class="number-money">99</view>
@@ -120,7 +123,10 @@
 
         <view class="businessList">
           <view class="business-img"></view>
-          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+          <view class="business-txt">
+            <text class="reminder">热销</text>
+            <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
+          </view>
           <view class="business-figure">
             <view class="number">
               <view class="number-money">99</view>
@@ -247,13 +253,16 @@
       </view>
     </view>
 
-    <!-- 综合内容 -->
-    <view style="{{nowSign == 0 ? '' : 'display:none'}}">
+    <!-- 综合内容、价格、销量 -->
+    <view>
       <!-- 状态1 -->
       <view class="referral-business" style="{{sortWay == 0?'':'display:none'}}">
         <view class="businessList">
           <view class="business-img"></view>
-          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
+          <view class="business-txt">
+            <text class="reminder">热销</text>
+            <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
+          </view>
           <view class="business-figure">
             <view class="number">
               <view class="number-money">99</view>
@@ -296,101 +305,6 @@
 
     </view>
 
-    <!-- 价格 -->
-    <view style="{{nowSign == 1 ? '' : 'display:none'}}">
-      <!-- 状态1 -->
-      <view class="referral-business" style="{{sortWay == 0?'':'display:none'}}">
-        <view class="businessList">
-          <view class="business-img"></view>
-          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
-          <view class="business-figure">
-            <view class="number">
-              <view class="number-money">99</view>
-              <view class="number-people">999人付款</view>
-            </view>
-            <view class="shopping-car">
-              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
-            </view>
-          </view>
-        </view>
-
-      </view>
-
-      <!-- 状态2 -->
-      <view class="state-two" style="{{sortWay == 1?'':'display:none'}}">
-        <view class="stateList">
-          <view class="state-image"></view>
-          <view class="state-right">
-            <view class="state-right-top">
-              <text class="state-right-activity">限时抢购</text>
-              <text class="state-right-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙时擦刹车撒</text>
-            </view>
-            <view>
-              <view class="freight">包邮</view>
-              <view class="state-right-amount">
-                <view class="state-right-sum">
-                  <view class="state-right-price">34.90</view>
-                  <view class="state-right-payment">1万人已付款</view>
-                </view>
-                <image class="state-right-vehicle" src="{{globalimg}}/icon_gwc@2x.png"></image>
-              </view>
-            </view>
-          </view>
-        </view>
-
-      </view>
-
-
-      <view class="on-earth" style="margin-bottom: 150rpx;">到底了哦</view>
-    </view>
-
-    <!-- 销量 -->
-    <view style="{{nowSign == 2 ? '' : 'display:none'}}">
-      <!-- 状态1 -->
-      <view class="referral-business" style="{{sortWay == 0?'':'display:none'}}">
-        <view class="businessList">
-          <view class="business-img"></view>
-          <view class="business-txt">利仁D1803多功能开水煲全自动加厚壶</view>
-          <view class="business-figure">
-            <view class="number">
-              <view class="number-money">99</view>
-              <view class="number-people">999人付款</view>
-            </view>
-            <view class="shopping-car">
-              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
-            </view>
-          </view>
-        </view>
-
-      </view>
-
-      <!-- 状态2 -->
-      <view class="state-two" style="{{sortWay == 1?'':'display:none'}}">
-        <view class="stateList">
-          <view class="state-image"></view>
-          <view class="state-right">
-            <view class="state-right-top">
-              <text class="state-right-activity">限时抢购</text>
-              <text class="state-right-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙时擦刹车撒</text>
-            </view>
-            <view>
-              <view class="freight">包邮</view>
-              <view class="state-right-amount">
-                <view class="state-right-sum">
-                  <view class="state-right-price">34.90</view>
-                  <view class="state-right-payment">1万人已付款</view>
-                </view>
-                <image class="state-right-vehicle" src="{{globalimg}}/icon_gwc@2x.png"></image>
-              </view>
-            </view>
-          </view>
-        </view>
-
-      </view>
-
-
-      <view class="on-earth" style="margin-bottom: 150rpx;">到底了哦</view>
-    </view>
 
   </view>
 

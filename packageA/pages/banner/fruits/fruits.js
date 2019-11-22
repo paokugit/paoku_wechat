@@ -111,7 +111,6 @@ Page({
   },
 
   onPageScroll: function (e) {
-    console.log(e.scrollTop);
     this.setData({
       scrollTop: e.scrollTop
     })

@@ -1,0 +1,130 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="同城"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view>
+  <navigator url="/pages/goods/index/index?fromsearch=1" class="search flexcss">
+    <view class="site flexcss">
+      <image class="siteImg" src="{{globalimg}}/shangcheng_inco_dizhi@2x.png"></image>
+      <view class="site-details">郑州</view>
+    </view>
+    <view style="position: relative;">
+      <view class="search-frame flexcss">输入关键字进行搜索</view>
+      <image class="souImg" src="{{globalimg}}/search@2x.png"></image>
+    </view>
+    
+  </navigator>
+
+  <view class="carousel">
+    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
+      <block wx:for="{{background}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item" style="background:{{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{background}}" wx:key="index">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view> 
+
+  <view class="switchover">
+    <!-- <view class="nearby " catchtap="cutBtn" data-type="0">
+      <view class="{{cutype == 0?'cutActive':'' }}">附近店铺</view>
+      <view class="bodbox {{cutype == 0?'bordActive':'' }}"></view>
+    </view> -->
+    <view class="hot-sale {{cutype == 1?'cutActive':'' }}" catchtap="cutBtn" data-type="1">
+      <view class="{{cutype == 1?'cutActive':'' }}">热卖商品</view>
+      <view class="bodbox {{cutype == 1?'bordActive':'' }}"></view>
+    </view>  
+  </view>
+
+  <view class="little-tab flexcss">
+    <view class="litxt {{cutlit == 11 ? 'tabActive':''}}" data-litt="11" catchtap="smallBtn">综合</view>
+    <view class="litxt sales {{cutlit == 12 ? 'tabActive':''}}" data-litt="12" catchtap="smallBtn">销量</view>
+    <view class="litxt {{cutlit == 13 ? 'tabActive':''}}" data-litt="13" catchtap="smallBtn">距离</view>
+  </view>
+
+  <!-- 热卖商品 -->
+  <view class="best-seller">
+    <block wx:for="{{3}}" wx:key="index">
+      <view class="sellerList">
+        <view class="sellerImg"></view>
+        <view class="goodsTit">
+          <text class="action">限时抢购</text>
+          <text class="goodsName">利仁D1803多功能擦拭擦撒吃撒爱吃深V</text>
+        </view>
+        <view class="money-people">
+          <view class="money-goods">34.9</view>
+          <view class="people-goods">1万人已付款</view>
+        </view>
+        <view class="flexcss" style="margin:0 20rpx 20rpx;">
+          <view class="discounts">满400减50</view>
+          <view class="mail">包邮</view>
+        </view>
+        <view class="flexcss" style="margin:0 20rpx;">
+          <view class="store-name">跑库旗舰店</view>
+          <view class="store-enter">进店 ></view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 附近店铺 【暂不开放】-->
+  <!-- <view class="nearbylist">
+    <view class="introduce flexcss">
+      <view class="introduce-image"></view>
+      <view class="introduce-detail">
+        <view class="introduce-name">屈臣氏-郑州紫荆山店</view>
+        <view class="flexcss" style="justify-content: space-between;margin: 10rpx 0;">
+          <view class="main">主营：化妆品</view>
+          <view class="distance">10.1km</view>
+        </view>
+        <view class="flexcss" style="justify-content: space-between;margin-right: 10rpx;">
+          <view class="detailed">[郑东新区]中心广场西100米010…</view>
+          <view class="schedule">进店有礼 ></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="product flexcss">
+      <block wx:for="{{3}}" wx:key="index">
+        <view class="productLis">
+          <view class="product-type">
+            <view class="product-img"></view>
+            <view class="product-tit">热销</view>
+          </view>
+          <view class="product-price">￥34.9</view>
+        </view>
+      </block>
+    </view>
+
+    <view class="neighbouring flexcss" catchtap="nearnessBtn" data-ads="{{shopind}}">
+      <view class="flexcss">
+        <image class="store-icon" src="{{globalimg}}/dpjj_dptb_icon_dp@2x.png"></image>
+        <view class="store-nearby">附近还有3家</view>
+      </view>
+      <image class="nearness" src="{{globalimg}}/{{nearness}}.png"></image>
+    </view>
+   
+    <view class="shoplist" style="{{shopind == 0?'display:none':''}}">
+      <block wx:for="{{3}}" wx:key="index">
+        <view class="shop-list flexcss">
+          <view class="shop-name">屈臣氏（ZZ金水丹尼斯）</view>
+          <view class="shop-distance">2.3km</view>
+        </view>
+      </block>
+    </view>
+  </view> -->
+
+  <block wx:if="{{!loading}}">
+    <view class="fui-loading">
+      <view class="icon"></view>
+      <view class="text">正在加载...</view>
+    </view>
+  </block>
+
+  <view class="base">到底了哦</view>
+
+</view>

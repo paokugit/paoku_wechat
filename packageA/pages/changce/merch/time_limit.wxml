@@ -28,4 +28,14 @@
     <view class="dynamic">店铺动态</view>
     <view>扫码买单</view>
   </view>
+  
+  <view class="base">
+    <view>
+      <button class="contact02" openType="contact" sessionFrom="weapp" showMessageCard="true"></button>
+      联系客服
+    </view>
+    <view class="dynamic" catchtap="dynamicBtn">店铺动态</view>
+    <view  bindtap='scancodebtn'>扫码买单</view>
+  </view>
+
 </view>
