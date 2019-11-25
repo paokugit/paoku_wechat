@@ -13,6 +13,7 @@ Page({
     list: [],
     page: 1,
     
+    typeIndex:1,
   },
 
   onLoad: function(a) {
@@ -48,6 +49,7 @@ Page({
             title: i
           });
         }
+        t.setData({ typeIndex: e.type})
         a.list || (a.list = []), a.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.list),
           a.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
       }
