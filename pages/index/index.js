@@ -32,6 +32,7 @@ var pricemark = 0;
 var salesmark = 0;
 var sortorder = "";
 var sortby = ""
+var cate = ""
 Page((e = {
   onPullDownRefresh: function() {
     wx.showToast({
@@ -127,6 +128,7 @@ Page((e = {
     screenWidth: '',
     helpstep: '',
     jindu: 100,
+    selector: 171,
     district: '',
     city: '',
     noticelist: [],
@@ -231,16 +233,25 @@ Page((e = {
       url: '/packageA/pages/gift/gift',
     })
   },
-  selected: function(t) {
-    console.log(t)
-    var e = s.data(t).type;
+  tabCategory: function(t) {
     this.setData({
+      selector: t.target.dataset.id,
       page: 1,
-      statues: e,
-    }), this.get_list();
+      list: [],
+      nowSign: 0,
+      allPrice: 'sc_tj_icon_jg_nor@2x',
+      allSales: 'sc_tj_icon_jg_nor@2x',
+    })
+    cate = t.currentTarget.dataset.id
+    sortorder = "";
+    sortby = ""
+    this.get_list()
   },
   checkAllt: function(e) {
-    console.log(this.data.statues)
+    console.log(cate)
+    if (cate == "" || cate == undefined) {
+      cate = 171
+    }
     const that = this;
     let mowtxt = e.currentTarget.dataset.now;
     let priceImg;
@@ -323,7 +334,6 @@ Page((e = {
     }
   },
   // 超值兑换商品列表
-  // 111111111111
   get_list: function() {
     var t = this;
     t.setData({
@@ -332,7 +342,7 @@ Page((e = {
       openid: userinfo.openid,
       page: t.data.page,
       order: sortorder,
-      cate: 171,
+      cate: cate,
       by: sortby
     }, function(e) {
       console.log(e)
@@ -347,7 +357,7 @@ Page((e = {
         loading: !1,
         show: !0,
         total: e.total,
-        empty: !0
+        empty: !0,
       }), e.list.length > 0 && t.setData({
         page: t.data.page + 1,
         ['list[' + record + ']']: e.list

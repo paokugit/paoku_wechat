@@ -466,13 +466,12 @@
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
       <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
-        <view bindtap="selected" class="item {{statues=='{{item.id}}'?'actived':''}}" wx:for="{{cateList}}" data-type="{{item.id}}">{{item.name}}</view>
-        <!-- <view bindtap="selected" class="item {{statues=='0'?'actived':''}}" data-type="0">特卖</view>
-        <view bindtap="selected" class="item {{statues=='1'?'actived':''}}" data-type="1">精选</view>
-        <view bindtap="selected" class="item {{statues=='2'?'actived':''}}" data-type="2">优质</view>
-        <view bindtap="selected" class="item {{statues=='3'?'actived':''}}" data-type="3">母婴</view>
-        <view bindtap="selected" class="item {{statues=='4'?'actived':''}}" data-type="4">男士</view>
-        <view bindtap="selected" class="item {{statues=='5'?'actived':''}}" data-type="5">女士</view> -->
+      <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">推荐</view>
+        <block wx:for="{{cateList}}" wx:for-index="idx">
+          <view bindtap="tabCategory" class="item {{selector==item.id?'actived':''}}" data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </block>
       </scroll-view>
       <!-- 价格销量排序 -->
       <view class="all-filtrate">
@@ -517,12 +516,14 @@
         </block>
       </view>
       <!-- 查看更多-商品-开始 -->
-      <view class='readmore-pro-box flex_center'>
-        <view class='readmore-pro-con' bindtap='products'>查看更多</view>
-        <view class='readmore-pro-img flex_center'>
-          <image src='{{ globalimg}}/chakangengduo.png'></image>
+      <block wx:if="{{list.length>0}}">
+        <view class='readmore-pro-box flex_center'>
+          <view class='readmore-pro-con' bindtap='products'>查看更多</view>
+          <view class='readmore-pro-img flex_center'>
+            <image src='{{ globalimg}}/chakangengduo.png'></image>
+          </view>
         </view>
-      </view>
+      </block>
     </view>
   </view>
   <!-- 超值兑换结束 -->
