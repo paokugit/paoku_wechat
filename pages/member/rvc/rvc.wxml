@@ -13,7 +13,7 @@
     </view>
     <view class='balance-header-bottom'>
       <view class='bottom-left'>
-        <view class='income-text'>累计充值</view>
+        <view class='income-text'>累计充值数量</view>
         <view class='income-num'>{{come_total}}</view>
       </view>
 

@@ -23,7 +23,8 @@
               <view class="text">{{item.createtime}}</view>
             </view>
             <view class="fui-list-angle">
-              <view style="font-size: 30rpx;color: #000;">{{item.money}}</view>
+              <view style="font-size: 30rpx;color: #000;" wx:if="{{typeIndex == 1}}">数量{{item.money}}</view>
+              <view style="font-size: 26rpx;color: #666;">价值￥{{item.realmoney}}</view>
             </view>
 
           </view>
