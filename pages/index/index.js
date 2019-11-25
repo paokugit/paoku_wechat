@@ -32,6 +32,7 @@ var pricemark = 0;
 var salesmark = 0;
 var sortorder = "";
 var sortby = ""
+var cate = 171
 Page((e = {
   onPullDownRefresh: function() {
     wx.showToast({
@@ -45,7 +46,8 @@ Page((e = {
         t.setData({
           credit3: e.result.credit3,
           todaystep: e.result.todaystep,
-          jindu: e.result.jindu
+          jindu: e.result.jindu,
+          cateList: e.result.cate
         });
       }
     });
@@ -82,6 +84,7 @@ Page((e = {
     circular: !0,
     total: 1,
     page: 1,
+    statues: '',
     loaded: !1,
     loading: !0,
     indicatorDotsHot: !1,
@@ -112,6 +115,7 @@ Page((e = {
     bindDis: 'none',
     giftDis: 'none',
     updateDis: 'none',
+    cateList: [],
     // rewarddisp:'none',
     seckillDis: 'none',
     werunDis: 'block',
@@ -124,6 +128,7 @@ Page((e = {
     screenWidth: '',
     helpstep: '',
     jindu: 100,
+    selector: 171,
     district: '',
     city: '',
     noticelist: [],
@@ -228,7 +233,25 @@ Page((e = {
       url: '/packageA/pages/gift/gift',
     })
   },
+  tabCategory: function(t) {
+    this.setData({
+      selector: t.target.dataset.id,
+      page: 1,
+      list: [],
+      nowSign: 0,
+      allPrice: 'sc_tj_icon_jg_nor@2x',
+      allSales: 'sc_tj_icon_jg_nor@2x',
+    })
+    cate = t.currentTarget.dataset.id
+    sortorder = "";
+    sortby = ""
+    this.get_list()
+  },
   checkAllt: function(e) {
+    console.log(cate)
+    if (cate == "" || cate == undefined) {
+      cate = 171
+    }
     const that = this;
     let mowtxt = e.currentTarget.dataset.now;
     let priceImg;
@@ -278,7 +301,7 @@ Page((e = {
       nowSign: mowtxt,
       allPrice: priceImg,
       allSales: salesImg,
-      page:1
+      page: 1
     })
     console.log(sortorder, sortby, )
     that.get_list()
@@ -311,8 +334,9 @@ Page((e = {
     }
   },
   // 超值兑换商品列表
-  // 111111111111
+  
   get_list: function() {
+    console.log(cate)
     var t = this;
     t.setData({
       loading: !0
@@ -320,7 +344,7 @@ Page((e = {
       openid: userinfo.openid,
       page: t.data.page,
       order: sortorder,
-      cate: 171,
+      cate: cate,
       by: sortby
     }, function(e) {
       console.log(e)
@@ -335,7 +359,7 @@ Page((e = {
         loading: !1,
         show: !0,
         total: e.total,
-        empty: !0
+        empty: !0,
       }), e.list.length > 0 && t.setData({
         page: t.data.page + 1,
         ['list[' + record + ']']: e.list
@@ -509,7 +533,8 @@ Page((e = {
         // console.log('更新信息');
         a.setData({
           credit3: ee.result.credit3,
-          todaystep: ee.result.todaystep
+          todaystep: ee.result.todaystep,
+          cateList: ee.result.cate
         });
       }
     });
@@ -755,7 +780,8 @@ Page((e = {
                             console.log('运动步数', ee);
                             t.setData({
                               credit3: ee.result.credit3,
-                              todaystep: ee.result.todaystep
+                              todaystep: ee.result.todaystep,
+                              cateList: ee.result.cate
                             });
                           }
                         });
@@ -1037,7 +1063,8 @@ Page((e = {
                       console.log('运动步数');
                       that.setData({
                         credit3: ee.result.credit3,
-                        todaystep: ee.result.todaystep
+                        todaystep: ee.result.todaystep,
+                        cateList: ee.result.cate
                       });
                     }
                   });

@@ -456,11 +456,7 @@
     </view>
   </view>
   <!-- 边看变买结束 -->
-
   <!-- 超值兑换部分-开始 -->
-  <!-- <block>
-    <block wx:if="{{list.length<0}}"><view>啦啦啦啦</view></block>
-  </block> -->
   <view class='pro-exchange-box flex_center'>
     <view class='pro-exchange-box-con'>
       <view class='pro-exchange-tit-box'>
@@ -470,6 +466,14 @@
         </view>
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
+      <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
+        <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">全部</view>
+        <block wx:for="{{cateList}}" wx:for-index="idx">
+          <view bindtap="tabCategory" class="item {{selector==item.id?'actived':''}}" data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </block>
+      </scroll-view>
       <!-- 价格销量排序 -->
       <view class="all-filtrate">
         <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
@@ -493,12 +497,6 @@
               </view>
             </navigator>
             <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-            <view class='postage-free'>包邮</view>
-          </view> -->
-            <!-- <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-            <view class='postage-free'>包邮</view>
-          </view> -->
             <view class='zkbox-rvc' wx:if="{{item.deduct_type==2}}">
               <view class='zkb-box'>
                 <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
@@ -519,12 +517,14 @@
         </block>
       </view>
       <!-- 查看更多-商品-开始 -->
-      <view class='readmore-pro-box flex_center'>
-        <view class='readmore-pro-con' bindtap='products'>查看更多</view>
-        <view class='readmore-pro-img flex_center'>
-          <image src='{{ globalimg}}/chakangengduo.png'></image>
+      <block wx:if="{{list.length>0}}">
+        <view class='readmore-pro-box flex_center'>
+          <view class='readmore-pro-con' bindtap='products'>查看更多</view>
+          <view class='readmore-pro-img flex_center'>
+            <image src='{{ globalimg}}/chakangengduo.png'></image>
+          </view>
         </view>
-      </view>
+      </block>
     </view>
   </view>
   <!-- 超值兑换结束 -->
@@ -552,6 +552,13 @@
     <view class="fui-loading">
       <view class="icon"></view>
       <view class="text">正在加载</view>
+    </view>
+  </block>
+</block>
+<block>
+  <block wx:if="{{list.length==0}}">
+    <view class="fui-loading empty">
+      <view class="text">暂无商品</view>
     </view>
   </block>
 </block>

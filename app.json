@@ -2,6 +2,8 @@
   "entryPagePath": "pages/index/index",
   "pages": [
     "pages/index/index",
+    "pages/jdproducts/order/index",
+    "pages/jdproducts/address/add",
     "pages/jdproducts/jdproducts/list",
     "pages/jdproducts/detail/index",
     "pages/discount/zkbscancode/zkbscancode",
