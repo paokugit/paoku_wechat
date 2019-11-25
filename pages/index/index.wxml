@@ -467,7 +467,7 @@
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
       <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
-      <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">全部</view>
+        <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">全部</view>
         <block wx:for="{{cateList}}" wx:for-index="idx">
           <view bindtap="tabCategory" class="item {{selector==item.id?'actived':''}}" data-id="{{item.id}}">
             {{item.name}}
@@ -552,6 +552,13 @@
     <view class="fui-loading">
       <view class="icon"></view>
       <view class="text">正在加载</view>
+    </view>
+  </block>
+</block>
+<block>
+  <block wx:if="{{list.length==0}}">
+    <view class="fui-loading empty">
+      <view class="text">暂无商品</view>
     </view>
   </block>
 </block>
