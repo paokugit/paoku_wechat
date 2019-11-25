@@ -3,7 +3,12 @@
   <view class='balance-header'>
     <image src='{{globalimg}}/rvc-img.png'></image>
     <view class='balance-header-top'>
-      <view class='top-text'>可用余额</view>
+      <view class='top-text'>
+        <view class="top-text-tit">可用现金余额</view>
+        <view class="top-img" catchtap="poppingBtn">
+          <image src="{{globalimg}}/rvc_ts.png"></image>
+        </view>
+      </view>
       <view class='top-num'>{{credit}}</view>
     </view>
     <view class='balance-header-bottom'>
@@ -36,4 +41,11 @@
     </view>
   </view>
 
+  <view class="popping" style="{{sign == 0 ? 'display:none':''}}" catchtap="poppingBtn">
+    <view class="popping-box">
+      <view class="headline">温馨提示</view>
+      <view class="explain">可用余额指可用的人民币现金余额，充值的RVC数量根据充值提交时间的实时价值，自动兑换成人民币现金。</view>
+      <view class="know" catchtap="poppingBtn">知道了</view>
+    </view>
+  </view>
 </view>

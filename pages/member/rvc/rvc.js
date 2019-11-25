@@ -16,7 +16,8 @@ Page({
 
     credit: '',
     come_total: '',
-    frozen_credit: ''
+    frozen_credit: '',
+    sign:0
   },
 
   /**
@@ -40,6 +41,19 @@ Page({
         come_total: e.info.come_total,
         frozen_credit: e.info.sale_total
       })
+    })
+  },
+
+  poppingBtn:function(){
+    let m = this;
+    var index = m.data.sign;
+    if(index == 0){
+      index = 1;
+    } else if (index == 1){
+      index = 0;
+    }
+    m.setData({
+      sign: index
     })
   },
 
