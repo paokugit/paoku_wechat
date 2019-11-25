@@ -1,6 +1,12 @@
 var a, e, i = getApp(),
   s = i.requirejs("core");
 var f = getApp();
+//定义三列数组数据，用于存储省、市、县
+let multiArray0 = [];
+let multiArray1 = [];
+let multiArray2 = [];
+const app = getApp();
+
 Page({
 
   /**
@@ -10,19 +16,19 @@ Page({
     globalimg: i.globalData.appimg,
     showIcon: true,
     region: ['广东省', '广州市', '海珠区'],
-    multiArray: [], //国家省份三级联动数组
-    objectMultiArray: '', //中国省份数组
-    countriesShowList: [], //展示的国家数组
-    provincesShowList: [], //展示的省份数组
-    citiesShowList: [], //展示的地区数组
-    provincesShow: false, //是否第一次渲染省份数组
-    multiSelect: '>', //选中的所在地
+    multiIndex: [],
+    multiArray: [multiArray0, multiArray1, multiArray2], //封装obj
+    multiIndex: [0, 0, 0],
+    location_id: 41, //默认省份id
+    city_id: "411300000000", //默认城市id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.loadProivnce();
+
     this.setData({
       show: !0
     })
@@ -42,101 +48,245 @@ Page({
       },
       success: function(res) {
         console.log(res.data)
-        var arr = a.toArr(res.data, "中国")
-        console.log(arr)
-        a.setData({
-          multiArray: [arr.nameList, ['——'],
-            ['——']
-          ],
-          objectMultiArray: arr.itemList,
-          countriesShowList: arr.nameList
-        })
+
       }
     });
   },
-  toArr(object, findItem) { //object要遍历的对象  findItem查找项
-    var nameList = []; //返回的数组
-    var itemList = [];
-    var allMessage;
-    for (var i in object) {
-      nameList.push(object[i].name); //属性
-      if (findItem && object[i].name == findItem) { //遍历对象，找到findItem的所有数据
-        itemList = object[i];
-      }
-    }
-    if (findItem) {
-      allMessage = {
-        'nameList': nameList,
-        'itemList': itemList
-      }
-    } else {
-      allMessage = {
-        'nameList': nameList
-      }
-    }
-    return allMessage;
-  },
-  //城市三级联动选中
-  bindMultiPickerChange: function (e) {
-    var index = e.detail.value;
-    var arr;
 
-    if (index[0] == 36) { //选中中国
-      if (index[1] == null) {
-        if (this.data.citiesShowList[index[2]] && this.data.citiesShowList[index[2]] != '——') {
-          arr = this.data.countriesShowList[index[0]] + ',' + this.data.provincesShowList[0] + ',' + this.data.citiesShowList[index[2]]
-        } else {
-          arr = this.data.countriesShowList[index[0]] + ',' + this.data.provincesShowList[0]
-        }
-      } else {
-        if (this.data.citiesShowList[index[2]] && this.data.citiesShowList[index[2]] != '——') {
-          arr = this.data.countriesShowList[index[0]] + ',' + this.data.provincesShowList[index[1]] + ',' + this.data.citiesShowList[index[2]]
-        } else {
-          arr = this.data.countriesShowList[index[0]] + ',' + this.data.provincesShowList[index[1]]
-        }
-      }
-    } else {
-      arr = this.data.countriesShowList[index[0]]
+  //绑定选择器滑动事件
+  bindMultiPickerColumnChange: function(e) {
+    let that = this;
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    let data = {
+      multiArray: that.data.multiArray,
+      multiIndex: that.data.multiIndex
+    };
+
+    data.multiIndex[e.detail.column] = e.detail.value;
+
+
+    //data.multiIndex[0] : 第一列选择第几个
+    //data.multiIndex[1] : 第二列选择第几个
+
+    console.log("multiIndex0:" + data.multiIndex[0])
+    console.log("multiIndex1:" + data.multiIndex[1])
+
+
+    let province_id = multiArray0[data.multiIndex[0]].location_id; //获取选择到的省份id
+    let city_id = multiArray1[data.multiIndex[1]].location_id; //获取选择到的市区id
+
+    let obj = {
+      province_id: province_id, //第一列父元素ID
+      city_id: city_id, //第二列父元素ID
+      that: that,
+      column: e.detail.column,
+      valueIndex: e.detail.value
     }
-    this.setData({
-      multiSelect: arr
+    changePicker(obj);
+  },
+  //获取省份，后端提供的省份接口地址
+  loadProivnce() {
+    let that = this;
+    wx.request({
+      url: "http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp",
+      method: "post",
+      data: {
+        type: 0,
+        id: 0
+      },
+
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res) {
+        let dataArray = res.data.data.province;
+        multiArray0 = dataArray;
+        //根据默认省，获取默认市
+        that.loadCity(that.data.location_id)
+      }
     })
   },
-  //三级联动城市改变
-  bindMultiPickerColumnChange: function (e) {
-    var provincesList = this.data.objectMultiArray.provinces;  //省份
-    var provincesArr = this.toArr(provincesList).nameList;  //省份数组
-
-    //移动第一列时，选中中国的情况
-    if (e.detail.column == 0 && e.detail.value == 36) {
-      this.setData({
-        multiArray: [this.data.multiArray[0], provincesArr, ['——']],
-        provincesShowList: provincesArr,
-        provincesShow: true
-      })
-    } else if (e.detail.column == 0 && e.detail.value != 36) {   //选中非中国的国家情况 
-      this.setData({
-        multiArray: [this.data.multiArray[0], ['——'], ['——']]
-      })
-    }
-
-    //移动第二列，选中相应的省份显示地区
-    if (e.detail.column == 1 && this.data.provincesShow) {
-      var findProvincesList = this.toArr(provincesList, provincesArr[e.detail.value]); //provincesArr[e.detail.value] 当前选中的省份
-      var findCitiesList = this.toArr(findProvincesList.itemList.cities); //当前选中省份的地区数组
-      var citiesList;
-
-      if (findCitiesList.nameList.length > 0) { //当前省份是否有城市
-        citiesList = findCitiesList.nameList;
-      } else {
-        citiesList = ['——'];
+  //获取市级，后端提供的市级接口地址
+  loadCity(location_id) {
+    let that = this;
+    wx.request({
+      url: "http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp",
+      method: "post",
+      data: {
+        type: 1,
+        id: location_id,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res) {
+        console.log(res)
+        let dataArray = res.data.data.province
+        multiArray1 = dataArray;
+        //根据默认市获取对应区
+        that.loadCountry(that.data.city_id)
       }
-      this.setData({
-        multiArray: [this.data.multiArray[0], provincesArr, citiesList],
-        citiesShowList: citiesList
-      })
-    }
+    })
   },
+  //获取区县
+  loadCountry(location_id) {
+    let that = this;
+    wx.request({
+      url: "http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp",
+      method: "post",
+      data: {
+        type: 2,
+        id: location_id,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res) {
+        console.log(res)
+        let dataArray = res.data.data.province
+        multiArray2 = dataArray;
+
+        let province_id = that.data.location_id; //默认的省份id 
+        let city_id = that.data.city_id; //默认的市区id 
+        let multiArray0Index = 0,
+          multiArray1Index = 0;
+        multiArray0.map(function(v, i) {
+          //获取省份所在列的位置
+          if (v.location_id == province_id) {
+            multiArray0Index = i;
+          }
+        })
+        multiArray1.map(function(v, i) {
+          //获取市所在列的位置
+          if (v.location_id == city_id) {
+            multiArray1Index = i;
+          }
+        })
+        //市区对应的第一个区县id
+        let select_id = dataArray[0].location_id
+        //初始化
+        that.setData({
+          multiArray2: dataArray,
+          multiArray: [multiArray0, multiArray1, multiArray2], //封装obj
+          multiIndex: [multiArray0Index, multiArray1Index, 0],
+          country_id: select_id
+        })
+
+        that.search()
+
+      }
+    })
+  },
+  search() {
+    //根据条件查询 
+  },
+
+  //改变多列选择
+  changePicker(obj) {
+
+    let province_id = obj.province_id;
+    let city_id = obj.city_id;
+    let column = obj.column;
+    let valueIndex = obj.valueIndex;
+
+    let that = obj.that;
+    let newArray1 = [],
+      newArray2 = [];
+
+    console.log('province_id:' + province_id);
+
+    let province_index = 0;
+    //遍历省
+    multiArray0.map(function(value, index) {
+      if (value.location_id == province_id) {
+        province_index = index;
+
+        //请求市信息
+        wx.request({
+          url: "http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp",
+          method: "post",
+          data: {
+            type: 1,
+            id: province_id,
+          },
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success: function(res) {
+            let dataArray = res.data.data
+            newArray1 = dataArray;
+            let city_index = 0;
+            let country_id = newArray1[0].location_id;;
+            newArray1.map(function(v2, i2) {
+              if (v2.location_id == city_id) {
+                city_index = i2;
+                country_id = v2.location_id
+              }
+            })
+            if (column == 2) {
+              let select_id = multiArray2[valueIndex].location_id
+              //不请求区县信息
+              that.setData({
+                multiIndex: [province_index, city_index, valueIndex],
+                country_id: select_id
+              })
+              that.searchHospitalByTab()
+            } else {
+              //加载区县列表
+              wx.request({
+                url: "http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp",
+                method: "post",
+                data: {
+                  type: 0,
+                  id: country_id,
+                },
+                header: {
+                  'content-type': 'application/json' // 默认值
+                },
+                success: function(res2) {
+                  let dataArray2 = res2.data.data
+                  newArray2 = dataArray2;
+
+                  // 判断如果为空的情况下
+
+                  if (newArray1.length == 0) {
+                    newArray1.push({
+                      location_id: '-1',
+                      location_name: '-',
+                    })
+                  }
+                  if (newArray2.length == 0) {
+                    newArray2.push({
+                      location_id: '-1',
+                      location_name: '-',
+                    })
+                  }
+                  let select_id = newArray2[0].location_id
+                  multiArray1 = newArray1;
+                  multiArray2 = newArray2;
+
+                  that.setData({
+                    multiArray: [multiArray0, multiArray1, multiArray2],
+                    multiIndex: [province_index, city_index, 0],
+                    city_id: country_id,
+                    country_id: select_id
+                  })
+
+                  that.searchHospitalByTab()
+                }
+              })
+            }
+
+          }
+        })
+      }
+
+
+    })
+
+  },
+
+
   bindRegionChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({

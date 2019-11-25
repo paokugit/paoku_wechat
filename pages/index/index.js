@@ -32,7 +32,7 @@ var pricemark = 0;
 var salesmark = 0;
 var sortorder = "";
 var sortby = ""
-var cate = ""
+var cate = 171
 Page((e = {
   onPullDownRefresh: function() {
     wx.showToast({
@@ -334,7 +334,9 @@ Page((e = {
     }
   },
   // 超值兑换商品列表
+  
   get_list: function() {
+    console.log(cate)
     var t = this;
     t.setData({
       loading: !0
