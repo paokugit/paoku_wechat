@@ -180,8 +180,7 @@ image {
 
 .popping-box{
   width: 476rpx;
-  height: 367rpx;
-  padding: 0 28rpx;
+  padding: 40rpx 28rpx;
   background: #ffffff;
   border-radius: 30rpx;
   position: absolute;
@@ -193,7 +192,6 @@ image {
 .headline{
   font-size: 34rpx;
   color: #333333;
-  margin-top: 42rpx;
   padding-bottom: 30rpx;
   text-align: center;
   border-bottom: 1px solid #eaeaea;
@@ -201,6 +199,7 @@ image {
 
 .explain{
   font-size: 26rpx;
+  line-height: 40rpx;
   color: #666666;
   margin: 26rpx 30rpx 0;
 }
@@ -209,4 +208,5 @@ image {
   font-size: 34rpx;
   color: #01d7a1;
   text-align: center;
+  padding-top: 40rpx;
 }
