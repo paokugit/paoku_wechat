@@ -16,7 +16,8 @@ Page({
 
     credit: '',
     come_total: '',
-    frozen_credit: ''
+    frozen_credit: '',
+    sign:0
   },
 
   /**
@@ -26,9 +27,13 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
 
+    this.rvcindex();
+  },
+
+  rvcindex:function(){
     var t = this
     a.get('member/log/member_RVC', {
-      openid: userinfo.openid
+      openid: useropenid
     }, function (e) {
       console.log(e)
       t.setData({
@@ -36,6 +41,19 @@ Page({
         come_total: e.info.come_total,
         frozen_credit: e.info.sale_total
       })
+    })
+  },
+
+  poppingBtn:function(){
+    let m = this;
+    var index = m.data.sign;
+    if(index == 0){
+      index = 1;
+    } else if (index == 1){
+      index = 0;
+    }
+    m.setData({
+      sign: index
     })
   },
 
@@ -50,7 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.rvcindex();
   },
 
   /**

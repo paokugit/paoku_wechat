@@ -17,6 +17,8 @@
     </view>
   </view>
 
+  <view class="explain">到账金额=充值RVC数量*实时人民币价值</view>
+
   <view class="paybtn" catchtap="paybtn">充值</view>
 
 </view>

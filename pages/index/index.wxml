@@ -281,13 +281,14 @@
           <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free'>
             <view class='zkBox'>
               <view class='zkb-box'>
-                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <image wx:if="{{item.deduct_type==2&&item.minprice>0}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
                 <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0&&item.minprice>0}}" style='display:block'>赠{{item.minprice}}</view>
               </view>
               <view class='price-box'>
                 <text style="color:#707070;font-size:24rpx">折后</text>
-                <text class='dis-price'>￥{{item.showprice}}</text>
+                <text class='dis-price' wx:if="{{item.deduct_type==2 && item.deduct > 0}}">￥{{item.showprice}}</text>
+                <text class='dis-price' wx:if="{{item.deduct_type==2 && item.deduct == 0}}">￥{{item.minprice}}</text>
               </view>
             </view>
           </navigator>

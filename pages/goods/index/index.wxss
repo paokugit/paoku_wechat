@@ -579,7 +579,6 @@ page {
     align-items: center;
     border: 1rpx solid #f84900;
     border-radius: 5rpx;
-    margin-top: 10rpx;
 }
 
 .zhehouprice {

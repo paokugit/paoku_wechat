@@ -175,7 +175,7 @@ Page((e = {
       url: 'moremerch/moremerch',
     })
   },
-  products: function() {
+  products: function () {
     wx.navigateTo({
       url: '/pages/goods/index/index?cate=' + 171,
     })
