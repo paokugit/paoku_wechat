@@ -41,7 +41,9 @@ Page({
         id: 19
       }, //请求参数
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
+        'csrf-csrf': 'csrf-csrf',
+        "Authorization": wx.getStorageSync('Authorization')
       },
       complete() {
         wx.hideLoading();
@@ -96,9 +98,12 @@ Page({
       },
 
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
+        'csrf-csrf': 'csrf-csrf',
+        "Authorization": wx.getStorageSync('Authorization')
       },
       success: function(res) {
+        console.log(res)
         let dataArray = res.data.data.province;
         multiArray0 = dataArray;
         //根据默认省，获取默认市
@@ -117,7 +122,9 @@ Page({
         id: location_id,
       },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
+        'csrf-csrf': 'csrf-csrf',
+        "Authorization": wx.getStorageSync('Authorization')
       },
       success: function(res) {
         console.log(res)
@@ -139,7 +146,9 @@ Page({
         id: location_id,
       },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
+        'csrf-csrf': 'csrf-csrf',
+        "Authorization": wx.getStorageSync('Authorization')
       },
       success: function(res) {
         console.log(res)
@@ -183,7 +192,7 @@ Page({
 
   //改变多列选择
   changePicker(obj) {
-
+    console.log(obj)
     let province_id = obj.province_id;
     let city_id = obj.city_id;
     let column = obj.column;
@@ -210,7 +219,9 @@ Page({
             id: province_id,
           },
           header: {
-            'content-type': 'application/json' // 默认值
+            'content-type': 'application/x-www-form-urlencoded',
+            'csrf-csrf': 'csrf-csrf',
+            "Authorization": wx.getStorageSync('Authorization')
           },
           success: function(res) {
             let dataArray = res.data.data
@@ -241,7 +252,9 @@ Page({
                   id: country_id,
                 },
                 header: {
-                  'content-type': 'application/json' // 默认值
+                  'content-type': 'application/x-www-form-urlencoded',
+                  'csrf-csrf': 'csrf-csrf',
+                  "Authorization": wx.getStorageSync('Authorization')
                 },
                 success: function(res2) {
                   let dataArray2 = res2.data.data
