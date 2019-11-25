@@ -1,0 +1,6 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="拼团购"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view>
+  123
+</view>
