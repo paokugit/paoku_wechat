@@ -242,10 +242,13 @@ Page((e = {
       allPrice: 'sc_tj_icon_jg_nor@2x',
       allSales: 'sc_tj_icon_jg_nor@2x',
     })
+
+    console.log(this.data.list);
+
     cate = t.currentTarget.dataset.id
     sortorder = "";
     sortby = ""
-    this.get_list()
+    // this.get_list()
   },
   checkAllt: function(e) {
     console.log(cate)
@@ -353,6 +356,8 @@ Page((e = {
           topdisp: 'block'
         })
       }
+
+      console.log(t.data.page);
 
       let record = t.data.page - 1;
       0 == e.error ? (t.setData({

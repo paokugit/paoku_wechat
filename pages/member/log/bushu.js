@@ -43,13 +43,12 @@ Page({
           show: !0
         };
         if (1 == t.data.page) {
-          e.isopen = a.isopen;
           var i = "RVC明细";
           wx.setNavigationBarTitle({
             title: i
           });
         }
-        t.setData({ typeIndex: e.type})
+        t.setData({ typeIndex: a.type})
         a.list || (a.list = []), a.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.list),
           a.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
       }

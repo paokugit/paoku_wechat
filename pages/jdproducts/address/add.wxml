@@ -62,13 +62,9 @@
   </picker>
 </view>
 
-<!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
 
   <view class="picker">
     当前选择：{{multiArray[0][multiIndex[0]]}} > {{multiArray[1][multiIndex[1]]}}
   </view>
-</picker> -->
-<picker style="background:pink" class="picker" mode="multiSelector" bindchange="bindPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'location_name'}}">
-  <text class="menu_text">{{multiArray[2][multiIndex[2]].location_name}}</text>
-  <icon class="iconfont icon-xiala"></icon>
 </picker>
