@@ -195,10 +195,6 @@
   margin: 0 9rpx;
 }
 
-.store-name{
-  font-size: 26rpx;
-  color: #999999;
-}
 
 .store-name{
   font-size: 26rpx;

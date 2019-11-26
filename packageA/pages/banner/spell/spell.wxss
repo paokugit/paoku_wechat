@@ -1,1 +1,309 @@
-/* packageA/pages/banner/spell/spell.wxss */
+.search{
+  background: #fff;
+  padding: 12rpx 24rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.search-frame{
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #f7f7f7;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #cccccc; 
+  padding-left: 74rpx;
+}
+.search image{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 8%;
+  top: 30%;
+}
+
+
+.carousel{
+  position: relative;
+}
+
+.swiper-item{
+  height: 370rpx;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 8rpx;
+  width: 16rpx;
+  height: 6rpx;
+  background: #fee6de;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.dot.active {
+  width: 26rpx;
+  background: #fff;
+}
+
+/* 选项卡点击 */
+.all-filtrate{
+  width: 100%;
+  height: 84rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.all-price,.all-sales{
+  display: flex;
+  align-items: center;
+}
+.all-synthesize,.all-price,.all-sales{
+  width: 100rpx;
+  height: 84rpx;
+  text-align: center;
+  line-height: 84rpx;
+}
+.all-synthesize,.all-price-text,.all-sales-sales{
+  font-size: 28rpx;
+  color: #666666;
+}
+.all-price-img,.all-sales-img{
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+
+.all-switchover{
+  width: 84rpx;
+  height: 84rpx;
+  text-align: center;
+  line-height: 84rpx;
+}
+
+.nowActive{
+  color: #01d7a1;
+}
+
+
+/* 状态1 */
+.list{
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20rpx;
+}
+
+.spell{
+  width: 344rpx;
+  background: #fff;
+  margin-bottom: 21rpx;
+  border-radius: 10rpx;
+}
+
+.spell-image{
+  height: 351rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  background: red;
+}
+
+.spell-name{
+  font-size: 34rpx;
+  color: #323232;
+  font-weight: bold;
+  margin: 30rpx 20rpx 40rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.spell-money{
+  margin: 0 20rpx 30rpx;
+}
+
+.spell-price{
+  font-size: 40rpx;
+  color: #ff0000;
+  margin-right: 21rpx;
+}
+
+.spell-price::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+
+.spell-payment{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.spell-people{
+  margin: 0 20rpx 20rpx;
+}
+
+
+.spell-more-img{
+  padding: 3rpx 10rpx;
+  background: #ff0000;
+  border-top-left-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
+}
+
+.spell-more-img image{
+  width: 22rpx;
+  height: 18rpx;
+}
+
+.spell-text{
+  font-size: 20rpx;
+  color: #ff0000;
+  padding: 5rpx 11rpx;
+  border-top-right-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
+  border: 1px solid #ff0000;
+}
+
+.mail{
+  border-radius: 6rpx;
+  border: 1px solid #ffa001;
+  font-size: 20rpx;
+  color: #ffa001;
+  padding: 5rpx 11rpx;
+  margin-left: 10rpx;
+}
+
+.look{
+  margin: 0 20rpx 25rpx;
+}
+
+.store-name{
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.store-enter{
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 10rpx;
+}
+
+
+/* 状态2 */
+.acrosslist{
+  background: #fff;
+  padding: 24rpx;
+}
+
+.across-image{
+  width: 294rpx;
+  height: 294rpx;
+  border-radius: 10rpx;
+  margin-right: 25rpx;
+  background: red;
+}
+
+.across-detail{
+  width: 382rpx;
+}
+
+.across-name{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.people-payment{
+  margin: 40rpx 0 40rpx;
+}
+
+.payment-num{
+  font-size: 40rpx;
+  color: #ff0000;
+  margin-right: 20rpx;
+}
+
+.payment-num::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #ff0000;
+}
+
+.payment-yi{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.jigsaw{
+  padding: 3rpx 10rpx;
+  background: #ff0000;
+  border-top-left-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
+}
+
+.jigsaw image{
+  width: 22rpx;
+  height: 18rpx;
+}
+
+.together{
+  font-size: 20rpx;
+  color: #ff0000;
+  padding: 5rpx 11rpx;
+  border-top-right-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
+  border: 1px solid #ff0000;
+}
+
+.exemption{
+  border-radius: 6rpx;
+  border: 1px solid #ffa001;
+  font-size: 20rpx;
+  color: #ffa001;
+  padding: 5rpx 11rpx;
+  margin-left: 10rpx;
+}
+
+.watch{
+  margin-top: 20rpx;
+}
+
+.watch-name{
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.watch-enter{
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 10rpx;
+}
+
+
+/* 共用 */
+.flexcss{
+  display: flex;
+  align-items: center;
+}
+
+.on-earth{
+  font-size: 26rpx;
+  color: #9b9b9b;
+  text-align: center;
+  margin-top: 45rpx;
+}

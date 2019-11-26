@@ -24,6 +24,7 @@ Page({
     nowSign: 0,
     sortWay: 0,
     scrollTop: 0,
+    
 
     list:[
       { adv: 1 },

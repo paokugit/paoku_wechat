@@ -1,6 +1,110 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="拼团购"></navigation>
 <loading wx:if="{{!show}}">加载中...</loading>
 
-<view>
-  123
+<view> 
+  <navigator url="/pages/goods/index/index?fromsearch=1" class="search">
+    <view class="search-frame">输入关键字进行搜索</view>
+    <image src="{{globalimg}}/search@2x.png"></image>
+  </navigator>
+
+  <view class="carousel">
+    <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
+      <block wx:for="{{background}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item" style="background:{{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{background}}" wx:key="index">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="all-filtrate">
+    <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+
+    <view class="all-price" data-now="1" bindtap='checkAllt'>
+      <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+      <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+    </view>
+
+    <view class="all-sales" data-now="2" bindtap='checkAllt'>
+      <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+      <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+    </view>
+
+    <view class="all-switchover" bindtap="sortBtn">
+      <text class="icon icox {{sortWay == 1?'icox-viewlist':'icox-app'}}"></text>
+    </view>
+  </view>
+
+  <view>
+    <!-- 状态1 -->
+    <view class="list flexcss" style="{{sortWay == 0 ? '' : 'display:none'}}">
+      <block wx:for="{{3}}" wx:key="index">
+        <view class="spell">
+          <view class="spell-image"></view>
+          <view class="spell-name">利仁D1803多功能长时间按市场价凯撒将洒出</view>
+          <view class="flexcss spell-money">
+            <view class="spell-price">34.90</view>
+            <view class="spell-payment">1万人已付款</view>
+          </view>
+          <view class="flexcss spell-people">
+            <view class="flexcss">
+              <view class="spell-more-img"><image src="{{globalimg}}/icon-pt@2x.png"></image></view>
+              <view class="spell-text">2人拼</view>
+            </view>
+            <view class="mail">包邮</view>
+          </view>
+          <view class="flexcss look">
+            <view class="store-name">跑库旗舰店</view>
+            <view class="store-enter">进店 ></view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 状态2 -->
+    <view style="{{sortWay == 1 ? '' : 'display:none'}}">
+      <block wx:for="{{3}}" wx:key="index">
+        <view class="flexcss acrosslist">
+          <view class="across-image"></view>
+          <view class="across-detail">
+            <view class="across-name">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼长沙市看看</view>
+            <view class="flexcss people-payment">
+              <view class="payment-num">34.90</view>
+              <view class="payment-yi">1万人已付款</view>
+            </view>
+            <view class="flexcss activity-tit">
+              <view class="flexcss">
+                <view class="jigsaw">
+                  <image src="{{globalimg}}/icon-pt@2x.png"></image>
+                </view>
+                <view class="together">2人拼</view>
+              </view>
+
+              <view class="exemption">包邮</view>
+            </view>
+            <view class="flexcss watch">
+              <view class="watch-name">跑库旗舰店</view>
+              <view class="watch-enter">进店 ></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  
+  </view>
+
+  <block wx:if="{{!loading}}">
+    <view class="fui-loading">
+      <view class="icon"></view>
+      <view class="text">正在加载</view>
+    </view>
+  </block>
+
+  <view class="on-earth" style="margin-bottom: 150rpx;">到底了哦</view>
+
 </view>
