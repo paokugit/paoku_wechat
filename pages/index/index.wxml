@@ -556,13 +556,6 @@
   </block>
 </block>
 <block>
-  <block wx:if="{{list.length==0}}">
-    <view class="fui-loading empty">
-      <view class="text">暂无商品</view>
-    </view>
-  </block>
-</block>
-<block>
   <block wx:if="{{list.length==total&&total>0}}">
     <view class="fui-loading empty">
       <view class="text">没有更多了</view>
