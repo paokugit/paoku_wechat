@@ -16,6 +16,9 @@ Page({
 
     dredgeA:'icon_xx8@2x.png',
     dredgeB:"icon_xs8@2x.png",
+
+    zerotit: '',
+    toggle: 0
   },
 
   /**
@@ -26,9 +29,11 @@ Page({
     useropenid = userinfo.openid;
 
     var m = this;
+
     m.setData({
-      show: !0,
-    })
+      zerotit: options.text,
+      toggle: options.type
+    });
   },
 
   explain:function(e){

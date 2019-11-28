@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="拼团购"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="{{zerotit}}"></navigation>
 <loading wx:if="{{!show}}">加载中...</loading>
 
 <view> 
@@ -9,14 +9,14 @@
 
   <view class="carousel">
     <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
-      <block wx:for="{{background}}" wx:key="index">
+      <block wx:for="{{banner}}" wx:key="index">
         <swiper-item>
-          <view class="swiper-item" style="background:{{item}}"></view>
+          <image class="swiper-item" src="{{item.thumb}}"></image>
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{background}}" wx:key="index">
+      <block wx:for="{{banner}}" wx:key="index">
         <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
       </block>
     </view>

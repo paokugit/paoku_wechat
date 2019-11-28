@@ -24,7 +24,10 @@ Page({
 
     rankingA:'whbd_icon_1@2x',
     rankingB:'whbd_icon_2@2x',
-    rankingC:'whbd_icon_3@2x'
+    rankingC:'whbd_icon_3@2x',
+
+    zerotit:'',
+    toggle:0
   },
 
   /**
@@ -35,9 +38,12 @@ Page({
     useropenid = userinfo.openid;
 
     var m = this;
+
     m.setData({
-      show: !0,
-    })
+      zerotit: options.text,
+      toggle: options.type
+    });
+
   },
 
   /**

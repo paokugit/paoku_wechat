@@ -21,6 +21,9 @@ Page({
     cutlit:11,
     nearness:'icon_xx8@2x',
     shopind:0,
+    
+    zerotit:'',
+    toggle:0
   },
 
   /**
@@ -31,10 +34,70 @@ Page({
     useropenid = userinfo.openid;
 
     var m = this;
+
     m.setData({
-      show: !0,
+      zerotit: options.text,
+      toggle: options.type
+    });
+  },
+
+  bannerList: function (e) {
+    var m = this;
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.shop.shop_cate_banner',
+      data: {
+        id: m.data.toggle
+      },
+      success(res) {
+
+        console.log(res);
+
+        if (res.data.error == 0) {
+          m.setData({
+            banner: res.data.data.banner
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
     })
   },
+  getList: function () {
+    var t = this;
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.shop.shop_cate_list',
+      data: {
+        id: t.data.toggle
+      },
+      success(res) {
+
+        console.log(res);
+
+        t.setData({
+          show: !0,
+          loading: 0
+        })
+        // if (res.data.error == 0) {
+        //   t.setData({
+        //     list: t.data.list.concat(res.data.data.list),
+        //     page: res.data.data.page + 1,
+        //     totalpage: res.data.data.pagetotal
+        //   })
+        // } else if (res.data.error == 1) {
+        //   wx.showToast({
+        //     title: res.data.message,
+        //     icon: 'none',
+        //     duration: 2000
+        //   })
+        // }
+      }
+    })
+  },
+
 
   swiperChange: function (e) {
     this.setData({
@@ -86,7 +149,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.bannerList();
+    this.getList();
   },
 
   /**
@@ -107,7 +171,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var t = this;
+    t.setData({
+      loading: !0,
+    })
 
+    if (t.data.page <= t.data.totalpage) {
+      t.getList();
+    } else {
+      t.setData({
+        loading: 0
+      })
+    }
   },
 
   /**

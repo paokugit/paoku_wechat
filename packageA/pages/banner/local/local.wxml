@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="同城"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="{{zerotit}}"></navigation>
 <loading wx:if="{{!show}}">加载中...</loading>
 
 <view>

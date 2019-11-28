@@ -20,7 +20,7 @@ button::after {
 .storeBox {
   width: 100%;
   height: auto;
-  background: pink;
+  /* background: pink; */
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -83,7 +83,6 @@ swiper {
 .activity-item-box {
   width: 702rpx;
   height: 365rpx;
-  background: #f66;
 }
 
 .carousel_swiper {
@@ -103,10 +102,11 @@ swiper {
   width: 100%;
   height: 365rpx;
   padding: 30rpx 0;
-  background: #f99;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background: #fff;
+  border-radius: 10rpx;
 }
 
 .activity-items {
@@ -134,7 +134,7 @@ swiper {
 .recommend-box {
   width: 702rpx;
   height: 150rpx;
-  background: #ff6;
+  background: #fff;
   border-radius: 20rpx;
   margin: 24rpx 0rpx;
   display: flex;
@@ -165,7 +165,6 @@ swiper {
 .news-right {
   width: 500rpx;
   height: 44rpx;
-  background: #ff6;
   margin-left: 20rpx;
   display: flex;
   align-items: center;

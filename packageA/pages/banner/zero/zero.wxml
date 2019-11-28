@@ -9,48 +9,48 @@
 
   <view class="carousel">
     <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
-      <block wx:for="{{background}}" wx:key="index">
+      <block wx:for="{{banner}}" wx:key="index">
         <swiper-item>
-          <view class="swiper-item" style="background:{{item}}"></view>
+          <image class="swiper-item" src="{{item.thumb}}"></image>
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{background}}" wx:key="index">
+      <block wx:for="{{banner}}" wx:key="index">
         <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
       </block>
     </view>
   </view> 
 
   <!-- 0元兑 -->
-  <view wx:if="{{toggle == 0?true:false}}">
-    <block wx:for="{{3}}" wx:key="index">
-      <view class="goodsList flexcss">
-        <view class="listImg"></view>
+  <view wx:if="{{toggle == 5?true:false}}">
+    <block wx:for="{{list}}" wx:key="index">
+      <navigator class="goodsList flexcss" url="/pages/goods/detail/index?id={{item.id}}">
+        <view class="listImg"><image src="{{item.thumb}}"></image></view>
 
         <view class="listDetail">
-          <view class="goods-name">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼按时吃撒初三擦</view>
+          <view class="goods-name">{{item.title}}</view>
           
           <view class="cost">
             <view class="flexcss">
-              <view class="present-price">0</view>
-              <view class="yi-buy">1万人已付款</view>
+              <view class="present-price">{{item.marketprice}}</view>
+              <view class="yi-buy">{{item.order}}人已付款</view>
             </view>
-            <view class="original-cost">原价￥55</view>
+            <view class="original-cost">原价￥{{item.productprice}}</view>
           </view>
 
           <view class="flexcss snapBtn">
-            <view class="postage">包邮</view>
+            <view class="postage">{{item.sendfree}}</view>
             <view class="snap-up">立即抢购</view>
           </view>
         </view>
         
-      </view>
+      </navigator>
     </block>
   </view>
 
   <!-- 分享赚 -->
-  <view wx:if="{{toggle == 1?true:false}}">
+  <view wx:if="{{toggle == 6?true:false}}">
     
     <view class="{{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
       <navigator url="/pages/goods/index/index?fromsearch=1" class="search" style="{{scrollTop >160?'':'display:none'}}">
@@ -73,16 +73,16 @@
       </view>
     </view>
 
-    <block wx:for="{{6}}" wx:key="index">
-      <view class="goodsList flexcss">
-        <view class="listImg"></view>
+    <block wx:for="{{list}}" wx:key="index">
+      <navigator class="goodsList flexcss" url="/pages/goods/detail/index?id={{item.id}}">
+        <view class="listImg"><image src="{{item.thumb}}"></image></view>
 
         <view class="listDetail">
-          <view class="goods-name">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼按时吃撒初三擦</view>
+          <view class="goods-name">{{item.title}}</view>
           
           <view class="money-people flexcss">
-            <view class="money-fen">9.9</view>
-            <view class="people-fen">100人已分享</view>
+            <view class="money-fen">{{item.marketprice}}</view>
+            <view class="people-fen">{{item.total}}人已分享</view>
           </view>
 
           <view class="flexcss snapBtn">
@@ -94,7 +94,7 @@
           </view>
         </view>
         
-      </view>
+      </navigator>
     </block>
   </view>
 
