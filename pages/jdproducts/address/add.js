@@ -224,19 +224,16 @@ Page({
   },
 
   nameChange: function(t) {
-    console.log(t)
     this.setData({
       realname: t.detail.value,
     })
   },
   phoneChange: function(t) {
-    console.log(t)
     this.setData({
       mobile: t.detail.value,
     })
   },
   streetChange: function(t) {
-    console.log(t)
     this.setData({
       address: t.detail.value,
     })
