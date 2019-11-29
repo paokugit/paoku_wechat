@@ -86,34 +86,11 @@
                     <input bindinput="inputChange" class="fui-input" data-type="realname" max="25" placeholder="请输入姓名" type="text" value="{{info.last_data.realname}}"></input>
                   </view>
                 </view>
-                <block wx:for="{{info.type_array}}" wx:key="index">
-                    <radio-group>
-                        <block>
-                            <block wx:if="{{item.type=='0'}}">
-                                <label bindtap="typeChange" data-name="0">
-                                    <view class="fui-cell applyradio">
-                                        <view class="fui-cell-icon">
-                                            <image alt="" src="{{globalimg}}/wx.png"></image>
-                                        </view>
-                                        <view class="fui-cell-info">
-                    {{item.title}}
-                </view>
-                                        <view class="fui-cell-remark noremark">
-                                            <radio checked="{{checked.id==0?'checked':''}}" class="fui-radio fui-radio-danger" color="#ff5555" data-type="{{item.type}}" value="1"></radio>
-                                        </view>
-                                    </view>
-                                </label>
-                            </block>
-                        </block>
-                        <block>
-                            <block wx:if="{{item.type=='2'}}">
-                                <label bindtap="typeChange" data-name="1">
-                                    <view class="fui-cell applyradio">
-                                        <view class="fui-cell-icon">
-                                            <image alt="" src="{{globalimg}}/zfb.png"></image>
-                                        </view>
-                                        <view class="fui-cell-info">
-                    {{item.title}}
+                <view class="fui-cell">
+                  <view class="fui-cell-label">支付宝帐号</view>
+                  <view class="fui-cell-info">
+                    <input bindinput="inputChange" class="fui-input" data-type="alipay" max="25" placeholder="请输入支付宝账号" value="{{info.last_data.alipay}}"></input>
+                  </view>
                 </view>
                 <view class="fui-cell alipay-group">
                   <view class="fui-cell-label">确认帐号</view>

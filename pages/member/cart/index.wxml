@@ -23,8 +23,6 @@
           <view bindtap="cancelclick" class="cancel">取消</view>
           <view bindtap="confirmclick" class="confirm">去设置</view>
         </view>
-      </view>
-    </view>
   </block>
 </block>
 <block>
