@@ -1,7 +1,7 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="领取记录"></navigation>
 <view class="expedite-box tierCss" style='height: 100%;'>
   <view class="tierCss">
-    <view class="getList" wx:for="{{recordList}}" wx:key="index" wx:if="{{recordList == ''?false:true}}">
+    <view class="getList" wx:for="{{recordList}}" wx:key="{{index}}" wx:if="{{recordList == ''?false:true}}">
       <view class="leftImg">
         <text class="freeGet">免费</text>
         <image style="border-radius: 10rpx;" src="{{item.thumb}}"></image>

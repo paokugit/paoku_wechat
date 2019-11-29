@@ -138,7 +138,7 @@ Page({
         } else if (usercode == code) {
             console.log('验证码正确')
             // 验证码正确
-          s.get("myown/bindmobile/bind_discount", {
+            s.get("myown/bindmobile/bind", {
                 mobile: usermobile,
                 openid: userinfo.openid
             }, function (t) {

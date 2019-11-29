@@ -4,7 +4,7 @@
             <view bindtap="emptyActive" class="coupontitle">领取优惠券 <text class="icox icox-close pull-right"></text>
             </view>
             <view class="coupon-list mini">
-                <block wx:for="{{coupon}}" wx:key="index">
+                <block wx:for="{{coupon}}">
                     <view class="coupon-item {{item.color}}">
                         <view class="coupon-dots">
                             <i></i>

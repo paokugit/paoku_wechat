@@ -28,7 +28,7 @@
           </view>
         </view>
         <view class='speed-done' style='display:{{speeddone}}'>
-          加速已结束，获得{{credit}}折扣宝
+          加速已结束，获得{{credit}}卡路里
         </view>
       </view>
     </view>
@@ -50,7 +50,7 @@
       </view>
       
       <view class='rights-box' wx:if="{{levelid==5}}">
-        <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="index">
+        <view class='rights' style='width:260rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
           <view class='rights-img'>
             <image src='{{globalimg}}{{item.img}}'></image>
           </view>
@@ -58,7 +58,7 @@
         </view>
       </view>
       <view class='rights-box' wx:else>
-        <view class='rights' style='width:220rpx' wx:for="{{levelinfo}}" wx:key="index">
+        <view class='rights' style='width:220rpx' wx:for="{{levelinfo}}" wx:key="{{index}}">
           <view class='rights-img'>
             <image src='{{globalimg}}{{item.img}}'></image>
           </view>

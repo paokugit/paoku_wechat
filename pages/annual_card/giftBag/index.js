@@ -180,13 +180,7 @@ Page({
             })
           }
         })
-      } else if (e.status == 0){
-        wx.showToast({
-          title: e.result.message,
-          icon: 'none',
-          duration: 2000
-        })
-      } 
+      }
     })
   },
   

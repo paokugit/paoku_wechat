@@ -131,8 +131,8 @@ Page({
     }, function(eve) {
       console.log(eve)
       steptoday = eve.message.step_today
-      creditsum = eve.message.credit_sumdiscount
-      creditprice = eve.message.credit_pricediscount
+      creditsum = eve.message.credit_sum
+      creditprice = eve.message.credit_price
       t.setData({
         steptoday: steptoday,
         creditsum: creditsum,

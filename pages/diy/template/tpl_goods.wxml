@@ -1,188 +1,168 @@
 <!-- <view class='discount_box'></view> -->
-<!-- 商品列表 -->
 <view class="swiper-tab">
-  <view bindtap="myTab" class="swiper-tab-item {{select==0?'active':''}}" data-select="0">价格</view>
-  <view bindtap="myTab" class="swiper-tab-item {{select==1?'active':''}}" data-select="1">销量</view>
-  <view bindtap="myTab" class="swiper-tab-item {{select==2?'active':''}}" data-select="2">最新</view>
+    <view bindtap="myTab" class="swiper-tab-item {{select==0?'active':''}}" data-select="0">价格</view>
+    <view bindtap="myTab" class="swiper-tab-item {{select==1?'active':''}}" data-select="1">销量</view>
+    <view bindtap="myTab" class="swiper-tab-item {{select==2?'active':''}}" data-select="2">最新</view>
 </view>
 <view class="{{select==0 ? 'show':'hidden'}}">
+    <scroll-view>
+        <view class='sort_price'>
+          <view class='product-items' wx:for="{{list}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
+            
+            <block wx:if="{{item.adv == 0?true:false}}" >
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                  <image src='{{item.thumb}}'></image>
+                  <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                      <image src='{{globalimg}}/saleout-2.png'></image>
+                  </view>
+                  <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                      <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                  </view>
+              </navigator>
+              <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+              <view class='zkBox'>
+                  <view class='zkb-box'>
+                      <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                      <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                  </view>
+              </view>
+              <view class='price-box'>
+                  <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
+                  <view class='discountprice-box'>
+                      <view class='dis-text'>折后</view>
+                      <view class='dis-price'>￥{{item.showprice}}</view>
+                  </view>
+                  <view class='originalprice'>{{item.productprice}}元</view>
+              </view>
+            </block>
 
-  <!-- <scroll-view> -->
-    <view class='sort_price'>
- 
-      <block wx:for="{{list}}" wx:for-item="listItem" wx:key="{{listItem}}">
+            <block wx:if="{{item.adv == 1?true:false}}">
+              <view class="main_target">{{item.main_target}}</view>
+              <view class="substandard">{{item.substandard}}</view>
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
+                <image src='{{item.thumb}}'></image>
+                <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                  <image src='{{globalimg}}/saleout-2.png'></image>
+                </view>
+                <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                  <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                </view>
+              </navigator>
+              <navigator hover-class="none" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
+            </block>
 
-        <view class='product-items' wx:for="{{listItem}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
-          <block wx:if="{{item.adv == 0?true:false}}">
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
-            <view class='zkBox'>
-              <view class='zkb-box'>
-                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-                
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
-              </view>
-            </view>
-            <view class='price-box'>
-              <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
-              <view class='discountprice-box'>
-                <view class='dis-text'>折后</view>
-                <view class='dis-price'>￥{{item.showprice}}</view>
-              </view>
-              <view class='originalprice'>{{item.productprice}}元</view>
-            </view>
-          </block>
+          </view>
 
-          <block wx:if="{{item.adv == 1?true:false}}">
-            <view class="main_target">{{item.main_target}}</view>
-            <view class="substandard">{{item.substandard}}</view>
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator hover-class="none" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
-          </block>
         </view>
-
-      </block>
-
-    </view>
-  <!-- </scroll-view> -->
+    </scroll-view>
 </view>
 <view class="{{select==1 ? 'show':'hidden'}}">
+    <scroll-view>
+        <view class='sort-new'>
+          <view class='product-items' wx:for="{{list}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
+            
+            <block wx:if="{{item.adv == 0?true:false}}">
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                  <image src='{{item.thumb}}'></image>
+                  <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                      <image src='{{globalimg}}/saleout-2.png'></image>
+                  </view>
+                  <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                      <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                  </view>
+              </navigator>
+              <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+              <view class='zkBox'>
+                  <view class='zkb-box'>
+                      <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                      <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                  </view>
+              </view>
+              <view class='price-box'>
+                  <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
+                  <view class='discountprice-box'>
+                      <view class='dis-text'>折后</view>
+                      <view class='dis-price'>￥{{item.showprice}}</view>
+                  </view>
+                  <view class='originalprice'>{{item.productprice}}元</view>
+              </view>
+            </block>
 
-  <!-- <scroll-view> -->
-    <view class='sort-new'>
+            <block wx:if="{{item.adv == 1?true:false}}">
+              <view class="main_target">{{item.main_target}}</view>
+              <view class="substandard">{{item.substandard}}</view>
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
+                <image src='{{item.thumb}}'></image>
+                <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                  <image src='{{globalimg}}/saleout-2.png'></image>
+                </view>
+                <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                  <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                </view>
+              </navigator>
+              <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
+            </block>
 
-      <block wx:for="{{list}}" wx:for-item="listItem" wx:key="{{listItem}}">
-
-        <view class='product-items' wx:for="{{listItem}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
-
-          <block wx:if="{{item.adv == 0?true:false}}">
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
-            <view class='zkBox'>
-              <view class='zkb-box'>
-                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-                
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
-              </view>
-            </view>
-            <view class='price-box'>
-              <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
-              <view class='discountprice-box'>
-                <view class='dis-text'>折后</view>
-                <view class='dis-price'>￥{{item.showprice}}</view>
-              </view>
-              <view class='originalprice'>{{item.productprice}}元</view>
-            </view>
-          </block>
-
-          <block wx:if="{{item.adv == 1?true:false}}">
-            <view class="main_target">{{item.main_target}}</view>
-            <view class="substandard">{{item.substandard}}</view>
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
-          </block>
+          </view>
         </view>
-
-      </block>
-
-    </view>
-  <!-- </scroll-view> -->
+    </scroll-view>
 </view>
 <view class="{{select==2 ? 'show':'hidden'}}">
+    <scroll-view>
+        <view class='sort-sale'>
+          <view class='product-items' wx:for="{{list}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
+           
+            <block wx:if="{{item.adv == 0?true:false}}">
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
+                  <image src='{{item.thumb}}'></image>
+                  <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                      <image src='{{globalimg}}/saleout-2.png'></image>
+                  </view>
+                  <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                      <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                  </view>
+              </navigator>
+              <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
+              <view class='zkBox'>
+                  <view class='zkb-box'>
+                      <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                      <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
+                      <view class='zkb-count' wx:if="{{item.deduct_type==2}}" style='display:block'>-{{item.deduct}}</view>
+                      <view class='calorie-count' wx:if="{{item.deduct_type==1}}" style='display:block'>-{{item.deduct}}</view>
+                  </view>
+              </view>
+              <view class='price-box'> 
+                  <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
+                  <view class='discountprice-box'>
+                      <view class='dis-text'>折后</view>
+                      <view class='dis-price'>￥{{item.showprice}}</view>
+                  </view>
+                  <view class='originalprice'>{{item.productprice}}元</view>
+              </view>
+            </block>
 
-  <!-- <scroll-view> -->
-    <view class='sort-sale'>
+            <block wx:if="{{item.adv == 1?true:false}}">
+              <view class="main_target">{{item.main_target}}</view>
+              <view class="substandard">{{item.substandard}}</view>
+              <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
+                <image src='{{item.thumb}}'></image>
+                <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                  <image src='{{globalimg}}/saleout-2.png'></image>
+                </view>
+                <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
+                  <image src='{{globalimg}}/baoyou-b@2x.png'></image>
+                </view>
+              </navigator>
+              <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
+            </block>
 
-      <block wx:for="{{list}}" wx:for-item="listItem" wx:key="{{listItem}}">
-
-        <view class='product-items' wx:for="{{listItem}}" wx:key="{{index}}" style="{{item.adv == 0?'background:#fff':'background:rgb(0,219,161)'}}">
-
-          <block wx:if="{{item.adv == 0?true:false}}">
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImg'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator class='proTit' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}">{{item.title}}</navigator>
-            <view class='zkBox'>
-              <view class='zkb-box'>
-                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
-                <image wx:if="{{item.deduct_type==1}}" style='display:block' class='zkbImg' src='{{globalimg}}/calorie02.png'></image>
-            
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
-                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.showprice}}</view>
-              </view>
-            </view>
-            <view class='price-box'>
-              <!-- <view class='discountprice-box-free' wx:if="{{item.showprice==0}}">免费兑</view> -->
-              <view class='discountprice-box'>
-                <view class='dis-text'>折后</view>
-                <view class='dis-price'>￥{{item.showprice}}</view>
-              </view>
-              <view class='originalprice'>{{item.productprice}}元</view>
-            </view>
-          </block>
-
-          <block wx:if="{{item.adv == 1?true:false}}">
-            <view class="main_target">{{item.main_target}}</view>
-            <view class="substandard">{{item.substandard}}</view>
-            <navigator openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class='proImgA'>
-              <image src='{{item.thumb}}'></image>
-              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-                <image src='{{globalimg}}/saleout-2.png'></image>
-              </view>
-              <view class='postage-free' wx:if="{{item.issendfree==1}}" style='display:block'>
-                <image src='{{globalimg}}/baoyou-b@2x.png'></image>
-              </view>
-            </navigator>
-            <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.gid}}" class="checkBtn">查看</navigator>
-          </block>
+          </view>
 
         </view>
-
-      </block>
-
-    </view>
-  <!-- </scroll-view> -->
+    </scroll-view>
 </view>
 <view class='read-more'>查看更多</view>

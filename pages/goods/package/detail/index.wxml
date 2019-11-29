@@ -9,7 +9,7 @@
     <navigation id='Navigation' show-icon='{{showIcon}}' title="套餐"></navigation>
         <view class="page navbar">
             <view class="fui-list-group" id="container">
-                <block wx:for="{{packgoods}}" wx:key="{{index}}">
+                <block wx:for="{{packgoods}}">
                     <view class="fui-list goods-item align-start" data-goodsid="{{item.goodsid}}">
                         <view class="fui-list-media image-media">
                             <image bindtap="back" class=" package-goods-img" data-id="{{item.goodsid}}" src="{{item.thumb}}"></image>

@@ -56,7 +56,7 @@
         <!-- <view class='saleout-absolute' wx:if="{{goods.total<=0}}" style="display:block">
                     <view class='sale-flex'>
                         <view class='saleout-img'>
-                            <image src='https://www.paokucoin.com/img/backgroup/saleout-2.png'></image>
+                            <image src='https://paokucoin.com/img/backgroup/saleout-2.png'></image>
                         </view>
                     </view>
                 </view> -->

@@ -9,7 +9,7 @@
   <view class="list_tier" wx:if="{{total > 0?true:false}}">
     <view class="list_result" wx:if="{{list_friend == ''?false:true}}">共查询到{{total}}人</view>
 
-    <block wx:for="{{list_friend}}" wx:key="index">
+    <block wx:for="{{list_friend}}" wx:key="{{index}}">
       <navigator class="friend_tier" wx:if="{{item.is_push == 1}}" url="/pages/commission/down/fandetails?openid={{item.openid}}">
         <view class="list_left">
           <image class="fui-list-media" src="{{item.avatar}}"></image>

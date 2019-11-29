@@ -9,7 +9,7 @@
     <view class="littleHint">按住照片拖拽可以调整顺序</view>
     <view class='inner' catchtouchmove='true'>
       <movable-area>  
-        <block wx:for="{{tempFilePaths}}" wx:key="index">
+        <block wx:for="{{tempFilePaths}}" wx:key="{{index}}">
           <view class='pic_box item' id="{{item.index}}" data-index='{{index}}' bindlongpress='_longtap' bindtouchstart='touchs' bindtouchend='touchend' bindtouchmove='touchm'  data-img='{{item}}'>
             <image src="{{item}}" class='gays_pic_C' data-id="{{index}}" data-list="{{tempFilePaths}}" data-src="{{item}}" wx:for-item="item" bindtap='previewImage'></image>
  
