@@ -1,0 +1,234 @@
+/* pages/discount/zkbaccount/zkbaccount.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  /* background: #f8f8f8; */
+  background: #fff;
+}
+
+.listBox {
+  width: 100%;
+  height: auto;
+  background: #f8f8f8;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.listCon {
+  width: 96%;
+  height: auto;
+  padding: 0 2%;
+  background: #f8f8f8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 30rpx;
+}
+
+.itemBox {
+  width: 48%;
+  height: auto;
+  background: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.proImg {
+  width: 344rpx;
+  height: 351rpx;
+  border-radius: 20rpx;
+}
+
+.proTitle {
+  width: 320rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 10rpx;
+  color: #323232;
+  font-size: 32rpx;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.priceBox {
+  width: 320rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.banner-box {
+  width: 100%;
+  height: 370rpx;
+  background: pink;
+}
+
+.swipercontent {
+  width: 100%;
+  height: 370rpx;
+  position: relative;
+  background: pink;
+}
+
+swiper {
+  width: 100%;
+  height: 370rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 370rpx;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 8rpx;
+  width: 16rpx;
+  height: 6rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+  opacity: 0.6
+}
+
+.dot.active {
+  width: 26rpx;
+  background: #fff;
+}
+
+.buy-box {
+  width: 320rpx;
+  height: 60rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+
+.buybtn {
+  width: 140rpx;
+  height: 42rpx;
+  background: #01d7a1;
+  border: 1rpx solid #01d7a1;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* 全部商品 */
+
+.all-filtrate {
+  width: 80%;
+  height: 80rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #efefef;
+  margin-bottom: 10rpx;
+}
+
+.all-price, .all-sales {
+  display: flex;
+  align-items: center;
+}
+
+.all-synthesize, .all-price, .all-sales {
+  width: auto;
+  height: 80rpx;
+  padding: 0 50rpx;
+  line-height: 80rpx;
+}
+
+.all-synthesize, .all-price-text, .all-sales-sales {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.all-price-img, .all-sales-img {
+  width: 16rpx;
+  height: 21rpx;
+  margin-left: 13rpx;
+}
+
+.all-switchover {
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.nowActive {
+  color: #01d7a1;
+}
+
+.list-tab-scroll {
+  height: 80rpx;
+  background: #fff;
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  margin: 10rpx 0;
+}
+
+/* .list-tab-scroll:after {
+  content: "";
+  height: 2rpx;
+  width: 100%;
+  background: #efefef;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+} */
+
+.list-tab-scroll .item {
+  height: 80rpx;
+  width: auto;
+  line-height: 80rpx;
+  color: #333;
+  padding: 0 40rpx;
+  font-size: 28rpx;
+  display: inline-block;
+}
+
+.list-tab-scroll .item.active {
+  color: #01d7a1;
+  position: relative;
+  z-index: 10;
+}
+
+.list-tab-scroll .item.active:before {
+  content: "";
+  height: 4rpx;
+  width: 60%;
+  background: #01d7a1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin: auto
+}

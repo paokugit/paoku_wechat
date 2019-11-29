@@ -81,19 +81,22 @@
         <!-- 抵扣宝 -->
         <view wx:if="{{item.deduct_type=='2'}}">
           <!-- 有抵扣宝抵扣 -->
-          <view wx:if="{{item.deduct!=0&&item.minprice-item.deduct>=0&&item.showprice!=0}}">
+          <view wx:if="{{item.deduct>=0&&item.minprice-item.deduct>=0&&item.showprice!=0}}">
             <!-- 图片和价格显示 -->
-            <view class="imgandprice">
-              <view style='display:flex;align-items:center'>
-                <image style='width:74rpx;height:34rpx;' src='https://www.paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+            <view style="display: flex;justify-content: space-between;align-items: center;margin-top: 10rpx;">
+              <view class="imgandprice">
+                <view style='display:flex;align-items:center'>
+                  <image style='width:74rpx;height:34rpx;' src='https://www.paokucoin.com/img/backgroup/zhekou-b@2x.png'></image>
+                </view>
+                <!-- 文字 -->
+                <view class='jianhao'>
+                  <view wx:if="{{item.deduct>0}}" style='font-size:18rpx;color:#f84900;display:flex;align-items:center'>-{{item.deduct}}</view>
+                  <view wx:if="{{item.deduct==0}}" style='font-size:18rpx;color:#f84900;display:flex;align-items:center'>
+                    <text decode="{{true}}">&nbsp;赠&nbsp;{{item.minprice}}</text>
+                  </view>
+                </view>
               </view>
-              <!-- 文字 -->
-              <view style='display:flex;align-items:center;'>
-                <view class='jianhao'>-</view>
-              </view>
-              <view style='display:flex;align-items:center;'>
-                <view class='zhekoujia'>{{item.deduct}}</view>
-              </view>
+              <view class="pay-type" style="color: #666;font-size: 20rpx;">支持RVC</view>
             </view>
             <view class='zhehouprice'>
               <view style='font-size:18rpx;color:#707070;display:flex;align-items: center;'>折后</view>
@@ -104,6 +107,7 @@
               </view>
             </view>
           </view>
+
           <!-- 免费 -->
           <view wx:if="{{item.showprice==0}}" style="position:relative;">
             <view class='kaluliandimg' style="border: 1rpx solid #f84900;">
@@ -123,9 +127,10 @@
           <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
             <view>
               <view style='font-size:26rpx;color:#e01212;margin-top:42rpx'>￥{{item.minprice}}</view>
-              <view style='display:flex;algin-items:center'>
+              <!--hcc注释-->
+              <!--<view style='display:flex;algin-items:center'>
                 <text style='font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;bottom:20rpx'>¥{{item.productprice}}</text>
-              </view>
+              </view>-->
             </view>
           </view>
         </view>

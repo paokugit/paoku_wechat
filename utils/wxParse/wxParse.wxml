@@ -730,7 +730,7 @@
                 </block>
                 <block wx:elif="{{item.tagType=='block'}}">
                     <view class="{{item.classStr}} wxParse-{{item.tag}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="index">
                             <template is="wxParse1" data="{{item:item}}"></template>
                         </block>
                     </view>

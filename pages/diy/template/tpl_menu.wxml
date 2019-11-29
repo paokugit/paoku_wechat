@@ -1,7 +1,8 @@
+<!-- 商城5 -->
 <block>
     <block wx:if="{{diyitem.style.showtype=='0'}}">
         <view class="fui-icon-group noborder col-{{diyitem.style.rownum}}" style="background:{{diyitem.style.background}}">
-            <block wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem">
+            <block wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="index">
                 <view bindtap="navigate" class="fui-icon-col external" data-appid="{{childitem.appid}}" data-appurl="{{childitem.appurl}}" data-phone="{{childitem.phone}}" data-url="{{childitem.linkurl}}">
                     <view class="icon">
                         <image class="{{diyitem.style.navstyle}}" src="{{childitem.imgurl}}"></image>

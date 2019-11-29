@@ -9,16 +9,16 @@
        //从分享进入小程序时 返回上一级按钮不应该存在 -->
             <view class='nav-border' wx:if='{{!share}}'>
                 <view bindtap='_navback' wx:if='{{!share}}' class='nav-fanhui'>
-                    <image src='http://www.paokucoin.com/img/backgroup/nav-fanhui.png'  class='back-pre'></image>
+                    <image src='https://www.paokucoin.com/img/backgroup/nav-fanhui.png'  class='back-pre'></image>
                 </view>
                 <view class='navbar-v-line' wx:if='{{!share}}'></view>
                 <view bindtap='_backhome' wx:if='{{!share}}' class='nav-home'>
-                    <image src='http://www.paokucoin.com/img/backgroup/Home-nav.png'  class='back-home'></image>
+                    <image src='https://www.paokucoin.com/img/backgroup/Home-nav.png'  class='back-home'></image>
                 </view>
             </view>
             <view class='nav-border-share' wx:if='{{share}}'>
                 <view class='share_img' bindtap='_backhome'>
-                    <image src='http://www.paokucoin.com/img/backgroup/Home-nav.png' mode='aspectFit'></image>
+                    <image src='https://www.paokucoin.com/img/backgroup/Home-nav.png' mode='aspectFit'></image>
                 </view>
             </view>
         </view>

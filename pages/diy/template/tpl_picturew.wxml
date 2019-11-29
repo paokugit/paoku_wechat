@@ -1,3 +1,4 @@
+<!-- 商城6 -->
 <block>
     <block wx:if="{{diyitem.params.row==1}}">
         <view class="fui-cube" style="background:{{diyitem.style.background}};">

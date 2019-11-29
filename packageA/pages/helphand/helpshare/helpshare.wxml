@@ -55,7 +55,7 @@
 </view>
 <view class='stepMask' style='display:{{explainDis}}'>
   <view class='step-text-box'>
-    <view class='step-text'>"1500步=1至5卡路里不等（根据会员等级兑换比例不同）1卡路里=1元；每人最高可捐赠2000步"</view>
+    <view class='step-text'>"1500步=2至10折扣宝不等（根据会员等级兑换比例不同；每人最高可捐赠2000步"</view>
     <view class='step-close' bindtap='stepClose'>
       <image src='{{globalimg}}/guanbi.png'></image>
     </view>

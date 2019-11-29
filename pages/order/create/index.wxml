@@ -499,7 +499,7 @@
                         </block>
                     </block>
                     <!-- 卡路里 -->
-                    <view class='calorieBox' style='display:{{caloriedisp}}'>
+                    <!-- <view class='calorieBox' style='display:{{caloriedisp}}'>
                         <view class='calorie-box' bindtap='caloriebtn'>
                             <view class='calorie-left'>卡路里还差
                                 <text class='calorie-count'>{{calorienum}}</text>,不能享受免费兑,快去挣更多哦</view>
@@ -507,7 +507,7 @@
                                 <image src='{{globalimg}}/chakangengduo.png'></image>
                             </view>
                         </view>
-                    </view>
+                    </view> -->
                     <!-- 卡路里 -->
                 </view>
                 <block>
@@ -810,7 +810,7 @@
         </view>
     </view>
     <view class="card-list-content">
-        <block wx:for="{{card_info.all_mycardlist}}">
+        <block wx:for="{{card_info.all_mycardlist}}" wx:key="index">
             <view bindtap="changecard" class="item {{item.card_style}}" data-id="{{item.id}}">
                 <view bindtap="cancalCard" class="iconselect {{cardid==item.id?'activeselect':''}}">
                     <i class="icox icox-duihao2"></i>
