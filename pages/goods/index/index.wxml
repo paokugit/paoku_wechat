@@ -217,16 +217,36 @@
     </view>
   </view>
   <view class="fui-goods-group {{listmode}}">
-    <view class="productlist">
+    <view style="display:{{vertical}}">
       <view class="subject-box">
-        <view class="subject-tit">夏季爽口降暑</view>
+        <view class="subject-tit">雅诗兰黛小棕瓶</view>
         <view class="subject-subtit">自充电便携榨汁机</view>
-        <image class="subject-img"></image>
-        <view class="chakan">查看</view>
+        <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+          <view class="image" style="background-image:url(https://www.paokucoin.com/attachment/images/1/2019/10/EiuDa9GcaD1z9R32DGMzrv99QGuZ3q.jpg)"></view>
+        </navigator>
+        <view class="chakan-box">
+          <view class="chakan">查看</view>
+        </view>
       </view>
-      <view class="itemBox">
-        <image class="productImg"></image>
-        <view class="productTit">雅诗兰黛小棕瓶眼霜雅诗兰黛小棕瓶眼霜</view>
+    </view>
+    <view style="display:{{crosswise}}">
+      <view class="subject-box" style="background:#f00">
+        <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+          <view class="image" style="background-image:url(https://www.paokucoin.com/attachment/images/1/2019/10/EiuDa9GcaD1z9R32DGMzrv99QGuZ3q.jpg)"></view>
+        </navigator>
+        <view class="detail goods_list_detail">
+          <view class="name">超长广角</view>
+          <view class="cross-subtit">再远也能拍清楚</view>
+          <view class="cross-ck-box"><view class="cross-ck">查看商品</view></view>
+        </view>
+      </view>
+    </view>
+    <view class="fui-goods-item" style="color:#f88">
+      <navigator hoverClass="none" openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+        <view class="image" style="background-image:url(https://www.paokucoin.com/attachment/images/1/2019/10/EiuDa9GcaD1z9R32DGMzrv99QGuZ3q.jpg)"></view>
+      </navigator>
+      <view class="detail goods_list_detail">
+        <view class="name">雅诗兰黛小棕瓶眼霜雅诗兰黛小棕瓶眼霜</view>
         <view class="priceBox">
           <text style="color:#f00;font-size:28rpx">￥</text>
           <text style="color:#f00;font-size:40rpx">68.8</text>
