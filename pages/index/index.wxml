@@ -488,8 +488,8 @@
       </view>
       <view class='exchange-products-box'>
 
-        <block wx:for="{{list}}" wx:for-item="listItem" wx:key="listItem">
-          <view class='exchange-product' wx:for="{{listItem}}" wx:key="index">
+        <block wx:for="{{rvclist}}" wx:key="{{index}}">
+          <view class='exchange-product'>
             <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
               <image class='ex-proimg' src='{{item.thumb}}'></image>
               <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
@@ -556,14 +556,7 @@
   </block>
 </block>
 <block>
-  <block wx:if="{{list.length==0}}">
-    <view class="fui-loading empty">
-      <view class="text">暂无商品</view>
-    </view>
-  </block>
-</block>
-<block>
-  <block wx:if="{{list.length==total&&total>0}}">
+  <block wx:if="{{rvclist.length==total&&total>0}}">
     <view class="fui-loading empty">
       <view class="text">没有更多了</view>
     </view>

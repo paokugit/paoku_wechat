@@ -11,39 +11,29 @@
         <view class="fui-cell">
           <view class="fui-cell-label">收件人</view>
           <view class="fui-cell-info">
-            <input bindinput="onChange" class="fui-input" data-type="realname" placeholder="收件人" value="{{detail.realname}}"></input>
+            <input bindinput="nameChange" class="fui-input" data-type="realname" placeholder="收件人" value="{{realname}}"></input>
           </view>
         </view>
         <view class="fui-cell">
           <view class="fui-cell-label">联系电话</view>
           <view class="fui-cell-info">
-            <input bindinput="onChange" class="fui-input" data-type="mobile" placeholder="联系电话" type="number" value="{{detail.mobile}}"></input>
+            <input bindinput="phoneChange" maxlength="11" class="fui-input" data-type="mobile" placeholder="联系电话" type="number" value="{{mobile}}"></input>
           </view>
         </view>
         <view class="fui-cell">
           <view class="fui-cell-label">所在地区</view>
-          <view bindtap="selectArea" class="fui-cell-info" data-area="{{detail.province}} {{detail.city}} {{detail.area}}">{{!detail.province||!detail.city?'请选择所在地区':detail.province+' '+detail.city+' '+detail.area}}</view>
+          <picker style="flex:1;font-size: 28rpx;color: #000" mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" range='{{multiArray}}'>
+            <text wx:if="{{addressCity}}">{{addressCity[0]}}  {{addressCity[1]}}  {{addressCity[2]}}</text>
+            <text wx:else class='placeholder'>请选择地区</text>
+          </picker>
         </view>
-        <block>
-          <block>
-            <view class="fui-cell" wx:if="{{street.length>0}}">
-              <view class="fui-cell-label">所在街道</view>
-              <view class="fui-cell-info">
-                <picker bindchange="onChange" data-type="street" range="{{street}}" rangeKey="name" value="{{streetIndex||0}}">
-                  <view class="picker"> {{detail.street||'请选择街道'}}</view>
-                </picker>
-              </view>
-            </view>
-          </block>
-        </block>
         <view class="fui-cell">
           <view class="fui-cell-label">详细地址</view>
           <view class="fui-cell-info">
-            <input bindinput="onChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{detail.address}}"></input>
+            <input bindinput="streetChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{address}}"></input>
           </view>
         </view>
       </view>
-      <include src="/pages/common/city-picker.wxml"></include>
       <!-- <view class="fui-mask {{showPicker?'show':''}}"></view> -->
       <view bindtap="submit" class="btn btn-danger block mtop">{{subtext}}</view>
       <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
@@ -52,23 +42,3 @@
     </view>
   </block>
 </block>
-
-<view class="section">
-  <view class="section__title">省市区选择器</view>
-  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-    <view class="picker">
-      当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
-    </view>
-  </picker>
-</view>
-
-<!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-
-  <view class="picker">
-    当前选择：{{multiArray[0][multiIndex[0]]}} > {{multiArray[1][multiIndex[1]]}}
-  </view>
-</picker> -->
-<picker class="picker" mode="multiSelector" bindchange="bindPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'location_name'}}">
-  <text class="menu_text">{{multiArray[2][multiIndex[2]].location_name}}</text>
-  <icon class="iconfont icon-xiala"></icon>
-</picker>
