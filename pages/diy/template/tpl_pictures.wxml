@@ -1,7 +1,7 @@
 <block>
     <block wx:if="{{diyitem.params.showtype==0}}">
         <view class="fui-pictures single row-{{diyitem.params.rownum}}" style="padding:{{diyitem.style.paddingtop*2}}rpx {{diyitem.style.paddingleft*2}}rpx;background:{{diyitem.style.background}};">
-            <block wx:for="{{diyitem.data}}" wx:for-index="idx" wx:key="index">
+            <block wx:for="{{diyitem.data}}" wx:for-index="idx">
                 <view bindtap="navigate" class="item" data-url="{{item.linkurl}}" style="padding:10rpx">
                     <view class="image" style="text-align:{{diyitem.style.titlealign}};color:{{diyitem.style.titlecolor}}">
                         <image mode="widthFix" src="{{item.imgurl}}"></image>

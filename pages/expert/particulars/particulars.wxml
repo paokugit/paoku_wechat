@@ -24,7 +24,7 @@
     <view class="textA">{{details.content}}</view>
   </view>
 
-  <view class="particulars cont" wx:for="{{list}}" wx:key="index" data-catid="{{item.id}}" data-openid="{{item.openid}}" bindlongpress="shadeCat" catchtap="showBtn" data-supportid="{{item.id}}" data-index="{{index}}" style="{{twoid == item.id?btncss:' '}}" data-name="{{item.nickname}}">
+  <view class="particulars cont" wx:for="{{list}}" wx:key="{{index}}" data-catid="{{item.id}}" data-openid="{{item.openid}}" bindlongpress="shadeCat" catchtap="showBtn" data-supportid="{{item.id}}" data-index="{{index}}" style="{{twoid == item.id?btncss:' '}}" data-name="{{item.nickname}}">
     <view class="head-img flexCss">
       <view class="left-head flexCss">
         <image src="{{item.avatar}}"></image>

@@ -8,13 +8,13 @@
   </view>
 
   <!-- 购买加速宝详情 -->
-  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="index" bindtap="list_btn" data-id="{{item.id}}">
+  <view class="speed_up_content {{isSelect==item.id?'speed_up_contentBtn' : ''}}" wx:for="{{list}}" wx:key="{{index}}" bindtap="list_btn" data-id="{{item.id}}">
     <view class="limit_img">
       <image src="{{globalimg}}/xianliang@2x.png"></image>
     </view>
 
     <text class="content_lefts {{isSelect==item.id?'content_leftsBtn' : ''}}">{{item.money}}</text>
-    <text class="content_rights">加速{{item.accelerate_day}}天，每天可兑换{{item.duihuan}}折扣宝</text>
+    <text class="content_rights">加速{{item.accelerate_day}}天，每天可兑换{{item.duihuan}}卡路里</text>
 
     <view class="correct_img" style="{{isSelect==item.id?'display:block' : ''}}">
       <image src="{{globalimg}}/select@2x.png"></image>

@@ -37,7 +37,7 @@ Page({
     datanum: '',
     shuzhi: '',
     color: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
-    btnconfirm: 'http://www.paokucoin.com/img/backgroup/start.png',
+    btnconfirm: 'https://www.paokucoin.com/img/backgroup/start.png',
     //点击事件
     clickLuck: 'clickLuck',
     //中奖位置
@@ -67,7 +67,7 @@ Page({
         gratis: e.result.num, //免费抽
         msgList: e.result.log, //头部交替悬浮文字
         blocknum: e.result.list, //图片上显示得折扣
-        kaluliyu: e.result.credit3//
+        kaluliyu: e.result.credit1
       })
     })
   },
@@ -77,21 +77,20 @@ Page({
     useropenid = userinfo.openid
     var _that = this
     var loc = ''
+    console.log()
     if (h.currentTarget.dataset.gratis == 0) {
       if (h.currentTarget.dataset.zhi >= 5) {
         a.get("game.getprize", {
-          money: 10,
+          money: 5,
           openid: useropenid,
           type: 0,
-          credit: 'credit3'
         }, function(e) {
-          console.log(e);
           loc = e.result.location
           if (e.result.remain > 0) {
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
-              kaluliyu: e.result.credit3,
+              kaluliyu: e.result.credit1,
               lsdas: 1,
               mask: 2,
             })
@@ -99,15 +98,15 @@ Page({
             _that.setData({
               zhekounum: e.result.num,
               gratis: e.result.remain,
-              kaluliyu: e.result.credit3,
+              kaluliyu: e.result.credit1,
             })
           }
 
         })
       } else {
         wx: wx.showModal({
-          title: '折扣宝余额不足',
-          content: '小主的折扣宝不足啦，赶快邀请好友助力获取折扣宝吧',
+          title: '卡路里余额不足',
+          content: '小主的卡路里不足啦，赶快邀请好友助力获取卡路里吧',
           showCancel: true,
           confirmText: '去助力',
           success: function(res) {
@@ -147,7 +146,7 @@ Page({
     }
     //设置按钮不可点击
     e.setData({
-      btnconfirm: 'http://www.paokucoin.com/img/backgroup/start.png',
+      btnconfirm: 'https://www.paokucoin.com/img/backgroup/start.png',
       clickLuck: '',
     })
     //清空计时器

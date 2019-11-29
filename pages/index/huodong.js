@@ -15,7 +15,7 @@ Page((e = {
     data: (a = {
       showIcon: false,
         globalimg: i.globalData.appimg,
-    
+        imgUrls: [ "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963648306&di=1194f5980cccf9e5ad558dfb18e895ab&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F9c16fdfaaf51f3de87bbdad39ceef01f3a29797f.jpg", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509963737453&di=b1472a710a2c9ba30808fd6823b16feb&imgtype=0&src=http%3A%2F%2Fwww.qqzhi.com%2Fwenwen%2Fuploads%2Fpic.wenwen.soso.com%2Fp%2F20160830%2F20160830220016-586751007.jpg", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3004162400,3684436606&fm=11&gp=0.jpg" ],
         indicatorDotss: !0,
         autoplays: !0,
         intervals: 2e3,
@@ -58,8 +58,6 @@ Page((e = {
         options: [],
         diyform: {},
         specsTitle: "",
-
-      imgShow:false
     }, t(a, "total", 1), t(a, "active", ""), t(a, "slider", ""), t(a, "tempname", ""), 
     t(a, "buyType", ""), t(a, "areas", []), t(a, "closeBtn", !1), t(a, "soundpic", !0), 
     t(a, "modelShow", !1), t(a, "limits", !0), t(a, "result", {}), t(a, "showcoupon", !1), 
@@ -75,12 +73,14 @@ Page((e = {
         });
     },
     myTab: function (t) {
+        console.log(t)
+        console.log(s.pdata(t))
         var e = this, i = s.pdata(t).select;
         e.setData({
             select: i,
             page: 1,
             list: [],
-        });
+        }), e.get_list();
     },
     onReachBottom: function() {
         this.data.loaded || this.data.storeRecommand.length == this.data.total || this.getRecommand();
@@ -89,8 +89,6 @@ Page((e = {
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh();
     },
-
-    // 商城列表
     get_list: function () {
         var t = this;
          s.get("diypage/getgoodslist", {
@@ -98,19 +96,16 @@ Page((e = {
             page: t.data.page
         }, function (e) {
             console.log(e)
-            
-            let record = t.data.page-1;
-
             0 == e.error ? (t.setData({
-              loading: !1,
-              show: !0,
-              total: e.goods.total,
-              empty: !0
+                loading: !1,
+                show: !0,
+                total: e.goods.total,
+                empty: !0
             }), e.goods.data.length > 0 && t.setData({
-              page: t.data.page + 1,
-              ['list[' + record + ']']: e.goods.data
-            }), e.goods.data.length < e.goods.pagesize && t.setData({
-              loaded: !0
+                page: t.data.page + 1,
+                list: t.data.list.concat(e.goods.data)
+                }), e.goods.data.length < e.goods.pagesize && t.setData({
+                // loaded: !0
             })) : a.toast(e.message);
         }, this.data.show);
     },
@@ -119,6 +114,8 @@ Page((e = {
         "true" != t.data.diypage && s.get("shop/get_recommand", {
             page: t.data.page
         }, function(a) {
+            console.log(a)
+            console.log("000")
             var e = {
                 loading: !1,
                 total: a.total
@@ -136,6 +133,7 @@ Page((e = {
     onLoad: function(t) {
             var t = this;
             o.get(this, "huodong", function (a) {
+                console.log(a)
                 telphone = a.phonenumber
                 t.getDiypage(a), 0 == a.error && wx.stopPullDownRefresh();
             });
@@ -150,7 +148,6 @@ Page((e = {
                 }
             });
         });
-        
         var e = decodeURIComponent(t.scene);
         if (!t.id && e) {
             var n = s.str2Obj(e);
@@ -210,11 +207,12 @@ Page((e = {
         });
     },
     onShow: function() {
+        console.log(1235);
         var t = this, a = wx.getSystemInfoSync(), e = i.getCache("sysset");
         t.getShop(), t.getRecommand(), t.get_hasnewcoupon(), t.get_cpinfos(), wx.getSetting({
             success: function(a) {
                 var e = a.authSetting["scope.userInfo"];
-                t.setData({
+                console.log(e), t.setData({
                     limits: e
                 });
             }
@@ -271,9 +269,13 @@ Page((e = {
         }
     },
     imagesHeight: function(t) {
+        // console.log('wwww')
+        // console.log(t)
         var a = t.detail.width, e = t.detail.height, i = t.target.dataset.type, s = this;
         wx.getSystemInfo({
             success: function(t) {
+                // console.log('hhhhh')
+                // console.log(t)
                 s.data.result[i] = t.windowWidth / a * e, (!s.data[i] || s.data[i] && result[i] < s.data[i]) && s.setData({
                     result: s.data.result
                 });
@@ -416,6 +418,7 @@ Page((e = {
         soundpic: !1
     });
 }), t(e, "phone", function() {
+    console.log(this)
     var t = this.data.phonenumber + "";
     wx.makePhoneCall({
         phoneNumber: telphone
@@ -450,6 +453,7 @@ Page((e = {
         showcoupontips: !1
     });
 }), t(e, "tabtopmenu", function(t) {
+    console.log(t);
     var a = this, e = a.data.diypages, i = (e.items, t.currentTarget.dataset.id, t.currentTarget.dataset.url), n = t.currentTarget.dataset.type, o = a.data.topmenu, r = t.currentTarget.dataset.index;
     if (a.setData({
         topmenuindex: r

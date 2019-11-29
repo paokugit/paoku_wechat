@@ -5,7 +5,7 @@
     <view class='zhongjiang'>
       <image src='{{globalimg}}/zhongjiang.png'></image>
       <view class="ceshi">
-        <image class="guize" src="{{globalimg}}/regulation-a1.png"></image>
+        <image class="guize" src="{{globalimg}}/regulation.png"></image>
       </view>
     </view>
     <view class='lottary-name'>
@@ -21,7 +21,7 @@
     <!-- 转盘 -->
     <view class='container-out'>
       <view class="daheng">
-        <view class="kaluliyu">折扣宝余额 {{kaluliyu}}</view>
+        <view class="kaluliyu">卡路里余额 {{kaluliyu}}</view>
       </view>
       <!-- 外框 -->
       <image style='width:650rpx;height:700rpx' src='{{globalimg}}/hahakuang.png'></image>
@@ -108,7 +108,7 @@
       <image src='{{globalimg}}/lottary-bg02.png'></image>
     </view>
     <view class='lottary_rule'>
-      <image src='{{globalimg}}/rule-a1.png'></image>
+      <image src='{{globalimg}}/rule.png'></image>
     </view>
   </view>
 </view>

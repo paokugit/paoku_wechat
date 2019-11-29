@@ -11,7 +11,7 @@
                 <view bindtap="myTab" class="item {{type==0?'active':''}}" data-type="0">未完成</view>
                 <view bindtap="myTab" class="item {{type==1?'active':''}}" data-type="1">已完成</view>
             </view>
-            <block wx:for="{{list}}" wx:key="index">
+            <block wx:for="{{list}}">
                 <view class="fui-list-group">
                     <view class="fui-list" style="font-size: 24rpx;color: #000;">
                         <text selectable="true" style="margin-right:40rpx">每天返回￥{{item.priceevery}}，剩{{item.day}}天</text>

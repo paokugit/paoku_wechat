@@ -221,7 +221,7 @@ Page({
   stepExplain: function() {
     wx.showModal({
       title: '提示',
-      content: '1500步=2至10折扣宝不等（根据会员等级兑换比例不同；每人最高可捐赠2000步',
+      content: '1500步=1至5卡路里不等（根据会员等级兑换比例不同）1卡路里=1元；每人最高可捐赠2000步',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')

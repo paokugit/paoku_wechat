@@ -5,7 +5,7 @@
                 <view bindtap="emptyActive" class="gifttitle" style="{{goods.gifts.length==1?'margin-bottom:15rpx':''}}">{{goods.gifts.length>1?'选择':''}}赠品 <text class="icox icox-close pull-right"></text>
                 </view>
                 <view class="gift-list-group">
-                    <block wx:for="{{goods.gifts}}" wx:key="index">
+                    <block wx:for="{{goods.gifts}}">
                         <view class="gift-list">
                             <block>
                                 <block wx:if="{{goods.gifts.length>1}}">
@@ -14,7 +14,7 @@
               </label>
                                 </block>
                             </block>
-                            <block wx:for="{{item.gift}}" wx:for-item="val" wx:key="index">
+                            <block wx:for="{{item.gift}}" wx:for-item="val">
                                 <navigator url="/pages/goods/detail/index?id={{val.id}}">
                                     <view class="fui-list" style="background: #f9f9f9">
                                         <view class="fui-list-media">

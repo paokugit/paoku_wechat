@@ -125,24 +125,16 @@ Page({
             header: { 'content-type': 'multipart/form-data' },
             success: function (n) {
               var o = JSON.parse(n.data);
-              if(o.error == 0){
-                img_list.push(o.files[0].url);
-                file_list.push(o.files[0].filename);
-                if (file_list.length == res.tempFilePaths.length) {
-                  m.setData({
-                    img_url: [],
-                    img_file: []
-                  });
-                  wx.hideLoading();
-                  wx.navigateTo({
-                    url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
-                  })
-                }
-              }else{
-                wx.showToast({
-                  title: o.message,
-                  icon: 'none',
-                  duration: 2000
+              img_list.push(o.files[0].url);
+              file_list.push(o.files[0].filename);
+              if (file_list.length == res.tempFilePaths.length) {
+                m.setData({
+                  img_url: [],
+                  img_file: []
+                });
+                wx.hideLoading();
+                wx.navigateTo({
+                  url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
                 })
               }
             }

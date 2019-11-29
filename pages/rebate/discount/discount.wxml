@@ -69,12 +69,12 @@
     </view>
     <!-- 账户 -->
     <view class='type-box'>
-        <!-- <view class='type-item' bindtap='rechargebtn'>
+        <view class='type-item' bindtap='rechargebtn'>
             <view class='type-img'>
                 <image src='{{globalimg}}/recharge01.png'></image>
             </view>
             <view class='type-text'>兑换</view>
-        </view> -->
+        </view>
         <view class='type-item' bindtap='withdrawbtn'>
             <view class='type-img'>
                 <image src='{{globalimg}}/tixian01.png'></image>
