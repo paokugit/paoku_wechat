@@ -2,7 +2,7 @@
 <view class="expedite-box">
   <view class="title colorCss">店铺内商品任选一件</view>
 
-  <block wx:for="{{message}}" wx:key="{{index}}">
+  <block wx:for="{{message}}" wx:key="index">
     <navigator class="product" url="/pages/goods/detail/index?id={{item.id}}">
       <image class="productImg" src="{{item.thumb}}"></image>  
       <view> 

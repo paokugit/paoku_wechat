@@ -27,7 +27,7 @@
       </view>
     </view>
 
-    <view class='bind-phone'>奖励+10卡路里</view>
+    <view class='bind-phone'>奖励+20折扣宝</view>
     <form bindsubmit="form_submit" report-submit='true' class='phone-form' bindtap='bindphone' wx:if="{{conbind==0}}">
       <button form-type="submit" class='phone-btn'></button>
     </form>
@@ -56,12 +56,12 @@
       <view class='reward-num'>{{cometotal}}</view>
       <view class='reward-text'>可用余额</view>
     </navigator>
-    <navigator url='/pages/member/log/bushu' class='calorie-img'>
+    <view class='calorie-img' catchtap="rvcBtn">
       <image src='{{globalimg}}/bgyellow@2x.png'></image>
       <!-- <view class='calorie-num'>{{member.calorie_total}}</view> -->
       <view class='calorie-num'>{{calorietotal}}</view>
-      <view class='calorie-text'>可用卡路里</view>
-    </navigator>
+      <view class='calorie-text'>RVC账户</view>
+    </view>
   </view>
   <!-- 个人收入 -->
   <view class='contributeBox'>
@@ -145,7 +145,7 @@
         <view class="card_entranceTit">跑库年卡</view>
         <view class='swiper-card'>
           <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}" wx:if="{{is_open == 0?true:false}}">
-            <block wx:for="{{textList}}" wx:key="{{index}}">
+            <block wx:for="{{textList}}" wx:key="index">
               <swiper-item>
                 <view class='card_entranceT'>{{item.txt}}</view>
               </swiper-item>
@@ -159,7 +159,7 @@
 
     <view class='swiper-box'>
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
-        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <block wx:for="{{imgUrls}}" wx:key="index">
           <swiper-item>
             <image src="{{item.thumb}}" class="slide-image" bindtap="swipclick" data-url='{{item.url}}' />
           </swiper-item>

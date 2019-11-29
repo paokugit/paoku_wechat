@@ -2,13 +2,13 @@
   <view class="index-banner-box">
     <image src='{{backgroundimg}}'></image>
 
-    <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='kllbtn'>
+    <form bindsubmit='form_submit' report-submit='true' class='balance' bindtap='zkbbtn'>
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view class='kll'>
           <view class='balance-left flex_center'>
-            <image src='{{globalimg}}/kaluli.png'></image>
+            <image src='{{globalimg}}/zkblogo.png'></image>
           </view>
-          <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit1}}</view>
+          <view class='balance-right' style='height:40rpx;line-height:40rpx'>{{credit3}}</view>
         </view>
       </button>
     </form>
@@ -19,7 +19,7 @@
       </view>
     </view>
     <view class="heard-tag absolute">
-      <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="{{index}}">
+      <form bindsubmit="receive" class="heard-tag-list absolute" data-step="{{item.step}}" data-id="{{item.id}}" data-source="{{item.source}}" reportSubmit="true" wx:for="{{my_currency}}" wx:key="index">
         <button formType="submit" style="background:rgba(0,0,0,0);font-size:20rpx;font-family: 'DIN Next LT Pro'">
           <view class="tag-coin" style="background:url('{{ globalimg}}/coin.png'); background-size: 100% 100%;">{{item.currency}}</view>
           <text class='ex-text' wx:if="{{item.type==0}}">步数兑换</text>
@@ -54,7 +54,7 @@
       <button form-type='submit' style="background:rgba(0,0,0,0)">
         <view style='display:{{bindDis}}'>
           <view class='paopao-box'>
-            <image src='{{ globalimg}}/bindreward.png'></image>
+            <image src='{{ globalimg}}/bindreward-zkb.png'></image>
           </view>
           <view class='circle-explain '>绑定手机号</view>
         </view>
@@ -145,7 +145,7 @@
     </view>
     <view class='swiper-box'>
       <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="true">
-        <block wx:for="{{noticelist}}" wx:key="{{index}}">
+        <block wx:for="{{noticelist}}" wx:key="index">
           <swiper-item class="notice-box">
             <view class='notice-tit'>恭喜用户</view>
             <view class='notice-name'>{{item.nickname}}</view>
@@ -158,7 +158,7 @@
   </view>
   <view class='swiper-card'>
     <swiper autoplay="{{autoplayA}}" interval="{{intervalA}}" duration="{{durationA}}" circular="{{circularA}}">
-      <block wx:for="{{bannerList}}" wx:key="{{index}}">
+      <block wx:for="{{bannerList}}" wx:key="index">
         <swiper-item>
           <navigator url="{{item.url}}">
             <image class="bannerGif" src="{{item.thumb}}"></image>
@@ -185,7 +185,7 @@
         </view>
         <view class="libao-goods-con">
           <swiper indicator-dots="true" indicator-color="#dd6b4c" indicator-active-color="#ffb965" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-            <block wx:for="{{libaolist}}" wx:key="{{index}}">
+            <block wx:for="{{libaolist}}" wx:key="index">
               <swiper-item>
                 <view class="libao-goods">
                   <view class="libao-goods-item" wx:for="{{item}}" wx:key="index">
@@ -197,7 +197,9 @@
                       <view class="free-take-img">
                         <image src='{{globalimg}}/oqg02@2x.png'></image>
                       </view>
-                      <view class="exclusive-flex"><view class="exclusive-box">{{item.levels}}享有</view></view>
+                      <view class="exclusive-flex">
+                        <view class="exclusive-box">{{item.levels}}享有</view>
+                      </view>
                     </navigator>
                   </view>
                 </view>
@@ -265,7 +267,7 @@
       </view>
 
       <view class='store-service-box-bottom'>
-        <view class='club-card-box' wx:for="{{goodlist}}" wx:key="{{index}}">
+        <view class='club-card-box' wx:for="{{goodlist}}" wx:key="index">
           <view class='store-reward' style='display:{{storedisp}}'>
             <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
             <view class='rewardBox' wx:if="{{item.isreward==1}}" style='display:block'>赏金任务</view>
@@ -274,29 +276,18 @@
 
             <image class='club-card-img' src='{{item.thumb}}'></image>
           </navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con flex_center'>{{item.title}}</navigator>
-          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free flex_center'>
-            <!-- 显示卡路里加价格 -->
-            <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-              <view class='calorieimgBox'>
-                <view class='calorie-img flex_center'>
-                  <image src='{{ globalimg}}/kaluli02.png'></image>
-                </view>
-                <view class='calorie-num02'>
-                  {{item.deduct}}+￥{{item.showprice}}
-                </view>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-con'>{{item.title}}</navigator>
+          <navigator url="/pages/goods/detail/index?id={{item.id}}" class='club-card-free'>
+            <view class='zkBox'>
+              <view class='zkb-box'>
+                <image wx:if="{{item.deduct_type==2&&item.minprice>0}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0&&item.minprice>0}}" style='display:block'>赠{{item.minprice}}</view>
               </view>
-            </view>
-            <!-- 显示免费兑 -->
-            <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-              <view class='calorie-num '>
-                免费兑
-              </view>
-            </view>
-            <!-- 只显示价格 -->
-            <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-              <view class='calorie-num flex_center'>
-                ￥{{item.minprice}}
+              <view class='price-box'>
+                <text style="color:#707070;font-size:24rpx">折后</text>
+                <text class='dis-price' wx:if="{{item.deduct_type==2 && item.deduct > 0}}">￥{{item.showprice}}</text>
+                <text class='dis-price' wx:if="{{item.deduct_type==2 && item.deduct == 0}}">￥{{item.minprice}}</text>
               </view>
             </view>
           </navigator>
@@ -318,7 +309,7 @@
       </view>
     </view>
     <view class='nearbyshops-box'>
-      <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="{{index}}">
+      <view class='nearbyshop-box flex_center' wx:for="{{merchlist}}" wx:key="index">
         <view class='callphone-box' bindtap='tel' data-mobile='{{item.mobile}}'>
           <view class='callphone-img'>
             <image src='{{ globalimg}}/callphone.png'></image>
@@ -384,7 +375,7 @@
     </view>
 
     <view class='seckill-continer'>
-      <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="{{index}}">
+      <navigator class='sec-itembox' url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{killlist}}" wx:key="index">
         <view class='sec-item-img'>
           <image src='{{item. thumb}}'></image>
           <view class='sec-saleout-img' wx:if="{{item.total==0}}">
@@ -438,7 +429,7 @@
 
     <view class='out'>
       <scroll-view scroll-x="true">
-        <block wx:for="{{lookBuy}}" wx:key="{{index}}">
+        <block wx:for="{{lookBuy}}" wx:key="index">
           <navigator url="/packageA/pages/watchvideo/watchvideo?id={{item.id}}" class="buy-video" style="position: relative;">
             <view class="list-img">
               <image class="myVideo" style="filter: brightness(92%);" src="{{item.thumb}}"></image>
@@ -452,7 +443,7 @@
                 <view class="list-base-sum">{{item.marketprice}}</view>
                 <view class="list-base-piece">已抢购{{item.sales}}件</view>
               </view>
-              <view class="list-base-deduction" wx:if="{{item.deduct == 1?true:false}}">卡路里抵扣</view>
+              <!-- <view class="list-base-deduction" wx:if="{{item.deduct == 1?true:false}}">卡路里抵扣</view> -->
               <view class="list-base-deduction" wx:if="{{item.deduct == 2?true:false}}">折扣宝抵扣</view>
             </view>
           </navigator>
@@ -461,75 +452,81 @@
           <image src="{{globalimg}}/novideo.png"></image>
         </navigator>
       </scroll-view>
-    </view> 
+    </view>
   </view>
   <!-- 边看变买结束 -->
-
   <!-- 超值兑换部分-开始 -->
   <view class='pro-exchange-box flex_center'>
     <view class='pro-exchange-box-con'>
       <view class='pro-exchange-tit-box'>
         <view class='pro-exchange-tit'>
-          <view>超值兑换</view>
+          <view>RVC专区</view>
           <view class='service-circle'></view>
         </view>
         <view class='pro-exchange-entry' bindtap='entrystore'>进入商城</view>
       </view>
-      <view class='exchange-products-box'>
-        <view class='exchange-product' wx:for="{{list}}" wx:key="{{index}}">
-          <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
-            <image class='ex-proimg' src='{{item.thumb}}'></image>
-            <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
-              <image src='{{globalimg}}/saleout-2.png'></image>
-            </view>
-          </navigator>
-          <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
-          <view class='postage-free-box' wx:if="{{item.issendfree==0}}" style='display:none'>
-            <view class='postage-free'>包邮</view>
+      <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
+        <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">全部</view>
+        <block wx:for="{{cateList}}" wx:for-index="idx">
+          <view bindtap="tabCategory" class="item {{selector==item.id?'actived':''}}" data-id="{{item.id}}">
+            {{item.name}}
           </view>
-          <view class='postage-free-box' wx:if="{{item.issendfree==1}}" style='display:block'>
-            <view class='postage-free'>包邮</view>
-          </view>
-          <view class='ex-procalorie-box'>
-            <!-- 显示卡路里加价格 -->
-            <view wx:if="{{item.deduct !=0 && item.deduct - item.minprice <0}}" class='calorie-box'>
-              <view class='calorieimgBox'>
-                <view class='calorie-img flex_center'>
-                  <image src='{{ globalimg}}/kaluli02.png'></image>
-                </view>
-                <view class='calorie-num02 flex_center'>
-                  {{item.deduct}}+￥{{item.showprice}}
-                </view>
-              </view>
-              <view class='calorie-price '>{{item.productprice}}元</view>
-            </view>
-            <!-- 显示免费兑 -->
-            <view wx:if="{{item.deduct - item.minprice>=0 || item.deduct==0&& item.minprice==0}}" class=' calorie_person_box'>
-              <view class='calorie-num '>
-                免费兑
-              </view>
-              <view class='calorie-person '>{{item.sales}}人已0元拿</view>
-            </view>
-            <!-- 只显示价格 -->
-            <view wx:if="{{item.deduct==0 &&item.minprice!=0 }}" class='calorie-box'>
-              <view class='calorie-num flex_center'>
-                ￥{{item.minprice}}
-              </view>
-              <view class='calorie-price '>{{item.productprice}}元</view>
-            </view>
-            <!-- <view class='calorie-free flex_center'>免费拿</view> -->
-          </view>
+        </block>
+      </scroll-view>
+      <!-- 价格销量排序 -->
+      <view class="all-filtrate">
+        <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+        <view class="all-price" data-now="1" bindtap='checkAllt'>
+          <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+          <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
         </view>
+        <view class="all-sales" data-now="2" bindtap='checkAllt'>
+          <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+          <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+        </view>
+      </view>
+      <view class='exchange-products-box'>
+
+        <block wx:for="{{rvclist}}" wx:key="{{index}}">
+          <view class='exchange-product'>
+            <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
+              <image class='ex-proimg' src='{{item.thumb}}'></image>
+              <view class='saleout' wx:if="{{item.total==0}}" style='display:block'>
+                <image src='{{globalimg}}/saleout-2.png'></image>
+              </view>
+            </navigator>
+            <navigator url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" class='ex-proname'>{{item.title}}</navigator>
+            <view class='zkbox-rvc' wx:if="{{item.deduct_type==2}}">
+              <view class='zkb-box'>
+                <image wx:if="{{item.deduct_type==2}}" style='display:block' class='zkbImg' src='{{globalimg}}/zhekou-b@2x.png'></image>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct > 0}}" style='display:block'>-{{item.deduct}}</view>
+                <view class='zkb-count' wx:if="{{item.deduct_type==2 && item.deduct == 0}}" style='display:block'>赠{{item.minprice}}</view>
+              </view>
+              <view class="pay-type">支持RVC</view>
+            </view>
+            <view class='ex-procalorie-box'>
+              <view class='calorie-box'>
+                <view class='calorie-num'>
+                  ￥{{item.minprice}}
+                </view>
+                <view class='calorie-price'>{{item.productprice}}元</view>
+              </view>
+            </view>
+          </view>
+        </block>
       </view>
       <!-- 查看更多-商品-开始 -->
-      <view class='readmore-pro-box flex_center'>
-        <view class='readmore-pro-con' bindtap='products'>查看更多</view>
-        <view class='readmore-pro-img flex_center'>
-          <image src='{{ globalimg}}/chakangengduo.png'></image>
+      <block wx:if="{{list.length>0}}">
+        <view class='readmore-pro-box flex_center'>
+          <view class='readmore-pro-con' bindtap='products'>查看更多</view>
+          <view class='readmore-pro-img flex_center'>
+            <image src='{{ globalimg}}/chakangengduo.png'></image>
+          </view>
         </view>
-      </view>
+      </block>
     </view>
   </view>
+  <!-- 超值兑换结束 -->
 </view>
 <!-- 回到顶部 -->
 <view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>
@@ -558,7 +555,7 @@
   </block>
 </block>
 <block>
-  <block wx:if="{{list.length==total&&total>0}}">
+  <block wx:if="{{rvclist.length==total&&total>0}}">
     <view class="fui-loading empty">
       <view class="text">没有更多了</view>
     </view>

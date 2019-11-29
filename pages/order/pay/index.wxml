@@ -53,6 +53,27 @@
                         </view>
                     </block>
                 </block>
+
+                <block>
+                  <block wx:if="{{list.credit.success&&list.order.price!=0}}">
+                    <view bindtap="pay" class="fui-list" data-type="RVC">
+                      <view class="fui-list-media">
+                          <image class="round" src="{{globalimg}}/rvc.png"></image>
+                      </view>
+                      <view class="fui-list-inner">
+                        <view class="row">
+                            <view class="row-text">RVC支付</view>
+                        </view>
+                        <view class="subtitle">当前RVC：
+                            <text class="text-danger"><text>{{list.RVC.current}}</text></text>
+                        </view>
+
+                      </view>
+                      <view class="angle"></view>
+                    </view>
+                  </block>
+                </block>
+
                 <block>
                     <block wx:if="{{list.credit.success&&list.order.price!=0}}">
                         <view bindtap="pay" class="fui-list" data-type="credit">

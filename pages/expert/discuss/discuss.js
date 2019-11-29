@@ -296,15 +296,15 @@ Page({
 
   dakai:function(e){
     var m = this;
+    let num;
     if (m.data.hShow == '1'){
-      m.setData({
-        hShow: '2'
-      })
+      num = '2'
     }else{
-      m.setData({
-        hShow: '1'
-      })
+      num = '1'
     }
+    m.setData({
+      hShow: num
+    })
     
   },
 

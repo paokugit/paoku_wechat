@@ -110,14 +110,13 @@ Page({
             } else if (isgift == 0) {
                 if (kllcount > 0) {
                     i.setData({
-                        kllDis: 'block'
-                        // zkbDis: 'none'
+                        // kllDis: 'block' //11.14要求去掉卡路里时修改为none
+                      kllDis: 'none'
                     })
                 }
                 if (zkbcount > 0) {
                     i.setData({
                         zkbDis: 'block'
-                        // kllDis: 'none'
                     })
                 }
             }
@@ -152,12 +151,12 @@ Page({
                       zkbDis: 'none'
                     })
                 }
-                if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice) {
-                    i.setData({
-                        caloriedisp: 'block',
-                        calorienum: t.goodsdeduct - t.deductcredit
-                    })
-                }
+                // if (t.goodsdeduct == t.goodsprice && t.deductmoney < t.goodsprice) {
+                //     i.setData({
+                //         caloriedisp: 'block',
+                //         calorienum: t.goodsdeduct - t.deductcredit
+                //     })
+                // }
                 i.setData({
                     list: t,
                     goods: t,
@@ -235,8 +234,8 @@ Page({
         }else if(isgift==0){
             if (kllcount > 0) {
                 g.setData({
-                    kllDis: 'block'
-                    // zkbDis: 'none'
+                    // kllDis: 'block'  //11.14要求去掉卡路里开关时修改为none
+                  kllDis: 'none'
                 })
             }
             if (zkbcount > 0) {

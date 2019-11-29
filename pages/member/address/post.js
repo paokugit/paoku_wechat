@@ -69,6 +69,17 @@ Page({
   submit: function() {
     var r = this,
       s = r.data.detail;
+
+      if (s.address.length < 5) {
+        console.log('123');
+        wx.showToast({
+          title: '请将详细地址补充完整。',
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+
     r.data.posting || ("" != s.realname && s.realname ? "" != s.mobile && s.mobile ? "" != s.city && s.city ? !(r.data.street.length > 0) || "" != s.street && s.street ? "" != s.address && s.address ? s.datavalue ? i.isMobile(s.mobile) ? (s.id = r.data.id,
       r.setData({
         posting: !0

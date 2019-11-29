@@ -1,0 +1,5 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="RVC充值"></navigation>
+<view>
+  <!-- <web-view src="{{payUrl}}"></web-view> -->
+  
+</view>
