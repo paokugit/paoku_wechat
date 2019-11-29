@@ -2224,7 +2224,7 @@ swiper {
   width: 96%;
   height: auto;
   padding: 24rpx 2%;
-  background: pink;
+  /* background: pink; */
   margin-top: 60rpx;
   display: flex;
   justify-content: space-between;

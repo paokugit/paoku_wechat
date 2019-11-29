@@ -30,7 +30,7 @@
         <view class="fui-cell">
           <view class="fui-cell-label">详细地址</view>
           <view class="fui-cell-info">
-            <input bindinput="streetChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{address}}"></input>
+            <input bindinput="streetChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{detailaddress}}"></input>
           </view>
         </view>
       </view>

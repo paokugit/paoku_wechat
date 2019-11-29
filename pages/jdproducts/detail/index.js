@@ -9,6 +9,7 @@ var e, a, o = getApp(),
   u = 0,
   g = o.requirejs("biz/selectdate");
 var f = getApp()
+var totalprice = 0
 Page({
 
   /**
@@ -33,7 +34,12 @@ Page({
     info: "active",
     num: 1,
     minusStatus: 'disabled',
-    maskshow: true
+    maskshow: false,
+    subtext: '立即购买',
+    buyshow: false,
+    confirmshow: false,
+    goodstotal: 0,
+    isSelected: false
   },
 
   /**
@@ -85,10 +91,40 @@ Page({
     })
   },
   selectstandard: function() {
-    wx.showModal({
-      title: '提示',
-      content: '',
+    var t = this
+    t.setData({
+      maskshow: true,
+      confirmshow: true,
     })
+  },
+  maskconfirm: function() {
+    var aa = this
+    aa.setData({
+      maskshow: false,
+      isSelected: true,
+      confirmshow: false,
+      goodstotal: aa.data.num
+    })
+    console.log(aa.data.num)
+  },
+  selectBuy: function() {
+    var bb = this
+    console.log(bb.data.num)
+    bb.setData({
+      maskshow: true,
+      buyshow: true,
+    })
+  },
+  maskBuy: function() {
+    var cc = this
+    console.log(cc.data.num)
+    console.log(cc.data.goodsprice * cc.data.num)
+    totalprice = Number((this.data.num * cc.data.goodsprice).toFixed(2))
+    console.log(totalprice)
+    wx.navigateTo({
+      url: '/pages/jdproducts/order/index?id=' + 1 + '&count=' + cc.data.num + '&totalprice=' + totalprice,
+    })
+
   },
   /* 点击减号 */
   bindMinus: function() {
@@ -122,7 +158,9 @@ Page({
   },
   guanbiBtn: function() {
     this.setData({
-      maskshow:false
+      maskshow: false,
+      goodstotal: this.data.num,
+      confirmshow: false
     })
   },
 

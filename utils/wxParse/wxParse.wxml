@@ -599,7 +599,7 @@
                 </block>
                 <block wx:elif="{{item.tagType=='block'}}">
                     <view class="{{item.classStr}} wxParse-{{item.tag}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="">
                             <template is="wxParse3" data="{{item:item}}"></template>
                         </block>
                     </view>
@@ -661,7 +661,7 @@
                 </block>
                 <block wx:elif="{{item.tagType=='block'}}">
                     <view class="{{item.classStr}} wxParse-{{item.tag}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="">
                             <template is="wxParse2" data="{{item:item}}"></template>
                         </block>
                     </view>
@@ -720,7 +720,7 @@
                 </block>
                 <block wx:elif="{{item.tag=='table'}}">
                     <view class="{{item.classStr}} wxParse-{{item.tag}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="">
                             <template is="wxParse1" data="{{item:item}}"></template>
                         </block>
                     </view>
