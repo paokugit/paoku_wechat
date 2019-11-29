@@ -194,27 +194,34 @@ Page({
             header: {'content-type': 'multipart/form-data'},
             success: function (n) {
               wx.hideLoading();
-
               var o = JSON.parse(n.data);
-              that.data.fileName.push(o.files[0].filename);
-              tempFilePaths.push(o.files[0].url);
-              that.setData({
-                tempFilePaths: tempFilePaths,
-                showBall: false,
-                btnCss: 'background: #01d7a1;'
-              });
-
-              var query = wx.createSelectorQuery();
-              var nodesRef = query.selectAll(".item");
-              nodesRef.fields({
-                dataset: true,
-                rect: true
-              }, (result) => {
+              if(o.error == 0){
+                that.data.fileName.push(o.files[0].filename);
+                tempFilePaths.push(o.files[0].url);
                 that.setData({
-                  elements: result
+                  tempFilePaths: tempFilePaths,
+                  showBall: false,
+                  btnCss: 'background: #01d7a1;'
+                });
+                var query = wx.createSelectorQuery();
+                var nodesRef = query.selectAll(".item");
+                nodesRef.fields({
+                  dataset: true,
+                  rect: true
+                }, (result) => {
+                  that.setData({
+                    elements: result
+                  })
+                }).exec();
+              }else{
+                wx.showToast({
+                  title: o.message,
+                  icon: 'none',
+                  duration: 2000
                 })
-              }).exec();              
+              }
             }
+              
           });
         };  
       }

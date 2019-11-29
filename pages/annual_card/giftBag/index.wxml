@@ -2,7 +2,7 @@
 <view class="expedite-box">
   <view class="listHead">以下产品任选一件</view>
  
-  <block wx:for="{{goods_list}}" wx:key="{{index}}">
+  <block wx:for="{{goods_list}}" wx:key="index">
     <navigator class="product" url="/pages/goods/detail/index?id={{item.id}}">
       <image class="productImg" src="{{item.thumb}}"></image>  
       <view class="productCon">
@@ -23,7 +23,7 @@
     <view class="siteList">
       <view class="site_title">选择收货地址</view>
       <view class="roll_tier">
-        <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="{{index}}" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
+        <view class="site_id {{btnNum == index?'activeA' : ''}}" wx:for="{{siteList}}" wx:key="index" bindtap="clickNum" data-id="{{index}}" data-address="{{item.id}}">
           <view class="person_message flexCss">
             <view class="message_name">{{item.realname}}</view>
             <view class="message_phone">{{item.mobile}}</view>

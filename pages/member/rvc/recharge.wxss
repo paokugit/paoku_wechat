@@ -1,0 +1,60 @@
+.top-up{
+  height: 280rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin: 30rpx 24rpx;
+}
+
+.top-up-tit{
+  display: flex;
+  align-items: center;
+  padding: 69rpx 0 50rpx 30rpx 
+}
+.tit-left{
+  width: 6rpx;
+  height: 28rpx;
+  background: #01d7a1;
+  margin-right: 16rpx;
+}
+.tit-right{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+
+.import-box{
+  width: 80%;
+  height: 65rpx;
+  margin-left: 32rpx;
+}
+
+.import{
+  width: 100%;
+  height: 100%;
+  font-size: 45rpx;
+}
+
+.placss{
+  font-size: 45rpx;
+  color: #e2e2e2;
+}
+
+.paybtn{
+  width: 600rpx;
+  height: 88rpx;
+  font-size: 34rpx;
+  color: #ffffff;
+  background: #01d7a1;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius: 10rpx;
+  margin: 73rpx auto;
+}
+
+
+.explain{
+  font-size: 26rpx;
+  color: #666666;
+  margin-left:51rpx; 
+}

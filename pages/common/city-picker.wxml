@@ -7,17 +7,17 @@
         <block wx:if="{{!noArea}}">
             <picker-view bindchange="bindChange" class="picker" indicatorStyle="height: 40px;" value="{{pval}}">
                 <picker-view-column>
-                    <block wx:for="{{areas}}">
+                    <block wx:for="{{areas}}" wx:key="indexA">
                         <view class="item">{{item.name}}</view>
                     </block>
                 </picker-view-column>
                 <picker-view-column>
-                    <block wx:for="{{areas[ pval[0] ].city}}">
+                    <block wx:for="{{areas[ pval[0] ].city}}" wx:key="indexB">
                         <view class="item">{{item.name}}</view>
                     </block>
                 </picker-view-column>
                 <picker-view-column>
-                    <block wx:for="{{areas[ pval[0] ].city[ pval[1] ].area}}">
+                    <block wx:for="{{areas[ pval[0] ].city[ pval[1] ].area}}" wx:key="indexC">
                         <view class="item">{{item.name}}</view>
                     </block>
                 </picker-view-column>
@@ -28,12 +28,12 @@
         <block wx:if="{{noArea}}">
             <picker-view bindchange="bindChange" class="picker" indicatorStyle="height: 40px;" value="{{pval}}">
                 <picker-view-column>
-                    <block wx:for="{{areas}}">
+                    <block wx:for="{{areas}}" wx:key="index">
                         <view class="item">{{item.name}}</view>
                     </block>
                 </picker-view-column>
                 <picker-view-column>
-                    <block wx:for="{{areas[ pval[0] ].city}}">
+                    <block wx:for="{{areas[ pval[0] ].city}}" wx:key="index">
                         <view class="item">{{item.name}}</view>
                     </block>
                 </picker-view-column>

@@ -2,7 +2,7 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="每期详情"></navigation>
 <view class="page navbar">
     <scroll-view class="cycle-periods" scrollX="true">
-        <block wx:for="{{list}}">
+        <block wx:for="{{list}}" wx:key="{{index}}">
             <view bindtap="cycle" class="cycle-card {{index==status?'active':''}}" data-id="{{item.id}}" data-status="{{index}}">
                 <view class="num">{{index+1}}</view>
                 <view class="date">{{index+1}}/{{list.length}}</view>
@@ -26,7 +26,7 @@
             </view>
         </block>
     </scroll-view>
-    <block wx:for="{{list}}">
+    <block wx:for="{{list}}" wx:key="index">
         <block>
             <block wx:if="{{index==status}}">
                 <view class="cycle-cell-group">

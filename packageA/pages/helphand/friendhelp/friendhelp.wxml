@@ -50,10 +50,10 @@
             <view class='doubt'>
               <image src='{{globalimg}}/about@2x.png'></image>
             </view>
-            <image src='{{globalimg}}/lizi02.png'></image>
+            <image src='{{globalimg}}/lizi-zkb.png'></image>
           </view>
           <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:
-            <view class='invite-num'>{{creditsum}}</view>卡路里
+            <text style="color:#de4265;margin-right:4rpx">{{creditsum}}</text> 折扣宝
           </view>
           <view class='symbol-box help_center'>≈
             <view class='value-kaluli'>{{creditprice}}</view>元
@@ -101,10 +101,10 @@
             <view class='doubt'>
               <image src='{{globalimg}}/about@2x.png'></image>
             </view>
-            <image src='{{globalimg}}/lizi02.png'></image>
+            <image src='{{globalimg}}/lizi-zkb.png'></image>
           </view>
           <view class='invite-total-box help_center'>累计邀请{{steptoday}}人，获得:
-            <view class='invite-num'>{{creditsum}}</view>卡路里
+            <view class='invite-num'>{{creditsum}}</view>折扣宝
           </view>
           <view class='symbol-box help_center'>≈
             <view class='value-kaluli'>{{creditprice}}</view>元

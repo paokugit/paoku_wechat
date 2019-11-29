@@ -47,7 +47,7 @@ Page({
       }
       //判断店铺头像
       if (e.message.logo == '') {
-        headimg = 'http://www.paokucoin.com/img/backgroup/heart-n@2x.png'
+        headimg = 'https://www.paokucoin.com/img/backgroup/heart-n@2x.png'
       } else {
         headimg = e.message.logo
       }

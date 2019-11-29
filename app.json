@@ -3,6 +3,12 @@
     "pages": [
         "pages/index/index",
         "pages/store/store",
+        
+        "pages/jdproducts/order/index",
+        "pages/jdproducts/address/add",
+        "pages/jdproducts/jdproducts/list",
+        "pages/jdproducts/detail/index",
+
         "pages/discount/zkbscancode/zkbscancode",
         "pages/personalcode/scancode",
         "pages/rebate/discount/discount",
@@ -20,6 +26,11 @@
         "pages/goods/detail/index",
         "pages/member/balance/balance",
         "pages/member/log/bushu",
+
+        "pages/member/rvc/rvc",
+        "pages/member/rvc/recharge",
+        "pages/member/webview/webview",
+
         "pages/index/moremerch/moremerch",
         "pages/member/detail/detail",
         "pages/custom/index",
@@ -184,56 +195,56 @@
       }
     ],
     "permission": {
-        "scope.userLocation": {
-            "desc": "你的位置信息将用于获取附近店铺"
-        }
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于获取附近店铺"
+      }
     },
     "window": {
-        "backgroundColor": "#fafafa",
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTextStyle": "black",
-        "enablePullDownRefresh": true,
-        "navigationStyle": "custom"
+      "backgroundColor": "#fafafa",
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTextStyle": "black",
+      "enablePullDownRefresh": true,
+      "navigationStyle": "custom"
     },
     "tabBar": {
-        "color": "#999999",
-        "selectedColor": "#00d8a0",
-        "borderStyle": "black",
-        "backgroundColor": "#f7f7fa",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "运动",
-                "iconPath": "icon1/sport-n.png",
-                "selectedIconPath": "icon1/sport-s.png"
-            },
-            {
-                "pagePath": "pages/index/huodong",
-                "text": "商城",
-                "iconPath": "icon1/home-n.png",
-                "selectedIconPath": "icon1/home-s.png"
-            },
-            {
-                "pagePath": "pages/rebate/discount/discount",
-                "text": "折扣付",
-                "iconPath": "icon1/sfk-n@2x.png",
-                "selectedIconPath": "icon1/sfk-s@2x.png"
-            },
-            {
-                "pagePath": "pages/exclusive/exclusive",
-                "text": "专享",
-                "iconPath": "icon1/huiyuan-n.png",
-                "selectedIconPath": "icon1/huiyuan-s.png"
-            },
-            {
-                "pagePath": "pages/member/index/index",
-                "text": "我的",
-                "iconPath": "icon1/user-n.png",
-                "selectedIconPath": "icon1/user-s.png"
-            }
-        ]
-    },
-    "debug": false,
-    "sitemapLocation": "sitemap70.json"
+      "color": "#999999",
+      "selectedColor": "#00d8a0",
+      "borderStyle": "black",
+      "backgroundColor": "#f7f7fa",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "运动",
+          "iconPath": "icon1/sport-n.png",
+          "selectedIconPath": "icon1/sport-s.png"
+        },
+        {
+          "pagePath": "pages/index/huodong",
+          "text": "商城",
+          "iconPath": "icon1/home-n.png",
+          "selectedIconPath": "icon1/home-s.png"
+        },
+        {
+          "pagePath": "pages/rebate/discount/discount",
+          "text": "折扣付",
+          "iconPath": "icon1/sfk-n@2x.png",
+          "selectedIconPath": "icon1/sfk-s@2x.png"
+        },
+        {
+          "pagePath": "pages/exclusive/exclusive",
+          "text": "专享",
+          "iconPath": "icon1/huiyuan-n.png",
+          "selectedIconPath": "icon1/huiyuan-s.png"
+        },
+        {
+          "pagePath": "pages/member/index/index",
+          "text": "我的",
+          "iconPath": "icon1/user-n.png",
+          "selectedIconPath": "icon1/user-s.png"
+        }
+    ]
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap70.json"
 }

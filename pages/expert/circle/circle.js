@@ -12,7 +12,7 @@ Page({
     showBall:false,
     img_url:[],
     img_file:[],
-    cartoon: false,  
+    cartoon: true,  
     cartoonA: true,  
     cartoonB: false,
 
@@ -20,13 +20,13 @@ Page({
     totalPage: 0,
     updateData:0,
     dataList:[],
-    isShow:false,
-    abcShow:false,
+    isShow:true,
+    abcShow:true,
 
     yi_zan:'circle_parise@2.png',
     wei_zan:'circle_parise@1.png',
 
-    notlogindis: 'block'
+    notlogindis: 'block',
   }, 
 
   
@@ -49,7 +49,7 @@ Page({
       openid: useropenid,
       page:m.data.page
     },function(e){
-      console.log(e);
+
       wx.hideLoading()
       if(e.error == 0){ 
         let totalList = e.message.list;
@@ -57,24 +57,22 @@ Page({
       
         if (e.message.count > 0) {
           m.setData({
-            isShow: true,
+            isShow: false,
             updateData: e.message.count,
           })
           setTimeout(function () {
-            m.setData({ isShow: false })
+            m.setData({ isShow: true })
           }, 3000)
         }
-        if (e.message.list.length == 0){
-          m.setData({
-            abcShow:true
-          })
-        }else{
-          m.setData({
-            dataList: m.data.dataList.concat(totalList),
-            totalPage: totalPage,
-            page: m.data.page + 1
-          })
-        }
+       
+        let record = m.data.page - 1;
+
+        m.setData({
+          cartoon: false,  
+          ['dataList[' + record + ']']: e.message.list,
+          totalPage: totalPage,
+          page: m.data.page + 1
+        })
       }else if(e.error == 1){
         wx.showToast({
           title: e.message,
@@ -112,7 +110,6 @@ Page({
             content_id: supportId,
             type: 1  
           }, function (e) {
-            console.log(e);
             if(e.error == 2){
               wx.showToast({
                 title: e.message,
@@ -130,7 +127,6 @@ Page({
             content_id: supportId,
             type: 1
           }, function (e) {
-            console.log(e);
             if (e.error == 2) {
               wx.showToast({
                 title: e.message,
@@ -170,26 +166,20 @@ Page({
     let that = this;
     wx.getSetting({
       success(res) {
-        console.log(res)
         var userinfo = f.getCache('userinfo');
-        console.log(userinfo)
         if (userinfo.nickname == '' || userinfo.avatarUrl == '') {
           wx.login({
             success: function (a) {
               a.code ? a.post("wxapp.login", {
                 code: a.code
               }, function (a) {
-                console.log(a)
                 wx.getUserInfo({
                   success: function (info) {
-                    console.log(info);
-                    console.log(a.session_key);
                     a.get("wxapp/auth", {
                       data: info.encryptedData,
                       iv: info.iv,
                       sessionKey: a.session_key
                     }, function (eve) {
-                      console.log(eve)
                       that.getInfo();
                     }
                     )
@@ -233,25 +223,31 @@ Page({
             name: "file",
             header: { 'content-type': 'multipart/form-data' },
             success: function (n) {
-              
               var o = JSON.parse(n.data);
-              img_list.push(o.files[0].url);
-              file_list.push(o.files[0].filename);
-
-              if (file_list.length == res.tempFilePaths.length){
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000);
-                m.setData({
-                  img_url: [],
-                  img_file: []
-                });
-                wx.hideLoading();
-                wx.navigateTo({
-                  url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+              console.log(o);
+              if(o.error == 0){
+                  img_list.push(o.files[0].url);
+                  file_list.push(o.files[0].filename);
+                  if (file_list.length == res.tempFilePaths.length) {
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 2000);
+                    m.setData({
+                      img_url: [],
+                      img_file: []
+                    });
+                    wx.hideLoading();
+                    wx.navigateTo({
+                      url: '/pages/expert/issue/issue?imgList=' + img_list + '&fileList=' + file_list,
+                    })
+                  }
+              }else{
+                wx.showToast({
+                  title: o.message,
+                  icon: 'none',
+                  duration: 2000
                 })
               }
-
             }
           })
         };
@@ -268,19 +264,23 @@ Page({
   },
   dakai:function(){  
     var m = this;
+    let dakai;
+    let dakaiA;
+    let dakaiB;
     if (m.data.cartoon == true){
-      m.setData({
-        cartoon:false,
-        cartoonA:true,
-        cartoonB:false
-      })
+      dakai = false;
+      dakaiA = true;
+      dakaiB = false;
     }else{
-      m.setData({
-        cartoon: true,
-        cartoonA: false,
-        cartoonB:true
-      })
+      dakai = true;
+      dakaiA = false;
+      dakaiB = true;
     }
+    m.setData({
+      cartoon: dakai,
+      cartoonA: dakaiA,
+      cartoonB: dakaiB
+    })
   },
 
   // 图片预览
@@ -318,10 +318,14 @@ Page({
   },
 
   onShow: function () {
+    wx.onMemoryWarning(function () {
+      console.log('onMemoryWarningReceive')
+    })
+    
     var m = this;
     let pageA = wx.getStorageSync('pageA');
     let pageB = wx.getStorageSync('pageB');
-    console.log(pageA);
+
     if(pageA == 1 || pageB == 2){
       wx.showLoading({
         title: '加载中...',
@@ -342,7 +346,7 @@ Page({
       m.setData({
         dataList: [],
         page: 1,
-        abcShow: false
+        abcShow: true
       })
       m.pageData();
       
@@ -369,19 +373,27 @@ Page({
   },
 
   onPageScroll: function (e) {
-    if (e.scrollTop > 0){
-      this.setData({
-        cartoon: false,
-        cartoonA:true,
-        cartoonB:false
-      })
-    }
+
+    this.setData({
+      cartoon: false,
+      cartoonA:true,
+      cartoonB:false
+    })
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.pageData();
+    var c = this;
+    if (c.data.page <= c.data.totalPage){
+      c.pageData();
+    }else{
+      c.setData({
+        abcShow:false
+      })
+    }
+  
   },
 })

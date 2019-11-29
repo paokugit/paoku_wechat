@@ -12,6 +12,8 @@ var navigaterurl = ''
 var bindcount = ''
 // var conbind=''
 
+var is_rvc = '';
+
 var useropenid = "";
 
 Page({
@@ -82,7 +84,7 @@ Page({
     wx.switchTab({
       url: navigaterurl,
     })
-  },
+  }, 
   form_submit: function(e) {
     console.log(e.detail.formId);
     formid = e.detail.formId
@@ -174,6 +176,18 @@ Page({
       })
     })
   },
+
+  rvcBtn:function(){
+    console.log(is_rvc);
+    if (is_rvc == 1){
+      wx.navigateTo({
+        url: '/pages/member/rvc/rvc',
+      })
+    } else if (is_rvc == 0){
+      console.log('123');
+    }
+  },
+
   paoku_card: function() {
     var t = this;
     p.get("member.level.mem_level", {
@@ -235,10 +249,11 @@ Page({
           })
           a.get("member", {}, function(a) {
             console.log(a),
-              e.setData({
+              is_rvc = a.is_rvc;
+              e.setData({ 
                 member: a,
                 cometotal: a.come_total,
-                calorietotal: a.calorie_total,
+                calorietotal: a.RVC_total,
                 fu_order: a.statics.order_0,
                 fa_order: a.statics.order_1,
                 shou_order: a.statics.order_2,
@@ -325,7 +340,7 @@ Page({
               that.setData({
                 member: a,
                 cometotal: a.come_total,
-                calorietotal: a.calorie_total,
+                calorietotal: a.RVC_total,
               })
           });
         } else {
