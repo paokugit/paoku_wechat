@@ -32,18 +32,30 @@ Page({
     street: "",
     detailaddress: "",
     ajxtrue: false,
-
+    productid: '',
+    productcount: '',
+    productprice: '',
+    paramaddressid: '',
+    paramproviceid: '',
+    paramcityid: '',
+    paramareaid: '',
+    paramsku: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {
+  onLoad: function(options) {
+    console.log(options)
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid;
     var that = this;
     that.setData({
-      show: !0
+      show: !0,
+      productid: options.id,
+      productcount: options.count,
+      productprice: options.totalprice,
+      paramsku: options.goodssku
     })
     that.getProvince()
   },
@@ -265,10 +277,16 @@ Page({
               success(res) {
                 console.log(res)
                 if (res.data.error == 0) {
+                  tt.setData({
+                    paramaddressid: res.data.data.address_id,
+                    paramproviceid: res.data.data.province_id,
+                    paramcityid: res.data.data.city_id,
+                    paramareaid: res.data.data.area_id
+                  })
                   void a.toast(tt, "保存成功")
                   setTimeout(function() {
                     wx.redirectTo({
-                      url: "/pages/jdproducts/order/index"
+                      url: '/pages/jdproducts/order/index?id=' + tt.data.productid + '&count=' + tt.data.productcount + '&totalprice=' + tt.data.productprice + '&addressid=' + tt.data.paramaddressid + '&proviceid=' + tt.data.paramproviceid + '&cityid=' + tt.data.paramcityid + '&areaid=' + tt.data.paramareaid + '&goodssku=' + tt.data.paramsku,
                     });
                   }, 1e3);
 

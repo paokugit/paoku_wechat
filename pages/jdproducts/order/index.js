@@ -10,6 +10,7 @@ var e, a, o = getApp(),
   g = o.requirejs("biz/selectdate");
 var f = getApp()
 var paramprice = 0
+var useropenid = "";
 Page({
 
   /**
@@ -23,8 +24,18 @@ Page({
     gloheight: f.globalData.gloheight,
     num: 1,
     goodsprice: 0,
+    payprice: 0,
     goodstitle: '',
     imagePath: '',
+    provinceid: '',
+    cityid: '',
+    countyid: '',
+    addressid: '',
+    goodssku: '',
+    weightprice: 0,
+    payprice: 0,
+    canpay: false,
+    goodsid: ''
   },
 
   /**
@@ -33,20 +44,40 @@ Page({
   onLoad: function(options) {
     var t = this
     console.log(options)
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
+    if (!options.addressid && !options.areaid && !options.cityid && !options.proviceid) {
+      console.log('详情')
+      t.setData({
+        canpay: false
+      })
+    } else {
+      console.log('添加地址')
+      t.setData({
+        canpay: true,
+        addressid: options.addressid,
+        provinceid: options.proviceid,
+        cityid: options.cityid,
+        countyid: options.areaid,
+        goodssku: options.goodssku
+      })
+      t.getcarriage()
+    }
     t.setData({
       num: options.count,
-      goodsprice: options.totalprice
+      goodsid: options.id,
+      goodsprice: options.totalprice,
+      payprice: options.totalprice,
+      goodssku: options.goodssku
     })
-    // if (t.data.aa == 0) return void i.toast(t, "请填写正确手机号码");
     t.getdetail()
-    console.log(t.data.goodsprice)
   },
   getdetail: function() {
     var that = this
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
-        id: 1
+        id: 2
       },
       complete() {
         wx.hideLoading();
@@ -62,6 +93,35 @@ Page({
             goodstitle: res.data.data.brandName,
             imagePath: res.data.data.imagePath,
             goodsweight: res.data.data.weight,
+            goodssku: res.data.data.sku
+          })
+        }
+      }
+    });
+
+  },
+  // 获取运费carriage
+  getcarriage: function() {
+    var tt = this
+    wx.request({
+      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.freight&comefrom=wxapp',
+      data: {
+        province: tt.data.provinceid,
+        city: tt.data.cityid,
+        county: tt.data.countyid,
+        sku: tt.data.goodssku,
+        num: tt.data.num
+      },
+      complete() {
+        wx.hideLoading();
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.error == 0) {
+          console.log(res)
+          tt.setData({
+            weightprice: res.data.data.freight,
+            payprice: Number(tt.data.goodsprice) + Number(res.data.data.freight)
           })
         }
       }
@@ -106,6 +166,45 @@ Page({
     this.setData({
       num: num,
     });
+  },
+  addadress: function() {
+    console.log(this.data.goodsprice, this.data.num)
+    wx.navigateTo({
+      url: '/pages/jdproducts/address/add?id=' + 1 + '&count=' + this.data.num + '&totalprice=' + this.data.goodsprice + '&goodssku=' + this.data.goodssku,
+    })
+  },
+  submit: function() {
+    var that = this
+    if (that.data.canpay == true) {
+      console.log('接口')
+      wx.request({
+        url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.order&comefrom=wxapp',
+        data: {
+          openid: useropenid,
+          address_id: that.data.addressid,
+          goods_id: that.data.goodsid,
+          total: that.data.num
+        },
+        complete() {
+          wx.hideLoading();
+        },
+        success: function(res) {
+          if (res.data.error == 0) {
+            console.log(res)
+            wx.navigateTo({
+              url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + that.data.payprice,
+            })
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.message,
+            })
+          }
+        }
+      });
+    } else {
+      return void i.toast(that, "请添加收货地址")
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

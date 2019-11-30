@@ -33,7 +33,7 @@
               <!-- 没有收货地址 -->
               <block>
                 <block>
-                  <view class="fui-cell" hoverClass="none" bindtap="addadress" style="padding-top:32rpx;padding-bottom:32rpx" url="/pages/jdproducts/address/add">
+                  <view class="fui-cell" hoverClass="none" bindtap="addadress" style="padding-top:32rpx;padding-bottom:32rpx">
                     <view class="fui-cell-text textl info" style="display:flex;justify-content: center;">
                       <view class="fui-cell-icon">
                         <text class="icox icox-icon02" style="color:#ff5555"></text>
@@ -68,11 +68,11 @@
                       <text style="color:#ff5555;font-size:24rpx">￥</text>
                       <text style="color:#ff5555;font-size:32rpx;margin-left:4rpx">{{goodsprice}}</text>
                     </view>
-                    <view class="stepper">
+                    <!-- <view class="stepper">
                       <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
                       <input type="number" bindchange="bindManual" value="{{num}}" />
                       <text class="normal" bindtap="bindPlus">+</text>
-                    </view>
+                    </view> -->
                   </view>
                 </view>
               </view>
@@ -113,12 +113,21 @@
             </view>
           </view>
         </view>
+        <view class="fui-cell-group">
+          <view class="fui-cell">
+            <view class="fui-cell-label">运费</view>
+            <view class="fui-cell-info"></view>
+            <view class="fui-cell-remark noremark">¥
+              <text>{{weightprice}}</text>
+            </view>
+          </view>
+        </view>
       </view>
       <view class="fui-footer {{iphonexnavbar}}">
         <view class="tool nopadding">
           <view class="text">
             <view class="title text-right">需付：
-              <text class="text-danger">{{goodsprice}}元</text>
+              <text class="text-danger">{{payprice}}元</text>
             </view>
           </view>
           <view class="btns">

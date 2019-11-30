@@ -39,7 +39,8 @@ Page({
     buyshow: false,
     confirmshow: false,
     goodstotal: 0,
-    isSelected: false
+    isSelected: false,
+    goodssku:''
   },
 
   /**
@@ -54,7 +55,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
-        id: 1
+        id: 2
       },
       complete() {
         wx.hideLoading();
@@ -70,6 +71,7 @@ Page({
             goodstitle: res.data.data.brandName,
             imagePath: res.data.data.imagePath,
             goodsweight: res.data.data.weight,
+            goodssku:res.data.data.sku
           }), l.wxParse('standardcontent', 'html', res.data.data.param, that, 5), l.wxParse('appintroduce', 'html', res.data.data.appintroduce, that, "0")
           wx.getSystemInfo({
             success: function(t) {
@@ -122,7 +124,7 @@ Page({
     totalprice = Number((this.data.num * cc.data.goodsprice).toFixed(2))
     console.log(totalprice)
     wx.navigateTo({
-      url: '/pages/jdproducts/order/index?id=' + 1 + '&count=' + cc.data.num + '&totalprice=' + totalprice,
+      url: '/pages/jdproducts/order/index?id=' + 1 + '&count=' + cc.data.num + '&totalprice=' + totalprice + '&goodssku=' + cc.data.goodssku,
     })
 
   },

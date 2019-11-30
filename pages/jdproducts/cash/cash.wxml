@@ -1,0 +1,69 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<!-- 收银台模块-开始 -->
+<block>
+  <block>
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="收银台"></navigation>
+    <view class="page {{successData.seckill_color}}">
+      <view class="fui-cell-group">
+        <view class="fui-cell">
+          <view class="fui-cell-label">订单编号</view>
+          <view class="fui-cell-text textl"></view>
+          <view class="fui-cell-remark noremark">123456</view>
+        </view>
+        <view class="fui-cell">
+          <view class="fui-cell-label">订单金额</view>
+          <view class="fui-cell-text textl"></view>
+          <view class="text-danger">¥
+            <text>{{orderprice}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="fui-list-group">
+        <block>
+          <block>
+            <view bindtap="wxpay" class="fui-list" data-type="wechat">
+              <view class="fui-list-media">
+                <image class="round" src="{{globalimg}}/wx.png"></image>
+              </view>
+              <view class="fui-list-inner">
+                <view class="row">
+                  <view class="row-text">微信支付</view>
+                </view>
+                <view class="subtitle">
+                  <image alt="" src="{{globalimg}}/safe.png" style="height: 32rpx;width: 32rpx;vertical-align: text-bottom"></image>微信安全支付</view>
+              </view>
+              <view class="angle"></view>
+            </view>
+          </block>
+        </block>
+        <block>
+          <block>
+            <view bindtap="pay" class="fui-list" data-type="credit">
+              <view class="fui-list-media">
+                <image class="round" src="{{globalimg}}/ye.png"></image>
+              </view>
+              <view class="fui-list-inner">
+                <view class="row">
+                  <view class="row-text">余额支付</view>
+                </view>
+                <view class="subtitle">当前余额：
+                  <text class="text-danger">¥<text>{{list.credit.current}}</text>
+                  </text>
+                </view>
+              </view>
+              <view class="angle"></view>
+            </view>
+          </block>
+        </block>
+      </view>
+      <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+        <view class="text">{{FoxUIToast.text}}</view>
+      </view>
+    </view>
+  </block>
+</block>
+<!-- 收银台-结束 -->

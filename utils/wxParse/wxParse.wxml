@@ -606,7 +606,7 @@
                 </block>
                 <block wx:else>
                     <view class="{{item.classStr}} wxParse-{{item.tag}} wxParse-{{item.tagType}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="">
                             <template is="wxParse3" data="{{item:item}}"></template>
                         </block>
                     </view>
