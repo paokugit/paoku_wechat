@@ -10,10 +10,10 @@
     <view class="page navbar {{seckill_color}} {{paddingb}}">
       <view class="fui-list bg">
         <view class="row" style="font-size:34rpx">
-          <view class="">付款状态</view>
+          <view class="">{{orderstatus}}</view>
         </view>
         <view class="order-price">订单金额(含运费):¥
-          <text>{{order.price}}</text>
+          <text>{{orderprice}}</text>
         </view>
       </view>
       <block>
@@ -26,8 +26,8 @@
                 </view>
               </view>
               <view class="fui-list-inner">
-                <view class="" style="font-size:28rpx;line-height: 1.2rem;height: 1.2rem;">糖果 18356789888</view>
-                <view class="text" style="font-size:26rpx;color:#666">河南省郑州市新郑市</view>
+                <view class="" style="font-size:28rpx;line-height: 1.2rem;height: 1.2rem;">{{realname}} {{realmobile}}</view>
+                <view class="text" style="font-size:26rpx;color:#666">{{realprovince}}{{realcity}}{{realarea}}{{realaddress}}</view>
               </view>
             </view>
           </view>
@@ -108,7 +108,7 @@
         </block>
         <block>
           <block>
-            <button class="btn btn-default btn-default-o pull-left">
+            <button class="btn btn-default btn-default-o pull-left" bindtap="shouhoubtn">
               申请售后
             </button>
           </block>

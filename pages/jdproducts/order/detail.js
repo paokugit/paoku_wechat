@@ -12,70 +12,115 @@ Page({
     showIcon: true,
     gloheight: t.globalData.gloheight,
     globalimg: t.globalData.appimg,
-    show:!0,
-    cancel:[
+    show: !0,
+    cancel: [
       '不想要了',
       '啦啦啦',
       '呀呀呀'
-    ]
+    ],
+    orderstatus:'',
+    orderprice: '',
+    realname: '',
+    realmobile: '',
+    realprovince: '',
+    realcity: '',
+    realarea: '',
+    realaddress: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    var t = this
+    t.getdetail()
   },
-  cancel:function(e){
-console.log(e)
+  getdetail: function() {
+    var that = this
+    wx.request({
+      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
+      data: {
+        orderid: 42666
+      },
+      complete() {
+        wx.hideLoading();
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.error == 0) {
+          that.setData({
+            orderstatus: res.data.data.jdstatus_msg,
+            orderprice: res.data.data.price,
+            realname: res.data.data.address.realname,
+            realmobile: res.data.data.address.mobile,
+            realprovince: res.data.data.address.province,
+            realcity: res.data.data.address.city,
+            realarea: res.data.data.address.area,
+            realaddress: res.data.data.address.address
+          })
+
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.message,
+          })
+        }
+      }
+    });
+  },
+  cancel: function(e) {
+    console.log(e)
+  },
+  shouhoubtn: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
