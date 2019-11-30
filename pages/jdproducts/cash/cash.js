@@ -18,7 +18,8 @@ Page({
     noncestr: '',
     pack: '',
     signtype: '',
-    paysign: ''
+    paysign: '',
+    success: !0,
   },
 
   /**
@@ -81,41 +82,6 @@ Page({
         }
       }
     })
-    // s.get("payment/index/order_cs", {
-    //   money: actualnum,
-    //   rebate: param_deduct,
-    //   cate: 2,
-    //   merchid: merchantid,
-    //   openid: useropenid
-    // }, function (eve) {
-    //   console.log(eve)
-    //   timestamp = eve.result.timeStamp
-    //   noncestr = eve.result.nonceStr
-    //   pack = eve.result.package
-    //   signtype = eve.result.signType
-    //   paysign = eve.result.paySign
-    //   wx.requestPayment(
-    //     {
-    //       'timeStamp': timestamp,
-    //       'nonceStr': noncestr,
-    //       'package': pack,
-    //       'signType': 'MD5',
-    //       'paySign': paysign,
-    //       'success': function (res) {
-    //         console.log(res)
-    //         console.log('成功')
-    //         setTimeout(function () {
-    //           wx.reLaunch({
-    //             url: '/pages/rebate/discount/discount',
-    //           })
-    //         }, 200)
-    //       },
-    //       'fail': function (res) {
-    //         console.log('取消')
-    //       },
-    //       'complete': function (res) { }
-    //     })
-    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

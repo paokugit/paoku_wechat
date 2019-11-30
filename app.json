@@ -1,8 +1,9 @@
 {
-  "entryPagePath": "pages/jdproducts/cash/cash",
+  "entryPagePath": "pages/jdproducts/order/detail",
   "pages": [
     "pages/index/index",
     "pages/jdproducts/order/index",
+    "pages/jdproducts/order/detail",
     "pages/jdproducts/cash/cash",
     "pages/jdproducts/address/add",
     "pages/jdproducts/jdproducts/list",
