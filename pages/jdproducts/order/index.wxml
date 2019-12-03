@@ -12,26 +12,26 @@
         <block>
           <block>
             <view class="fui-cell-group" id="addressInfo">
-              <block>
+              <block wx:if="{{canpay}}">
                 <block>
-                  <navigator class="fui-cell" hoverClass="none" openType="navigate" style="padding-top:32rpx;padding-bottom:32rpx" url="/pages/member/address/select">
+                  <view class="fui-cell" hoverClass="none" openType="navigate" style="padding-top:32rpx;padding-bottom:32rpx">
                     <view class="fui-cell-icon" style="margin-right:24rpx">
                       <text class="icox icox-dingwei1"></text>
                     </view>
                     <view class="fui-cell-text textl info">
                       <view class="has-address ">
                         <view>收货人：</view>
-                        <text class="name">啦啦啦</text>
-                        <text class="mobile">18236962763</text>
+                        <text class="name">{{name}}</text>
+                        <text class="mobile">{{mobile}}</text>
                       </view>
-                      <view class="adress">河南省郑州市新郑市</view>
+                      <view class="adress">{{provicename}}{{cityname}}{{areaname}}{{detailaddress}}</view>
                     </view>
                     <view class="fui-cell-remark"></view>
-                  </navigator>
+                  </view>
                 </block>
               </block>
               <!-- 没有收货地址 -->
-              <block>
+              <block wx:else>
                 <block>
                   <view class="fui-cell" hoverClass="none" bindtap="addadress" style="padding-top:32rpx;padding-bottom:32rpx">
                     <view class="fui-cell-text textl info" style="display:flex;justify-content: center;">
@@ -62,7 +62,7 @@
                 </view>
                 <view class="fui-list-inner" style="position:relative;">
                   <view class="nametext">{{goodstitle}}</view>
-                  <view class="goodstandard">白色蓝色粉色</view>
+                  <view class="goodstandard"></view>
                   <view class="price_count">
                     <view class="price_box">
                       <text style="color:#ff5555;font-size:24rpx">￥</text>

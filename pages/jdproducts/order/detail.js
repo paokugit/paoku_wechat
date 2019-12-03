@@ -18,14 +18,22 @@ Page({
       '啦啦啦',
       '呀呀呀'
     ],
-    orderstatus:'',
+    orderstatus: '',
     orderprice: '',
     realname: '',
     realmobile: '',
     realprovince: '',
     realcity: '',
     realarea: '',
-    realaddress: ''
+    realaddress: '',
+    thumb: '',
+    goodsprice: '',
+    goodscount: '',
+    totalprice: '',
+    ordersn: '',
+    createtime: '',
+    paytime: '',
+    paramid: ''
   },
 
   /**
@@ -33,6 +41,9 @@ Page({
    */
   onLoad: function(options) {
     var t = this
+    t.setData({
+      paramid: options.id
+    })
     t.getdetail()
   },
   getdetail: function() {
@@ -40,7 +51,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
       data: {
-        orderid: 42666
+        orderid: that.data.paramid
       },
       complete() {
         wx.hideLoading();
@@ -56,7 +67,16 @@ Page({
             realprovince: res.data.data.address.province,
             realcity: res.data.data.address.city,
             realarea: res.data.data.address.area,
-            realaddress: res.data.data.address.address
+            realaddress: res.data.data.address.address,
+            thumb: res.data.data.goods.imagePath,
+            goodsname: res.data.data.goods.name,
+            goodsprice: res.data.data.goods.price,
+            goodscount: res.data.data.goods.total,
+            totalprice: Number(res.data.data.goods.total) * Number(res.data.data.goods.price),
+            ordersn: res.data.data.ordersn,
+            createtime: res.data.data.createtime,
+            paytime: res.data.data.paytime
+
           })
 
         } else {

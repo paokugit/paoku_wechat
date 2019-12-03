@@ -39,7 +39,7 @@ Page({
     paramproviceid: '',
     paramcityid: '',
     paramareaid: '',
-    paramsku: ''
+    paramsku: '',
   },
 
   /**
@@ -86,13 +86,11 @@ Page({
           province_name: provinceArr, //省级全部名称
 
         })
-        console.log(that.data.multiArray)
         let defaultCode = that.data.province_list[0].id
         if (defaultCode) {
           that.setData({
             currnetProvinceId: defaultCode //保存当前省份id
           })
-          console.log(defaultCode)
           that.getCity(defaultCode) //获取市区数据
         }
       }
@@ -104,7 +102,6 @@ Page({
     that.setData({
       currnetProvinceId: id
     })
-    // console.log("市", id)
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
       data: {
@@ -120,7 +117,6 @@ Page({
           return item.name
         })
         let cityList = [...res.data.data.province]
-        console.log(cityList)
         that.setData({
           multiArray: [that.data.province_name, cityArr, []],
           city_list: cityList, //保持市级数据
@@ -154,6 +150,7 @@ Page({
         let areaArr = res.data.data.province.map((item) => {
           return item.name
         }) //区域名
+        // console.log(areaArr)
         that.setData({
           multiArray: [that.data.province_name, that.data.city_name, areaArr],
           area_list: areaList, //区列表
@@ -286,7 +283,7 @@ Page({
                   void a.toast(tt, "保存成功")
                   setTimeout(function() {
                     wx.redirectTo({
-                      url: '/pages/jdproducts/order/index?id=' + tt.data.productid + '&count=' + tt.data.productcount + '&totalprice=' + tt.data.productprice + '&addressid=' + tt.data.paramaddressid + '&proviceid=' + tt.data.paramproviceid + '&cityid=' + tt.data.paramcityid + '&areaid=' + tt.data.paramareaid + '&goodssku=' + tt.data.paramsku,
+                      url: '/pages/jdproducts/order/index?id=' + tt.data.productid + '&count=' + tt.data.productcount + '&totalprice=' + tt.data.productprice + '&addressid=' + tt.data.paramaddressid + '&proviceid=' + tt.data.paramproviceid + '&cityid=' + tt.data.paramcityid + '&areaid=' + tt.data.paramareaid + '&goodssku=' + tt.data.paramsku + '&provicename=' + tt.data.addressCity[0] + '&cityname=' + tt.data.addressCity[1] + '&areaname=' + tt.data.addressCity[2]+'&name='+tt.data.realname+'&mobile='+tt.data.mobile+'&detailaddress='+tt.data.detailaddress,
                     });
                   }, 1e3);
 

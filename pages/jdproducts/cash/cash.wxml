@@ -42,7 +42,7 @@
         </block>
         <block>
           <block>
-            <view bindtap="pay" class="fui-list" data-type="credit">
+            <view bindtap="balancepay" class="fui-list" data-type="credit">
               <view class="fui-list-media">
                 <image class="round" src="{{globalimg}}/ye.png"></image>
               </view>
@@ -74,9 +74,9 @@
     <view class="page {{successData.seckill_color}}">
       <view class="fui-list success">
         <view class="row">
-          <view class="">订单支付状态</view>
+          <view class="">{{jdstatus}}</view>
         </view>
-        <view class="">订单状态</view>
+        <view class=""></view>
       </view>
       <block>
         <block>
@@ -87,12 +87,12 @@
               </view>
               <view class="fui-cell-text textl info">
                 <view>
-                  <text class="name">联系人：糖果</text>
+                  <text class="name">联系人：{{realname}}</text>
                 </view>
                 <view>
-                  <text>联系电话：18236962763</text>
+                  <text>联系电话：{{realmobile}}</text>
                 </view>
-                <view class="adress">河南省郑州市新郑市</view>
+                <view class="adress">{{province}} {{city}} {{area}} {{detailaddress}}</view>
               </view>
             </navigator>
           </view>
@@ -103,14 +103,14 @@
           <view class="fui-cell-label">实付金额</view>
           <view class="fui-cell-text "></view>
           <view class="text-danger" style="font-size:24rpx">¥
-            <text>222</text>
+            <text>{{actualprice}}</text>
           </view>
         </view>
       </view>
       <!-- 订单详情模块-开始 -->
       <view class="operate" style='display:{{operateDis}}'>
         <view class='operate-con'>
-          <navigator class="btn btn-default" openType="redirect" url="/pages/order/detail/index?id={{successData.order.id}}">订单详情</navigator>
+          <navigator class="btn btn-default" openType="redirect" url="/pages/jdproducts/order/detail?id=42760">订单详情</navigator>
           <navigator class="btn btn-default" openType="switchTab" url="/pages/index/index">返回首页</navigator>
         </view>
       </view>

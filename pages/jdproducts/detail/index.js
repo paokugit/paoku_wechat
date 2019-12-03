@@ -40,14 +40,20 @@ Page({
     confirmshow: false,
     goodstotal: 0,
     isSelected: false,
-    goodssku:''
+    goodssku:'',
+    goodsid:'',
+    onsale:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
     var t = this
+    t.setData({
+      goodsid:options.id
+    })
     t.getdetail()
   },
   getdetail: function() {
@@ -55,7 +61,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
-        id: 2
+        id: that.data.goodsid
       },
       complete() {
         wx.hideLoading();
@@ -71,7 +77,8 @@ Page({
             goodstitle: res.data.data.brandName,
             imagePath: res.data.data.imagePath,
             goodsweight: res.data.data.weight,
-            goodssku:res.data.data.sku
+            goodssku:res.data.data.sku,
+            onsale:res.data.data.onsale
           }), l.wxParse('standardcontent', 'html', res.data.data.param, that, 5), l.wxParse('appintroduce', 'html', res.data.data.appintroduce, that, "0")
           wx.getSystemInfo({
             success: function(t) {
@@ -107,11 +114,11 @@ Page({
       confirmshow: false,
       goodstotal: aa.data.num
     })
-    console.log(aa.data.num)
+    // console.log(aa.data.num)
   },
   selectBuy: function() {
     var bb = this
-    console.log(bb.data.num)
+    // console.log(bb.data.num)
     bb.setData({
       maskshow: true,
       buyshow: true,
@@ -119,12 +126,10 @@ Page({
   },
   maskBuy: function() {
     var cc = this
-    console.log(cc.data.num)
-    console.log(cc.data.goodsprice * cc.data.num)
-    totalprice = Number((this.data.num * cc.data.goodsprice).toFixed(2))
+    totalprice = Number((cc.data.num * cc.data.goodsprice).toFixed(2))
     console.log(totalprice)
     wx.navigateTo({
-      url: '/pages/jdproducts/order/index?id=' + 1 + '&count=' + cc.data.num + '&totalprice=' + totalprice + '&goodssku=' + cc.data.goodssku,
+      url: '/pages/jdproducts/order/index?id=' + cc.data.goodsid + '&count=' + cc.data.num + '&totalprice=' + totalprice + '&goodssku=' + cc.data.goodssku,
     })
 
   },

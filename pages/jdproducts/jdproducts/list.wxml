@@ -43,18 +43,21 @@
           </view>
         </view>
         <view class="listCon">
-          <view class="itemBox" wx:for="{{list}}" wx:key="{{index}}">
-            <image class="proImg" src="{{item.imagePath}}"></image>
-            <view class="proTitle">{{item.name}}</view>
-            <view class="priceBox">
-              <text style="color:#f00;font-size:28rpx">￥</text>
-              <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
-              <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC支付</text>
-            </view>
-            <navigator class="buy-box" url="/pages/jdproducts/detail/index?id={{item.id}}">
-              <view class="buybtn">立即抢购</view>
+          <block wx:for="{{list}}" wx:key="{{index}}">
+            <navigator class="itemBox" url="/pages/jdproducts/detail/index?id={{item.id}}">
+              <image class="proImg" src="{{item.imagePath}}"></image>
+              <view class="proTitle">{{item.name}}</view>
+              <view class="priceBox">
+                <text style="color:#f00;font-size:28rpx">￥</text>
+                <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
+                <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC支付</text>
+              </view>
+              <view class="buy-box">
+                <view class="buybtn">立即抢购</view>
+              </view>
             </navigator>
-          </view>
+          </block>
+
 
         </view>
         <view class="fui-loading empty">

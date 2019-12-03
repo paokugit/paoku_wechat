@@ -43,18 +43,18 @@
         <block>
           <navigator class="fui-list goods-item" openType="redirect" url="/pages/goods/detail/index?id={{item.id}}">
             <view class="fui-list-media">
-              <image class="goods_img" src="{{globalimg}}/orange.png"></image>
+              <image class="goods_img" src="{{thumb}}"></image>
             </view>
             <view class="fui-list-inner" style="height:140rpx">
-              <view class="text">橙子</view>
-              <view class="subtitle">啦</view>
+              <view class="text">{{goodsname}}</view>
+              <view class="subtitle"></view>
             </view>
             <view class="price text-right" style="height:140rpx">
               <view class="text-right">¥
-                <text>66</text>
+                <text>{{goodsprice}}</text>
               </view>
-              <view class="text-right" style="color:#666">x
-                <text>2</text>
+              <view class="text-right" style="color:#666;margin-top:6rpx">x
+                <text>{{goodscount}}</text>
               </view>
             </view>
           </navigator>
@@ -64,7 +64,7 @@
         <view class="fui-cell">
           <view class="fui-cell-label">商品小计</view>
           <view class="fui-cell-info"></view>
-          <view class="fui-cell-remark noremark">¥ 66</view>
+          <view class="fui-cell-remark noremark">¥ {{totalprice}}</view>
         </view>
         <view class="fui-cell">
           <view class="fui-cell-label">运费</view>
@@ -76,7 +76,7 @@
           <view class="fui-cell-info"></view>
           <view class="fui-cell-remark noremark">
             <text class="text-danger">
-                            <text style="font-size:30rpx">¥ 66.00</text>
+                            <text style="font-size:30rpx">¥ {{orderprice}}</text>
             </text>
           </view>
         </view>
@@ -84,15 +84,15 @@
       <view class="fui-cell-group">
         <view class="order-info">
           <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-            <text class="fui-cell-label" selectable="true">订单编号：123456</text>
+            <text class="fui-cell-label" selectable="true">订单编号：{{ordersn}}</text>
           </view>
           <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-            <text class="fui-cell-label" selectable="true">创建时间：123456</text>
+            <text class="fui-cell-label" selectable="true">创建时间：{{createtime}}</text>
           </view>
           <block>
             <block>
               <view class="fui-cell-label" style="font-size:24rpx;color:#999">
-                <text class="fui-cell-label" selectable="true">支付时间：2019.11.30</text>
+                <text class="fui-cell-label" selectable="true">支付时间：{{paytime}}</text>
               </view>
             </block>
           </block>
@@ -127,45 +127,29 @@
                 <navigator class="btn btn-danger-o btn-sm" url="/pages/order/pay/index?id={{order.id}}">支付订单</navigator>
               </block>
             </block>
-            <block>
+            <!-- <block>
               <block>
                 <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
               </block>
-            </block>
-            <block>
+            </block> -->
+            <!-- <block>
               <block>
                 <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}">追加评价</navigator>
               </block>
-            </block>
-            <block>
+            </block> -->
+            <!-- <block>
               <block>
                 <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}">评价</navigator>
               </block>
-            </block>
-            <block>
+            </block> -->
+            <!-- <block>
               <block>
                 <view bindtap="finish" class="btn btn-default btn-default-o btn-sm">确认收货</view>
               </block>
-            </block>
-            <block>
-              <block>
-                <view class="btn btn-default btn-sm" bindtap='refundbtn'>{{order.refundtext}}</view>
-              </block>
-            </block>
-            <block>
-              <block>
-                <view class="btn btn-default btn-sm" bindtap='drawbackbtn'>{{order.refundtext}}</view>
-              </block>
-            </block>
-
-            <block>
-              <block>
-                <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-cancel">取消申请</view>
-              </block>
-            </block>
+            </block> -->
           </block>
         </block>
-        <block>
+        <!-- <block>
           <block>
             <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-orderid="{{order.id}}" data-type="2">
               彻底删除订单
@@ -174,7 +158,7 @@
               恢复订单
             </view>
           </block>
-        </block>
+        </block> -->
       </view>
     </view>
   </block>

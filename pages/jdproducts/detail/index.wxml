@@ -83,9 +83,12 @@
   <view class="fui-mask {{showPicker?'show':''}}" style="z-index: 1500"></view>
   <view>
     <view class="fui-navbar bottom-buttons {{iphonexnavbar}}">
-      <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{!goods.access_time&&!goods.timeout}}">立刻购买</view>
-      <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="access_time" data-timeout="false" wx:if="{{goods.access_time}}">立刻购买</view>
-      <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="timeout" data-timeout="false" wx:if="{{goods.timeout}}">立刻购买</view>
+      <block wx:if="{{onsale==1}}">
+        <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}">立刻购买</view>
+      </block>
+      <block wx:else>
+        <view class="nav-item btn nobuybtn {{onsale==1}}?'disabled':''" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}">下架</view>
+      </block>
     </view>
   </view>
   <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
@@ -120,7 +123,7 @@
         </view>
       </view>
       <view class="gmbtn" bindtap="maskBuy" wx:if="{{buyshow}}">确定</view>
-      <view class="gmbtn" bindtap="maskconfirm" wx:if="{{confirmshow}}">选择确定</view>
+      <view class="gmbtn" bindtap="maskconfirm" wx:if="{{confirmshow}}">确定</view>
     </view>
   </view>
 </view>

@@ -11,6 +11,7 @@ var e, a, o = getApp(),
 var f = getApp()
 var paramprice = 0
 var useropenid = "";
+const util=require('../../../utils/util.js')
 Page({
 
   /**
@@ -35,7 +36,14 @@ Page({
     weightprice: 0,
     payprice: 0,
     canpay: false,
-    goodsid: ''
+    goodsid: '',
+    provicename: '',
+    cityname: '',
+    areaname: '',
+    name: '',
+    mobile: '',
+    detailaddress: '',
+    goodsid:''
   },
 
   /**
@@ -59,7 +67,14 @@ Page({
         provinceid: options.proviceid,
         cityid: options.cityid,
         countyid: options.areaid,
-        goodssku: options.goodssku
+        goodssku: options.goodssku,
+        num: options.count,
+        provicename: options.provicename,
+        cityname: options.cityname,
+        areaname: options.areaname,
+        name: options.name,
+        mobile: options.mobile,
+        detailaddress: options.detailaddress
       })
       t.getcarriage()
     }
@@ -70,6 +85,7 @@ Page({
       payprice: options.totalprice,
       goodssku: options.goodssku
     })
+    console.log(t.data.num)
     t.getdetail()
   },
   getdetail: function() {
@@ -77,7 +93,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
-        id: 2
+        id: that.data.goodsid
       },
       complete() {
         wx.hideLoading();
@@ -102,6 +118,7 @@ Page({
   },
   // 获取运费carriage
   getcarriage: function() {
+    console.log(this.data.num)
     var tt = this
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.freight&comefrom=wxapp',
@@ -170,12 +187,16 @@ Page({
   addadress: function() {
     console.log(this.data.goodsprice, this.data.num)
     wx.navigateTo({
-      url: '/pages/jdproducts/address/add?id=' + 1 + '&count=' + this.data.num + '&totalprice=' + this.data.goodsprice + '&goodssku=' + this.data.goodssku,
+      url: '/pages/jdproducts/address/add?id=' + this.data.goodsid + '&count=' + this.data.num + '&totalprice=' + this.data.goodsprice + '&goodssku=' + this.data.goodssku,
     })
   },
-  submit: function() {
+  submit:util.throttle(function(){
+    console.log('点击')
     var that = this
     if (that.data.canpay == true) {
+      wx.showLoading({
+        title: '加载中',
+      })
       console.log('接口')
       wx.request({
         url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.order&comefrom=wxapp',
@@ -188,12 +209,15 @@ Page({
         complete() {
           wx.hideLoading();
         },
-        success: function(res) {
+        success: function (res) {
           if (res.data.error == 0) {
             console.log(res)
-            wx.navigateTo({
-              url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + that.data.payprice,
-            })
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + that.data.payprice,
+              })
+            }, 1e3);
+
           } else {
             wx.showModal({
               title: '提示',
@@ -205,7 +229,7 @@ Page({
     } else {
       return void i.toast(that, "请添加收货地址")
     }
-  },
+  }),
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
