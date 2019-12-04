@@ -121,7 +121,18 @@ swiper {
   position: relative;
   margin-top: 10rpx;
 }
-
+.jdprice{
+  width: auto;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-size: 18rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .buybtn {
   width: 140rpx;
   height: 42rpx;
@@ -139,6 +150,11 @@ swiper {
 }
 
 /* 全部商品 */
+.filtratebox{
+  width: 100%;
+  height: auto;
+  background: #fff
+}
 
 .all-filtrate {
   width: 80%;
@@ -146,7 +162,6 @@ swiper {
   background: #fff;
   display: flex;
   align-items: center;
-  border-bottom: 2rpx solid #efefef;
   margin-bottom: 10rpx;
 }
 

@@ -33,7 +33,9 @@ Page({
     ordersn: '',
     createtime: '',
     paytime: '',
-    paramid: ''
+    paramid: '',
+    statusdesc: '',
+    dispatchprice: ''
   },
 
   /**
@@ -60,7 +62,7 @@ Page({
         console.log(res)
         if (res.data.error == 0) {
           that.setData({
-            orderstatus: res.data.data.jdstatus_msg,
+            statusdesc: res.data.data.jdstatus_msg,
             orderprice: res.data.data.price,
             realname: res.data.data.address.realname,
             realmobile: res.data.data.address.mobile,
@@ -72,10 +74,12 @@ Page({
             goodsname: res.data.data.goods.name,
             goodsprice: res.data.data.goods.price,
             goodscount: res.data.data.goods.total,
-            totalprice: Number(res.data.data.goods.total) * Number(res.data.data.goods.price),
+            totalprice: Number((res.data.data.goods.total * res.data.data.goods.price).toFixed(2)),
             ordersn: res.data.data.ordersn,
             createtime: res.data.data.createtime,
-            paytime: res.data.data.paytime
+            paytime: res.data.data.paytime,
+            orderstatus: res.data.data.status,
+            dispatchprice: res.data.data.dispatchprice
 
           })
 
@@ -89,10 +93,84 @@ Page({
     });
   },
   cancel: function(e) {
-    console.log(e)
+    var a = this
+    console.log(a.data.orderstatus)
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消该订单吗',
+      success: function(res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.cancel_order&comefrom=wxapp',
+            data: {
+              orderid: a.data.paramid
+            },
+            complete() {
+              wx.hideLoading();
+            },
+            success: function(res) {
+              console.log(res)
+              if (res.data.error == 0) {
+                console.log(res)
+                // 取消订单成功后刷新详情接口
+                a.getdetail()
+
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.message,
+                })
+              }
+            }
+          });
+        } else {
+          // console.log('取消')
+        }
+      }
+    })
+  },
+  // 删除订单
+  deletebtn: function() {
+    var b = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除该订单吗',
+      success: function(res) {
+        if (res.confirm) {
+          e.post("order/op/delete", {
+            id: b.data.paramid,
+            userdeleted: 1
+          }, function(e) {
+            console.log(e)
+            if (e.error == 0) {
+              // 删除成功后跳转到我的订单列表
+              wx.navigateTo({
+                url: '/pages/order/index',
+              })
+
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: e.message,
+              })
+            }
+          });
+        } else {
+          // console.log('取消')
+        }
+      }
+    })
   },
   shouhoubtn: function() {
-
+    wx.showModal({
+      title: '提示',
+      content: '京东商品暂不支持在线售后,详情请联系客服',
+    })
+  },
+  wuliubtn: function () {
+    wx.navigateTo({
+      url: '/pages/jdproducts/logistics/logistics?id=' + this.data.paramid,
+    })
   },
 
   /**

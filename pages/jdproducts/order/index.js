@@ -11,7 +11,7 @@ var e, a, o = getApp(),
 var f = getApp()
 var paramprice = 0
 var useropenid = "";
-const util=require('../../../utils/util.js')
+const util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -24,7 +24,11 @@ Page({
     showIcon: true,
     gloheight: f.globalData.gloheight,
     num: 1,
+    // 单价
     goodsprice: 0,
+    // 小计
+    totalprice: 0,
+    // 需付
     payprice: 0,
     goodstitle: '',
     imagePath: '',
@@ -34,7 +38,6 @@ Page({
     addressid: '',
     goodssku: '',
     weightprice: 0,
-    payprice: 0,
     canpay: false,
     goodsid: '',
     provicename: '',
@@ -43,7 +46,7 @@ Page({
     name: '',
     mobile: '',
     detailaddress: '',
-    goodsid:''
+    goodsid: '',
   },
 
   /**
@@ -81,9 +84,8 @@ Page({
     t.setData({
       num: options.count,
       goodsid: options.id,
-      goodsprice: options.totalprice,
       payprice: options.totalprice,
-      goodssku: options.goodssku
+      goodssku: options.goodssku,
     })
     console.log(t.data.num)
     t.getdetail()
@@ -104,12 +106,13 @@ Page({
           paramprice = res.data.data.ptprice
           that.setData({
             show: !0,
-            // goodsprice: res.data.data.ptprice,
+            goodsprice: res.data.data.ptprice,
             jdprice: res.data.data.jdprice,
             goodstitle: res.data.data.brandName,
             imagePath: res.data.data.imagePath,
             goodsweight: res.data.data.weight,
-            goodssku: res.data.data.sku
+            goodssku: res.data.data.sku,
+            totalprice: Number(res.data.data.ptprice * that.data.num)
           })
         }
       }
@@ -138,7 +141,7 @@ Page({
           console.log(res)
           tt.setData({
             weightprice: res.data.data.freight,
-            payprice: Number(tt.data.goodsprice) + Number(res.data.data.freight)
+            payprice: Number(tt.data.payprice) + Number(res.data.data.freight)
           })
         }
       }
@@ -169,13 +172,13 @@ Page({
     });
     this.getTotalPrice()
   },
-  getTotalPrice(e) {
-    let sum = 0;
-    sum += this.data.num * paramprice;
-    this.setData({
-      goodsprice: sum.toFixed(2),
-    })
-  },
+  // getTotalPrice(e) {
+  //   let sum = 0;
+  //   sum += this.data.num * paramprice;
+  //   this.setData({
+  //     goodsprice: sum.toFixed(2),
+  //   })
+  // },
   /* 输入框事件 */
   bindManual: function(e) {
     var num = e.detail.value;
@@ -185,12 +188,12 @@ Page({
     });
   },
   addadress: function() {
-    console.log(this.data.goodsprice, this.data.num)
+    console.log(this.data.totalprice, this.data.num)
     wx.navigateTo({
-      url: '/pages/jdproducts/address/add?id=' + this.data.goodsid + '&count=' + this.data.num + '&totalprice=' + this.data.goodsprice + '&goodssku=' + this.data.goodssku,
+      url: '/pages/jdproducts/address/add?id=' + this.data.goodsid + '&count=' + this.data.num + '&totalprice=' + this.data.totalprice + '&goodssku=' + this.data.goodssku,
     })
   },
-  submit:util.throttle(function(){
+  submit: util.throttle(function() {
     console.log('点击')
     var that = this
     if (that.data.canpay == true) {
@@ -209,12 +212,12 @@ Page({
         complete() {
           wx.hideLoading();
         },
-        success: function (res) {
+        success: function(res) {
           if (res.data.error == 0) {
             console.log(res)
-            setTimeout(function () {
+            setTimeout(function() {
               wx.navigateTo({
-                url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + that.data.payprice,
+                url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + res.data.data.price + '&ordersn=' + res.data.data.ordersn,
               })
             }, 1e3);
 

@@ -14,7 +14,7 @@
             <view class="fui-cell-group" id="addressInfo">
               <block wx:if="{{canpay}}">
                 <block>
-                  <view class="fui-cell" hoverClass="none" openType="navigate" style="padding-top:32rpx;padding-bottom:32rpx">
+                  <view class="fui-cell" hoverClass="none" bindtap="addadress" style="padding-top:32rpx;padding-bottom:32rpx">
                     <view class="fui-cell-icon" style="margin-right:24rpx">
                       <text class="icox icox-dingwei1"></text>
                     </view>
@@ -53,7 +53,7 @@
               <view class="fui-cell-icon" style="margin-right:12px">
                 <text class="icox icox-dianpu1"></text>
               </view>
-              <text class="shop">糖果的店</text>
+              <text class="shop">京东商城</text>
             </navigator>
             <block>
               <view class="fui-list goods-item noclick">
@@ -109,7 +109,7 @@
             <view class="fui-cell-label">商品小计</view>
             <view class="fui-cell-info"></view>
             <view class="fui-cell-remark noremark">¥
-              <text>{{goodsprice}}</text>
+              <text>{{goodsprice*num}}</text>
             </view>
           </view>
         </view>

@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="精选好物"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="京东购"></navigation>
 <view class='account-box'>
   <!-- tab -->
   <block>
@@ -24,6 +24,7 @@
           </view>
         </view>
         <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
+        <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
           <block wx:for="{{catelist}}" wx:key="{{index}}">
             <view bindtap="selected" class="item {{status==item.id?'active':''}}" data-type="{{item.id}}">
               {{item.catename}}
@@ -31,15 +32,17 @@
           </block>
         </scroll-view>
         <!-- 全部商品内容 -->
-        <view class="all-filtrate">
-          <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
-          <view class="all-price" data-now="1" bindtap='checkAllt'>
-            <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
-            <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
-          </view>
-          <view class="all-sales" data-now="2" bindtap='checkAllt'>
-            <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
-            <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+        <view class="filtratebox">
+          <view class="all-filtrate">
+            <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+            <view class="all-price" data-now="1" bindtap='checkAllt'>
+              <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+              <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+            </view>
+            <view class="all-sales" data-now="2" bindtap='checkAllt'>
+              <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+              <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+            </view>
           </view>
         </view>
         <view class="listCon">
@@ -50,9 +53,13 @@
               <view class="priceBox">
                 <text style="color:#f00;font-size:28rpx">￥</text>
                 <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
-                <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC支付</text>
+                <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC</text>
               </view>
               <view class="buy-box">
+                <view class="jdprice">
+                  <text>京东价:</text>
+                  <text>￥{{item.jdprice}}</text>
+                </view>
                 <view class="buybtn">立即抢购</view>
               </view>
             </navigator>

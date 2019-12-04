@@ -62,6 +62,7 @@ Page({
 
   //获取省份列表
   getProvince: function() {
+    
     let that = this
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',

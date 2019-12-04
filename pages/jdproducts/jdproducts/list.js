@@ -33,7 +33,7 @@ Page({
     swiperCurrent: 0,
     dots: true,
     catelist: [],
-    status: "",
+    status: '',
     pricesort: "",
     salesort: "",
     totalPage: 0,
@@ -43,42 +43,48 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(a) {
+    var that = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
-    this.getbanner(),
-      this.getList(),
-      this.setData({
-        show: !0,
-        status: this.data.status
-      })
-    console.log(this.data.status)
+    console.log(that.data.status)
+    that.getbanner(),
+    that.getList()
   },
   getbanner: function() {
     var that = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.banner&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.banner&comefrom=wxapp',
       data: {},
       complete() {
         wx.hideLoading();
       },
       success: function(res) {
         console.log(res)
-        that.setData({
-          imgUrls: res.data.data.banner,
-          catelist: res.data.data.cate,
-          status: res.data.data.cate[0].id
-        })
+        if (res.data.error == 0) {
+          that.setData({
+            show: !0,
+            imgUrls: res.data.data.banner,
+            catelist: res.data.data.cate,
+            // status: res.data.data.cate[0].id
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.message,
+          })
+        }
       }
     });
   },
   getList: function() {
     var tt = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.goodlist&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.goodlist&comefrom=wxapp',
       data: {
         cate_id: tt.data.status,
         price: tt.data.pricesort,
-        sale: tt.data.salesort
+        sale: tt.data.salesort,
+        jdprice: tt.data.jdprice
       },
       complete() {
         wx.hideLoading();
@@ -89,6 +95,7 @@ Page({
           // let totalPage = Math.ceil(res.data.data.total / res.data.data.pagesize);
           // let totalList = res.data.data.list
           tt.setData({
+            show: !0,
             // totalPage: totalPage,
             list: res.data.data.list
             // list: tt.data.list.concat(totalList)
@@ -220,7 +227,7 @@ Page({
     wx.stopPullDownRefresh();
   },
   onReachBottom: function() {
-    
+
   },
   // onReachBottom: function() {
   //   let page = this.data.page;

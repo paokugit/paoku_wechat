@@ -12,7 +12,7 @@
         <view class="fui-cell">
           <view class="fui-cell-label">订单编号</view>
           <view class="fui-cell-text textl"></view>
-          <view class="fui-cell-remark noremark">123456</view>
+          <view class="fui-cell-remark noremark">{{ordersn}}</view>
         </view>
         <view class="fui-cell">
           <view class="fui-cell-label">订单金额</view>
@@ -51,7 +51,7 @@
                   <view class="row-text">余额支付</view>
                 </view>
                 <view class="subtitle">当前余额：
-                  <text class="text-danger">¥<text>{{list.credit.current}}</text>
+                  <text class="text-danger">¥<text>{{currentmoney}}</text>
                   </text>
                 </view>
               </view>
@@ -110,7 +110,7 @@
       <!-- 订单详情模块-开始 -->
       <view class="operate" style='display:{{operateDis}}'>
         <view class='operate-con'>
-          <navigator class="btn btn-default" openType="redirect" url="/pages/jdproducts/order/detail?id=42760">订单详情</navigator>
+          <view class="btn btn-default" bindtap="detailbtn">订单详情</view>
           <navigator class="btn btn-default" openType="switchTab" url="/pages/index/index">返回首页</navigator>
         </view>
       </view>

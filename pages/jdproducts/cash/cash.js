@@ -19,14 +19,16 @@ Page({
     pack: '',
     signtype: '',
     paysign: '',
-    success: !0,
+    success: !1,
     realname: '',
     realmobile: '',
     province: '',
     city: '',
     area: '',
     detailaddress: '',
-    jdstatus: ''
+    jdstatus: '',
+    ordersn: '',
+    currentmoney: ''
   },
 
   /**
@@ -38,10 +40,33 @@ Page({
     useropenid = userinfo.openid;
     this.setData({
       show: !0,
-      // orderId: options.orderid,
-      // orderprice: options.payprice
+      orderId: options.orderid,
+      orderprice: options.payprice,
+      ordersn: options.ordersn
+    });
+    this.getcredit()
+  },
+  // 当前余额
+  getcredit: function() {
+    var tt = this
+    wx.request({
+      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.money&comefrom=wxapp',
+      data: {
+        openid: useropenid
+      },
+      complete() {
+        wx.hideLoading();
+      },
+      success: function(res) {
+        if (res.data.error == 0) {
+          console.log(res)
+          tt.setData({
+            currentmoney: res.data.data.credit2
+          })
+
+        }
+      }
     })
-    // this.paysuccess()
 
   },
   // 微信支付
@@ -50,8 +75,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.pay&comefrom=wxapp',
       data: {
-        // orderid: that.data.orderId
-        orderid: 42760
+        orderid: that.data.orderId
       },
       complete() {
         wx.hideLoading();
@@ -97,7 +121,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
       data: {
-        orderid: 42760
+        orderid: tt.data.orderId
       },
       complete() {
         wx.hideLoading();
@@ -121,16 +145,50 @@ Page({
     })
   },
   balancepay: function() {
-    wx.showModal({
-      title: '提示',
-      content: '确定要余额支付吗',
-      success: function(res) {
-        if (res.confirm) {
-          console.log('确定')
-        } else {
-          console.log('取消')
+    var that = this
+    let currentcredit = Number(that.data.currentmoney)
+    let ordermoney = Number(that.data.orderprice)
+    console.log(currentcredit, ordermoney)
+    if (currentcredit < ordermoney) {
+      wx.showModal({
+        title: '提示',
+        content: '余额不足,请充值',
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '确定要余额支付吗',
+        success: function(res) {
+          if (res.confirm) {
+            wx.request({
+              url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.balance_pay&comefrom=wxapp',
+              data: {
+                orderid: that.data.orderId
+              },
+              complete() {
+                wx.hideLoading();
+              },
+              success: function(res) {
+                if (res.data.error == 0) {
+                  console.log(res)
+                  that.setData({
+                    success: !0
+                  }), that.paysuccess()
+
+                }
+              }
+            })
+          } else {
+            console.log('取消')
+          }
         }
-      }
+      })
+    }
+
+  },
+  detailbtn: function() {
+    wx.navigateTo({
+      url: '/pages/jdproducts/order/detail?id=' + this.data.orderId,
     })
   },
   /**

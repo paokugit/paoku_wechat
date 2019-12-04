@@ -10,10 +10,10 @@
     <view class="page navbar {{seckill_color}} {{paddingb}}">
       <view class="fui-list bg">
         <view class="row" style="font-size:34rpx">
-          <view class="">{{orderstatus}}</view>
+          <view class="">{{statusdesc}}</view>
         </view>
-        <view class="order-price">订单金额(含运费):¥
-          <text>{{orderprice}}</text>
+        <view class="order-price">订单金额(含运费):
+          <text style="margin-left:4rpx">¥{{orderprice}}</text>
         </view>
       </view>
       <block>
@@ -69,7 +69,7 @@
         <view class="fui-cell">
           <view class="fui-cell-label">运费</view>
           <view class="fui-cell-info"></view>
-          <view class="fui-cell-remark noremark">¥ 6</view>
+          <view class="fui-cell-remark noremark">¥ {{dispatchprice}}</view>
         </view>
         <view class="fui-cell">
           <view class="fui-cell-label" style="width:auto;">实付费(含运费)</view>
@@ -107,58 +107,40 @@
           </block>
         </block>
         <block>
-          <block>
-            <button class="btn btn-default btn-default-o pull-left" bindtap="shouhoubtn">
+          <block wx:if="{{orderstatus==1}}">
+            <button class="btn btn-default btn-default-o pull-right" bindtap="shouhoubtn">
               申请售后
+            </button>
+          </block>
+        </block>
+        <block>
+          <block wx:if="{{orderstatus==1}}">
+            <button class="btn btn-default btn-default-o pull-right" bindtap="wuliubtn">
+              查看物流
             </button>
           </block>
         </block>
         <block>
           <block>
             <block>
-              <block>
-                <view class="btn btn-default btn-default-o btn-sm">
-                  <picker bindchange="cancel" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
-                </view>
+              <block wx:if="{{orderstatus==0}}">
+                <button class="btn btn-default btn-default-o pull-left" bindtap="cancel">
+                  取消订单
+                </button>
               </block>
             </block>
             <block>
-              <block>
+              <block wx:if="{{orderstatus==0}}">
                 <navigator class="btn btn-danger-o btn-sm" url="/pages/order/pay/index?id={{order.id}}">支付订单</navigator>
               </block>
             </block>
-            <!-- <block>
-              <block>
-                <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
+            <block>
+              <block wx:if="{{orderstatus==-1}}">
+                <view bindtap="deletebtn" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
               </block>
-            </block> -->
-            <!-- <block>
-              <block>
-                <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}">追加评价</navigator>
-              </block>
-            </block> -->
-            <!-- <block>
-              <block>
-                <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}">评价</navigator>
-              </block>
-            </block> -->
-            <!-- <block>
-              <block>
-                <view bindtap="finish" class="btn btn-default btn-default-o btn-sm">确认收货</view>
-              </block>
-            </block> -->
+            </block>
           </block>
         </block>
-        <!-- <block>
-          <block>
-            <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-orderid="{{order.id}}" data-type="2">
-              彻底删除订单
-            </view>
-            <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-orderid="{{order.id}}" data-type="0">
-              恢复订单
-            </view>
-          </block>
-        </block> -->
       </view>
     </view>
   </block>
