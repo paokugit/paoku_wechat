@@ -65,7 +65,7 @@ Page({
     
     let that = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
       data: {
         type: 0,
         id: 0
@@ -104,7 +104,7 @@ Page({
       currnetProvinceId: id
     })
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
       data: {
         type: 1,
         id: id
@@ -141,7 +141,7 @@ Page({
       currentCityId: id //保存当前选择市
     })
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
       data: {
         type: 2,
         id: id
@@ -256,7 +256,7 @@ Page({
           } else {
             console.log('保存地址')
             wx.request({
-              url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.add_address&comefrom=wxapp',
+              url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.add_address&comefrom=wxapp',
               data: {
                 openid: useropenid,
                 realname: tt.data.realname,

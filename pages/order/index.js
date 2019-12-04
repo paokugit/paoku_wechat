@@ -24,66 +24,66 @@ Page({
     }), t.url(a), this.get_list();
   },
 
-  // get_list: function() {
-  //   var t = this;
-  //   t.setData({
-  //     loading: !0
-  //   }), a.get("order/get_list", {
-  //     page: t.data.page,
-  //     status: t.data.status,
-  //     merchid: 0
-  //   }, function(e) {
-  //     console.log(e)
-  //     0 == e.error ? (t.setData({
-  //       loading: !1,
-  //       show: !0,
-  //       total: e.total,
-  //       empty: !0
-  //     }), e.list.length > 0 && t.setData({
-  //       page: t.data.page + 1,
-  //       list: t.data.list.concat(e.list)
-  //     }), e.list.length < e.pagesize && t.setData({
-  //       loaded: !0
-  //     })) : a.toast(e.message, "loading");
-  //   }, this.data.show);
-  // },
   get_list: function() {
     var t = this;
     t.setData({
       loading: !0
-    }), wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=order.get_list&comefrom=wxapp',
-      data: {
-        page: t.data.page,
-        status: t.data.status,
-        merchid: 0,
-        openid: useropenid
-      },
-      complete() {
-        wx.hideLoading();
-      },
-      success: function(e) {
-        console.log(e)
-        console.log(e)
-        0 == e.data.error ? (t.setData({
-          loading: !1,
-          show: !0,
-          total: e.total,
-          empty: !0
-        }), e.data.list.length > 0 && t.setData({
-          page: t.data.page + 1,
-          list: t.data.list.concat(e.data.list)
-        }), e.data.list.length < e.data.pagesize && t.setData({
-          loaded: !0
-        })) : a.toast(e.data.message, "loading");
-      }
+    }), a.get("order/get_list", {
+      page: t.data.page,
+      status: t.data.status,
+      merchid: 0
+    }, function(e) {
+      console.log(e)
+      0 == e.error ? (t.setData({
+        loading: !1,
+        show: !0,
+        total: e.total,
+        empty: !0
+      }), e.list.length > 0 && t.setData({
+        page: t.data.page + 1,
+        list: t.data.list.concat(e.list)
+      }), e.list.length < e.pagesize && t.setData({
+        loaded: !0
+      })) : a.toast(e.message, "loading");
     }, this.data.show);
   },
+  // get_list: function() {
+  //   var t = this;
+  //   t.setData({
+  //     loading: !0
+  //   }), wx.request({
+  //     url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=order.get_list&comefrom=wxapp',
+  //     data: {
+  //       page: t.data.page,
+  //       status: t.data.status,
+  //       merchid: 0,
+  //       openid: useropenid
+  //     },
+  //     complete() {
+  //       wx.hideLoading();
+  //     },
+  //     success: function(e) {
+  //       console.log(e)
+  //       console.log(e)
+  //       0 == e.data.error ? (t.setData({
+  //         loading: !1,
+  //         show: !0,
+  //         total: e.total,
+  //         empty: !0
+  //       }), e.data.list.length > 0 && t.setData({
+  //         page: t.data.page + 1,
+  //         list: t.data.list.concat(e.data.list)
+  //       }), e.data.list.length < e.data.pagesize && t.setData({
+  //         loaded: !0
+  //       })) : a.toast(e.data.message, "loading");
+  //     }
+  //   }, this.data.show);
+  // },
   // 京东
   shouhoubtn: function() {
     wx.showModal({
       title: '提示',
-      content: '京东商品暂不支持在线售后,详情请联系客服',
+      content: '京东商品暂不支持在线售后,请联系客服',
     })
   },
   jdcancel: function(t) {
@@ -96,7 +96,7 @@ Page({
         if (res.confirm) {
           console.log('确定')
           wx.request({
-            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.cancel_order&comefrom=wxapp',
+            url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.cancel_order&comefrom=wxapp',
             data: {
               orderid: t.currentTarget.dataset.orderid
             },
@@ -129,7 +129,7 @@ Page({
     })
   },
   finishgoods: function(tt) {
-    var cc=this
+    var cc = this
     console.log(tt)
     wx.showModal({
       title: '提示',
@@ -137,7 +137,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           wx.request({
-            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.finish&comefrom=wxapp',
+            url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.finish&comefrom=wxapp',
             data: {
               orderid: tt.currentTarget.dataset.orderid
             },

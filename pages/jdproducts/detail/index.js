@@ -59,7 +59,7 @@ Page({
   getdetail: function() {
     var that = this
     wx.request({
-      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
         id: that.data.goodsid
       },

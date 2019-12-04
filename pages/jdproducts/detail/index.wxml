@@ -29,8 +29,8 @@
               <text style="color:#f00;font-size:46rpx;">{{goodsprice}}</text>
             </view>
             <view style="margin-left:30rpx">
-              <text style="color:#999;font-size:26rpx;text-decoration: line-through;margin-right:6rpx">京东价格:</text>
-              <text style="color:#999;font-size:26rpx;text-decoration: line-through">￥{{jdprice}}</text>
+              <text style="color:#999;font-size:22rpx;text-decoration: line-through;margin-right:6rpx">京东价格:</text>
+              <text style="color:#999;font-size:22rpx;text-decoration: line-through">￥{{jdprice}}</text>
             </view>
           </view>
         </view>

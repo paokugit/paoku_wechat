@@ -51,7 +51,7 @@ Page({
   getdetail: function() {
     var that = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
       data: {
         orderid: that.data.paramid
       },
@@ -102,7 +102,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           wx.request({
-            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.cancel_order&comefrom=wxapp',
+            url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.cancel_order&comefrom=wxapp',
             data: {
               orderid: a.data.paramid
             },
@@ -165,7 +165,7 @@ Page({
   shouhoubtn: function() {
     wx.showModal({
       title: '提示',
-      content: '京东商品暂不支持在线售后,详情请联系客服',
+      content: '京东商品暂不支持在线售后,请联系客服',
     })
   },
   wuliubtn: function () {

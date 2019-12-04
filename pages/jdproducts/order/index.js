@@ -93,7 +93,7 @@ Page({
   getdetail: function() {
     var that = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
       data: {
         id: that.data.goodsid
       },
@@ -124,7 +124,7 @@ Page({
     console.log(this.data.num)
     var tt = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.freight&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.freight&comefrom=wxapp',
       data: {
         province: tt.data.provinceid,
         city: tt.data.cityid,
@@ -202,7 +202,7 @@ Page({
       })
       console.log('接口')
       wx.request({
-        url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.order&comefrom=wxapp',
+        url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.order&comefrom=wxapp',
         data: {
           openid: useropenid,
           address_id: that.data.addressid,

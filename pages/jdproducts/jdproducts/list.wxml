@@ -13,7 +13,7 @@
           <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
             <block wx:for="{{imgUrls}}" wx:key="unique">
               <swiper-item>
-                <image src="{{item}}" class="slide-image" />
+                <image src="{{item.banner}}" class="slide-image" />
               </swiper-item>
             </block>
           </swiper>
@@ -49,7 +49,9 @@
           <block wx:for="{{list}}" wx:key="{{index}}">
             <navigator class="itemBox" url="/pages/jdproducts/detail/index?id={{item.id}}">
               <image class="proImg" src="{{item.imagePath}}"></image>
-              <view class="proTitle">{{item.name}}</view>
+              <view class="proTitle">
+              <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
+              {{item.name}}</view>
               <view class="priceBox">
                 <text style="color:#f00;font-size:28rpx">￥</text>
                 <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>

@@ -50,7 +50,7 @@ Page({
   getcredit: function() {
     var tt = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.money&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.money&comefrom=wxapp',
       data: {
         openid: useropenid
       },
@@ -73,7 +73,7 @@ Page({
   wxpay: function() {
     var that = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.pay&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.pay&comefrom=wxapp',
       data: {
         orderid: that.data.orderId
       },
@@ -119,7 +119,7 @@ Page({
   paysuccess: function() {
     var tt = this
     wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.orderdetail&comefrom=wxapp',
       data: {
         orderid: tt.data.orderId
       },
@@ -161,7 +161,7 @@ Page({
         success: function(res) {
           if (res.confirm) {
             wx.request({
-              url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.balance_pay&comefrom=wxapp',
+              url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.balance_pay&comefrom=wxapp',
               data: {
                 orderid: that.data.orderId
               },

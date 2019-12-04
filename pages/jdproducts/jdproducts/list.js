@@ -187,6 +187,7 @@ Page({
       pricesort: "",
       salesort: "",
       nowSign: 0,
+      show:!1,
       allPrice: 'sc_tj_icon_jg_nor@2x',
       allSales: 'sc_tj_icon_jg_nor@2x',
     }), this.getList();
