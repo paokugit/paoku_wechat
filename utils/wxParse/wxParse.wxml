@@ -527,7 +527,7 @@
                 </block>
                 <block wx:elif="{{item.tag=='a'}}">
                     <view bindtap="wxParseTagATap" class="wxParse-inline {{item.classStr}} wxParse-{{item.tag}}" data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-                        <block wx:for="{{item.nodes}}">
+                        <block wx:for="{{item.nodes}}" wx:key="">
                             <template is="wxParse4" data="{{item:item}}"></template>
                         </block>
                     </view>

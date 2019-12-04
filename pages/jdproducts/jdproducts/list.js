@@ -48,7 +48,7 @@ Page({
     useropenid = userinfo.openid
     console.log(that.data.status)
     that.getbanner(),
-    that.getList()
+      that.getList()
   },
   getbanner: function() {
     var that = this
@@ -84,7 +84,7 @@ Page({
         cate_id: tt.data.status,
         price: tt.data.pricesort,
         sale: tt.data.salesort,
-        jdprice: tt.data.jdprice
+        page: tt.data.page
       },
       complete() {
         wx.hideLoading();
@@ -92,13 +92,13 @@ Page({
       success: function(res) {
         console.log(res)
         if (res.data.error == 0) {
-          // let totalPage = Math.ceil(res.data.data.total / res.data.data.pagesize);
-          // let totalList = res.data.data.list
+          let totalPage = Math.ceil(res.data.data.total / res.data.data.pagesize);
+          let totalList = res.data.data.list
           tt.setData({
             show: !0,
-            // totalPage: totalPage,
-            list: res.data.data.list
-            // list: tt.data.list.concat(totalList)
+            totalPage: totalPage,
+            // list: res.data.data.list
+            list: tt.data.list.concat(totalList)
           })
         }
       }
@@ -226,30 +226,30 @@ Page({
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   },
-  onReachBottom: function() {
-
-  },
   // onReachBottom: function() {
-  //   let page = this.data.page;
-  //   let totalpage = this.data.totalPage;
-  //   if (page <= totalpage) {
-  //     wx.showLoading({
-  //       title: '加载中...',
-  //     });
-  //     this.setData({
-  //       page: page + 1
-  //     })
-  //     this.getList();
-  //   } else {
-  //     this.setData({
-  //       show: !0
-  //     })
-  //   }
-  //   setTimeout(() => {
-  //     wx.hideLoading()
-  //   }, 200)
 
   // },
+  onReachBottom: function() {
+    let page = this.data.page;
+    let totalpage = this.data.totalPage;
+    if (page <= totalpage) {
+      wx.showLoading({
+        title: '加载中...',
+      });
+      this.setData({
+        page: page + 1
+      })
+      this.getList();
+    } else {
+      this.setData({
+        show: !0
+      })
+    }
+    setTimeout(() => {
+      wx.hideLoading()
+    }, 200)
+
+  },
 
   /**
    * 用户点击右上角分享

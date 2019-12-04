@@ -79,7 +79,8 @@ Page({
             createtime: res.data.data.createtime,
             paytime: res.data.data.paytime,
             orderstatus: res.data.data.status,
-            dispatchprice: res.data.data.dispatchprice
+            dispatchprice: res.data.data.dispatchprice,
+            paramid: res.data.data.id
 
           })
 

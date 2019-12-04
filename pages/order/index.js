@@ -108,7 +108,11 @@ Page({
               if (res.data.error == 0) {
                 console.log(res)
                 // 取消订单成功后刷新列表接口
-                aa.get_list()
+                // aa.get_list()
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.message,
+                }), aa.get_list()
 
               } else {
                 wx.showModal({

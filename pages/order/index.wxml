@@ -240,7 +240,7 @@
                 <!-- 京东订单 -->
                 <block>
                   <block wx:if="{{item.jdtype==1}}">
-                    <view class="fui-list list-padding" style="background:pink">
+                    <view class="fui-list list-padding">
                       <view class="fui-list-inner text-right">
                         <block wx:if="{{item.status==0}}">
                           <view class="btn btn-default btn-default-o" bindtap="jdcancel" data-orderid="{{item.id}}">
@@ -254,6 +254,11 @@
                           <view class="btn btn-default btn-default-o" bindtap="shouhoubtn">
                             申请退款
                           </view>
+                        </block>
+                        <block wx:if="{{item.status==1}}">
+                          <navigator class="btn btn-default btn-default-o" url="/pages/jdproducts/logistics/logistics?id={{item.id}}">
+                            查看物流
+                          </navigator>
                         </block>
                         <block wx:if="{{item.status==-1}}">
                           <view bindtap="delete" class="btn btn-default btn-default-o" data-orderid="{{item.id}}" data-type="1">
