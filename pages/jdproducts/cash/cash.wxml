@@ -42,6 +42,25 @@
         </block>
         <block>
           <block>
+            <view bindtap="rvcpay" class="fui-list" data-type="RVC">
+              <view class="fui-list-media">
+                <image class="round" src="{{globalimg}}/rvc.png"></image>
+              </view>
+              <view class="fui-list-inner">
+                <view class="row">
+                  <view class="row-text">RVC支付</view>
+                </view>
+                <view class="subtitle">当前RVC：
+                  <text class="text-danger"><text>{{currentrvc}}</text></text>
+                </view>
+
+              </view>
+              <view class="angle"></view>
+            </view>
+          </block>
+        </block>
+        <block>
+          <block>
             <view bindtap="balancepay" class="fui-list" data-type="credit">
               <view class="fui-list-media">
                 <image class="round" src="{{globalimg}}/ye.png"></image>

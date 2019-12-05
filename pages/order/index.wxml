@@ -247,7 +247,7 @@
                             取消订单
                           </view>
                         </block>
-                        <block wx:if="{{item.status==-1}}">
+                        <block wx:if="{{item.status==0}}">
                           <navigator class="btn btn-danger btn-danger-o" url="/pages/jdproducts/cash/cash?orderid={{item.id}}&&payprice={{item.price}}&&ordersn={{item.ordersn}}">支付订单</navigator>
                         </block>
                         <block wx:if="{{item.status==1}}">
@@ -261,6 +261,11 @@
                           </navigator>
                         </block>
                         <block wx:if="{{item.status==-1}}">
+                          <view bindtap="delete" class="btn btn-default btn-default-o" data-orderid="{{item.id}}" data-type="1">
+                            删除订单
+                          </view>
+                        </block>
+                        <block wx:if="{{item.status==3}}">
                           <view bindtap="delete" class="btn btn-default btn-default-o" data-orderid="{{item.id}}" data-type="1">
                             删除订单
                           </view>

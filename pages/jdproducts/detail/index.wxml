@@ -35,7 +35,10 @@
           </view>
         </view>
         <view class="fui-cell">
-          <view class="proName">{{goodstitle}}</view>
+          <view class="proName">
+          <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
+          {{goodstitle}}
+          </view>
         </view>
       </view>
       <!-- 选择数量 -->

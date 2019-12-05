@@ -2281,6 +2281,12 @@ swiper {
   bottom: 0;
   left: 0;
 }
+
 .fui-navbar .nobuybtn {
   background: #ddd;
+}
+
+.jdbc-img {
+  width: 107rpx;
+  height: 38rpx;
 }

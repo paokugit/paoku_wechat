@@ -40,9 +40,9 @@ Page({
     confirmshow: false,
     goodstotal: 0,
     isSelected: false,
-    goodssku:'',
-    goodsid:'',
-    onsale:1
+    goodssku: '',
+    goodsid: '',
+    onsale: 1
   },
 
   /**
@@ -52,46 +52,42 @@ Page({
     console.log(options)
     var t = this
     t.setData({
-      goodsid:options.id
+      goodsid: options.id
     })
     t.getdetail()
   },
   getdetail: function() {
     var that = this
-    wx.request({
-      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
-      data: {
-        id: that.data.goodsid
-      },
-      complete() {
-        wx.hideLoading();
-      },
-      success: function(res) {
-        console.log(res)
-        if (res.data.error == 0) {
-          that.setData({
-            show: !0,
-            imgUrls: res.data.data.img,
-            goodsprice: res.data.data.ptprice,
-            jdprice: res.data.data.jdprice,
-            goodstitle: res.data.data.brandName,
-            imagePath: res.data.data.imagePath,
-            goodsweight: res.data.data.weight,
-            goodssku:res.data.data.sku,
-            onsale:res.data.data.onsale
-          }), l.wxParse('standardcontent', 'html', res.data.data.param, that, 5), l.wxParse('appintroduce', 'html', res.data.data.appintroduce, that, "0")
-          wx.getSystemInfo({
-            success: function(t) {
-              that.setData({
-                advWidth: t.windowWidth
-              });
-            }
-          })
-        }
-
+    s.get("app.superior.detail", {
+      id: that.data.goodsid
+    }, function(e) {
+      console.log(e)
+      if (e.error == 0) {
+        that.setData({
+          show: !0,
+          imgUrls: e.data.img,
+          goodsprice: e.data.ptprice,
+          jdprice: e.data.jdprice,
+          goodstitle: e.data.name,
+          imagePath: e.data.imagePath,
+          goodsweight: e.data.weight,
+          goodssku: e.data.sku,
+          onsale: e.data.onsale
+        }), l.wxParse('standardcontent', 'html', e.data.param, that, 5), l.wxParse('appintroduce', 'html', e.data.appintroduce, that, "0")
+        wx.getSystemInfo({
+          success: function(t) {
+            that.setData({
+              advWidth: t.windowWidth
+            });
+          }
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+        })
       }
-
-    });
+    })
 
   },
   swiperChange: function(e) {

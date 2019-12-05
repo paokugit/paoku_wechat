@@ -131,11 +131,16 @@
             </block>
             <block>
               <block wx:if="{{orderstatus==0}}">
-                <navigator class="btn btn-danger-o btn-sm" url="/pages/order/pay/index?id={{order.id}}">支付订单</navigator>
+                <navigator class="btn btn-danger-o btn-sm" url="/pages/jdproducts/cash/cash?orderid={{paramid}}&&payprice={{orderprice}}&&ordersn={{ordersn}}">支付订单</navigator>
               </block>
             </block>
             <block>
               <block wx:if="{{orderstatus==-1}}">
+                <view bindtap="deletebtn" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
+              </block>
+            </block>
+            <block>
+              <block wx:if="{{orderstatus==3}}">
                 <view bindtap="deletebtn" class="btn btn-default btn-default-o btn-sm" data-type="1">删除订单</view>
               </block>
             </block>

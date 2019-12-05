@@ -120,6 +120,42 @@ swiper {
   background: #fff;
 }
 
+.search_box {
+  width: 652rpx;
+  height: 32rpx;
+  padding: 14rpx 24rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  margin: 10rpx auto;
+  display: flex;
+  align-items: center;
+}
+
+.searchimg {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+input {
+  outline: none;
+  border: none;
+  list-style: none;
+}
+
+.searchIpt {
+  width: 580rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+  color: #ccc;
+  font-size: 28rpx;
+}
+.goTop {
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  width: 80rpx;
+  height: 80rpx;
+}
 .buy-box {
   width: 320rpx;
   height: 60rpx;
@@ -134,7 +170,7 @@ swiper {
   justify-content: center;
   align-items: center;
   color: #999;
-  font-size: 18rpx;
+  font-size: 20rpx;
   position: absolute;
   top: 0;
   left: 0;

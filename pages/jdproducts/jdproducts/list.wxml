@@ -10,7 +10,7 @@
     <block wx:if="{{show}}">
       <view class="listBox">
         <view class='swipercontent'>
-          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
+          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange" circular='true'>
             <block wx:for="{{imgUrls}}" wx:key="unique">
               <swiper-item>
                 <image src="{{item.banner}}" class="slide-image" />
@@ -23,8 +23,14 @@
             </block>
           </view>
         </view>
+        <view class="search_box">
+          <view bindtap="searchbtn">
+            <image class="searchimg" src="{{globalimg}}/searchbar_icon_sousuo@2x.png"></image>
+          </view>
+          <input class="searchIpt" placeholder="输入关键字进行搜索" bindinput="searchcon" value="{{searchcontent}}"></input>
+        </view>
         <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
-        <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
+          <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
           <block wx:for="{{catelist}}" wx:key="{{index}}">
             <view bindtap="selected" class="item {{status==item.id?'active':''}}" data-type="{{item.id}}">
               {{item.catename}}
@@ -50,8 +56,8 @@
             <navigator class="itemBox" url="/pages/jdproducts/detail/index?id={{item.id}}">
               <image class="proImg" src="{{item.imagePath}}"></image>
               <view class="proTitle">
-              <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
-              {{item.name}}</view>
+                <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
+                {{item.name}}</view>
               <view class="priceBox">
                 <text style="color:#f00;font-size:28rpx">￥</text>
                 <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
@@ -66,8 +72,6 @@
               </view>
             </navigator>
           </block>
-
-
         </view>
         <view class="fui-loading empty">
           <view class="text">没有更多了哦</view>
@@ -83,4 +87,8 @@
       </view>
     </block>
   </block>
+</view>
+<!-- 回到顶部 -->
+<view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>
+  <image src='{{globalimg}}/huidaodingbu.png'></image>
 </view>
