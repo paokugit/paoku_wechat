@@ -11,7 +11,7 @@
       <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">店铺</view>
     </view>
     <view class="{{type==1 ? 'show':'hidden'}}">
-      <scroll-view>
+      <scroll-view scroll-y= "true" style="height:100vh;" bindscrolltolower="goodsScroll">
         <!-- <view class='expend-box' wx:for="{{list}}" wx:key="{{index}}"> -->
         <view class='expend-box'>
           <view class='expend-list'>
@@ -44,16 +44,34 @@
             </block>
           </view>
         </view>
+
+
+        <block>
+          <block wx:if="{{loading}}">
+            <view class="fui-loading">
+              <view class="icon"></view>
+              <view class="text">正在加载</view>
+            </view>
+          </block>
+        </block>
+
+        <block>
+          <block wx:if="{{loaded}}">
+            <view class="fui-loading empty">
+              <view class="text">没有更多了</view>
+            </view>
+          </block>
+        </block>
       </scroll-view>
     </view>
     <view class="{{type==2 ? 'show':'hidden'}}">
-      <scroll-view>
+      <scroll-view scroll-y= "true" style="height:100vh"  bindscrolltolower="storeScroll">
         <!-- <view class='recharge-box' wx:for="{{list}}" wx:key="{{index}}"> -->
         <view class='recharge-box'>
           <block>
-            <block wx:if="{{total>0}}">
+            <block wx:if="{{totalA>0}}">
               <view class="fui-list-group">
-                <block wx:for="{{list}}" wx:key="">
+                <block wx:for="{{shoplist}}" wx:key="index">
                   <label bindtap="itemClick" class="fui-list" data-goodsid="{{item.goodsid}}" data-id="{{item.id}}">
                     <block>
                       <block wx:if="{{isedit}}">
@@ -63,10 +81,10 @@
                       </block>
                     </block>
                     <view>
-                      <image style="width:96rpx;height:96rpx;border-radius:50%" src="{{item.thumb}}"></image>
+                      <image style="width:96rpx;height:96rpx;border-radius:50%" src="{{item.logo}}"></image>
                     </view>
                     <view class="fui-list-inner-hlp">
-                      <view class="goodstitle">{{item.title}}</view>
+                      <view class="goodstitle">{{item.merchname}}</view>
                       <block>
                         <block wx:if="{{!isedit}}">
                           <view class="gostore">
@@ -82,102 +100,32 @@
             </block>
           </block>
         </view>
+
+        <block>
+          <block wx:if="{{loading}}">
+            <view class="fui-loading">
+              <view class="icon"></view>
+              <view class="text">正在加载</view>
+            </view>
+          </block>
+        </block>
+
+        <block>
+          <block wx:if="{{loaded}}">
+            <view class="fui-loading empty">
+              <view class="text">没有更多了</view>
+            </view>
+          </block>
+        </block>
       </scroll-view>
     </view>
-    <!-- <view class="page footer">
-      <block>
-        <block wx:if="{{total>0}}">
-          <view class="fui-list-group">
-            <block wx:for="{{list}}">
-              <label bindtap="itemClick" class="fui-list" data-goodsid="{{item.goodsid}}" data-id="{{item.id}}">
-                <block>
-                  <block wx:if="{{isedit}}">
-                    <view class="fui-list-media">
-                      <radio checked="{{checkObj[item.id]?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
-                    </view>
-                  </block>
-                </block>
-                <view class="fui-list-media">
-                  <image src="{{item.thumb}}"></image>
-                </view>
-                <view class="fui-list-inner">
-                  <view class="subtitle">{{item.title}}</view>
-                  <view class="title" style="    font-size: 30rpx">
-                    <text class="text-danger">¥{{item.marketprice}}</text>
-                  </view>
-                </view>
-              </label>
-            </block>
-          </view>
-        </block>
-      </block>
-      <block>
-        <block wx:if="{{loading}}">
-          <view class="fui-loading">
-            <view class="icon"></view>
-            <view class="text">正在加载</view>
-          </view>
-        </block>
-      </block>
-      <block>
-        <block wx:if="{{loaded&&list.length>0}}">
-          <view class="fui-loading empty">
-            <view class="text">没有更多了</view>
-          </view>
-        </block>
-      </block>
-      <block>
-        <block wx:if="{{total<=0&&!loading}}">
-          <view class="fui-loading empty">
-            <view class="text">没有数据</view>
-          </view>
-        </block>
-      </block>
-      <block>
-        <block wx:if="{{list.length>0}}">
-          <view class="fui-footer">
-            <view class="tool">
-              <block>
-                <block wx:if="{{isedit}}">
-                  <view class="check">
-                    <label bindtap="checkAllClick">
-                      <radio checked="{{isCheckAll?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
-                      <text>全选</text>
-                    </label>
-                  </view>
-                </block>
-              </block>
-              <view class="text"></view>
-              <view class="btns">
-                <block>
-                  <block wx:if="{{!isedit}}">
-                    <view bindtap="btnClick" class="btn btn-danger" data-action="edit">编辑</view>
-                  </block>
-                </block>
-                <block>
-                  <block wx:if="{{isedit}}">
-                    <view bindtap="btnClick" class="btn btn-warning {{checkNum>0?'':'disable'}}" data-action="delete">删除</view>
-                  </block>
-                </block>
-                <block>
-                  <block wx:if="{{isedit}}">
-                    <view bindtap="btnClick" class="btn btn-danger" data-action="finish">完成</view>
-                  </block>
-                </block>
-              </view>
-            </view>
-          </view>
-        </block>
-      </block>
-      <include src="/pages/common/menu.wxml"></include>
-    </view> -->
-    <block>
-      <block wx:if="{{loaded&&list.length>0}}">
-        <view class="fui-loading empty">
-          <view class="text">没有更多了</view>
-        </view>
-      </block>
-    </block>
+
+
+    <view class="emptyBox" wx:if="{{list.length<=0?true:false}}">
+      <image class="emptyImg" src="{{globalimg}}/wdgz_img_qsy@2x.png"></image>
+      <navigator class="look" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+    </view>
+
     <block>
       <block wx:if="{{list.length>0}}">
         <view class="fui-footer">
@@ -204,11 +152,7 @@
                   <view bindtap="btnClick" class="btn btn-warnings {{checkNum>0?'':'disable'}}" data-action="delete">取消关注</view>
                 </block>
               </block>
-              <!-- <block>
-                        <block wx:if="{{isedit}}">
-                          <view bindtap="btnClick" class="btn btn-warning {{checkNum>0?'':'disabled'}}" data-action="delete">删除</view>
-                        </block>
-                      </block> -->
+    
               <block>
                 <block wx:if="{{isedit}}">
                   <view bindtap="btnClick" class="btn btn-dangers" data-action="finish">完成</view>

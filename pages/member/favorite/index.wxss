@@ -1,3 +1,7 @@
+page{
+  overflow-y: hidden;
+}
+
 .fui-list-inner .subtitle {
   font-size: 28rpx;
   overflow: hidden;
@@ -41,6 +45,7 @@
 }
 
 .goodstitle {
+  width: 11rem;
   font-size: 32rpx;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -140,4 +145,28 @@
 .gostore{
   display: flex;
   align-items: center
+}
+
+.fui-loading{
+  padding-bottom: 10rem
+}
+
+.emptyBox{
+  text-align: center;
+  margin-top: 200rpx;
+}
+.emptyImg{
+  width: 438rpx;
+  height: 286rpx;
+}
+
+.look{
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid #01D7A1;
+  border-radius: 50rpx; 
+  margin: 60rpx auto 0;
+  font-size: 30rpx;
+  color: #01D7A1;
 }

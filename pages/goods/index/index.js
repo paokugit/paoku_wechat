@@ -1,8 +1,4 @@
-var t = getApp(),
-  e = t.requirejs("core"),
-  a = t.requirejs("jquery"),
-  s = t.requirejs("biz/diyform"),
-  i = t.requirejs("biz/goodspicker");
+var t = getApp(), e = t.requirejs("core"), a = t.requirejs("jquery"), s = t.requirejs("biz/diyform"), i = t.requirejs("biz/goodspicker");
 t.requirejs("foxui");
 var app = getApp()
 var goodname = ""
@@ -21,8 +17,6 @@ Page({
     icons: t.requirejs("icons"),
     isFilterShow: !1,
     listmode: "block",
-    vertical: "block",
-    crosswise:"none",
     listsort: "",
     page: 1,
     loaded: !1,
@@ -60,18 +54,17 @@ Page({
     textinfo: '',
     showIcon: true,
     gloheight: app.globalData.gloheight,
-    globalimg: app.globalData.appimg,
+    globalimg: t.globalData.appimg,
 
   },
-  onLoad: function(e) {
-    console.log(this.data.params)
+  onLoad: function (e) {
+    console.log(app.globalData)
     var s = this;
-    if (setTimeout(function() {
-        s.setData({
-          areas: t.getCache("cacheset").areas
-        });
-      }, 3e3), !a.isEmptyObject(e)) {
-      console.log(e)
+    if (setTimeout(function () {
+      s.setData({
+        areas: t.getCache("cacheset").areas
+      });
+    }, 3e3), !a.isEmptyObject(e)) {
       var i = e.isrecommand || e.isnew || e.ishot || e.isdiscount || e.issendfree || e.istime ? 1 : 0;
       this.setData({
         params: e,
@@ -79,15 +72,14 @@ Page({
         filterBtns: e,
         fromsearch: e.fromsearch || !1
       });
-      console.log(params)
     }
     this.initCategory(), e.fromsearch || this.getList(), this.getRecord();
   },
-  onShow: function() {
+  onShow: function () {
     this.data.fromsearch && this.setFocus();
     var t = this;
     wx.getSetting({
-      success: function(e) {
+      success: function (e) {
         var a = e.authSetting["scope.userInfo"];
         t.setData({
           limits: a
@@ -95,22 +87,22 @@ Page({
       }
     });
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         t.setData({
           textinfo: res.platform
         })
       }
     })
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.stopPullDownRefresh();
   },
-  onReachBottom: function() {
+  onReachBottom: function () {
     this.data.loaded || this.data.list.length == this.data.total || this.getList();
   },
-  initCategory: function() {
+  initCategory: function () {
     var t = this;
-    e.get("goods/get_category", {}, function(e) {
+    e.get("goods/get_category", {}, function (e) {
       t.setData({
         allcategory: e.allcategory,
         category_parent: e.allcategory.parent,
@@ -122,29 +114,28 @@ Page({
       });
     });
   },
-  aaa: function() {
+  aaa: function () {
     var that = this;
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           systemInfo: res,
         })
-        if (res.platform == "devtools") {            
+        if (res.platform == "devtools") {
           PC
-        } else if (res.platform == "ios") {            
+        } else if (res.platform == "ios") {
           IOS
-        } else if (res.platform == "android") {            
+        } else if (res.platform == "android") {
           android
         }
       }
     })
   },
-  getList: function() {
+  getList: function () {
     var t = this;
-    console.log(t.data.params)
     t.setData({
       loading: !0
-    }), t.data.params.page = t.data.page, e.get("goods/get_list", t.data.params, function(e) {
+    }), t.data.params.page = t.data.page, e.get("goods/get_list", t.data.params, function (e) {
       console.log(e);
       var a = {
         loading: !1,
@@ -155,48 +146,31 @@ Page({
         e.list.length < e.pagesize && (a.loaded = !0)), t.setData(a);
     });
   },
-  changeMode: function() {
+  changeMode: function () {
     "block" == this.data.listmode ? this.setData({
       listmode: ""
     }) : this.setData({
       listmode: "block"
     });
-    "block" == this.data.vertical ? this.setData({
-      vertical: "none"
-    }) : this.setData({
-      vertical: "block"
-    });
-    "block" == this.data.crosswise ? this.setData({
-      crosswise: "none"
-    }) : this.setData({
-      crosswise: "block"
-    });
   },
-  bindSort: function(t) {
-    console.log(t)
-    console.log(this.data.params)
-    var e = t.currentTarget.dataset.order,
-      a = this.data.params;
+  bindSort: function (t) {
+    var e = t.currentTarget.dataset.order, a = this.data.params;
     if ("" == e) {
-      // 综合
       if (a.order == e) return;
       a.order = "", this.setData({
         listorder: ""
       });
     } else if ("minprice" == e) this.setData({
-        // 价格
-        listorder: ""
-      }), a.order == e ? "desc" == a.by ? a.by = "asc" : a.by = "desc" : a.by = "asc",
+      listorder: ""
+    }), a.order == e ? "desc" == a.by ? a.by = "asc" : a.by = "desc" : a.by = "asc",
       a.order = e, this.setData({
         listorder: a.by
-      });
-    else if ("sales" == e) {
-      // 销量
-      if (a.order == e) return;
-      this.setData({
-        listorder: ""
-      }), a.order = "sales", a.by = "desc";
-    }
+      }); else if ("sales" == e) {
+        if (a.order == e) return;
+        this.setData({
+          listorder: ""
+        }), a.order = "sales", a.by = "desc";
+      }
     this.setData({
       params: a,
       page: 1,
@@ -206,12 +180,12 @@ Page({
       sort_selected: e
     }), this.getList();
   },
-  showFilter: function() {
+  showFilter: function () {
     this.setData({
       isFilterShow: !this.data.isFilterShow
     });
   },
-  btnFilterBtns: function(t) {
+  btnFilterBtns: function (t) {
     var e = t.target.dataset.type;
     if (e) {
       var s = this.data.filterBtns;
@@ -225,7 +199,7 @@ Page({
   },
 
 
-  bindFilterCancel: function() {
+  bindFilterCancel: function () {
     this.data.defaults.cate = "";
     var t = this.data.defaults;
     this.setData({
@@ -245,9 +219,8 @@ Page({
       list: []
     }), this.getList();
   },
-  bindFilterSubmit: function() {
-    var t = this.data.params,
-      e = this.data.filterBtns;
+  bindFilterSubmit: function () {
+    var t = this.data.params, e = this.data.filterBtns;
     for (var s in e) t[s] = e[s];
     a.isEmptyObject(e) && (t = this.data.defaults), t.cate = this.data.lastcat, this.setData({
       page: 1,
@@ -259,7 +232,7 @@ Page({
       loaded: !1
     }), this.getList();
   },
-  bindCategoryEvents: function(t) {
+  bindCategoryEvents: function (t) {
     var e = t.target.dataset.id;
     this.setData({
       lastcat: e
@@ -280,7 +253,7 @@ Page({
       category_third_selected: e
     });
   },
-  bindSearch: function(t) {
+  bindSearch: function (t) {
     console.log('enter')
     console.log(t)
     console.log(this.data.defaults)
@@ -290,8 +263,7 @@ Page({
       loading: !0,
       loaded: !1
     });
-    var e = a.trim(t.detail.value),
-      s = this.data.defaults;
+    var e = a.trim(t.detail.value), s = this.data.defaults;
     "" != e ? (s.keywords = e, this.setData({
       page: 1,
       params: s,
@@ -303,11 +275,10 @@ Page({
       fromsearch: !1
     }), this.getList());
   },
-  bindInput: function(t) {
+  bindInput: function (t) {
     // console.log(t)
     goodname = t.detail.value
-    var e = a.trim(t.detail.value),
-      s = this.data.defaults;
+    var e = a.trim(t.detail.value), s = this.data.defaults;
     s.keywords = "", s.order = this.data.params.order, s.by = this.data.params.by, "" == e && (this.setData({
       page: 1,
       list: [],
@@ -318,15 +289,15 @@ Page({
       fromsearch: !0
     }), this.getRecord());
   },
-  bindFocus: function(t) {
+  bindFocus: function (t) {
     "" == a.trim(t.detail.value) && this.setData({
       fromsearch: !0
     });
   },
-  bindback: function() {
+  bindback: function () {
     wx.navigateBack();
   },
-  searchbtn: function(t) {
+  searchbtn: function (t) {
     console.log(this.data.defaults)
     if (goodname == "") {
       wx.showModal({
@@ -340,8 +311,7 @@ Page({
         loading: !0,
         loaded: !1
       });
-      var e = goodname,
-        s = this.data.defaults;
+      var e = goodname, s = this.data.defaults;
       "" != e ? (s.keywords = e, this.setData({
         page: 1,
         params: s,
@@ -355,22 +325,21 @@ Page({
     }
 
   },
-  bindnav: function(t) {
-    var e = a.trim(t.currentTarget.dataset.text),
-      s = this.data.defaults;
+  bindnav: function (t) {
+    var e = a.trim(t.currentTarget.dataset.text), s = this.data.defaults;
     s.keywords = e, this.setData({
       params: s,
       page: 1,
       fromsearch: !1
     }), this.getList(), this.setRecord(e);
   },
-  getRecord: function() {
+  getRecord: function () {
     var e = t.getCache("searchRecords");
     this.setData({
       searchRecords: e
     });
   },
-  setRecord: function(e) {
+  setRecord: function (e) {
     if ("" != e) {
       var s = t.getCache("searchRecords");
       if (a.isArray(s)) {
@@ -381,25 +350,25 @@ Page({
           s[r] != e && null != s && "null" != s && i.push(s[r]);
         }
         s = i;
-      } else(s = []).push(e);
+      } else (s = []).push(e);
       t.setCache("searchRecords", s);
     } else t.setCache("searchRecords", []);
     this.getRecord();
   },
-  delRecord: function() {
+  delRecord: function () {
     this.setRecord(""), this.setData({
       fromsearch: !0
     });
   },
-  setFocus: function() {
+  setFocus: function () {
     var t = this;
-    setTimeout(function() {
+    setTimeout(function () {
       t.setData({
         focusin: !0
       });
     }, 1e3);
   },
-  selectPicker: function(t) {
+  selectPicker: function (t) {
     var e = this;
     if (console.log(e.data.limits), e.data.limits) {
       i.selectpicker(t, e, "goodslist");
@@ -407,11 +376,11 @@ Page({
       modelShow: !0
     });
   },
-  specsTap: function(t) {
+  specsTap: function (t) {
     var e = this;
     i.specsTap(t, e);
   },
-  emptyActive: function() {
+  emptyActive: function () {
     this.setData({
       active: "",
       slider: "out",
@@ -419,57 +388,57 @@ Page({
       specsTitle: ""
     });
   },
-  buyNow: function(t) {
+  buyNow: function (t) {
     var e = this;
     i.buyNow(t, e);
   },
-  getCart: function(t) {
+  getCart: function (t) {
     var e = this;
     i.getCart(t, e);
   },
-  select: function() {
+  select: function () {
     var t = this;
     i.select(t);
   },
-  inputNumber: function(t) {
+  inputNumber: function (t) {
     var e = this;
     i.inputNumber(t, e);
   },
-  number: function(t) {
+  number: function (t) {
     var e = this;
     i.number(t, e);
   },
-  onChange: function(t) {
+  onChange: function (t) {
     return s.onChange(this, t);
   },
-  DiyFormHandler: function(t) {
+  DiyFormHandler: function (t) {
     return s.DiyFormHandler(this, t);
   },
-  selectArea: function(t) {
+  selectArea: function (t) {
     return s.selectArea(this, t);
   },
-  bindChange: function(t) {
+  bindChange: function (t) {
     return s.bindChange(this, t);
   },
-  onCancel: function(t) {
+  onCancel: function (t) {
     return s.onCancel(this, t);
   },
-  onConfirm: function(t) {
+  onConfirm: function (t) {
     return s.onConfirm(this, t);
   },
-  getIndex: function(t, e) {
+  getIndex: function (t, e) {
     return s.getIndex(t, e);
   },
-  cancelclick: function() {
+  cancelclick: function () {
     this.setData({
       modelShow: !1
     });
   },
-  confirmclick: function() {
+  confirmclick: function () {
     this.setData({
       modelShow: !1
     }), wx.openSetting({
-      success: function(t) {}
+      success: function (t) { }
     });
   }
 });

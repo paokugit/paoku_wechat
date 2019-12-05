@@ -11,35 +11,35 @@
       <block>
         <block wx:if="{{total>0}}">
           <view class="fui-list-group">
-            <block wx:for="{{list}}">
-              <navigator class="fui-list-group-title noclick" hoverClass="none" openType="switchTab" url="/pages/index/index?merchid={{item.merchid}}">
-                <view class="fui-list-media">
-                  <text class="icox icox-dianpu1"></text>
-                </view>
-                <view class="text">{{item.merchname}}</view>
-                <view class="fui-list-angle">
-                  {{item.createtime}}
-                </view>
-              </navigator>
-              <label bindtap="itemClick" class="fui-list" data-goodsid="{{item.goodsid}}" data-id="{{item.id}}">
-                <block>
-                  <block wx:if="{{isedit}}">
-                    <view class="fui-list-media">
-                      <radio checked="{{checkObj[item.id]?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
-                    </view>
+            <block wx:for="{{list}}" wx:key="index">
+              <view class="fui-list-group-title noclick">
+                <view class="today todayA" wx:if="{{item.type == 0?true:false}}">今天</view> 
+                <view class="today" wx:elif="{{item.type == 1?true:false}}">昨天</view>
+                <view class="today" wx:else>{{item.time}}</view>
+              </view>
+
+              <block wx:for="{{item.dt}}"  wx:for-item="itemdt" wx:key="indexdt">
+                <label bindtap="itemClick" class="fui-list" data-goodsid="{{itemdt.goodsid}}" data-id="{{itemdt.id}}">
+                  <block>
+                    <block wx:if="{{isedit}}">
+                      <view class="fui-list-media">
+                        <radio checked="{{checkObj[itemdt.id]?true:''}}" class="zoom-80" color="#ef4f4f"></radio>
+                      </view>
+                    </block>
                   </block>
-                </block>
-                <view class="fui-list-media">
-                  <image src="{{item.thumb}}"></image>
-                </view>
-                <view class="fui-list-inner">
-                  <view class="subtitle">{{item.title}}</view>
-                  <view class="text" style="font-size: 30rpx;height:50rpx;line-height:50rpx">
-                    <text class="text-danger" style="color:#01d7a1;">¥{{item.marketprice}}</text>
-                    <image style="width:50rpx;height:50rpx;position:absolute;top:0;right:10rpx" src="{{globalimg}}/gz_inco_gwc@2x.png"></image>
+                  <view class="fui-list-media">
+                    <image src="{{itemdt.thumb}}"></image>
                   </view>
-                </view>
-              </label>
+                  <view class="fui-list-inner">
+                    <view class="subtitle">{{itemdt.title}}</view>
+                    <view class="text" style="font-size: 30rpx;height:50rpx;line-height:50rpx">
+                      <text class="text-danger" style="color:#01d7a1;">¥{{itemdt.marketprice}}</text>
+                      <image style="width:50rpx;height:50rpx;position:absolute;top:0;right:10rpx" src="{{globalimg}}/gz_inco_gwc@2x.png"></image>
+                    </view>
+                  </view>
+                </label>
+              </block>
+                
             </block>
           </view>
         </block>
@@ -59,13 +59,12 @@
           </view>
         </block>
       </block>
-      <block>
-        <block wx:if="{{total<=0&&!loading}}">
-          <view class="fui-loading empty">
-            <view class="text">没有数据</view>
-          </view>
-        </block>
-      </block>
+
+      <view class="emptyBox" wx:if="{{total <= 0?true:false}}">
+        <image class="emptyImg" src="{{globalimg}}/wdzj_img_kq@2x.png"></image>
+        <navigator class="look" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+      </view>
+      
       <block>
         <block wx:if="{{list.length>0}}">
           <view class="fui-footer {{iphonexnavbar}}">

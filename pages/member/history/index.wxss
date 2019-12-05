@@ -1,3 +1,7 @@
+page{
+  background: #fff;
+}
+
 .fui-list-inner .subtitle {
   font-size: 28rpx;
   overflow: hidden;
@@ -74,4 +78,39 @@
   background: #01d7a1;
   color: #fff;
   border: 1px solid #01d7a1;
+}
+
+
+
+.today{
+  height: 88rpx;
+  line-height: 88rpx;
+  color: rgb(51, 51, 51);
+  font-size: 30rpx;
+  padding: 0 24rpx;
+  font-weight: bold;
+}
+.todayA{
+  border-top: 1px solid rgb(248, 248, 248);
+  border-bottom: 1px solid rgb(248, 248, 248);
+}
+
+.emptyBox{
+  text-align: center;
+  margin-top: 200rpx;
+}
+.emptyImg{
+  width: 438rpx;
+  height: 286rpx;
+}
+
+.look{
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid #01D7A1;
+  border-radius: 50rpx; 
+  margin: 60rpx auto 0;
+  font-size: 30rpx;
+  color: #01D7A1;
 }

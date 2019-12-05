@@ -1,7 +1,7 @@
 var t = getApp(), a = t.requirejs("core");
 
 t.requirejs("foxui");
-
+var useropenid = "";
 Page({
     data: {
         icons: t.requirejs("icons"),
@@ -17,6 +17,10 @@ Page({
       globalimg: t.globalData.appimg,
     },
     onLoad: function(a) {
+        var userinfo = t.getCache('userinfo');
+        useropenid = userinfo.openid;
+      console.log(useropenid);
+
         t.url(a), this.getList();
     },
     onShow: function() {
@@ -32,7 +36,7 @@ Page({
         });
     },
     onReachBottom: function() {
-        this.data.loaded || this.data.list.length == this.data.total || this.getList();
+      this.getList();
     },
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh();
@@ -41,19 +45,58 @@ Page({
         var t = this;
         t.setData({
             loading: !0
-        }), a.get("member/history/get_list", {
+        });
+        wx.request({
+          url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.personcenter.footprint&comefrom=wxapp', 
+          data: {
+            openid: useropenid,
             page: t.data.page
-        }, function(a) {
-            var e = {
+          },
+          success(res) {
+            console.log(res);
+
+            if(res.data.error == 0){
+
+              let totalList = res.data.data.list;
+              var arr = t.data.list.concat(totalList);
+              if (t.data.list.length != 0) {
+                var rea = [];
+                var narr = [];
+                for (var i = 0; i < arr.length; i++) {
+                  var n = rea.indexOf(arr[0].type);
+                  if (n == -1) {
+                    rea.push(arr[i].type);
+                    console.log(rea);
+                    
+                    narr.push({ type: arr[i].type, time: arr[i].time, dt: arr[i].dt })
+                  } else {
+                    for (var j = 0; j < arr[i].dt.length; j++) {
+                      narr[n].dt.push(arr[i].dt[j])
+                    }
+                  }
+                }
+                arr = narr;
+              }
+              
+              console.log(arr);
+              var e = {
                 loading: !1,
                 loaded: !0,
-                total: a.total,
-                pagesize: a.pagesize,
+                total: res.data.data.total,
+                pagesize: res.data.data.pagesize,
                 show: !0
-            };
-            a.list.length > 0 && (e.page = t.data.page + 1, e.list = t.data.list.concat(a.list), 
-            a.list.length < a.pagesize && (e.loaded = !0)), t.setData(e);
-        });
+              };
+              res.data.data.list.length > 0 && (e.page = t.data.page + 1, e.list = arr,
+              res.data.data.list.length < res.data.data.pagesize && (e.loaded = !0)), t.setData(e);
+            }else if(res.data.error == 1){
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          }
+        }) 
     },
     itemClick: function(t) {
         var e = this, i = a.pdata(t).id, s = a.pdata(t).goodsid;
@@ -76,9 +119,11 @@ Page({
     },
     btnClick: function(t) {
         var e = this, i = t.currentTarget.dataset.action;
+      
         if ("edit" == i) {
             c = {};
-            for (var s in this.data.list) c[this.data.list[s].id] = !1;
+            for (var s in this.data.list) 
+              for(var i in this.data.list[s].dt) c[this.data.list[s].dt[i].id] = !1;
             e.setData({
                 isedit: !0,
                 checkObj: c,
@@ -86,8 +131,12 @@ Page({
             });
         } else if ("delete" == i) {
             var c = e.data.checkObj, n = [];
+
+            
+
             for (var s in c) c[s] && n.push(s);
             if (n.length < 1) return;
+          console.log(n);
             a.confirm("删除后不可恢复，确定要删除吗？", function() {
                 a.post("member/history/remove", {
                     ids: n
@@ -106,6 +155,8 @@ Page({
         });
     },
     checkAllClick: function() {
+      console.log(!this.data.isCheckAll);
+      console.log(this.data.checkObj);
         var t = !this.data.isCheckAll, a = this.data.checkObj, e = {
             isCheckAll: t,
             checkObj: a

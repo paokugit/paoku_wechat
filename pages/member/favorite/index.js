@@ -3,17 +3,23 @@ var t = getApp(),
 
 t.requirejs("foxui");
 
+var useropenid = "";
 Page({
   data: {
     icons: t.requirejs("icons"),
     page: 1,
+    totalPage:1,
+    pageA:1,
+    totalPageA: 1,
+    totalA:0,
     loading: !1,
-    loaded: !1,
+    loaded: false,
     isedit: !1,
     isCheckAll: !1,
     checkObj: {},
     checkNum: 0,
     list: [],
+    shoplist:[],
     type: 1,
     loading: !0,
     showIcon: true,
@@ -21,10 +27,15 @@ Page({
     globalimg: t.globalData.appimg,
   },
   onLoad: function(e) {
-    t.url(e), this.getList();
+    var userinfo = t.getCache('userinfo');
+    useropenid = userinfo.openid;
+    
+    t.url(e);
+    this.getList();
+    this.shList();
   },
   onReachBottom: function() {
-    this.data.loaded || this.data.list.length == this.data.total || this.getList();
+    
   },
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
@@ -33,20 +44,69 @@ Page({
     var t = this;
     t.setData({
       loading: !0
-    }), e.get("member/favorite/get_list", {
-      page: t.data.page
-    }, function(e) {
-      var a = {
-        loading: !1,
-        loaded: !0,
-        total: e.total,
-        pagesize: e.pagesize,
-        show: !0
-      };
-      e.list.length > 0 && (a.page = t.data.page + 1, a.list = t.data.list.concat(e.list),
-        e.list.length < e.pagesize && (a.loaded = !0)), t.setData(a);
     });
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=member.favorite.get_list&comefrom=wxapp',
+      data: {
+        openid: useropenid,
+        page: t.data.page
+      },
+      success(res) {
+        console.log(res);
+
+        if (res.data.error == 0) {
+          let totalPage = Math.ceil(res.data.total / res.data.pagesize);
+          var a = {
+            loading: !1,
+            total: res.data.total,
+            totalPage: totalPage,
+            show: !0
+          };
+          res.data.list.length > 0 && (a.page = t.data.page + 1, a.list = t.data.list.concat(res.data.list),
+            res.data.list.length < res.data.pagesize), t.setData(a);
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    }) 
   },
+
+  shList:function(){
+    var m = this;
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=member.favorite.get_merchlist&comefrom=wxapp',
+      data: {
+        openid: useropenid,
+        page: m.data.pageA
+      },
+      success(res) {
+        console.log(res);
+
+        if (res.data.error == 0) {
+          let totalPage = Math.ceil(res.data.total / res.data.pagesize);
+          m.setData({
+            loading: !1,
+            show: !0,
+            totalA: res.data.total,
+            totalPageA: totalPage,
+            pageA:m.data.pageA+1,
+            shoplist: m.data.shoplist.concat(res.data.list)
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    }) 
+  },
+
   itemClick: function(t) {
     var a = this,
       i = e.pdata(t).id,
@@ -75,7 +135,13 @@ Page({
       i = t.currentTarget.dataset.action;
     if ("edit" == i) {
       c = {};
-      for (var s in this.data.list) c[this.data.list[s].id] = !1;
+
+      if(a.data.type == 1){
+        for (var s in a.data.list) c[a.data.list[s].id] = !1;
+      }else if(a.data.type == 2){
+        for (var s in a.data.shoplist) c[a.data.shoplist[s].id] = !1;
+      }
+
       a.setData({
         isedit: !0,
         checkObj: c,
@@ -87,16 +153,56 @@ Page({
       for (var s in c) c[s] && l.push(s);
       if (l.length < 1) return;
       e.confirm("删除后不可恢复，确定要删除吗？", function() {
-        e.post("member/favorite/remove", {
-          ids: l
-        }, function(t) {
-          a.setData({
-            isedit: !1,
-            checkNum: 0,
-            page: 0,
-            list: []
-          }), a.getList();
-        });
+        if(a.data.type == 1){
+          wx.request({
+            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=member.favorite.remove&comefrom=wxapp',
+            method:'POST',
+            data: {
+              ids: JSON.parse(JSON.stringify(l))
+            },
+            dataType: 'json',
+            header: { 
+              'content-type': 'application/x-www-form-urlencoded;charset=utf-8' 
+            },
+            success(res) {
+              console.log(res);
+              if (res.data.error == 0) {
+                console.log('123');
+              } else if (res.data.error == 1) {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          }) 
+          
+          // e.post("member/favorite/remove", {
+          //   ids: l
+          // }, function (t) {
+          //   a.setData({
+          //     isedit: !1,
+          //     checkNum: 0,
+          //     page: 0,
+          //     list: []
+          //   }), a.getList();
+          // });
+        }else if(a.data.type == 2){
+          console.log('123');
+          wx.request({
+            url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=member.favorite.remove&comefrom=wxapp',
+            data: {
+              openid: useropenid,
+              ids: l
+            },
+            success(res) {
+              console.log(res);
+            }
+          }) 
+        }
+        
+
       });
     } else "finish" == i && a.setData({
       isedit: !1,
@@ -114,15 +220,32 @@ Page({
     a.checkNum = t ? this.data.list.length : 0, this.setData(a);
   },
   myTab: function(t) {
-    console.log(t)
-    console.log(e.pdata(t))
     var ee = this,
       i = e.pdata(t).type;
     ee.setData({
       type: i,
-      page: 1,
-      list: [],
-      loading: !0
-    }), ee.getList();
+      isedit: !1,
+      checkNum: 0
+    });
+  },
+
+  goodsScroll:function(){
+    if (this.data.page <= this.data.totalPage) {
+      this.getList();
+    } else {
+      this.setData({
+        loaded: true
+      })
+    }
+  },
+
+  storeScroll:function(){
+    if (this.data.pageA <= this.data.totalPageA) {
+      this.shList();
+    } else {
+      this.setData({
+        loaded: true
+      })
+    }
   }
 });
