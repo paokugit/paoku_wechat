@@ -120,13 +120,23 @@ swiper {
   background: #fff;
 }
 
-.search_box {
-  width: 652rpx;
-  height: 32rpx;
-  padding: 14rpx 24rpx;
+.searchflex {
+  width: 96%;
+  height: auto;
+  padding: 10rpx 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rpx 0;
   background: #fff;
+}
+
+.search_box {
+  width: 76%;
+  height: 38rpx;
+  padding: 14rpx 24rpx;
+  background: #f7f7f7;
   border-radius: 30rpx;
-  margin: 10rpx auto;
   display: flex;
   align-items: center;
 }
@@ -149,6 +159,17 @@ input {
   color: #ccc;
   font-size: 28rpx;
 }
+
+.sousu {
+  width: 18%;
+  height: 52rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .goTop {
   position: fixed;
   bottom: 10%;
@@ -156,6 +177,7 @@ input {
   width: 80rpx;
   height: 80rpx;
 }
+
 .buy-box {
   width: 320rpx;
   height: 60rpx;
@@ -190,6 +212,12 @@ input {
   position: absolute;
   top: 0;
   right: 0;
+}
+.topnavFixed{
+  width: 100%;
+  position:fixed;
+  z-index: 10;
+  background: #f8f8f8
 }
 
 /* 全部商品 */

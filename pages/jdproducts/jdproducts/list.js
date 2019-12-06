@@ -39,6 +39,7 @@ Page({
     totalPage: 0,
     searchcontent: "",
     topdisp: 'none',
+    scrollTop: 0,
   },
 
   /**
@@ -103,6 +104,9 @@ Page({
     console.log(this.data.searchcontent)
     this.setData({
       show: !1,
+      status: '',
+      pricesort: "",
+      salesort: "",
       list: []
     }), this.getList()
   },
@@ -114,6 +118,9 @@ Page({
   },
   // 获取滚动条当前位置
   onPageScroll: function(e) {
+    this.setData({
+      scrollTop: e.scrollTop
+    })
     if (e.scrollTop > 2000) {
       this.setData({
         topdisp: 'block'
