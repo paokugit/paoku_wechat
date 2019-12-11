@@ -29,52 +29,13 @@
                 <view class="fui-list goods-item">
                   <view class="fui-list-inner">
                     <block>
-                        <block wx:if="{{list.length>0}}">
-                            <view class="fui-list-group">
-                                <view class="fui-list goods-item">
-                                    <view class="fui-list-inner">
-                                        <block>
-                                            <block>
-                                                <view class="title">
-                                                    <block>
-                                                        <text>{{item.title}}</text>
-                                                    </block>
-                                                </view>
-                                            </block>
-                                        </block>
-                                        <view class="text" style='margin-top:6rpx'>{{item.createtime}}</view>
-                                    </view>
-                                    <view class="item-right-box">
-                                        <view>
-                                            <view style="font-size: 40rpx;color: #01d7a1;" wx:if="{{item.num>=0}}">{{item.money}}</view>
-                                            <view style="font-size: 40rpx;color: #01d7a1;" wx:else>{{item.money}}</view>
-                                        </view>
-                                        <view class='apply-state-box' wx:if="{{item.type==1}}">
-                                            <view class='state-refuse' wx:if="{{item.status==-1}}">拒绝</view>
-                                            <view class='state-applying' wx:if="{{item.status==-0}}">申请中</view>
-                                            <view class='state-success' wx:if="{{item.status==1}}">提现成功</view>
-                                        </view>
-                                    </view>
-                                </view>
-                                <!-- 拒绝原因 -->
-                                <!-- <view class='refuse-box' wx:if="{{item.status==-1}}"></view> -->
-                                <view class='read-reason' wx:if="{{item.status==-1}}">
-                                    <view class='downBox' style='display:{{downdis}}'>
-                                        <view class='read-box01' bindtap='downbtn' data-id='{{item.id}}'>
-                                            <image class='downimg' src='{{globalimg}}/down@2x.png'></image>
-                                            <view class='down-text'>查看原因</view>
-                                        </view>
-                                    </view>
-                                    <view class='topBox' style='display:{{topdis}}'>
-                                        <view class='read-box02' bindtap='topbtn' data-id='{{item.id}}'>
-                                            <image class='downimg' src='{{globalimg}}/top@2x.png'></image>
-                                            <view class='down-text'>查看原因</view>
-                                        </view>
-                                    </view>
-                                    <view class='item-reason' style='display:{{reasondis}}'>{{item.refuse_reason}}</view>
-                                </view>
-                            </view>
-                        </block>
+                      <block>
+                        <view class="title">
+                          <block>
+                            <text>{{item.title}}</text>
+                          </block>
+                        </view>
+                      </block>
                     </block>
                     <view class="text" style='margin-top:6rpx'>{{item.createtime}}</view>
                   </view>

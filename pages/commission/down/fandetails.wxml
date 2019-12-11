@@ -27,7 +27,7 @@
       </view>
 
       <view class='fans_date'>注册时间{{createtime}}</view>
-    </view>
+    </view> 
     <view class='friend_num_text'>
       <view class='friend_num'>{{agentcount}}</view>
       <view class='friend_text'>好友数</view>

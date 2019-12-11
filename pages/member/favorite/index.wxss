@@ -147,10 +147,6 @@ page{
   align-items: center
 }
 
-.fui-loading{
-  padding-bottom: 10rem
-}
-
 .emptyBox{
   text-align: center;
   margin-top: 200rpx;
@@ -169,4 +165,12 @@ page{
   margin: 60rpx auto 0;
   font-size: 30rpx;
   color: #01D7A1;
+}
+
+.text-load{
+  font-size: 14px;
+  color:#999;
+  padding: 1rem 0 10rem;
+  text-align: center;
+
 }

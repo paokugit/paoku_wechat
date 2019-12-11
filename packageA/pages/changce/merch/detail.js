@@ -5,21 +5,15 @@ var t = getApp(),
 // 新加
 var pricemark = 0;
 var salesmark = 0;
-
+var useropenid = "";
+var pagetotal = 0;
 Page({
   data: {
     merchid: 0,
     merch: [],
-    cateid: 0,
     page: 1,
-    isnew:0,
-    isrecommand:0,
-    loading: false,
-    loaded: false,
-    list: [],
     approot: t.globalData.approot,
     globalimg: t.globalData.appimg,
-
     showIcon: true,
     gloheight: t.globalData.gloheight,
 
@@ -30,34 +24,36 @@ Page({
     marqueeDistance: 0,//初始滚动距离
     size: 30,
     interval: 20, // 时间间隔
-    informTxt: "服务器升级通知，将于今晚23:00至24:00进行停机更新。",
-
+    informTxt: "",
+    loading: !0,
     allPrice: 'sc_tj_icon_jg_nor@2x',
     allSales:'sc_tj_icon_jg_nor@2x',
     nowSign:0,
     sortWay:0,
+    message:{},
+    couponList:[],
+    tuiList:[],
+    conceal:0,
+
+    byvalue:''
   },
-  onLoad: function (t) {
-      var b = decodeURIComponent(t.scene);
-      if (!t.id && b) {
-          var i = a.str2Obj(b);
-          t.id = i.id;
-        //绑定会员来源
-        a.get("help/index/bang_agent", { merchid: t.id }, function (c) {
-          console.log(c)
-        })
-      }
-    console.log(t.id);
+  onLoad: function (optin) {
+    var userinfo = t.getCache('userinfo');
+    useropenid = userinfo.openid;
+
+    var b = decodeURIComponent(optin.scene);
+    if (!optin.id && b) {
+      var i = a.str2Obj(b);
+      optin.id = i.id;
+      //绑定会员来源
+      a.get("help/index/bang_agent", { merchid: optin.id }, function (c) {
+        console.log(c)
+      })
+    }
     this.setData({
-      merchid: t.id
-    }),
-      this.getMerch(),
-      this.getList()
+      merchid: optin.id
+    })
   },
-
-
-
-  // -----修改添加
 
   checkCurrent: function (e) {
     const that = this;
@@ -130,7 +126,12 @@ Page({
       windowWidth: windowWidth
     });
     that.scrollFn();
+    
+    that.storeList();
+    that.discount();
+    that.goodsTui();
   },
+
   scrollFn: function () {
     var that = this;
     var length = that.data.length;
@@ -162,120 +163,138 @@ Page({
     //   url: '/packageA/pages/changce/merch/dynamic'
     // })
   },
-  //----------
 
-
-  getMerch: function () {
+  // 店铺信息
+  storeList:function(){
+    var m = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        m.datalist(res);
+      },
+      fail: function (res) {
+        console.log(res);
+        m.datalist();
+      }
+    });
+  },
+  datalist:function(s){
+    console.log(s);
     var t = this;
-    a.get("changce/merch/get_detail", { id: t.data.merchid}, function (a) {
-      t.setData({
-        merch: a.merch
-      })
-    })
-  },
-  getList: function () {
-    var t = this;
-    console.log(this.data.merchid);
-      wx.setStorageSync("merchid", this.data.merchid)
-    a.loading(),
-      this.setData({
-        loading: true
-      }),
-      a.get("changce/merch/goods_list", {
-        page: this.data.page,
-        cateid: this.data.cateid,
-        id: t.data.merchid,
-        isnew: this.data.isnew,
-        isrecommand: this.data.isrecommand,
-      }, function (e) {
-        var i = {
-          loading: false,
-          total: e.total,
-          pagesize: e.pagesize
-        };
-        e.list.length > 0 && (i.page = t.data.page + 1, i.list = t.data.list.concat(e.list), e.list.length < e.pagesize && (i.loaded = true), t.setSpeed(e.list)),
-          t.setData(i),
-          a.hideLoading()
-      })
-  },
-  clickrec: function () {
-    this.setData({
-      isrecommand: 1,
-      isnew: 0,
-      page:1,
-      loading: false,
-      loaded: false,
-      list: []
-    })
-    this.getList()
-  },
-  clicknew: function () {
-    this.setData({
-      isrecommand: 0,
-      isnew: 1,
-      page: 1,
-      loading: false,
-      loaded: false,
-      list: []
-    })
-    this.getList()
-  },
-  clickall: function () {
-    this.setData({
-      isrecommand: 0,
-      isnew: 0,
-      page: 1,
-      loading: false,
-      loaded: false,
-      list: []
-    })
-    this.getList()
-  },
-  setSpeed: function (t) {
-    if (t && !(t.length < 1))
-      for (var a in t) {
-        var e = t[a];
-        if (!isNaN(e.lastratio)) {
-          var i = e.lastratio / 100 * 2.5,
-            s = wx.createContext();
-          s.beginPath(),
-            s.arc(34, 35, 30, .5 * Math.PI, 2.5 * Math.PI),
-            s.setFillStyle("rgba(0,0,0,0)"),
-            s.setStrokeStyle("rgba(0,0,0,0.2)"),
-            s.setLineWidth(4),
-            s.stroke(),
-            s.beginPath(),
-            s.arc(34, 35, 30, .5 * Math.PI, i * Math.PI),
-            s.setFillStyle("rgba(0,0,0,0)"),
-            s.setStrokeStyle("#ffffff"),
-            s.setLineWidth(4),
-            s.setLineCap("round"),
-            s.stroke();
-          var o = "coupon-" + e.id;
-          wx.drawCanvas({
-            canvasId: o,
-            actions: s.getActions()
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.index&comefrom=wxapp',
+      data: {
+        openid: useropenid,
+        merch_id: 3,
+        lng: s.longitude,
+        lat: s.latitude
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0){
+          t.setData({
+            // byvalue:
+            message: res.data.message
+          })
+        } else if (res.data.error == 1){
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
           })
         }
       }
+    })
   },
-    scancodebtn:function(){
-        wx.showModal({
-            title: '提示',
-            content: '暂未开放',
-        })
-    },
-  bindTab: function (t) {
-    var e = a.pdata(t).cateid;
-    this.setData({
-      cateid: e,
-      page: 1,
-      list: []
-    }),
-      this.getList()
+
+  // 公告与优惠券
+  discount:function(){
+    var o = this;
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.shopcoupon&comefrom=wxapp',
+      data: {
+        merch_id: 3
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+          o.setData({
+            informTxt: res.data.data.notice,
+            couponList: res.data.data.coupon
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
   },
+  
+  // 推荐
+  goodsTui:function(){
+    var p = this;
+    p.setData({
+      loading: !0
+    })
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
+      data: {
+        page: p.data.page,
+        merch_id: 3,
+        recommend: 1
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+          pagetotal = res.data.data.pagetotal,
+          p.setData({
+            show: !0,
+            loading: !1,
+            page:p.data.page+1,
+            tuiList: p.data.tuiList.concat(res.data.data.list)
+          });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+
+  scancodebtn:function(){
+    wx.showModal({
+        title: '提示',
+        content: '暂未开放',
+    })
+  },
+
+ 
   onReachBottom: function () {
-    this.data.loaded || this.data.list.length == this.data.total || this.getList()
+    var th = this;
+    console.log(th.data.page,pagetotal);
+    if (th.data.page <= pagetotal){
+      th.goodsTui();
+    }else{
+      th.setData({
+        conceal:1
+      })
+    }
+    
   },
   jump: function (t) {
     var e = a.pdata(t).id;

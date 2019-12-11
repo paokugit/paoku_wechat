@@ -1,5 +1,8 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺主页"></navigation>
-<view class='allview' wx:if="{{play==0}}">
+
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view class='allview' wx:if="{{show}}">
   <view class='zhuyehead'>
     <view class='headimg'>
       <image wx:if="{{logo !=''&&logo != null}}" class='imghh' src="{{logo}}"></image>

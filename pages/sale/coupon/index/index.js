@@ -1,84 +1,95 @@
 var t = getApp(),
   a = t.requirejs("core");
 
+var useropenid = "";
+var goods_id = '';
 Page({
   data: {
-    cates: [],
-    cateid: 0,
-    page: 1,
-    loading: !1,
-    loaded: !1,
-    list: [],
     globalimg: t.globalData.appimg,
     approot: t.globalData.approot,
     showIcon: true,
-    borderbackground:"#ff2424"
+
+    colorA:'yhj_img_bg2@2x',
+    colorB:'yhj_img_bg_hs1@2x',
+    colorC: 'yhj_img_bg_ls1@2x',
+    ticketlist:[],
   },
-  onLoad: function(t) {
-    t.cateid && this.setData({
-      cateid: t.cateid
-    }), this.getCate(), this.getList();
+  onLoad: function (options) {
+    var userinfo = t.getCache('userinfo');
+    useropenid = userinfo.openid;
+
+    goods_id = t.goodsid;
   },
-  getCate: function() {
+  
+  titList:function(){
     var t = this;
-    a.get("sale/coupon/getCouponCate", {}, function(a) {
-      a.list.length > 0 && t.setData({
-        cates: a.list
-      });
-    });
-  },
-  getList: function() {
-    var t = this;
-    a.loading(), this.setData({
-      loading: !0
-    }), a.get("sale/coupon/getlist", {
-      page: this.data.page,
-      cateid: this.data.cateid
-    }, function(e) {
-      var i = {
-        loading: !1,
-        total: e.total,
-        pagesize: e.pagesize
-      };
-      e.list.length > 0 && (i.page = t.data.page + 1, i.list = t.data.list.concat(e.list),
-          e.list.length < e.pagesize && (i.loaded = !0), t.setSpeed(e.list)), t.setData(i),
-        a.hideLoading();
-    });
-  },
-  setSpeed: function(t) {
-    if (t && !(t.length < 1))
-      for (var a in t) {
-        var e = t[a];
-        if (!isNaN(e.lastratio)) {
-          var i = e.lastratio / 100 * 2.5,
-            s = wx.createContext();
-          s.beginPath(), s.arc(34, 35, 30, .5 * Math.PI, 2.5 * Math.PI), s.setFillStyle("rgba(0,0,0,0)"),
-            s.setStrokeStyle("rgba(0,0,0,0.2)"), s.setLineWidth(4), s.stroke(), s.beginPath(),
-            s.arc(34, 35, 30, .5 * Math.PI, i * Math.PI), s.setFillStyle("rgba(0,0,0,0)"), s.setStrokeStyle("#ffffff"),
-            s.setLineWidth(4), s.setLineCap("round"), s.stroke();
-          var o = "coupon-" + e.id;
-          wx.drawCanvas({
-            canvasId: o,
-            actions: s.getActions()
-          });
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.personcenter.coupon&comefrom=wxapp',
+      data: {
+        merchid: goods_id
+      },
+      success(res) {
+        t.setData({
+          loading: !0,
+          show: !0
+        });
+        console.log(res);
+
+        if (res.data.error == 0) {
+          t.setData({
+            ticketlist:res.data.data
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
         }
       }
+    }) 
   },
-  bindTab: function(t) {
-    var e = a.pdata(t).cateid;
-    this.setData({
-      cateid: e,
-      page: 1,
-      list: []
-    }), this.getList();
+
+  drawBtn:function(e){
+    var goodsid = e.currentTarget.dataset.id;
+    console.log(goodsid);
+    wx.showLoading({
+      title: '正在领取...',
+      mask: true
+    })
+    var m = this;
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.coupon_receive&comefrom=wxapp',
+      data: {
+        openid: useropenid,
+        id: goodsid
+      },
+      success(res) {
+        console.log(res);
+        wx.hideLoading();
+        if (res.data.error == 0) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    }) 
   },
+
+  onShow: function(){
+    this.titList();
+  },
+
   onReachBottom: function() {
-    this.data.loaded || this.data.list.length == this.data.total || this.getList();
+    
   },
-  jump: function(t) {
-    var e = a.pdata(t).id;
-    e > 0 && wx.navigateTo({
-      url: "/pages/sale/coupon/detail/index?id=" + e
-    });
-  }
+  
 });

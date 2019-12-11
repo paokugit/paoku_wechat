@@ -1,30 +1,33 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺详情"></navigation>
-<view class="page">
 
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view class="page" wx:if="{{show}}">
   <view class="header">
     <image class="header-setting" src="{{globalimg}}/dbxq_bg@2x.png"></image>
 
     <view class="header-lid">
       <view class="header-left">
-        <navigator url='/packageA/pages/changce/merch/homepage?id={{merchid}}' class="shopimg">
-          <image  src="/static/images/noface.png"></image>
+        <navigator url='/packageA/pages/changce/merch/homepage?id={{message.id}}' class="shopimg">
+          <image  src="{{message.logo == ''?'/static/images/noface.png':message.logo}}"></image>
         </navigator>
         <view class="name-distance">
-          <navigator url='/packageA/pages/changce/merch/homepage?id={{merchid}}'  class="header-name">三只松鼠旗舰店</navigator>
-          <navigator url="/packageA/pages/changce/merch/intro?id={{merchid}}" class="header-distance">
+          <navigator url='/packageA/pages/changce/merch/homepage?id={{message.id}}'  class="header-name">{{message.merchname}}</navigator>
+          <navigator url="/packageA/pages/changce/merch/intro?id={{message.id}}" class="header-distance">
             <image src="{{globalimg}}/dz_icon_dz@2x.png"></image>
-            <view>距我100m</view>
+            <view style="{{message.distance == ''||message.distance.length == 0?'display:none':''}}">距我{{message.distance}}</view>
+            <view style="{{message.distance == ''||message.distance.length == 0?'':'display:none'}}">暂未设置地址</view>
           </navigator>
         </view>
       </view>
-
+ 
       <view class="header-right">
         <view class="header-attention">
-          <image src="{{globalimg}}/dbxq_icon_gz_per@2x.png"></image>
-          <!-- dbxq_icon_gz_per@2x --> 
-          <view>关注</view>
+          <image src="{{globalimg}}/{{message.follow == 0?'dbxq_icon_gz_per@2x':'dbxq_icon_gz_per@2x'}}.png"></image>
+          <view style="{{message.follow == 0?'':'display:none'}}">关注</view>
+          <view style="{{message.follow == 1?'':'display:none'}}">已关注</view>
         </view>
-        <view class="header-collect">2.1万人收藏</view>
+        <view class="header-collect">{{message.followcount}}人收藏</view>
       </view>
     </view>
 
@@ -53,61 +56,54 @@
   <view style="{{currentData == 0||currentData == 2 ? '' : 'display:none'}}">
     <!-- 推荐内容 -->
     <view class="details-top" style="{{currentData == 0 ? '' : 'display:none'}}">
-      <view class="inform">
+      <view class="inform" style="{{informTxt == ''||informTxt.length == 0? 'display:none':''}}">
         <image class="inform-icon" src="{{globalimg}}/dbxq_icon_tz@2x.png"></image>
         <view class="marquee_box">
           <text class="marquee_text"  style="transform: translateX(-{{marqueeDistance}}rpx)" >{{informTxt}}</text>  
         </view>
       </view>
 
-      <view class="coupon">
-        <navigator url="/packageA/pages/changce/merch/shop_discounts" class="couponList">
-          <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>
-          <view class="coupon-txt">  
-            <view style="padding-left:12rpx;">
-              <view class="figure">1000</view>
-              <view class="condition">订单满8888元使用</view>
+      <view class="coupon" style="couponList.length == 0 ? 'display:none':''">
+        <block wx:for="{{couponList}}" wx:key="index">
+          <navigator url="/packageA/pages/changce/merch/shop_discounts?&id={{item.id}}" class="couponList">
+            <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>
+            <view class="coupon-txt">  
+              <view style="padding-left:12rpx;">
+                <view class="figure">{{item.deduct}}</view>
+                <view class="condition">订单满{{item.enough}}元使用</view>
+              </view>
+              <view style="width:74rpx">
+                <view class="coupon-getBtn">点击领取</view>
+              </view>
             </view>
-            <view style="width:74rpx">
-              <view class="coupon-getBtn">点击领取</view>
-            </view>
-          </view>
-        </navigator> 
-
-        <navigator url="/packageA/pages/changce/merch/shop_discounts" class="couponList">
-          <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>
-          <view class="coupon-txt">  
-            <view style="padding-left:12rpx;">
-              <view class="figure">1000</view>
-              <view class="condition">订单满8888元使用</view>
-            </view>
-            <view style="width:74rpx">
-              <view class="coupon-getBtn">点击领取</view>
-            </view>
-          </view>
-        </navigator>  
+          </navigator> 
+        </block>
       </view>
     </view>
 
     <view class="referral-business" style="{{currentData == 0 ? '' : 'display:none'}}">
-      
-      <view class="businessList">
-        <view class="business-img"></view><!-- 已售完样式未添加 -->
-        <view class="business-txt">
-          <text class="reminder">热销</text>
-          <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
-        </view>
-        <view class="business-figure">
-          <view class="number">
-            <view class="number-money">99</view>
-            <view class="number-people">999人付款</view>
+      <block wx:for="{{tuiList}}" wx:key="index">
+        <navigator class="businessList" url="/pages/goods/detail/index?id={{item.id}}">
+          <view class="business-img">
+            <image src="{{item.thumb}}"></image>
           </view>
-          <view class="shopping-car">
-            <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+          <view class="business-txt">
+            <text class="reminder" wx:if="{{item.ishot == 0?false:true}}">热销</text>
+            <text class="reminder" wx:if="{{item.istime == 0?false:true}}">显示购买</text>
+            <text class="reminder" wx:if="{{item.issendfree == 0?false:true}}">包邮</text>
+            <text class="article-name">{{item.title}}</text>
           </view>
-        </view>
-      </view>
-
+          <view class="business-figure">
+            <view class="number">
+              <view class="number-money">{{item.marketprice}}</view>
+              <view class="number-people">{{item.sales}}人付款</view>
+            </view>
+            <view class="shopping-car">
+              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+            </view>
+          </view>
+        </navigator>
+      </block>
     </view>
 
     <!-- 上新内容 -->
@@ -142,8 +138,13 @@
 
     </view>
 
-
-    <view class="on-earth" style="margin-bottom:150rpx;">到底了哦</view>
+    <block wx:if="{{loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载</view>
+      </view>
+    </block>
+    <view class="on-earth" style="margin-bottom:150rpx;{{conceal == 0?'display:none':''}}">到底了哦</view>
   </view>
 
   <!-- 活动内容 -->

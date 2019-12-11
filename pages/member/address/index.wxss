@@ -75,3 +75,12 @@
   justify-content: center;
   align-items: center
 }
+
+
+.fui-list-group{
+  border-radius: 20rpx;
+  margin: 20rpx 24rpx;
+}
+.fui-list-inner .text {
+  margin: 30rpx 0;
+}

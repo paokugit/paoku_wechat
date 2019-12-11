@@ -28,12 +28,18 @@ Page({
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
     var newpos = i.getCache("mypos");
+
+    console.log(newpos);
+
     s.get("myown/shophome/index", {
       openid: useropenid,
       merch_id: options.id,
       lat: newpos.lat,
       lng: newpos.lng
     }, function (e) {
+      
+      console.log(e);
+
       merchphone = e.message.mobile
       merchid = e.message.id
       var name = ''

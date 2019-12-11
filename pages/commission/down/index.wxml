@@ -84,16 +84,16 @@
           </view>
         </block>
       </block>
-      <block>
-        <block wx:if="{{list.length<1}}">
-          <view class="center">
-            <view class="empty-tip">
-              <image class="light" src="{{globalimg}}/nomeb.png"></image>
-              <view class="text-cancel">暂时没有任何数据</view>
-            </view>
-          </view>
-        </block>
-      </block>
+
+      <view class="vacancy" wx:if="{{list.length == 0?true:false}}">
+        <image class="img-kong" src="{{globalimg}}/wdfs_img_kqy@2x.png"></image>
+        <view class="kong-fen">暂无粉丝</view>
+
+        <view class="inviteBtn">
+          去邀请
+          <button class='share' id="shareBtn" open-type="share" hover-class="none"></button>
+        </view>
+      </view>
     </view>
   </block>
 </block>

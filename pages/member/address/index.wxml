@@ -10,7 +10,7 @@
     <view class="page footer {{paddingb}}">
       <block>
         <block wx:if="{{list.length>0}}">
-          <block wx:for="{{list}}">
+          <block wx:for="{{list}}" wx:key="index">
             <view class="fui-list-group">
               <view class="fui-list address-item noclick">
                 <view class="fui-list-inner">

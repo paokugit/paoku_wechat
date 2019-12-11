@@ -30,3 +30,132 @@
   color: #666;
   font-size: 28rpx
 }
+
+
+.coupon-con {
+  width: 100%;
+  height: auto;
+  /* background: pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24rpx
+}
+
+.coupon-items {
+  width: 655rpx;
+  height: 250rpx;
+  /* background: #fff; */
+  margin-top: 24rpx;
+  position: relative
+}
+.coupon-bg{
+  width: 655rpx;
+  height: 241rpx;
+}
+.bg-left{
+  width: 216rpx;
+  height: 241rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bg-right{
+  width: 280rpx;
+  height:146rpx;
+  padding-top: 24rpx;
+  position: absolute;
+  top: 0;
+  left: 230rpx
+}
+.coupon-tit{
+  width: 100%;
+  line-height: 45rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.coupon-time{
+  width: 100%;
+  height: 46rpx;
+  color: #333;
+  font-size: 22rpx;
+  line-height: 46rpx;
+  margin: 20rpx 0 10rpx;
+}
+.coupons-type{
+  width: 146rpx;
+  height: 146rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+image{
+  width: 100%;
+  height: 100%
+}
+.useBtn{
+  padding: 10rpx 24rpx;
+  position: absolute;
+  right: 20rpx;
+  bottom: 24rpx;
+  border-radius: 30rpx;
+  font-size:  22rpx
+}
+.yi-use{
+  border: 1px solid #999999;
+  color: #BDBDBD;
+}
+.coupon-desc{
+  width: 100%;
+  height: 120rpx;
+  color: #f00;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.btnCssA{
+  border: 1px solid #ff2424;
+  color: #ff2424;
+}
+.btnCssB{
+  border: 1px solid #ffaa33;
+  color: #ffaa33;
+}
+.btnCssC{
+  border: 1px solid #4c97ff;
+  color: #4c97ff;
+}
+/* 50元以下的券   使用红色样式     #ff2424      #ff8585~#ff1919
+50不含-200含   使用桔色样式     #ffaa33      #ffdba8~#ffaa33
+200以上的券     使用蓝色样式     #4c97ff      #9cc5ff~#4c6cfc
+ 
+已使用与已过期灰色     #999999               #d6d6d6~#bdbdbd
+ 
+按钮颜色由当前劵的颜色为主 */
+
+.lackbox{
+  text-align: center;
+  margin: 5rem 0;
+}
+.lackbox image{
+  width: 380rpx;
+  height: 354rpx;
+}
+.lackbox view{
+  font-size: 34rpx;
+  color: #666666;
+}

@@ -32,7 +32,6 @@ Page({
     
     t.url(e);
     this.getList();
-    this.shList();
   },
   onReachBottom: function() {
     
@@ -77,6 +76,9 @@ Page({
 
   shList:function(){
     var m = this;
+    m.setData({
+      loading: !0
+    });
     wx.request({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=member.favorite.get_merchlist&comefrom=wxapp',
       data: {
@@ -152,54 +154,37 @@ Page({
         l = [];
       for (var s in c) c[s] && l.push(s);
       if (l.length < 1) return;
-      e.confirm("删除后不可恢复，确定要删除吗？", function() {
+      e.confirm("取消关注后不可恢复，确定要取消关注吗？", function() {
         if(a.data.type == 1){
-          wx.request({
-            url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=member.favorite.remove&comefrom=wxapp',
-            method:'POST',
-            data: {
-              ids: JSON.parse(JSON.stringify(l))
-            },
-            dataType: 'json',
-            header: { 
-              'content-type': 'application/x-www-form-urlencoded;charset=utf-8' 
-            },
-            success(res) {
-              console.log(res);
-              if (res.data.error == 0) {
-                console.log('123');
-              } else if (res.data.error == 1) {
-                wx.showToast({
-                  title: res.data.message,
-                  icon: 'none',
-                  duration: 2000
-                })
-              }
-            }
-          }) 
-          
-          // e.post("member/favorite/remove", {
-          //   ids: l
-          // }, function (t) {
-          //   a.setData({
-          //     isedit: !1,
-          //     checkNum: 0,
-          //     page: 0,
-          //     list: []
-          //   }), a.getList();
-          // });
+          var array = JSON.stringify(l);
+          console.log(l);
+          var array = JSON.stringify(l);
+
+          e.post("member/favorite/remove", {
+            ids: l
+          }, function (t) {
+            console.log(t);
+            a.setData({
+              isedit: !1,
+              checkNum: 0,
+              page: 0,
+              list: []
+            }), a.getList();
+          });
+
         }else if(a.data.type == 2){
           console.log('123');
-          wx.request({
-            url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=member.favorite.remove&comefrom=wxapp',
-            data: {
-              openid: useropenid,
-              ids: l
-            },
-            success(res) {
-              console.log(res);
-            }
-          }) 
+          e.post("member.favorite.remove_shop", {
+            ids: l
+          }, function (t) {
+            console.log(t);
+            a.setData({
+              isedit: !1,
+              checkNum: 0,
+              pageA: 0,
+              shoplist: []
+            }), a.shList();
+          });
         }
         
 
@@ -222,11 +207,22 @@ Page({
   myTab: function(t) {
     var ee = this,
       i = e.pdata(t).type;
+      
     ee.setData({
       type: i,
+      page:1,
+      pageA:1,
       isedit: !1,
-      checkNum: 0
+      checkNum: 0,
+      list:[],
+      shoplist:[],
+      loaded:false
     });
+    if (i == 1) {
+      ee.getList();
+    } else if (i == 2) {
+      ee.shList();
+    }
   },
 
   goodsScroll:function(){

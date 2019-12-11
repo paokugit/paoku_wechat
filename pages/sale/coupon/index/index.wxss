@@ -67,6 +67,8 @@
   color: #999;
   height: 40rpx;
   overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .coupon-list i {
@@ -177,12 +179,16 @@
   font-weight: bold;
 }
 
-.coupon-time {
-  font-size: 24rpx;
-}
-
 .coupon-time strong {
   font-weight: normal;
+}
+
+.expire{
+  width: 100%;
+  height: 46rpx;
+  line-height: 46rpx;
+  font-size: 24rpx;
+  color: red;
 }
 
 .blue .coupon-index-list-right {
@@ -582,7 +588,6 @@
 }
 .coupon-tit{
   width: 100%;
-  height: 100rpx;
   line-height: 45rpx;
   color: #333;
   font-size: 30rpx;
@@ -599,7 +604,8 @@
   height: 46rpx;
   color: #333;
   font-size: 22rpx;
-  line-height: 46rpx
+  line-height: 46rpx;
+  margin: 20rpx 0 10rpx;
 }
 .coupons-type{
   width: 146rpx;
@@ -629,4 +635,37 @@ image{
   display: flex;
   justify-content: center;
   align-items: center
+}
+
+.btnCssA{
+  border: 1px solid #ff2424;
+  color: #ff2424;
+}
+.btnCssB{
+  border: 1px solid #ffaa33;
+  color: #ffaa33;
+}
+.btnCssC{
+  border: 1px solid #4c97ff;
+  color: #4c97ff;
+}
+/* 50元以下的券   使用红色样式     #ff2424      #ff8585~#ff1919
+50不含-200含   使用桔色样式     #ffaa33      #ffdba8~#ffaa33
+200以上的券     使用蓝色样式     #4c97ff      #9cc5ff~#4c6cfc
+ 
+已使用与已过期灰色     #999999               #d6d6d6~#bdbdbd
+ 
+按钮颜色由当前劵的颜色为主 */
+
+.lackbox{
+  text-align: center;
+  margin: 5rem 0;
+}
+.lackbox image{
+  width: 380rpx;
+  height: 354rpx;
+}
+.lackbox view{
+  font-size: 34rpx;
+  color: #666666;
 }

@@ -131,14 +131,12 @@ Page({
             });
         } else if ("delete" == i) {
             var c = e.data.checkObj, n = [];
-
-            
-
             for (var s in c) c[s] && n.push(s);
             if (n.length < 1) return;
           console.log(n);
             a.confirm("删除后不可恢复，确定要删除吗？", function() {
                 a.post("member/history/remove", {
+                    openid:useropenid,
                     ids: n
                 }, function(t) {
                     e.setData({

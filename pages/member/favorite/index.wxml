@@ -55,13 +55,11 @@
           </block>
         </block>
 
-        <block>
-          <block wx:if="{{loaded}}">
-            <view class="fui-loading empty">
-              <view class="text">没有更多了</view>
-            </view>
-          </block>
+        
+        <block wx:if="{{loaded}}">
+          <view class="text-load">没有更多了</view>
         </block>
+        
       </scroll-view>
     </view>
     <view class="{{type==2 ? 'show':'hidden'}}">
@@ -110,12 +108,8 @@
           </block>
         </block>
 
-        <block>
-          <block wx:if="{{loaded}}">
-            <view class="fui-loading empty">
-              <view class="text">没有更多了</view>
-            </view>
-          </block>
+        <block wx:if="{{loaded}}">
+          <view class="text-load">没有更多了</view>
         </block>
       </scroll-view>
     </view>
@@ -127,7 +121,7 @@
     </view>
 
     <block>
-      <block wx:if="{{list.length>0}}">
+      <block wx:if="{{list.length>0||shoplist.length>0}}">
         <view class="fui-footer">
           <view class="tool">
             <block>

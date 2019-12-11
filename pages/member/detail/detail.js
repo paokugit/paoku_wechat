@@ -11,7 +11,7 @@ Page({
     type: 1,
     isopen: !1,
     page: 1,
-   
+
     list: [],
     totalPage: 0,
     isShow: 0,
@@ -22,13 +22,13 @@ Page({
     gloheight: f.globalData.gloheight
   },
   // 上拉加载
-  onLoad: function(a) {
-     this.setData({
-      show:!0,
-    }) 
+  onLoad: function (a) {
+    this.setData({
+      show: !0,
+    })
     this.getList();
   },
-  downbtn: function(e) {
+  downbtn: function (e) {
     console.log(e.currentTarget.dataset.id)
     this.setData({
       downdis: 'none',
@@ -36,7 +36,7 @@ Page({
       reasondis: 'block'
     })
   },
-  topbtn: function(e) {
+  topbtn: function (e) {
     //    console.log(e.currentTarget.dataset.id)
     this.setData({
       topdis: 'none',
@@ -44,7 +44,7 @@ Page({
       reasondis: 'none'
     })
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.stopPullDownRefresh();
   },
   onReachBottom: function () {
@@ -68,13 +68,13 @@ Page({
     }, 200)
 
   },
-  getList: function() {
+  getList: function () {
     var t = this;
     a.get("member/log/money_log", {
       openid: userinfo.openid,
       page: t.data.page,
       type: t.data.type
-    }, function(a) {
+    }, function (a) {
       console.log(a)
       if (a.error == 0) {
         let totalPage = Math.ceil(a.total / a.pagesize)
@@ -88,7 +88,7 @@ Page({
 
     });
   },
-  myTab: function(t) {
+  myTab: function (t) {
     console.log(t)
     var e = this,
       i = a.pdata(t).type;

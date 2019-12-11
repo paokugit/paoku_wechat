@@ -1,7 +1,10 @@
 <!--pages/changce/merch/synopsis.wxml-->
 <!-- 总的 -->
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺简介"></navigation>
-<view class='all-box'>
+
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view class='all-box' wx:if="{{show}}">
   <!-- 两个 -->
   <view class='nameandxie'>
     <!-- 上边 -->
