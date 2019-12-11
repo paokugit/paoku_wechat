@@ -9,7 +9,7 @@ var useropenid = "";
 var pagetotal = 0;
 Page({
   data: {
-    merchid: 0,
+    merchid: 0, 
     merch: [],
     page: 1,
     approot: t.globalData.approot,
@@ -35,7 +35,7 @@ Page({
     tuiList:[],
     conceal:0,
 
-    byvalue:''
+    attention:0
   },
   onLoad: function (optin) {
     var userinfo = t.getCache('userinfo');
@@ -56,9 +56,20 @@ Page({
   },
 
   checkCurrent: function (e) {
-    const that = this;
-    that.setData({
-      currentData: e.currentTarget.dataset.current
+    const mx = this;
+    var ind = e.currentTarget.dataset.current;
+    if(ind == 0 || ind == 3){
+      mx.goodsTui();
+    } else if(ind == 1){
+      mx.kinetic();
+    } else if (ind == 2){
+      mx.update();
+    }
+    mx.setData({
+      currentData: ind,
+      tuiList:[],
+      page:0,
+      pagetotal:0
     })
   },
 
@@ -185,7 +196,7 @@ Page({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.index&comefrom=wxapp',
       data: {
         openid: useropenid,
-        merch_id: 3,
+        merch_id: t.data.merchid,
         lng: s.longitude,
         lat: s.latitude
       },
@@ -196,7 +207,7 @@ Page({
         console.log(res.data);
         if (res.data.error == 0){
           t.setData({
-            // byvalue:
+            attention: res.data.message.follow,
             message: res.data.message
           })
         } else if (res.data.error == 1){
@@ -216,7 +227,7 @@ Page({
     wx.request({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.shopcoupon&comefrom=wxapp',
       data: {
-        merch_id: 3
+        merch_id: o.data.merchid
       },
       header: {
         'content-type': 'application/json'
@@ -249,7 +260,7 @@ Page({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
       data: {
         page: p.data.page,
-        merch_id: 3,
+        merch_id: p.data.merchid,
         recommend: 1
       },
       header: {
@@ -265,6 +276,90 @@ Page({
             page:p.data.page+1,
             tuiList: p.data.tuiList.concat(res.data.data.list)
           });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+
+  // 活动
+  kinetic:function(){
+    console.log('123');
+  },
+
+  // 上新
+  update:function(){
+    var k = this;
+    k.setData({
+      loading: !0
+    })
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.upgood&comefrom=wxapp',
+      data: {
+        merch_id: k.data.merchid,
+        openid: useropenid
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        // if (res.data.error == 0) {
+        //   pagetotal = res.data.data.pagetotal,
+        //     p.setData({
+        //       show: !0,
+        //       loading: !1,
+        //       page: p.data.page + 1,
+        //       tuiList: p.data.tuiList.concat(res.data.data.list)
+        //     });
+        // } else if (res.data.error == 1) {
+        //   wx.showToast({
+        //     title: res.data.message,
+        //     icon: 'none',
+        //     duration: 2000
+        //   })
+        // }
+      }
+    })
+  },
+  
+
+  // 关注
+  clickBtn:function(e){
+    var w = this;
+    console.log(w.data.attention);
+    var index = 0;
+    if (w.data.attention == 0){
+      index = 1
+    } else if (w.data.attention == 1){
+      index = 0
+    }
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.follow&comefrom=wxapp',
+      data: {
+        openid: useropenid,
+        merch_id: w.data.merchid,
+        follow: index
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+          w.setData({
+            attention:index
+          })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
         } else if (res.data.error == 1) {
           wx.showToast({
             title: res.data.message,

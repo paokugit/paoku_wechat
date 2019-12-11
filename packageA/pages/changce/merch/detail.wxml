@@ -5,7 +5,7 @@
 <view class="page" wx:if="{{show}}">
   <view class="header">
     <image class="header-setting" src="{{globalimg}}/dbxq_bg@2x.png"></image>
-
+ 
     <view class="header-lid">
       <view class="header-left">
         <navigator url='/packageA/pages/changce/merch/homepage?id={{message.id}}' class="shopimg">
@@ -22,10 +22,10 @@
       </view>
  
       <view class="header-right">
-        <view class="header-attention">
-          <image src="{{globalimg}}/{{message.follow == 0?'dbxq_icon_gz_per@2x':'dbxq_icon_gz_per@2x'}}.png"></image>
-          <view style="{{message.follow == 0?'':'display:none'}}">关注</view>
-          <view style="{{message.follow == 1?'':'display:none'}}">已关注</view>
+        <view class="header-attention" catchtap="clickBtn">
+          <image src="{{globalimg}}/{{attention == 0?'dbxq_icon_gz_per@2x':'dbxq_icon_gz_per@2x'}}.png"></image>
+          <view style="{{attention == 0?'':'display:none'}}">关注</view>
+          <view style="{{attention == 1?'':'display:none'}}">已关注</view>
         </view>
         <view class="header-collect">{{message.followcount}}人收藏</view>
       </view>
@@ -56,14 +56,14 @@
   <view style="{{currentData == 0||currentData == 2 ? '' : 'display:none'}}">
     <!-- 推荐内容 -->
     <view class="details-top" style="{{currentData == 0 ? '' : 'display:none'}}">
-      <view class="inform" style="{{informTxt == ''||informTxt.length == 0? 'display:none':''}}">
+      <view class="inform" style="{{informTxt == ''||informTxt.length == 0 || informTxt==null? 'display:none':''}}">
         <image class="inform-icon" src="{{globalimg}}/dbxq_icon_tz@2x.png"></image>
         <view class="marquee_box">
           <text class="marquee_text"  style="transform: translateX(-{{marqueeDistance}}rpx)" >{{informTxt}}</text>  
         </view>
       </view>
 
-      <view class="coupon" style="couponList.length == 0 ? 'display:none':''">
+      <view class="coupon" style="{{couponList.length == 0 ? 'display:none':''}}">
         <block wx:for="{{couponList}}" wx:key="index">
           <navigator url="/packageA/pages/changce/merch/shop_discounts?&id={{item.id}}" class="couponList">
             <image class="coupon-image" src="{{globalimg}}/dbxq_bg_yhj@2x.png"></image>

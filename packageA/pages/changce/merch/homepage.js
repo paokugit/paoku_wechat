@@ -16,7 +16,7 @@ Page({
         gloheight: i.globalData.gloheight,
         
         merchname: '',
-        logo: "",
+        logo: "", 
         address: "",
         wxsignal: "",
         main_business: "",

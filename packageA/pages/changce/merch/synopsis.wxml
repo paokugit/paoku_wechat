@@ -6,7 +6,7 @@
 
 <view class='all-box' wx:if="{{show}}">
   <!-- 两个 -->
-  <view class='nameandxie'>
+  <view class='nameandxie'> 
     <!-- 上边 -->
     <view class='mingcheng-nonediv'>
       <!-- 图片 -->
