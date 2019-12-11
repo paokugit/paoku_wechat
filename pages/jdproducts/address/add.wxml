@@ -23,7 +23,7 @@
         <view class="fui-cell">
           <view class="fui-cell-label">所在地区</view>
           <picker style="flex:1;font-size: 28rpx;color: #000" mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" range='{{multiArray}}'>
-            <text wx:if="{{addressCity}}">{{addressCity[0]}}  {{addressCity[1]}}  {{addressCity[2]}}</text>
+            <text wx:if="{{addressCity}}">{{addressCity[0]}}  {{addressCity[1]}}  {{addressCity[2]}} {{addressCity[3]}}</text>
             <text wx:else class='placeholder'>请选择地区</text>
           </picker>
         </view>

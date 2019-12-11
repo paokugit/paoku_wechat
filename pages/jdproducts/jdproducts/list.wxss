@@ -156,7 +156,7 @@ input {
   width: 580rpx;
   height: 32rpx;
   margin-left: 20rpx;
-  color: #ccc;
+  color: #333;
   font-size: 28rpx;
 }
 
@@ -276,6 +276,8 @@ input {
   background: #fff;
   position: relative;
   white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
   display: flex;
   margin: 10rpx 0;
 }
@@ -318,4 +320,12 @@ input {
   right: 0;
   z-index: 1;
   margin: auto;
+}
+/**
+去除横向滚动条
+*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
 }

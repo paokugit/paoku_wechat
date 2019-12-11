@@ -43,6 +43,7 @@ Page({
     provicename: '',
     cityname: '',
     areaname: '',
+    townname:'',
     name: '',
     mobile: '',
     detailaddress: '',
@@ -75,9 +76,10 @@ Page({
         provicename: options.provicename,
         cityname: options.cityname,
         areaname: options.areaname,
+        townname: options.townname,
         name: options.name,
         mobile: options.mobile,
-        detailaddress: options.detailaddress
+        detailaddress: options.detailaddress,
       })
       t.getcarriage()
     }
@@ -108,7 +110,7 @@ Page({
             show: !0,
             goodsprice: res.data.data.ptprice,
             jdprice: res.data.data.jdprice,
-            goodstitle: res.data.data.brandName,
+            goodstitle: res.data.data.name,
             imagePath: res.data.data.imagePath,
             goodsweight: res.data.data.weight,
             goodssku: res.data.data.sku,
@@ -258,7 +260,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    // wx.redirectTo({
+    //   url: '/pages/jdproducts/detail/index?id=' + this.data.goodsid,
+    // })
   },
 
   /**

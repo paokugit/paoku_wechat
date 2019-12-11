@@ -1,8 +1,12 @@
 {
-  "entryPagePath": "pages/jdproducts/jdproducts/list",
+  "entryPagePath": "pages/jdproducts/exchange/trade",
   "pages": [
     "pages/index/index",
     "pages/jdproducts/order/index",
+    "pages/jdproducts/exchange/type",
+    "pages/jdproducts/exchange/index",
+    "pages/jdproducts/exchange/retreat",
+    "pages/jdproducts/exchange/trade",
     "pages/jdproducts/logistics/logistics",
     "pages/jdproducts/order/detail",
     "pages/jdproducts/cash/cash",

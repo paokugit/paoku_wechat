@@ -261,7 +261,11 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
+    console.log('监听页面卸载111');
+    wx.redirectTo({
+      url: '/pages/jdproducts/order/detail?id=' + this.data.orderId,
+    })
 
   },
 

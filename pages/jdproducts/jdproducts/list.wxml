@@ -44,15 +44,16 @@
               <view bindtap="searchbtn" class="sousu">搜索</view>
             </view>
           </view>
-          <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
-            <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
+          <scroll-view class="list-tab-scroll" scrollX="true" scroll-with-animation="true" bindscrolltoupper="toUpper" bindscrolltolower="toLower" id="scroll-view" scroll-left="{{ scrollLeft }}">
+            <view bindtap="onCouponItemClick" class="item {{status==''?'active':''}}" data-type="">全部</view>
             <block wx:for="{{catelist}}" wx:key="{{index}}">
-              <view bindtap="selected" class="item {{status==item.id?'active':''}}" data-type="{{item.id}}">
+
+              <view bindtap="onCouponItemClick" class="item {{status==item.id?'active':''}}" id="item-{{item.id}}" data-type="{{item.id}}">
                 {{item.catename}}
               </view>
             </block>
           </scroll-view>
-          <!-- 全部商品内容 -->
+          <!-- 综合价格销量 -->
           <view class="filtratebox">
             <view class="all-filtrate">
               <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
@@ -67,7 +68,6 @@
             </view>
           </view>
         </view>
-
         <view class="listCon">
           <block wx:for="{{list}}" wx:key="{{index}}">
             <navigator class="itemBox" url="/pages/jdproducts/detail/index?id={{item.id}}">
@@ -90,13 +90,26 @@
             </navigator>
           </block>
         </view>
-        <view class="fui-loading empty">
-          <view class="text">没有更多了哦</view>
-        </view>
+        <block>
+          <block wx:if="{{!loading&&list.length<=0}}">
+            <view class="fui-loading empty">
+              <view class="text">没有更多了哦</view>
+            </view>
+          </block>
+        </block>
+
       </view>
     </block>
   </block>
   <!-- tab -->
+  <block>
+    <block wx:if="{{loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载</view>
+      </view>
+    </block>
+  </block>
   <block>
     <block wx:if="{{total<=0&&!loading}}">
       <view class="fui-loading empty">

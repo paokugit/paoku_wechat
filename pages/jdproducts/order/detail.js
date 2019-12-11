@@ -13,11 +13,6 @@ Page({
     gloheight: t.globalData.gloheight,
     globalimg: t.globalData.appimg,
     show: !0,
-    cancel: [
-      '不想要了',
-      '啦啦啦',
-      '呀呀呀'
-    ],
     orderstatus: '',
     orderprice: '',
     realname: '',

@@ -20,12 +20,15 @@ Page({
     city_name: null,
     area_list: null,
     area_name: null,
+    town_list: null,
+    town_name: null,
     addressCity: null,
     multiArray: [], // 三维数组数据
-    multiIndex: [0, 0, 0], // 默认的下标,
+    multiIndex: [0, 0, 0, 0], // 默认的下标,
     selectProvinceId: null,
     selectCityId: null,
     selectAreaId: null,
+    selectTownId: null,
     realname: "",
     mobile: "",
     areas: "",
@@ -39,6 +42,7 @@ Page({
     paramproviceid: '',
     paramcityid: '',
     paramareaid: '',
+    paramtownid: '',
     paramsku: '',
   },
 
@@ -62,7 +66,6 @@ Page({
 
   //获取省份列表
   getProvince: function() {
-    
     let that = this
     wx.request({
       url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
@@ -147,43 +150,111 @@ Page({
         id: id
       },
       success(res) {
+        console.log(res)
         let areaList = [...res.data.data.province]
         let areaArr = res.data.data.province.map((item) => {
           return item.name
         }) //区域名
         // console.log(areaArr)
         that.setData({
-          multiArray: [that.data.province_name, that.data.city_name, areaArr],
+          multiArray: [that.data.province_name, that.data.city_name, areaArr, []],
           area_list: areaList, //区列表
           area_name: areaArr //区名字
         })
+        let defaultCode = that.data.area_list[0].id
+        if (defaultCode) {
+          that.setData({
+            currentAreaId: defaultCode //保存当下区id
+          })
+          that.getTown(defaultCode) //获取区域数据
+        }
+
+      }
+    })
+  },
+  // 获取镇
+  getTown: function(id) {
+    let that = this
+    that.setData({
+      currentAreaId: id //保存当前选择市
+    })
+    wx.request({
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.address&comefrom=wxapp',
+      data: {
+        type: 3,
+        id: id
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.data.province.length > 0) {
+          let townList = [...res.data.data.province]
+          let townArr = res.data.data.province.map((item) => {
+            return item.name
+          }) //区域名
+          console.log(townArr)
+          that.setData({
+            multiArray: [that.data.province_name, that.data.city_name, that.data.area_name, townArr],
+            town_list: townList, //区列表
+            town_name: townArr //区名字
+          })
+        } else {
+          console.log('没有四级地址')
+          let townList = ['---']
+          let townArr = ['---']
+          that.setData({
+            multiArray: [that.data.province_name, that.data.city_name, that.data.area_name, townArr],
+            town_list: townList, //区列表
+            town_name: ['---'] //区名字
+          })
+          console.log(that.data.multiArray)
+        }
+
 
       }
     })
   },
   //picker确认选择地区
   bindRegionChange: function(e) {
-    if (e.detail.value[1] == null || e.detail.value[2] == null) { //如果只滚动了第一列则选取第一列的第一数据
+    if (e.detail.value[1] == null || e.detail.value[2] == null || e.detail.value[3] == null) { //如果只滚动了第一列则选取第一列的第一数据
+      console.log('如果只滚动了第一列则选取第一列的第一数据')
       this.setData({
         multiIndex: e.detail.value, //更新下标
         addressCity: [this.data.province_list[e.detail.value[0]].name, this.data.city_list[0].name, this.data.area_list[0].name],
         selectProvinceId: this.data.province_list[e.detail.value[0]].id,
         selectCityId: this.data.city_list[0].id,
-        selectAreaId: this.data.area_list[0].id
+        selectAreaId: this.data.area_list[0].id,
       })
     } else {
-      this.setData({
-        multiIndex: e.detail.value, //更新下标
-        addressCity: [this.data.province_list[e.detail.value[0]].name, this.data.city_list[e.detail.value[1]].name, this.data.area_list[e.detail.value[2]].name],
-        selectProvinceId: this.data.province_list[e.detail.value[0]].id,
-        selectCityId: this.data.city_list[e.detail.value[1]].id,
-        selectAreaId: this.data.area_list[e.detail.value[2]].id
-      })
+      console.log('else')
+      if (this.data.town_list[0].id == undefined){
+        console.log(this.data.town_list[0].id)
+        this.setData({
+          multiIndex: e.detail.value,
+          addressCity: [this.data.province_list[e.detail.value[0]].name, this.data.city_list[e.detail.value[1]].name, this.data.area_list[e.detail.value[2]].name, ''],
+          selectProvinceId: this.data.province_list[e.detail.value[0]].id,
+          selectCityId: this.data.city_list[e.detail.value[1]].id,
+          selectAreaId: this.data.area_list[e.detail.value[2]].id,
+          
+        })
+        
+      }else{
+        this.setData({
+          multiIndex: e.detail.value, //更新下标
+          addressCity: [this.data.province_list[e.detail.value[0]].name, this.data.city_list[e.detail.value[1]].name, this.data.area_list[e.detail.value[2]].name, this.data.town_list[e.detail.value[3]].name],
+          selectProvinceId: this.data.province_list[e.detail.value[0]].id,
+          selectCityId: this.data.city_list[e.detail.value[1]].id,
+          selectAreaId: this.data.area_list[e.detail.value[2]].id,
+          selectTownId: this.data.town_list[e.detail.value[3]].id,
+
+        })
+      }
+      
     }
-    console.log(this.data.addressCity[0], this.data.addressCity[1], this.data.addressCity[2], this.data.selectProvinceId, this.data.selectCityId, this.data.selectAreaId)
+    console.log(this.data.addressCity[0], this.data.addressCity[1], this.data.addressCity[2], this.data.addressCity[3], this.data.selectProvinceId, this.data.selectCityId, this.data.selectAreaId, this.data.selectTownId)
   },
   //滑动地区组件
   bindRegionColumnChange: function(e) {
+    console.log(e)
     let that = this
     let column = e.detail.column
     let data = {
@@ -205,6 +276,13 @@ Page({
           that.getArea(currentCityId)
         }
         data.multiIndex[2] = 0
+        break
+      case 2:
+        let currentAreaId = that.data.area_list[e.detail.value].id
+        if (currentAreaId != that.data.currentAreaId) {
+          that.getTown(currentAreaId)
+        }
+        data.multiIndex[3] = 0
         break
     }
     that.setData(data)
@@ -267,6 +345,8 @@ Page({
                 city_id: tt.data.selectCityId,
                 area: tt.data.addressCity[2],
                 area_id: tt.data.selectAreaId,
+                street: tt.data.addressCity[3],
+                street_id: tt.data.selectTownId,
                 address: tt.data.detailaddress
               },
               header: {
@@ -279,15 +359,22 @@ Page({
                     paramaddressid: res.data.data.address_id,
                     paramproviceid: res.data.data.province_id,
                     paramcityid: res.data.data.city_id,
-                    paramareaid: res.data.data.area_id
+                    paramareaid: res.data.data.area_id,
+                    paramtownid: res.data.data.street_id
+
                   })
                   void a.toast(tt, "保存成功")
                   setTimeout(function() {
                     wx.redirectTo({
-                      url: '/pages/jdproducts/order/index?id=' + tt.data.productid + '&count=' + tt.data.productcount + '&totalprice=' + tt.data.productprice + '&addressid=' + tt.data.paramaddressid + '&proviceid=' + tt.data.paramproviceid + '&cityid=' + tt.data.paramcityid + '&areaid=' + tt.data.paramareaid + '&goodssku=' + tt.data.paramsku + '&provicename=' + tt.data.addressCity[0] + '&cityname=' + tt.data.addressCity[1] + '&areaname=' + tt.data.addressCity[2]+'&name='+tt.data.realname+'&mobile='+tt.data.mobile+'&detailaddress='+tt.data.detailaddress,
+                      url: '/pages/jdproducts/order/index?id=' + tt.data.productid + '&count=' + tt.data.productcount + '&totalprice=' + tt.data.productprice + '&addressid=' + tt.data.paramaddressid + '&proviceid=' + tt.data.paramproviceid + '&cityid=' + tt.data.paramcityid + '&areaid=' + tt.data.paramareaid + '&townid=' + tt.data.paramtownid + '&goodssku=' + tt.data.paramsku + '&provicename=' + tt.data.addressCity[0] + '&cityname=' + tt.data.addressCity[1] + '&areaname=' + tt.data.addressCity[2] + '&townname=' + tt.data.addressCity[3] + '&name=' + tt.data.realname + '&mobile=' + tt.data.mobile + '&detailaddress=' + tt.data.detailaddress,
                     });
                   }, 1e3);
 
+                } else {
+                  wx.showModal({
+                    title: '提示',
+                    content: res.data.message,
+                  })
                 }
 
               }

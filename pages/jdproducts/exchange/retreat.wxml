@@ -1,0 +1,89 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="退款申请"></navigation>
+    <view class="productInfo">
+      <!-- 多订单商品的添加编辑显示 -->
+      <view class="add-edit-box">
+        <view style="color:#333;font-size:28rpx">退款商品</view>
+        <view class="editbtn">添加和编辑</view>
+      </view>
+      <!-- 多订单商品的添加编辑显示 -->
+      <!-- 多商品的图片显示 -->
+      <view class="moreThumb">
+        <view class="moreImg">
+        <view class="morePrice">￥999.98</view>
+        </view>
+        <view class="moreImg"></view>
+        <view class="moreImg"></view>
+      </view>
+      <!-- 多商品的图片显示 -->
+      <view class="thumb-box ">
+        <view class="productImg "></view>
+        <view class="productdesc ">
+          <text class="productname ">茶杯套装</text>
+          <text class="productstandard ">颜色分类</text>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">货物状态:</view>
+        <view class="statepicker">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{statearray}}" style="width:100%">
+            <text style="color:#999;font-size:28rpx">{{defaults}}</text>
+          </picker>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">退款原因:</view>
+        <view class="statepicker">
+          <picker bindchange="bindReasonChange" value="{{index}}" range="{{reasonarr}}" style="width:100%">
+            <text style="color:#999;font-size:28rpx">{{reason}}</text>
+          </picker>
+          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">退款金额:</view>
+        <view class="statepicker">
+          <text style="color:#01d7a1;font-size:28rpx">￥88</text>
+        </view>
+      </view>
+      <view class="money-restrict">
+        <text>*提示:您可退款的最大金额为￥<text>{{order.refundprice}}</text>
+        </text>
+      </view>
+      <view class="proState">
+        <view class="state-remark">退货方式:</view>
+        <view class="statepicker">
+          <text style="color:#333;font-size:28rpx">自行寄回</text>
+        </view>
+      </view>
+      <view class="proState">
+        <view class="state-remark">退款联系人:</view>
+        <view class="statepicker">
+          <text style="color:#333;font-size:28rpx">糖果</text>
+        </view>
+      </view>
+      <view class="proState-radius">
+        <view class="state-remark">联系方式:</view>
+        <view class="statepicker">
+          <text style="color:#333;font-size:28rpx">18236962763</text>
+        </view>
+      </view>
+
+    </view>
+    <view class="fui-footer text-right ">
+      <block>
+        <block>
+          <view bindtap="submit" class="btn btn-danger-hlp btn-sm btn-submit ">提交申请</view>
+          <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-default-o back ">取消申请</view>
+        </block>
+      </block>
+    </view>
+  </block>
+</block>

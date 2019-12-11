@@ -40,6 +40,8 @@ Page({
     searchcontent: "",
     topdisp: 'none',
     scrollTop: 0,
+    scrollLeft: 0,
+    loading:!0
   },
 
   /**
@@ -49,10 +51,74 @@ Page({
     var that = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
-    console.log(that.data.status)
     that.getbanner(),
       that.getList()
   },
+  _handleScroll(selectedId) {
+    var _this = this;
+    var query = wx.createSelectorQuery(); //创建节点查询器
+    query.select('#item-' + selectedId).boundingClientRect(); //选择id='#item-' + selectedId的节点，获取节点位置信息的查询请求
+    query.select('#scroll-view').boundingClientRect(); //获取滑块的位置信息
+    //获取滚动位置
+    query.select('#scroll-view').scrollOffset(); //获取页面滑动位置的查询请求
+    query.exec(function(res) {
+      _this.setData({
+        scrollLeft: res[2].scrollLeft + res[0].left + res[0].width / 2 - res[1].width / 2
+      });
+    });
+  },
+
+  onCouponItemClick: function(e) {
+    console.log(e)
+    var id = e.currentTarget.dataset.type;
+    var curIndex = 0;
+    for (var i = 0; i < this.data.catelist.length; i++) {
+      if (id == "") {
+        console.log('全部')
+        this.setData({
+          status: '',
+        })
+      }
+      if (id == this.data.catelist[i].id) {
+        this.setData({
+          status: id,
+
+        })
+        curIndex = i;
+        this._handleScroll(id);
+      } else {}
+    }
+
+    this.setData({
+      catelist: this.data.catelist,
+      list: [],
+      page: 1,
+      empty: !1,
+      pricesort: "",
+      salesort: "",
+      nowSign: 0,
+      // show: !1,
+      allPrice: 'sc_tj_icon_jg_nor@2x',
+      allSales: 'sc_tj_icon_jg_nor@2x',
+    }), this.getList();
+    console.log(this.data.status)
+  },
+  // selected: function (t) {
+  //   var e = a.data(t).type;
+  //   console.log(e)
+  //   this.setData({
+  //     list: [],
+  //     page: 1,
+  //     status: e,
+  //     empty: !1,
+  //     pricesort: "",
+  //     salesort: "",
+  //     nowSign: 0,
+  //     show: !1,
+  //     allPrice: 'sc_tj_icon_jg_nor@2x',
+  //     allSales: 'sc_tj_icon_jg_nor@2x',
+  //   }), this.getList();
+  // },
   getbanner: function() {
     var that = this
     a.get("app.superior.banner", {}, function(e) {
@@ -75,6 +141,9 @@ Page({
   },
   getList: function() {
     var tt = this
+    tt.setData({
+      loading:!0
+    }),
     a.get("app.superior.goodlist", {
       cate_id: tt.data.status,
       price: tt.data.pricesort,
@@ -88,6 +157,7 @@ Page({
         let totalList = e.data.list
         tt.setData({
           show: !0,
+          loading:!1,
           totalPage: totalPage,
           // list: res.data.data.list
           list: tt.data.list.concat(totalList)
@@ -103,7 +173,7 @@ Page({
   searchbtn: function(e) {
     console.log(this.data.searchcontent)
     this.setData({
-      show: !1,
+      loading: !0,
       status: '',
       pricesort: "",
       salesort: "",
@@ -160,7 +230,7 @@ Page({
     let salesImg;
     if (mowtxt == 0) {
       that.setData({
-        show: !1,
+        loading: !0,
         pricesort: "",
         salesort: ""
       })
@@ -176,7 +246,7 @@ Page({
         pricemark = 1;
         // 价格升序，由低到高
         that.setData({
-          show: !1,
+          loading: !0,
           pricesort: "asc",
           salesort: ""
         })
@@ -185,7 +255,7 @@ Page({
         pricemark = 0;
         // 价格降序，由高到低
         that.setData({
-          show: !1,
+          loading: !0,
           pricesort: "desc",
           salesort: ""
         })
@@ -199,7 +269,7 @@ Page({
         salesmark = 1;
         // 销量升序，由低到高
         that.setData({
-          show: !1,
+          loading: !0,
           pricesort: "",
           salesort: "asc"
         })
@@ -208,7 +278,7 @@ Page({
         salesmark = 0;
         // 销量降序，由高到低
         that.setData({
-          show: !1,
+          loading: !0,
           pricesort: "",
           salesort: "desc"
         })
@@ -225,22 +295,22 @@ Page({
       list: []
     }), that.getList()
   },
-  selected: function(t) {
-    var e = a.data(t).type;
-    console.log(e)
-    this.setData({
-      list: [],
-      page: 1,
-      status: e,
-      empty: !1,
-      pricesort: "",
-      salesort: "",
-      nowSign: 0,
-      show: !1,
-      allPrice: 'sc_tj_icon_jg_nor@2x',
-      allSales: 'sc_tj_icon_jg_nor@2x',
-    }), this.getList();
-  },
+  // selected: function(t) {
+  //   var e = a.data(t).type;
+  //   console.log(e)
+  //   this.setData({
+  //     list: [],
+  //     page: 1,
+  //     status: e,
+  //     empty: !1,
+  //     pricesort: "",
+  //     salesort: "",
+  //     nowSign: 0,
+  //     show: !1,
+  //     allPrice: 'sc_tj_icon_jg_nor@2x',
+  //     allSales: 'sc_tj_icon_jg_nor@2x',
+  //   }), this.getList();
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

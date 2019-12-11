@@ -24,7 +24,7 @@
                         <text class="name">{{name}}</text>
                         <text class="mobile">{{mobile}}</text>
                       </view>
-                      <view class="adress">{{provicename}}{{cityname}}{{areaname}}{{detailaddress}}</view>
+                      <view class="adress">{{provicename}}{{cityname}}{{areaname}}{{townname}}{{detailaddress}}</view>
                     </view>
                     <view class="fui-cell-remark"></view>
                   </view>
