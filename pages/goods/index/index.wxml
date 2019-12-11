@@ -67,10 +67,16 @@
               <view style="font-size:18rpx;color:#707070;text-decoration:line-through;position:absolute;right:25rpx;top:50rpx">￥{{item.productprice}}</view>
             </view>
           </view>
+
+          <view class="contit" style="{{item.agent_devote == 0 && item.my_devote == 0?'display:none':''}}">
+            <view>分享赚<text style="margin-left: 5rpx;">{{item.agent_devote}}</text></view>
+            <view>自购赚<text style="margin-left: 5rpx;">{{item.my_devote}}</text></view>
+          </view>
           <!-- 全额 -->
           <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
+            
             <view style='display:flex;algin-items:center;'>
-              <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center;margin-top:54rpx'>￥{{item.minprice}}</view>
+              <view style='font-size:26rpx;color:#e01212;display:flex;align-items:center; {{item.agent_devote == 0 && item.my_devote == 0?"margin-top:54rpx":""}}'>￥{{item.minprice}}</view>
               <view style='display:flex;align-items:center;position:absolute;right:25rpx;bottom:25rpx'>
                 <view style='font-size:18rpx;color:#707070;text-decoration:line-through'>¥{{item.productprice}}</view>
 
