@@ -70,7 +70,7 @@
 
           <view class="contit" style="{{item.agent_devote == 0 && item.my_devote == 0?'display:none':''}}">
             <view>分享赚<text style="margin-left: 5rpx;">{{item.agent_devote}}</text></view>
-            <view>自购赚<text style="margin-left: 5rpx;">{{item.my_devote}}</text></view>
+            <view>自购返<text style="margin-left: 5rpx;">{{item.my_devote}}</text></view>
           </view>
           <!-- 全额 -->
           <view wx:if="{{item.deduct==0&&item.minprice!=0}}">
