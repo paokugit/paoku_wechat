@@ -18,14 +18,13 @@ page {
 }
 
 .goodsImg {
-  width: 140rpx;
-  height: 140rpx;
-  background: #f00;
+  width: 110rpx;
+  height: 110rpx;
 }
 
 .goodsinfo {
   width: 500rpx;
-  height: 140rpx;
+  height: 110rpx;
   margin-left: 20rpx;
 }
 
@@ -34,7 +33,7 @@ page {
   line-height: 35rpx;
   height: 70rpx;
   color: #333;
-  font-size: 24rpx;
+  font-size: 22rpx;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
