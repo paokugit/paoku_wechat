@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/jdproducts/jdproducts/list",
+  "entryPagePath": "pages/index/index",
   "pages": [
     "pages/index/index",
     "pages/jdproducts/order/index",
