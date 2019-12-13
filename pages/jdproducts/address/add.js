@@ -44,6 +44,7 @@ Page({
     paramareaid: '',
     paramtownid: '',
     paramsku: '',
+    have:false
   },
 
   /**
@@ -223,6 +224,7 @@ Page({
         selectProvinceId: this.data.province_list[e.detail.value[0]].id,
         selectCityId: this.data.city_list[0].id,
         selectAreaId: this.data.area_list[0].id,
+        selectTownId: this.data.town_list[0].id,
       })
     } else {
       console.log('else')
@@ -234,7 +236,7 @@ Page({
           selectProvinceId: this.data.province_list[e.detail.value[0]].id,
           selectCityId: this.data.city_list[e.detail.value[1]].id,
           selectAreaId: this.data.area_list[e.detail.value[2]].id,
-          
+          selectTownId: this.data.town_list[e.detail.value[3]].id,
         })
         
       }else{

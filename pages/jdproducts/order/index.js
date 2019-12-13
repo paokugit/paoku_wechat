@@ -65,6 +65,11 @@ Page({
       })
     } else {
       console.log('添加地址')
+      if (options.townid == undefined || options.townname==""){
+        console.log('没有四级地址')
+      }else{
+        console.log('有四级地址')
+      }
       t.setData({
         canpay: true,
         addressid: options.addressid,
