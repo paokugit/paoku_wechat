@@ -1,6 +1,8 @@
 // pages/playmethod/playmethod/playmethod.js
 var t = getApp(),
   a = t.requirejs("core");
+
+var util = require('../../../utils/util.js');
 // console.log(t.globalData.appimg)
 var useropenid = ""
 var problem = "",
@@ -27,14 +29,35 @@ Page({
     statearray: ['商品降价', '商品与页面描述不符', '缺少件', '质量问题', '发错货'],
     index: 0,
     defaults: '请选择申请原因',
-    refundtype: false
+    returnmask: false,
+    list: [{
+        id: 8,
+        name: '上门取件'
+      },
+      {
+        id: 9,
+        name: '送货至自提点'
+      },
+      {
+        id: 10,
+        name: '快递至跑库'
+      }
+    ],
+    returntype: '',
+    name: '糖果',
+    phonenumber: '18796368956',
+    time: '',
+    switchstatus:''
   },
 
   onLoad: function(a) {
     var userinfo = t.getCache('userinfo');
     console.log(userinfo)
     useropenid = userinfo.openid
+    var time = util.formatDate(new Date());
+    console.log(time)
     this.setData({
+      time: time,
       options: a
     }), t.url(a);
   },
@@ -82,30 +105,68 @@ Page({
     })
 
   },
-  typedbtn: function() {
+  closereturn: function() {
     this.setData({
-      refundtype:true
+      returnmask: false
     })
   },
-  closebtn: function() {
+  returnbtn: function() {
     this.setData({
-      refundtype: false
+      returnmask: true
     })
+  },
+  // 单选按钮事件
+  radioChange(e) {
+    console.log(e)
+    console.log('单选:', e.detail.value)
+    this.setData({
+      returntype: e.detail.value
+    })
+  },
+  radioconfirmbtn: function(e) {
+    console.log(this.data.returntype)
+    this.setData({
+      returnmask: false,
+      returntype: this.data.returntype
+    })
+  },
+  namechange: function(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  phonechange: function(e) {
+    console.log(e)
+    this.setData({
+      phonenumber: e.detail.value
+    })
+  },
+  bindDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  switchChange: function(event) {
+    //得到值
+    var checkedValue = event.detail.value;
+    console.log(checkedValue)
+    if (checkedValue==true){
+      console.log('开')
+      this.setData({
+        switchstatus:true
+      })
+    }else{
+      console.log('关')
+      this.setData({
+        switchstatus: false
+      })
+    }
   },
   submitbtn: function() {
-    console.log(this.data.inputtext, this.data.date)
-    console.log(problem, faulttime, thumbs, phonenum)
-    if (this.data.inputtext != "" && this.data.date != "") {
-      a.get("myown/novice/question", {
-        openid: useropenid,
-        content: problem,
-        mobile: phonenum,
-        time: faulttime,
-        img: thumbs
-      }, function(e) {
-        console.log(e)
-      });
-    }
+    // img: thumbs
+    // 提交时先判断返回方式:快递至京东和送货至自提点显示个人信息，则提交时个人信息不能为空,上门取件显示收货地址和时间，则地址和日期不能为空
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

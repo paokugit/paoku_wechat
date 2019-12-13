@@ -1,89 +1,161 @@
-<block>
-  <block wx:if="{{!show}}">
-    <loading>加载中...</loading>
-  </block>
-</block>
-<block>
-  <block wx:if="{{show}}">
-    <navigation id='Navigation' show-icon='{{showIcon}}' title="退款申请"></navigation>
-    <view class="productInfo">
-      <!-- 多订单商品的添加编辑显示 -->
-      <view class="add-edit-box">
-        <view style="color:#333;font-size:28rpx">退款商品</view>
-        <view class="editbtn">添加和编辑</view>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="退货"></navigation>
+<view class='return-box'>
+  <view class="goodscon">
+    <image class="goodsImg"></image>
+    <view class="goodsinfo">
+      <view class="goodstitle">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+      <view class="price-num">
+        <text style="color:#999;font-size:24rpx">单价:<text style="color:#333;font-size:24rpx;margin-left:4rpx">￥199.00</text></text>
+        <text style="color:#999;font-size:24rpx;margin-left:18rpx">购买数量:<text style="color:#333;font-size:24rpx;margin-left:4rpx">1</text></text>
+        <text style="color:#999;font-size:24rpx;margin-left:18rpx">申请数量:<text style="color:#333;font-size:24rpx;margin-left:4rpx">1</text></text>
       </view>
-      <!-- 多订单商品的添加编辑显示 -->
-      <!-- 多商品的图片显示 -->
-      <view class="moreThumb">
-        <view class="moreImg">
-        <view class="morePrice">￥999.98</view>
-        </view>
-        <view class="moreImg"></view>
-        <view class="moreImg"></view>
-      </view>
-      <!-- 多商品的图片显示 -->
-      <view class="thumb-box ">
-        <view class="productImg "></view>
-        <view class="productdesc ">
-          <text class="productname ">茶杯套装</text>
-          <text class="productstandard ">颜色分类</text>
-        </view>
-      </view>
-      <view class="proState">
-        <view class="state-remark">货物状态:</view>
-        <view class="statepicker">
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{statearray}}" style="width:100%">
-            <text style="color:#999;font-size:28rpx">{{defaults}}</text>
-          </picker>
-          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
-        </view>
-      </view>
-      <view class="proState">
-        <view class="state-remark">退款原因:</view>
-        <view class="statepicker">
-          <picker bindchange="bindReasonChange" value="{{index}}" range="{{reasonarr}}" style="width:100%">
-            <text style="color:#999;font-size:28rpx">{{reason}}</text>
-          </picker>
-          <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
-        </view>
-      </view>
-      <view class="proState">
-        <view class="state-remark">退款金额:</view>
-        <view class="statepicker">
-          <text style="color:#01d7a1;font-size:28rpx">￥88</text>
-        </view>
-      </view>
-      <view class="money-restrict">
-        <text>*提示:您可退款的最大金额为￥<text>{{order.refundprice}}</text>
-        </text>
-      </view>
-      <view class="proState">
-        <view class="state-remark">退货方式:</view>
-        <view class="statepicker">
-          <text style="color:#333;font-size:28rpx">自行寄回</text>
-        </view>
-      </view>
-      <view class="proState">
-        <view class="state-remark">退款联系人:</view>
-        <view class="statepicker">
-          <text style="color:#333;font-size:28rpx">糖果</text>
-        </view>
-      </view>
-      <view class="proState-radius">
-        <view class="state-remark">联系方式:</view>
-        <view class="statepicker">
-          <text style="color:#333;font-size:28rpx">18236962763</text>
-        </view>
-      </view>
-
     </view>
-    <view class="fui-footer text-right ">
-      <block>
-        <block>
-          <view bindtap="submit" class="btn btn-danger-hlp btn-sm btn-submit ">提交申请</view>
-          <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-default-o back ">取消申请</view>
-        </block>
-      </block>
+  </view>
+  <view class="reasonCon">
+    <view class="reason-box">
+      <!-- 申请原因 -->
+      <view style="padding-bottom:24rpx;">
+        <view class="reason-top">
+          <text style="color:#999;font-size:24rpx">申请原因</text>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{statearray}}">
+            <text style="color:#333;font-size:24rpx">{{defaults}}</text>
+            <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
+          </picker>
+        </view>
+        <view class="suggest">{{index==0?"请保持商品完好":index==1?"请您描述问题并上传收到商品图片":index==2?"请您先在包装内仔细查找,如仍有问题请具体描述问题":""}}</view>
+      </view>
+      <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+      <!-- 文本域 -->
+      <view class='problem-desc'>
+        <textarea placeholder='请描述申请售后服务的具体原因,还可至少上传最多9张图片哦~' bindinput='inputchange' value='{{inputtext}}'></textarea>
+      </view>
+      <!-- 上传图片 -->
+      <view class='upload_box'>
+        <view class='printscreen-box'>
+          <view class="fui-cell" style='display:flex;flex-wrap:wrap'>
+            <view class="fui-images fui-images-sm" style=' display:flex;flex-wrap:wrap'>
+              <block wx:for="{{imgs}}" wx:key="{{index}}">
+                <image catchtap="upload" style='width:120rpx;height:120rpx;margin-right:20rpx' class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}">
+                  <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
+                                            <text class="icox icox-close"></text>
+                  </text>
+                </image>
+              </block>
+            </view>
+            <view catchtap="upload" class="fui-uploader fui-uploader-sm" data-type="image" style='width:120rpx;height:120rpx'></view>
+          </view>
+        </view>
+        <view class='upload-text'>为了帮您更好的解决问题,请务必上传照片凭证</view>
+      </view>
+    </view>
+  </view>
+  <!-- 退款方式 -->
+  <view class="refund-box">
+    <view style="color:#999;font-size:24rpx">退款方式</view>
+    <view class="refund-type-box" bindtap="typedbtn">
+      <view class="refund-type">原支付返还</view>
+      <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
+    </view>
+  </view>
+  <!-- 返回方式 -->
+  <view class="returnbox">
+    <view class="returnbox-top">
+      <view style="color:#999;font-size:24rpx">返回方式</view>
+      <view class="refund-type-box" bindtap="returnbtn">
+        <view class="refund-type">{{returntype}}</view>
+        <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
+      </view>
+    </view>
+    <view class="returnbox-bottom">如需个人原因退货,将在退款时扣除xx元上门取件费</view>
+  </view>
+  <!-- 个人信息(送货至提货点和快递至京东显示个人信息) -->
+  <view class="informa-box">
+    <view class="info-name">
+      <image class="nameimg" src="{{globalimg}}/wode1.png"></image>
+      <input class="nameipt" value="{{name}}" placeholder="请输入联系人" type="text" bindinput="namechange"></input>
+    </view>
+    <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+    <view class="info-phone">
+      <image class="nameimg" src="{{globalimg}}/dianhua36.png"></image>
+      <input class="phoneipt" value="{{phonenumber}}" placeholder="请输入联系方式" maxlength="11" bindinput="phonechange"></input>
+    </view>
+  </view>
+  <!-- 上门取件显示收货地址和日期 -->
+  <view class="address-date-box">
+    <view class="address-box">
+      <image class="addressimg" src="{{globalimg}}/dd_icon_dz@2x.png"></image>
+      <view class="address-info">
+        <view class="address-name">糖果 18789689756</view>
+        <view class="detail-address">地址：河南省郑州市新郑市龙湖镇紫金山南路金秋乐园12号楼河南省郑州市新郑市龙湖镇</view>
+      </view>
+      <view class="fanhui-box">
+        <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+      </view>
+    </view>
+    <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+    <view class="date-box">
+      <image class="dateimg" src="{{globalimg}}/date01.png"></image>
+        <view class="section">
+          <picker class="sec-picker" mode="date" value="{{time}}" start="{{time}}" end="" bindchange="bindDateChange">
+            <view class="picker">
+              {{time}}
+            </view>
+          </picker>
+          <view class="dian-abso"><image class="dianimg" src="{{globalimg}}/diandian.png"></image></view>
+        </view>
+    </view>
+  </view>
+  <view class='submit-box' bindtap='submitbtn'>
+    <view class='submit-btn'>提交</view>
+  </view>
+</view>
+<!-- 原支付返还说明弹窗 -->
+<block wx:if="{{refundtype}}">
+  <view class="paytype-mask">
+    <view style="width:100%;height:100%;position:relative">
+      <view class="paymask-con">
+        <view class="paytype-tit">
+          <text>退款方式</text>
+          <view class="guanbi-box" bindtap="closebtn">
+            <image class="guanbi" src="{{globalimg}}/guanbi_b.png"></image>
+          </view>
+        </view>
+        <view class="tubiao-box">
+          <image style="width:44rpx;height:44rpx" src="{{globalimg}}/money.png"></image>
+          <text style="color:#ff3d33;font-size:20rpx;margin-top:10rpx">原支付返还</text>
+        </view>
+        <view style="color:#333;font-size:24rpx;margin-top:30rpx;margin-bottom:30rpx">退款说明</view>
+        <view class="intro-con">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</view>
+        <view class="confirm-box">
+          <view class="confirmbtn" bindtap="closebtn">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 返回方式 -->
+<block>
+  <block wx:if="{{returnmask}}">
+    <view class="return-mask">
+      <view class="return-mask-position">
+        <view class="returnmask-con">
+          <view class="paytype-tit">
+            <text>返回方式</text>
+            <view class="guanbi-box" bindtap="closereturn">
+              <image class="guanbi" src="{{globalimg}}/guanbi_b.png"></image>
+            </view>
+          </view>
+          <!-- 单选框 -->
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" style="display:flex;justify-content: space-between;">
+              <text>{{item.name}}</text>
+              <radio value="{{item.name}}" />
+            </label>
+          </radio-group>
+          <!-- 确定 -->
+          <view class="radioconfirm" bindtap="radioconfirmbtn">确定</view>
+        </view>
+      </view>
     </view>
   </block>
 </block>

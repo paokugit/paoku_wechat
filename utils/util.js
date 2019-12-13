@@ -10,7 +10,7 @@ function throttle(fn, gapTime) {
   let _lastTime = null
 
   // 返回新的函数
-  return function () {
+  return function() {
     let _nowTime = +new Date()
     if (_nowTime - _lastTime > gapTime || !_lastTime) {
       fn.apply(this, arguments) //将this和参数传给原函数
@@ -18,7 +18,6 @@ function throttle(fn, gapTime) {
     }
   }
 }
-
 module.exports = {
   formatTime: function(e) {
     var n = e.getFullYear(),
@@ -28,6 +27,12 @@ module.exports = {
       i = e.getMinutes(),
       g = e.getSeconds();
     return [n, o, r].map(t).join("/") + " " + [u, i, g].map(t).join(":");
+  },
+  formatDate: function (date) {
+    var year = date.getFullYear(),
+      month = date.getMonth() + 1,
+      day = date.getDate();
+    return [year, month, day].map(t).join('-');
   },
   throttle: throttle
 };

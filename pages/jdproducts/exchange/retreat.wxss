@@ -1,146 +1,564 @@
-/* pages/order/exchange/retreat.wxss */
+/* pages/playmethod/feedback/feedback.wxss */
 
 page {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background: #f8f8f8;
 }
 
-.productInfo {
-  width: 94%;
-  height: auto;
-  padding: 20rpx 3% 0;
-}
-.add-edit-box{
+.return-box {
   width: 100%;
+  height: 100%;
+  /* background: pink; */
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.goodscon {
+  width: 96%;
   height: auto;
-  padding: 5rpx 0;
   background: pink;
-  display: flex;
-  justify-content: space-between;
-  align-items: center
-}
-.editbtn{
-  padding: 6rpx 12rpx;
-  border: 1rpx solid #e6e6e6;
-  border-radius: 10rpx;
-  color: #999;
-  font-size: 24rpx
-}
-.moreThumb{
-  width: 100%;
-  height: auto;
-  background: #ff6;
-  margin-top: 20rpx;
-  display: flex;
-  flex-wrap: wrap;
-}
-.moreImg{
-  width: 160rpx;
-  height: 160rpx;
-  background: #0f0;
-  margin-right: 20rpx;
-  margin-bottom: 20rpx;
-  position: relative
-}
-.morePrice{
-  padding: 8rpx 5rpx;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 20rpx;
-  position: absolute;
-  right: 0;
-  bottom: 0
-}
-.proState, .proState-radius {
-  background: #fff;
-  padding: 24rpx;
-  display: flex;
-  position: relative;
-}
-
-.proState-radius {
-  border-radius: 0 0 20rpx 20rpx;
-}
-
-.statepicker {
-  width: 75%;
+  padding: 24rpx 2%;
   display: flex;
   align-items: center;
+  border-bottom: 2rpx solid #f8f8f8;
 }
 
-.state-remark {
-  width: 25%;
+.goodsImg {
+  width: 140rpx;
+  height: 140rpx;
+  background: #f00;
+}
+
+.goodsinfo {
+  width: 500rpx;
+  height: 140rpx;
+  margin-left: 20rpx;
+}
+
+.goodstitle {
+  width: 500rpx;
+  line-height: 35rpx;
+  height: 70rpx;
   color: #333;
-  font-size: 28rpx;
+  font-size: 24rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.jiantou {
-  width: 15rpx;
-  height: 24rpx;
-  position: absolute;
-  right: 24rpx;
+.price-num {
+  width: 500rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
 }
 
-.money-restrict {
-  padding: 0 24rpx;
+.reasonCon {
+  width: 100%;
   height: auto;
-  background: #fff;
-  color: #999;
-  font-size: 28rpx;
-}
-.thumb-box {
-  padding: 24rpx;
-  background: #f66;
   display: flex;
-  border-radius: 20rpx 20rpx 0 0;
-  border-bottom: 1rpx solid #f8f8f8;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24rpx;
 }
 
-.productImg {
-  width: 160rpx;
-  height: 160rpx;
+.reason-box {
+  width: 92%;
+  height: auto;
+  padding: 0 2% 24rpx;
   background: pink;
   border-radius: 20rpx;
 }
 
-.productdesc {
-  width: 500rpx;
-  height: 160rpx;
+.reason-top {
+  width: 100%;
+  height: auto;
+  padding: 20rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggest {
+  color: #999;
+  font-size: 24rpx;
+  text-align: right;
+  margin-right: 40rpx;
+}
+
+.problem-desc {
+  width: 96%;
+  height: 150rpx;
+  background: #f1f1f1;
+  padding: 0 2%;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+textarea {
+  width: 100%;
+  height: 130rpx;
+  padding-top: 15rpx;
+  resize: none;
+  color: #333;
+  font-size: 22rpx;
+  line-height: 35rpx;
+}
+
+.pro-text {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.upload-text {
+  width: 100%;
+  height: auto;
+  color: #f55;
+  font-size: 22rpx;
+}
+
+.upload_box {
+  width: 96%;
+  height: auto;
+  padding: 0 2%;
+  background: #fff;
+  margin: 20rpx 0;
+}
+
+.fault-time {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.printscreen-box {
+  width: 96%;
+  height: auto;
+  padding: 0 2%;
+  display: flex;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.refund-box {
+  width: 90%;
+  height: auto;
+  padding: 24rpx 2%;
   background: pink;
-  margin-left: 15rpx;
+  border-radius: 20rpx;
+  margin: 30rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refund-type-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.refund-type {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.dianimg {
+  width: 44rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+.submit-box {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 0rpx 10rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.submit-btn {
+  width: 600rpx;
+  height: 60rpx;
+  background: #f55;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30rpx;
+}
+
+.paytype-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.paymask-con {
+  width: 94%;
+  height: 60%;
+  padding: 0 3%;
+  background: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.paytype-tit {
+  width: 100%;
+  height: 100rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 
-.productname {
-  font-size: 34rpx;
-  color: #333;
+.guanbi-box {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 20rpx;
-  left: 0rpx;
+  top: 12rpx;
+  right: 10rpx;
 }
 
-.productstandard {
-  font-size: 24rpx;
+.guanbi {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.tubiao-box {
+  width: 120rpx;
+  height: 120rpx;
+  border: 2rpx solid #ff3d33;
+  border-radius: 20rpx;
+  background: #fff6f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-con {
+  width: 100%;
+  line-height: 35rpx;
   color: #999;
+  font-size: 24rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.confirm-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30rpx;
+  left: 0;
+}
+
+.confirmbtn {
+  width: 600rpx;
+  padding: 12rpx 0;
+  background: #f55;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  color: #fff;
+  margin: 30rpx 0;
+}
+
+.returnbox {
+  width: 90%;
+  height: auto;
+  padding: 0rpx 2% 24rpx;
+  background: pink;
+  border-radius: 20rpx;
+  margin: 0 auto;
+}
+
+.returnbox-top {
+  width: 96%;
+  height: auto;
+  padding: 24rpx 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.returnbox-bottom {
+  width: 96%;
+  height: auto;
+  padding: 12rpx 2%;
+  background: #fdf3c7;
+  color: #333;
+  font-size: 20rpx;
+  text-align: right;
+  margin-bottom: 30rpx;
+}
+
+/* 单选框 */
+
+.radio-group {
+  margin-top: 10px;
+}
+
+.radio-group label {
+  display: block;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-size: 24rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  color: #333;
+}
+
+radio {
+  width: 38rpx;
+}
+
+/* 单选框未选中 */
+
+radio .wx-radio-input {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+}
+
+/* 单选框选中后对勾样式 */
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #fff;
+  background-color: #da2728;
+  border-color: #da2728;
+}
+
+.return-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.return-mask-position {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.returnmask-con {
+  width: 94%;
+  height: 50%;
+  padding: 0 3%;
+  background: #fff;
+  border-radius: 20rpx 20rpx 0 0;
   position: absolute;
-  top: 75rpx;
-  left: 0rpx;
-}
-.btn {
-  margin: 10rpx;
+  bottom: 0;
+  left: 0;
 }
 
-.fui-footer .btn {
-  border-radius: 40rpx;
-  margin-top: 24rpx;
-  width: 164rpx;
-  margin-right: 24rpx;
+.radioconfirm {
+  width: 100%;
+  height: 88rpx;
+  background: #f55;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
-.btn.btn-danger-hlp {
-  background: transparent;
-  color: #0ad7a1;
-  border: 1px solid #0ad7a1;
+.informa-box {
+  width: 90%;
+  height: auto;
+  padding: 0rpx 2%;
+  background: pink;
+  border-radius: 20rpx;
+  margin: 20rpx auto;
+}
+
+.info-name {
+  width: 96%;
+  height: auto;
+  padding: 24rpx 2%;
+  display: flex;
+  align-items: center;
+}
+
+.info-phone {
+  width: 96%;
+  height: auto;
+  padding: 24rpx 2%;
+  display: flex;
+  align-items: center;
+}
+
+.nameimg {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+input {
+  outline: none;
+  border: none;
+  list-style: none;
+}
+
+.nameipt, .phoneipt {
+  width: 500rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.address-date-box {
+  width: 90%;
+  height: auto;
+  padding: 0rpx 2%;
+  background: pink;
+  border-radius: 20rpx;
+  margin: 20rpx auto;
+}
+
+.address-box {
+  width: 96%;
+  height: auto;
+  padding: 24rpx 2%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.addressimg {
+  width: 26rpx;
+  height: 30rpx;
+}
+
+.dateimg {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.address-info {
+  width: 500rpx;
+  height: auto;
+  margin-left: 10rpx;
+}
+
+.address-name {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.detail-address {
+  width: 500rpx;
+  line-height: 28rpx;
+  color: #999;
+  font-size: 20rpx;
+  height: auto;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 10rpx;
+}
+
+.date-box {
+  width: 96%;
+  height: auto;
+  padding: 24rpx 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fanhui-box {
+  width: 10rpx;
+  height: 100%;
+  position: absolute;
+  top: 0rpx;
+  right: 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fanhuiimg {
+  width: 10rpx;
+  height: 16rpx;
+}
+
+.section {
+  flex: 1;
+  margin-left: 10rpx;
+  position: relative
+}
+.dian-abso{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5
+}
+.sec-picker {
+  width: 100%;
+  z-index: 6
+}
+
+.picker {
+  color: #333;
+  font-size: 28rpx;
+  
 }

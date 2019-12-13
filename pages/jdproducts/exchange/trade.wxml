@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="退货"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="换货"></navigation>
 <view class='return-box'>
   <view class="goodscon">
     <image class="goodsImg"></image>
@@ -49,51 +49,91 @@
       </view>
     </view>
   </view>
-  <!-- 退款方式 -->
-  <view class="refund-box">
-    <view style="color:#999;font-size:24rpx">退款方式</view>
-    <view class="refund-type-box" bindtap="typedbtn">
-      <view class="refund-type">原支付返还</view>
-      <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
-    </view>
-  </view>
   <!-- 返回方式 -->
   <view class="returnbox">
     <view class="returnbox-top">
       <view style="color:#999;font-size:24rpx">返回方式</view>
-      <view class="refund-type-box">
-        <view class="refund-type">上门取件</view>
+      <view class="refund-type-box" bindtap="returnbtn">
+        <view class="refund-type">{{returntype}}</view>
         <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
       </view>
     </view>
-    <view class="returnbox-bottom"></view>
+    <view class="returnbox-bottom">如需个人原因退货,将在退款时扣除xx元上门取件费</view>
   </view>
-  <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
-  <view class='submit-box' bindtap='submitbtn'>
-    <button class='submit-btn'>提交</button>
+  <!-- 个人信息(送货至提货点和快递至京东显示个人信息) -->
+  <view class="informa-box">
+    <view class="info-name">
+      <image class="nameimg" src="{{globalimg}}/wode1.png"></image>
+      <input class="nameipt" value="{{name}}" placeholder="请输入联系人" type="text" bindinput="namechange"></input>
+    </view>
+    <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+    <view class="info-phone">
+      <image class="nameimg" src="{{globalimg}}/dianhua36.png"></image>
+      <input class="phoneipt" value="{{phonenumber}}" placeholder="请输入联系方式" maxlength="11" bindinput="phonechange"></input>
+    </view>
   </view>
-</view>
-<!-- 原支付返还说明弹窗 -->
-<block wx:if="{{refundtype}}">
-  <view class="paytype-mask">
-    <view style="width:100%;height:100%;position:relative">
-      <view class="paymask-con">
-        <view class="paytype-tit">
-          <text>退款方式</text>
-          <view class="guanbi-box" bindtap="closebtn">
-            <image class="guanbi" src="{{globalimg}}/guanbi_b.png"></image>
+  <!-- 上门取件显示收货地址和日期 -->
+  <view class="address-date-box">
+    <view class="address-box">
+      <image class="addressimg" src="{{globalimg}}/dd_icon_dz@2x.png"></image>
+      <view class="address-info">
+        <view class="address-name">糖果 18789689756</view>
+        <view class="detail-address">地址：河南省郑州市新郑市龙湖镇紫金山南路金秋乐园12号楼河南省郑州市新郑市龙湖镇</view>
+      </view>
+      <view class="fanhui-box">
+        <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+      </view>
+    </view>
+    <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+    <view class="date-box">
+      <image class="dateimg" src="{{globalimg}}/date01.png"></image>
+      <view class="section">
+        <picker class="sec-picker" mode="date" value="{{time}}" start="{{time}}" end="" bindchange="bindDateChange">
+          <view class="picker">
+            {{time}}
           </view>
-        </view>
-        <view class="tubiao-box">
-          <image style="width:44rpx;height:44rpx" src="{{globalimg}}/money.png"></image>
-          <text style="color:#ff3d33;font-size:20rpx;margin-top:10rpx">原支付返还</text>
-        </view>
-        <view style="color:#333;font-size:24rpx;margin-top:30rpx;margin-bottom:30rpx">退款说明</view>
-        <view class="intro-con">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</view>
-        <view class="confirm-box">
-          <view class="confirmbtn" bindtap="closebtn">确定</view>
+        </picker>
+        <view class="dian-abso">
+          <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
         </view>
       </view>
     </view>
   </view>
+  <!-- 收货地址 -->
+  <view class="switch-box">
+    <view class="dizhi">收货地址</view>
+    <view>
+      <text class="switchstatus==true?'switch-texta':'switch-textb'">与取件地址保持一致</text>
+      <switch style='zoom:.6;' checked data-isCigaretteButt='{{isCigaretteButt}}' bindchange="switchChange" />
+    </view>
+  </view>
+  <view class='submit-box' bindtap='submitbtn'>
+    <view class='submit-btn'>提交</view>
+  </view>
+</view>
+<!-- 返回方式 -->
+<block>
+  <block wx:if="{{returnmask}}">
+    <view class="return-mask">
+      <view class="return-mask-position">
+        <view class="returnmask-con">
+          <view class="paytype-tit">
+            <text>返回方式</text>
+            <view class="guanbi-box" bindtap="closereturn">
+              <image class="guanbi" src="{{globalimg}}/guanbi_b.png"></image>
+            </view>
+          </view>
+          <!-- 单选框 -->
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" style="display:flex;justify-content: space-between;">
+              <text>{{item.name}}</text>
+              <radio value="{{item.name}}" />
+            </label>
+          </radio-group>
+          <!-- 确定 -->
+          <view class="radioconfirm" bindtap="radioconfirmbtn">确定</view>
+        </view>
+      </view>
+    </view>
+  </block>
 </block>
