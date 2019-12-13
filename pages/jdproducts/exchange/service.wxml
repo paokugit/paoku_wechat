@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="换货"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="维修"></navigation>
 <view class='return-box'>
   <view class="goodscon">
     <image class="goodsImg"></image>
@@ -22,7 +22,7 @@
             <image class="dianimg" src="{{globalimg}}/diandian.png"></image>
           </picker>
         </view>
-        <view class="suggest">{{index==0?"请保持商品完好":index==1?"请您描述问题并上传收到商品图片":index==2?"请您先在包装内仔细查找,如仍有问题请具体描述问题":""}}</view>
+        <view class="suggest">{{index==0?"请保持商品完好":index==1?"请您描述问题并上传收到商品图片":index==2?"请您描述问题并上传收到商品照片":"请您描述问题并上传收到商品照片"}}</view>
       </view>
       <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
       <!-- 文本域 -->
@@ -107,7 +107,7 @@
       <view class="dizhi">收货地址</view>
       <view>
         <text class="{{switchstatus==true?'switch-texta':'switch-textb'}}">与取件地址保持一致</text>
-        <switch style='zoom:.6;' checked data-isCigaretteButt='{{isCigaretteButt}}' bindchange="switchChange" />
+        <switch style='zoom:.6;' data-isCigaretteButt='{{isCigaretteButt}}' bindchange="switchChange" />
       </view>
     </view>
     <!-- switch状态为关闭的时候显示 -->
