@@ -1,0 +1,78 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="价格保护"></navigation>
+<view class='price-box'>
+  <!-- tab -->
+  <block>
+    <block wx:if="{{!show}}">
+      <loading>加载中...</loading>
+    </block>
+  </block>
+  <block wx:if="{{show}}">
+    <view class="swiper-tab">
+      <view bindtap="myTab" class="swiper-tab-item {{type==1?'active':''}}" data-type="1">价保申请</view>
+      <view bindtap="myTab" class="swiper-tab-item {{type==2?'active':''}}" data-type="2">申请记录</view>
+    </view>
+    <view class="{{type==1 ? 'show':'hidden'}}">
+      <scroll-view>
+        <view class='apply-box'>
+          <view class="apply-tit">
+            <text style="color:#999;font-size:22rpx">订单编号：186398765896</text>
+            <text style="color:#999;font-size:22rpx;margin-left:15rpx">下单时间：2019-11-24 15:25:38</text>
+          </view>
+          <view style="width:100%;height:2rpx;background:#f8f8f8"></view>
+          <view class="productInfo">
+            <view class="info-left">
+              <image class="proImg" src="{{globalimg}}/meng.png"></image>
+              <view class="proname">米家恒温电热水壶 小米电热水壶精准控温 1.5升大容量 智能控制不锈钢电热水壶无缝一体内胆</view>
+            </view>
+            <view class="info-right">
+              <view style="color:#f55;font-size:22rpx">￥199.00</view>
+              <view class="applybtn">申请</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="{{type==2 ? 'show':'hidden'}}">
+      <scroll-view>
+        <view class='record-box'>
+          <view class="iptbox-box">
+            <view class="iptbox">
+              <image class="searchimg" src="{{globalimg}}/searchbar_icon_sousuo@2x.png"></image>
+              <input class="searchipt" placeholder="请输入订单号"></input>
+              <image class="guanbiimg" src="{{globalimg}}/guanbi_a.png"></image>
+            </view>
+          </view>
+          <view class="record-tit">
+            <text style="color:#999;font-size:22rpx">订单编号：186398765896</text>
+            <text style="color:#999;font-size:22rpx;margin-left:15rpx">下单时间：2019-11-24 15:25:38</text>
+          </view>
+          <view class="apply-time">
+            <text style="color:#999;font-size:22rpx">申请时间：2019-11-24 15:25:38</text>
+          </view>
+          <view style="width:100%;height:2rpx;background:#f8f8f8;margin-top:12rpx"></view>
+          <view class="record-info">
+            <image class="proImg" src="{{globalimg}}/meng.png"></image>
+            <view class="record-info-right">
+              <view class="record-price">下单价格：
+                <text style="color:#f55;font-size:22rpx;margin-left:8rpx;">￥199.00</text>
+              </view>
+              <view class="record-price" style="margin-top:15rpx">数量：
+                <text style="color:#999;font-size:22rpx;margin-left:8rpx;">X1</text>
+              </view>
+            </view>
+          </view>
+          <!-- 申请结果 -->
+          <view class="apply-result-box">
+            <view class="result-con">
+              <view style="color:#999;font-size:22rpx;">申请结果</view>
+              <view style="width:2rpx;height:60rpx;background:#999;margin-left:15rpx;margin-right:10rpx"></view>
+              <view class="record-hint">尊敬的顾客您好,经查看此商品未发生降价,请您理解。
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </block>
+  <!-- tab -->
+</view>

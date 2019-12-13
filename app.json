@@ -1,10 +1,11 @@
 {
-  "entryPagePath": "pages/jdproducts/exchange/service",
+  "entryPagePath": "pages/jdproducts/exchange/priceprotect",
   "pages": [
     "pages/index/index",
     "pages/jdproducts/order/index",
     "pages/jdproducts/exchange/type",
     "pages/jdproducts/exchange/index",
+    "pages/jdproducts/exchange/priceprotect",
     "pages/jdproducts/exchange/service",
     "pages/jdproducts/exchange/retreat",
     "pages/jdproducts/exchange/trade",
