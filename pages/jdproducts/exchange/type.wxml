@@ -1,0 +1,71 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="选择售后类型"></navigation>
+    <view class="goodscon">
+      <image class="goodsImg" src="{{globalimg}}/meng.png"></image>
+      <view class="goodsinfo">
+        <view class="goodstitle">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+        <view class="price-num">
+          <text style="color:#999;font-size:24rpx">单价:<text style="color:#333;font-size:24rpx;margin-left:4rpx">￥199.00</text></text>
+          <text style="color:#999;font-size:24rpx;margin-left:18rpx">购买数量:<text style="color:#333;font-size:24rpx;margin-left:4rpx">1</text></text>
+        </view>
+      </view>
+    </view>
+    <!-- 退换货类型 -->
+    <view class="type-box">
+      <!-- 退 -->
+      <navigator class="retreat-con" url="/pages/jdproducts/exchange/retreat">
+        <view class="type-left">
+          <image class="retreatimg" src="{{globalimg}}/tui01.png"></image>
+          <text class="retreattext">退货</text>
+        </view>
+        <view class="type-right">
+          <view class="retreat-other">
+            <text>退回收到的商品</text>
+            <text style="color:#f55;font-size: 18rpx">支持7天无理由退货</text>
+            <text style="color:#f55;font-size: 18rpx">(使用后不支持)</text>
+          </view>
+          <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+        </view>
+      </navigator>
+      <!-- 换 -->
+      <navigator class="retreat-con" url="/pages/jdproducts/exchange/trade">
+        <view class="type-left">
+          <image class="retreatimg" src="{{globalimg}}/huan01.png"></image>
+          <text class="retreattext">换货</text>
+        </view>
+        <view class="type-right">
+          <view class="retreat-other">更换收到的商品</view>
+          <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+        </view>
+      </navigator>
+      <!-- 维修 -->
+      <navigator class="retreat-con" url="/pages/jdproducts/exchange/service">
+        <view class="type-left">
+          <image class="retreatimg" src="{{globalimg}}/xiu03.png"></image>
+          <text class="retreattext">维修</text>
+        </view>
+        <view class="type-right">
+          <view class="retreat-other">维修收到的商品</view>
+          <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+        </view>
+      </navigator>
+      <!-- 价格保护 -->
+      <navigator class="price-con" url="/pages/jdproducts/exchange/priceprotect">
+        <view class="type-left">
+          <image class="retreatimg" src="{{globalimg}}/jiage04.png"></image>
+          <text class="retreattext">价格保护</text>
+        </view>
+        <view class="type-right">
+          <view class="retreat-other">商品降价,申请补偿差价</view>
+          <image class="fanhuiimg" src="{{globalimg}}/thh_inco_fangx@2x.png"></image>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</block>

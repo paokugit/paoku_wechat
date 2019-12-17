@@ -33,74 +33,191 @@ Page({
     swiperCurrent: 0,
     dots: true,
     catelist: [],
-    status: "",
+    status: '',
     pricesort: "",
     salesort: "",
     totalPage: 0,
+    searchcontent: "",
+    topdisp: 'none',
+    scrollTop: 0,
+    scrollLeft: 0,
+    loading:!0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(a) {
+    var that = this
     var userinfo = f.getCache('userinfo');
     useropenid = userinfo.openid
-    this.getbanner(),
-      this.getList(),
-      this.setData({
-        show: !0,
-        status: this.data.status
-      })
-    console.log(this.data.status)
+    that.getbanner(),
+      that.getList()
   },
-  getbanner: function() {
-    var that = this
-    wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.banner&comefrom=wxapp',
-      data: {},
-      complete() {
-        wx.hideLoading();
-      },
-      success: function(res) {
-        console.log(res)
-        that.setData({
-          imgUrls: res.data.data.banner,
-          catelist: res.data.data.cate,
-          status: res.data.data.cate[0].id
+  _handleScroll(selectedId) {
+    var _this = this;
+    var query = wx.createSelectorQuery(); //创建节点查询器
+    query.select('#item-' + selectedId).boundingClientRect(); //选择id='#item-' + selectedId的节点，获取节点位置信息的查询请求
+    query.select('#scroll-view').boundingClientRect(); //获取滑块的位置信息
+    //获取滚动位置
+    query.select('#scroll-view').scrollOffset(); //获取页面滑动位置的查询请求
+    query.exec(function(res) {
+      _this.setData({
+        scrollLeft: res[2].scrollLeft + res[0].left + res[0].width / 2 - res[1].width / 2
+      });
+    });
+  },
+
+  onCouponItemClick: function(e) {
+    console.log(e)
+    var id = e.currentTarget.dataset.type;
+    var curIndex = 0;
+    for (var i = 0; i < this.data.catelist.length; i++) {
+      if (id == "") {
+        console.log('全部')
+        this.setData({
+          status: '',
         })
       }
-    });
+      if (id == this.data.catelist[i].id) {
+        this.setData({
+          status: id,
+
+        })
+        curIndex = i;
+        this._handleScroll(id);
+      } else {}
+    }
+
+    this.setData({
+      catelist: this.data.catelist,
+      list: [],
+      page: 1,
+      empty: !1,
+      pricesort: "",
+      salesort: "",
+      nowSign: 0,
+      // show: !1,
+      allPrice: 'sc_tj_icon_jg_nor@2x',
+      allSales: 'sc_tj_icon_jg_nor@2x',
+    }), this.getList();
+    console.log(this.data.status)
+  },
+  // selected: function (t) {
+  //   var e = a.data(t).type;
+  //   console.log(e)
+  //   this.setData({
+  //     list: [],
+  //     page: 1,
+  //     status: e,
+  //     empty: !1,
+  //     pricesort: "",
+  //     salesort: "",
+  //     nowSign: 0,
+  //     show: !1,
+  //     allPrice: 'sc_tj_icon_jg_nor@2x',
+  //     allSales: 'sc_tj_icon_jg_nor@2x',
+  //   }), this.getList();
+  // },
+  getbanner: function() {
+    var that = this
+    a.get("app.superior.banner", {}, function(e) {
+      console.log(e)
+      if (e.error == 0) {
+        that.setData({
+          show: !0,
+          imgUrls: e.data.banner,
+          catelist: e.data.cate,
+          // status: res.data.data.cate[0].id
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+        })
+      }
+    })
+
   },
   getList: function() {
     var tt = this
-    wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.goodlist&comefrom=wxapp',
-      data: {
-        cate_id: tt.data.status,
-        price: tt.data.pricesort,
-        sale: tt.data.salesort
-      },
-      complete() {
-        wx.hideLoading();
-      },
-      success: function(res) {
-        console.log(res)
-        if (res.data.error == 0) {
-          // let totalPage = Math.ceil(res.data.data.total / res.data.data.pagesize);
-          // let totalList = res.data.data.list
-          tt.setData({
-            // totalPage: totalPage,
-            list: res.data.data.list
-            // list: tt.data.list.concat(totalList)
-          })
-        }
+    tt.setData({
+      loading:!0
+    }),
+    a.get("app.superior.goodlist", {
+      cate_id: tt.data.status,
+      price: tt.data.pricesort,
+      sale: tt.data.salesort,
+      page: tt.data.page,
+      keyword: tt.data.searchcontent
+    }, function(e) {
+      console.log(e)
+      if (e.error == 0) {
+        let totalPage = Math.ceil(e.data.total / e.data.pagesize);
+        let totalList = e.data.list
+        tt.setData({
+          show: !0,
+          loading:!1,
+          totalPage: totalPage,
+          // list: res.data.data.list
+          list: tt.data.list.concat(totalList)
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+        })
       }
-    });
+    })
   },
-
-  // getList: function() {
-
-  // },
+  searchbtn: function(e) {
+    console.log(this.data.searchcontent)
+    this.setData({
+      loading: !0,
+      status: '',
+      pricesort: "",
+      salesort: "",
+      list: []
+    }), this.getList()
+  },
+  searchcon: function(e) {
+    console.log(e)
+    this.setData({
+      searchcontent: e.detail.value
+    })
+  },
+  // 获取滚动条当前位置
+  onPageScroll: function(e) {
+    this.setData({
+      scrollTop: e.scrollTop
+    })
+    if (e.scrollTop > 2000) {
+      this.setData({
+        topdisp: 'block'
+      });
+    } else {
+      this.setData({
+        topdisp: 'none'
+      });
+    }
+  },
+  //回到顶部
+  goTop: function(e) { // 一键回到顶部
+    var a = this
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+      a.setData({
+        topdisp: 'none'
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
   swiperChange: function(e) {
     this.setData({
       swiperCurrent: e.detail.current
@@ -112,6 +229,11 @@ Page({
     let priceImg;
     let salesImg;
     if (mowtxt == 0) {
+      that.setData({
+        loading: !0,
+        pricesort: "",
+        salesort: ""
+      })
       // 综合
       priceImg = 'sc_tj_icon_jg_nor@2x';
       salesImg = 'sc_tj_icon_jg_nor@2x';
@@ -124,6 +246,7 @@ Page({
         pricemark = 1;
         // 价格升序，由低到高
         that.setData({
+          loading: !0,
           pricesort: "asc",
           salesort: ""
         })
@@ -132,6 +255,7 @@ Page({
         pricemark = 0;
         // 价格降序，由高到低
         that.setData({
+          loading: !0,
           pricesort: "desc",
           salesort: ""
         })
@@ -145,6 +269,7 @@ Page({
         salesmark = 1;
         // 销量升序，由低到高
         that.setData({
+          loading: !0,
           pricesort: "",
           salesort: "asc"
         })
@@ -153,6 +278,7 @@ Page({
         salesmark = 0;
         // 销量降序，由高到低
         that.setData({
+          loading: !0,
           pricesort: "",
           salesort: "desc"
         })
@@ -169,21 +295,22 @@ Page({
       list: []
     }), that.getList()
   },
-  selected: function(t) {
-    var e = a.data(t).type;
-    console.log(e)
-    this.setData({
-      list: [],
-      page: 1,
-      status: e,
-      empty: !1,
-      pricesort: "",
-      salesort: "",
-      nowSign: 0,
-      allPrice: 'sc_tj_icon_jg_nor@2x',
-      allSales: 'sc_tj_icon_jg_nor@2x',
-    }), this.getList();
-  },
+  // selected: function(t) {
+  //   var e = a.data(t).type;
+  //   console.log(e)
+  //   this.setData({
+  //     list: [],
+  //     page: 1,
+  //     status: e,
+  //     empty: !1,
+  //     pricesort: "",
+  //     salesort: "",
+  //     nowSign: 0,
+  //     show: !1,
+  //     allPrice: 'sc_tj_icon_jg_nor@2x',
+  //     allSales: 'sc_tj_icon_jg_nor@2x',
+  //   }), this.getList();
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -219,30 +346,30 @@ Page({
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   },
-  onReachBottom: function() {
-    
-  },
   // onReachBottom: function() {
-  //   let page = this.data.page;
-  //   let totalpage = this.data.totalPage;
-  //   if (page <= totalpage) {
-  //     wx.showLoading({
-  //       title: '加载中...',
-  //     });
-  //     this.setData({
-  //       page: page + 1
-  //     })
-  //     this.getList();
-  //   } else {
-  //     this.setData({
-  //       show: !0
-  //     })
-  //   }
-  //   setTimeout(() => {
-  //     wx.hideLoading()
-  //   }, 200)
 
   // },
+  onReachBottom: function() {
+    let page = this.data.page;
+    let totalpage = this.data.totalPage;
+    if (page <= totalpage) {
+      wx.showLoading({
+        title: '加载中...',
+      });
+      this.setData({
+        page: page + 1
+      })
+      this.getList();
+    } else {
+      this.setData({
+        show: !0
+      })
+    }
+    setTimeout(() => {
+      wx.hideLoading()
+    }, 200)
+
+  },
 
   /**
    * 用户点击右上角分享

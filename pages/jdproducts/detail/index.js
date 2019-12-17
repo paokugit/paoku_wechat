@@ -9,6 +9,7 @@ var e, a, o = getApp(),
   u = 0,
   g = o.requirejs("biz/selectdate");
 var f = getApp()
+var totalprice = 0
 Page({
 
   /**
@@ -33,50 +34,60 @@ Page({
     info: "active",
     num: 1,
     minusStatus: 'disabled',
-    maskshow: true
+    maskshow: false,
+    subtext: '立即购买',
+    buyshow: false,
+    confirmshow: false,
+    goodstotal: 0,
+    isSelected: false,
+    goodssku: '',
+    goodsid: '',
+    onsale: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
     var t = this
+    t.setData({
+      goodsid: options.id
+    })
     t.getdetail()
   },
   getdetail: function() {
     var that = this
-    wx.request({
-      url: 'http://192.168.3.102/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
-      data: {
-        id: 1
-      },
-      complete() {
-        wx.hideLoading();
-      },
-      success: function(res) {
-        console.log(res)
-        if (res.data.error == 0) {
-          that.setData({
-            show: !0,
-            imgUrls: res.data.data.img,
-            goodsprice: res.data.data.ptprice,
-            jdprice: res.data.data.jdprice,
-            goodstitle: res.data.data.brandName,
-            imagePath: res.data.data.imagePath,
-            goodsweight: res.data.data.weight,
-          }), l.wxParse('standardcontent', 'html', res.data.data.param, that, 5), l.wxParse('appintroduce', 'html', res.data.data.appintroduce, that, "0")
-          wx.getSystemInfo({
-            success: function(t) {
-              that.setData({
-                advWidth: t.windowWidth
-              });
-            }
-          })
-        }
-
+    s.get("app.superior.detail", {
+      id: that.data.goodsid
+    }, function(e) {
+      console.log(e)
+      if (e.error == 0) {
+        that.setData({
+          show: !0,
+          imgUrls: e.data.img,
+          goodsprice: e.data.ptprice,
+          jdprice: e.data.jdprice,
+          goodstitle: e.data.name,
+          imagePath: e.data.imagePath,
+          goodsweight: e.data.weight,
+          goodssku: e.data.sku,
+          onsale: e.data.onsale
+        }), l.wxParse('standardcontent', 'html', e.data.param, that, 5), l.wxParse('appintroduce', 'html', e.data.appintroduce, that, "0")
+        wx.getSystemInfo({
+          success: function(t) {
+            that.setData({
+              advWidth: t.windowWidth
+            });
+          }
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: e.message,
+        })
       }
-
-    });
+    })
 
   },
   swiperChange: function(e) {
@@ -85,10 +96,38 @@ Page({
     })
   },
   selectstandard: function() {
-    wx.showModal({
-      title: '提示',
-      content: '',
+    var t = this
+    t.setData({
+      maskshow: true,
+      confirmshow: true,
     })
+  },
+  maskconfirm: function() {
+    var aa = this
+    aa.setData({
+      maskshow: false,
+      isSelected: true,
+      confirmshow: false,
+      goodstotal: aa.data.num
+    })
+    // console.log(aa.data.num)
+  },
+  selectBuy: function() {
+    var bb = this
+    // console.log(bb.data.num)
+    bb.setData({
+      maskshow: true,
+      buyshow: true,
+    })
+  },
+  maskBuy: function() {
+    var cc = this
+    totalprice = Number((cc.data.num * cc.data.goodsprice).toFixed(2))
+    console.log(totalprice)
+    wx.navigateTo({
+      url: '/pages/jdproducts/order/index?id=' + cc.data.goodsid + '&count=' + cc.data.num + '&totalprice=' + totalprice + '&goodssku=' + cc.data.goodssku,
+    })
+
   },
   /* 点击减号 */
   bindMinus: function() {
@@ -122,7 +161,9 @@ Page({
   },
   guanbiBtn: function() {
     this.setData({
-      maskshow:false
+      maskshow: false,
+      goodstotal: this.data.num,
+      confirmshow: false
     })
   },
 

@@ -1,676 +1,293 @@
-var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
-    return typeof t;
-  } : function(t) {
-    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
-  },
-  e = getApp(),
-  a = e.requirejs("core"),
-  i = e.requirejs("foxui"),
-  r = e.requirejs("biz/diyform"),
-  s = e.requirejs("jquery"),
-  d = e.requirejs("biz/selectdate");
-var app = getApp();
+var e, a, o = getApp(),
+  s = o.requirejs("core"),
+  i = (o.requirejs("icons"), o.requirejs("foxui")),
+  n = o.requirejs("biz/diypage"),
+  r = o.requirejs("biz/diyform"),
+  c = o.requirejs("biz/goodspicker"),
+  d = o.requirejs("jquery"),
+  l = o.requirejs("wxParse/wxParse"),
+  u = 0,
+  g = o.requirejs("biz/selectdate");
+var f = getApp()
+var paramprice = 0
+var useropenid = "";
+const util = require('../../../utils/util.js')
 Page({
-  data: {
-    globalimg: app.globalData.appimg,
-    icons: e.requirejs("icons"),
-    showIcon: true,
-    list: {},
-    goodslist: {},
-    data: {
-      dispatchtype: 0,
-      remark: ""
-    },
-    areaDetail: {
-      detail: {
-        realname: "",
-        mobile: "",
-        areas: "",
-        street: "",
-        address: ""
-      }
-    },
-    merchid: 0,
-    showPicker: !1,
-    pvalOld: [0, 0, 0],
-    pval: [0, 0, 0],
-    areas: [],
-    street: [],
-    streetIndex: 0,
-    noArea: !1,
-    showaddressview: !1,
-    city_express_state: !1,
-    currentDate: "",
-    dayList: "",
-    currentDayList: "",
-    currentObj: "",
-    currentDay: "",
-    cycelbuy_showdate: "",
-    receipttime: "",
-    scope: "",
-    bargainid: "",
-    selectcard: "",
-  },
-  onLoad: function(t) {
-    console.log(t)
-    var i = this,
-      r = [];
-    // if (t.goods) {
-    //   var s = JSON.parse(t.goods);
-    //   t.goods = s, this.setData({
-    //     ispackage: !0
-    //   });
-    // }
-    i.setData({
-        options: t
-      }), i.setData({
-        bargainid: t.bargainid
-      }), e.url(t), console.log(i.data.options),
-      a.get("order/create", {
-        authkey: "",
-        comefrom: "wxapp",
-        id: "2575",
-        invitid: "68320",
-        merchid: "",
-        mid: "90",
-        openid: "sns_wa_owRAK43dDy1s6i0_rbVfZUqgx854",
-        optionid: "8298",
-        selectDate: "undefined",
-        total: "1"
 
-      }, function(t) {
-        console.log('订单')
-        console.log(t)
-        if (console.log(t), 0 == t.error) {
-          console.log(t), r = i.getGoodsList(t.goods);
-          var s = (i.data.originalprice - t.goodsprice).toFixed(2);
-          i.setData({
-            list: t,
-            goods: t,
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    show: !0,
+    aa: 0,
+    globalimg: f.globalData.appimg,
+    showIcon: true,
+    gloheight: f.globalData.gloheight,
+    num: 1,
+    // 单价
+    goodsprice: 0,
+    // 小计
+    totalprice: 0,
+    // 需付
+    payprice: 0,
+    goodstitle: '',
+    imagePath: '',
+    provinceid: '',
+    cityid: '',
+    countyid: '',
+    addressid: '',
+    goodssku: '',
+    weightprice: 0,
+    canpay: false,
+    goodsid: '',
+    provicename: '',
+    cityname: '',
+    areaname: '',
+    townname:'',
+    name: '',
+    mobile: '',
+    detailaddress: '',
+    goodsid: '',
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    var t = this
+    console.log(options)
+    var userinfo = f.getCache('userinfo');
+    useropenid = userinfo.openid;
+    if (!options.addressid && !options.areaid && !options.cityid && !options.proviceid) {
+      console.log('详情')
+      t.setData({
+        canpay: false
+      })
+    } else {
+      console.log('添加地址')
+      if (options.townid == undefined || options.townname==""){
+        console.log('没有四级地址')
+      }else{
+        console.log('有四级地址')
+      }
+      t.setData({
+        canpay: true,
+        addressid: options.addressid,
+        provinceid: options.proviceid,
+        cityid: options.cityid,
+        countyid: options.areaid,
+        goodssku: options.goodssku,
+        num: options.count,
+        provicename: options.provicename,
+        cityname: options.cityname,
+        areaname: options.areaname,
+        townname: options.townname,
+        name: options.name,
+        mobile: options.mobile,
+        detailaddress: options.detailaddress,
+      })
+      t.getcarriage()
+    }
+    t.setData({
+      num: options.count,
+      goodsid: options.id,
+      payprice: options.totalprice,
+      goodssku: options.goodssku,
+    })
+    console.log(t.data.num)
+    t.getdetail()
+  },
+  getdetail: function() {
+    var that = this
+    wx.request({
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.detail&comefrom=wxapp',
+      data: {
+        id: that.data.goodsid
+      },
+      complete() {
+        wx.hideLoading();
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.error == 0) {
+          paramprice = res.data.data.ptprice
+          that.setData({
             show: !0,
-            address: !0,
-            card_info: t.card_info || {},
-            cardid: t.card_info.cardid || "",
-            cardname: t.card_info.cardname || "",
-            carddiscountprice: t.card_info.carddiscountprice,
-            goodslist: r,
-            merchid: t.merchid,
-            comboprice: s,
-            diyform: {
-              f_data: t.f_data,
-              fields: t.fields
-            },
-            city_express_state: t.city_express_state,
-            cycelbuy_showdate: t.selectDate,
-            receipttime: t.receipttime,
-            iscycel: t.iscycel,
-            scope: t.scope,
-            fromquick: t.fromquick,
-            hasinvoice: t.hasinvoice
-          }), e.setCache("goodsInfo", {
-            goodslist: r,
-            merchs: t.merchs
-          }, 1800);
-        } else a.toast(t.message, "loading"), setTimeout(function() {
-          wx.navigateBack();
-        }, 1e3);
-        if ("" != t.fullbackgoods) {
-          if (void 0 == t.fullbackgoods) return;
-          var d = t.fullbackgoods.fullbackratio,
-            o = t.fullbackgoods.maxallfullbackallratio,
-            d = Math.round(d),
-            o = Math.round(o);
-          i.setData({
-            fullbackratio: d,
-            maxallfullbackallratio: o
-          });
+            goodsprice: res.data.data.ptprice,
+            jdprice: res.data.data.jdprice,
+            goodstitle: res.data.data.name,
+            imagePath: res.data.data.imagePath,
+            goodsweight: res.data.data.weight,
+            goodssku: res.data.data.sku,
+            totalprice: Number(res.data.data.ptprice * that.data.num)
+          })
         }
-        1 == t.iscycel
-      }), this.getQuickAddressDetail(), e.setCache("coupon", ""), setTimeout(function() {
-        i.setData({
-          areas: e.getCache("cacheset").areas
-        });
-      }, 3e3);
-  },
-  onShow: function() {
-    var g = this
-    console.log('onshow')
-    var i = this,
-      r = e.getCache("orderAddress"),
-      d = e.getCache("orderShop");
-    e.getCache("isIpx") ? i.setData({
-      isIpx: !0,
-      iphonexnavbar: "fui-iphonex-navbar",
-      paddingb: "padding-b"
-    }) : i.setData({
-      isIpx: !1,
-      iphonexnavbar: "",
-      paddingb: ""
-    }), r && (this.setData({
-      "list.address": r
-    }), i.caculate(i.data.list)), d && this.setData({
-      "list.carrierInfo": d,
-      "list.storeInfo": d
+      }
     });
-    var o = e.getCache("coupon");
-    "object" == (void 0 === o ? "undefined" : t(o)) && 0 != o.id ? (this.setData({
-      "data.couponid": o.id,
-      "data.couponname": o.name
-    }), a.post("order/create/getcouponprice", {
-      couponid: o.id,
-      goods: this.data.goodslist,
-      goodsprice: this.data.list.goodsprice,
-      discountprice: this.data.list.discountprice,
-      isdiscountprice: this.data.list.isdiscountprice
-    }, function(t) {
-      0 == t.error ? (delete t.$goodsarr, i.setData({
-        coupon: t
-      }), i.caculate(i.data.list)) : a.alert(t.message);
-    }, !0)) : (this.setData({
-      "data.couponid": 0,
-      "data.couponname": null,
-      coupon: null
-    }), s.isEmptyObject(i.data.list) || i.caculate(i.data.list));
+
   },
-  getGoodsList: function(t) {
-    var e = [];
-    s.each(t, function(t, a) {
-      s.each(a.goods, function(t, a) {
-        e.push(a);
-      });
+  // 获取运费carriage
+  getcarriage: function() {
+    console.log(this.data.num)
+    var tt = this
+    wx.request({
+      url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.freight&comefrom=wxapp',
+      data: {
+        province: tt.data.provinceid,
+        city: tt.data.cityid,
+        county: tt.data.countyid,
+        sku: tt.data.goodssku,
+        num: tt.data.num
+      },
+      complete() {
+        wx.hideLoading();
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.error == 0) {
+          console.log(res)
+          tt.setData({
+            weightprice: res.data.data.freight,
+            payprice: Number(tt.data.payprice) + Number(res.data.data.freight)
+          })
+        }
+      }
     });
-    for (var a = 0, i = 0; i < e.length; i++) a += e[i].price;
-    return console.log(a), this.setData({
-      originalprice: a
-    }), e;
+
   },
-  toggle: function(t) {
-    var e = a.pdata(t),
-      i = e.id,
-      r = e.type,
-      s = {};
-    s[r] = 0 == i || void 0 === i ? 1 : 0, this.setData(s);
+  /* 点击减号 */
+  bindMinus: function() {
+    var num = this.data.num;
+    if (num > 1) {
+      num--;
+    }
+    var minusStatus = num <= 1 ? 'disabled' : 'normal';
+    this.setData({
+      num: num,
+      minusStatus: minusStatus,
+    });
+    this.getTotalPrice()
   },
-  phone: function(t) {
-    a.phone(t);
+  /* 点击加号 */
+  bindPlus: function() {
+    var num = this.data.num;
+    num++;
+    var minusStatus = num < 1 ? 'disabled' : 'normal';
+    this.setData({
+      num: num,
+      minusStatus: minusStatus,
+    });
+    this.getTotalPrice()
   },
-  caloriebtn: function() {
-    wx.switchTab({
-      url: '/pages/index/index',
+  // getTotalPrice(e) {
+  //   let sum = 0;
+  //   sum += this.data.num * paramprice;
+  //   this.setData({
+  //     goodsprice: sum.toFixed(2),
+  //   })
+  // },
+  /* 输入框事件 */
+  bindManual: function(e) {
+    var num = e.detail.value;
+    // 将数值与状态写回  
+    this.setData({
+      num: num,
+    });
+  },
+  addadress: function() {
+    console.log(this.data.totalprice, this.data.num)
+    wx.navigateTo({
+      url: '/pages/jdproducts/address/add?id=' + this.data.goodsid + '&count=' + this.data.num + '&totalprice=' + this.data.totalprice + '&goodssku=' + this.data.goodssku,
     })
   },
-  dispatchtype: function(t) {
-    var e = a.data(t).type;
-    this.setData({
-      "data.dispatchtype": e
-    }), this.caculate(this.data.list);
-  },
-  number: function(t) {
-    console.log('number')
-    var e = this,
-      r = a.pdata(t),
-      d = i.number(this, t),
-      o = r.id,
-      c = e.data.list,
-      n = 0,
-      l = 0;
-    s.each(c.goods, function(t, e) {
-      s.each(e.goods, function(e, a) {
-        a.id == o && (c.goods[t].goods[e].total = d), n += parseInt(c.goods[t].goods[e].total),
-          l += parseFloat(n * c.goods[t].goods[e].price);
+  submit: util.throttle(function() {
+    console.log('点击')
+    var that = this
+    if (that.data.canpay == true) {
+      wx.showLoading({
+        title: '加载中',
+      })
+      console.log('接口')
+      wx.request({
+        url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.order&comefrom=wxapp',
+        data: {
+          openid: useropenid,
+          address_id: that.data.addressid,
+          goods_id: that.data.goodsid,
+          total: that.data.num
+        },
+        complete() {
+          wx.hideLoading();
+        },
+        success: function(res) {
+          if (res.data.error == 0) {
+            console.log(res)
+            setTimeout(function() {
+              wx.navigateTo({
+                url: '/pages/jdproducts/cash/cash?orderid=' + res.data.data.orderid + '&payprice=' + res.data.data.price + '&ordersn=' + res.data.data.ordersn,
+              })
+            }, 1e3);
+
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.message,
+            })
+          }
+        }
       });
-    }), c.total = n, c.goodsprice = s.toFixed(l, 2), e.setData({
-      list: c,
-      goodslist: e.getGoodsList(c.goods)
-    }), this.caculate(c);
-  },
-  caculate: function(t) {
-    var e = this,
-      i = 0;
-    e.data.data && 0 != e.data.data.couponid && (i = e.data.data.couponid), a.post("order/create/caculate", {
-      goods: this.data.goodslist,
-      dflag: this.data.data.dispatchtype,
-      addressid: this.data.list.address ? this.data.list.address.id : 0,
-      packageid: this.data.list.packageid,
-      bargain_id: this.data.bargainid,
-      discountprice: this.data.list.discountprice,
-      cardid: this.data.cardid,
-      couponid: i
-    }, function(a) {
-      console.log('地址')
-      console.log(a)
-
-
-
-      console.error(a), t.dispatch_price = a.price, t.enoughdeduct = a.deductenough_money,
-        t.enoughmoney = a.deductenough_enough, t.taskdiscountprice = a.taskdiscountprice,
-        t.discountprice = a.discountprice, t.isdiscountprice = a.isdiscountprice, t.seckill_price = a.seckill_price,
-        t.deductcredit2 = a.deductcredit2, t.deductmoney = a.deductmoney, t.deductcredit = a.deductcredit,
-        t.discount = a.discount,
-        e.data.data.deduct && (a.realprice -= a.deductmoney), e.data.data.discount && (a.realprice -= a.discount), e.data.data.deduct2 && (a.realprice -= a.deductcredit2),
-        e.data.coupon && void 0 !== e.data.coupon.deductprice && (e.setData({
-          "coupon.deductprice": a.coupon_deductprice
-        }), a.realprice -= a.coupon_deductprice), a.card_info && (t.card_free_dispatch = a.card_free_dispatch),
-        0 == e.data.goods.giftid && e.setData({
-          "goods.gifts": a.gifts
-        }), t.realprice <= 0 && (t.realprice = 1e-6), t.realprice = s.toFixed(a.realprice, 2),
-        e.setData({
-          list: t,
-          cardid: a.card_info.cardid,
-          cardname: a.card_info.cardname,
-          goodsprice: a.card_info.goodsprice,
-          carddiscountprice: a.card_info.carddiscountprice,
-          city_express_state: a.city_express_state
-        });
-    }, !0);
-  },
-  submit: function() {
-    var t = this.data,
-      e = this,
-      i = this.data.diyform,
-      d = t.giftid;
-    if (0 == this.data.goods.giftid && 1 == this.data.goods.gifts.length && (d = this.data.goods.gifts[0].id), !t.submit && r.verify(this, i)) {
-      t.list.carrierInfo = t.list.carrierInfo || {};
-      console.log(t)
-      var o = {
-        id: t.options.id ? t.options.id : 0,
-        goods: t.goodslist,
-        gdid: t.options.gdid,
-        dispatchtype: t.data.dispatchtype,
-        fromcart: t.list.fromcart,
-        carrierid: 1 == t.data.dispatchtype && t.list.carrierInfo ? t.list.carrierInfo.id : 0,
-        addressid: t.list.address ? t.list.address.id : 0,
-        carriers: 1 == t.data.dispatchtype || t.list.isvirtual || t.list.isverify ? {
-          carrier_realname: t.list.member.realname,
-          carrier_mobile: t.list.member.mobile,
-          realname: t.list.carrierInfo.realname,
-          mobile: t.list.carrierInfo.mobile,
-          storename: t.list.carrierInfo.storename,
-          address: t.list.carrierInfo.address
-        } : "",
-        remark: t.data.remark,
-        deduct: t.data.deduct,
-        //折扣付
-        discount: t.data.discount,
-        deduct2: t.data.deduct2,
-        couponid: t.data.couponid,
-        cardid: t.cardid,
-        invoicename: t.list.invoicename,
-        submit: !0,
-        packageid: t.list.packageid,
-        giftid: d,
-        diydata: t.diyform.f_data,
-        receipttime: t.receipttime,
-        bargain_id: e.data.options.bargainid,
-        fromquick: t.fromquick
-      };
-      if (t.list.storeInfo && (o.carrierid = t.list.storeInfo.id), 1 == t.data.dispatchtype || t.list.isvirtual || t.list.isverify) {
-        if ("" == s.trim(t.list.member.realname) && "0" == t.list.set_realname) return void a.alert("请填写联系人!");
-        if ("" == s.trim(t.list.member.mobile) && "0" == t.list.set_mobile) return void a.alert("请填写联系方式!");
-        if (t.list.isforceverifystore && !t.list.storeInfo) return void a.alert("请选择门店!");
-        o.addressid = 0;
-      } else if (!o.addressid && !t.list.isonlyverifygoods) return void a.alert("地址没有选择!");
-      e.setData({
-        submit: !0
-      }), a.post("order/create/submit", o, function(t) {
-        console.log(t)
-        e.setData({
-          submit: !1
-        }), 0 == t.error ? (t.couponid_id == 2 ?
-          wx.navigateTo({
-
-            url: "/pages/order/pay/index?id=" + t.orderid + '&success=1'
-          }) :
-          wx.navigateTo({
-            url: "/pages/order/pay/index?id=" + t.orderid
-          })) : a.alert(t.message);
-      }, !0);
+    } else {
+      return void i.toast(that, "请添加收货地址")
     }
-  },
-  dataChange: function(t) {
-    var e = this.data.data,
-      a = this.data.list;
-    console.log(e)
-    console.log(t)
-    switch (t.target.id) {
-      case "remark":
-        e.remark = t.detail.value;
-        break;
+  }),
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
 
-      case "deduct":
-        if (e.deduct = t.detail.value, e.deduct2) return;
-        i = parseFloat(a.realprice);
-        console.log(i)
-        i += e.deduct ? -parseFloat(a.deductmoney) : parseFloat(a.deductmoney), a.realprice = i;
-        break;
+  },
 
-        //折扣宝
-      case "discount":
-        if (e.discount = t.detail.value, e.deduct2) return;
-        i = parseFloat(a.realprice);
-        console.log(i)
-        i += e.discount ? -parseFloat(a.discount) : parseFloat(a.discount), a.realprice = i;
-        break;
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
 
+  },
 
-      case "deduct2":
-        if (e.deduct2 = t.detail.value, e.deduct) return;
-        var i = parseFloat(a.realprice);
-        i += e.deduct2 ? -parseFloat(a.deductcredit2) : parseFloat(a.deductcredit2), a.realprice = i;
-    }
-    a.realprice <= 0 && (a.realprice = 1e-6), a.realprice = s.toFixed(a.realprice, 2),
-      this.setData({
-        data: e,
-        list: a
-      });
-  },
-  listChange: function(t) {
-    var e = this.data.list;
-    switch (t.target.id) {
-      case "invoicename":
-        e.invoicename = t.detail.value;
-        break;
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
 
-      case "realname":
-        e.member.realname = t.detail.value;
-        break;
+  },
 
-      case "mobile":
-        e.member.mobile = t.detail.value;
-    }
-    this.setData({
-      list: e
-    });
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
+    // wx.redirectTo({
+    //   url: '/pages/jdproducts/detail/index?id=' + this.data.goodsid,
+    // })
   },
-  url: function(t) {
-    var e = a.pdata(t).url;
-    wx.redirectTo({
-      url: e
-    });
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+
   },
-  onChange: function(t) {
-    return r.onChange(this, t);
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+
   },
-  DiyFormHandler: function(t) {
-    return r.DiyFormHandler(this, t);
-  },
-  selectArea: function(t) {
-    return r.selectArea(this, t);
-  },
-  bindChange: function(t) {
-    return r.bindChange(this, t);
-  },
-  onCancel: function(t) {
-    return r.onCancel(this, t);
-  },
-  onConfirm: function(t) {
-    r.onConfirm(this, t);
-    var e = this.data.pval,
-      a = this.data.areas,
-      i = this.data.areaDetail.detail;
-    i.province = a[e[0]].name, i.city = a[e[0]].city[e[1]].name, i.datavalue = a[e[0]].code + " " + a[e[0]].city[e[1]].code,
-      a[e[0]].city[e[1]].area && a[e[0]].city[e[1]].area.length > 0 ? (i.area = a[e[0]].city[e[1]].area[e[2]].name,
-        i.datavalue += " " + a[e[0]].city[e[1]].area[e[2]].code, this.getStreet(a, e)) : i.area = "",
-      i.street = "", this.setData({
-        "areaDetail.detail": i,
-        streetIndex: 0,
-        showPicker: !1
-      });
-  },
-  getIndex: function(t, e) {
-    return r.getIndex(t, e);
-  },
-  showaddressview: function(t) {
-    var e = "";
-    e = "open" == t.target.dataset.type, this.setData({
-      showaddressview: e
-    });
-  },
-  onChange2: function(t) {
-    var e = this,
-      a = e.data.areaDetail.detail,
-      i = t.currentTarget.dataset.type,
-      r = s.trim(t.detail.value);
-    "street" == i && (a.streetdatavalue = e.data.street[r].code, r = e.data.street[r].name),
-      a[i] = r, e.setData({
-        "areaDetail.detail": a
-      });
-  },
-  getStreet: function(t, e) {
-    if (t && e) {
-      var i = this;
-      if (i.data.areaDetail.detail.province && i.data.areaDetail.detail.city && this.data.openstreet) {
-        var r = t[e[0]].city[e[1]].code,
-          s = t[e[0]].city[e[1]].area[e[2]].code;
-        a.get("getstreet", {
-          city: r,
-          area: s
-        }, function(t) {
-          var e = t.street,
-            a = {
-              street: e
-            };
-          if (e && i.data.areaDetail.detail.streetdatavalue)
-            for (var r in e)
-              if (e[r].code == i.data.areaDetail.detail.streetdatavalue) {
-                a.streetIndex = r, i.setData({
-                  "areaDetail.detail.street": e[r].name
-                });
-                break;
-              }
-          i.setData(a);
-        });
-      }
-    }
-  },
-  getQuickAddressDetail: function() {
-    var t = this,
-      e = t.data.id;
-    a.get("member/address/get_detail", {
-      id: e
-    }, function(e) {
-      var a = {
-        openstreet: e.openstreet,
-        show: !0
-      };
-      if (!s.isEmptyObject(e.detail)) {
-        var i = e.detail.province + " " + e.detail.city + " " + e.detail.area,
-          r = t.getIndex(i, t.data.areas);
-        a.pval = r, a.pvalOld = r, a.areaDetail.detail = e.detail;
-      }
-      t.setData(a), e.openstreet && r && t.getStreet(t.data.areas, r);
-    });
-  },
-  submitaddress: function() {
-    var t = this,
-      e = t.data.areaDetail.detail;
-    t.data.posting || ("" != e.realname && e.realname ? "" != e.mobile && e.mobile ? "" != e.city && e.city ? !(t.data.street.length > 0) || "" != e.street && e.street ? "" != e.address && e.address ? e.datavalue ? (e.id = 0,
-      t.setData({
-        posting: !0
-      }), a.post("member/address/submit", e, function(r) {
-        if (0 != r.error) return t.setData({
-          posting: !1
-        }), void i.toast(t, r.message);
-        e.id = r.addressid, t.setData({
-          showaddressview: !1,
-          "list.address": e
-        }), a.toast("保存成功");
-      })) : i.toast(t, "地址数据出错，请重新选择") : i.toast(t, "请填写详细地址") : i.toast(t, "请选择所在街道") : i.toast(t, "请选择所在地区") : i.toast(t, "请填写联系电话") : i.toast(t, "请填写收件人"));
-  },
-  giftPicker: function() {
-    this.setData({
-      active: "active",
-      gift: !0
-    });
-  },
-  emptyActive: function() {
-    this.setData({
-      active: "",
-      slider: "out",
-      tempname: "",
-      showcoupon: !1,
-      gift: !1
-    });
-  },
-  radioChange: function(t) {
-    this.setData({
-      giftid: t.currentTarget.dataset.giftgoodsid,
-      gift_title: t.currentTarget.dataset.title
-    });
-  },
-  sendclick: function() {
-    wx.navigateTo({
-      url: "/pages/map/index"
-    });
-  },
-  clearform: function() {
-    var t = this.data.diyform,
-      e = {};
-    s.each(t, function(a, i) {
-      s.each(i, function(a, i) {
-        5 == i.data_type && (t.f_data[i.diy_type].count = 0, t.f_data[i.diy_type].images = [],
-          e[i.diy_type] = t.f_data[i.diy_type]);
-      });
-    }), t.f_data = e, this.setData({
-      diyform: t
-    });
-  },
-  syclecancle: function() {
-    this.setData({
-      cycledate: !1
-    });
-  },
-  sycleconfirm: function() {
-    this.setData({
-      cycledate: !1
-    });
-  },
-  editdate: function(t) {
-    d.setSchedule(this), this.setData({
-      cycledate: !0,
-      create: !0
-    });
-  },
-  doDay: function(t) {
-    d.doDay(t, this);
-  },
-  selectDay: function(t) {
-    d.selectDay(t, this), d.setSchedule(this);
-  },
-  showinvoicepicker: function() {
-    var t = this.data.list;
-    0 == t.invoice_type && (t.invoice_info.entity = !0), 1 == t.invoice_type && (t.invoice_info.entity = !1),
-      this.setData({
-        invoicepicker: !0,
-        list: t
-      });
-  },
-  noinvoicepicker: function() {
-    this.setData({
-      invoicepicker: !1
-    });
-  },
-  clearinvoice: function() {
-    var t = this.data.list;
-    t.invoicename = "", this.setData({
-      invoicepicker: !1,
-      list: t
-    });
-  },
-  chaninvoice: function(t) {
-    var e = this.data.list;
-    "0" == t.currentTarget.dataset.type ? e.invoice_info.entity = !1 : e.invoice_info.entity = !0,
-      this.setData({
-        list: e
-      });
-  },
-  changeType: function(t) {
-    var e = this.data.list;
-    "0" == t.currentTarget.dataset.type ? e.invoice_info.company = !1 : e.invoice_info.company = !0,
-      this.setData({
-        list: e
-      });
-  },
-  invoicetitle: function(t) {
-    var e = this.data.list;
-    e.invoice_info.title = t.detail.value.replace(/\s+/g, ""), this.setData({
-      list: e
-    });
-  },
-  invoicenumber: function(t) {
-    var e = this.data.list;
-    e.invoice_info.number = t.detail.value.replace(/\s+/g, ""), this.setData({
-      list: e
-    });
-  },
-  confirminvoice: function() {
-    var t = this.data.list;
-    t.invoice_info.company || this.setData({
-      invoicenumber: ""
-    });
-    var e = t.invoice_info.entity ? "[纸质] " : "[电子] ",
-      a = t.invoice_info.title + " ",
-      r = t.invoice_info.company ? "（单位: " + t.invoice_info.number + "）" : "（个人）";
-    t.invoicename = e + a + r, t.invoice_info.title ? t.invoice_info.company && !t.invoice_info.number ? i.toast(this, "请填写税号") : this.setData({
-      list: t,
-      invoicepicker: !1
-    }) : i.toast(this, "请填写发票抬头");
-  },
-  selectCard: function() {
-    this.setData({
-      selectcard: "in"
-    });
-  },
-  cancalCard: function() {
-    this.setData({
-      cardid: ""
-    });
-  },
-  changecard: function(t) {
-    var e = this;
-    e.data.card_info;
-    e.setData({
-      selectcard: "",
-      cardid: t.currentTarget.dataset.id
-    });
-    var i = t.currentTarget.dataset.id,
-      r = {
-        cardid: i,
-        goodsprice: this.data.list.goodsprice,
-        dispatch_price: this.data.list.dispatch_price,
-        discountprice: this.data.list.discountprice
-      };
-    a.post("order/create/getcardprice", r, function(t) {
-      console.log(t)
-      if ("" != i)
-        if (0 == t.error) {
-          var r = {
-            carddiscount_rate: t.carddiscount_rate,
-            carddiscountprice: t.carddiscountprice,
-            cardid: t.cardid,
-            cardname: t.name,
-            dispatch_price: t.dispatch_price,
-            totalprice: t.totalprice,
-            comboprice: 0
-          };
-          e.setData(r), e.caculate(e.data.list);
-        } else a.alert(t.message);
-      else {
-        var d = {
-            cardid: "",
-            selectcard: "",
-            cardname: "",
-            carddiscountprice: 0,
-            ispackage: !1
-          },
-          o = (e.data.originalprice - e.data.list.goodsprice).toFixed(2);
-        e.data.options.goods && (d.ispackage = !0, d.comboprice = o), e.setData(d), s.isEmptyObject(e.data.list) || e.caculate(e.data.list);
-      }
-    }, !0);
-  },
-  closeCardModal: function() {
-    this.setData({
-      selectcard: ""
-    });
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
+
   }
-});
+})

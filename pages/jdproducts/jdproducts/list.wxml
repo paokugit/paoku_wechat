@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-icon='{{showIcon}}' title="精选好物"></navigation>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="京东购"></navigation>
 <view class='account-box'>
   <!-- tab -->
   <block>
@@ -10,10 +10,10 @@
     <block wx:if="{{show}}">
       <view class="listBox">
         <view class='swipercontent'>
-          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" circular='true'>
+          <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange" circular='true'>
             <block wx:for="{{imgUrls}}" wx:key="unique">
               <swiper-item>
-                <image src="{{item}}" class="slide-image" />
+                <image src="{{item.banner}}" class="slide-image" />
               </swiper-item>
             </block>
           </swiper>
@@ -23,47 +23,93 @@
             </block>
           </view>
         </view>
-        <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
-          <block wx:for="{{catelist}}" wx:key="{{index}}">
-            <view bindtap="selected" class="item {{status==item.id?'active':''}}" data-type="{{item.id}}">
-              {{item.catename}}
+        <view class="searchflex">
+          <view class="search_box">
+            <view bindtap="searchbtn">
+              <image class="searchimg" src="{{globalimg}}/searchbar_icon_sousuo@2x.png"></image>
             </view>
-          </block>
-        </scroll-view>
-        <!-- 全部商品内容 -->
-        <view class="all-filtrate">
-          <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
-          <view class="all-price" data-now="1" bindtap='checkAllt'>
-            <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
-            <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+            <input class="searchIpt" placeholder="输入关键字进行搜索" bindinput="searchcon" value="{{searchcontent}}"></input>
           </view>
-          <view class="all-sales" data-now="2" bindtap='checkAllt'>
-            <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
-            <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+          <view bindtap="searchbtn" class="sousu">搜索</view>
+        </view>
+        <view class="{{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
+          <view style="{{scrollTop >160?'':'display:none'}}">
+            <view class="searchflex">
+              <view class="search_box">
+                <view bindtap="searchbtn">
+                  <image class="searchimg" src="{{globalimg}}/searchbar_icon_sousuo@2x.png"></image>
+                </view>
+                <input class="searchIpt" placeholder="输入关键字进行搜索" bindinput="searchcon" value="{{searchcontent}}"></input>
+              </view>
+              <view bindtap="searchbtn" class="sousu">搜索</view>
+            </view>
+          </view>
+          <scroll-view class="list-tab-scroll" scrollX="true" scroll-with-animation="true" bindscrolltoupper="toUpper" bindscrolltolower="toLower" id="scroll-view" scroll-left="{{ scrollLeft }}">
+            <view bindtap="onCouponItemClick" class="item {{status==''?'active':''}}" data-type="">全部</view>
+            <block wx:for="{{catelist}}" wx:key="{{index}}">
+
+              <view bindtap="onCouponItemClick" class="item {{status==item.id?'active':''}}" id="item-{{item.id}}" data-type="{{item.id}}">
+                {{item.catename}}
+              </view>
+            </block>
+          </scroll-view>
+          <!-- 综合价格销量 -->
+          <view class="filtratebox">
+            <view class="all-filtrate">
+              <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now="0" bindtap='checkAllt'>综合</view>
+              <view class="all-price" data-now="1" bindtap='checkAllt'>
+                <view class="all-price-text {{nowSign == 1?'nowActive':''}}">价格</view>
+                <image class="all-price-img" src="{{globalimg}}/{{allPrice}}.png"></image>
+              </view>
+              <view class="all-sales" data-now="2" bindtap='checkAllt'>
+                <view class="all-sales-sales {{nowSign == 2?'nowActive':''}}">销量</view>
+                <image class="all-sales-img" src="{{globalimg}}/{{allSales}}.png"></image>
+              </view>
+            </view>
           </view>
         </view>
         <view class="listCon">
-          <view class="itemBox" wx:for="{{list}}" wx:key="{{index}}">
-            <image class="proImg" src="{{item.imagePath}}"></image>
-            <view class="proTitle">{{item.name}}</view>
-            <view class="priceBox">
-              <text style="color:#f00;font-size:28rpx">￥</text>
-              <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
-              <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC支付</text>
-            </view>
-            <navigator class="buy-box" url="/pages/jdproducts/detail/index?id={{item.id}}">
-              <view class="buybtn">立即抢购</view>
+          <block wx:for="{{list}}" wx:key="{{index}}">
+            <navigator class="itemBox" url="/pages/jdproducts/detail/index?id={{item.id}}">
+              <image class="proImg" src="{{item.imagePath}}"></image>
+              <view class="proTitle">
+                <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
+                {{item.name}}</view>
+              <view class="priceBox">
+                <text style="color:#f00;font-size:28rpx">￥</text>
+                <text style="color:#f00;font-size:40rpx">{{item.ptprice}}</text>
+                <text style="color:#999;font-size:24rpx;margin-left:40rpx">支持RVC</text>
+              </view>
+              <view class="buy-box">
+                <view class="jdprice">
+                  <text>京东价:</text>
+                  <text>￥{{item.jdprice}}</text>
+                </view>
+                <view class="buybtn">立即抢购</view>
+              </view>
             </navigator>
-          </view>
+          </block>
+        </view>
+        <block>
+          <block wx:if="{{!loading&&list.length<=0}}">
+            <view class="fui-loading empty">
+              <view class="text">没有更多了哦</view>
+            </view>
+          </block>
+        </block>
 
-        </view>
-        <view class="fui-loading empty">
-          <view class="text">没有更多了哦</view>
-        </view>
       </view>
     </block>
   </block>
   <!-- tab -->
+  <block>
+    <block wx:if="{{loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载</view>
+      </view>
+    </block>
+  </block>
   <block>
     <block wx:if="{{total<=0&&!loading}}">
       <view class="fui-loading empty">
@@ -71,4 +117,8 @@
       </view>
     </block>
   </block>
+</view>
+<!-- 回到顶部 -->
+<view class='goTop' bindtap="goTop" style='display:{{topdisp}}'>
+  <image src='{{globalimg}}/huidaodingbu.png'></image>
 </view>

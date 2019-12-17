@@ -1,0 +1,25 @@
+<block>
+  <block wx:if="{{!show}}">
+    <loading>加载中...</loading>
+  </block>
+</block>
+<block>
+  <block wx:if="{{show}}">
+    <navigation id='Navigation' show-icon='{{showIcon}}' title="物流信息"></navigation>
+    <block>
+      <block wx:if="{{expresslist}}">
+        <view class="fui-list-groups express-list">
+          <block wx:for="{{expresslist}}" wx:key="">
+            <view class="fui-lists {{index==0?'current':''}}">
+              <view class="fui-list-inner">
+                <view class="text step">{{item.content}}</view>
+                <view class="text time" style="color:#999;font-size:22rpx;margin-top:8rpx">{{item.msgTime}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </block>
+
+  </block>
+</block>

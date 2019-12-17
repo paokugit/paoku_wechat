@@ -2182,7 +2182,7 @@ swiper {
   right: 6rpx;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 
 .guanbi-img {
@@ -2224,7 +2224,7 @@ swiper {
   width: 96%;
   height: auto;
   padding: 24rpx 2%;
-  background: pink;
+  /* background: pink; */
   margin-top: 60rpx;
   display: flex;
   justify-content: space-between;
@@ -2280,4 +2280,13 @@ swiper {
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+.fui-navbar .nobuybtn {
+  background: #ddd;
+}
+
+.jdbc-img {
+  width: 107rpx;
+  height: 38rpx;
 }

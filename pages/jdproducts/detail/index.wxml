@@ -29,13 +29,16 @@
               <text style="color:#f00;font-size:46rpx;">{{goodsprice}}</text>
             </view>
             <view style="margin-left:30rpx">
-              <text style="color:#999;font-size:26rpx;text-decoration: line-through;margin-right:6rpx">京东价格:</text>
-              <text style="color:#999;font-size:26rpx;text-decoration: line-through">￥{{jdprice}}</text>
+              <text style="color:#999;font-size:22rpx;text-decoration: line-through;margin-right:6rpx">京东价格:</text>
+              <text style="color:#999;font-size:22rpx;text-decoration: line-through">￥{{jdprice}}</text>
             </view>
           </view>
         </view>
         <view class="fui-cell">
-          <view class="proName">{{goodstitle}}</view>
+          <view class="proName">
+          <image class="jdbc-img" src="{{globalimg}}/img_jdsj@2x.png"></image>
+          {{goodstitle}}
+          </view>
         </view>
       </view>
       <!-- 选择数量 -->
@@ -47,13 +50,12 @@
           </view>
           <view class="fui-cell-remark"></view>
         </view>
-        <!-- <view class="fui-cell" wx:else>
-          <view class="fui-cell-info">已选：数量x{{total}} {{specsTitle}}</view>
-        </view> -->
+        <view class="fui-cell" wx:else>
+          <view class="fui-cell-info">已选：数量
+            <text style="margin-left:5rpx">x{{goodstotal}}</text>
+          </view>
+        </view>
       </view>
-      <!-- <view class="wxParse explain-main">
-        <template is="wxParse" data="{{wxParseData:standardcontent.nodes}}" />
-      </view> -->
       <!-- 商品规格 -->
       <view class="standard-box">
         <view class="standtit-box">
@@ -84,24 +86,12 @@
   <view class="fui-mask {{showPicker?'show':''}}" style="z-index: 1500"></view>
   <view>
     <view class="fui-navbar bottom-buttons {{iphonexnavbar}}">
-      <!-- <button class="nav-item customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true" wx:if="{{goods.customer==1&&limits}}">
-        <view class="icox icox-customerservice"></view>
-        <view class="label">客服</view>
-      </button> -->
-      <!-- 进入店铺 -->
-      <!-- <navigator class="nav-item external" openType="switchTab" url="/pages/index/index?merchid={{goods.merchid}}">
-        <view class="icox icox-shop1"></view>
-        <view class="label">店铺</view>
-      </navigator> -->
-      <!-- <navigator class="nav-item cart-item" id="menucart" open-type="navigate" url="/pages/member/cart/index">
-        <view class="badge {{goods.cartount<=0?'out':'in'}}" wx:if="{{goods.cartcount&&limits}}">{{goods.cartcount}}</view>
-        <view class="icox icox-cart1"></view>
-        <view class="label">购物车</view>
-      </navigator> -->
-      <!-- <view bindtap="selectPicker" class="nav-item btn cartbtn" data-buytype="cart" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{goods.canAddCart&&goods.type!=9}}">加入购物车</view> -->
-      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" wx:if="{{!goods.access_time&&!goods.timeout}}">立刻购买</view>
-      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="access_time" data-timeout="false" wx:if="{{goods.access_time}}">立刻购买</view>
-      <view bindtap="selectPicker" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}" data-time="timeout" data-timeout="false" wx:if="{{goods.timeout}}">立刻购买</view>
+      <block wx:if="{{onsale==1}}">
+        <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}">立刻购买</view>
+      </block>
+      <block wx:else>
+        <view class="nav-item btn nobuybtn {{onsale==1}}?'disabled':''" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}">下架</view>
+      </block>
     </view>
   </view>
   <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
@@ -135,7 +125,8 @@
           <text class="normal" bindtap="bindPlus">+</text>
         </view>
       </view>
-      <view class="gmbtn">立即购买</view>
+      <view class="gmbtn" bindtap="maskBuy" wx:if="{{buyshow}}">确定</view>
+      <view class="gmbtn" bindtap="maskconfirm" wx:if="{{confirmshow}}">确定</view>
     </view>
   </view>
 </view>
