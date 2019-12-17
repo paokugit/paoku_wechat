@@ -22,7 +22,7 @@
           <view class="contain">
             <block wx:for="{{list}}">
               <view class="fui-list-group noclick" style="margin-top:20rpx;border-radius:20rpx">
-                <!-- 郝艳萍 -->
+       
                 <view class="merch-title-box">
                   <view class="merchinfo-box">
                     <image class="merchImg" src="{{globalimg}}/dd_inco_dp@2x.png"></image>
@@ -35,18 +35,6 @@
                   </view>
                 </view>
                 <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?id={{item.id}}">
-                  <!-- <view class="fui-list-group-title" style="color:#666;font-size:26rpx">
-                    <view class="order-num">
-                      <block>
-                        <block wx:if="{{item.iscycelbuy==1}}">
-                          <text class="cycle-tip">周期购</text>
-                        </block>
-                      </block>
-                      <text selectable="true">订单号：{{item.ordersn}}</text>
-                      <text selectable="true">{{item.merchname}}</text>
-                    </view>
-                    <view class="{{statuscss}}">{{item.statusstr}}</view>
-                  </view> -->
 
                   <block wx:for="{{item.nogift}}" wx:for-index="key" wx:for-item="val">
                     <view class="fui-list goods-info">
@@ -71,34 +59,8 @@
 
                     </view>
                   </block>
-                  <block>
-                    <block wx:if="{{item.gift}}">
-                      <view class="fui-list no-border" style="background: #f9f9f9;margin-top: 4rpx">
-                        <block wx:for="{{item.gift}}" wx:for-index="index2" wx:for-item="val">
-                          <block>
-                            <block wx:if="{{index2<5}}">
-                              <view class="fui-list-media">
-                                <image src="{{val.thumb}}" style="width:100rpx;height:100rpx;"></image>
-                              </view>
-                            </block>
-                          </block>
-                        </block>
-                        <view class="fui-list-inner"></view>
-                        <view class="row-remark">
-                          <view>
-                            <text>共{{item.gift.length}}件</text>
-                          </view>
-                        </view>
-                      </view>
-                    </block>
-                  </block>
+
                   <view class="fui-list list-padding">
-                    <!-- <text class="fui-list-inner text-right  ">共{{item.goods[0].goods.length}}个商品 
-                    
-                    <text style="margin-left:30rpx">实付</text>
-                    <text class="text-danger">¥<text>{{item.price}}</text>
-                    </text>
-                    </text> -->
                     <text class="fui-list-inner text-right totle">
                       <text style="margin-right:40rpx">共{{item.goods[0].goods.length}}件商品</text>
                     <text>合计:<text style="color:#333;font-size:28rpx;margin-left:10rpx">¥</text>
@@ -107,15 +69,7 @@
 
                   </view>
                 </navigator>
-                <!-- 郝艳萍 -->
-                <!-- <block>
-                  <block wx:if="{{item.canpay}}">
-                    <view class="btn btn-default btn-default-o" bindtap="contactbtn">
-                      联系卖家
-                    </view>
-                  </block>
-                </block> -->
-                <!-- 郝艳萍 -->
+
                 <block>
                   <block wx:if="{{status!=4}}">
                     <view class="fui-list list-padding" style="padding:0 24rpx">

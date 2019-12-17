@@ -3,13 +3,14 @@ var t = getApp(),
 var f = getApp();
 
 var useropenid = "";
-
 var pricemark = 0;
 var salesmark = 0;
+var classify = 3;
+var updown = 0;
 Page({
-
+ 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     globalimg: t.globalData.appimg,
@@ -23,11 +24,12 @@ Page({
     nowSign: 0,
     sortWay: 0,
     scrollTop: 0,
-    
+    loading: !1,
     zerotit: '',
     swiperCurrent: 0,
     banner:[],
-    list: [{ adv: '0' }, { adv: '1' }, { adv: '0' }, { adv: '0' }, { adv: '1' },],
+    hiddcss:0,
+    list:[],
     page: 1,
     totalpage: 1
   },
@@ -56,9 +58,7 @@ Page({
         id: m.data.toggle
       },
       success(res) {
-        
         console.log(res);
-
         if (res.data.error == 0) {
           m.setData({
             banner: res.data.data.banner
@@ -75,32 +75,33 @@ Page({
   },
   getList: function () {
     var t = this;
+    console.log(updown);
     wx.request({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.shop.shop_cate_list',
       data: {
-        id: t.data.toggle
+        id: t.data.toggle,
+        type: classify,
+        sort: updown
       },
       success(res) {
-
         console.log(res);
-
-        t.setData({
+        t.setData({ 
           show: !0,
           loading: 0
         })
-        // if (res.data.error == 0) {
-        //   t.setData({
-        //     list: t.data.list.concat(res.data.data.list),
-        //     page: res.data.data.page + 1,
-        //     totalpage: res.data.data.pagetotal
-        //   })
-        // } else if (res.data.error == 1) {
-        //   wx.showToast({
-        //     title: res.data.message,
-        //     icon: 'none',
-        //     duration: 2000
-        //   })
-        // }
+        if (res.data.error == 0) {
+          t.setData({
+            list: t.data.list.concat(res.data.data.list),
+            page: res.data.data.page + 1,
+            totalpage: res.data.data.pagetotal
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       }
     })
   },
@@ -123,35 +124,47 @@ Page({
       salesImg = 'sc_tj_icon_jg_nor@2x';
       pricemark = 0;
       salesmark = 0;
+
+      classify = 3;
+      updown = 0;
     } else if (mowtxt == 1) {
 
       if (pricemark == 0) {
         priceImg = 'sc_tj_icon_jg_xs@2x';
         pricemark = 1;
+        updown = 'asc';
       } else if (pricemark == 1) {
         priceImg = 'sc_tj_icon_jg_xx@2x';
         pricemark = 0;
+        updown = 'desc';  
       }
       salesImg = 'sc_tj_icon_jg_nor@2x';
       salesmark = 0;
-
+      classify = 2;
     } else if (mowtxt == 2) {
       if (salesmark == 0) {
         salesImg = 'sc_tj_icon_jg_xs@2x';
         salesmark = 1;
+        updown = 'asc';
       } else if (salesmark == 1) {
         salesImg = 'sc_tj_icon_jg_xx@2x';
         salesmark = 0;
+        updown = 'desc';  
       }
       priceImg = 'sc_tj_icon_jg_nor@2x';
       pricemark = 0;
-
+      classify = 1;
     }
     that.setData({
+      list:[],
+      page:1,
+      totalpage:1,
       nowSign: mowtxt,
       allPrice: priceImg,
-      allSales: salesImg
-    })
+      allSales: salesImg,
+      loading: !0
+    });
+    that.getList();
   },
 
   sortBtn: function () {
@@ -223,7 +236,8 @@ Page({
       t.getList();
     } else {
       t.setData({
-        loading: 0
+        loading: 0,
+        hiddcss:1
       })
     }
   },

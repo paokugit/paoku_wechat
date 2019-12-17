@@ -100,8 +100,6 @@
         "root": "packageA",
         "pages": [
 
-          "pages/product/promotion/promotion",
-
           "pages/hestore/hestore/hestore",
           "pages/product/evaluate/evaluate",
 

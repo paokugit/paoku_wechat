@@ -79,9 +79,7 @@ Page({
         id: t.data.toggle
       },
       success(res) {
-
         console.log(res);
-
         t.setData({
           show: !0,
           loading: 0

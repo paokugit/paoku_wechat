@@ -493,7 +493,7 @@ image{
   right: 5%;
 }
 .update-box{
-  width: 280rpx;
+  width: 320rpx;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -625,13 +625,21 @@ image{
   color: #ff0000;
 }
 .number-money{
+  width: 150rpx;
   color: #ff0000;
-  font-size: 40rpx;
+  font-size: 35rpx;
   margin-right: 11rpx;
 }
 .number-people{
+  width: 100rpx;
   font-size: 22rpx;
   color: #999999;
+  
+}
+.number-money,.number-people{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .shopping-car{
@@ -753,4 +761,11 @@ image{
 
 .fui-loading{
   margin: 1em auto 4rem;
+}
+
+
+.fixation{
+  z-index: 10;
+  position: fixed;
+  left: 0;
 }

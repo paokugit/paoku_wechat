@@ -1,6 +1,12 @@
 // pages/store/store.js
 var t = getApp(), a = t.requirejs("core");
 var app = getApp()
+
+var cateid = 0;
+var updown = 0;
+var screen = 3;
+var pricemark = 0;
+var salesmark = 0;
 Page({
 
   /**
@@ -16,7 +22,7 @@ Page({
     cate:[],
     middle:[],
     notice:[],
-    goodsList:[],
+    goodslist:[],
 
 
     autoplay: true,
@@ -27,9 +33,15 @@ Page({
     type: 0,
     select:0,
     page: 1,
+    pageall:1,
+    totalpage:1,
     loaded: !1,
     loading: !0,
-    list: [],
+    hiddcss:0,
+    goodsTui:[],
+
+    allPrice: 'sort01',
+    allSales: 'sort01'
   },
 
   /**
@@ -63,7 +75,8 @@ Page({
             cateuse: totalPage,
             cate: res.data.data.adv.cate,
             middle: res.data.data.adv.middle,
-            notice: res.data.data.adv.notice
+            notice: res.data.data.adv.notice,
+            goodsTui: res.data.data.cate
           })
         } else if (res.data.error == 1){
           wx.showToast({
@@ -77,18 +90,33 @@ Page({
   },
   commodity:function(e){
     var m = this;
+    m.setData({
+      loading: !0,
+    })
     wx.request({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=app.shop.shop_goods',
       data:{
-        type:3,
-        sort:'asc',
-        page:1
+        type: screen,
+        sort:updown,
+        page:m.data.page,
+        cate: cateid
       },
       success(res) {
-        console.log(res);
-        m.setData({
-          goodsList:res.data.data.data
-        })
+        console.log(res.data);
+        if(res.data.error == 0){
+          m.setData({
+            loading:!1,
+            goodslist: m.data.goodslist.concat(res.data.data.data),
+            page: m.data.page + 1,
+            pageall: res.data.data.pagetotal
+          })
+        } else if (res.data.error == 1){
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       }
     })
   },
@@ -117,21 +145,68 @@ Page({
   myTab: function (t) {
     console.log(t)
     var e = this, i = a.pdata(t).type;
+    cateid = t.currentTarget.dataset.id;
+    screen = 3;
+    updown = 0;
+    pricemark = 0;
+    salesmark = 0;
     e.setData({
+      select:0,
       type: i,
-      page: 1,
-      list: [],
-      loading: !0
+      page:1,
+      pageall: 1,
+      goodslist: [],
+      allPrice: 'sort01',
+      allSales: 'sort01',
     });
   },
   myselect: function (t) {
     console.log(t)
     var ee = this, i = a.pdata(t).select;
+    let priceImg;
+    let salesImg;
+    if(i == 0){
+      screen = 3;
+      updown = 0;
+      priceImg = 'sc_tj_icon_jg_nor@2x';
+      salesImg = 'sc_tj_icon_jg_nor@2x';
+      pricemark = 0;
+      salesmark = 0;
+    }else if(i == 1){
+      if (pricemark == 0) {
+        priceImg = 'sc_tj_icon_jg_xs@2x';
+        pricemark = 1;
+        updown = 'asc';
+      } else if (pricemark == 1) {
+        priceImg = 'sc_tj_icon_jg_xx@2x';
+        pricemark = 0;
+        updown = 'desc';
+      }
+      salesmark = 0;
+      salesImg = 'sort01';
+      screen = 2;
+    }else if(i == 2){
+      if (salesmark == 0) {
+        salesImg = 'sc_tj_icon_jg_xs@2x';
+        salesmark = 1;
+        updown = 'desc';
+      } else if (salesmark == 1) {
+        salesImg = 'sc_tj_icon_jg_xx@2x';
+        salesmark = 0;
+        updown = 'asc';
+      }
+      pricemark = 0;
+      priceImg = 'sort01';
+      screen = 1;
+    }
     ee.setData({
       select: i,
       page: 1,
-      
-      loading: !0
+      pageall:1,
+      goodslist:[],
+      loading: !0,
+      allPrice: priceImg,
+      allSales: salesImg,
     });
   },
 
@@ -175,7 +250,16 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    var t = this;
+    console.log(t.data.page, t.data.pageall);
+    if (t.data.page <= t.data.pageall){
+      t.commodity();
+    }else{
+      t.setData({
+        loading: 0,
+        hiddcss: 1
+      })
+    }
   },
 
   /**

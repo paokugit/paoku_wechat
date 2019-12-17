@@ -2249,8 +2249,7 @@ image {
 
 .appraiseBox {
   width: 94%;
-  height: 436rpx;
-  background: pink;
+  background: #fff;
   padding: 24rpx 3%;
   border-radius: 20rpx;
   margin-top: 20rpx;
@@ -2282,12 +2281,12 @@ image {
 
 .label-box {
   width: 94%;
-  height: 60rpx;
   padding: 0 3%;
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .label-item {
@@ -2300,31 +2299,29 @@ image {
   align-items: center;
   color: #333;
   font-size: 24rpx;
-  margin-right: 24rpx;
+  margin: 0 24rpx 24rpx 0;
+
 }
 
 .store-slide-box {
   width: 100%;
-  height: 272rpx;
-  background: #ff6;
+  background: #fff;
   display: flex;
   align-items: center;
 }
 
 .scroll-view_H {
   width: 100%;
-  height: 272rpx;
   display: flex;
   white-space: nowrap;
 }
 
 .scroll-view-item_H {
   width: 654rpx;
-  height: 272rpx;
   background: #fff;
   display: inline-block;
   border-radius: 20rpx;
-  margin-left: 24rpx;
+  margin: 20rpx 0 0 24rpx;
   position: relative;
   box-shadow: 0px 0px 10rpx #e5e5e5;
 }
@@ -2339,7 +2336,6 @@ image {
   width: 382rpx;
   height: 272rpx;
   /* padding: 14rpx 22rpx; */
-  background: #f66;
   position: relative;
 }
 
@@ -2352,23 +2348,29 @@ image {
   top: 15rpx;
   left: 22rpx;
 }
+.appraiser-avatar image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
 
 .appraiser-name {
   width: auto;
   height: 60rpx;
   line-height: 60rpx;
-  background: #f0f;
   position: absolute;
   top: 15rpx;
   left: 97rpx;
   color: #000;
   font-size: 34rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .appraise-desc {
   width: 335rpx;
   height: 130rpx;
-  background: #f99;
   position: absolute;
   top: 90rpx;
   left: 22rpx;
@@ -2390,7 +2392,6 @@ image {
   position: absolute;
   left: 22rpx;
   bottom: 15rpx;
-  background: #f88;
 }
 
 .appraise-item-right {
@@ -2403,7 +2404,10 @@ image {
 .appraise-img {
   width: 272rpx;
   height: 272rpx;
-  background: #f99;
+}
+.appraise-img image{
+  width: 100%;
+  height: 100%;
 }
 
 .appraise-img-num {
@@ -2472,7 +2476,7 @@ image {
   width: 94%;
   height: 430rpx;
   padding: 24rpx 3%;
-  background: pink;
+  background: #fff;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -2499,6 +2503,11 @@ image {
   position: absolute;
   left: 0rpx;
   top: 0rpx;
+}
+.shopImg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .shopName {
@@ -2532,9 +2541,7 @@ image {
 
 .showcaseBox {
   width: 98%;
-  height: 320rpx;
   padding: 0 1%;
-  background: #ff6;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -2543,7 +2550,6 @@ image {
 .showcase-item {
   width: 200rpx;
   height: 310rpx;
-  background: #f99;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2554,13 +2560,16 @@ image {
   width: 200rpx;
   height: 180rpx;
   border-radius: 20rpx;
-  background: #0f0;
+}
+.showcaseImg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
 }
 
 .showcase-title {
   width: 200rpx;
   height: 70rpx;
-  background: #99f;
   line-height: 35rpx;
   display: -webkit-box;
   overflow: hidden;
@@ -2582,7 +2591,7 @@ image {
   width: 94%;
   height: 362rpx;
   padding: 24rpx 3%;
-  background: pink;
+  background: #fff;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -2594,7 +2603,6 @@ image {
   font-size: 30rpx;
   display: flex;
   align-items: center;
-  background: #0f0
 }
 .detail-headline-box{
   width: 100%;
@@ -2629,7 +2637,6 @@ image {
 /* xph优惠券、活动 开始*/
 .special-offer{
   width: 100%;
-  height: 300rpx;
   background: #fff;
   border-radius: 20rpx;
   margin-top: 20rpx;
@@ -2667,9 +2674,7 @@ image {
   display: flex;
   align-items: center;
 }
-.distance{
-  margin-bottom: 30rpx;
-}
+
 .biaoti{
   font-size: 22rpx;
   color: #ff0000;
@@ -2758,10 +2763,7 @@ image {
   overflow: hidden;
   margin-bottom: 15rpx;
 }
-.cuxiaoitem{
-  font-size: 22rpx;
-  color: #999;
-}
+
 .cuxiaoimg{
   width: 15rpx;
   height: 24rpx;
@@ -2809,13 +2811,16 @@ image {
   text-align: center;
 }
 .leftquota{
-  font-size: 70rpx;
+  font-size: 40rpx;
   color: #fff;
   margin-bottom: 15rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .leftquota::before{
   content: "￥";
-  font-size: 40px;
+  font-size: 50rpx;
   color: #fff;
 }
 .condition{
@@ -2830,6 +2835,12 @@ image {
   right: 0;
   top: 0;
 }
+.condition,.astrict{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 .astrict{
   font-size: 30rpx;
   color: #333;
@@ -2841,8 +2852,11 @@ image {
   justify-content: space-between;
   align-items: center;
   margin: 0 20rpx;
+  position: absolute;
+  bottom: 30rpx;
 }
 .right-time{
+  width: 250rpx;
   font-size: 22rpx;
   color: #333;
 }
@@ -2913,10 +2927,7 @@ image {
   margin-left: 15rpx;
 }
 
-.refuse{
-  font-size: 26rpx;
-  color: #333;
-}
+
 
 .radio{
   width: 60rpx;

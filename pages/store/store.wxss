@@ -83,11 +83,12 @@ swiper {
 .activity-item-box {
   width: 702rpx;
   height: 365rpx;
+  margin-bottom: 10rpx;
 }
 
 .carousel_swiper {
   width: 100%;
-  height: 365rpx;
+  height: 380rpx;
   display: block;
   position: relative;
   background: #f4f4f4;
@@ -438,7 +439,7 @@ swiper {
   margin-top: 40rpx;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .up-down {
@@ -458,7 +459,7 @@ swiper {
 }
 
 .tab-item, .tab-item-special {
-  width: 344rpx;
+  width: 350rpx;
   height: 620rpx;
   border-radius: 20rpx;
   display: flex;
@@ -516,7 +517,7 @@ swiper {
 }
 
 .label-box {
-  width: 157rpx;
+  width: 180rpx;
   height: 34rpx;
   position: relative;
   display: flex;
@@ -543,15 +544,15 @@ swiper {
 }
 
 .zkb-price {
-  width: 85rpx;
+  width: 100rpx;
   height: 34rpx;
   color: #f9570e;
   font-size: 22rpx;
   position: absolute;
   right: 0rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .originalprice {
@@ -563,9 +564,12 @@ swiper {
   width: 312rpx;
   height: 60rpx;
   padding: 0 20rpx;
-  display: flex;
-  align-items: center;
   margin-top: 15rpx;
+}
+.originalprice,.discountprice-box{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .tab-item-special {
@@ -573,17 +577,23 @@ swiper {
 }
 
 .headline {
-  color: #fff;
+  width: 180rpx;
   font-size: 30rpx;
   font-weight: bold;
-  margin-top: 46rpx;
-  margin-bottom: 14rpx;
+  margin: 46rpx auto 14rpx;
 }
 
 .subhead {
-  color: #fff;
+  width: 240rpx;
   font-size: 24rpx;
   margin-bottom: 30rpx;
+}
+.headline,.subhead{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  text-align: center;
 }
 
 .special-img {
@@ -608,12 +618,13 @@ swiper {
   margin-top: 54rpx;
 }
 
-.readMore {
-  width: 100%;
-  height: 100rpx;
-  color: #666;
-  font-size: 28rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.base{
+  margin: 50rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #9b9b9b;
+}
+
+.fui-loading{
+  margin-bottom: 10rem;
 }

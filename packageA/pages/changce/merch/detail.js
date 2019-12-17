@@ -7,6 +7,10 @@ var pricemark = 0;
 var salesmark = 0;
 var useropenid = "";
 var pagetotal = 0;
+
+var cost = 0;
+var selling = 0;
+var signInd = 0;
 Page({
   data: {
     merchid: 0, 
@@ -33,9 +37,11 @@ Page({
     message:{},
     couponList:[],
     tuiList:[],
+    allList:[],
     conceal:0,
 
-    attention:0
+    attention:0,
+    scrollTop:0
   },
   onLoad: function (optin) {
     var userinfo = t.getCache('userinfo');
@@ -57,20 +63,25 @@ Page({
 
   checkCurrent: function (e) {
     const mx = this;
-    var ind = e.currentTarget.dataset.current;
-    if(ind == 0 || ind == 3){
-      mx.goodsTui();
-    } else if(ind == 1){
-      mx.kinetic();
-    } else if (ind == 2){
-      mx.update();
-    }
+    signInd = e.currentTarget.dataset.current;
     mx.setData({
-      currentData: ind,
-      tuiList:[],
-      page:0,
-      pagetotal:0
-    })
+      currentData: signInd,
+      tuiList: [],
+      page: 0,
+      pagetotal: 0,
+      nowSign:0,
+      allPrice: 'sc_tj_icon_jg_nor@2x',
+      allSales: 'sc_tj_icon_jg_nor@2x',
+    });
+    if (signInd == 0){
+      mx.goodsTui();
+    } else if (signInd == 1){
+      mx.kinetic();
+    } else if (signInd == 2){
+      mx.update();
+    } else if (signInd == 3){
+      mx.allgoods();
+    }
   },
 
   sortBtn:function(){
@@ -97,14 +108,20 @@ Page({
       salesImg = 'sc_tj_icon_jg_nor@2x';
       pricemark = 0;
       salesmark = 0;
+      cost = 0;
+      selling = 0;
     }else if (mowtxt == 1){
       
       if (pricemark == 0){
         priceImg = 'sc_tj_icon_jg_xs@2x';
         pricemark = 1;
+        cost = 2;
+        selling = 0;
       } else if (pricemark == 1){
         priceImg = 'sc_tj_icon_jg_xx@2x';
         pricemark = 0;
+        cost = 1;
+        selling = 0;
       }
       salesImg = 'sc_tj_icon_jg_nor@2x';
       salesmark = 0;
@@ -113,9 +130,13 @@ Page({
       if (salesmark == 0){
         salesImg = 'sc_tj_icon_jg_xs@2x';
         salesmark = 1;
+        cost = 0;
+        selling = 1;
       } else if (salesmark == 1){
         salesImg = 'sc_tj_icon_jg_xx@2x';
         salesmark = 0;
+        cost = 0;
+        selling = 2;
       }
       priceImg = 'sc_tj_icon_jg_nor@2x';
       pricemark = 0;
@@ -124,8 +145,12 @@ Page({
     that.setData({
       nowSign: mowtxt,
       allPrice: priceImg,
-      allSales: salesImg
-    })
+      allSales: salesImg,
+      allList: [],
+      page: 0,
+      pagetotal: 0,
+    });
+    that.allgoods();
   },
 
   onShow:function(){
@@ -181,6 +206,7 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
+        console.log(res);
         m.datalist(res);
       },
       fail: function (res) {
@@ -191,14 +217,20 @@ Page({
   },
   datalist:function(s){
     console.log(s);
+    var longitude = 0;
+    var latitude = 0;
+    if (s != undefined){
+      longitude=s.longitude;
+      latitude=s.latitude;
+    }
     var t = this;
     wx.request({
       url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.index&comefrom=wxapp',
       data: {
         openid: useropenid,
         merch_id: t.data.merchid,
-        lng: s.longitude,
-        lat: s.latitude
+        lng: longitude,
+        lat: latitude
       },
       header: {
         'content-type': 'application/json'
@@ -309,25 +341,60 @@ Page({
       },
       success(res) {
         console.log(res.data);
-        // if (res.data.error == 0) {
-        //   pagetotal = res.data.data.pagetotal,
-        //     p.setData({
-        //       show: !0,
-        //       loading: !1,
-        //       page: p.data.page + 1,
-        //       tuiList: p.data.tuiList.concat(res.data.data.list)
-        //     });
-        // } else if (res.data.error == 1) {
-        //   wx.showToast({
-        //     title: res.data.message,
-        //     icon: 'none',
-        //     duration: 2000
-        //   })
-        // }
+        if (res.data.error == 0) {
+            k.setData({
+              show: !0,
+              loading: !1,
+              tuiList: res.data.data.list
+            });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       }
     })
   },
-  
+
+  // 全部商品
+  allgoods:function(){
+    var pa = this;
+    pa.setData({
+      loading: !0
+    })
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
+      data: {
+        page: pa.data.page,
+        merch_id: pa.data.merchid,
+        price:cost,
+        sale: selling
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+            pagetotal = res.data.data.pagetotal,
+            pa.setData({
+              show: !0,
+              loading: !1,
+              page: pa.data.page + 1,
+              allList: pa.data.allList.concat(res.data.data.list)
+            });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
 
   // 关注
   clickBtn:function(e){
@@ -383,7 +450,16 @@ Page({
     var th = this;
     console.log(th.data.page,pagetotal);
     if (th.data.page <= pagetotal){
-      th.goodsTui();
+      if (signInd == 0){
+        th.goodsTui();
+      } else if (signInd == 1){
+        th.kinetic();
+      } else if (signInd == 2){
+        th.update();
+      } else if (signInd == 3){
+        th.allgoods();
+      }
+      
     }else{
       th.setData({
         conceal:1
@@ -395,6 +471,11 @@ Page({
     var e = a.pdata(t).id;
     e > 0 && wx.navigateTo({
       url: "/pages/sale/coupon/detail/index?id=" + e
+    })
+  },
+  onPageScroll: function (e) {
+    this.setData({
+      scrollTop: e.scrollTop
     })
   }
 })

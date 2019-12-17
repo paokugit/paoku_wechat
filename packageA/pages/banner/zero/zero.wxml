@@ -1,18 +1,18 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="{{zerotit}}"></navigation>
 <loading wx:if="{{!show}}">加载中...</loading>
 
-<view>
+<view wx:if="{{show}}">
   <navigator url="/pages/goods/index/index?fromsearch=1" class="search">
     <view class="search-frame">输入关键字进行搜索</view>
     <image src="{{globalimg}}/search@2x.png"></image>
   </navigator>
 
-  <view class="carousel">
+  <view class="carousel" wx:if="{{banner.length>0?true:false}}">
     <swiper autoplay="true" interval="3000" circular="true" current="{{swiperCurrent}}" bindchange="swiperChange" >
       <block wx:for="{{banner}}" wx:key="index">
         <swiper-item>
           <image class="swiper-item" src="{{item.thumb}}"></image>
-        </swiper-item>
+        </swiper-item> 
       </block>
     </swiper>
     <view class="dots">
@@ -23,7 +23,7 @@
   </view> 
 
   <!-- 0元兑 -->
-  <view wx:if="{{toggle == 5?true:false}}">
+  <view wx:if="{{list.length>0?true:false}}">
     <block wx:for="{{list}}" wx:key="index">
       <navigator class="goodsList flexcss" url="/pages/goods/detail/index?id={{item.id}}">
         <view class="listImg"><image src="{{item.thumb}}"></image></view>
@@ -50,9 +50,9 @@
   </view>
 
   <!-- 分享赚 -->
-  <view wx:if="{{toggle == 6?true:false}}">
+  <view wx:if="{{toggle==6?true:false}}">
     
-    <view class="{{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px">
+    <view class="{{scrollTop >160?'topnavFixed':'' }}" style="top:{{scrollTop >160?gloheight:''}}px;">
       <navigator url="/pages/goods/index/index?fromsearch=1" class="search" style="{{scrollTop >160?'':'display:none'}}">
         <view class="search-frame">输入关键字进行搜索</view>
         <image src="{{globalimg}}/search@2x.png"></image>
@@ -73,29 +73,33 @@
       </view>
     </view>
 
-    <block wx:for="{{list}}" wx:key="index">
-      <navigator class="goodsList flexcss" url="/pages/goods/detail/index?id={{item.id}}">
-        <view class="listImg"><image src="{{item.thumb}}"></image></view>
+    <view wx:if="{{goodslist.length > 0?true:false}}">
+      <block wx:for="{{goodslist}}" wx:key="index">
+        <navigator class="goodsList flexcss" url="/pages/goods/detail/index?id={{item.id}}">
+          <view class="listImg"><image src="{{item.thumb}}"></image></view>
 
-        <view class="listDetail">
-          <view class="goods-name">{{item.title}}</view>
-          
-          <view class="money-people flexcss">
-            <view class="money-fen">{{item.marketprice}}</view>
-            <view class="people-fen">{{item.total}}人已分享</view>
-          </view>
+          <view class="listDetail">
+            <view class="goods-name">{{item.title}}</view>
+            
+            <view class="money-people flexcss">
+              <view class="money-fen">{{item.marketprice}}</view>
+              <view class="people-fen">{{item.order}}人已购</view>
+            </view>
 
-          <view class="flexcss snapBtn">
-            <view class="postage">包邮</view>
-            <view class="fen-xiang">
-              <image src="{{globalimg}}/fxz_icon_zf@2x.png"></image>
-              <text>赚1.8元</text>
+            <view class="flexcss snapBtn ">
+              <view class="postage" wx:if="{{item.sendfree == '包邮'?true:false}}">{{item.sendfree}}</view>
+              <view class="postage" wx:if="{{item.sendfree != '包邮'?true:false}}">库存：{{item.sendfree}}</view>
+              <view class="fen-xiang" catchtap="fenx">
+                <button class='inviteBtn' open-type='share' data-id="{{item.id}}" data-img="{{item.thumb}}" data-title="{{item.title}}"></button>
+                <image src="{{globalimg}}/fxz_icon_zf@2x.png"></image>
+                <text>赚{{item.agent_devote}}</text>
+              </view>
             </view>
           </view>
-        </view>
-        
-      </navigator>
-    </block>
+        </navigator>
+      </block>
+    </view>
+    
   </view>
 
   <block wx:if="{{loading}}">
@@ -105,6 +109,6 @@
     </view>
   </block>
 
-  <view class="base">到底了哦</view>
+  <view class="base" style="{{hiddcss == 0?'display:none':''}}">到底了哦</view>
 
 </view>

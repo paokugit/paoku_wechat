@@ -119,6 +119,12 @@
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
 }
+image{
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
 
 .business-txt{
   height: 85rpx;

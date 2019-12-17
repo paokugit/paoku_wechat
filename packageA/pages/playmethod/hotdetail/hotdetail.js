@@ -34,7 +34,7 @@ Page({
                     createtime: e.message.createtime
                 })
             }
-        });
+        }); 
     },
 
     /**

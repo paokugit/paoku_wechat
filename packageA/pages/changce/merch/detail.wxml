@@ -89,7 +89,7 @@
           </view>
           <view class="business-txt">
             <text class="reminder" wx:if="{{item.ishot == 0?false:true}}">热销</text>
-            <text class="reminder" wx:if="{{item.istime == 0?false:true}}">显示购买</text>
+            <text class="reminder" wx:if="{{item.istime == 0?false:true}}">限时抢购</text>
             <text class="reminder" wx:if="{{item.issendfree == 0?false:true}}">包邮</text>
             <text class="article-name">{{item.title}}</text>
           </view>
@@ -108,34 +108,35 @@
 
     <!-- 上新内容 -->
     <view class="update-list" style="{{currentData == 2? '' : 'display:none'}}">
-      <view class="update-time">
-        <view class="update-box">
-          <image class="update-image" src="{{globalimg}}/dbxq_icon_sx@2x.png"></image>
-          <view class="update-text">10月24日本店上新</view>
-        </view>
-      </view>
-
-      <view class="referral-business">
-
-        <view class="businessList">
-          <view class="business-img"></view>
-          <view class="business-txt">
-            <text class="reminder">热销</text>
-            <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
-          </view>
-          <view class="business-figure">
-            <view class="number">
-              <view class="number-money">99</view>
-              <view class="number-people">999人付款</view>
-            </view>
-            <view class="shopping-car">
-              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
-            </view>
+      <block wx:for="{{tuiList}}" wx:key="idnex">
+        <view class="update-time">
+          <view class="update-box">
+            <image class="update-image" src="{{globalimg}}/dbxq_icon_sx@2x.png"></image>
+            <view class="update-text">{{item.days}}本店上新</view>
           </view>
         </view>
-        
-      </view>
 
+        <view class="referral-business">
+          <block wx:for="{{item.goods}}"  wx:for-item="itemdt" wx:key="indexdt">
+            <navigator class="businessList" url="/pages/goods/detail/index?id={{itemdt.id}}">
+              <view class="business-img">
+                <image src="{{itemdt.thumb}}"></image>
+              </view>
+              <view class="business-txt">
+                <text class="article-name">{{itemdt.title}}</text>
+              </view>
+              <view class="business-figure">
+                <view class="number">
+                  <view class="number-money">{{itemdt.marketprice}}</view>
+                </view>
+                <view class="shopping-car">
+                  <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </block>
     </view>
 
     <block wx:if="{{loading}}">
@@ -236,7 +237,7 @@
 
   <!-- 全部商品内容 -->
   <view style="{{currentData == 3 ? '' : 'display:none'}}">
-    <view class="all-filtrate">
+    <view class="all-filtrate {{scrollTop >84?'fixation':'' }}" style="top:{{scrollTop >84?gloheight:''}}px">
       <view class="all-synthesize {{nowSign == 0?'nowActive':''}}" data-now = "0" bindtap='checkAllt'>综合</view>
       
       <view class="all-price"  data-now = "1" bindtap='checkAllt'>
@@ -258,52 +259,63 @@
     <view>
       <!-- 状态1 -->
       <view class="referral-business" style="{{sortWay == 0?'':'display:none'}}">
-        <view class="businessList">
-          <view class="business-img"></view>
-          <view class="business-txt">
-            <text class="reminder">热销</text>
-            <text class="article-name">利仁D1803多功能开水煲全自动加厚壶</text>
-          </view>
-          <view class="business-figure">
-            <view class="number">
-              <view class="number-money">99</view>
-              <view class="number-people">999人付款</view>
+        <block wx:for="{{allList}}" wx:key="index">
+          <navigator class="businessList" url="/pages/goods/detail/index?id={{item.id}}">
+            <view class="business-img">
+              <image src="{{item.thumb}}"></image>
             </view>
-            <view class="shopping-car">
-              <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+            <view class="business-txt">
+              <text class="reminder" wx:if="{{item.ishot == 0?false:true}}">热销</text>
+              <text class="reminder" wx:if="{{item.istime == 0?false:true}}">限时抢购</text>
+              <text class="reminder" wx:if="{{item.issendfree == 0?false:true}}">包邮</text>
+              <text class="article-name">{{item.title}}</text>
             </view>
-          </view>
-        </view>
-
+            <view class="business-figure">
+              <view class="number">
+                <view class="number-money">{{item.marketprice}}</view>
+                <view class="number-people">{{item.sales}}人付款</view>
+              </view>
+              <view class="shopping-car">
+                <image src="{{globalimg}}/icon_gwc@2x.png"></image>
+              </view>
+            </view>
+          </navigator>
+        </block>
       </view>
 
       <!-- 状态2 -->
       <view class="state-two" style="{{sortWay == 1?'':'display:none'}}">
-        <view class="stateList">
-          <view class="state-image"></view>
-          <view class="state-right">
-            <view class="state-right-top">
-              <text class="state-right-activity">限时抢购</text>
-              <text class="state-right-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙时擦刹车撒</text>
-            </view>
-            <view>
-              <view class="freight">包邮</view>
-              <view class="state-right-amount">
-                <view class="state-right-sum">
-                  <view class="state-right-price">34.90</view>
-                  <view class="state-right-payment">1万人已付款</view>
+        <block wx:for="{{allList}}" wx:key="index">
+          <navigator class="stateList" url="/pages/goods/detail/index?id={{item.id}}" >
+            <view class="state-image"></view>
+            <view class="state-right">
+              <view class="state-right-top">
+                <text class="state-right-activity" wx:if="{{item.ishot == 0?false:true}}">热销</text>
+                <text class="state-right-activity" wx:if="{{item.istime == 0?false:true}}">限时抢购</text>
+                <text class="state-right-tit">{{item.title}}</text>
+              </view>
+              <view>
+                <view class="freight" wx:if="{{item.issendfree == 0?false:true}}">包邮</view>
+                <view class="state-right-amount" style="{{item.issendfree == 0?'padding-top: 20px;':''}}">
+                  <view class="state-right-sum">
+                    <view class="state-right-price">{{item.marketprice}}</view>
+                    <view class="state-right-payment">{{item.sales}}人已付款</view>
+                  </view>
+                  <image class="state-right-vehicle" src="{{globalimg}}/icon_gwc@2x.png"></image>
                 </view>
-                <image class="state-right-vehicle" src="{{globalimg}}/icon_gwc@2x.png"></image>
               </view>
             </view>
-          </view>
-        </view>
-
+          </navigator>
+        </block>
       </view>
 
-
-      <view class="on-earth" style="margin-bottom: 150rpx;">到底了哦</view>
-
+      <block wx:if="{{loading}}">
+        <view class="fui-loading">
+          <view class="icon"></view>
+          <view class="text">正在加载</view>
+        </view>
+      </block>
+      <view class="on-earth" style="margin-bottom:150rpx;{{conceal == 0?'display:none':''}}">到底了哦</view>
     </view>
 
 

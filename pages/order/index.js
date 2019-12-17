@@ -17,7 +17,7 @@ Page({
   },
   onLoad: function(a) {
     console.log(t.globalData)
-    this.setData({
+    this.setData({ 
       options: a,
       status: a.status || ""
     }), t.url(a), this.get_list();

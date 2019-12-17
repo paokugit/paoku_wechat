@@ -107,25 +107,22 @@
   </view> -->
   <!-- Ta的店 -->
   <view class="tabBox">
-    <block>
-      <block>
-        <view class="store-tab">
-          <view bindtap="myTab" class="item {{type==0?'activeA':''}}" data-type="0">推荐</view>
-          <view bindtap="myTab" class="item {{type==1?'activeA':''}}" data-type="1">上新</view>
-          <view bindtap="myTab" class="item {{type==2?'activeA':''}}" data-type="2">品质</view>
-          <view bindtap="myTab" class="item {{type==3?'activeA':''}}" data-type="3">特价</view>
-          <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">成都</view>
-        </view>
+    <view class="store-tab">
+      <block wx:for="{{goodsTui}}" wx:key = "index">
+        <view bindtap="myTab" class="item {{type==index?'activeA':''}}" data-type="{{index}}" data-id="{{item.cateid}}">{{item.cate}}</view>
       </block>
-    </block>
+      <view bindtap="myTab" class="item {{type==4?'activeA':''}}" data-type="4">同城</view>
+    </view>
+
     <view class="store-tab-con">
+
       <view class="store-tab-within">
         <view bindtap="myselect" class="item {{select==0?'activeB':''}}" data-select="0">综合</view>
         <view bindtap="myselect" class="item {{select==1?'activeB':''}}" data-select="1">
           <view class="up-down">
             <text>价格</text>
             <view class="up-down-box">
-              <image class="up-img" src="{{globalimg}}/sort01.png"></image>
+              <image class="up-img" src="{{globalimg}}/{{allPrice}}.png"></image>
             </view>
           </view>
 
@@ -134,56 +131,65 @@
           <view class="up-down">
             <text>销量</text>
             <view class="up-down-box">
-              <image class="up-img" src="{{globalimg}}/sort01.png"></image>
+              <image class="up-img" src="{{globalimg}}/{{allSales}}.png"></image>
             </view>
           </view>
         </view>
       </view>
+      
       <view>
         <view class="select-box">
-          <!-- <block wx:for="{{list}}">
-            
-          </block> -->
-          <block wx:for="{{goodsList}}" wx:key="index">
-            <view class="tab-item">
-              <view class="productImg">
-                <image src="{{item.thumb}}"></image>
-                <view class="rec-box">
-                  <image src="{{globalimg}}/recommend01.png"></image>
+          
+          <block wx:for="{{goodslist}}" wx:key="index">
+            <block wx:if="{{item.adv == 0}}">
+              <view class="tab-item">
+                <view class="productImg">
+                  <image src="{{item.thumb}}"></image>
+                  <view class="rec-box">
+                    <image src="{{globalimg}}/recommend01.png"></image>
+                  </view>
+                </view>
+                <view class="productName">{{item.title}}</view>
+                <view class="productLabel">
+                  <view class="label-box">
+                    <image class="zkblabel" src="{{globalimg}}/zkblabel.png"></image>
+                    <view class="zkbtext">折扣宝</view>
+                    <view class="zkb-price">-￥{{item.deduct}}</view>
+                  </view>
+                  <view class="originalprice">￥{{item.productprice}}</view>
+                </view>
+                <view class="discountprice-box">
+                  <text style="color:#ff0014;font-size:28rpx">抵后</text>
+                  <text style="color:#ff0137;font-size:26rpx;margin-left:6rpx">￥</text>
+                  <text style="color:#ff0137;font-size:50rpx">{{item.price}}</text>
                 </view>
               </view>
-              <view class="productName">{{item.title}}</view>
-              <view class="productLabel">
-                <view class="label-box">
-                  <image class="zkblabel" src="{{globalimg}}/zkblabel.png"></image>
-                  <text class="zkbtext">折扣宝</text>
-                  <text class="zkb-price">-￥260</text>
-                </view>
-                <view class="originalprice">￥{{item.productprice}}</view>
-              </view>
-              <view class="discountprice-box">
-                <text style="color:#ff0014;font-size:28rpx">抵后</text>
-                <text style="color:#ff0137;font-size:26rpx;margin-left:6rpx">￥</text>
-                <text style="color:#ff0137;font-size:50rpx">139</text>
-              </view>
-            </view>
+            </block>
 
-            <view class="tab-item-special">
-              <view class="headline">主标题</view>
-              <view class="subhead">副标题</view>
-              <view class="special-img">
-                <!-- <image src="https://www.paokucoin.com/attachment/images/1/2019/09/E3X0rX7jXaXZ3aXKQmnaRlzzXAN0m3.jpg"></image> -->
+            <block wx:if="{{item.adv == 1}}">
+              <view class="tab-item-special">
+                <view class="headline">{{item.title}}</view>
+                <view class="subhead">{{item.content}}</view>
+                <view class="special-img">
+                  <image src="{{item.thumb}}"></image>
+                </view>
+                <view class="special-btn"><p>查看</p></view>
               </view>
-              <view class="special-btn">查看</view>
-            </view>
+            </block>
           </block>
-        
-        
+
         </view>
+
+        <block wx:if="{{loading}}">
+          <view class="fui-loading">
+            <view class="icon"></view>
+            <view class="text">正在加载...</view>
+          </view>
+        </block>
+
+        <view class="base" style="{{hiddcss == 0?'display:none':''}}">到底了哦</view>
+
       </view>
     </view>
   </view>
-  <!-- 查看更多 -->
-  <view class="readMore">查看更多</view>
-  <!-- 查看更多 -->
 </view>
