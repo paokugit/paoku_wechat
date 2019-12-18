@@ -319,7 +319,6 @@ Page({
   },
   submit: function() {
     var tt = this
-    console.log(this.data.realname, this.data.mobile)
     if (tt.data.realname == "") {
       return void a.toast(tt, "请填写收件人")
     } else {
@@ -334,7 +333,29 @@ Page({
           if (tt.data.detailaddress == "") {
             return void a.toast(tt, "请填写详细地址")
           } else {
-            console.log('保存地址')
+            console.log('保存地址');
+            
+            var sheng = '';
+            var shi = '';
+            var qu = '';
+            var xian = '';
+            if (tt.data.selectProvinceId != undefined) {
+              console.log('省');
+              sheng = tt.data.selectProvinceId;
+            }
+            if (tt.data.selectCityId != undefined) {
+              console.log('市');
+              shi = tt.data.selectCityId;
+            }
+            if (tt.data.selectAreaId != undefined) {
+              console.log('区');
+              qu = tt.data.selectAreaId;
+            }
+            if (tt.data.selectTownId != undefined){
+              console.log('县');
+              xian = tt.data.selectTownId;
+            }
+            
             wx.request({
               url: 'https://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=app.superior.add_address&comefrom=wxapp',
               data: {
@@ -342,13 +363,13 @@ Page({
                 realname: tt.data.realname,
                 mobile: tt.data.mobile,
                 province: tt.data.addressCity[0],
-                province_id: tt.data.selectProvinceId,
+                province_id: sheng,
                 city: tt.data.addressCity[1],
-                city_id: tt.data.selectCityId,
+                city_id: shi,
                 area: tt.data.addressCity[2],
-                area_id: tt.data.selectAreaId,
+                area_id: qu,
                 street: tt.data.addressCity[3],
-                street_id: tt.data.selectTownId,
+                street_id: xian,
                 address: tt.data.detailaddress
               },
               header: {

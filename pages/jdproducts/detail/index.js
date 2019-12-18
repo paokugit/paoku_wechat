@@ -9,7 +9,9 @@ var e, a, o = getApp(),
   u = 0,
   g = o.requirejs("biz/selectdate");
 var f = getApp()
-var totalprice = 0
+var totalprice = 0;
+var level = 0;
+var agentlevel = 0;
 Page({
 
   /**
@@ -49,7 +51,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
+    var userinfo = f.getCache('userinfo');
+    console.log(userinfo);
+    agentlevel = userinfo.agentlevel;
+
     var t = this
     t.setData({
       goodsid: options.id
@@ -63,6 +68,7 @@ Page({
     }, function(e) {
       console.log(e)
       if (e.error == 0) {
+        level = e.data.level;
         that.setData({
           show: !0,
           imgUrls: e.data.img,
@@ -113,12 +119,40 @@ Page({
     // console.log(aa.data.num)
   },
   selectBuy: function() {
-    var bb = this
-    // console.log(bb.data.num)
-    bb.setData({
-      maskshow: true,
-      buyshow: true,
-    })
+    var bb = this; 
+    console.log(bb.data.num);
+    console.log(agentlevel, level);
+    if (agentlevel>=level){
+      bb.setData({
+        maskshow: true,
+        buyshow: true,
+      })
+    } else{
+      var grade = '';
+      if (level == 1){
+        grade = '健康达人';
+      } else if (level == 2){
+        grade = '星选达人';
+      } else if (level == 3) {
+        grade = '荣耀达人';
+      } else if (level == 4) {
+        grade = '钻石达人';
+      } else if (level == 5) {
+        grade = '店主';
+      }
+      wx.showModal({
+        title: '提示',
+        content: '该商品仅限' + grade +'及以上会员购买' ,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+    
   },
   maskBuy: function() {
     var cc = this

@@ -86,7 +86,7 @@
   <view class="fui-mask {{showPicker?'show':''}}" style="z-index: 1500"></view>
   <view>
     <view class="fui-navbar bottom-buttons {{iphonexnavbar}}">
-      <block wx:if="{{onsale==1}}">
+      <block wx:if="{{onsale==1}}"> 
         <view bindtap="selectBuy" class="nav-item btn buybtn" data-buytype="buy" data-id="{{goods.id}}" data-tap="{{active}}">立刻购买</view>
       </block>
       <block wx:else>

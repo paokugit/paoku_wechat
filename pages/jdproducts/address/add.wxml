@@ -33,7 +33,7 @@
             <input bindinput="streetChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{detailaddress}}"></input>
           </view>
         </view>
-      </view>
+      </view> 
       <!-- <view class="fui-mask {{showPicker?'show':''}}"></view> -->
       <view bindtap="submit" class="btn btn-danger block mtop">{{subtext}}</view>
       <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
