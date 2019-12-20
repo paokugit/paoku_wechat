@@ -32,18 +32,21 @@
     </view>
 
     <view class="switchover">
-      <view class="switchover-box" data-current = "0" bindtap='checkCurrent'>
-        <view class="tab-txt">推荐</view>
-        <view class="{{currentData == 0 ? 'tab-bor' : ''}}"></view>
-      </view>
       <view class="switchover-box" data-current = "1" bindtap='checkCurrent'>
         <view class="tab-txt ">活动</view>
         <view class="{{currentData == 1 ? 'tab-bor' : ''}}"></view>
       </view>
+
+      <view class="switchover-box" data-current = "0" bindtap='checkCurrent'>
+        <view class="tab-txt">推荐</view>
+        <view class="{{currentData == 0 ? 'tab-bor' : ''}}"></view>
+      </view>
+      
       <view class="switchover-box" data-current = "2" bindtap='checkCurrent'>
         <view class="tab-txt">上新</view>
         <view class="{{currentData == 2 ? 'tab-bor' : ''}}"></view>
       </view>
+      
       <view class="switchover-box" data-current = "3" bindtap='checkCurrent'>
         <view class="tab-txt">全部商品</view>
         <view class="{{currentData == 3 ? 'tab-bor' : ''}}"></view>

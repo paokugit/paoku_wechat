@@ -23,7 +23,7 @@ Page({
 
 
     // -----修改添加
-    currentData: 0,
+    currentData: 1,
     marqueePace: 1,//滚动速度
     marqueeDistance: 0,//初始滚动距离
     size: 30,
