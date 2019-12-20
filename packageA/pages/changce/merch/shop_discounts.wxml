@@ -1,0 +1,19 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="优惠券"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view wx:if="{{show}}">
+  <view class="shop_discounts">
+    <image class="shop_image" src="{{globalimg}}/dp_bg_yhj@2x.png"></image>
+    <view class="discounts_text">
+      <view class="discounts_tit">{{message.couponname}}</view>
+      <view class="discounts_time" style="{{message.timelimit == 0?'display:none':''}}">有效期{{message.timestart}}-{{message.timeend}}</view>
+      <view class="discounts_money">{{message.deduct}}</view>
+      <view class="discounts_condition">满{{message.enough}}使用</view>
+    </view>
+  </view>
+
+  <view class="getBtn" style="{{message.log == 0?'':'display:none'}}" catchtap="getBtn" data-quanid="{{message.id}}">确认领取</view>
+  <view class="get_succeed" style="{{message.log == 1?'':'display:none'}}">
+    <view class="succeed">领取成功</view>
+    <navigator url="/pages/sale/coupon/index/index" class="examine">查看更多优惠</navigator>
+  </view>
+</view>

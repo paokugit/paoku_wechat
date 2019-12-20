@@ -1,0 +1,46 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="评论详情"></navigation>
+<view>
+  
+  <view class="header">
+    <view class="head-critic flexCss">
+      <view class="critic-left flexCss">
+        <view class="critic-img"></view>
+        <view>
+          <view class="critic-name">苏萌</view>
+          <view class="critic-time">今天16：40</view>
+        </view>
+      </view>
+
+      <view class="critic-right flexCss">
+        <image class="zanimg" src="{{globalimg}}/{{iconA}}.png"></image>
+        <view class="icontxt">54</view>
+      </view>
+    </view>
+
+    <view class="head-text">你喜欢那个颜色？</view>
+  </view>
+
+  <block wx:for="{{2}}" wx:key="index">
+    <view class="list">
+      <view class="head-critic flexCss">
+        <view class="critic-left flexCss">
+          <view class="list-img"></view>
+          <view>
+            <view class="critic-name list-name">杨洋超爱笑</view>
+            <view class="critic-time">今天16：40</view>
+          </view>
+        </view>
+
+        <view class="critic-right flexCss">
+          <image class="zanimg" src="{{globalimg}}/{{iconA}}.png"></image>
+          <view class="icontxt">54</view>
+        </view>
+      </view>
+
+      <view class="list-text">回复：<text>@小和尚</text>你喜欢那个颜色？</view>
+    </view>
+  </block>
+
+
+
+</view>

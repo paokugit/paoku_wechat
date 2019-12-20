@@ -16,7 +16,7 @@ Page({
         gloheight: i.globalData.gloheight,
         
         merchname: '',
-        logo: "",
+        logo: "", 
         address: "",
         wxsignal: "",
         main_business: "",
@@ -34,7 +34,9 @@ Page({
         var a = this
         var userinfo = f.getCache('userinfo');
         useropenid = userinfo.openid
-        console.log(useropenid);
+        
+      console.log(options);
+
         var newpos = i.getCache("mypos");
         s.get("myown/shophome/index", {
             openid: useropenid,
@@ -43,9 +45,11 @@ Page({
             lng: newpos.lng
         }, function (e) {
             console.log(e)
+          console.log(e.message.logo);
             merchphone = e.message.mobile
             merchid = e.message.id
             a.setData({
+                show: !0,
                 merchid: merchid,
                 merchname: e.message.merchname,
                 logo: e.message.logo,

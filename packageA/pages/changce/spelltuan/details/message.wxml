@@ -1,0 +1,190 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品详情"></navigation>
+<view>
+  <view class="header">
+    <swiper circular="true" class="header-sqiper" indicatorDots="true" style="width:{{advWidth}}px;height:{{advHeight}}px;">
+      <block wx:for="{{goodimg}}" wx:key="*this">
+        <swiper-item>
+          <image mode="aspectFit" src="{{item}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="unity-detail">
+    <view class="unity-people">3人团</view>
+    <view class="untiy-time">距离结束仅剩12时16分26秒</view>
+  </view>
+
+  <view class="goods-message">
+
+    <view class="price-focus flexcss">
+      <view class="goods-price">
+        <view class="goods-cash">34.90</view>
+        <view class="goods-original">￥134</view>
+      </view>
+
+      <view class="goods-focus">
+        <image class="iconImg" src="{{globalimg}}/{{wei_zan}}"></image>
+        <view class="focutxt">{{focusTxt}}</view>
+      </view>
+    </view>
+
+    <view class="goods-name">新品【三只松鼠_曲奇陷阱160gx2】零食烘焙 甜品饼干手工爆浆软心去曲奇饼</view>
+
+    <view class="goods-standard">
+      <!-- <block wx:for="{{guige}}" wx:key="index">  -->
+      <view>750gx1盒</view>
+      <!-- </block> -->
+    </view>
+
+    <view class="goods-pledge">
+      <image class="safeguard-img" src="{{globalimg}}/sc_tdd_inco_xr@2x.png"></image>
+      <view class="goods-pledge-txt">正品保证</view>
+    </view>
+  </view>
+
+  <view class="spell-detail">
+    <view class="spell-detail-title">
+      <image class="spell-tit-img" src="{{globalimg}}/hd_img_z@2x.png"></image>
+      <view class="spell-detail-tit-txt">3人正在拼团，可直接参加</view>
+      <image class="spell-tit-img" src="{{globalimg}}/hd_img_z@2x.png"></image>
+    </view>
+
+    <block wx:for="{{2}}" wx:key="index">
+      <view class="spell-list flexcss">
+        <view class="spell-portrait-name flexcss">
+          <view class="portrait-img"></view>
+          <view class="soell-name">莫问如风</view>
+        </view>
+
+        <view class="spell-right flexcss">
+          <view class="people-time">
+            <view class="people-time-tetx">2人拼，还差
+              <text>1人</text> 拼成</view>
+            <view class="residue-time">剩余01:15:05.6</view>
+          </view>
+          <view class="go-spell">去拼团</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="examine">查看更多 ></view>
+  </view>
+
+  <view class="select-freight">
+    <view class="select-standard flexcss">
+      <view class="select-standard-txt">规格</view>
+      <image class="select-standard-img" src="{{globalimg}}/open10.18@2x.png"></image>
+    </view>
+    <view class="freight-show">在线支付（偏远地区邮费另）</view>
+  </view>
+
+  <view class="appraiseBox">
+    <view class="headline-box">
+      <view class="appraise-left">商品评价(8)</view>
+      <view class="appraise-right">
+        <view class="favorable-rate">好评98.9%</view>
+        <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+      </view>
+    </view>
+    <view class="label-box">
+      <view class="label-item">好吃</view>
+      <view class="label-item">好吃</view>
+      <view class="label-item">好吃</view>
+    </view>
+    <view class="store-slide-box">
+      <scroll-view class="scroll-view_H" scroll-x>
+        <view class="scroll-view-item_H">
+          <view class="scroll-view-flex">
+            <view class="appraise-item-left">
+              <view class="appraiser-avatar"></view>
+              <view class="appraiser-name">糖果</view>
+              <view class="appraise-desc">很好吃的零食，大家快来买呀，</view>
+              <view class="appraise-standard">规格:750g</view>
+            </view>
+            <view class="appraise-item-right">
+              <view class="appraise-img"></view>
+              <view class="appraise-img-num">3张</view>
+            </view>
+          </view>
+        </view>
+        <view class="scroll-view-item_H"></view>
+        <view class="scroll-view-item_H"></view>
+        <view class="scroll-view-item_H"></view>
+        <view class="appraise-readmore">
+          <view class="appraise-readmore-flex">
+            <view class="more-comment">更多评论</view>
+            <view class="more-line"></view>
+            <view class="more-eng">See more</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="shopBox">
+    <view class="shopbox-titlebox" bindtap='goStore'>
+      <view class="titlebox-left">
+        <view class="shopImg"></view>
+        <view class="shopName">跑库</view>
+        <view class="onsale-box">在售商品
+          <text class="onsale-num">30</text>件
+        </view>
+      </view>
+      <view class="titlebox-right">
+        <view class="favorable-rate">进店逛逛</view>
+        <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+      </view>
+    </view>
+    <view class="showcaseBox">
+      <view class="showcase-item">
+        <view class="showcaseImg"></view>
+        <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
+        <view class="showcase-price">￥36.6</view>
+      </view>
+      <view class="showcase-item"></view>
+      <view class="showcase-item"></view>
+    </view>
+  </view>
+
+  <view class="recommendBox">
+    <view class="recommend-headline">相关商品推荐</view>
+    <view class="showcaseBox">
+      <view class="showcase-item">
+        <view class="showcaseImg"></view>
+        <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
+        <view class="showcase-price">￥36.6</view>
+      </view>
+      <view class="showcase-item"></view>
+      <view class="showcase-item"></view>
+    </view>
+  </view>
+
+  <view class="detail-headline-box">
+    <view class="detail-line"></view>
+    <view class="detail-headline-text">商品详情</view>
+    <view class="detail-line"></view>
+  </view>
+
+  <view class="base-banner flexcss">
+    <button class="nav-item customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true">
+      <image class="kefuimg" src="{{globalimg}}/xq-inco_kefu@2x.png"></image>
+      <view class="label">客服</view>
+    </button>
+
+    <navigator class="nav-item external" openType="switchTab" url="/pages/index/index?merchid={{goods.merchid}}">
+      <image class="dianpuimg" src="{{globalimg}}/xq-inco_dianbu@2x.png"></image>
+      <view class="label">店铺</view>
+    </navigator>
+
+    <navigator class="alone-buy">
+      <view>￥38.80</view>
+      <view>单独购买</view>
+    </navigator>
+
+    <navigator class="spell-buy">
+      <view>￥28.80</view>
+      <view>发起拼团</view>
+    </navigator>
+  </view>
+</view>

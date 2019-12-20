@@ -3,8 +3,7 @@ var a, e, i = getApp(),
   s = i.requirejs("core");
 var f = getApp();
 var useropenid = ''
-var merchphone = ''
-var merchid = ''
+
 Page({
 
   /**
@@ -14,9 +13,7 @@ Page({
     globalimg: i.globalData.appimg,
     merchname: '',
     logo: "",
-    merchid: '',
     desc:'',
-
     showIcon: true,
     gloheight: i.globalData.gloheight 
   },
@@ -25,45 +22,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var a = this
-    var userinfo = f.getCache('userinfo');
-    useropenid = userinfo.openid
-    var newpos = i.getCache("mypos");
-    s.get("myown/shophome/index", {
-      openid: useropenid,
-      merch_id: options.id,
-      lat: newpos.lat,
-      lng: newpos.lng
-    }, function (e) {
-      merchphone = e.message.mobile
-      merchid = e.message.id
-      var name = ''
-      var headimg = ''
-      var neirong = ''
-      // 判断名称
-      if (e.message.merchname == '') {
-        name = '名称还没有哦'
-      } else {
-        name = e.message.merchname
+    var a = this;
+    console.log(options.id);
+    wx.request({
+      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.desc&comefrom=wxapp',
+      data: {
+        merch_id: options.id
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+          a.setData({
+            show: !0,
+            merchname: res.data.data.merchname,
+            logo: res.data.data.logo,
+            desc: res.data.data.desc,
+          })
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
       }
-      //判断店铺头像
-      if (e.message.logo == '') {
-        headimg = 'https://www.paokucoin.com/img/backgroup/heart-n@2x.png'
-      } else {
-        headimg = e.message.logo
-      }
-      //内容
-      if(e.message.desc==''){
-        neirong = ''
-      }else{
-        neirong = e.message.desc
-      }
-      a.setData({
-        merchname: name,
-        logo: headimg,
-        desc: neirong,
-      })
-
     })
   },
   /**

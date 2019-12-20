@@ -1,0 +1,245 @@
+page{
+  width: 100%;
+  height: 100%;
+}
+
+.header{
+  padding: 0 24rpx;
+  border-top: 1px solid #f8f8f8;
+  height: 120rpx;
+  justify-content: space-between;
+  background: #ffffff;
+}
+.headercss{
+  display: flex;
+  align-items: center;
+}
+
+.header-img{
+  width: 127rpx;
+  height: 80rpx;
+  background: red;
+  margin-right: 20rpx;
+}
+
+.header-name{
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+.header-people{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.header-attention{
+  width: 116rpx;
+  height: 49rpx;
+  text-align: center;
+  line-height: 49rpx;
+  font-size: 24rpx;
+  border-radius: 25rpx;
+}
+.header-wei{
+  background: #01d7a1;
+  color: #ffffff;
+}
+.header-yi{
+  border: 1px solid #e5e5e5;
+  color: #999999;
+}
+
+.caption{
+  padding:50rpx 24rpx 60rpx;
+  background: #ffffff;
+}
+.tit-activity{
+  font-size: 40rpx;
+  color: #333333;
+  margin-bottom:30rpx; 
+}
+
+.tit-tiem{
+  justify-content: space-between;
+}
+
+.tit-year,.lookPeople{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+
+.lookImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 9rpx;
+}
+
+.introduce{
+  font-size: 26rpx;
+  color: #333333;
+  padding:0 24rpx 61rpx; 
+  background: #ffffff;
+}
+
+.dealer{
+  padding: 0 24rpx 100rpx;
+  background: #ffffff;
+}
+
+.dealer-img{
+  width: 525rpx;
+  height: 525rpx;
+  background: red;
+  margin: 0 auto;
+}
+
+.dealer-price{
+  font-size: 40rpx;
+  color: #333333;
+  margin: 60rpx 0 40rpx;
+  text-align: right;
+}
+
+.dealer-text{
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.on-earth{
+  font-size: 28rpx;
+  color: #333333;
+  margin: 45rpx 45rpx 150rpx;
+  text-align: center;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.on-earth::before,.on-earth::after{
+  content: '';                
+  position: absolute;     
+  top: 52%;
+  background: #e0e0e0;
+  width: 150rpx;
+  height: 2rpx;
+}
+.on-earth::before{
+  left: 5%;
+}
+.on-earth::after{
+  right: 5%;
+}
+
+
+.discuss{
+  width: 100%;
+  height: 100rpx;
+  background: #ffffff;
+  justify-content: space-around;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.balltxt{
+  width: 285rpx;
+  height: 72rpx;
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 72rpx;
+  padding-left: 30rpx;
+  border-radius: 36rpx;
+  background: #f8f8f8;
+}
+
+.liuImg{
+  width: 34rpx;
+  height: 32rpx;
+}
+.zanimg{
+  width: 38rpx;
+  height: 36rpx;
+}
+.icontxt{
+  font-size: 34rpx;
+  color: #666666;
+  margin-left: 13rpx;
+}
+
+
+.imgBall{
+  background: #f8f8f8;
+
+}
+.all-comment{
+  height: 100rpx;
+  background: #f0f0f0;
+  line-height: 100rpx;
+  padding-left: 28rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+.review{
+  padding: 30rpx 20rpx 0;
+  background: #ffffff;
+}
+
+.review-head{
+  justify-content: space-between;
+}
+
+.review-img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  background: red;
+  margin-right: 15rpx;
+}
+
+.review-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 7rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.review-time{
+  font-size: 22rpx;
+  color: #929292;
+}
+
+.review-details{
+  font-size: 28rpx;
+  color: #333333;
+  padding: 30rpx 0 20rpx 81rpx;
+}
+
+.review-more{
+  background: #f8f8f8;
+  margin-left: 81rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.review-bord{
+  height: 1rpx;
+  background: #ebebeb;
+  margin: 35rpx 0 0 81rpx;
+}
+
+.state-one{
+  font-size: 28rpx;
+  color: #666665;
+  margin-bottom: 16rpx;
+}
+.replyName{
+  font-size: 28rpx; 
+  color: #01d7a1;
+}
+
+.state-look{
+  font-size: 24rpx;
+  color: #666665;
+}

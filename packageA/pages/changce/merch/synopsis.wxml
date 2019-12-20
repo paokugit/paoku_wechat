@@ -1,9 +1,12 @@
 <!--pages/changce/merch/synopsis.wxml-->
 <!-- 总的 -->
 <navigation id='Navigation' show-icon='{{showIcon}}' title="店铺简介"></navigation>
-<view class='all-box'>
+
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view class='all-box' wx:if="{{show}}">
   <!-- 两个 -->
-  <view class='nameandxie'>
+  <view class='nameandxie'> 
     <!-- 上边 -->
     <view class='mingcheng-nonediv'>
       <!-- 图片 -->
@@ -11,14 +14,14 @@
         <image class='img-image' src='{{logo}}'></image>
       </view>
       <view class='img-none' wx:if="{{logo ==''}}">
-        <image class='img-image' src='http://www.paokucoin.com/img/backgroup/moreuser@2x.png'></image>
+        <image class='img-image' src="{{globalimg}}/moreuser@2x.png"></image>
       </view>
       <view wx:if="{{merchname !=''}}" class="mingcheng-none-text">{{merchname}}</view>
       <view wx:if="{{merchname ==''}}" class="mingcheng-none-text">名字还没有哦</view>
     </view>
     <view class='lan-view' wx:if="{{desc==''}}">
       <view class='img-lan'>
-        <image class='img-image-er' src='http://www.paokucoin.com/img/backgroup/mnr@2x.png'></image>
+        <image class='img-image-er' src='{{globalimg}}/mnr@2x.png'></image>
       </view>
       <view class='lan-text'>店主有点懒，还没填写</view>
     </view>
