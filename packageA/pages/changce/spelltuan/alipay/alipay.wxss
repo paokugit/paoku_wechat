@@ -1,0 +1,127 @@
+.flexcss {
+  display: flex;
+  align-items: center;
+}
+
+.cashier-desk {
+  width: 100vw;
+  height: 100%;
+  background: #fff;
+}
+
+.header {
+  height: 240rpx;
+  text-align: center;
+  line-height: 100rpx;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.header-tit {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.header-money {
+  font-size: 60rpx;
+  color: #01d7a1;
+}
+
+.header-money::before {
+  content: "￥";
+  font-size: 40rpx;
+  color: #01d7a1;
+}
+
+.pay-way {
+  padding: 60rpx 24rpx;
+}
+
+.pay-way-tit {
+  font-size: 28rpx;
+  color: #a9a9a9;
+}
+
+.pay-css {
+  display: flex;
+  transition-duration: 300ms;
+  align-items: center;
+  overflow: hidden;
+  margin: 30rpx 0;
+}
+
+.wx-img{
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.fui-list-inner{
+  margin-left: 15rpx;
+}
+
+.subtitle image {
+  height: 32rpx;
+  width: 32rpx;
+  vertical-align: text-bottom;
+}
+
+.angle{
+  content: " ";
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 12rpx;
+  width: 12rpx;
+  border-width: 2px 2px 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  position: relative;
+  top: -8rpx;
+  margin-right: 4rpx;
+}
+
+.rvcimg{
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.yueimg{
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.pay-win{
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+}
+
+.pay-win-img{
+  width: 461rpx;
+  height: 252rpx;
+  margin: 120rpx 0 40rpx;
+}
+
+.pay-win-txt{
+  color: #333;
+  font-size: 54rpx;
+  text-align: center;
+}
+
+.order-form{
+  color: #01D7A1;
+  border: 1px solid #01D7A1;
+  margin: 140rpx auto 40rpx;
+}
+
+.return-home{
+  color: #999999;
+  border: 1px solid #E6E6E6;
+  margin: 0 auto;
+}
+.order-form,.return-home{
+  width: 600rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+}

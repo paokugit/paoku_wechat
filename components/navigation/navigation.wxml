@@ -2,11 +2,11 @@
   <view class="header" style="height:{{titleBarHeight}}px;padding-top:{{statusBarHeight}}px;background-color:{{backgroundColor}}" >
     <view wx:if="{{showIcon}}" class="title-bar">
       <view class="back" bindtap="headerBack">
-        <image src="https://www.paokucoin.com/img/backgroup/nav-fanhui.png"></image>
+        <image class="img" src="https://www.paokucoin.com/img/backgroup/nav-fanhui.png"></image>
       </view>
       <view class="line"></view>
       <view class="home" bindtap="headerHome">
-        <image src="https://dn-testimage.qbox.me/Files/fc/49/fc4958729bf1937667b68c78f495edeafe30f339_1030.png"></image>
+        <image class="img" src="https://dn-testimage.qbox.me/Files/fc/49/fc4958729bf1937667b68c78f495edeafe30f339_1030.png"></image>
       </view>
     </view>
     <view class="header-title" style="color:{{frontColor}}">{{title}}</view>

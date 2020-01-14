@@ -1,0 +1,65 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="{{hint == 0?'收银台':'支付成功'}}"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="cashier-desk" wx:if="{{show && hint==0}}">
+  
+  <view class="header">
+    <view class="header-tit">订单支付金额</view>
+    <view class="header-money">{{datalist.price}}</view>
+  </view>
+
+  <view class="pay-way">
+    <view class="pay-way-tit">请选择付款方式</view>
+
+    <view bindtap="pay" class="pay-css" data-type="wechat">
+      <image class="wx-img" src="{{globalimg}}/wx.png"></image>
+      <view class="fui-list-inner">
+        <view class="row">
+          <view class="row-text">微信支付</view>
+        </view>
+        <view class="subtitle">
+          <image alt="" src="{{globalimg}}/safe.png"></image>微信安全支付
+        </view>
+      </view>
+      <view class="angle"></view>
+    </view>
+
+
+    <view bindtap="pay" class="pay-css" data-type="RVC">
+      <image class="rvcimg" src="{{globalimg}}/rvc.png"></image>
+
+      <view class="fui-list-inner">
+        <view class="row">
+          <view class="row-text">RVC支付</view>
+        </view>
+        <view class="subtitle">当前RVC：
+          <text class="text-danger"><text>{{datalist.RVC}}</text></text>
+        </view>
+      </view>
+      <view class="angle"></view>
+    </view>
+
+    <view bindtap="pay" class="pay-css" data-type="credit2">
+      <image class="yueimg" src="{{globalimg}}/ye.png"></image>
+    
+      <view class="fui-list-inner">
+        <view class="row">
+          <view class="row-text">余额支付</view>
+        </view>
+        <view class="subtitle">当前余额：
+          <text class="text-danger">¥<text>{{datalist.credit2}}</text>
+          </text>
+        </view>
+      </view>
+      <view class="angle"></view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{hint == 1}}">
+  <view class="pay-win">
+    <image class="pay-win-img" src="{{globalimg}}/INCo_zfcg@2x.png"></image>
+    <view class="pay-win-txt">付款成功</view>
+    <navigator open-type="redirect" url="/packageA/pages/changce/spelltuan/order/order?status=7" class="order-form" open-type="redirect" role="navigation">查看订单</navigator>
+    <navigator open-type="switchTab" url="/pages/index/index" class="return-home" role="navigation">返回首页</navigator>
+  </view>
+</view>

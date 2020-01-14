@@ -30,7 +30,7 @@ Page({
   dataList:function(){
     var t = this;
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.coupon_detail&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.coupon_detail&comefrom=wxapp',
       data: {
         id: ticketId,
         openid: useropenid
@@ -60,7 +60,7 @@ Page({
     var r = this;
     console.log(e.target.dataset.quanid);
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.coupon_receive&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.coupon_receive&comefrom=wxapp',
       data: {
         id: e.target.dataset.quanid,
         openid: useropenid

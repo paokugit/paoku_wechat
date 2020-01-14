@@ -41,7 +41,9 @@ Page({
     conceal:0,
 
     attention:0,
-    scrollTop:0
+    scrollTop:0,
+    goodstime:[],
+    people:0
   },
   onLoad: function (optin) {
     var userinfo = t.getCache('userinfo');
@@ -58,7 +60,12 @@ Page({
     }
     this.setData({
       merchid: optin.id
-    })
+    });
+
+    var mn = this;
+    mn.storeList();
+    mn.discount();
+    mn.kinetic();
   },
 
   checkCurrent: function (e) {
@@ -98,6 +105,7 @@ Page({
     })
   },
 
+  // 全部价格筛选
   checkAllt: function (e) {
     const that = this;
     let mowtxt = e.currentTarget.dataset.now;
@@ -162,10 +170,6 @@ Page({
       windowWidth: windowWidth
     });
     that.scrollFn();
-    
-    that.storeList();
-    that.discount();
-    that.goodsTui();
   },
 
   scrollFn: function () {
@@ -219,13 +223,13 @@ Page({
     console.log(s);
     var longitude = 0;
     var latitude = 0;
-    if (s != undefined){
+    if (s != undefined){ 
       longitude=s.longitude;
       latitude=s.latitude;
     }
     var t = this;
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.index&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.index&comefrom=wxapp',
       data: {
         openid: useropenid,
         merch_id: t.data.merchid,
@@ -240,7 +244,8 @@ Page({
         if (res.data.error == 0){
           t.setData({
             attention: res.data.message.follow,
-            message: res.data.message
+            message: res.data.message,
+            people:res.data.message.followcount
           })
         } else if (res.data.error == 1){
           wx.showToast({
@@ -257,7 +262,7 @@ Page({
   discount:function(){
     var o = this;
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.shopcoupon&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.shopcoupon&comefrom=wxapp',
       data: {
         merch_id: o.data.merchid
       },
@@ -271,7 +276,7 @@ Page({
             informTxt: res.data.data.notice,
             couponList: res.data.data.coupon
           })
-        } else if (res.data.error == 1) {
+        } else{
           wx.showToast({
             title: res.data.message,
             icon: 'none',
@@ -289,7 +294,7 @@ Page({
       loading: !0
     })
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
       data: {
         page: p.data.page,
         merch_id: p.data.merchid,
@@ -303,7 +308,6 @@ Page({
         if (res.data.error == 0) {
           pagetotal = res.data.data.pagetotal,
           p.setData({
-            show: !0,
             loading: !1,
             page:p.data.page+1,
             tuiList: p.data.tuiList.concat(res.data.data.list)
@@ -321,7 +325,31 @@ Page({
 
   // 活动
   kinetic:function(){
-    console.log('123');
+    var kl = this;
+    wx.request({
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.activity&comefrom=wxapp',
+      data: {
+        // merch_id: kl.data.merchid
+        merch_id:3
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.error == 0) {
+            kl.setData({
+              show: !0,
+              loading: !1,
+              goodstime:res.data.data.time,
+              tuiList: res.data.data.group
+            });
+        } else if (res.data.error == 1) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
   },
 
   // 上新
@@ -331,7 +359,7 @@ Page({
       loading: !0
     })
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.upgood&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.upgood&comefrom=wxapp',
       data: {
         merch_id: k.data.merchid,
         openid: useropenid
@@ -365,7 +393,7 @@ Page({
       loading: !0
     })
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.recommend&comefrom=wxapp',
       data: {
         page: pa.data.page,
         merch_id: pa.data.merchid,
@@ -380,7 +408,6 @@ Page({
         if (res.data.error == 0) {
             pagetotal = res.data.data.pagetotal,
             pa.setData({
-              show: !0,
               loading: !1,
               page: pa.data.page + 1,
               allList: pa.data.allList.concat(res.data.data.list)
@@ -401,13 +428,16 @@ Page({
     var w = this;
     console.log(w.data.attention);
     var index = 0;
+    var peoplenum = parseInt(w.data.people);
     if (w.data.attention == 0){
-      index = 1
+      index = 1;
+      peoplenum = peoplenum+1;
     } else if (w.data.attention == 1){
-      index = 0
+      index = 0;
+      peoplenum = peoplenum-1;
     }
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.follow&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.follow&comefrom=wxapp',
       data: {
         openid: useropenid,
         merch_id: w.data.merchid,
@@ -420,7 +450,8 @@ Page({
         console.log(res.data);
         if (res.data.error == 0) {
           w.setData({
-            attention:index
+            attention:index,
+            people:peoplenum
           })
           wx.showToast({
             title: res.data.message,

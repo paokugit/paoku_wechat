@@ -1,0 +1,45 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="填写物流信息"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view style="margin-bottom: 160rpx;" wx:if="{{show}}">
+  <view class="goods-box" wx:if="{{hidden==0}}">
+
+    <block wx:for="{{goodslis.goods}}" wx:key="index">
+      <view class="goods-new flexcss">
+        <image class="goods-img" src="{{item.thumb}}"></image>
+        <view style="width:400rpx">
+          <view class="goods-name">{{item.title}}</view>
+          <view class="goods-guige">{{item.option_name}}</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="listbox">  
+      <view class="flexcss">
+        <view class="view-txt">物流单号：</view>
+        <input class="input-box" placeholder="请填写物流单号" placeholder-class="hintcss" bindinput="bindinput"></input>
+      </view>
+
+      <view class="flexcss" style="margin: 30rpx 0;justify-content: space-between;" catchtap="logistics">
+        <view class="flexcss">
+          <view class="view-txt">物流公司：</view>
+          <view class="hintcss">{{firmName}}</view>
+        </view>
+        <image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+      </view>
+
+      <view class="flexcss">
+        <view class="view-txt">联系方式：</view>
+        <view class="hintcss">{{mobile}}</view>
+      </view>
+    </view>
+
+    <view class="submit" catchtap="submitBtn">提交</view>
+  </view>
+
+  <view wx:if="{{hidden==1}}" style="background: #fff;height: 100vh;">
+    <block wx:for="{{schedule}}" wx:key="index">
+      <button data-express="{{item.express}}" data-name="{{item.name}}" catchtap="wuliubtn">{{item.name}}</button>
+    </block>
+  </view>
+</view>
+

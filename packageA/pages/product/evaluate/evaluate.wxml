@@ -1,0 +1,76 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品评价"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="commentBox" wx:if="{{show}}">
+  <view class="totalcomment-box">
+    <view class="total-top">
+      <view class="total-left">总评
+        <block wx:for="{{allevaluate}}" wx:key="index">
+          <image class="xingImg" src="{{globalimg}}/pj_inco_xing@2x.png"></image>
+        </block>
+      </view> 
+      <view class="total-right">好评度 {{list.rate}}</view>
+    </view>
+    
+    <view class="labelBox" wx:if="{{list.label.length == 0?false:true}}">
+      <block wx:for="{{list.label}}" wx:for-item="labellit" wx:for-index="labelnd" wx:key="*this">
+        <view class="item">{{labellit.label}}（{{labellit.total}}）</view>
+      </block>
+    </view>
+  </view>
+
+  <view class="comment-tab-con">
+    <block wx:for="{{appraise}}" wx:key="index">
+      <view class="comment-item">
+        <view class="commentator-info">
+          <image class="commentator-avatar" src="{{item.avatar}}"></image>
+          <view class="commentator-name">{{item.nickname}}</view>
+        </view>
+        <view class="star-time">
+          <view class="starsBox">
+            <block wx:for="{{item.level}}" wx:key="index">
+              <image class="starsImg" src="{{globalimg}}/pj_inco_xing1@2x.png"></image>
+            </block>
+          </view>
+          <view class="commenttime">{{item.createtime}}</view>
+        </view>
+        <!-- 文字的折叠与展开 -->
+        <view class="wrap">
+          <view class="content-wrap">
+            <view class="content {{ isFold ? isOpen ? '' : 'fold' : ''}}">{{item.content}}</view>
+            <view class="arrowBox" wx:if="{{isFold}}">
+              <view wx:if="{{isFold}}" class="more" bindtap="open">{{ isOpen ? '收起' : '展开'}}</view>
+              <image wx:if="{{isFold}}" class="arrowImg" src="{{isOpen?'https://www.paokucoin.com/img/backgroup/xiangshang.png':'https://www.paokucoin.com/img/backgroup/xiangxia.png'}}" bindtap="showAll"></image>
+            </view>
+          </view>
+        </view>
+        <!-- 评价图片 -->
+        <view class="imgBox" wx:if="{{item.images.length!=-0}}">
+          <block wx:for="{{item.images}}" wx:for-item="llitsimg" wx:for-index="llitimgnd" wx:key="index">
+            <view class="{{item.images.length == 1 ? 'typeA' : img_len == 2 ? 'typeB' : 'typeC'}} ">
+              <image class="typeImage" src="{{llitsimg}}"></image>
+            </view>
+          </block>
+        </view>
+        <!-- 追评 -->
+        <view class="addevaluateBox" wx:if="{{item.append_content!=''}}">
+          <view class="addevaluateTit">
+            <view class="addevaluateline"></view>
+            <text>追加评价</text>
+          </view>
+          <view class="addevaluateText">{{item.append_content}}</view>
+        </view>
+        <view class="commentOther">
+          <view class="other-left">{{item.optionname}}</view>
+          <view class="other-right">
+            <view class='timeinfo' catchtap='change' data-id="{{item.id}}">
+              <image class='timeinfo1' src="{{item.zan==1 ? 'https://www.paokucoin.com/img/backgroup/PJ_inco_dianzan_pre@2x.png' : 'https://www.paokucoin.com/img/backgroup/PJ_inco_dianzan_nor@2x.png'}}" mode='aspectFit'></image>
+              <text class='timeinfo2'>{{item.zan==1 ? '已点赞' : '点赞'}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view class="on-earth" style="{{conceal == 0?'display:none':''}}">到底了哦</view>
+  </view>
+</view>

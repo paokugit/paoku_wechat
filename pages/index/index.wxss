@@ -584,7 +584,7 @@ image {
 
 .store-service {
   width: 100%;
-  height: 650rpx;
+  /* height: 650rpx; */
   /* background: #12bfa3; */
   background: #f8f8f8;
   border-radius: 20rpx;
@@ -669,10 +669,8 @@ image {
 
 .store-service-box {
   width: 726rpx;
-  height: 530rpx;
   background: #fff;
   border-radius: 20rpx;
-  position: relative;
 }
 
 .store-service-box-top {
@@ -800,11 +798,7 @@ image {
 
 .store-service-box-bottom {
   width: 100%;
-  height: 320rpx;
-  position: absolute;
-  top: 220rpx;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -841,10 +835,11 @@ image {
   justify-content: space-around;
   align-items: center;
   position: relative;
+  margin: 0 1.5%;
 }
 
 .club-card-img-box {
-  width: 200rpx;
+  width: 100%;
   height: 180rpx;
 }
 
@@ -858,7 +853,6 @@ image {
   width: 220rpx;
   height: 40rpx;
   line-height: 40rpx;
-  text-align: center;
   color: #333;
   font-size: 24rpx;
   display: block;
@@ -1931,7 +1925,6 @@ image {
 
 .zkBox {
   width: 96%;
-  padding-left: 4%;
   height: 92rpx;
   margin-top: 8rpx
 }

@@ -73,16 +73,12 @@ button::after {
     background: #fff;
     padding-left: 3%;
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .info-detail {
     width: 60%;
     height: 118rpx;
-    display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
 .avatar-img {
@@ -154,9 +150,9 @@ button::after {
     height: 250rpx;
     padding: 0 3%;
     background: #fff;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
 }
 
 .reward-img, .calorie-img {
@@ -213,15 +209,14 @@ button::after {
 
 .contributeBox {
     width: 100%;
-    height: 110rpx;
-    display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 24rpx;
 }
 
 .contribute-box {
-    width: 726rpx;
+    width: 100%;
     height: 88rpx;
+    padding: 0 3%;
     position: relative;
 }
 
@@ -252,18 +247,19 @@ button::after {
 }
 
 .order-box, .service-box {
-    width: 94%;
     height: 260rpx;
-    padding: 0 3%;
+    margin: 0 3% 20rpx;
     background: #fff;
+}
+.order-box{
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 
 .order-tit-box {
-    width: 100%;
     height: 80rpx;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 20rpx 20rpx 0;
 }
 
 .order-tit {
@@ -276,8 +272,6 @@ button::after {
 .order-total-box {
     width: auto;
     height: 60rpx;
-    display: flex;
-    align-items: center;
 }
 
 .read-totalorder {
@@ -288,20 +282,14 @@ button::after {
 .right-img {
     width: 34rpx;
     height: 34rpx;
-    display: flex;
     justify-content: center;
-    align-items: center;
     margin-left: 5rpx;
 }
 
 .nav-order {
-    width: 92%;
+    width: 100%;
     height: 160rpx;
-    padding: 0 4%;
-    background: #fff;
-    display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
 .nav-item, .service-item {
@@ -331,10 +319,9 @@ button::after {
     top: -10rpx;
     right: -10rpx;
     color: #fff;
-    display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 22rpx;
+    text-align: center;
 }
 
 .fukuan-text, .service-text {
@@ -348,16 +335,15 @@ button::after {
 }
 
  .card_banner{
-   display: flex;
-   align-items: center;
+   justify-content: space-around;
    background: #fff;
+   margin: 0 3%;
+   height: 190rpx;
+   border-radius: 20rpx;
  }
 
  .card_entrance{
-   border-right: 1px solid rgb(243, 243, 243);
-   display: flex;
-   align-items: center;
-   margin-left: 8%;
+   padding-left: 24rpx;
  }
  .card_entranceImg{
    width: 96rpx;
@@ -383,8 +369,8 @@ button::after {
 }
 
 .swiper-box swiper{
-  width: 375rpx;
-  height: 190rpx;
+  width: 300rpx;
+  height: 160rpx;
 }
 
 .dots{ 
@@ -410,16 +396,14 @@ button::after {
 .service-box{
     height: 420rpx;
     margin-top: 20rpx;
+    border-radius: 20rpx;
 }
 
 .nav-service {
-    width: 92%;
+    width: 100%;
     height: 300rpx;
-    padding: 0 4%;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .service-item {
@@ -464,4 +448,96 @@ button::after {
   position: absolute;
   left: 0;
   top: -15%;
+}
+
+
+.my-spell{
+  background: #fff;
+  margin: 0 3% 20rpx;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+}
+
+.my-spell-header{
+  justify-content: space-between;
+}
+
+.spell-order{
+  justify-content:space-between;
+  margin: 36rpx 0;
+  padding: 0 15rpx;
+}
+
+.spell-list{
+  text-align: center;
+}
+
+.spell-img{
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.spell-text{
+  font-size: 26rpx;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+.treat-spell{
+  border-radius: 10rpx;
+}
+
+.swiper-act{
+  height: 220rpx;
+}
+
+.eachspell{
+  height: 100rpx;
+  justify-content: space-around;
+  background: #f8f8f8;
+  padding: 25rpx 10rpx;
+}
+
+.roll-goods-img{
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 6rpx;
+  background: orange;
+  margin-right: 5rpx;
+}
+
+.goods-portrait-tetx{
+  font-size: 22rpx;
+  color: #FF3B30;
+  margin-bottom: 10rpx;
+}
+
+.portrait-img{
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50rpx;
+}
+
+.short-people{
+  font-size: 22rpx;
+  color: #333;
+}
+.short-people text{
+  color: #FF3B30;
+  font-size: 22rpx;
+}
+
+.invite{
+  border-radius: 30rpx;
+  background: #FF3B30;
+  font-size: 22rpx;
+  color: #fff;
+  padding: 20rpx;
+}
+
+
+
+.flexcss{
+  display: flex;
+  align-items: center;
 }

@@ -40,6 +40,7 @@ image{
   height: 100rpx;
   margin-right: 21rpx;
   border-radius: 15rpx;
+  background: #fff;
 }
 .shopimg image{
   width: 100%;

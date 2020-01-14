@@ -18,7 +18,7 @@ Page({
     data: {
         globalimg: i.globalData.appimg,
         showIcon: true,
-        gloheight: i.globalData.gloheight  ,
+        gloheight: i.globalData.gloheight,
 
         countDownHour: 0,
         countDownMinute: 0,
@@ -38,23 +38,23 @@ Page({
      */
 
     // 上拉加载
-    onLoad: function() {
+    onLoad: function () {
 
     },
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         this.getList();
         var t = this
         a.get("seckill/list", {
             type: 2,
             page: 1,
-        }, function(e) {
+        }, function (e) {
             console.log(e)
             if (e.status == 1) {
                 secend_time = e.result.end_time
@@ -74,9 +74,9 @@ Page({
         })
 
     },
-    startTimer: function(currentstartTimer) {
+    startTimer: function (currentstartTimer) {
         clearInterval(interval);
-        interval = setInterval(function() {
+        interval = setInterval(function () {
             // 秒数
             var second = currentstartTimer;
             // 天数位
@@ -117,21 +117,21 @@ Page({
             }
         }.bind(this), 1000);
     },
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         wx.stopPullDownRefresh();
         this.startTimer(secend_time - timestampcount);
     },
-    onReachBottom: function() {
+    onReachBottom: function () {
         this.data.loaded || this.data.list.length == this.data.total || this.getList();
     },
-    getList: function() {
+    getList: function () {
         var t = this;
         t.setData({
             loading: !0
         }), a.get("seckill/list", {
             type: t.data.type,
             page: t.data.page,
-        }, function(a) {
+        }, function (a) {
             console.log(a)
             if (a.status == 1) {
                 var e = {
@@ -146,7 +146,7 @@ Page({
 
         });
     },
-    myTab: function(t) {
+    myTab: function (t) {
         var e = this,
             i = a.pdata(t).type;
         e.setData({

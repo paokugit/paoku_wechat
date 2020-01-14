@@ -1,7 +1,7 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="个人中心"></navigation>
 <view class='user_box'>
-  <view class='user-info-box' style='display:{{userinfodis}}'>
-    <view class='info-detail'>
+  <view class='user-info-box flexcss' style='display:{{userinfodis}}'>
+    <view class='info-detail flexcss'>
       <view class='avatar-img'>
         <image src='{{member.avatar}}'></image>
       </view>
@@ -49,7 +49,7 @@
   <!-- 未登录状态 -->
 
   <!-- 个人收入 -->
-  <view class='income-box'>
+  <view class='income-box flexcss'>
     <navigator url='/pages/member/balance/balance' class='reward-img'>
       <image src='{{globalimg}}/bggreen@2x.png'></image>
       <!-- <view class='reward-num'>{{member.come_total}}</view> -->
@@ -63,8 +63,8 @@
       <view class='calorie-text'>RVC账户</view>
     </view>
   </view>
-  <!-- 个人收入 -->
-  <view class='contributeBox'>
+  
+  <view class='contributeBox flexcss'>
     <view class='contribute-box'>
       <image src='{{globalimg}}/conbg.png'></image>
       <view class='contribute-text'>当前贡献值</view>
@@ -75,16 +75,16 @@
 
   <!-- 订单 -->
   <view class='order-box'>
-    <navigator class='order-tit-box' hoverClass="none" openType="navigate" url="/pages/order/index">
+    <navigator class='order-tit-box flexcss' hoverClass="none" openType="navigate" url="/pages/order/index">
       <view class='order-tit'>订单</view>
-      <view class='order-total-box'>
+      <view class='order-total-box flexcss'>
         <view class='read-totalorder'>查看全部订单</view>
         <view class='right-img'>
           <image src='{{globalimg}}/user-right.png'></image>
         </view>
       </view>
     </navigator>
-    <view class='nav-order'>
+    <view class='nav-order flexcss'>
       <navigator class='nav-item' hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
         <view class='dingdan-img service-img'>
           <block>
@@ -133,11 +133,80 @@
     </view>
   </view>
 
-  <!-- 订单 -->
+  <!-- 拼团 -->
+  <view class="my-spell">
+    <navigator class='my-spell-header flexcss' hoverClass="none" openType="navigate" url="/packageA/pages/changce/spelltuan/order/order?status=7">
+      <view class='order-tit'>拼团</view>
+      
+      <view class='order-total-box flexcss'>
+        <view class='read-totalorder'>查看全部订单</view>
+        <view class='right-img'>
+          <image src='{{globalimg}}/user-right.png'></image>
+        </view>
+      </view>
+    </navigator>
+
+    <view class="spell-order flexcss">
+      <navigator class="spell-list" url="/packageA/pages/changce/spelltuan/order/order?status=0">
+        <image class="spell-img" src="{{globalimg}}/wode_icon_pintuan_dfk_nor@2x.png"></image>
+        <view class="spell-text">待付款</view>
+      </navigator>
+
+      <navigator class="spell-list" url="/packageA/pages/changce/spelltuan/order/order?status=4">
+        <image class="spell-img" src="{{globalimg}}/wode_icon_pintuan_dfk_ptg_nor@2x.png"></image>
+        <view class="spell-text">待成团</view>
+      </navigator>
+
+      <navigator class="spell-list" url="/packageA/pages/changce/spelltuan/order/order?status=1">
+        <image class="spell-img" src="{{globalimg}}/wode_icon_pintuan_dfh_nor@2x.png"></image>
+        <view class="spell-text">待发货</view>
+      </navigator>
+
+      <navigator class="spell-list" url="/packageA/pages/changce/spelltuan/order/order?status=2">
+        <image class="spell-img" src="{{globalimg}}/wode_icon_pintuan_dsh_nor@2x.png"></image>
+        <view class="spell-text">待收货</view>
+      </navigator>
+
+      <navigator class="spell-list" url="/packageA/pages/changce/spelltuan/order/order?status=5">
+        <image class="spell-img" src="{{globalimg}}/wode_icon_pintuan_dpj_nor@2x.png"></image>
+        <view class="spell-text">待评价</view>
+      </navigator>
+    </view>
+
+    <view class="treat-spell" wx:if="{{dataspell.length!=0}}">
+      <swiper class="swiper-act" indicator-dots="true" circular="true" indicator-color="#E6E6E6" indicator-active-color="#FF3D33">
+        
+        <block wx:for="{{dataspell}}" wx:key="index">
+          <swiper-item>
+            <navigator url="/packageA/pages/changce/spelltuan/state/state?teamid={{item.teamid}}" class="flexcss eachspell">
+              <image src="{{item.thumb}}" class="roll-goods-img"></image>
+
+              <view style="text-align: center;">
+                <view class="goods-portrait-tetx">待成团</view>
+                <view class="goods-portrait-img">
+                  <block wx:for="{{item.avatar}}" wx:for-item="avatarimg" wx:for-index="idx" wx:key="*this">
+                    <image src="{{avatarimg}}" class="portrait-img" style="{{idx > 0 ? 'margin-left:-30rpx;':''}}"></image>
+                  </block>
+                </view>
+              </view>
+
+              <view style="margin:0 5rpx;">
+                <view class="short-people">还差 <text>{{item.number}}人</text>即可拼团成功</view>
+              </view>
+
+              <view class="invite">邀请好友参团</view>
+            </navigator>
+          </swiper-item>
+        </block>
+     
+      </swiper>
+    </view>
+  </view>
+
   <!-- 轮播 -->
-  <view class="card_banner">
+  <view class="card_banner flexcss">
     <!-- 跑库年卡年卡入口 -->
-    <navigator class="card_entrance" hover-class="none" url="{{is_open == 1?'/pages/annual_card/member_card/index':'/pages/annual_card/equity/equity'}}">
+    <navigator class="card_entrance flexcss" hover-class="none" url="{{is_open == 1?'/pages/annual_card/member_card/index':'/pages/annual_card/equity/equity'}}">
       <view class="card_entranceImg">
         <image src="{{globalimg}}/card-circle.gif"></image>
       </view>
@@ -156,7 +225,7 @@
         </view>
       </view>
     </navigator>
-
+    <view style="width:2rpx;background: rgb(243, 243, 243);height:70%;"></view>
     <view class='swiper-box'>
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" bindchange="swiperChange">
         <block wx:for="{{imgUrls}}" wx:key="index">
@@ -176,11 +245,11 @@
   <!-- 轮播 -->
   <!-- 服务 -->
   <view class='service-box'>
-    <view class='order-tit-box'>
+    <view class='order-tit-box flexcss'>
       <view class='order-tit'>服务</view>
     </view>
 
-    <view class='nav-service'>
+    <view class='nav-service flexcss'>
       <navigator class='service-item' url='/pages/commission/down/index'>
         <view class='dingdan-img service-img'>
           <image src='{{server.fans}}'></image>
@@ -198,7 +267,7 @@
         <view class='dingdan-img service-img'>
           <block>
             <block wx:if="{{member.statics.coupon>0}}">
-              <view class="count-img">{{member.statics.coupon}}</view>
+              <view class="count-img flexcss">{{member.statics.coupon}}</view>
             </block>
           </block>
           <image src='{{server.coupon}}'></image>

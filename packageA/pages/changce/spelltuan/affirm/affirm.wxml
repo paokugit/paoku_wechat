@@ -1,0 +1,114 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="订单确认"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="entirety" wx:if="{{show}}">
+
+  <navigator url="/pages/member/address/select" class="address" style="{{sitelist == ''?'display:none;':''}}">
+    <view class="location flexcss">
+      <view class="location-tit">默认</view>
+      <view class="location-detail spillcss">{{sitelist.province}}{{sitelist.city}}{{sitelist.area}}</view>
+    </view>
+
+    <view class="flexcss" style="justify-content: space-between;margin: 32rpx 0;">
+      <view class="particular-ip spillcss">{{sitelist.province}}{{sitelist.city}}{{sitelist.area}}{{sitelist.address}}</view>
+      <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+    </view>
+
+    <view style="width:260px;">
+      <text class="ip-name">{{sitelist.realname}}</text>
+      <text class="ip-number">{{sitelist.mobile}}</text>
+    </view>
+  </navigator>
+  <navigator url="/pages/member/address/post?type=quickaddress" class="addsite flexcss" style="{{sitelist == ''?'':'display:none;'}}">
+    <view class="flexcss">
+      <image style="width:36rpx;height:36rpx;" src="{{globalimg}}/shdz_inco_tianjia@2x.png"></image>
+      <view class="addsite-txt">请填写收货人信息</view>
+    </view>
+    <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+  </navigator>
+
+
+  <view class="goods-detail">
+    <view class="flexcss" style="margin-bottom: 40rpx;">
+      <view>
+        <text class="icox icox-dianpu1"></text>
+      </view>
+      <view class="shop-name spillcss" wx:if="{{goodslist.merchname==''}}">跑库</view>
+      <view class="shop-name spillcss" wx:else>{{goodslist.merchname}}</view>
+    </view>
+
+    <view class="flexcss">
+      <view class="goods-logo">
+        <image src="{{goodslist.thumb}}"></image>
+      </view>
+      <view style="width: 400rpx;">
+        <view>
+          <view class="goods-name spillcss">{{goodslist.title}}</view>
+          <view class="goods-standard spillcss">{{optionlist.title}}</view>
+        </view>
+
+        <view style="margin-top: 30rpx;">
+          <view class="flexcss" style="justify-content: space-between;">
+            <!-- 有规格是否单购 -->
+            <view wx:if="{{morespec==1}}">
+              <view class="goods-cost" wx:if="{{single == 0?true:false}}">{{goodslist.option.price}}</view>
+              <view class="goods-cost" wx:else>{{goodslist.option.single_price}}</view>
+            </view>
+
+            <!-- 无规格是否单购 -->
+            <view wx:if="{{morespec==0}}">
+              <view class="goods-cost" wx:if="{{single == 0?true:false}}">{{goodslist.groupsprice}}</view>
+              <view class="goods-cost" wx:else>{{goodslist.singleprice}}</view>
+            </view>
+
+            <view class="goods-num">x{{quantity}}</view>
+          </view>
+
+          <view class="goods-support" wx:if="{{goodslist.seven==0?true:false}}">支持7天无理由退货（使用后不支持）</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="flexcss goods-delivery">
+      <view>配送方式</view>
+      <view>普通配送 ></view>
+    </view>
+
+    <view class="flexcss">
+      <view class="fui-cell-label">买家留言</view>
+      <view class="fui-cell-info">
+        <textarea bindinput="dataChange" id="remark" placeholder="50字以内（选填）"  maxlength='50' rows="2"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <view class="catalog">
+    <view class="goods-pay flexcss">
+      <view class="goods-tetx">商品金额</view>
+      <!-- 有规格是否单购 -->
+      <view wx:if="{{morespec==1}}">
+        <view class="goods-money" wx:if="{{single == 0?true:false}}">￥{{goodslist.option.price}}</view>
+        <view class="goods-money" wx:else>￥{{goodslist.option.single_price}}</view>
+      </view>
+      <!-- 无规格是否单购 -->
+      <view wx:if="{{morespec==0}}">
+        <view class="goods-money" wx:if="{{single == 0?true:false}}">￥{{goodslist.groupsprice}}</view>
+        <view class="goods-money" wx:else>￥{{goodslist.singleprice}}</view>
+      </view>
+
+    </view>
+
+    <view class="carriage flexcss">
+      <view class="goods-tetx">运费</view>
+      <view class="goods-money">+￥{{goodslist.freight}}</view>
+    </view>
+  </view>
+
+
+  <view class="go-payment flexcss">
+    <view class="reality-pay">
+      <text class="reality-pay-tetx">实际支付</text>
+      <text class="reality-pay-num">{{realitypay}}</text>
+    </view>
+    <view class="btn-pay" catchtap="btnpay">提交订单</view>
+  </view>
+</view>

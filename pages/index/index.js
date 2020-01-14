@@ -845,6 +845,7 @@ Page((e = {
             // 门店服务
             s.get("changce/merch/get_from_storenew", {
               page: 1,
+              openid:userinfo.openid,
               lat: latitude,
               lng: longitude,
             }, function(e) {

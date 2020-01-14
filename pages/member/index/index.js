@@ -6,16 +6,17 @@ var e = getApp(),
   s = e.requirejs("jquery");
 var f = getApp();
 var userinfo = f.getCache('userinfo');
+var util = require('../../../utils/util.js');
 var formid = ''
 var navigaterurl = ''
-
+ 
 var bindcount = ''
 // var conbind=''
 
 var is_rvc = '';
 
-var useropenid = "";
-
+var interval = '';
+var timestampcount = '';
 Page({
   data: {
     globalimg: e.globalData.appimg,
@@ -65,7 +66,9 @@ Page({
     is_open: '',
     expire_time: '',
 
-    isShow: false
+    isShow: false,
+
+    dataspell:[]
   },
 
   swiperChange(e) {
@@ -151,13 +154,10 @@ Page({
           swiperheight: a
         });
       }
-    })
-
-    useropenid = e.getCache("userinfo").openid;
-    t.paoku_card();
+    });
 
     p.get("member.level.level_alert", {
-      openid: t.data.useropenid,
+      openid: userinfo.openid,
       no_id: 1
     }, function(e) {
       console.log(e);
@@ -191,7 +191,7 @@ Page({
   paoku_card: function() {
     var t = this;
     p.get("member.level.mem_level", {
-      openid: t.data.useropenid
+      openid: userinfo.openid
     }, function(e) {
       console.log(e);
       if(e.status == 1){
@@ -293,8 +293,30 @@ Page({
       }
     });
     e.getInfo();
-    this.paoku_card();
+    b.paoku_card();
+
+    b.spelltime();
   },
+
+  spelltime:function(){
+    var ol = this;
+    wx.request({
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=group.order.my&comefrom=wxapp',
+      data: {
+        openid:userinfo.openid
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data.error == 0) {
+          ol.setData({
+            dataspell: res.data.data
+          })
+        }
+      }
+    });
+  },
+
+
   getUserInfo: function(e) {
     let that = this;
     wx.getSetting({
@@ -466,9 +488,12 @@ Page({
   },
   onHide: function() {
     this.pauseOther();
+    clearInterval(interval);
   },
   onUnload: function() {
     this.pauseOther();
+    clearInterval(interval);
+    console.log('aa')
   },
   navigate: function(e) {
     var a = e.currentTarget.dataset.url,

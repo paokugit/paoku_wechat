@@ -15,16 +15,10 @@ Page({
         showIcon: true,
         gloheight: i.globalData.gloheight,
         
-        merchname: '',
-        logo: "", 
-        address: "",
-        wxsignal: "",
-        main_business: "",
         shopimg: [],
-        shopvideo: "",
-        distance: "",
         follow: '',
         play: 0,
+        datalist:''
     },
 
     /**
@@ -45,20 +39,13 @@ Page({
             lng: newpos.lng
         }, function (e) {
             console.log(e)
-          console.log(e.message.logo);
             merchphone = e.message.mobile
             merchid = e.message.id
             a.setData({
                 show: !0,
                 merchid: merchid,
-                merchname: e.message.merchname,
-                logo: e.message.logo,
-                address: e.message.address,
-                wxsignal: e.message.wxsignal,
-                main_business: e.message.main_business,
+                datalist:e.message,
                 shopimg: e.message.shopimg,
-                shopvideo: e.message.shopvideo,
-                distance: e.message.distance,
                 follow: e.message.follow
             })
 

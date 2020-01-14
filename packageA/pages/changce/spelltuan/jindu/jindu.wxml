@@ -1,0 +1,278 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="退款进度"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view style="margin-bottom: 160rpx;" wx:if="{{show}}">
+
+	<view class="news-time">
+		<view class="flexcss indent boxcs">
+			<view class="news-txt">订单号</view>
+			<view class="news-num">{{schedule.ordersn}}</view>
+		</view>
+		<view class="flexcss boxcs">
+			<view class="news-txt">申请时间</view>
+			<view class="news-num">{{schedule.createtime}}</view>
+		</view>
+	</view>
+
+	<view class="article-news">
+		<!-- 申请中 -->
+		<!-- 退款 -->
+		<view wx:if="{{schedule.rtype==0&&schedule.status==0}}">
+			<view class='logisit'>
+				<view class='dot-shou'></view>
+				<view class='express-right'>
+					<view class='express-status-address color'>【退款申请】您的退款申请已提交。</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 退货退款 -->
+		<view wx:if="{{schedule.rtype==1&&schedule.status==0}}">
+			<view class='logisit'>
+				<view class='dot-shou'></view>
+				<view class='express-right'>
+					<view class='express-status-address color'>【退货退款申请】您的退货退款申请已提交。</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 换货 -->
+		<view wx:if="{{schedule.rtype==2&&schedule.status==0}}">
+			<view class='logisit'>
+				<view class='dot-shou'></view>
+				<view class='express-right'>
+					<view class='express-status-address color'>【换货申请】您的换货申请已提交。</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 申请中结束 -->
+
+
+		<!-- 退款 -->
+		<view wx:if="{{schedule.rtype==0&&schedule.status!=0}}">
+			<view class='logisit'>
+				<view class='dot-shou'></view>
+
+				<view class='express-right' wx:if="{{schedule.status==1}}">
+					<view class='express-status-address color'>【退款申请成功】商家已退款，请注意查收到账哦。</view>
+					<view class='express-statusing'>{{schedule.time}}</view>
+				</view>
+				<view class='express-right' wx:if="{{schedule.status=='-1'}}">
+					<view class='express-status-address color'>【退款申请】商家已拒绝，请修改后在提交申请。</view>
+					<view class='express-statusing'>{{schedule.operatetime}}</view>
+				</view>
+			</view>
+
+			<view class='logisit'>
+				<view class='express-middle-axis'>
+					<view class='dot-closing'></view>
+					<view class='online-top-closing'></view>
+				</view>
+				<view class='express-right'>
+					<view class='express-status-address color_second'>【退款申请】您的退款申请已提交。</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>	
+		</view>
+		<!-- 退款结束 -->
+
+		<!-- 退货退款 -->
+		<view wx:if="{{schedule.rtype==1&&schedule.status!=0}}">
+			<!-- 退款退货成功 -->
+			<view wx:if="{{schedule.status==1}}">
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>【退货退款申请成功】商家已退款，请注意查收到账哦。</view>
+						<view class='express-statusing'>{{schedule.time}}</view>
+					</view>
+				</view>
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>
+							<view>您已退货</view>
+							<view>物流公司：{{schedule.expresssn}}</view>
+							<view>退货单号：{{schedule.expresscom}}</view>
+						</view>
+						<view class='express-statusing'>{{schedule.sendtime}}</view>
+					</view>
+				</view>
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>【退货退款申请审核通过】商家已同意您的退货退款申请，请尽快寄回，并输入快递单号。</view>
+						<view class='express-statusing'>{{schedule.operatetime}}</view>
+					</view>
+				</view>
+			</view>
+			<!-- 已填写快递单号 -->
+			<view wx:if="{{schedule.status==4}}">
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>
+							<view>您已退货</view>
+							<view>物流公司：{{schedule.expresscom}}</view>
+							<view>退货单号：{{schedule.expresssn}}</view>
+						</view>
+						<view class='express-statusing'>{{schedule.sendtime}}</view>
+					</view>
+				</view>
+				
+				<view class='logisit'>
+					<view class='express-middle-axis'>
+						<view class='dot-closing'></view>
+						<view class='online-top-closing'></view>
+					</view>
+					<view class='express-right'>
+						<view class='express-status-address color_second'>【退货退款申请审核通过】商家已同意您的退货退款申请，请尽快寄回，并输入快递单号。</view>
+						<view class='express-statusing'>{{schedule.operatetime}}</view>
+					</view>
+				</view>
+			</view>
+			<!-- 审核通过 -->
+			<view class='logisit' wx:if="{{schedule.status==3}}">
+				<view class='dot-shou'></view>
+				<view class='express-right'>
+					<view class='express-status-address color'>【退货退款申请审核通过】商家已同意您的退货退款申请，请尽快寄回，并输入快递单号。</view>
+					<view class='express-statusing'>{{schedule.operatetime}}</view>
+				</view>
+			</view>
+
+			<!-- 审核拒绝 -->
+			<view class='express-right' wx:if="{{schedule.status=='-1'}}">
+				<view class='express-status-address color'>【退款申请】商家已拒绝，请修改后在提交申请。</view>
+				<view class='express-statusing'>{{schedule.operatetime}}</view>
+			</view>
+
+			<!-- 倒叙第一条固定 -->
+			<view class='logisit'>
+				<view class='express-middle-axis'>
+					<view class='dot-closing'></view>
+					<view class='online-top-closing'></view>
+				</view>
+				<view class='express-right'>
+					<view class='express-status-address color_second'>【退货退款申请】您的退货退款申请已提交</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 退货退款结束 -->
+
+		<!-- 换货 -->
+		<view wx:if="{{schedule.rtype==2&&schedule.status!=0}}">
+			<!-- 换货货成功 -->
+			<view wx:if="{{schedule.status==5}}">
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>【换货成功】商家已发货，请耐心等待。</view>
+						<view class='express-statusing'>{{schedule.time}}</view>
+					</view>
+				</view>
+				<view class='logisit'>
+					<view class='express-middle-axis'>
+						<view class='dot-closing'></view>
+						<view class='online-top-closing'></view>
+					</view>
+					<view class='express-right'>
+						<view class='express-status-address color_second'>
+							<view>您已退货</view>
+							<view>物流公司：{{schedule.expresssn}}</view>
+							<view>退货单号：{{schedule.expresscom}}</view>
+						</view>
+						<view class='express-statusing'>{{schedule.sendtime}}</view>
+					</view>
+				</view>
+
+				<view class='logisit'>
+					<view class='express-middle-axis'>
+						<view class='dot-closing'></view>
+						<view class='online-top-closing'></view>
+					</view>
+					<view class='express-right'>
+						<view class='express-status-address color_second'>【退货退款申请审核通过】商家已同意您的退货退款申请，请尽快寄回，并输入快递单号。</view>
+						<view class='express-statusing'>{{schedule.operatetime}}</view>
+					</view>
+				</view>
+			</view>
+			<!-- 客户寄回填写订单编号 -->
+			<view wx:if="{{schedule.status==4}}">
+				<view class='logisit'>
+					<view class='dot-shou'></view>
+					<view class='express-right'>
+						<view class='express-status-address color'>
+							<view>您已退货</view>
+							<view>物流公司：{{schedule.expresssn}}</view>
+							<view>退货单号：{{schedule.expresscom}}</view>
+						</view>
+						<view class='express-statusing'>{{schedule.sendtime}}</view>
+					</view>
+				</view>
+				<view class='logisit'>
+					<view class='express-middle-axis'>
+						<view class='dot-closing'></view>
+						<view class='online-top-closing'></view>
+					</view>
+					<view class='express-right'>
+						<view class='express-status-address color_second'>【换货申请审核通过】商家已同意您的换货申请，请尽快寄回，并输入快递单号。</view>
+						<view class='express-statusing'>{{schedule.operatetime}}</view>
+					</view>
+				</view>
+			</view>
+			<!-- 审核通过 -->
+			<view class='logisit' wx:if="{{schedule.status==3}}">
+				<view class='dot-shou'></view>
+				<view class='express-right'>
+					<view class='express-status-address color'>【换货申请审核通过】商家已同意您的换货申请申请，请尽快寄回，并输入快递单号。</view>
+					<view class='express-statusing'>{{schedule.operatetime}}</view>
+				</view>
+			</view>
+
+			<!-- 审核拒绝 -->
+			<view class='express-right' wx:if="{{schedule.status=='-1'}}">
+				<view class='express-status-address color'>【换货申请】商家已拒绝，请修改后在提交申请。</view>
+				<view class='express-statusing'>{{schedule.operatetime}}</view>
+			</view>
+
+			<!-- 倒叙第一条固定 -->
+			<view class='logisit'>
+				<view class='express-middle-axis'>
+					<view class='dot-closing'></view>
+					<view class='online-top-closing'></view>
+				</view>
+				<view class='express-right'>
+					<view class='express-status-address color_second'>【换货申请】您的换货申请已提交</view>
+					<view class='express-statusing'>{{schedule.createtime}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 换货 -->
+	</view>
+
+	<navigator url="/packageA/pages/changce/spelltuan/news/news?id={{orderid}}&refundid={{schedule.id}}" class="importBtn" wx:if="{{schedule.rtype != 0&&schedule.status==3}}">输入快递单号</navigator>
+
+</view>
+
+<!-- 
+	createtime：申请时间、operatetime：商家操作时间即拒绝或同意、time：退款成功时间以及商家换货发货时间、expresscom：客户输入的快递单号
+	rtype：0时 -----退款
+		status：0表示申请中√
+		status：1表示退款成功√ 
+		status：-1表示拒绝申请√
+
+	rtype：1时 -----退货退款
+		status：0表示申请中√
+		status：3表示商家同意待客户寄回物品 √
+		status：4 表示客户已寄回物品 √
+		status：1退款完成 √
+		status：-1表示拒绝申请√
+
+	rtype：2时 -----换货
+		status：0表示申请中√
+		status：3商家同意待客户寄件 √
+		status：4客户已寄件 √
+		status：5商家已寄件换货完成
+		status：-1表示拒绝申请√
+ -->

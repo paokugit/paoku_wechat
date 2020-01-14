@@ -1,8 +1,11 @@
 <navigation id='Navigation' show-icon='{{showIcon}}' title="商品详情"></navigation>
-<view>
+
+<loading wx:if="{{!show}}">加载中...</loading>
+
+<view wx:if="{{show}}">
   <view class="header">
     <swiper circular="true" class="header-sqiper" indicatorDots="true" style="width:{{advWidth}}px;height:{{advHeight}}px;">
-      <block wx:for="{{goodimg}}" wx:key="*this">
+      <block wx:for="{{goodsDetails.thumb_url}}" wx:key="*this">
         <swiper-item>
           <image mode="aspectFit" src="{{item}}"></image>
         </swiper-item>
@@ -11,152 +14,179 @@
   </view>
 
   <view class="unity-detail">
-    <view class="unity-people">3人团</view>
-    <view class="untiy-time">距离结束仅剩12时16分26秒</view>
+    <view class="unity-people">{{goodsDetails.groupnum}}人团</view>
+    <view class="untiy-time">库存仅剩{{goodsDetails.stock}}件</view>
   </view>
 
   <view class="goods-message">
 
     <view class="price-focus flexcss">
       <view class="goods-price">
-        <view class="goods-cash">34.90</view>
-        <view class="goods-original">￥134</view>
-      </view>
-
-      <view class="goods-focus">
-        <image class="iconImg" src="{{globalimg}}/{{wei_zan}}"></image>
-        <view class="focutxt">{{focusTxt}}</view>
+        <view class="goods-cash">{{goodsDetails.groupsprice}}</view>
+        <view class="goods-original">￥{{goodsDetails.price}}</view>
       </view>
     </view>
 
-    <view class="goods-name">新品【三只松鼠_曲奇陷阱160gx2】零食烘焙 甜品饼干手工爆浆软心去曲奇饼</view>
+    <view class="goods-name">{{goodsDetails.title}}</view>
 
-    <view class="goods-standard">
-      <!-- <block wx:for="{{guige}}" wx:key="index">  -->
-      <view>750gx1盒</view>
-      <!-- </block> -->
+    <view class="goods-standard" style="{{goodsDetails.description == ''?'display:none;':''}}">
+      <view>{{goodsDetails.description}}</view>
     </view>
 
     <view class="goods-pledge">
-      <image class="safeguard-img" src="{{globalimg}}/sc_tdd_inco_xr@2x.png"></image>
-      <view class="goods-pledge-txt">正品保证</view>
+      <block wx:for="{{goodsDetails.services}}" wx:key="index">
+        <view class="flexcss" style="margin-right: 20rpx;">
+          <image class="safeguard-img" src="{{globalimg}}/sc_tdd_inco_xr@2x.png"></image>
+          <view class="goods-pledge-txt">{{item}}</view>
+        </view>
+      </block>
     </view>
   </view>
 
   <view class="spell-detail">
     <view class="spell-detail-title">
       <image class="spell-tit-img" src="{{globalimg}}/hd_img_z@2x.png"></image>
-      <view class="spell-detail-tit-txt">3人正在拼团，可直接参加</view>
+      <view class="spell-detail-tit-txt">{{goodsDetails.group.count}}人正在拼团，可直接参加</view>
       <image class="spell-tit-img" src="{{globalimg}}/hd_img_z@2x.png"></image>
     </view>
 
-    <block wx:for="{{2}}" wx:key="index">
-      <view class="spell-list flexcss">
-        <view class="spell-portrait-name flexcss">
-          <view class="portrait-img"></view>
-          <view class="soell-name">莫问如风</view>
-        </view>
-
-        <view class="spell-right flexcss">
-          <view class="people-time">
-            <view class="people-time-tetx">2人拼，还差
-              <text>1人</text> 拼成</view>
-            <view class="residue-time">剩余01:15:05.6</view>
+    <view wx:if="{{listData.length != 0}}">
+      <block wx:for="{{listData}}" wx:for-item="grouplit" wx:key="groupind">
+        <view class="spell-list flexcss" data-teamid="{{grouplit.teamid}}" data-id="{{goodsDetails.id}}" data-xuan="0" data-morespec="{{goodsDetails.more_spec}}"  catchtap="{{grouplit.gerenid == 0?'selectBtn':''}}">
+          <view class="spell-portrait-name flexcss">
+            <block wx:for="{{grouplit.avatar}}" wx:for-item="avatarlit" wx:for-index="acidx" wx:key="avatarind">
+              <image src="{{avatarlit}}" class="portrait-img" style="{{acidx > 0 ? 'margin-left:-30rpx;':''}}"></image>
+            </block>
+            <view class="soell-name">{{grouplit.nickname}}</view>
           </view>
-          <view class="go-spell">去拼团</view>
-        </view>
-      </view>
-    </block>
 
-    <view class="examine">查看更多 ></view>
+          <view class="spell-right flexcss">
+            <view class="people-time">
+              <view class="people-time-tetx">{{grouplit.groupnum}}人拼，还差
+                <text>{{grouplit.number}}人</text> 拼成</view>
+              <view class="residue-time">剩余{{grouplit.countDown}}</view>
+            </view>
+            <view class="go-spell">去拼团</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <navigator wx:if="{{listData.length != 0}}" url="/packageA/pages/changce/spelltuan/joinlisit/joinlisit?id={{goodsDetails.id}}" class="examine">查看更多 ></navigator>
+
+    <view wx:if="{{listData.length == 0}}" style="height: 170rpx">
+      <image style="width: 100%;height: 100%;" src="{{globalimg}}/flowimg.png"></image>
+    </view>
   </view>
 
-  <view class="select-freight">
-    <view class="select-standard flexcss">
-      <view class="select-standard-txt">规格</view>
-      <image class="select-standard-img" src="{{globalimg}}/open10.18@2x.png"></image>
+  <view class="standard-area-postage">
+    <!-- 规格 -->
+    <view class="standard-box" catchtap="selectBtn" data-teamid="" data-id="{{goodsDetails.id}}" data-xuan="0" data-morespec="{{goodsDetails.more_spec}}">
+      <view class="standard-con">
+        <view class="standard-text">选择</view>
+        <view class="standard-right">
+          <view class="standard-type">规格</view>
+          <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
+        </view>
+      </view>
     </view>
-    <view class="freight-show">在线支付（偏远地区邮费另）</view>
+
+    <!-- 运费 -->
+    <view class="postageBox">
+      <view class="standard-text">选择</view>
+      <view class="standard-right">
+        <view class="standard-type" wx:if="{{goodsDetails.freight == 0?true:false}}">包邮</view>
+        <view class="standard-type" wx:else>在线支付（偏远地区邮费另算）</view>
+      </view>
+    </view>
   </view>
 
   <view class="appraiseBox">
-    <view class="headline-box">
-      <view class="appraise-left">商品评价(8)</view>
+    <navigator class="headline-box" url="/packageA/pages/product/evaluate/evaluate?id={{goodsDetails.id}}">
+      <view class="appraise-left">商品评价({{goodsDetails.comment.count}})</view>
       <view class="appraise-right">
-        <view class="favorable-rate">好评98.9%</view>
+        <view class="favorable-rate">好评{{goodsDetails.comment.rate}}</view>
         <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
       </view>
+    </navigator>
+    <view class="label-box"  wx:if="{{goodsDetails.comment.label.length == 0?false:true}}">  
+      <block wx:for="{{goodsDetails.comment.label}}" wx:for-item="labellit" wx:key="labelnd">
+        <navigator url="/packageA/pages/product/evaluate/evaluate?id={{goodsDetails.id}}" class="label-item">{{labellit.label}}</navigator>
+      </block>
     </view>
-    <view class="label-box">
-      <view class="label-item">好吃</view>
-      <view class="label-item">好吃</view>
-      <view class="label-item">好吃</view>
-    </view>
-    <view class="store-slide-box">
+    <view class="store-slide-box" wx:if="{{goodsDetails.comment.list == null||goodsDetails.comment.list.length==0?false:true}}">
       <scroll-view class="scroll-view_H" scroll-x>
-        <view class="scroll-view-item_H">
+        <navigator url="/packageA/pages/product/evaluate/evaluate?id={{goodsDetails.id}}" class="scroll-view-item_H">
           <view class="scroll-view-flex">
             <view class="appraise-item-left">
-              <view class="appraiser-avatar"></view>
-              <view class="appraiser-name">糖果</view>
-              <view class="appraise-desc">很好吃的零食，大家快来买呀，</view>
-              <view class="appraise-standard">规格:750g</view>
+        
+              <image class="appraiser-avatar" src="{{goodsDetails.comment.list.avatar}}"></image>
+              
+              <view class="appraiser-name">{{goodsDetails.comment.list.nickname}}</view>
+              <view class="appraise-desc">{{goodsDetails.comment.list.content}}</view>
+              <view class="appraise-standard">规格:{{goodsDetails.comment.list.optionname}}</view>
             </view>
-            <view class="appraise-item-right">
-              <view class="appraise-img"></view>
-              <view class="appraise-img-num">3张</view>
+            <view class="appraise-item-right" wx:if="{{goodsDetails.comment.list.images.length!=0}}">
+              <view class="appraise-img">
+                <image src="{{goodsDetails.comment.list.images[0]}}"></image>
+              </view>
+              <view class="appraise-img-num">{{goodsDetails.comment.list.length}}张</view>
             </view>
           </view>
-        </view>
-        <view class="scroll-view-item_H"></view>
-        <view class="scroll-view-item_H"></view>
-        <view class="scroll-view-item_H"></view>
-        <view class="appraise-readmore">
+        </navigator>
+        
+        <navigator url="/packageA/pages/product/evaluate/evaluate?id={{goodsDetails.id}}" class="appraise-readmore">
           <view class="appraise-readmore-flex">
             <view class="more-comment">更多评论</view>
             <view class="more-line"></view>
             <view class="more-eng">See more</view>
           </view>
-        </view>
+        </navigator>
       </scroll-view>
     </view>
   </view>
 
-  <view class="shopBox">
-    <view class="shopbox-titlebox" bindtap='goStore'>
-      <view class="titlebox-left">
-        <view class="shopImg"></view>
-        <view class="shopName">跑库</view>
+  <view class="shopBox" wx:if="{{goodsDetails.merch_good.length == 0?false:true}}">
+    <navigator class="shopbox-titlebox" url="/packageA/pages/changce/merch/detail?id={{goodsDetails.merchid}}">
+      <view  class="titlebox-left">
+        <view class="shopImg">
+          <image src="{{goodsDetails.logo}}"></image>
+        </view>
+        <view class="shopName">{{goodsDetails.merchname}}</view>
         <view class="onsale-box">在售商品
-          <text class="onsale-num">30</text>件
+          <text class="onsale-num">{{goodsDetails.goodtotal}}</text>件
         </view>
       </view>
       <view class="titlebox-right">
         <view class="favorable-rate">进店逛逛</view>
         <image class="standard-img" src="{{globalimg}}/xq_inco_fangxiang@2x.png"></image>
       </view>
-    </view>
+    </navigator>
     <view class="showcaseBox">
-      <view class="showcase-item">
-        <view class="showcaseImg"></view>
-        <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
-        <view class="showcase-price">￥36.6</view>
-      </view>
-      <view class="showcase-item"></view>
-      <view class="showcase-item"></view>
+      <block wx:for="{{goodsDetails.merch_good}}" wx:for-item="mercllit" wx:key="mercind">
+        <navigator class="showcase-item" url="/pages/goods/detail/index?id={{mercllit.id}}">
+          <view class="showcaseImg">
+            <image src="{{mercllit.thumb}}"></image>
+          </view>
+          <view class="showcase-title">{{mercllit.title}}</view>
+          <view class="showcase-price">￥{{mercllit.marketprice}}</view>
+        </navigator>
+      </block>
     </view>
   </view>
 
-  <view class="recommendBox">
+  <view class="recommendBox" wx:if="{{goodsDetails.relevant_good.length == 0?false:true}}">
     <view class="recommend-headline">相关商品推荐</view>
     <view class="showcaseBox">
-      <view class="showcase-item">
-        <view class="showcaseImg"></view>
-        <view class="showcase-title">拉阿拉啦啦啦拉拉拉阿拉啦啦啦啦啦啦啦啦</view>
-        <view class="showcase-price">￥36.6</view>
-      </view>
-      <view class="showcase-item"></view>
-      <view class="showcase-item"></view>
+      <block wx:for="{{goodsDetails.relevant_good}}" wx:for-item="tuillit" wx:key="tuind">
+        <navigator class="showcase-item" url="/pages/goods/detail/index?id={{tuillit.id}}">
+          <view class="showcaseImg">
+            <image src="{{tuillit.thumb}}"></image>
+          </view>
+          <view class="showcase-title">{{tuillit.title}}</view>
+          <view class="showcase-price">￥{{tuillit.marketprice}}</view>
+        </navigator>
+      </block>
     </view>
   </view>
 
@@ -166,25 +196,104 @@
     <view class="detail-line"></view>
   </view>
 
-  <view class="base-banner flexcss">
-    <button class="nav-item customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true">
-      <image class="kefuimg" src="{{globalimg}}/xq-inco_kefu@2x.png"></image>
-      <view class="label">客服</view>
-    </button>
-
-    <navigator class="nav-item external" openType="switchTab" url="/pages/index/index?merchid={{goods.merchid}}">
-      <image class="dianpuimg" src="{{globalimg}}/xq-inco_dianbu@2x.png"></image>
-      <view class="label">店铺</view>
-    </navigator>
-
-    <navigator class="alone-buy">
-      <view>￥38.80</view>
-      <view>单独购买</view>
-    </navigator>
-
-    <navigator class="spell-buy">
-      <view>￥28.80</view>
-      <view>发起拼团</view>
-    </navigator>
+  <import src="../../../../../utils/wxParse/wxParse.wxml" />
+  <view class="goods-detail-info {{info}}">
+    <view class="wxParse">
+      <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+    </view>
   </view>
+
+
+  <view class="base-banner flexcss">
+    <view class="leftbar">
+      <view >
+        <button class="customer-item" openType="contact" sessionFrom="weapp" showMessageCard="true">
+          <image class="kefuimg" src="{{globalimg}}/xq-inco_kefu@2x.png"></image>
+          <view class="label">客服</view>
+        </button>
+      </view>
+
+      <navigator class="external" open-type="switchTab" url="/packageA/pages/changce/merch/detail?id={{goodsDetails.merchid}}">
+        <image class="dianpuimg" src="{{globalimg}}/xq-inco_dianbu@2x.png"></image>
+        <view class="label">店铺</view>
+      </navigator>
+    </view>
+
+    <view class="alone-buy" catchtap="selectBtn" data-id="{{goodsDetails.id}}" data-teamid="" data-xuan="1" wx:if="{{goodsDetails.single==0?false:true}}" data-morespec="{{goodsDetails.more_spec}}">
+      <view>￥{{goodsDetails.singleprice}}</view>
+      <view>单独购买</view>
+    </view>
+    <view class="alone-buy" data-id="{{goodsDetails.id}}" style="background: #ccc;" wx:else>
+      <view>￥{{goodsDetails.singleprice}}</view>
+      <view style="text-decoration:line-through;">单独购买</view>
+    </view>
+
+    <view class="spell-buy" catchtap="selectBtn" data-id="{{goodsDetails.id}}" data-xuan="0" data-teamid="" data-morespec="{{goodsDetails.more_spec}}">
+      <view>￥{{goodsDetails.groupsprice}}</view>
+      <view>发起拼团</view>
+    </view>
+  </view>
+
+
+
+  <view class="tanBox" wx:if="{{ball == 1?false:true}}">
+    <view class="tantxt">
+      <view class="flexcss tanheader">
+
+        <!-- 有规格信息 -->
+        <view style="display:flex;" wx:if="{{goodsDetails.more_spec==1}}">
+          <view class="goodimg">
+            <image src="{{standard.goods.thumb}}"></image>
+          </view>
+          <view style="margin-top: 30rpx;">
+            <view class="flipprice">{{standard.goods.minprice}}</view>
+            <view class="inventory">库存{{standard.goods.total}}件</view>
+            <view class="my-select" style="{{specsTitle == ''?'display:none':''}}">已选 {{specsTitle}}</view>
+          </view>
+        </view>
+        <!-- 有结束 -->
+
+        <!-- 无规格信息 -->
+        <view style="display:flex;" wx:if="{{goodsDetails.more_spec==0}}">
+          <view class="goodimg">
+            <image src="{{goodsDetails.thumb_url[0]}}"></image>
+          </view>
+          <view style="margin-top: 30rpx;">
+            <view class="flipprice {{choice}}" wx:if="{{choice==0}}">{{goodsDetails.groupsprice}}</view>
+            <view class="flipprice" wx:if="{{choice==1}}">{{goodsDetails.singleprice}}</view>
+          </view>
+        </view>
+        <!-- 无结束 -->
+
+        <view bindtap="emptyActive" class="closebtn">
+          <i class="icox icox-guanbi1" style="font-size:22px"></i>
+        </view>
+      </view>
+      
+      <view class="outerbox">
+        <block wx:for="{{standard.specs}}" wx:for-item="specslit" wx:for-index="idx" wx:key="*this">
+          <view class="balltitle">{{specslit.title}}</view>
+          
+          <view class="balltitle-list">
+            <block wx:for="{{specslit.items}}" wx:for-item="itemlit" wx:key="itemind">
+              <view class="balltitle-tetx {{chooseList[idx].id==itemlit.id?'textactive':''}}" catchtap="selectGuige" data-id="{{itemlit.id}}"  data-idx="{{idx}}" data-thumb="{{itemlit.thumb}}" data-title="{{itemlit.title}}">{{itemlit.title}}</view>
+            </block>
+          </view>
+        </block> 
+      </view>
+
+
+      <view class="quantity flexcss">
+        <view class="quantity-title">购买数量</view>
+        <view class="flexcss">
+          <view class="quantity-minus {{choice == 0?'forbid':''}}" catchtap="{{choice == 0?'':'quantityBtn'}}" data-sign="0">-</view>
+          <view class="quantity-count">{{amount}}</view>
+          <view class="quantity-plus {{choice == 0?'forbid':''}}" catchtap="{{choice == 0?'':'quantityBtn'}}" data-sign="1">+</view>
+        </view>
+      </view>
+
+      <view class="ensure" catchtap="spellbuy" data-morespec="{{goodsDetails.more_spec}}">确定</view>
+    </view>
+  </view>
+
 </view>

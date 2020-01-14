@@ -25,7 +25,7 @@ Page({
     var a = this;
     console.log(options.id);
     wx.request({
-      url: 'http://192.168.3.104:8081/app/ewei_shopv2_api.php?i=1&r=myown.shophome.desc&comefrom=wxapp',
+      url: 'http://www.paokucoin.com/app/ewei_shopv2_api.php?i=1&r=myown.shophome.desc&comefrom=wxapp',
       data: {
         merch_id: options.id
       },

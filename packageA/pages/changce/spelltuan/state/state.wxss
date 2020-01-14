@@ -1,0 +1,345 @@
+.flexcss{
+  display: flex;
+  align-items: center;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+.head{
+  background: #ff2626;
+  height: 150rpx;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.head-good{
+  width: 85%;
+  background: #fff;
+  padding: 24rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  left: 50%;
+  top: 50rpx;
+  transform: translate(-50%,0);
+  margin-bottom: 60rpx;
+  box-shadow: 0 10rpx 0 #fbfbfb;
+  z-index: 10;
+}
+
+.good-img{
+  width: 212rpx;
+  height: 212rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+
+.good-name{
+  width: 400rpx;
+  font-size: 34rpx;
+  color: #333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 60rpx;
+}
+
+.current-price{
+  font-size: 40rpx;
+  color: #ff0000;
+}
+.current-price::before{
+  color: #ff0000;
+  font-size: 28rpx;
+  content: "￥";
+}
+
+.original-cost{
+  font-size: 24rpx;
+  color: #999;
+}
+.original-cost::before{
+  content: "￥";
+  font-size: 24rpx;
+  color: #999;
+}
+
+.reveal{
+  background: #fff;
+  padding: 200rpx 0 32rpx;
+}
+
+.reveal-tit{
+  font-size: 34rpx;
+  color: #333;
+  text-align: center;
+  margin: 40rpx 0 30rpx;
+}
+.reveal-tit text{
+  font-size: 34rpx;
+  color: #ff0000;
+}
+
+
+.count-down{
+  justify-content: center;
+  margin-bottom: 80rpx;
+}
+.downtime{
+  color: #fefefe;
+  font-size: 18rpx;
+  background: #363636;
+  border-radius: 8rpx;
+  padding: 8rpx;
+}
+.count-down-txt{
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.spellbox{
+  justify-content: center;
+  padding-bottom: 90rpx;
+}
+.spellimg{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 10rpx;
+  position: relative;
+  border-radius: 50rpx;
+}
+.spellimg image{
+  border-radius: 50rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.colonel{
+  position: absolute;
+  left: -25rpx;
+  top: -10rpx;
+  color: #fff;
+  font-size: 16rpx;
+  background: #ff0000;
+  padding: 6rpx 12rpx;
+  border-radius: 50rpx;
+}
+
+.invite{
+  height: 90rpx;
+  background: #ff0000;
+  border-radius: 8rpx;
+  margin: 0 24rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 90rpx;
+  position: relative;
+}
+
+.invitelook{
+  height: 90rpx;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8rpx;
+  margin: 20rpx 24rpx;
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  line-height: 90rpx;
+}
+
+.flowimg{
+  width: 100%;
+  height: 170rpx;
+  margin-top: 20rpx;
+}
+.flowimg image{
+  width: 100%;
+  height: 100%;
+}
+
+
+.inviteCss{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+
+.tanBox{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 20;
+}
+
+.tantxt{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.tanheader{
+  justify-content: space-between;
+  margin: 20rpx;
+}
+
+.goodimg{
+  height: 226rpx;
+  width: 226rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.1);
+  margin-right: 20rpx;
+}
+.goodimg image{
+  border-radius: 20rpx;
+}
+
+.flipprice{
+  color: #01D7A1;
+  font-size: 40rpx;
+}
+.flipprice::before{
+  content: "￥";
+  color: #01D7A1;
+  font-size: 28rpx;
+}
+
+.inventory{
+  color: #999999;
+  font-size: 26rpx;
+  margin: 15rpx 0;
+}
+
+.my-select{
+  color: #000;
+  font-size: 26rpx;
+
+}
+
+.closebtn{
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  text-align: center;
+  line-height: 44rpx;
+  color: #999;
+}
+.icox{
+  font-family: "icox"!important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icox-guanbi1::before {
+  content: "\e83a";
+}
+
+.outerbox{
+  margin: 20rpx;
+}
+
+.balltitle{
+  color: #333333;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.balltitle-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.balltitle-tetx{
+  background: #E6E6E6;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+  padding: 15rpx 40rpx;
+  margin: 10rpx;
+}
+
+.textactive{
+  background: #F0FFFB;
+  color: #01D7A1;
+}
+
+.quantity{
+  justify-content: space-between;
+  margin: 20rpx 20rpx 6rem;
+}
+
+.quantity-title{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.quantity-minus,.quantity-plus{
+  width: 61rpx;
+  height: 61rpx;
+  text-align: center;
+  line-height: 61rpx;
+  background: #f7f7f7;
+  font-size: 41rpx;
+  font-weight: bold;
+  color: #999;
+  border: 1px solid #ddd;
+}
+.quantity-count{
+  width: 80rpx;
+  height: 61rpx;
+  text-align: center;
+  line-height: 61rpx;
+  font-size: 28rpx;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.forbid{
+  background: #fff;
+  color: #ebebeb;
+}
+
+.ensure{
+  height: 120rpx;
+  width: 100%;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #01D7A1;
+}
+
+.succeedimg{
+  width: 50rpx;
+  height: 50rpx;
+}
+.succeed{
+  font-size: 34rpx;
+  color: #01d7a1;
+  margin-left: 20rpx;
+}

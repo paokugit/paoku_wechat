@@ -1,0 +1,129 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="拼团详情"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view style="margin-bottom: 160rpx;" wx:if="{{show}}">
+
+	<view class="head">
+		<navigator hover-class="none" url="/packageA/pages/changce/spelltuan/details/message?id={{statelist.goods.id}}" open-type="redirect" class="head-good flexcss">
+			<image class="good-img" src="{{statelist.goods.thumb}}"></image>
+			<view>
+				<view class="good-name">{{statelist.goods.title}}</view>
+				<view class="flexcss">
+					<view class="current-price">{{statelist.goods.groupsprice}}</view>
+					<view class="original-cost">{{statelist.goods.price}}</view>
+				</view>
+			</view>
+		</navigator>
+	</view>
+
+	<view class="reveal">
+		<view class="flexcss" style="justify-content: center;margin-bottom: 80rpx;" wx:if="{{statelist.success==1}}">
+			<image class="succeedimg" src="{{globalimg}}/pin-succeed.png"></image>
+			<view class="succeed">恭喜您拼购成功</view>
+		</view>
+
+		<view wx:if="{{statelist.success==0}}">
+			<view class="reveal-tit">还差<text>{{statelist.number}}人</text>就组团成功了哦~</view>
+
+			<view class="flexcss count-down">
+				<view class="count-down-txt">时间仅剩</view>
+				<view class="flexcss">
+					<view class="downtime">{{statelist.hrStr}}</view> ：
+					<view class="downtime">{{statelist.minStr}}</view> ：
+					<view class="downtime">{{statelist.secStr}}</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="flexcss spellbox">
+			<block wx:for="{{statelist.team}}" wx:key="index">
+				<view class="spellimg">
+					<view class="colonel" wx:if="{{item.head==1}}">团长</view>
+					<image src="{{item.avatar}}"></image>
+				</view>
+			</block>
+			<block wx:for="{{statelist.number}}" wx:key="index">
+				<view class="spellimg">
+					<image src="{{globalimg}}/pt_icon_rs1@2x.png"></image>
+				</view>
+			</block>
+		</view>
+
+    <view wx:if="{{statelist.success==0}}">
+      <view class="invite" wx:if="{{statelist.partake==1}}">
+        邀请好友参团
+        <button class='inviteCss' open-type='share' data-num="{{statelist.number}}" data-teamid="{{statelist.team_id}}" data-name="{{statelist.goods.title}}" data-money="{{statelist.goods.groupsprice}}" data-img="{{statelist.goods.thumb}}"></button>
+      </view>
+      <view class="invite" catchtap="spelljoin" wx:if="{{statelist.partake==0}}" data-goodsid="{{statelist.goods.id}}">立即参与</view>
+    </view>
+
+    <view wx:if="{{statelist.success==1}}">
+      <navigator class="invite" url="/packageA/pages/changce/spelltuan/details/message?id={{statelist.goods.id}}">再开一单</navigator>
+
+      <view class="invitelook" catchtap="indentBtn">查看订单</view>
+    </view>
+  </view>
+
+	<view class="flowimg">
+		<image src="{{globalimg}}/flowimg.png"></image>
+	</view>
+
+
+	<view class="tanBox" wx:if="{{ball == 1?false:true}}">
+		<view class="tantxt">
+			<view class="flexcss tanheader">
+
+				<!-- 有规格信息 -->
+				<view style="display:flex;" wx:if="{{statelist.more_spec==1}}">
+					<view class="goodimg">
+						<image src="{{standard.goods.thumb}}"></image>
+					</view>
+					<view style="margin-top: 30rpx;">
+						<view class="flipprice">{{standard.goods.minprice}}</view>
+						<view class="inventory">库存{{standard.goods.total}}件</view>
+						<view class="my-select" style="{{specsTitle == ''?'display:none':''}}">已选 {{specsTitle}}</view>
+					</view>
+				</view>
+				<!-- 有结束 -->
+
+				<!-- 无规格信息 -->
+				<view style="display:flex;" wx:if="{{statelist.more_spec==0}}">
+					<view class="goodimg">
+						<image src="{{statelist.goods.thumb}}"></image>
+					</view>
+					<view style="margin-top: 30rpx;">
+						<view class="flipprice">{{statelist.goods.groupsprice}}</view>
+					</view>
+				</view>
+				<!-- 无结束 -->
+
+				<view catchtap="emptyActive" class="closebtn">
+					<i class="icox icox-guanbi1" style="font-size:22px"></i>
+				</view>
+			</view>
+
+			<view class="outerbox">
+				<block wx:for="{{standard.specs}}" wx:for-item="specslit" wx:for-index="idx" wx:key="*this">
+					<view class="balltitle">{{specslit.title}}</view>
+
+					<view class="balltitle-list">
+						<block wx:for="{{specslit.items}}" wx:for-item="itemlit" wx:key="itemind">
+							<view class="balltitle-tetx {{chooseList[idx].id==itemlit.id?'textactive':''}}" catchtap="selectGuige" data-id="{{itemlit.id}}" data-idx="{{idx}}" data-thumb="{{itemlit.thumb}}" data-title="{{itemlit.title}}">{{itemlit.title}}</view>
+						</block>
+					</view>
+				</block>
+			</view>
+
+
+			<view class="quantity flexcss">
+				<view class="quantity-title">购买数量</view>
+				<view class="flexcss">
+					<view class="quantity-minus forbid">-</view>
+					<view class="quantity-count">{{amount}}</view>
+					<view class="quantity-plus forbid">+</view>
+				</view>
+			</view>
+
+			<view class="ensure" catchtap="spellbuy" data-goodid="{{statelist.goods.id}}" data-morespec="{{statelist.more_spec}}">确定</view>
+		</view>
+	</view>
+</view>

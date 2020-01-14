@@ -267,7 +267,7 @@
         </view>
       </view>
 
-      <view class='store-service-box-bottom'>
+      <view class='store-service-box-bottom' >
         <view class='club-card-box' wx:for="{{goodlist}}" wx:key="index">
           <view class='store-reward' style='display:{{storedisp}}'>
             <view class='rewardBox' wx:if="{{item.isreward==0}}" style='display:none'>赏金任务</view>
@@ -468,7 +468,7 @@
       </view>
       <scroll-view class="list-tab-scroll" scrollX="true" style="overflow-x:scroll;">
         <view bindtap="tabCategory" class="item {{selector==171?'actived':''}}" data-id="171">全部</view>
-        <block wx:for="{{cateList}}" wx:for-index="idx">
+        <block wx:for="{{cateList}}" wx:for-index="idx" wx:key="catind">
           <view bindtap="tabCategory" class="item {{selector==item.id?'actived':''}}" data-id="{{item.id}}">
             {{item.name}}
           </view>
@@ -488,7 +488,7 @@
       </view>
       <view class='exchange-products-box'>
 
-        <block wx:for="{{rvclist}}" wx:key="{{index}}">
+        <block wx:for="{{rvclist}}" wx:key="index">
           <view class='exchange-product'>
             <navigator class='exchange-product-img' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}">
               <image class='ex-proimg' src='{{item.thumb}}'></image>

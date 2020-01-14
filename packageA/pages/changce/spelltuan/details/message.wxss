@@ -61,16 +61,6 @@ image{
   margin-left: 10rpx;
 }
 
-.iconImg{
-  width: 36rpx;
-  height: 36rpx;
-}
-
-.focutxt{
-  font-size: 20rpx;
-  color: #666666;
-}
-
 .goods-name{
   font-size: 34rpx;
   color: #1C1C1C;
@@ -96,6 +86,7 @@ image{
 .safeguard-img {
   width: 22rpx;
   height: 22rpx;
+  margin-right: 10rpx;
 }
 
 .goods-pledge{
@@ -109,7 +100,7 @@ image{
 
 .spell-detail{
   margin: 20rpx 0;
-  padding: 30rpx 24rpx;
+  padding: 30rpx 24rpx 20rpx;
   background: #fff;
   border-radius: 20rpx;
 }
@@ -139,7 +130,6 @@ image{
 }
 
 .portrait-img{
-  background: red;
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
@@ -185,54 +175,76 @@ image{
   font-size: 28rpx;
   color: #666666;
   text-align: center;
-  margin-top: 32rpx;
+  padding: 32rpx 0 30rpx;
 }
 
-.select-freight{
-  margin: 20rpx 0;
-  padding: 50rpx 24rpx;
+.standard-area-postage {
+  width: 100%;
+  height: auto;
   background: #fff;
   border-radius: 20rpx;
+  margin-top: 20rpx;
 }
 
-.select-standard{
+.standard-box {
+  width: 94%;
+  height: 120rpx;
+  padding: 0 3%;
+  border-bottom: 2rpx solid #f8f8f8;
+  line-height: 1.4;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+
+.standard-con {
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  transition-duration: 300ms;
+  transition-property: background-color;
+}
+
+.standard-text {
+  width: 10%;
+  color: rgb(51, 51, 51);
+  font-size: 30rpx;
+  margin-right: 30rpx;
+}
+
+.standard-right {
+  width: 90%;
+  display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #F0F0F0;
-  padding-bottom: 30rpx;
+  align-items: center;
 }
 
-.select-standard-img{
-  width: 13rpx;
-  height: 21rpx;
-}
-.select-standard-txt{
-  width: 80%;
-}
-.select-standard-txt,.freight-show{
+.standard-type {
+  width: auto;
+  color: rgb(85, 85, 85);
   font-size: 26rpx;
-  color: #333333;
 }
-.select-standard::before{
-  content: "选择";
-  color: #333333;
-  font-size: 30rpx;
-  font-weight: bold;
+
+.standard-img {
+  width: 15rpx;
+  height: 24rpx;
 }
-.freight-show::before{
-  content: "运费";
-  color: #333333;
-  font-size: 30rpx;
-  font-weight: bold;
-  margin-right: 10rpx;
-}
-.freight-show{
-  padding-top: 30rpx;
+
+.postageBox {
+  width: 94%;
+  height: 120rpx;
+  padding: 0 3%;
+  /* border-bottom: 2rpx solid #f8f8f8; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .appraiseBox {
   width: 94%;
-  height: 436rpx;
-  background: pink;
+  background: #fff;
   padding: 24rpx 3%;
   border-radius: 20rpx;
   margin-top: 20rpx;
@@ -288,7 +300,7 @@ image{
 .store-slide-box {
   width: 100%;
   height: 272rpx;
-  background: #ff6;
+  background: #fff;
   display: flex;
   align-items: center;
 }
@@ -321,7 +333,7 @@ image{
   width: 382rpx;
   height: 272rpx;
   /* padding: 14rpx 22rpx; */
-  background: #f66;
+  background: #fff;
   position: relative;
 }
 
@@ -336,21 +348,22 @@ image{
 }
 
 .appraiser-name {
-  width: auto;
+  width: 260rpx;
   height: 60rpx;
   line-height: 60rpx;
-  background: #f0f;
   position: absolute;
   top: 15rpx;
   left: 97rpx;
   color: #000;
   font-size: 34rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .appraise-desc {
-  width: 335rpx;
+    width: 335rpx;
   height: 130rpx;
-  background: #f99;
   position: absolute;
   top: 90rpx;
   left: 22rpx;
@@ -367,12 +380,15 @@ image{
 }
 
 .appraise-standard {
+  width: 300rpx;
   color: #999;
   font-size: 24rpx;
   position: absolute;
   left: 22rpx;
   bottom: 15rpx;
-  background: #f88;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .appraise-item-right {
@@ -454,7 +470,7 @@ image{
   width: 94%;
   height: 430rpx;
   padding: 24rpx 3%;
-  background: pink;
+  background: #fff;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -520,16 +536,16 @@ image{
   width: 98%;
   height: 320rpx;
   padding: 0 1%;
-  background: #ff6;
+  background: #fff;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .showcase-item {
   width: 200rpx;
   height: 310rpx;
-  background: #f99;
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -540,13 +556,11 @@ image{
   width: 200rpx;
   height: 180rpx;
   border-radius: 20rpx;
-  background: #0f0;
 }
 
 .showcase-title {
   width: 200rpx;
   height: 70rpx;
-  background: #99f;
   line-height: 35rpx;
   display: -webkit-box;
   overflow: hidden;
@@ -569,7 +583,7 @@ image{
   width: 94%;
   height: 362rpx;
   padding: 24rpx 3%;
-  background: pink;
+  background: #fff;
   border-radius: 20rpx;
   margin-top: 20rpx;
 }
@@ -581,14 +595,13 @@ image{
   font-size: 30rpx;
   display: flex;
   align-items: center;
-  background: #0f0
 }
 
 .detail-headline-box{
   width: 100%;
   height: 100rpx;
   background: #fff;
-  margin: 20rpx 0 80rpx;
+  margin-top: 20rpx;
   border-radius: 20rpx 20rpx 0 0;
   display: flex;
   align-items: center;
@@ -612,6 +625,8 @@ image{
   margin-bottom: 8rpx
 }
 
+
+
 .base-banner{
   width: 100%;
   background: #fff;
@@ -621,10 +636,12 @@ image{
   justify-content: space-around;
 }
 
-.nav-item{
-  width: 10%;
-  height: 100rpx;
-  text-align: center;
+.leftbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height:100rpx;
 }
 
 .customer-item{
@@ -633,14 +650,15 @@ image{
   padding: 0;
   font-size: inherit;
   line-height: inherit;
-  padding-top: 6rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .external{
-  padding: 0 40rpx;
+  text-align: center;
 }
 
-.kefuimg,.dianpuimg{
+.kefuimg,.dianpuimg,.gouwuimg{
   width: 38rpx;
   height: 34rpx;
   margin: 20rpx 0 0;
@@ -658,7 +676,8 @@ image{
   background: #01D7A1;
 }
 .alone-buy,.spell-buy{
-  width: 220rpx;
+  /* width: 220rpx; */justify-content: space-around;
+  width: 100%;
   height: 100rpx;
   text-align: center;
   line-height: 50rpx;
@@ -671,7 +690,174 @@ button::after{
 }
 
 
+.tanBox{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.tantxt{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.tanheader{
+  justify-content: space-between;
+  margin: 20rpx;
+}
+
+.goodimg{
+  height: 226rpx;
+  width: 226rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.1);
+  margin-right: 20rpx;
+}
+.goodimg image{
+  border-radius: 20rpx;
+}
+
+.flipprice{
+  color: #01D7A1;
+  font-size: 40rpx;
+}
+.flipprice::before{
+  content: "￥";
+  color: #01D7A1;
+  font-size: 28rpx;
+}
+
+.inventory{
+  color: #999999;
+  font-size: 26rpx;
+  margin: 15rpx 0;
+}
+
+.my-select{
+  color: #000;
+  font-size: 26rpx;
+
+}
+
+.closebtn{
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  text-align: center;
+  line-height: 44rpx;
+  color: #999;
+}
+.icox{
+  font-family: "icox"!important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icox-guanbi1::before {
+  content: "\e83a";
+}
+
+.outerbox{
+  margin: 20rpx;
+}
+
+.balltitle{
+  color: #333333;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.balltitle-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.balltitle-tetx{
+  background: #E6E6E6;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+  padding: 15rpx 40rpx;
+  margin: 10rpx;
+}
+
+.textactive{
+  background: #F0FFFB;
+  color: #01D7A1;
+}
+
+.quantity{
+  justify-content: space-between;
+  margin: 20rpx 20rpx 6rem;
+}
+
+.quantity-title{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.quantity-minus,.quantity-plus{
+  width: 61rpx;
+  height: 61rpx;
+  text-align: center;
+  line-height: 61rpx;
+  background: #f7f7f7;
+  font-size: 41rpx;
+  font-weight: bold;
+  color: #999;
+  border: 1px solid #ddd;
+}
+.quantity-count{
+  width: 80rpx;
+  height: 61rpx;
+  text-align: center;
+  line-height: 61rpx;
+  font-size: 28rpx;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.forbid{
+  background: #fff;
+  color: #ebebeb;
+}
+
+.ensure{
+  height: 120rpx;
+  width: 100%;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #01D7A1;
+}
+
+
+.goods-detail-info{
+  margin-bottom: 60px;
+  text-align: center;
+}
+
 .flexcss{
   display: flex;
   align-items: center;
+  font-size: 34rpx;
 }

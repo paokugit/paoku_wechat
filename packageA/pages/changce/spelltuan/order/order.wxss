@@ -1,0 +1,248 @@
+.flexcss{
+  display: flex;
+  align-items: center;
+}
+
+.hidecss{
+  display: none;
+}
+
+
+.fui-tab-scroll{
+  height: 88rpx;
+  border-bottom-left-radius:20rpx;
+  border-bottom-right-radius: 20rpx; 
+}
+
+.fui-tab-scroll .item{
+  padding: 0;
+  margin: 0 20rpx;
+}
+
+.fui-tab-scroll .select{
+  color: #01D7A1;
+  font-size: 34rpx;
+  position: relative;
+}
+.fui-tab-scroll .item.select:before {
+  content: "";
+  height: 4rpx;
+  width: 100%;
+  background: #01d7a1;
+  position: absolute;
+  bottom: 10rpx;
+  left: 0;
+  z-index: 1;
+}
+
+
+.order-list{
+  padding: 24rpx 24rpx 40rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.list-head{
+  justify-content: space-between;
+}
+
+.shopimg{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.shopname{
+  font-size: 30rpx;
+  color: #333;
+}
+
+.tatehint{
+  font-size: 30rpx;
+  color: #01D7A1;
+  margin-right: 15rpx;
+}
+
+.deleteimg{
+  width: 32rpx;
+  height: 34rpx;
+}
+
+.goods{
+  margin: 40rpx 0;
+}
+
+.goods-img{
+  width: 220rpx;
+  height: 220rpx;
+  margin-right: 24rpx;
+  border-radius: 10rpx;
+  background: orange;
+}
+
+.goods-name{
+  color: #1C1C1C;
+  font-size: 34rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+
+.goods-standard{
+  font-size: 24rpx;
+  color: #999;
+  margin: 20rpx 0 30rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.goods-price{
+  font-size: 40rpx;
+  color: #333;
+}
+.goods-price::before{
+  color: #333;
+  content: "￥";
+  font-size: 28rpx;
+}
+
+.goods-num{
+  font-size: 34rpx;
+  color: #333;
+}
+
+.goods-state{
+  font-size: 24rpx;
+  color: #FF6600;
+}
+
+.alteration{
+  font-size: 18rpx;
+  color: #01D7A1;
+  border: 1px solid #01D7A1;
+  padding-left: 10rpx;
+}
+
+.statistics{
+  justify-content: flex-end;
+}
+
+.statistics-num{
+  font-size:28rpx;
+  color: #333;
+  margin-right: 36rpx;
+}
+
+.statistics-price{
+  font-size: 28rpx;
+  color: #333;
+}
+
+.statistics-price text{
+  font-size: 40rpx;
+  color: #333;
+}
+.statistics-price text::before{
+  content: "￥";
+  font-size: 28rpx;
+  color: #333;
+}
+
+.select-btn{
+  justify-content: flex-end;
+  margin-top: 40rpx;
+}
+
+.btncss{
+  border: 1px solid #E6E6E6;
+  color: #999;
+  margin-right: 20rpx;
+}
+.btnactive{
+  border: 1px solid #01D7A1;
+  color: #01D7A1;
+
+}
+.btncss,.btnactive{
+  border-radius: 50rpx;
+  padding: 10rpx 30rpx;
+  font-size: 30rpx;
+}
+.service{
+  position: relative;
+  border-radius: 50rpx;
+  padding: 10rpx 30rpx;
+  font-size: 30rpx;
+  border: 1px solid #E6E6E6;
+  color: #999;
+  margin-right: 20rpx;
+}
+.servicebtn{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.spellitem-img{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+
+.spelltime-txt{
+  font-size: 24rpx;
+  color: #333;
+}
+
+.invitebtn{
+  background: #01D7A1;
+  padding: 18rpx 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+  position: relative;
+}
+.inviteCss{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.quit-img{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+.quit-txt{
+  font-size: 30rpx;
+  color: #01D7A1;
+}
+
+.look-details{
+  border: 1px solid #01D7A1;
+  padding: 10rpx 30rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  color: #01D7A1;
+  margin-left: 20rpx;
+}
+
+
+.basetxt{
+  text-align: center;
+  margin: 60rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}

@@ -9,7 +9,7 @@
         <scroll-view>
             <view class='hotrob-box'>
                 <view class='hot-container'>
-                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="{{index}}">
+                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="index">
                         <view class='sec-item-img'>
                             <image src='{{item.thumb}}'></image>
                             <view class='sec-saleout-img' wx:if="{{item.total==0}}">
@@ -60,7 +60,7 @@
                     </view>
                 </view>
                 <view class='upcome-container'>
-                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="{{index}}">
+                    <navigator class='sec-itembox' openType="navigate" url="{{item.bargain>0?'/pages/bargain/detail/detail?id='+item.bargain:'/pages/goods/detail/index?id='+item.id}}" wx:for="{{list}}" wx:key="index">
                         <view class='sec-item-img'>
                             <image src='{{item.thumb}}'></image>
                         </view>

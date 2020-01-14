@@ -1,0 +1,36 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="可参与的拼团"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view wx:if="{{show}}">
+  <view wx:if="{{list.length == 0?false:true}}">
+
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="spell-list flexcss" catchtap="{{item.gerenid == 0?'selectBtn':''}}" data-teamid="{{item.teamid}}" data-xuan="0">
+        <view class="spell-portrait-name flexcss">
+          <block wx:for="{{item.avatar}}" wx:for-item="avatarlit" wx:for-index="acidx" wx:key="avatarind">
+            <image src="{{avatarlit}}" class="portrait-img" style="{{acidx > 0 ? 'margin-left:-30rpx;':''}}"></image>
+          </block>
+
+          <view class="soell-name">{{item.nickname}}</view>
+        </view>
+
+        <view class="spell-right flexcss">
+          <view class="people-time">
+            <view class="people-time-tetx">{{item.groupnum}}人拼，还差
+              <text>{{item.number}}人</text> 拼成</view>
+            <view class="residue-time">剩余{{item.countDown}}</view>
+          </view>
+          <view class="go-spell">去拼团</view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+  <view wx:if="{{list.length == 0?true:false}}" style="height: 100vh;background: #fff;">
+    <view class="pinkong">
+      <image src="{{globalimg}}/sp_img_zwpd@2x.png"></image>
+      <view>暂无拼团</view>
+    </view>
+  </view>
+
+</view>

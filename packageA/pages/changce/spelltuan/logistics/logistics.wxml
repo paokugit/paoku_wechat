@@ -1,0 +1,35 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="物流信息"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view wx:if="{{show}}">
+	<view class="goods">
+		<image class="goods-img" src="{{goods.thumb}}"></image>
+		<view class="goods-news">
+			<view class="logistics-state">物流状态：<text>{{goods.status}}</text></view>
+			<view class="express">快递公司：{{goods.com}}</view>
+			<view class="odd-numbers">快递单号：{{goods.sn}}</view>
+		</view>
+	</view>
+
+	<view class="article-news" wx:if="{{newslist.length==0?false:true}}">
+
+		<block wx:for="{{newslist}}" wx:key="key" wx:for-item='item'>
+			<view class='logisit'>
+				<!-- 左边子容器 -->
+				<!-- 显示顶部收的圆点 -->
+				<view class='dot-shou {{index==0?"":"dot_two"}}' wx:if="{{index==0}}"></view>
+				<view class='express-middle-axis' wx:else>
+					<view class='dot-closing' wx:if='{{index>0}}'></view>
+					<view class='dot-closing_two' wx:else></view>
+					<view class='online-top-closing'></view>
+				</view>
+				<!-- 右边子容器 -->
+				<view class='express-right'>
+					<view class='express-status-address {{index==0?"color":"color_second"}}'>{{item.step}}</view>
+					<view class='express-statusing'>{{item.time}}</view>
+				</view>
+			</view>
+		</block>
+
+	</view>
+
+</view>

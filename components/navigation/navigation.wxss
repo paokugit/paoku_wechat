@@ -2,7 +2,7 @@
   width: 46rpx;
   height: 8rpx;
 }
-.loading-wrap {
+/* .loading-wrap {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
   }
 .loading-wrap image {
   background-color: transparent;
-}
+} */
 .header {
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@
   margin-left: 14rpx;
   padding: 0 14rpx;
 }
-.header .title-bar  image {
+.header .title-bar  .img {
   width: 32rpx;
   height: 32rpx;
   background: transparent;

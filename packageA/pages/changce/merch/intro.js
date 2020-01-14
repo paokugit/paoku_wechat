@@ -8,7 +8,7 @@ Page({
     loaded: false,
     merch: [],
     approot: t.globalData.approot,
-    
+
     showIcon: true,
     gloheight: t.globalData.gloheight
   },
@@ -20,14 +20,17 @@ Page({
   },
   getIntro: function () {
     var t = this;
-    a.get("changce/merch/intro", { id: t.data.merchid}, function (a) {
+    a.get("changce/merch/intro", {
+      id: t.data.merchid
+    }, function (a) {
+      console.log(a);
       var markers = [];
       if (a.merch.lat) markers = [{
         latitude: a.merch.lat,
         longitude: a.merch.lng,
         name: a.merch.merchname,
         desc: a.merch.address
-      }] 
+      }]
       t.setData({
         merch: a.merch,
         markers: markers
@@ -46,25 +49,25 @@ Page({
       url: "/pages/sale/coupon/detail/index?id=" + e
     })
   },
-  daohang:function () {
-    var lanlng=this.data.markers[0];
+  daohang: function () {
+    var lanlng = this.data.markers[0];
     console.log(lanlng);
-    //   if (lanlng==undefined){
-    //       wx.showModal({
-    //           title: '提示',
-    //           content: '商家还未设置哦',
-    //       })
-    //   }else{
-          const latitude = lanlng.latitude
-          const longitude = lanlng.longitude
-          wx.openLocation({
-              latitude,
-              longitude,
-              name: lanlng.name,
-              address: lanlng.desc,
-              scale: 18
-          })
-    //   }
-   
+    if (lanlng == undefined) {
+      wx.showModal({
+        title: '提示',
+        content: '商家还未设置哦',
+      })
+    } else {
+      const latitude = lanlng.latitude
+      const longitude = lanlng.longitude
+      wx.openLocation({
+        latitude,
+        longitude,
+        name: lanlng.name,
+        address: lanlng.desc,
+        scale: 18
+      })
+    }
+
   }
 })

@@ -32,7 +32,7 @@
                 <view style='display:{{gxzDis}}'>
                     <view class="scroll">
                         <view class="scroll-wrap">
-                            <view class="scroll-data" wx:for="{{len}}" wx:key="{{index}}">
+                            <view class="scroll-data" wx:for="{{len}}" wx:key="index">
                                 <view class="scroll-num" animation="{{animation[index]}}">
                                     <text class="unit-num">.</text>
                                     <text class="unit-num">0</text>
@@ -121,7 +121,7 @@
     </view>
     <view class='get-color-box'>
         <view class='get-image-box'>
-            <view class='gxserve-item' wx:for='{{gxzlist}}' wx:key='{{index}}'>
+            <view class='gxserve-item' wx:for='{{gxzlist}}' wx:key='index'>
                 <view wx:if="{{item.is_open==1}}" class='gxzItem' data-id='{{item.id}}' bindtap='getdevotebtn'>
                     <image class='gxserve-img' src='{{item.image}}'></image>
                     <view class='get-state'>x{{item.count}}</view>

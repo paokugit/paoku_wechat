@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "packageA/pages/changce/spelltuan/details/message",
+  "entryPagePath": "pages/index/index",
   "pages": [
     "pages/index/index",
     "pages/jdproducts/order/index",
@@ -48,6 +48,11 @@
     "pages/goods/poster/poster",
     "pages/order/detail/index",
     "pages/order/comment/index",
+    
+    "pages/order/exchange/index",
+    "pages/order/exchange/retreat",
+    "pages/order/exchange/trade",
+
     "pages/order/refund/index",
     "pages/order/create/index",
     "pages/order/store/index",
@@ -95,6 +100,8 @@
     {
       "root": "packageA",
       "pages": [
+        "pages/product/evaluate/evaluate",
+
         "pages/lottery/lottery/lottery",
         "pages/playmethod/playmethod/playmethod",
         "pages/playmethod/hotdetail/hotdetail",
@@ -154,7 +161,20 @@
         "pages/skyread/details/details",
         "pages/watchvideo/watchvideo",
 
-        "pages/changce/spelltuan/details/message"
+
+
+        "pages/changce/spelltuan/details/message",
+        "pages/changce/spelltuan/joinlisit/joinlisit",
+        "pages/changce/spelltuan/affirm/affirm",
+        "pages/changce/spelltuan/alipay/alipay",
+        "pages/changce/spelltuan/order/order",
+        "pages/changce/spelltuan/logistics/logistics",
+        "pages/changce/spelltuan/evaluate/evaluate",
+        "pages/changce/spelltuan/orderDetails/orderDetails",
+        "pages/changce/spelltuan/refund/refund",
+        "pages/changce/spelltuan/jindu/jindu",
+        "pages/changce/spelltuan/news/news",
+        "pages/changce/spelltuan/state/state"
       ]
     }
   ],

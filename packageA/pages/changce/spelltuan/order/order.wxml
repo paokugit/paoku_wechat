@@ -1,0 +1,200 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="拼团订单"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view>
+
+  <scroll-view class="fui-tab-scroll fixed" scrollX="true" style="overflow-x:scroll;margin-top:{{gloheight}}px">
+    <view bindtap="selected" class="item {{status=='7'?'select':''}}" data-type="7">全部</view>
+    <view bindtap="selected" class="item {{status=='0'?'select':''}}" data-type="0">待付款</view>
+    <view bindtap="selected" class="item {{status=='4'?'select':''}}" data-type="4">待成团</view>
+    <view bindtap="selected" class="item {{status=='1'?'select':''}}" data-type="1">待发货</view>
+    <view bindtap="selected" class="item {{status=='2'?'select':''}}" data-type="2">待收货</view>
+    <view bindtap="selected" class="item {{status=='5'?'select':''}}" data-type="5">待评价</view>
+    <view bindtap="selected" class="item {{status=='6'?'select':''}}" data-type="6">退换货</view>
+  </scroll-view>
+
+  <view style="margin-top:120rpx">
+    <block wx:for="{{orderlist}}" wx:key = "index">
+      <view class="order-list">
+        <navigator class="list-head flexcss" url="/packageA/pages/changce/merch/detail?id={{item.merchid}}" open-type="redirect">
+          <view class="flexcss">
+            <image class="shopimg" src="{{globalimg}}/dd_inco_dp@2x.png"></image>
+            <view class="shopname">{{item.merchname}}</view>
+          </view>
+
+          <view class="flexcss">
+            <view class="tatehint" style="{{item.status == -1?'':'display:none'}}">已关闭</view>
+            <view class="tatehint" style="{{item.status == 0?'':'display:none'}}">待付款</view>
+            <view class="tatehint" style="{{item.status == 1?'':'display:none'}}">已付款</view>
+            <view class="tatehint" style="{{item.status == 2?'':'display:none'}}">待收货</view>
+            <view class="tatehint" style="{{item.status == 3&&item.iscomment==0?'':'display:none'}}">待评价</view>
+            <view class="tatehint" style="{{item.status == 3&&item.iscomment!=0?'':'display:none'}}">已评价</view>
+            <image catchtap="cancelbtn" data-orderid="{{item.id}}" data-cancel="2" class="deleteimg {{item.status == 3||item.status == '-1'?'':'hidecss'}}" src="{{globalimg}}/dd_inco_thh_sc@2x.png"></image>
+          </view>
+        </navigator>
+
+        <block wx:for="{{item.goods}}" wx:for-item="goodsitem" wx:key="groupind">
+          
+          <navigator wx:if="{{status!=6}}" url="/packageA/pages/changce/spelltuan/orderDetails/orderDetails?id={{item.id}}&num={{item.num}}" class="goods flexcss">
+            <image src="{{goodsitem.thumb}}" class="goods-img"></image>
+            <view style="width: 440rpx;">
+              <view class="goods-name">{{goodsitem.title}}.</view>
+              <view class="goods-standard" wx:if="{{goodsitem.option_name!=''}}">规格：{{goodsitem.option_name}}</view>
+              <view class="flexcss" style="justify-content: space-between;">
+                <view class="goods-price {{item.is_team == 1?'':'hidecss'}}">{{goodsitem.groupsprice}}</view>
+                <view class="goods-price {{item.is_team == 0?'':'hidecss'}}">{{goodsitem.singleprice}}</view>
+                <view style="text-align: center;">
+                  <view class="goods-num">x{{goodsitem.total}}</view>
+
+                  <view wx:if="{{item.refundstate != 0 && status!=6}}">
+                    <view class="goods-state" wx:if="{{item.rtype==0||item.rtype==1}}">
+                      <view style="{{item.refundstatus!=1&&item.refundstatus!='-1'?'':'display:none'}}">退款中</view>
+                      <view style="{{item.refundstatus==1?'':'display:none'}}">退款成功</view>
+                    </view>
+                    <view class="goods-state" wx:if="{{item.rtype==2}}">
+                      <view style="{{item.refundstatus!=1&&item.refundstatus!='-1'?'':'display:none'}}">换货中</view>
+                      <view style="{{item.refundstatus==1?'':'display:none'}}">换货成功</view>
+                    </view>
+                  </view>
+
+                </view>
+              </view> 
+              <view class="alteration" style="{{goodsitem.seven == 0?'display:none':''}}">支持7天无理由退货（使用后不支持）</view>
+            </view>
+          </navigator>
+          
+          <navigator wx:if="{{status==6}}" url="/packageA/pages/changce/spelltuan/refund/refund?id={{item.id}}" class="goods flexcss">
+            <image src="{{goodsitem.thumb}}" class="goods-img"></image>
+            <view style="width: 440rpx;">
+              <view class="goods-name">{{goodsitem.title}}.</view>
+              <view class="goods-standard" wx:if="{{goodsitem.option_name!=''}}">规格：{{goodsitem.option_name}}</view>
+              <view class="flexcss" style="justify-content: space-between;">
+                <view class="goods-price {{item.is_team == 1?'':'hidecss'}}">{{goodsitem.groupsprice}}</view>
+                <view class="goods-price {{item.is_team == 0?'':'hidecss'}}">{{goodsitem.singleprice}}</view>
+                <view style="text-align: center;">
+                  <view class="goods-num">x{{goodsitem.total}}</view>
+
+                  <view wx:if="{{item.refundstate != 0 && status!=6}}">
+                    <view class="goods-state" wx:if="{{item.rtype==0||item.rtype==1}}">
+                      <view style="{{item.refundstatus==0?'':'display:none'}}">退款中</view>
+                      <view style="{{item.refundstatus==1?'':'display:none'}}">退款成功</view>
+                    </view>
+                    <view class="goods-state" wx:if="{{item.rtype==2}}">
+                      <view style="{{item.refundstatus==0?'':'display:none'}}">换货中</view>
+                      <view style="{{item.refundstatus==1?'':'display:none'}}">换货成功</view>
+                    </view>
+                  </view>
+
+                </view>
+              </view> 
+              <view class="alteration" style="{{goodsitem.seven == 0?'display:none':''}}">支持7天无理由退货（使用后不支持）</view>
+            </view>
+          </navigator>
+          
+        </block>
+
+        <view class="statistics flexcss">
+          <view class="statistics-num">共1件商品</view>
+          <view class="statistics-price">合计：<text>{{item.price}}</text> </view>
+        </view>
+
+       
+        
+        <view class="select-btn flexcss {{item.status == '-1'?'':'hidecss'}}">
+          <navigator  url="/packageA/pages/changce/spelltuan/details/message?id={{item.goodid}}" open-type="redirect" class="btnactive">再次购买</navigator>
+        </view>
+
+        <!-- 待付款 -->
+        <view class="select-btn flexcss {{item.status == 0?'':'hidecss'}}">
+          <view class="service" wx:if="{{item.mobile.length==0?true:false}}">
+            <button class="nav-item customer-item servicebtn" openType="contact" sessionFrom="weapp" showMessageCard="true"></button>
+            联系客服
+          </view>
+          <view class="btncss" catchtap="dial" data-mobile="{{item.mobile}}" wx:else>联系卖家</view>
+          
+          <view class="btncss" catchtap="cancelbtn" data-orderid="{{item.id}}" data-cancel="1">取消订单</view>
+          <navigator class="btnactive" url="/packageA/pages/changce/spelltuan/alipay/alipay?optionid={{item.id}}&spell=1" open-type="redirect">去付款</navigator>
+        </view>
+
+        <!-- 待成团 -->
+        <view class="select-btn flexcss {{item.status==1&&item.num!=0?'':'hidecss'}}">
+          <view class="flexcss">
+            <image class="spellitem-img" src="{{globalimg}}/dpxq_icon_dt@2xaa.png"></image>
+            <view class="spelltime-txt">还差{{item.num}}人拼购成功</view>
+          </view>
+          <view class="invitebtn">
+            <button class='inviteCss' open-type='share' data-name="{{item.goods[0].title}}" data-money="{{item.goods[0].groupsprice}}" data-img="{{item.goods[0].thumb}}" data-num="{{item.num}}" data-teamid="{{item.teamid}}"></button>
+            邀请好友
+          </view>
+        </view>
+
+        <!-- 待发货 -->
+        <view class="select-btn flexcss {{item.status==1&&item.num==0&&status != '6'?'':'hidecss'}}">
+          <view class="btncss" catchtap="remindbtn">提醒发货</view>
+        </view>
+
+        <!-- 待收货 -->
+        <view class="select-btn flexcss {{item.status == 2&&status != '6'?'':'hidecss'}}">
+          <navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{item.id}}" class="btncss">查看物流</navigator>
+          <view class="btnactive" catchtap="affirm" data-id="{{item.id}}">确认收货</view>
+        </view>
+
+
+        <!-- 待评价 -->
+        <view class="select-btn flexcss {{item.status == 3?'':'hidecss'}}">
+          <navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{item.id}}" class="btncss">查看物流</navigator>
+          <navigator wx:if="{{item.iscomment==0?true:false}}" url="/packageA/pages/changce/spelltuan/details/message?id={{item.goodid}}" open-type="redirect" class="btncss">再次购买</navigator>
+          <navigator wx:if="{{item.iscomment==0?true:false}}" url="/packageA/pages/changce/spelltuan/evaluate/evaluate?order_id={{item.id}}" class="btnactive">评价</navigator>
+
+          <navigator class="btncss" url="/packageA/pages/changce/spelltuan/evaluate/evaluate?order_id={{item.id}}&addto='1'" wx:if="{{item.iscomment==1&&status=='7'?true:false}}">追加评价</navigator>
+          <navigator wx:if="{{item.iscomment==1&&status=='7'?true:false}}"  url="/packageA/pages/changce/spelltuan/details/message?id={{item.goodid}}" open-type="redirect" class="btnactive">再次购买</navigator>
+        </view>
+
+        <!-- 退换货 -->
+        <view class="select-btn flexcss" style="{{item.refundstate == '0'||status!=6?'display:none':''}}">
+        
+          <view class="flexcss" wx:if="{{item.refundstate==1&&item.rtype==0}}">
+            <image class="quit-img" src="{{globalimg}}/dd_inco_thh_tk@2x.png"></image>
+            <view class="quit-txt">
+              仅退款 
+              <text wx:if="{{item.refundstatus==0}}">退款中</text>
+              <text wx:if="{{item.refundstatus==1}}">退款成功</text>
+              <text wx:if="{{item.refundstatus=='-2'}}">退款关闭</text>
+            </view>
+          </view>
+          
+          <view class="flexcss" wx:if="{{item.refundstate==1&&item.rtype==1}}">
+            <image class="quit-img" src="{{globalimg}}/dd_inco_thh_thtk@2x.png"></image>
+            <view class="quit-txt">
+              退货退款
+              <text wx:if="{{item.refundstatus==0}}">退款中</text>
+              <text wx:if="{{item.refundstatus==1}}">退款成功</text>
+              <text wx:if="{{item.refundstatus=='-2'}}">退款关闭</text>
+            </view>
+          </view>
+
+          <view class="flexcss" wx:if="{{item.refundstate==2&&item.rtype==2}}">
+            <image class="quit-img" src="{{globalimg}}/dd_inco_thh_hh@2x.png"></image>
+            <view class="quit-txt">
+              换货
+              <text wx:if="{{item.refundstatus==0}}">换货中</text>
+              <text wx:if="{{item.refundstatus==1}}">换货成功</text>
+              <text wx:if="{{item.refundstatus=='-2'}}">换货关闭</text>
+            </view>
+          </view>
+
+          <navigator url="/packageA/pages/changce/spelltuan/orderDetails/orderDetails?id={{item.id}}&num={{item.num}}" class="look-details">查看详情</navigator>
+        </view>
+      
+      </view>
+    </block>
+
+    <block wx:if="{{loading}}">
+      <view class="fui-loading">
+        <view class="icon"></view>
+        <view class="text">正在加载</view>
+      </view>
+    </block>
+    <view class="basetxt">{{basetxt}}</view>
+
+  </view>
+</view>

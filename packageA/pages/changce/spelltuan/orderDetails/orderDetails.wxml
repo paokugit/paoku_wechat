@@ -1,0 +1,188 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="订单详情"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view style="margin-bottom: 160rpx;" wx:if="{{show}}">
+	<view class="detail-bg">
+		<view class="bg-left">
+			<view class="buy-state" wx:if="{{orderlis.status==0}}">等待买家付款</view>
+
+      <view class="buy-state" wx:if="{{orderlis.status==1&&orderlis.is_team==1&&orderlis.success==0}}">等待拼团中</view>
+      <view class="buy-state" wx:if="{{orderlis.status==1&&orderlis.is_team==1&&orderlis.success==1}}">买家已付款</view>
+
+      <view class="buy-state" wx:if="{{orderlis.status==1&&orderlis.is_team==0}}">买家已付款</view>
+      <view class="buy-state" wx:if="{{orderlis.status==2}}">卖家已发货</view>
+      <view class="buy-state" wx:if="{{orderlis.status==3}}">交易成功</view>
+		</view>
+		<view class="bg-right">
+			<image class="timeImg" src="{{globalimg}}/dd_img_shij@2x.png"></image>
+		</view>
+	</view>
+
+	<view class="boxcss">
+		<view class="name-phone flexcss">
+			<image class="site-img" src="{{globalimg}}/dd_icon_dz@2x.png"></image>
+			<view class="site-name">{{orderlis.address.realname}}</view>
+			<view class="site-phone">{{orderlis.address.mobile}}</view>
+		</view>
+		<view class="site-detail">地址：{{orderlis.address.province}}{{orderlis.address.city}}{{orderlis.address.area}}{{orderlis.address.address}}</view>
+	</view>
+
+	<view class="boxcss">
+
+		<navigator wx:if="{{express==1}}" style="display: flex;" url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{item.id}}">
+			<image class="logicon" src="{{globalimg}}/dd_inco_wl@2x.png"></image>
+			<view class="flexcss">
+				<view class="logistics">
+					<view class="logistics-txt">{{orderlis.logistics.step}}</view>
+					<view class="logistics-time">{{orderlis.logistics.time}}</view>
+				</view>
+				<image class="jiantou" src="{{globalimg}}/dd_inco_tkcg_fh@2x.png"></image>
+			</view>
+		</navigator>
+
+		<view class="flexcss">
+			<image class="storeImg" src="{{globalimg}}/dd_inco_dp@2x.png"></image>
+			<view class="goodsname" wx:if="{{orderlis.merchname==''?false:true}}">{{orderlis.merchname}}</view>
+      <view class="goodsname" wx:if="{{orderlis.merchname==''?true:false}}">跑库</view>
+		</view>
+
+    <block wx:for="{{orderlis.goods}}" wx:key="index">
+      <view class="goods-new flexcss">
+        <image class="goodsimg" src="{{item.thumb}}"></image>
+        <view style="width: 400rpx;">
+          <view class="goods-name">{{item.title}}</view>
+          <view class="goods-select">{{item.option_name}}</view>
+          <view class="flexcss" style="justify-content: space-between;">
+            <view class="goods-price" wx:if="{{orderlis.is_team==0}}">{{item.singleprice}}</view>
+            <view class="goods-price" wx:if="{{orderlis.is_team==1}}">{{item.groupsprice}}</view>
+            <view class="goods-num">x{{item.total}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+		<navigator url="/packageA/pages/changce/spelltuan/state/state?teamid={{orderlis.id}}" class="spellwin flexcss" wx:if="{{orderlis.status!=0&&orderlis.status!=3&&orderlis.status!='-1'&&orderlis.is_team!=0}}">
+
+			<view class="spellwin-txt" wx:if="{{orderlis.success==0}}">【待成团】还差{{orderlis.team.num}}人拼团成功</view>
+			<view class="spellwin-txt" wx:if="{{orderlis.success==1}}">【拼团成功】恭喜您拼购成功</view>
+			<view>
+				<block wx:for="{{orderlis.team.avatar}}" wx:key="index">
+					<image src="{{item}}" class="portrait-img" style="{{index > 0 ? 'margin-left:-30rpx;':''}}"></image>
+				</block>
+				<image class='right-img' src='{{globalimg}}/user-right.png'></image>
+			</view>
+		</navigator>
+	
+	</view>
+
+	<view class="boxcss">
+		<view class="order-info">
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153);position:relative">订单编号：
+				<text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{orderlis.orderno}}</text>
+				<text class="copyBox" bindtap='copyText' data-text="{{orderlis.orderno}}">复制</text>
+			</view>
+
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)" wx:if="{{orderlis.pay_type==''?false:true}}">
+        <view wx:if="{{orderlis.pay_type=='wechat'}}">
+          支付方式：
+				  <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">微信支付</text>
+        </view>
+        <view wx:if="{{orderlis.pay_type=='credit'}}">
+          支付方式：
+				  <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">余额支付</text>
+        </view>
+        <view wx:if="{{orderlis.pay_type=='rvc'}}">
+          支付方式：
+				  <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">rvc支付</text>
+        </view>
+        <view wx:if="{{orderlis.pay_type=='alipay'}}">
+          支付方式：
+				  <text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">支付宝支付</text>
+        </view>
+			</view>
+
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">配送方式：
+				<text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">普通配送</text>
+			</view>
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)">下单时间：
+				<text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{orderlis.createtime}}</text>
+			</view>
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)" wx:if="{{orderlis.paytime==''?false:true}}">支付时间：
+				<text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{orderlis.paytime}}</text>
+			</view>
+			<view class="fui-cell-label" style="font-size:28rpx;color:rgb(153, 153, 153)" wx:if="{{orderlis.sendtime==''?false:true}}">发货时间：
+				<text class="fui-cell-label" style="font-size:28rpx;color:rgb(51, 51, 51)" selectable="true">{{orderlis.sendtime}}</text>
+			</view>
+		</view>
+	</view>
+
+	<view class="boxcss">
+		<view class="flexTwo flexcss">
+			<view class="totaltxt">商品金额：</view>
+			<view class="totalnum">￥{{orderlis.goodsprice}}</view>
+		</view>
+
+		<view class="flexTwo flexcss">
+			<view class="totaltxt">运费：</view>
+			<view class="totalnum">+￥{{orderlis.freight}}</view>
+		</view>
+
+		<view class="reality">实付款<text>{{orderlis.price}}</text> </view>
+	</view>
+
+	<view class="fui-footer flexcss">
+		
+    <button class="btn btn-default btn-default-hlp pull-left" openType="contact" sessionFrom="weapp" showMessageCard="true">
+      <text class="icox icox-customerservice"></text>客服
+    </button>
+		
+		<view class="flexcss" wx:if="{{orderlis.status==0}}">
+			<view catchtap="cancelbtn" data-orderid="{{orderlis.id}}" data-cancel="1" class="generalcss" >取消订单</view>
+			<navigator url="/packageA/pages/changce/spelltuan/alipay/alipay?optionid={{orderlis.id}}&spell=1" open-type="redirect" class="generalcss activeCss">支付订单</navigator>
+		</view>
+
+		<view class="flexcss" wx:if="{{orderlis.status==1&&orderlis.is_team==1&&orderlis.success==0}}">
+			<view class="generalcss activeCss">
+				<button class='inviteCss' open-type='share' data-img="{{orderlis.goods[0].thumb}}" data-teamid="{{orderlis.id}}" data-goodid="{{orderlis.goodid}}" data-ball="0"></button>	
+				邀请好友
+			</view>
+		</view>
+
+		<view class="flexcss" wx:if="{{orderlis.status==1&&orderlis.success==1&&orderlis.is_team==1}}">
+			<view class="generalcss" catchtap="remindbtn">提醒发货</view>
+			
+			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+		</view>
+		<view class="flexcss" wx:if="{{orderlis.status==1&&orderlis.is_team==0}}">
+			<view class="generalcss" catchtap="remindbtn">提醒发货</view>
+			
+			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+		</view>
+
+		<view class="flexcss" wx:if="{{orderlis.status==2}}">
+			<navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{orderlis.id}}" class="generalcss">查看物流</navigator>
+			
+			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+			
+			<view class="generalcss activeCss" catchtap="affirm" data-id="{{orderlis.id}}">确认收货</view>
+		</view>
+
+		<view class="flexcss" wx:if="{{orderlis.status==3&&orderlis.iscomment==0}}">
+			<navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{orderlis.id}}" class="generalcss">查看物流</navigator>
+			<navigator class="generalcss" url="/packageA/pages/changce/spelltuan/details/message?id={{orderlis.goodid}}" open-type="redirect">再次购买</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/evaluate/evaluate?order_id={{orderlis.id}}" class="generalcss activeCss">评价</navigator>
+		</view>
+		<view class="flexcss" wx:if="{{orderlis.status==3&&orderlis.iscomment==1}}">
+			<navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{orderlis.id}}" class="generalcss">查看物流</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/evaluate/evaluate?order_id={{orderlis.id}}&addto='1'" class="generalcss">追加评价</navigator>
+			<navigator class="generalcss activeCss" url="/packageA/pages/changce/spelltuan/details/message?id={{orderlis.goodid}}" open-type="redirect">再次购买</navigator>
+		</view>
+		<view class="flexcss" wx:if="{{orderlis.status==3&&orderlis.iscomment==2}}">
+			<navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{orderlis.id}}" class="generalcss">查看物流</navigator>
+			<navigator class="generalcss" url="/packageA/pages/changce/spelltuan/details/message?id={{orderlis.goodid}}" open-type="redirect">再次购买</navigator>
+		</view>
+
+	</view>
+</view>

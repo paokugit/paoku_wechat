@@ -27,7 +27,7 @@
           <view style="{{attention == 0?'':'display:none'}}">关注</view>
           <view style="{{attention == 1?'':'display:none'}}">已关注</view>
         </view>
-        <view class="header-collect">{{message.followcount}}人收藏</view>
+        <view class="header-collect">{{people}}人收藏</view>
       </view>
     </view>
 
@@ -153,7 +153,7 @@
 
   <!-- 活动内容 -->
   <view style="{{currentData == 1 ? '' : 'display:none'}}">
-    <view class="deseno">
+    <view class="deseno" wx:if="{{goodstime.length!=0}}">
       <view class="deseno-tit">
         <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
         <view class="deseno-txt-tit">限时抢购</view>
@@ -162,73 +162,77 @@
 
       <view>
         <swiper indicator-dots="true" autoplay="true" interval="3000" circular="true" style="height:350rpx" indicator-color="#e6e6e6" indicator-active-color="#ff0000">
-          <!-- <block wx:for="{{background}}" wx:key="index"> -->
+          <block wx:for="{{goodstime}}" wx:key="index">
             <swiper-item class="swiperItem">
               <view class="swiper-item">
-                <view class="deseno-image"></view>
+                <image class="deseno-image" src="{{item.thumb}}"></image>
                 <view class="deseno-right">
-                  <view class="deseno-txt">Apple/苹果iPhone XR 256GB</view>
+                  <view class="deseno-txt">{{item.title}}</view>
                   <view class="deseno-amount">
                     <view class="submitted">
                       <progress percent="30" color="#ff0000" backgroundColor="#fcbbb1" active-mode="forwards" stroke-width="13" border-radius="20rpx" />
-                      <view class="submitted-txt">已抢购50件</view>
+                      <view class="submitted-txt">已抢购{{item.sales}}件</view>
                     </view>
-                    <view class="submitted-astrict">限抢购100件</view>
+                    <view class="submitted-astrict">限抢购{{item.total}}件</view>
                   </view>
 
                   <view class="deseno-price">
                     <view class="deseno-money">
-                      <view class="deseno-current">999</view>
-                      <view class="deseno-original">1500</view>
+                      <view class="deseno-current">{{item.marketprice}}</view>
+                      <view class="deseno-original">{{item.productprice}}</view>
                     </view>
                     <view class="robBtn">马上抢</view>
                   </view>
                 </view>
               </view>
             </swiper-item>
-          <!-- </block> -->
+          </block>
         </swiper>
 
       </view>
     </view>
 
-    <navigator url="/packageA/pages/changce/merch/time_limit" class="deseno-more">
+    <navigator url="/packageA/pages/timelimit/timelimit" class="deseno-more"  wx:if="{{goodstime.length!=0}}">
+    
       <view class="deseno-more-bor">
         <view>查看更多</view>
         <image src="{{globalimg}}/open10.18@2x.png"></image>
       </view>
     </navigator> 
 
-    <view class="spell-regiment">
+    <view class="spell-regiment" wx:if="{{tuiList.length!=0}}">
       <view class="deseno-tit">
         <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
         <view class="deseno-txt-tit">拼团</view>
         <image class="deseno-img-tit" src="{{globalimg}}/hd_img_z@2x.png"></image>
       </view>
 
-      <view class="spell-regiment-list">
-        <view class="regiment-list-img"></view>
-        <view class="regiment-list-right">
-          <view class="regiment-list-tit">【三只松鼠_曲奇陷阱160gx2】零食烘焙甜品饼瞅瞅瞅瞅尺寸时擦按时SaaS</view>
-          <view class="regiment-list-count">
-            <view class="regiment-list-money">99</view>
-            <view class="regiment-list-people">100人已参团</view>
-          </view>
-          <view class="regiment-list-base">
-            <view class="regiment-list-details">
-              <view class="regiment-list-spell">
-                <view class="regiment-list-image">
-                  <image src="{{globalimg}}/icon-pt@2x.png"></image>
-                </view>
-                <view class="regiment-list-text">2人拼</view>
-              </view>
-              <view class="bag-mail">包邮</view>
+      <block wx:for="{{tuiList}}" wx:key="index">
+        <navigator class="spell-regiment-list" url="/packageA/pages/changce/spelltuan/details/message?id={{item.id}}">
+          <image class="regiment-list-img" src="{{item.thumb}}"></image>
+          <view class="regiment-list-right">
+            <view class="regiment-list-tit">{{item.title}}</view>
+            <view class="regiment-list-count">
+              <view class="regiment-list-money">{{item.groupsprice}}</view>
+              <view class="regiment-list-people">{{item.sales}}人已参团</view>
             </view>
+            <view class="regiment-list-base">
+              <view class="regiment-list-details">
+                <view class="regiment-list-spell">
+                  <view class="regiment-list-image">
+                    <image src="{{globalimg}}/icon-pt@2x.png"></image>
+                  </view>
+                  <view class="regiment-list-text">{{item.groupnum}}人拼</view>
+                </view>
+                <view class="bag-mail" wx:if="{{item.freight==0}}">包邮</view>
+                <view class="bag-mail" wx:if="{{item.freight!=0}}">{{item.freight}}</view>
+              </view>
 
-            <view class="regiment-list-mail">拼团</view>
+              <view class="regiment-list-mail">拼团</view>
+            </view>
           </view>
-        </view>
-      </view>
+        </navigator>
+      </block>
 
       <view class="on-earth">到底了哦</view>
       
@@ -290,7 +294,7 @@
       <view class="state-two" style="{{sortWay == 1?'':'display:none'}}">
         <block wx:for="{{allList}}" wx:key="index">
           <navigator class="stateList" url="/pages/goods/detail/index?id={{item.id}}" >
-            <view class="state-image"></view>
+            <image class="state-image" src="{{item.thumb}}"></image>
             <view class="state-right">
               <view class="state-right-top">
                 <text class="state-right-activity" wx:if="{{item.ishot == 0?false:true}}">热销</text>

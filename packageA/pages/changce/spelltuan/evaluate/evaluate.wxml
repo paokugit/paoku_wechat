@@ -1,0 +1,100 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="发表评价"></navigation>
+<loading wx:if="{{!show}}">加载中...</loading>
+<view>
+
+	<view class="goods-news">
+    <block wx:for="{{goodslist}}" wx:key="index">
+      <view class="head-goods flexcss">
+        <image class="goods-img" src="{{item.thumb}}"></image>
+        <view style="width: 540rpx;">
+          <view class="goods-tit">{{item.title}}</view>
+          <view class="goods-standard">{{item.option_name}}</view>
+        </view>
+      </view>
+    
+
+      <view class="evaluate flexcss" wx:if="{{addto==0}}">
+        <view class="star-tetx">整体评价</view>
+        <view style="margin: 0 20rpx;">
+          <block wx:for="{{one_2}}" wx:key="index">
+            <image catchtap='in_xin' class="starimg" id='{{index+1}}' data-in='use_sc2' src='{{globalimg}}/fppj_inco_xinghui_per1@2x.png'></image>
+          </block>
+          <block wx:for="{{two_2}}" wx:key="index">
+            <image catchtap='in_xin' class="starimg" id='{{index+1}}' data-in='use_sc' src='{{globalimg}}/fppj_inco_xinghu_nor2@2x.png'></image>
+          </block>
+        </view>
+        <view class="star-content">{{starlevel}}</view>
+      </view>
+
+      <view class="tally" wx:if="{{addto==0}}">
+        <block wx:for="{{item.label}}" wx:for-item="itelab" wx:for-index="idx" wx:key="as">
+          <view class="tally-text {{idx}} {{itelab.selected == idx?'labactive':''}}" data-boxind="{{index}}" data-ind="{{idx}}" data-lab="{{itelab}}" catchtap="itelabBtn">{{itelab.name}}</view>
+        </block>
+      </view>
+    </block>
+
+		<view class="leave-text">
+			<textarea class="text-area" bindinput="change" placeholder-class="placecss" placeholder="{{hint}}"></textarea>
+
+			<view class="leave-img">
+				<block wx:for="{{tempFilePaths}}" wx:key="index">
+					<view class='pic_box item'>
+						<image src="{{item}}" class='gays_pic_C'></image>
+
+						<view class="deleteImg" data-id="{{index}}" catchtap='deletePic'>
+							<image src="{{globalimg}}/imgGuanBi.png"></image>
+						</view>
+
+					</view>
+				</block>
+
+				<view class="clickimg" style="{{tempFilePaths.length == 0||tempFilePaths.length == 3||tempFilePaths.length == 6?'':'margin-left: 28rpx;'}}" bindtap="choose" wx:if="{{tempFilePaths.length < 9}}">
+					<image class="uploadingImg" src="{{globalimg}}/pingjia_icon_xj@2x.png"></image>
+					<view class="uploadingTxt">添加图片</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="flexcss" style="margin: 22rpx 0 0;justify-content: space-between;" wx:if="{{addto==0}}">
+			<label class="checked-lable flexcss" catchtap='checkedTap'>
+				<radio checked="{{checked}}" color='#deab8a' />
+				<view class="lab-tetx">匿名</view>
+			</label>
+			<view class="fonttxt">你写的评价会以匿名的形式展示</view>
+		</view>
+	</view>
+
+	<view class="shop" wx:if="{{addto==0}}">
+		<view class="shop-tit flexcss">
+      <image src="{{globalimg}}/dd_inco_dp@2x.png"></image>
+      <view>店铺评价</view>
+    </view>
+
+		<view class="delivery flexcss" style="margin-bottom: 30rpx;">
+      <view class="delivery-tit">送货服务</view>
+			<view style="margin: 0 20rpx;">
+				<block wx:for="{{goods_1}}" wx:key="index">
+					<image catchtap='goods' class="starimg" id='{{index+1}}' data-in='goods_1' src='{{globalimg}}/fppj_inco_xinghui_per1@2x.png'></image>
+				</block>
+				<block wx:for="{{goods_2}}" wx:key="index">
+					<image catchtap='goods' class="starimg" id='{{index+1}}' data-in='goods_2' src='{{globalimg}}/fppj_inco_xinghu_nor2@2x.png'></image>
+				</block>
+			</view>
+		</view>
+
+    <view class="delivery flexcss">
+      <view class="delivery-tit">服务态度</view>
+			<view style="margin: 0 20rpx;">
+				<block wx:for="{{manner_1}}" wx:key="index">
+					<image catchtap='manner' class="starimg" id='{{index+1}}' data-in='manner_1' src='{{globalimg}}/fppj_inco_xinghui_per1@2x.png'></image>
+				</block>
+				<block wx:for="{{manner_2}}" wx:key="index">
+					<image catchtap='manner' class="starimg" id='{{index+1}}' data-in='manner_2' src='{{globalimg}}/fppj_inco_xinghu_nor2@2x.png'></image>
+				</block>
+			</view>
+		</view>
+
+	</view>
+
+  <view class="appraise" catchtap="appraiseBtn">提交评价</view>
+</view>
