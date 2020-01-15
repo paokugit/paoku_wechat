@@ -202,9 +202,11 @@ Page({
             success:function(res){
               console.log(res);
               if(res.data.error == 0){
-                wx.navigateBack({
-                  delta: 2
-                })
+                setTimeout(function(){
+                  wx.switchTab({
+                    url: '/pages/member/index/index'
+                  })
+                }, 1000);
               }
               wx.showToast({
                 title: res.data.message,

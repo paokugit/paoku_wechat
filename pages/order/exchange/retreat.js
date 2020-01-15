@@ -113,9 +113,11 @@ Page({
                   duration: 2000
                 })
                 if (res.data.error == 0) {
-                  wx.navigateBack({
-                    delta: 4
-                  })
+                  setTimeout(function(){
+                    wx.switchTab({
+                      url: '/pages/member/index/index'
+                    })
+                  }, 1000);
                 } 
               }
             });

@@ -60,11 +60,11 @@
       </view>
     </block>
 
-		<navigator url="/packageA/pages/changce/spelltuan/state/state?teamid={{orderlis.id}}" class="spellwin flexcss" wx:if="{{orderlis.status!=0&&orderlis.status!=3&&orderlis.status!='-1'&&orderlis.is_team!=0}}">
+		<navigator url="/packageA/pages/changce/spelltuan/state/state?teamid={{orderlis.teamid}}" class="spellwin flexcss" wx:if="{{orderlis.status!=0&&orderlis.status!=3&&orderlis.status!='-1'&&orderlis.is_team!=0}}">
 
 			<view class="spellwin-txt" wx:if="{{orderlis.success==0}}">【待成团】还差{{orderlis.team.num}}人拼团成功</view>
 			<view class="spellwin-txt" wx:if="{{orderlis.success==1}}">【拼团成功】恭喜您拼购成功</view>
-			<view>
+			<view> 
 				<block wx:for="{{orderlis.team.avatar}}" wx:key="index">
 					<image src="{{item}}" class="portrait-img" style="{{index > 0 ? 'margin-left:-30rpx;':''}}"></image>
 				</block>
@@ -151,20 +151,20 @@
 			<view class="generalcss" catchtap="remindbtn">提醒发货</view>
 			
 			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
-			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1||orderlis.refundstate==2}}">退换</navigator>
 		</view>
 		<view class="flexcss" wx:if="{{orderlis.status==1&&orderlis.is_team==0}}">
 			<view class="generalcss" catchtap="remindbtn">提醒发货</view>
 			
 			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
-			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1||orderlis.refundstate==2}}">退换</navigator>
 		</view>
 
 		<view class="flexcss" wx:if="{{orderlis.status==2}}">
 			<navigator url="/packageA/pages/changce/spelltuan/logistics/logistics?order_id={{orderlis.id}}" class="generalcss">查看物流</navigator>
 			
 			<navigator url="/pages/order/exchange/index?orderid={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==0}}">退换</navigator>
-			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1}}">退换</navigator>
+			<navigator url="/packageA/pages/changce/spelltuan/refund/refund?id={{orderlis.id}}" class="generalcss" wx:if="{{orderlis.refundstate==1||orderlis.refundstate==2}}">退换</navigator>
 			
 			<view class="generalcss activeCss" catchtap="affirm" data-id="{{orderlis.id}}">确认收货</view>
 		</view>

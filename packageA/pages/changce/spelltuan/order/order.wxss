@@ -246,3 +246,20 @@
   color: #999;
   font-size: 28rpx;
 }
+
+.nothave{
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+  padding-top: 260rpx;
+}
+.nothave image{
+  width:382rpx;
+  height:294rpx
+}
+.nothave view{
+  font-size: 34rpx;
+  color: #666;
+  margin-top: 60rpx;
+}

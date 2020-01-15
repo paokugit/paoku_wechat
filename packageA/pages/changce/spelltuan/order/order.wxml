@@ -12,7 +12,7 @@
     <view bindtap="selected" class="item {{status=='6'?'select':''}}" data-type="6">退换货</view>
   </scroll-view>
 
-  <view style="margin-top:120rpx">
+  <view style="margin-top:120rpx" wx:if="{{orderlist.length!=0}}">
     <block wx:for="{{orderlist}}" wx:key = "index">
       <view class="order-list">
         <navigator class="list-head flexcss" url="/packageA/pages/changce/merch/detail?id={{item.merchid}}" open-type="redirect">
@@ -195,6 +195,10 @@
       </view>
     </block>
     <view class="basetxt">{{basetxt}}</view>
+  </view>
 
+  <view wx:if="{{orderlist.length==0}}" class="nothave">
+    <image src="{{globalimg}}/wddd_img_qsy@2x.png"></image>
+    <view>暂无订单</view>
   </view>
 </view>
